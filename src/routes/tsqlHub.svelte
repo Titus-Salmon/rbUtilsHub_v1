@@ -2,7 +2,7 @@
   function vInvMasterQuery() {
     fetch('v_InventoryMasterQuery_test', {
       method: 'POST',
-      headers: { 'Content-type': 'text/plain;charset=UTF-8' },
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: `SELECT INV_PK, INV_CPK, INV_ScanCode, ORD_SupplierStockNumber, INV_Name,
         INV_Size, INV_ReceiptAlias, inv_default, convert(varchar(10),
         POS_TimeStamp, 120), INV_DateCreated, INV_EMP_FK_CreatedBy,
