@@ -1,5 +1,8 @@
 <script>
   const backendBaseUrl = `http://localhost:3333`;
+  function vInvMasterQuery() {
+    fetch();
+  }
 </script>
 
 <div style="display:block">
