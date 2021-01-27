@@ -1,12 +1,4 @@
-var express = require('express');
-var router = express.Router();
-
-const odbc = require('odbc')
-const DSN = process.env.ODBC_CONN_STRING
-
-const fs = require('fs')
-
-router.post('/queryInvMasterTable', (req, res, next) => {
+export function post(req, res, next) {
   const queryCatapultDBPostBody = req.body
   let catapultDbQuery = queryCatapultDBPostBody['tblQryPost']
 
@@ -175,4 +167,4 @@ router.post('/queryInvMasterTable', (req, res, next) => {
       res.json(catapultResArr)
     })
   })
-})
+}
