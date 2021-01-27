@@ -1,6 +1,6 @@
 export function post(req, res, next) {
   const queryCatapultDBPostBody = req.body
-  let catapultDbQuery = queryCatapultDBPostBody['tblQryPost']
+  let catapultDbQuery = queryCatapultDBPostBody
 
   console.log(`catapultDbQuery==> ${catapultDbQuery}`)
 
