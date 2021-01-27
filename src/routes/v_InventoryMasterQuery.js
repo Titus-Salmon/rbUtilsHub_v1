@@ -1,8 +1,8 @@
 export function post(req, res, next) {
   const odbc = require('odbc')
   const DSN = process.env.ODBC_CONN_STRING
-  console.log(`req==> ${req}`)
-  console.log(`req[0]==> ${req[0]}`)
+  // console.log(`req==> ${req}`)
+  // console.log(`req[0]==> ${req[0]}`)
   // console.log(`JSON.parse(req)==> ${JSON.parse(req)}`)
   console.log(`req.body==> ${req.body}`)
   const queryCatapultDBPostBody = req.body

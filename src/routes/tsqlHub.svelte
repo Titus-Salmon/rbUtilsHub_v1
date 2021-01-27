@@ -1,5 +1,4 @@
-<script>
-  const backendBaseUrl = `http://localhost:3333`;
+<!--<script>
   function vInvMasterQuery() {
     fetch('v_InventoryMasterQuery', {
       method: 'POST',
@@ -18,14 +17,12 @@
         PI2_Description`,
     });
   }
-</script>
+</script><button on:click={vInvMasterQuery}>vInvMasterQuery</button> -->
 
-<button on:click={vInvMasterQuery}>vInvMasterQuery</button>
-
-<!-- <div style="display:block">
+<div style="display:block">
   <form
     id="queryInvMasterTable"
-    action="{backendBaseUrl}/tsqlHub/queryInvMasterTable"
+    action="http://localhost:3333/tsqlHub/queryInvMasterTable"
     method="POST"
     accept-charset="UTF-8"
     style="display:block"
@@ -53,4 +50,4 @@
       >
     </div>
   </form>
-</div> -->
+</div>
