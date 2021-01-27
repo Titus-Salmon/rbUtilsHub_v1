@@ -18,7 +18,7 @@ const dev = NODE_ENV === 'development';
 console.log(`process.env.PORT==> ${process.env.PORT}`)
 console.log(`process.env.SOMETHING==> ${process.env.SOMETHING}`)
 
-app.use('/tsqlHub', tsqlHubRouter) //t0d
+// app.use('/tsqlHub', tsqlHubRouter) //t0d
 
 app // You can also use Polka
 	.use(
