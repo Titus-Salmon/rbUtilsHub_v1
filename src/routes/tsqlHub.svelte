@@ -1,7 +1,7 @@
 <script>
   const backendBaseUrl = `http://localhost:3333`;
   function vInvMasterQuery() {
-    fetch('v_InventoryMasterQuery', {
+    fetch('v_InventoryMasterQuery/queryInvMasterTable', {
       method: 'POST',
       headers: { 'Content-type': 'text/plain;charset=UTF-8' },
       body: `SELECT INV_PK, INV_CPK, INV_ScanCode, ORD_SupplierStockNumber, INV_Name,

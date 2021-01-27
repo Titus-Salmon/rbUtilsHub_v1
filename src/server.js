@@ -3,7 +3,7 @@ import express from 'express';
 import compression from 'compression';
 import * as sapper from '@sapper/server';
 
-const tsqlHubRouter = require('../../../backendLogic/express_routes/rt-tsqlHub') //t0d
+//const tsqlHubRouter = require('../../../backendLogic/express_routes/rt-tsqlHub') //t0d
 
 const app = express() //t0d
 const dotenv = require('dotenv') //t0d
