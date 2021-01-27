@@ -1,5 +1,5 @@
 <script>
-  const backendBaseUrl = `http://localhost:${process.env.PORT}`;
+  const backendBaseUrl = `http://localhost:3333`;
 </script>
 
 <div style="display:block">
