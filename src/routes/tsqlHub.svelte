@@ -3,8 +3,8 @@
     fetch('v_InventoryMasterQuery_test', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: 'hello?',
-      // body: JSON.stringify({ data: 'it works' }),
+      // body: 'hello?',
+      body: JSON.stringify({ data: 'it works' }),
       // headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       // body: `SELECT INV_PK, INV_CPK, INV_ScanCode, ORD_SupplierStockNumber, INV_Name,
       //   INV_Size, INV_ReceiptAlias, inv_default, convert(varchar(10),
