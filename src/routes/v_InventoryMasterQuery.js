@@ -15,7 +15,7 @@ export async function post(req, res, next) {
   console.log(`catapultDbQuery==> ${catapultDbQuery}`)
 
   let catapultResArr = []
-  //srcRsXLS_tsql = []
+  srcRsXLS_tsql = []
 
   function showcatapultResults(result) {
     for (let i = 0; i < result.length; i++) {
