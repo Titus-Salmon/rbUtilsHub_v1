@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+// var express = require('express');
+// var router = express.Router();
 const odbc = require('odbc')
 const DSN = process.env.ODBC_CONN_STRING
 
