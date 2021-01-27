@@ -9,7 +9,7 @@ export async function post(req, res, next) {
   console.log(`req.body.data==> ${req.body.data}`)
 
   console.log(`req.body==> ${req.body}`)
-  const queryCatapultDBPostBody = req.body
+  const queryCatapultDBPostBody = req.body.data
   let catapultDbQuery = queryCatapultDBPostBody
 
   console.log(`catapultDbQuery==> ${catapultDbQuery}`)
