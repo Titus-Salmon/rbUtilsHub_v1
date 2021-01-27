@@ -8,7 +8,7 @@ const {
 
 
 router.get('/', (req, res, next) => {
-  res.send(req)
+  res.send('you are here')
 })
 
 router.post('/queryInvMasterTable', v_InventoryMasterQuery)
