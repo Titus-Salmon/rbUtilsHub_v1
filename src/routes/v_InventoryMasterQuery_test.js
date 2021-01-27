@@ -1,11 +1,11 @@
-export async function post(req, res, next) {
-  res.setHeader('Content-Type', 'application/json')
-  console.log(`req.body==> ${req.body}`)
-}
-
 // export async function post(req, res, next) {
+//   res.setHeader('Content-Type', 'application/json')
 //   console.log(`req.body==> ${req.body}`)
 // }
+
+export async function post(req, res, next) {
+  console.log(`req.body==> ${req.body}`)
+}
 
 // // routes/blog/[slug].json.js
 // import db from './_database.js'; // the underscore tells Sapper this isn't a route

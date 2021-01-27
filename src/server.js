@@ -20,6 +20,9 @@ console.log(`process.env.SOMETHING==> ${process.env.SOMETHING}`)
 
 // app.use('/tsqlHub', tsqlHubRouter) //t0d
 
+app.use(express.urlencoded()) //t0d
+app.use(express.json())
+
 app // You can also use Polka
 	.use(
 		compression({
