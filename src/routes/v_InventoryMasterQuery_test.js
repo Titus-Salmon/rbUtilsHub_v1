@@ -1,3 +1,3 @@
-export async function post(req, res, next) {
-  await console.log(`req.body==> ${req.body}`)
+export function post(req, res, next) {
+  console.log(`req.body==> ${req.body}`)
 }
