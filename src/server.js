@@ -3,7 +3,7 @@ import express from 'express';
 import compression from 'compression';
 import * as sapper from '@sapper/server';
 
-const createError = require('http-errors')
+//const createError = require('http-errors')
 const app = express() //t0d
 const dotenv = require('dotenv') //t0d
 const helmet = require('helmet') //t0d
@@ -34,23 +34,6 @@ app.use(helmet()) //t0d
 app.use(cookieParser()) //t0d
 app.use(logger('dev')) //t0d
 
-//v//do I need this? Functionality associated with http-errors npm module - keeping for now////////////////////////////t0d
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-	next(createError(404));
-});
-
-// error handler
-app.use(function (err, req, res, next) {
-	// set locals, only providing error in development
-	res.locals.message = err.message;
-	res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-	// render the error page
-	res.status(err.status || 500);
-	res.json(err);
-});
-//^//do I need this? Functionality associated with http-errors npm module - keeping for now////////////////////////////t0d
 
 
 //v//https://sapper.svelte.dev/docs#Server_routes says this block should be at end of server.js, so leaving it there//t0d
