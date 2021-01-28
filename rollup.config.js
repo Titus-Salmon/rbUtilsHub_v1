@@ -4,8 +4,13 @@ import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
 import url from '@rollup/plugin-url';
 import svelte from 'rollup-plugin-svelte';
+
+const smelte = require("smelte/rollup-plugin-smelte") //t0d --need to add this after svelte, but before any css
+
 import babel from '@rollup/plugin-babel';
-import { terser } from 'rollup-plugin-terser';
+import {
+	terser
+} from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 
@@ -33,6 +38,38 @@ export default {
 					hydratable: true
 				}
 			}),
+
+			//v//t0d///////////////////////////////////////////////////////////
+			smelte({
+				purge: production,
+				output: "public/global.css", // it defaults to static/global.css which is probably what you expect in Sapper
+				postcss: [], // Your PostCSS plugins
+				whitelist: [], // Array of classnames whitelisted from purging
+				whitelistPatterns: [], // Same as above, but list of regexes
+				tailwind: {
+					theme: {
+						extend: {
+							spacing: {
+								72: "18rem",
+								84: "21rem",
+								96: "24rem"
+							}
+						}
+					}, // Extend Tailwind theme
+					colors: {
+						primary: "#b027b0",
+						secondary: "#009688",
+						error: "#f44336",
+						success: "#4caf50",
+						alert: "#ff9800",
+						blue: "#2196f3",
+						dark: "#212121"
+					}, // Object of colors to generate a palette from, and then all the utility classes
+					darkMode: true,
+				}, // Any other props will be applied on top of default Smelte tailwind.config.js
+			}),
+			//^//t0d/////////////////////////////////////////////////////////////////////////////////////////////////
+
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
 				publicPath: '/client/'

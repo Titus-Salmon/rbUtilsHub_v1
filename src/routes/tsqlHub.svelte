@@ -1,4 +1,6 @@
 <script>
+  import 'smelte/src/tailwind.css';
+
   function vInvMasterQuery() {
     fetch('v_InventoryMasterQuery', {
       method: 'POST',
