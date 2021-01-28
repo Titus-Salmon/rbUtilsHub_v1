@@ -162,7 +162,7 @@ export async function post(req, res, next) {
       console.log(`JSON.stringify(queriedColumns_0)==> ${JSON.stringify(queriedColumns_0)}`)
       console.log(`JSON.stringify(result[0])==> ${JSON.stringify(result[0])}`)
       console.log(`result['columns'].length==> ${result['columns'].length}`)
-      console.log(`result['columns']==> ${result['columns']}`)
+      console.log(`JSON.stringify(result['columns'])==> ${JSON.stringify(result['columns'])}`)
       console.log(`JSON.stringify(result['columns'][2])==> ${JSON.stringify(result['columns'][2])}`)
       showcatapultResults(result)
 
