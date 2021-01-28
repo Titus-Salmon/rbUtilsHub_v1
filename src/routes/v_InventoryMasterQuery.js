@@ -159,14 +159,11 @@ export async function post(req, res, next) {
       console.log(`result.length~~~> ${result.length}`)
       let queriedColumns_0 = Object.keys(result[0])
       console.log(`typeof queriedColumns_0==> ${typeof queriedColumns_0}`)
+      console.log(`JSON.stringify(queriedColumns_0)==> ${JSON.stringify(queriedColumns_0)}`)
       console.log(`JSON.stringify(result[0])==> ${JSON.stringify(result[0])}`)
       console.log(`JSON.stringify(result['columns'][2])==> ${JSON.stringify(result['columns'][2])}`)
       showcatapultResults(result)
 
-      // res.render('vw-v_InventoryMaster_query2', { //render searchResults to vw-retailCalcPassport page
-      //     title: 'vw-v_InventoryMaster_query2',
-      //     catapultResults: catapultResArr,
-      // })
       res.json(catapultResArr)
     })
   })
