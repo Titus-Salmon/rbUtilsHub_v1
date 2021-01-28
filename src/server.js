@@ -2,13 +2,17 @@ import sirv from 'sirv';
 import express from 'express';
 import compression from 'compression';
 import * as sapper from '@sapper/server';
+import dotenv from 'dotenv'; //t0d
+import uuidv4 from 'uuid/v4'; //t0d
+import helmet from 'helmet'; //t0d
+import cookieParser from 'cookie-parser'; //t0d
+import logger from 'morgan'; //t0d
 
-//const createError = require('http-errors')
 const app = express() //t0d
-const dotenv = require('dotenv') //t0d
+// const dotenv = require('dotenv') //t0d
 // const helmet = require('helmet') //t0d
-const cookieParser = require('cookie-parser') //t0d
-const logger = require('morgan') //t0d
+// const cookieParser = require('cookie-parser') //t0d
+// const logger = require('morgan') //t0d
 
 const {
 	PORT,
@@ -30,7 +34,32 @@ app.use(express.urlencoded({
 	limit: '500000mb', //MUST SET THIS HIGH, OTHERWISE LARGE CATALOGS (KEHE) WILL THROW error-request entity too large
 	extended: true
 }))
-// app.use(helmet()) //t0d
+
+//v//This is some weird Sapper-provided workaround called a 'nonce' to allow for inline JS resources
+//from https://sapper.svelte.dev/docs/:
+//Sapper generates inline <script>s and <style>s, which can fail to execute if
+//headers do not allow javascript or stylesheets sourced from inline resources.
+//To work around this, Sapper can inject a Content Security Policy (CSP)
+//which can be configured with middleware to emit the proper CSP headers. The nonce will be
+//applied to the inline <script>s and <style>s. Here is an example using Express and Helmet:
+
+app.use((req, res, next) => {
+	res.locals.nonce = uuidv4() //this sets a UUID value to res.locals.nonce//t0d
+	next();
+})
+app.use(helmet({
+	contentSecurityPolicy: {
+		directives: {
+			scriptSrc: [
+				"'self'",
+				(req, res) => `'nonce-${res.locals.nonce}'` //this apparently tells Helmet the UUID for whatever responses it is
+				//associated with is safe
+			]
+		}
+	}
+}))
+//^//This is some weird Sapper-provided workaround called a 'nonce' to allow for inline JS resources
+
 app.use(cookieParser()) //t0d
 app.use(logger('dev')) //t0d
 
