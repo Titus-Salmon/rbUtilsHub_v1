@@ -3,16 +3,17 @@ import express from 'express';
 import compression from 'compression';
 import * as sapper from '@sapper/server';
 import dotenv from 'dotenv'; //t0d
-import uuidv4 from 'uuid/v4'; //t0d
-import helmet from 'helmet'; //t0d
-import cookieParser from 'cookie-parser'; //t0d
-import logger from 'morgan'; //t0d
+// import uuidv4 from 'uuid/v4'; //t0d
+// import helmet from 'helmet'; //t0d
+// import cookieParser from 'cookie-parser'; //t0d
+// import logger from 'morgan'; //t0d
 
 const app = express() //t0d
-// const dotenv = require('dotenv') //t0d
-// const helmet = require('helmet') //t0d
-// const cookieParser = require('cookie-parser') //t0d
-// const logger = require('morgan') //t0d
+const dotenv = require('dotenv') //t0d
+const uuid = require('uuid-v4') //t0d
+const helmet = require('helmet') //t0d
+const cookieParser = require('cookie-parser') //t0d
+const logger = require('morgan') //t0d
 
 const {
 	PORT,
@@ -44,7 +45,7 @@ app.use(express.urlencoded({
 //applied to the inline <script>s and <style>s. Here is an example using Express and Helmet:
 
 app.use((req, res, next) => {
-	res.locals.nonce = uuidv4() //this sets a UUID value to res.locals.nonce//t0d
+	res.locals.nonce = uuid() //this sets a UUID value to res.locals.nonce//t0d
 	next();
 })
 app.use(helmet({
