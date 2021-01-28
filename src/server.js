@@ -6,9 +6,9 @@ import * as sapper from '@sapper/server';
 //const createError = require('http-errors')
 const app = express() //t0d
 const dotenv = require('dotenv') //t0d
-const helmet = require('helmet') //t0d
-const cookieParser = require('cookie-parser') //t0d
-const logger = require('morgan') //t0d
+// const helmet = require('helmet') //t0d
+// const cookieParser = require('cookie-parser') //t0d
+// const logger = require('morgan') //t0d
 
 const {
 	PORT,
@@ -30,9 +30,9 @@ app.use(express.urlencoded({
 	limit: '500000mb', //MUST SET THIS HIGH, OTHERWISE LARGE CATALOGS (KEHE) WILL THROW error-request entity too large
 	extended: true
 }))
-app.use(helmet()) //t0d
-app.use(cookieParser()) //t0d
-app.use(logger('dev')) //t0d
+// app.use(helmet()) //t0d
+// app.use(cookieParser()) //t0d
+// app.use(logger('dev')) //t0d
 
 
 
