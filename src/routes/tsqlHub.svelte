@@ -21,4 +21,12 @@
   }
 </script>
 
-<button on:click={vInvMasterQuery}>vInvMasterQuery</button>
+<body>
+  <button on:click={vInvMasterQuery}>vInvMasterQuery</button>
+</body>
+
+<style>
+  body {
+    background-color: black;
+  }
+</style>
