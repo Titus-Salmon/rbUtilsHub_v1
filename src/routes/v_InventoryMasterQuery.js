@@ -4,11 +4,9 @@ const odbc = require('odbc')
 const DSN = process.env.ODBC_CONN_STRING
 
 export async function post(req, res, next) {
-  res.setHeader('Content-Type', 'application/json')
-  console.log(`req.body==> ${req.body}`)
-  console.log(`req.body.data==> ${req.body.data}`)
 
-  console.log(`req.body==> ${req.body}`)
+  res.setHeader('Content-Type', 'application/json')
+  console.log(`req.body.data==> ${req.body.data}`)
   const queryCatapultDBPostBody = req.body.data
   let catapultDbQuery = queryCatapultDBPostBody
 
