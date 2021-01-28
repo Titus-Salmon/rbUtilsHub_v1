@@ -36,30 +36,32 @@ app.use(express.urlencoded({
 	extended: true
 }))
 
-//v//This is some weird Sapper-provided workaround called a 'nonce' to allow for inline JS resources
-//from https://sapper.svelte.dev/docs/:
-//Sapper generates inline <script>s and <style>s, which can fail to execute if
-//headers do not allow javascript or stylesheets sourced from inline resources.
-//To work around this, Sapper can inject a Content Security Policy (CSP)
-//which can be configured with middleware to emit the proper CSP headers. The nonce will be
-//applied to the inline <script>s and <style>s. Here is an example using Express and Helmet:
+// //v//This is some weird Sapper-provided workaround called a 'nonce' to allow for inline JS resources
+// //from https://sapper.svelte.dev/docs/:
+// //Sapper generates inline <script>s and <style>s, which can fail to execute if
+// //headers do not allow javascript or stylesheets sourced from inline resources.
+// //To work around this, Sapper can inject a Content Security Policy (CSP)
+// //which can be configured with middleware to emit the proper CSP headers. The nonce will be
+// //applied to the inline <script>s and <style>s. Here is an example using Express and Helmet:
+// //FOR NOW, I"M NOT SURE HOW TO GET THIS TO WORK. KEEP GETTING FOLLOWING ERROR:
+// //"Content-Security-Policy needs a default-src but none was provided", so turning off Helmet until this resolved.//t0d
 
-app.use((req, res, next) => {
-	res.locals.nonce = uuid() //this sets a UUID value to res.locals.nonce//t0d
-	next();
-})
-app.use(helmet({
-	contentSecurityPolicy: {
-		directives: {
-			scriptSrc: [
-				"'self'",
-				(req, res) => `'nonce-${res.locals.nonce}'` //this apparently tells Helmet the UUID for whatever responses it is
-				//associated with is safe
-			]
-		}
-	}
-}))
-//^//This is some weird Sapper-provided workaround called a 'nonce' to allow for inline JS resources
+// app.use((req, res, next) => {
+// 	res.locals.nonce = uuid() //this sets a UUID value to res.locals.nonce//t0d
+// 	next();
+// })
+// app.use(helmet({
+// 	contentSecurityPolicy: {
+// 		directives: {
+// 			scriptSrc: [
+// 				"'self'",
+// 				(req, res) => `'nonce-${res.locals.nonce}'` //this apparently tells Helmet the UUID for whatever responses it is
+// 				//associated with is safe
+// 			]
+// 		}
+// 	}
+// }))
+// //^//This is some weird Sapper-provided workaround called a 'nonce' to allow for inline JS resources
 
 app.use(cookieParser()) //t0d
 app.use(logger('dev')) //t0d
