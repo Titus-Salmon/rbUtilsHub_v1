@@ -38,9 +38,9 @@ function vInvMasterQuery() {
     .then((whatever) => whatever.json())
 
     // Displaying results to console
-    .then((json) => {
-      console.log(`json==> ${json}`);
-      console.log(`JSON.stringify(json)==> ${JSON.stringify(json)}`);
+    .then((whatever2) => {
+      console.log(`whatever2==> ${whatever2}`);
+      console.log(`JSON.stringify(whatever2)==> ${JSON.stringify(whatever2)}`);
     });
 }
 </script>
