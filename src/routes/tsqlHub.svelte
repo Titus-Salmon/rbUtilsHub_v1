@@ -36,7 +36,10 @@ function vInvMasterQuery() {
     }),
   })
     // .then((whatever) => whatever.json())
-    .then((whatever) => console.log(`whatever==> ${whatever}`))
+    .then((whatever) => {
+      console.log(`whatever==> ${whatever}`);
+      console.log(`whatever.json()==> ${whatever.json()}`);
+    })
 
     // Displaying results to console
     .then((whatever2) => {
