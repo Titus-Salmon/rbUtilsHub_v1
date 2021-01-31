@@ -35,7 +35,7 @@ function vInvMasterQuery() {
         PI2_Description`,
     }),
   })
-    .then((response) => response.json())
+    .then((whatever) => whatever.json())
 
     // Displaying results to console
     .then((json) => {
