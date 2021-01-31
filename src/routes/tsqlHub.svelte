@@ -9,7 +9,7 @@
         //'Access-Control-Allow-Origin': '*',
       },
     });
-    frontendCatapultResArr = await res;
+    let frontendCatapultResArr = await res;
     console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
   });
 
