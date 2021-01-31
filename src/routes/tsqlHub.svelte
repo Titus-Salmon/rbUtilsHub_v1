@@ -34,12 +34,14 @@ function vInvMasterQuery() {
         ('EDI-ALOE') AND trim(dpt_number) != '999999' ORDER BY PI1_Description,
         PI2_Description`,
     }),
-  }).then((response_t0d) => {
-    console.log(`response_t0d==>${response_t0d}`);
-    console.log(
-      `JSON.stringify(response_t0d)==>${JSON.stringify(response_t0d)}`
-    );
-  });
+  })
+    .then((response) => response.json())
+
+    // Displaying results to console
+    .then((json) => {
+      console.log(`json==> ${json}`);
+      console.log(`JSON.stringify(json)==> ${JSON.stringify(json)}`);
+    });
 }
 </script>
 
