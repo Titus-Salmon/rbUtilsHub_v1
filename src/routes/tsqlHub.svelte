@@ -6,8 +6,8 @@ onMount(() => {
     if (!res.ok) {
       throw new Error("res not ok");
     }
-    console.log(`res.json()==> ${res.json()}`);
-    return res.json();
+    console.log(`res==> ${res}`);
+    // return res.json();
   });
 });
 
