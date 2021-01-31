@@ -3,13 +3,13 @@
 
   onMount(async () => {
     const res = await fetch(`http://localhost:3333/tsqlHub`, {
-      mode: 'cors',
+      //mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        //'Access-Control-Allow-Origin': '*',
       },
     });
-    frontendCatapultResArr = await res.json();
+    frontendCatapultResArr = await res;
     console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
   });
 
@@ -18,9 +18,9 @@
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        //'Access-Control-Allow-Origin': '*',
       },
-      mode: 'cors',
+      //mode: 'cors',
       body: JSON.stringify({
         data: `SELECT INV_PK, INV_CPK, INV_ScanCode, ORD_SupplierStockNumber, INV_Name,
         INV_Size, INV_ReceiptAlias, inv_default, convert(varchar(10),

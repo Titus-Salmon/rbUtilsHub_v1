@@ -66,7 +66,7 @@ app.use(express.urlencoded({
 
 app.use(cookieParser()) //t0d
 app.use(logger('dev')) //t0d
-app.use(cors()) //t0d
+//app.use(cors()) //t0d
 
 
 
