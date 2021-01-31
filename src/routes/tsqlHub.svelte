@@ -35,8 +35,8 @@ function vInvMasterQuery() {
         PI2_Description`,
     }),
   }).then(() => {
-    if (catapultResultsArr) {
-      console.log(`catapultResultsArr==> ${catapultResultsArr}`);
+    if (catapultResArr) {
+      console.log(`catapultResArr==> ${catapultResArr}`);
     }
   });
   // .then(async () => {
