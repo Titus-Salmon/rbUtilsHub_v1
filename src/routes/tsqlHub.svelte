@@ -1,16 +1,16 @@
 <script>
 import { onMount } from "svelte";
 
-onMount(() => {
-  fetch("http://localhost:3333/tsqlHub").then((whatever) => {
-    if (!whatever.ok) {
-      throw new Error("whatever not ok");
-    }
-    console.log(`whatever==> ${whatever}`);
-    console.log(`JSON.stringify(whatever)==> ${JSON.stringify(whatever)}`);
-    // return res.json();
-  });
-});
+// onMount(() => {
+//   fetch("http://localhost:3333/tsqlHub").then((whatever) => {
+//     if (!whatever.ok) {
+//       throw new Error("whatever not ok");
+//     }
+//     console.log(`whatever==> ${whatever}`);
+//     console.log(`JSON.stringify(whatever)==> ${JSON.stringify(whatever)}`);
+//     // return res.json();
+//   });
+// });
 
 function vInvMasterQuery() {
   fetch("v_InventoryMasterQuery", {
@@ -34,6 +34,10 @@ function vInvMasterQuery() {
         ('EDI-ALOE') AND trim(dpt_number) != '999999' ORDER BY PI1_Description,
         PI2_Description`,
     }),
+  }).then(() => {
+    if (catapultResultsArr) {
+      console.log(`catapultResultsArr==> ${catapultResultsArr}`);
+    }
   });
   // .then(async () => {
   //   const res = await fetch(`http://localhost:3333/tsqlHub`, {
