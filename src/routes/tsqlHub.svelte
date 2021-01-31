@@ -1,4 +1,10 @@
 <script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    const res = await fetch(`https://localhost:3000/tsqlHub`);
+    frontendCatapultResArr = await res.json();
+    console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
+  });
   function vInvMasterQuery() {
     fetch('v_InventoryMasterQuery', {
       method: 'POST',
@@ -23,7 +29,19 @@
 
 <body>
   <button on:click={vInvMasterQuery}>vInvMasterQuery</button>
-</body>
+
+  <table>
+    <table>
+      <thead>
+        <tr>
+          <!-- {#each Object.keys(frontendCatapultResArr[0]) as columnHeading}
+            <th>{columnHeading}</th>
+          {/each} -->
+        </tr><tr />
+      </thead>
+    </table>
+  </table></body
+>
 
 <style>
   body {
