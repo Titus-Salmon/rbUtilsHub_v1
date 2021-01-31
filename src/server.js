@@ -14,7 +14,6 @@ const uuid = require('uuid-v4') //t0d
 const helmet = require('helmet') //t0d
 const cookieParser = require('cookie-parser') //t0d
 const logger = require('morgan') //t0d
-const cors = require('cors') //t0d
 
 const {
 	PORT,
@@ -66,7 +65,6 @@ app.use(express.urlencoded({
 
 app.use(cookieParser()) //t0d
 app.use(logger('dev')) //t0d
-//app.use(cors()) //t0d
 
 
 
