@@ -36,6 +36,9 @@ function vInvMasterQuery() {
     }),
   }).then((response_t0d) => {
     console.log(`response_t0d==>${response_t0d}`);
+    console.log(
+      `JSON.stringify(response_t0d)==>${JSON.stringify(response_t0d)}`
+    );
   });
 }
 </script>
