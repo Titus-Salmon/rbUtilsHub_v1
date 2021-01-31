@@ -11,6 +11,11 @@
     });
     let frontendCatapultResArr = await res;
     console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
+    console.log(
+      `JSON.stringify(frontendCatapultResArr)==> ${JSON.stringify(
+        frontendCatapultResArr
+      )}`
+    );
   });
 
   function vInvMasterQuery() {
