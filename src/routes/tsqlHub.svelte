@@ -1,6 +1,16 @@
 <script>
 import { onMount } from "svelte";
 
+onMount(() => {
+  fetch("http://localhost:3333/tsqlHub").then((res) => {
+    if (!res.ok) {
+      throw new Error("res not ok");
+    }
+    console.log(`res.json()==> ${res.json()}`);
+    return res.json();
+  });
+});
+
 function vInvMasterQuery() {
   fetch("v_InventoryMasterQuery", {
     method: "POST",
@@ -23,24 +33,23 @@ function vInvMasterQuery() {
         ('EDI-ALOE') AND trim(dpt_number) != '999999' ORDER BY PI1_Description,
         PI2_Description`,
     }),
-  }).then(
-    onMount(async () => {
-      const res = await fetch(`http://localhost:3333/tsqlHub`, {
-        //mode: 'cors',
-        headers: {
-          "Content-Type": "application/json",
-          //'Access-Control-Allow-Origin': '*',
-        },
-      });
-      let frontendCatapultResArr = await res;
-      console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
-      console.log(
-        `JSON.stringify(frontendCatapultResArr)==> ${JSON.stringify(
-          frontendCatapultResArr
-        )}`
-      );
-    })
-  );
+  });
+  // .then(async () => {
+  //   const res = await fetch(`http://localhost:3333/tsqlHub`, {
+  //     //mode: 'cors',
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       //'Access-Control-Allow-Origin': '*',
+  //     },
+  //   });
+  //   let frontendCatapultResArr = await res;
+  //   console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
+  //   console.log(
+  //     `JSON.stringify(frontendCatapultResArr)==> ${JSON.stringify(
+  //       frontendCatapultResArr
+  //     )}`
+  //   );
+  // });
 }
 </script>
 
