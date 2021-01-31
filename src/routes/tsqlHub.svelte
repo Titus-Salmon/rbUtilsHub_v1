@@ -1,40 +1,16 @@
 <script>
-  import { onMount } from 'svelte';
+import { onMount } from "svelte";
 
-  // let data;
-  // onMount(async () => {
-  //   data = await fetch('http://localhost:3333/tsqlHub')
-  //     .then((x) => x)
-  //     .then(console.log(`x==> ${x}`));
-  // });
-
-  // onMount(async () => {
-  //   const res = await fetch(`http://localhost:3333/tsqlHub`, {
-  //     //mode: 'cors',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       //'Access-Control-Allow-Origin': '*',
-  //     },
-  //   });
-  //   let frontendCatapultResArr = await res;
-  //   console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
-  //   console.log(
-  //     `JSON.stringify(frontendCatapultResArr)==> ${JSON.stringify(
-  //       frontendCatapultResArr
-  //     )}`
-  //   );
-  // });
-
-  function vInvMasterQuery() {
-    fetch('v_InventoryMasterQuery', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        //'Access-Control-Allow-Origin': '*',
-      },
-      //mode: 'cors',
-      body: JSON.stringify({
-        data: `SELECT INV_PK, INV_CPK, INV_ScanCode, ORD_SupplierStockNumber, INV_Name,
+function vInvMasterQuery() {
+  fetch("v_InventoryMasterQuery", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      //'Access-Control-Allow-Origin': '*',
+    },
+    //mode: 'cors',
+    body: JSON.stringify({
+      data: `SELECT INV_PK, INV_CPK, INV_ScanCode, ORD_SupplierStockNumber, INV_Name,
         INV_Size, INV_ReceiptAlias, inv_default, convert(varchar(10),
         POS_TimeStamp, 120), INV_DateCreated, INV_EMP_FK_CreatedBy,
         ord_quantityinorderunit, oup_name, sto_number, dpt_name, dpt_number,
@@ -46,28 +22,34 @@
         catapult.ecrs.v_InventoryMaster WHERE trim(ven_companyname) IN
         ('EDI-ALOE') AND trim(dpt_number) != '999999' ORDER BY PI1_Description,
         PI2_Description`,
-      }),
-    }).then(async () => {
-      const res = await fetch(`http://localhost:3333/tsqlHub`, {
-        //mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-          //'Access-Control-Allow-Origin': '*',
-        },
-      });
-      let frontendCatapultResArr = await res;
-      console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
-      console.log(
-        `JSON.stringify(frontendCatapultResArr)==> ${JSON.stringify(
-          frontendCatapultResArr
-        )}`
-      );
+    }),
+  }).then(async () => {
+    const res = await fetch(`http://localhost:3333/tsqlHub`, {
+      //mode: 'cors',
+      headers: {
+        "Content-Type": "application/json",
+        //'Access-Control-Allow-Origin': '*',
+      },
     });
-  }
+    let frontendCatapultResArr = await res;
+    console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
+    console.log(
+      `JSON.stringify(frontendCatapultResArr)==> ${JSON.stringify(
+        frontendCatapultResArr
+      )}`
+    );
+  });
+}
 </script>
 
+<style>
+body {
+  background-color: black;
+}
+</style>
+
 <body>
-  <button on:click={vInvMasterQuery}>vInvMasterQuery</button>
+  <button on:click="{vInvMasterQuery}">vInvMasterQuery</button>
 
   <table>
     <table>
@@ -76,14 +58,7 @@
           <!-- {#each Object.keys(frontendCatapultResArr[0]) as columnHeading}
             <th>{columnHeading}</th>
           {/each} -->
-        </tr><tr />
+        </tr><tr></tr>
       </thead>
     </table>
-  </table></body
->
-
-<style>
-  body {
-    background-color: black;
-  }
-</style>
+  </table></body>
