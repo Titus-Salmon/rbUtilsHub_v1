@@ -29,7 +29,7 @@
   :global(body) {
     background-color: black;
   }
-  :global(main) {
+  main {
     color: black !important;
   }
 </style>
