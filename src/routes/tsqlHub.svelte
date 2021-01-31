@@ -2,11 +2,12 @@
 import { onMount } from "svelte";
 
 onMount(() => {
-  fetch("http://localhost:3333/tsqlHub").then((res) => {
-    if (!res.ok) {
-      throw new Error("res not ok");
+  fetch("http://localhost:3333/tsqlHub").then((whatever) => {
+    if (!whatever.ok) {
+      throw new Error("whatever not ok");
     }
-    console.log(`res==> ${res}`);
+    console.log(`whatever==> ${whatever}`);
+    console.log(`JSON.stringify(whatever)==> ${JSON.stringify(whatever)}`);
     // return res.json();
   });
 });
