@@ -4,7 +4,7 @@
   let data;
   onMount(async () => {
     data = await fetch('http://localhost:3333/tsqlHub')
-      .then((x) => x.json())
+      .then((x) => x)
       .then(console.log(`x==> ${x}`));
   });
 
