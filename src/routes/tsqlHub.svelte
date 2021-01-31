@@ -1,22 +1,29 @@
 <script>
   import { onMount } from 'svelte';
 
+  let data;
   onMount(async () => {
-    const res = await fetch(`http://localhost:3333/tsqlHub`, {
-      //mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        //'Access-Control-Allow-Origin': '*',
-      },
-    });
-    let frontendCatapultResArr = await res;
-    console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
-    console.log(
-      `JSON.stringify(frontendCatapultResArr)==> ${JSON.stringify(
-        frontendCatapultResArr
-      )}`
-    );
+    data = await fetch('http://localhost:3333/tsqlHub')
+      .then((x) => x.json())
+      .then(console.log(`x==> ${x}`));
   });
+
+  // onMount(async () => {
+  //   const res = await fetch(`http://localhost:3333/tsqlHub`, {
+  //     //mode: 'cors',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       //'Access-Control-Allow-Origin': '*',
+  //     },
+  //   });
+  //   let frontendCatapultResArr = await res;
+  //   console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
+  //   console.log(
+  //     `JSON.stringify(frontendCatapultResArr)==> ${JSON.stringify(
+  //       frontendCatapultResArr
+  //     )}`
+  //   );
+  // });
 
   function vInvMasterQuery() {
     fetch('v_InventoryMasterQuery', {
