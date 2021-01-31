@@ -30,6 +30,6 @@
     background-color: black;
   }
   :global(main) {
-    color: black;
+    color: black !important;
   }
 </style>
