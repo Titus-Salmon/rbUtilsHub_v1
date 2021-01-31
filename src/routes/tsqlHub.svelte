@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   onMount(async () => {
-    const res = await fetch(`https://localhost:3000/tsqlHub`);
+    const res = await fetch(`v_InventoryMasterQuery`);
     frontendCatapultResArr = await res.json();
     console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
   });
