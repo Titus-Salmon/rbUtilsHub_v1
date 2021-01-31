@@ -47,24 +47,22 @@
         ('EDI-ALOE') AND trim(dpt_number) != '999999' ORDER BY PI1_Description,
         PI2_Description`,
       }),
-    }).then(
-      onMount(async () => {
-        const res = await fetch(`http://localhost:3333/tsqlHub`, {
-          //mode: 'cors',
-          headers: {
-            'Content-Type': 'application/json',
-            //'Access-Control-Allow-Origin': '*',
-          },
-        });
-        let frontendCatapultResArr = await res;
-        console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
-        console.log(
-          `JSON.stringify(frontendCatapultResArr)==> ${JSON.stringify(
-            frontendCatapultResArr
-          )}`
-        );
-      })
-    );
+    }).then(async () => {
+      const res = await fetch(`http://localhost:3333/tsqlHub`, {
+        //mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          //'Access-Control-Allow-Origin': '*',
+        },
+      });
+      let frontendCatapultResArr = await res;
+      console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
+      console.log(
+        `JSON.stringify(frontendCatapultResArr)==> ${JSON.stringify(
+          frontendCatapultResArr
+        )}`
+      );
+    });
   }
 </script>
 
