@@ -34,11 +34,11 @@ function vInvMasterQuery() {
         ('EDI-ALOE') AND trim(dpt_number) != '999999' ORDER BY PI1_Description,
         PI2_Description`,
     }),
-  }).then(() => {
-    if (catapultResArr !== undefined) {
-      console.log(`catapultResArr==> ${catapultResArr}`);
-    }
-  });
+  })
+    .then((response) => response.json())
+
+    // Displaying results to console
+    .then((json) => console.log(`json==> ${json}`));
   // .then(async () => {
   //   const res = await fetch(`http://localhost:3333/tsqlHub`, {
   //     //mode: 'cors',
