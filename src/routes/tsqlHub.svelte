@@ -2,7 +2,13 @@
   import { onMount } from 'svelte';
 
   onMount(async () => {
-    const res = await fetch(`http://localhost:3000/tsqlHub`);
+    const res = await fetch(`http://localhost:3000/tsqlHub`, {
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    });
     frontendCatapultResArr = await res.json();
     console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
   });
@@ -10,7 +16,11 @@
   function vInvMasterQuery() {
     fetch('v_InventoryMasterQuery', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      mode: 'cors',
       body: JSON.stringify({
         data: `SELECT INV_PK, INV_CPK, INV_ScanCode, ORD_SupplierStockNumber, INV_Name,
         INV_Size, INV_ReceiptAlias, inv_default, convert(varchar(10),
