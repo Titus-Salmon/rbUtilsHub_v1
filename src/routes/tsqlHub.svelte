@@ -26,10 +26,7 @@
 </body>
 
 <style>
-  :global(body) {
+  body {
     background-color: black;
-  }
-  main {
-    color: black !important;
   }
 </style>
