@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
 
   onMount(async () => {
-    const res = await fetch(`http://localhost:3000/tsqlHub`, {
+    const res = await fetch(`http://localhost:3000`, {
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
