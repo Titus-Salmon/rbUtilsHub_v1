@@ -21,17 +21,15 @@
   }
 </script>
 
-<main>
-  <body>
-    <button on:click={vInvMasterQuery}>vInvMasterQuery</button>
-  </body>
-</main>
+<body>
+  <button on:click={vInvMasterQuery}>vInvMasterQuery</button>
+</body>
 
 <style>
-  body {
+  :global(body) {
     background-color: black;
   }
-  main {
+  :global(main) {
     color: black;
   }
 </style>
