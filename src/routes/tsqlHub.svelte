@@ -1,10 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  onMount(async () => {
-    const res = await fetch(`v_InventoryMasterQuery`);
-    frontendCatapultResArr = await res.json();
-    console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
-  });
+
   function vInvMasterQuery() {
     fetch('v_InventoryMasterQuery', {
       method: 'POST',
@@ -23,6 +19,11 @@
         ('EDI-ALOE') AND trim(dpt_number) != '999999' ORDER BY PI1_Description,
         PI2_Description`,
       }),
+    });
+    onMount(async () => {
+      const res = await fetch(`http://localhost:3000/tsqlHub`);
+      frontendCatapultResArr = await res.json();
+      console.log(`frontendCatapultResArr==> ${frontendCatapultResArr}`);
     });
   }
 </script>
