@@ -1,7 +1,7 @@
 <script>
 import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../components/dynamicTalbes/v_InventoryMasterQueryResults.svelte";
-// import tableData from "../components/dynamicTalbes/v_InventoryMasterQueryResults.svelte";
+import tableData from "../components/dynamicTalbes/v_InventoryMasterQueryResults.svelte";
 
 function vInvMasterQuery() {
   fetch("v_InventoryMasterQuery", {
@@ -33,7 +33,7 @@ function vInvMasterQuery() {
     //from the backend as JSON
 
     .then((responseFromBackend_t0d_convertedToJSON) => {
-      let tableData = [];
+      tableData = [];
       console.log(
         `JSON.stringify(responseFromBackend_t0d_convertedToJSON[0])==> ${JSON.stringify(
           responseFromBackend_t0d_convertedToJSON[0]
