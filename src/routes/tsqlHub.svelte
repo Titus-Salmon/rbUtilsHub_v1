@@ -36,25 +36,25 @@ function vInvMasterQuery() {
     }),
   })
     .then(
-      (onResolved) => {
+      (onResolved1) => {
         // Some task on success
-        onResolved.json();
+        onResolved1.json();
       },
-      (onRejected) => {
+      (onRejected1) => {
         // Some task on failure
-        console.log(onRejected);
+        console.log(onRejected1);
       }
     )
     .then(
-      (onResolved) => {
+      (onResolved2) => {
         // Some task on success
         console.log(
-          `JSON.stringify(onResolved)==> ${JSON.stringify(onResolved)}`
+          `JSON.stringify(onResolved2)==> ${JSON.stringify(onResolved2)}`
         );
       },
-      (onRejected) => {
+      (onRejected2) => {
         // Some task on failure
-        console.log(onRejected);
+        console.log(onRejected2);
       }
     );
 }
