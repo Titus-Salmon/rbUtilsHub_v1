@@ -1,9 +1,10 @@
 <script>
 // let tableData = [];
 import tableData from "../dynamicTalbes/tableStores/tableData1.js";
-tableData.subscribe((tableData_t0d) =>
-  console.log(`tableData_t0d=> ${tableData_t0d}`)
-);
+tableData.subscribe((tableData_t0d) => {
+  console.log(`tableData_t0d=> ${tableData_t0d}`);
+  console.log(`typeof tableData_t0d=> ${typeof tableData_t0d}`);
+});
 </script>
 
 <body>
