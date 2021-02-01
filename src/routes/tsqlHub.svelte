@@ -2,6 +2,9 @@
 import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../components/dynamicTalbes/v_InventoryMasterQueryResults.svelte";
 import tableData from "../components/dynamicTalbes/tableStores/tableData1.js";
+tableData.subscribe((tableData_t0d) =>
+  console.log(`tableData_t0d=> ${tableData_t0d}`)
+);
 
 function vInvMasterQuery() {
   fetch("v_InventoryMasterQuery", {

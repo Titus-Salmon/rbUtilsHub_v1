@@ -1,21 +1,9 @@
 <script>
 // let tableData = [];
 import tableData from "../dynamicTalbes/tableStores/tableData1.js";
-console.log(
-  `tableData from v_InventoryMasterQueryResults.svelte==> ${tableData}`
+tableData.subscribe((tableData_t0d) =>
+  console.log(`tableData_t0d=> ${tableData_t0d}`)
 );
-console.log(
-  `JSON.stringify(tableData) from v_InventoryMasterQueryResults.svelte==> ${JSON.stringify(
-    tableData
-  )}`
-);
-if (Object.keys(tableData) !== undefined && Object.keys(tableData) !== null) {
-  console.log(
-    `Object.keys(tableData) from v_InventoryMasterQueryResults.svelte==> ${Object.keys(
-      tableData
-    )}`
-  );
-}
 </script>
 
 <body>
