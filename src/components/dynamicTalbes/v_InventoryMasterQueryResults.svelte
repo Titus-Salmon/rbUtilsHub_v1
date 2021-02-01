@@ -16,8 +16,17 @@ console.log(`table_data==> ${table_data}`);
               <th>{columnHeading}</th>
             {/each}
           {/if}
-        </tr><tr></tr>
+        </tr>
       </thead>
+      <tbody>
+        {#each Object.values(table_data) as row}
+          <tr>
+            {#each Object.values(row) as cell}
+              <td>{cell}</td>
+            {/each}
+          </tr>
+        {/each}
+      </tbody>
     </table>
   </table>
 </body>
