@@ -9,11 +9,16 @@ console.log(
     tableData
   )}`
 );
-console.log(
-  `Object.keys(tableData[0][0]) from v_InventoryMasterQueryResults.svelte==> ${Object.keys(
-    tableData[0][0]
-  )}`
-);
+if (
+  Object.keys(tableData[0]) !== undefined &&
+  Object.keys(tableData[0]) !== null
+) {
+  console.log(
+    `Object.keys(tableData[0][0]) from v_InventoryMasterQueryResults.svelte==> ${Object.keys(
+      tableData[0][0]
+    )}`
+  );
+}
 </script>
 
 <body>
@@ -21,7 +26,7 @@ console.log(
     <table>
       <thead>
         <tr>
-          {#if Object.keys(tableData[0][0]) !== undefined && Object.keys(tableData[0][0]) !== null}
+          {#if Object.keys(tableData[0]) !== undefined && Object.keys(tableData[0]) !== null}
             {#each Object.keys(tableData[0][0]) as columnHeading}
               <th>{columnHeading}</th>
             {/each}
