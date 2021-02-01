@@ -35,19 +35,22 @@ function vInvMasterQuery() {
         PI2_Description`,
     }),
   })
-    .then((response_t0d) => response_t0d.json())
+    .then((responseFromBackend_t0d) => responseFromBackend_t0d.json())
+    //^//not certain how this works, but the best I can describe for now is as follows:
+    //[1] the "responseFromBackend_t0d" argument represents the result of the previous fetch()
+    //[2] this result must then be converted to JSON via the json() method on the frontend, even though it was already sent
+    //from the backend as JSON
 
-    // Displaying results to console
-    .then((something_else) => {
+    .then((responseFromBackend_t0d_convertedToJSON) => {
       console.log(
-        `JSON.stringify(something_else)==> ${JSON.stringify(something_else)}`
-      );
-      console.log(
-        `JSON.stringify(something_else[0])==> ${JSON.stringify(
-          something_else[0]
+        `JSON.stringify(responseFromBackend_t0d_convertedToJSON[0])==> ${JSON.stringify(
+          responseFromBackend_t0d_convertedToJSON[0]
         )}`
       );
     });
+  //^//[3] then, the results from the 1st then() are passed as "responseFromBackend_t0d_convertedToJSON",
+  //and at that point we can use this JSON object to do whatever with, such as stringify it, or
+  //display it in a table on the frontend
 }
 </script>
 
