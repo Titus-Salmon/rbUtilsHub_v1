@@ -1,13 +1,9 @@
 <script>
 // let tableData = [];
 import tableData from "../dynamicTalbes/tableStores/tableData1.js";
-tableData.subscribe((tableData_t0d) => {
-  console.log(`tableData_t0d=> ${tableData_t0d}`);
-  console.log(`typeof tableData_t0d=> ${typeof tableData_t0d}`);
-  console.log(`Object.keys(tableData_t0d)=> ${Object.keys(tableData_t0d)}`);
-  let ObKeysTableDataT0d = Object.keys(tableData_t0d);
-  console.log(`typeof ObKeysTableDataT0d=> ${typeof ObKeysTableDataT0d}`);
-});
+let table_data;
+tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
+console.log(`table_data==> ${table_data}`);
 </script>
 
 <body>
@@ -15,8 +11,8 @@ tableData.subscribe((tableData_t0d) => {
     <table>
       <thead>
         <tr>
-          {#if tableData !== undefined && tableData !== null && tableData !== ""}
-            {#each Object.keys(tableData[0][0]) as columnHeading}
+          {#if table_data !== undefined && table_data !== null && table_data !== ""}
+            {#each Object.keys(table_data[0][0]) as columnHeading}
               <th>{columnHeading}</th>
             {/each}
           {/if}
