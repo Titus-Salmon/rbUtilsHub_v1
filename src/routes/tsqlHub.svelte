@@ -38,14 +38,14 @@ function vInvMasterQuery() {
     .then((response_t0d) => response_t0d.json())
 
     // Displaying results to console
-    .then((something_else) =>
+    .then((something_else) => {
       console.log(
         `JSON.stringify(something_else)==> ${JSON.stringify(something_else)}`
-      )
+      );
       console.log(
-        `JSON.stringify(something_else[0])==> ${JSON.stringify(something_else[0])}`
-      )
-    );
+        `JSON.stringify(something_else)==> ${JSON.stringify(something_else)}`
+      );
+    });
 }
 </script>
 
