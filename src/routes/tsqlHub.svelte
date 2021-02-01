@@ -42,6 +42,9 @@ function vInvMasterQuery() {
       console.log(
         `JSON.stringify(something_else)==> ${JSON.stringify(something_else)}`
       )
+      console.log(
+        `JSON.stringify(something_else[0])==> ${JSON.stringify(something_else[0])}`
+      )
     );
 }
 </script>
