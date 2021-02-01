@@ -5,6 +5,8 @@ tableData.subscribe((tableData_t0d) => {
   console.log(`tableData_t0d=> ${tableData_t0d}`);
   console.log(`typeof tableData_t0d=> ${typeof tableData_t0d}`);
   console.log(`Object.keys(tableData_t0d)=> ${Object.keys(tableData_t0d)}`);
+  let ObKeysTableDataT0d = Object.keys(tableData_t0d);
+  console.log(`typeof ObKeysTableDataT0d=> ${typeof ObKeysTableDataT0d}`);
 });
 </script>
 
