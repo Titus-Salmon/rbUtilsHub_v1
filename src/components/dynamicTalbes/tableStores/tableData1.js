@@ -2,6 +2,8 @@ import {
   writable
 } from 'svelte/store'
 
-const tableData = writable([])
+const tableData = writable([{
+  defaultVal: 'defaultVal'
+}])
 
 export default tableData
