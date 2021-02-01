@@ -1,16 +1,7 @@
 <script>
 import { onMount } from "svelte";
-
-// onMount(() => {
-//   fetch("http://localhost:3333/tsqlHub").then((whatever) => {
-//     if (!whatever.ok) {
-//       throw new Error("whatever not ok");
-//     }
-//     console.log(`whatever==> ${whatever}`);
-//     console.log(`JSON.stringify(whatever)==> ${JSON.stringify(whatever)}`);
-//     // return res.json();
-//   });
-// });
+import V_InventoryMasterQueryResultsTable from "../components/dynamicTalbes/v_InventoryMasterQueryResults.svelte";
+// import tableData from "../components/dynamicTalbes/v_InventoryMasterQueryResults.svelte";
 
 function vInvMasterQuery() {
   fetch("v_InventoryMasterQuery", {
@@ -47,6 +38,7 @@ function vInvMasterQuery() {
           responseFromBackend_t0d_convertedToJSON[0]
         )}`
       );
+      tableData.push(responseFromBackend_t0d_convertedToJSON); //just renaming a long variable name to shorter one
     });
   //^//[3] then, the results from the 1st then() are passed as "responseFromBackend_t0d_convertedToJSON",
   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
@@ -62,15 +54,6 @@ body {
 
 <body>
   <button on:click="{vInvMasterQuery}">vInvMasterQuery</button>
+</body>
 
-  <table>
-    <table>
-      <thead>
-        <tr>
-          <!-- {#each Object.keys(frontendCatapultResArr[0]) as columnHeading}
-            <th>{columnHeading}</th>
-          {/each} -->
-        </tr><tr></tr>
-      </thead>
-    </table>
-  </table></body>
+<V_InventoryMasterQueryResultsTable />
