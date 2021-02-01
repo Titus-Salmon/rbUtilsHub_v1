@@ -33,6 +33,7 @@ function vInvMasterQuery() {
     //from the backend as JSON
 
     .then((responseFromBackend_t0d_convertedToJSON) => {
+      let tableData = [];
       console.log(
         `JSON.stringify(responseFromBackend_t0d_convertedToJSON[0])==> ${JSON.stringify(
           responseFromBackend_t0d_convertedToJSON[0]

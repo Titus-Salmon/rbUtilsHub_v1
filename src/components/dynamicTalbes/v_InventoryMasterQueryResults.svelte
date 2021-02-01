@@ -1,5 +1,5 @@
 <script>
-let tableData = [];
+// let tableData = [];
 </script>
 
 <body>
