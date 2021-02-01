@@ -37,8 +37,11 @@ function vInvMasterQuery() {
   })
     // .then((whatever) => whatever.json())
     .then((whatever) => {
-      console.log(`whatever==> ${whatever}`);
-      console.log(`whatever.json()==> ${whatever.json()}`);
+      let response_t0d = whatever.json();
+      console.log(`response_t0d==> ${response_t0d}`);
+      console.log(
+        `JSON.stringify(response_t0d)==> ${JSON.stringify(response_t0d)}`
+      );
     })
 
     // Displaying results to console
