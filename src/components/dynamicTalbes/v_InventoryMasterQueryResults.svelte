@@ -9,10 +9,7 @@ console.log(
     tableData
   )}`
 );
-if (
-  Object.keys(tableData[0]) !== undefined &&
-  Object.keys(tableData[0]) !== null
-) {
+if (Object.keys(tableData) !== undefined && Object.keys(tableData) !== null) {
   console.log(
     `Object.keys(tableData[0][0]) from v_InventoryMasterQueryResults.svelte==> ${Object.keys(
       tableData[0][0]
