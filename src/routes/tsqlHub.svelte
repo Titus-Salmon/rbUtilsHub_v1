@@ -2,8 +2,6 @@
 import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../components/dynamicTalbes/v_InventoryMasterQueryResults.svelte";
 import tableData from "../components/dynamicTalbes/tableStores/tableData1.js";
-let table_data;
-tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
 
 function vInvMasterQuery() {
   fetch("v_InventoryMasterQuery", {
@@ -40,7 +38,8 @@ function vInvMasterQuery() {
           responseFromBackend_t0d_convertedToJSON[0]
         )}`
       );
-      table_data.push(responseFromBackend_t0d_convertedToJSON); //passing backend response to frontend "store"
+      tableData.set(responseFromBackend_t0d_convertedToJSON); //passing backend response to frontend "Store"
+      //& we are overwriting the "Store" with set()
     });
   //^//[3] then, the results from the 1st then() are passed as "responseFromBackend_t0d_convertedToJSON",
   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
