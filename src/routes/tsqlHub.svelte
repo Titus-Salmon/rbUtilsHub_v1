@@ -35,27 +35,13 @@ function vInvMasterQuery() {
         PI2_Description`,
     }),
   })
-    .then(
-      (onResolved1) => {
-        // Some task on success
-        onResolved1.json();
-      },
-      (onRejected1) => {
-        // Some task on failure
-        console.log(onRejected1);
-      }
-    )
-    .then(
-      (onResolved2) => {
-        // Some task on success
-        console.log(
-          `JSON.stringify(onResolved2)==> ${JSON.stringify(onResolved2)}`
-        );
-      },
-      (onRejected2) => {
-        // Some task on failure
-        console.log(onRejected2);
-      }
+    .then((response_t0d) => response_t0d.json())
+
+    // Displaying results to console
+    .then((something_else) =>
+      console.log(
+        `JSON.stringify(something_else)==> ${JSON.stringify(something_else)}`
+      )
     );
 }
 </script>
