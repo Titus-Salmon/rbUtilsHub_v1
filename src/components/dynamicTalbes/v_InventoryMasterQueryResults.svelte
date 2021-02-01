@@ -9,6 +9,11 @@ console.log(
     tableData
   )}`
 );
+console.log(
+  `Object.keys(tableData[0][0]) from v_InventoryMasterQueryResults.svelte==> ${Object.keys(
+    tableData[0][0]
+  )}`
+);
 </script>
 
 <body>
