@@ -9,7 +9,7 @@ import tableData from "../dynamicTalbes/tableStores/tableData1.js";
       <thead>
         <tr>
           {#if tableData !== undefined || tableData !== null}
-            {#each Object.keys(tableData[0]) as columnHeading}
+            {#each Object.keys(tableData[0][0]) as columnHeading}
               <th>{columnHeading}</th>
             {/each}
           {/if}
