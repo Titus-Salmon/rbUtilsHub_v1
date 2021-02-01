@@ -15,7 +15,7 @@ tableData.subscribe((tableData_t0d) => {
     <table>
       <thead>
         <tr>
-          {#if Object.keys(tableData[0]) !== undefined && Object.keys(tableData[0]) !== null}
+          {#if tableData !== undefined && tableData !== null && tableData !== ""}
             {#each Object.keys(tableData[0][0]) as columnHeading}
               <th>{columnHeading}</th>
             {/each}
