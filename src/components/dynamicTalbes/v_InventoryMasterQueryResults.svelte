@@ -1,6 +1,6 @@
 <script>
 // let tableData = [];
-import tableData from "../components/dynamicTalbes/tableStores/tableData1.js";
+import tableData from "../dynamicTalbes/tableStores/tableData1.js";
 </script>
 
 <body>
