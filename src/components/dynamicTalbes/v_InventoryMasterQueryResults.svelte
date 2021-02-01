@@ -1,6 +1,14 @@
 <script>
 // let tableData = [];
 import tableData from "../dynamicTalbes/tableStores/tableData1.js";
+console.log(
+  `tableData from v_InventoryMasterQueryResults.svelte==> ${tableData}`
+);
+console.log(
+  `JSON.stringify(tableData) from v_InventoryMasterQueryResults.svelte==> ${JSON.stringify(
+    tableData
+  )}`
+);
 </script>
 
 <body>
