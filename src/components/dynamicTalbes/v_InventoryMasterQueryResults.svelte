@@ -16,8 +16,8 @@ console.log(
     <table>
       <thead>
         <tr>
-          {#if tableData !== undefined && tableData !== null}
-            {#each Object.keys(tableData[0]) as columnHeading}
+          {#if Object.keys(tableData[0][0]) !== undefined && Object.keys(tableData[0][0]) !== null}
+            {#each Object.keys(tableData[0][0]) as columnHeading}
               <th>{columnHeading}</th>
             {/each}
           {/if}
