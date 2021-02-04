@@ -11,6 +11,10 @@ body {
   background-color: #1d3040;
   color: #bfc2c7;
 }
+:global(main.dark-mode) {
+  background-color: #1d3040;
+  color: #bfc2c7;
+}
 /*//^// t0d */
 h1,
 h2,
