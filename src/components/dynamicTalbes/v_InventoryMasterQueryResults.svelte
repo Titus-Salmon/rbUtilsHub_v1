@@ -12,6 +12,9 @@ tr:nth-child(even) {
   background-color: #1e1e2f;
   /* not quite black to alternate with pure black */
 }
+th {
+  position: sticky;
+}
 </style>
 
 <!-- <body class="dark-mode"> -->
@@ -36,3 +39,31 @@ tr:nth-child(even) {
   </tbody>
 </table>
 <!-- </body> -->
+
+<!-- <table>
+  <thead>
+    <tr class="red">
+      <th>Name</th>
+      <th>Age</th>
+      <th>Job</th>
+      <th>Color</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Lorem.</td>
+      <td>Ullam.</td>
+      <td>Vel.</td>
+      <td>At.</td>
+      <td>Quis.</td>
+    </tr>
+    <tr>
+      <td>Quas!</td>
+      <td>Velit.</td>
+      <td>Quisquam?</td>
+      <td>Rerum?</td>
+      <td>Iusto?</td>
+    </tr>
+  </tbody>
+</table> -->
