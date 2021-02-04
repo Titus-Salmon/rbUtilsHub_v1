@@ -56,10 +56,10 @@ a {
   background-color: #1d3040;
   color: #bfc2c7;
 }
-/* :global(main.dark-mode) {
+:global(main.dark-mode) {
   background-color: #1d3040;
   color: #bfc2c7;
-} */
+}
 /* t0d */
 </style>
 
