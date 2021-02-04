@@ -1,6 +1,8 @@
 <script>
 function toggle() {
   window.document.body.classList.toggle("dark-mode");
+  var main_t0d = document.getElementsByTagName("main");
+  main_t0d.toggle("dark-mode");
 }
 </script>
 
@@ -17,10 +19,10 @@ button {
   background-color: #0084f6;
   color: white;
 }
-/* :global(main.dark-mode) {
+:global(main.dark-mode) {
   background-color: #0084f6;
   color: white;
-} */
+}
 </style>
 
 <button on:click="{toggle}">
