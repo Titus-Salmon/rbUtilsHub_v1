@@ -3,7 +3,7 @@ import {
 } from 'svelte/store'
 
 const tableData = writable([{
-  defaultVal: 'defaultVal'
+  // defaultVal: 'defaultVal'
 }])
 
 export default tableData
