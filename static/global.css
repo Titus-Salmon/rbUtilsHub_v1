@@ -44,8 +44,8 @@ code {
   border-radius: 2px;
 }
 
-@media (min-width: 400px) {
+/* @media (min-width: 400px) {
   body {
     font-size: 16px;
   }
-}
+} */
