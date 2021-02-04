@@ -11,25 +11,23 @@ console.log(`table_data==> ${table_data}`);
 
 <!-- <body class="dark-mode"> -->
 <table>
-  <table>
-    <thead>
+  <thead>
+    <tr>
+      {#if table_data !== undefined && table_data !== null && table_data !== ""}
+        {#each Object.keys(table_data[0]) as columnHeading}
+          <th>{columnHeading}</th>
+        {/each}
+      {/if}
+    </tr>
+  </thead>
+  <tbody>
+    {#each Object.values(table_data) as row}
       <tr>
-        {#if table_data !== undefined && table_data !== null && table_data !== ""}
-          {#each Object.keys(table_data[0]) as columnHeading}
-            <th>{columnHeading}</th>
-          {/each}
-        {/if}
+        {#each Object.values(row) as cell}
+          <td>{cell}</td>
+        {/each}
       </tr>
-    </thead>
-    <tbody>
-      {#each Object.values(table_data) as row}
-        <tr>
-          {#each Object.values(row) as cell}
-            <td>{cell}</td>
-          {/each}
-        </tr>
-      {/each}
-    </tbody>
-  </table>
+    {/each}
+  </tbody>
 </table>
 <!-- </body> -->
