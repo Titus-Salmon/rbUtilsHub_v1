@@ -8,7 +8,7 @@ console.log(`table_data==> ${table_data}`);
 
 <style>
 table {
-  table-layout: fixed;
+  table-layout: auto;
 }
 th {
   position: sticky;
