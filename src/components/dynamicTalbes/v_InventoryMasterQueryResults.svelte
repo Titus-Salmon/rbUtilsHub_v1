@@ -15,6 +15,8 @@ tr:nth-child(even) {
 th {
   position: sticky;
   top: 0; /* Don't forget this, required for the stickiness */
+  background: black;
+  color: orange;
 }
 </style>
 
