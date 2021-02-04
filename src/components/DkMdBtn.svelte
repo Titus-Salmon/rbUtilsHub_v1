@@ -1,7 +1,7 @@
 <script>
 function toggle() {
   window.document.body.classList.toggle("dark-mode");
-  var main_t0d = window.document.body.getElementsByTagName("main");
+  var main_t0d = window.document.body.getElementsByTagName("main")[0];
   main_t0d.classList.toggle("dark-mode");
 }
 </script>
