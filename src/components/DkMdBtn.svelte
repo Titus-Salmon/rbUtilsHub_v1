@@ -17,10 +17,10 @@ button {
   background-color: #0084f6;
   color: white;
 }
-:global(main.dark-mode) {
+/* :global(main.dark-mode) {
   background-color: #0084f6;
   color: white;
-}
+} */
 </style>
 
 <button on:click="{toggle}">
