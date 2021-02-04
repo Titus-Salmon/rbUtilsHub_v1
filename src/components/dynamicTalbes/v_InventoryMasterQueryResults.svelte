@@ -8,13 +8,14 @@ console.log(`table_data==> ${table_data}`);
 
 <style>
 table {
-  table-layout: auto;
+  table-layout: fixed;
 }
 th {
   position: sticky;
   top: 0; /* Don't forget this, required for the stickiness */
   background: black;
   color: #cc8500;
+  min-width: 100px;
 }
 tr:nth-child(even) {
   /* not quite black to alternate with pure black */
