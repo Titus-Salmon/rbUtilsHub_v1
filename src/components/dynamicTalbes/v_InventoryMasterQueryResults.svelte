@@ -7,7 +7,7 @@ console.log(`table_data==> ${table_data}`);
 </script>
 
 <style>
-:global(body) {
+/* :global(body) {
   background-color: #f2eee2;
   color: #0084f6;
   transition: background-color 0.3s;
@@ -15,10 +15,10 @@ console.log(`table_data==> ${table_data}`);
 :global(body.dark-mode) {
   background-color: #1d3040;
   color: #bfc2c7;
-}
+} */
 </style>
 
-<body>
+<body class="dark-mode">
   <table>
     <table>
       <thead>
