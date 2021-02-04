@@ -8,7 +8,7 @@ console.log(`table_data==> ${table_data}`);
 
 <style>
 tr:nth-child(even) {
-  background-color: gray;
+  background-color: #3d3d5c;
 }
 </style>
 
