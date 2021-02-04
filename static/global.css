@@ -8,12 +8,12 @@ body {
 }
 /*//v// t0d */
 :global(body.dark-mode) {
-  background-color: #1d3040;
-  color: #bfc2c7;
+  background-color: #1d3040 !important;
+  color: #bfc2c7 !important;
 }
 :global(main.dark-mode) {
-  background-color: #1d3040;
-  color: #bfc2c7;
+  background-color: #1d3040 !important;
+  color: #bfc2c7 !important;
 }
 /*//^// t0d */
 h1,
