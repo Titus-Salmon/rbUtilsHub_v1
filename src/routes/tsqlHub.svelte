@@ -50,10 +50,6 @@ function vInvMasterQuery() {
 <style>
 </style>
 
-<!-- <body class="dark-mode">
-  <button on:click="{vInvMasterQuery}">vInvMasterQuery</button>
-</body> -->
-
 <button on:click="{vInvMasterQuery}">vInvMasterQuery</button>
 
 <V_InventoryMasterQueryResultsTable />

@@ -43,15 +43,15 @@ a {
 }
 /* t0d */
 :global(body) {
-  background-color: #f2eee2;
-  color: #0084f6;
+  background-color: gray;
+  color: black;
   transition: background-color 0.3s;
 }
-/* :global(main) {
-  background-color: #f2eee2;
-  color: #0084f6;
+:global(main) {
+  background-color: gray;
+  color: black;
   transition: background-color 0.3s;
-} */
+}
 :global(body.dark-mode) {
   background-color: black;
   color: limegreen;
