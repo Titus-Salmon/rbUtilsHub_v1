@@ -1,5 +1,5 @@
 <script>
-function toggle() {
+function darkModeToggle() {
   window.document.body.classList.toggle("dark-mode");
   var main_t0d = window.document.body.getElementsByTagName("main")[0];
   main_t0d.classList.toggle("dark-mode");
@@ -21,6 +21,6 @@ button {
 }
 </style>
 
-<button on:click="{toggle}">
+<button on:click="{darkModeToggle}">
   <slot />
 </button>

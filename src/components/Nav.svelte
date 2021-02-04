@@ -53,12 +53,12 @@ a {
   transition: background-color 0.3s;
 } */
 :global(body.dark-mode) {
-  background-color: #1d3040;
-  color: #bfc2c7;
+  background-color: black;
+  color: limegreen;
 }
 :global(main.dark-mode) {
-  background-color: #1d3040 !important;
-  color: #bfc2c7;
+  background-color: black !important;
+  color: limegreen;
 }
 /* t0d */
 </style>
