@@ -6,6 +6,13 @@ tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
 console.log(`table_data==> ${table_data}`);
 </script>
 
+<style>
+:global(main.dark-mode) {
+  background-color: #0084f6;
+  color: white;
+}
+</style>
+
 <body>
   <table>
     <table>
