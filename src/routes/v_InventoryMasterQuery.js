@@ -29,15 +29,15 @@ export async function post(req, res, next) {
       //     catapultResObj['ascScancode'] = result[i]['asc_scancode']
       // }
       if (typeof result[i]['ORD_SupplierStockNumber'] == 'string') {
-        catapultResObj['ordSupplierStockNumber'] = result[i]['ORD_SupplierStockNumber'].trim()
+        catapultResObj['ordSuppStockNum'] = result[i]['ORD_SupplierStockNumber'].trim()
       } else {
-        catapultResObj['ordSupplierStockNumber'] = result[i]['ORD_SupplierStockNumber']
+        catapultResObj['ordSuppStockNum'] = result[i]['ORD_SupplierStockNumber']
       }
       if (typeof result[i]['INV_Name'] == 'string') {
-        catapultResObj['invName'] = result[i]['INV_Name'].trim()
-        // catapultResObj['invName'].replace(',', '') //remove any commas in name so csv doesn't get horked
+        catapultResObj['_________invName_________'] = result[i]['INV_Name'].trim()
+        // catapultResObj['_________invName_________'].replace(',', '') //remove any commas in name so csv doesn't get horked
       } else {
-        catapultResObj['invName'] = result[i]['INV_Name']
+        catapultResObj['_________invName_________'] = result[i]['INV_Name']
       }
       if (typeof result[i]['INV_Size'] == 'string') {
         catapultResObj['invSize'] = result[i]['INV_Size'].trim()
@@ -45,9 +45,9 @@ export async function post(req, res, next) {
         catapultResObj['invSize'] = result[i]['INV_Size']
       }
       if (typeof result[i]['INV_ReceiptAlias'] == 'string') {
-        catapultResObj['invReceiptAlias'] = result[i]['INV_ReceiptAlias'].trim()
+        catapultResObj['_______invReceiptAlias_______'] = result[i]['INV_ReceiptAlias'].trim()
       } else {
-        catapultResObj['invReceiptAlias'] = result[i]['INV_ReceiptAlias']
+        catapultResObj['_______invReceiptAlias_______'] = result[i]['INV_ReceiptAlias']
       }
       if (typeof result[i]['inv_default'] == 'string') {
         catapultResObj['invDefault'] = result[i]['inv_default'].trim()
