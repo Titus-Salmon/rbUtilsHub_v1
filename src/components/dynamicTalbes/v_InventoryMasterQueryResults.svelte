@@ -7,6 +7,9 @@ console.log(`table_data==> ${table_data}`);
 </script>
 
 <style>
+tr:nth-child(even) {
+  background-color: gray;
+}
 </style>
 
 <!-- <body class="dark-mode"> -->
