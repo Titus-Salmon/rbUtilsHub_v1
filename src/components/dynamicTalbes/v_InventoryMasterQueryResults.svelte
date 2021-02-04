@@ -7,16 +7,19 @@ console.log(`table_data==> ${table_data}`);
 </script>
 
 <style>
-tr:nth-child(even) {
-  /* not quite black to alternate with pure black */
-  background-color: #1e1e2f;
-  /* not quite black to alternate with pure black */
+table {
+  table-layout: fixed;
 }
 th {
   position: sticky;
   top: 0; /* Don't forget this, required for the stickiness */
   background: black;
   color: #cc8500;
+}
+tr:nth-child(even) {
+  /* not quite black to alternate with pure black */
+  background-color: #1e1e2f;
+  /* not quite black to alternate with pure black */
 }
 </style>
 
