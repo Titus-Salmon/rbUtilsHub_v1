@@ -57,7 +57,7 @@ a {
   color: #bfc2c7;
 }
 :global(main.dark-mode) {
-  background-color: #1d3040;
+  background-color: #1d3040 !important;
   color: #bfc2c7;
 }
 /* t0d */
