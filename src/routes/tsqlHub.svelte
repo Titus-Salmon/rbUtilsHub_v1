@@ -51,6 +51,10 @@ function vInvMasterQuery() {
 /* body {
   background-color: black;
 } */
+:global(body.dark-mode) {
+  background-color: #0084f6;
+  color: white;
+}
 :global(main.dark-mode) {
   background-color: #0084f6;
   color: white;

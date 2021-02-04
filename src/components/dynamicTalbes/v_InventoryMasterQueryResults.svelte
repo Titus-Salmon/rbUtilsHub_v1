@@ -7,6 +7,10 @@ console.log(`table_data==> ${table_data}`);
 </script>
 
 <style>
+:global(body.dark-mode) {
+  background-color: #0084f6;
+  color: white;
+}
 :global(main.dark-mode) {
   background-color: #0084f6;
   color: white;
