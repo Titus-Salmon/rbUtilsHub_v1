@@ -42,7 +42,7 @@ a {
   display: block;
 }
 /* t0d */
-:global(body) {
+/* :global(body) {
   background-color: gray;
   color: black;
   transition: background-color 0.3s;
@@ -59,7 +59,7 @@ a {
 :global(main.dark-mode) {
   background-color: black !important;
   color: limegreen;
-}
+} */
 /* t0d */
 </style>
 
