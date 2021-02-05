@@ -14,7 +14,7 @@ function vInvMasterQuery() {
     },
     //mode: 'cors',
     body: JSON.stringify({
-      data: tsqlQueryText,
+      data: tsqlQueryText.value,
       // data: `SELECT INV_PK, INV_CPK, INV_ScanCode, ORD_SupplierStockNumber, INV_Name,
       //   INV_Size, INV_ReceiptAlias, inv_default, convert(varchar(10),
       //   POS_TimeStamp, 120), INV_DateCreated, INV_EMP_FK_CreatedBy,
