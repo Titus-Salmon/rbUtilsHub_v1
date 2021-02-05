@@ -3,7 +3,7 @@ import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../components/dynamicTalbes/v_InventoryMasterQueryResults.svelte";
 import tableData from "../components/dynamicTalbes/tableStores/tableData1.js";
 
-var tsqlQueryText = window.document.body.getElementById("tsqlQueryText").value;
+let tsqlQueryText;
 
 function vInvMasterQuery() {
   fetch("v_InventoryMasterQuery", {
@@ -53,7 +53,13 @@ function vInvMasterQuery() {
 <style>
 </style>
 
-<textarea id="tsqlQueryText" name="tblQryPost" cols="30" rows="1" wrap="soft">
+<textarea
+  id="tsqlQueryText"
+  name="tblQryPost"
+  cols="30"
+  rows="1"
+  wrap="soft"
+  bind:this="{tsqlQueryText}">
   SELECT INV_PK, INV_CPK, INV_ScanCode, ORD_SupplierStockNumber, INV_Name,
   INV_Size, INV_ReceiptAlias, inv_default, convert(varchar(10), POS_TimeStamp,
   120), INV_DateCreated, INV_EMP_FK_CreatedBy, ord_quantityinorderunit,
