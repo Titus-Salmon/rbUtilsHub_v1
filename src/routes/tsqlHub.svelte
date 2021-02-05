@@ -3,7 +3,7 @@ import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../components/dynamicTalbes/v_InventoryMasterQueryResults.svelte";
 import tableData from "../components/dynamicTalbes/tableStores/tableData1.js";
 
-let tsqlQueryText = document.getElementById("tsqlQueryText").value;
+let tsqlQueryText = window.document.getElementById("tsqlQueryText").value;
 
 function vInvMasterQuery() {
   fetch("v_InventoryMasterQuery", {
