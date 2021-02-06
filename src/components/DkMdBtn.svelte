@@ -1,9 +1,12 @@
 <script>
 function darkModeToggle() {
-  window.document.children[0].classList.toggle("dark-mode");
+  // window.document.children[0].classList.toggle("dark-mode");
   // window.document.body.classList.toggle("dark-mode");
   // var main_t0d = window.document.body.getElementsByTagName("main")[0];
   // main_t0d.classList.toggle("dark-mode");
+  for (let i = 0; i < window.document.children[0].children.length; i++) {
+    window.document.children[0].children[i].classList.toggle("dark-mode");
+  }
 }
 </script>
 
