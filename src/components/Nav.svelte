@@ -82,6 +82,11 @@ a {
         aria-current="{segment === 'blog' ? 'page' : undefined}"
         href="blog">blog</a>
     </li>
+    <li>
+      <a
+        aria-current="{segment === 'tsqlHub' ? 'page' : undefined}"
+        href="tsqlHub">tsqlHub</a>
+    </li>
   </ul>
   <!-- t0d -->
   <DkMdBtn>MODE</DkMdBtn>
