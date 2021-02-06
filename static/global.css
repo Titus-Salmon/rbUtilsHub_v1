@@ -17,6 +17,9 @@ main {
   background-color: black;
   color: limegreen;
 } */
+main.dark-mode-main {
+  background-color: black;
+}
 body.dark-mode-body {
   background-color: black;
 }

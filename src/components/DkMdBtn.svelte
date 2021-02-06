@@ -14,6 +14,12 @@ function darkModeToggle() {
   //   allDocElements[i].classList.toggle("dark-mode");
   // }
 
+  var allDocMainElems = window.document.getElementsByTagName("main");
+  for (let i = 0; i < allDocMainElems.length; i++) {
+    // allDocTrElems[i].classList.remove("dark-mode");
+    allDocMainElems[i].classList.toggle("dark-mode-main");
+  }
+
   var allDocBodyElems = window.document.getElementsByTagName("body");
   for (let i = 0; i < allDocBodyElems.length; i++) {
     // allDocTrElems[i].classList.remove("dark-mode");
