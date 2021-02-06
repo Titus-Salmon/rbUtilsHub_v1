@@ -7,6 +7,10 @@ console.log(`table_data==> ${table_data}`);
 </script>
 
 <style>
+.dark-mode {
+  background-color: black;
+  color: limegreen;
+}
 table {
   table-layout: fixed;
 }

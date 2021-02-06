@@ -1,5 +1,26 @@
 <script>
+let clicks = 0;
 function darkModeToggle() {
+  console.log(
+    `localStorage.getItem("colorScheme")_1==> ${localStorage.getItem(
+      "colorScheme"
+    )}`
+  );
+  if (localStorage.getItem("colorScheme") !== undefined) {
+    localStorage.removeItem("colorScheme");
+  }
+  clickCount += 1;
+  if (clickCount % 2 !== 0) {
+    //if clickCount is odd
+    localStorage.setItem("colorScheme", "lightMode");
+  } else {
+    localStorage.setItem("colorScheme", "darkMode");
+  }
+  console.log(
+    `localStorage.getItem("colorScheme")_2==> ${localStorage.getItem(
+      "colorScheme"
+    )}`
+  );
   var allDocElements = window.document.getElementsByTagName("*");
   for (let i = 0; i < allDocElements.length; i++) {
     allDocElements[i].classList.toggle("dark-mode");
