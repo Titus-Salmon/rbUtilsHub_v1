@@ -16,18 +16,18 @@ let conditionalClass;
 </script>
 
 <style>
-.dark-mode-tr {
+/* .dark-mode-tr {
   background-color: black;
   color: limegreen;
-}
+} */
 table {
   table-layout: fixed;
 }
 th {
   position: sticky;
   top: 0; /* Don't forget this, required for the stickiness */
-  background: black;
-  color: #cc8500;
+  /* background: black;
+  color: #cc8500; */
 }
 </style>
 
