@@ -27,9 +27,9 @@ function darkModeToggle() {
   }
 
   var allDocButtonElems = window.document.getElementsByTagName("button");
-  for (let i = 0; i < allDocTrElems.length; i++) {
-    // allDocTrElems[i].classList.remove("dark-mode");
-    allDocTrElems[i].classList.toggle("dark-mode-button");
+  for (let i = 0; i < allDocButtonElems.length; i++) {
+    // allDocButtonElems[i].classList.remove("dark-mode");
+    allDocButtonElems[i].classList.toggle("dark-mode-button");
   }
 }
 </script>
