@@ -1,50 +1,52 @@
 /* t0d */
-body {
+/* body {
   background-color: gray;
   color: black;
   transition: background-color 0.3s;
+} */
+body {
+  background-color: black;
 }
 main {
-  background-color: gray;
-  color: black;
-  transition: background-color 0.3s;
-}
-/* .dark-mode > * {
-  background-color: black;
-  color: limegreen;
-} */
-/* .dark-mode * {
-  background-color: black;
-  color: limegreen;
-} */
-main.dark-mode-main {
   background-color: black;
 }
-body.dark-mode-body {
-  background-color: black;
-}
-button.dark-mode-button {
+button {
   background-color: #0084f6;
   color: white;
 }
-th.dark-mode-th {
+th {
   background-color: black;
   color: #cc8500;
 }
-tr.dark-mode-tr {
+tr {
   background-color: black;
   color: limegreen;
 }
-tr:nth-child(even).dark-mode-tr {
+tr:nth-child(even) {
   /* not quite black to alternate with pure black */
   background-color: #1e1e2f !important;
   /* not quite black to alternate with pure black */
 }
-th {
+
+main.light-mode-main {
+  background-color: gray;
+}
+body.light-mode-body {
+  background-color: gray;
+}
+button.light-mode-button {
+  background-color: #f76027;
+  color: white;
+}
+th.light-mode-th {
   background-color: lightgray;
   color: black;
 }
-tr:nth-child(even) {
+tr.light-mode-tr {
+  background-color: gray;
+  color: black;
+}
+tr:nth-child(even).light-mode-tr {
   background-color: lightgray !important;
 }
 
@@ -58,7 +60,7 @@ body {
   line-height: 1.5;
   /* color: #333; */
   /* t0d */
-  color: black;
+  /* color: black; */
   /* t0d */
 }
 
