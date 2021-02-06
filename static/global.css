@@ -17,6 +17,9 @@ main {
   background-color: black;
   color: limegreen;
 } */
+body.dark-mode-body {
+  background-color: black;
+}
 button.dark-mode-button {
   background-color: #0084f6;
   color: white;
