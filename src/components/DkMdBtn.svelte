@@ -39,7 +39,7 @@ function darkModeToggle() {
 </script>
 
 <style>
-button {
+/* button {
   background-color: #f76027;
   color: white;
   border: none;
@@ -50,7 +50,7 @@ button {
 :global(button.dark-mode-button) {
   background-color: #0084f6;
   color: white;
-}
+} */
 </style>
 
 <button on:click="{darkModeToggle}">
