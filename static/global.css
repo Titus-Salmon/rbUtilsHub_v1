@@ -10,8 +10,8 @@ main {
   transition: background-color 0.3s;
 }
 .dark-mode > * {
-  background-color: black;
-  color: limegreen;
+  background-color: black !important;
+  color: limegreen !important;
 }
 /* body.dark-mode {
   background-color: black;

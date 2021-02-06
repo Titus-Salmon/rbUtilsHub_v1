@@ -1,14 +1,8 @@
 <script>
 function darkModeToggle() {
-  // window.document.children[0].classList.toggle("dark-mode");
-  // window.document.body.classList.toggle("dark-mode");
-  // var main_t0d = window.document.body.getElementsByTagName("main")[0];
-  // main_t0d.classList.toggle("dark-mode");
-  // var chldrn = window.document.body.children;
-  var y = window.document.getElementsByTagName("*");
-  for (let i = 0; i < y.length; i++) {
-    console.log(`y[i]==> ${y[i]}`);
-    y[i].classList.toggle("dark-mode");
+  var allDocElements = window.document.getElementsByTagName("*");
+  for (let i = 0; i < allDocElements.length; i++) {
+    allDocElements[i].classList.toggle("dark-mode");
   }
 }
 </script>
