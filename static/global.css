@@ -13,17 +13,26 @@ main {
   background-color: black;
   color: limegreen;
 } */
-.dark-mode * {
+/* .dark-mode * {
+  background-color: black;
+  color: limegreen;
+} */
+th.dark-mode-th {
+  background-color: black;
+  color: #cc8500;
+}
+tr.dark-mode-tr {
   background-color: black;
   color: limegreen;
 }
-th.dark-mode-th {
-  color: #cc8500 !important;
-}
 tr:nth-child(even).dark-mode-tr {
   /* not quite black to alternate with pure black */
-  background-color: #1e1e2f !important;
+  background-color: #1e1e2f;
   /* not quite black to alternate with pure black */
+}
+th {
+  background-color: darkgray;
+  color: lightseagreen;
 }
 tr:nth-child(even) {
   background-color: lightgray !important;
