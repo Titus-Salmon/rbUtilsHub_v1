@@ -13,8 +13,20 @@ table {
 th {
   position: sticky;
   top: 0; /* Don't forget this, required for the stickiness */
-  /* background: black;
-  color: #cc8500; */
+  background: black;
+  color: #cc8500;
+}
+th.dark-mode {
+  color: #cc8500 !important;
+}
+tr:nth-child(even) {
+  background-color: lightgray !important;
+}
+tr:nth-child(even).dark-mode {
+  /* not quite black to alternate with pure black */
+  /* background-color: #1e1e2f !important; */
+  background-color: white !important;
+  /* not quite black to alternate with pure black */
 }
 /* tr:nth-child(even) { */
 /* not quite black to alternate with pure black */
