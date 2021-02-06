@@ -6,7 +6,7 @@ function darkModeToggle() {
       "colorScheme"
     )}`
   );
-  if (localStorage.getItem("colorScheme") !== undefined) {
+  if (localStorage.getItem("colorScheme") !== null) {
     localStorage.removeItem("colorScheme");
   }
   clickCount += 1;
