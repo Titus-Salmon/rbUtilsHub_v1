@@ -1,5 +1,5 @@
 <script>
-export let segment;
+// export let segment;
 import DkMdBtn from "./DkMdBtn.svelte"; //t0d
 </script>
 
@@ -63,9 +63,10 @@ a {
         href="blog">blog</a>
     </li> -->
     <li>
-      <a
+      <!-- <a
         aria-current="{segment === 'tsqlHub' ? 'page' : undefined}"
-        href="tsqlHub">tsqlHub</a>
+				href="tsqlHub">tsqlHub</a> -->
+      <a href="tsqlHub">tsqlHub</a>
     </li>
   </ul>
   <!-- t0d -->
