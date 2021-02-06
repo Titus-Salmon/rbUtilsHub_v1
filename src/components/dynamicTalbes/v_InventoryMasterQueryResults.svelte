@@ -1,33 +1,17 @@
 <script>
-// let tableData = [];
 import tableData from "../dynamicTalbes/tableStores/tableData1.js";
 let table_data;
 tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
 console.log(`table_data==> ${table_data}`);
-
-let tableRows;
-
-// var tableRows = window.document.getElementsByTagName("tr");
-// for (let i = 0; i < tableRows.length; i++) {
-//   tableRows[i].classList.toggle("dark-mode-tr");
-// }
-
-let conditionalClass;
 </script>
 
 <style>
-/* .dark-mode-tr {
-  background-color: black;
-  color: limegreen;
-} */
 table {
   table-layout: fixed;
 }
 th {
   position: sticky;
   top: 0; /* Don't forget this, required for the stickiness */
-  /* background: black;
-  color: #cc8500; */
 }
 </style>
 
@@ -51,4 +35,3 @@ th {
     {/each}
   </tbody>
 </table>
-<!-- </body> -->

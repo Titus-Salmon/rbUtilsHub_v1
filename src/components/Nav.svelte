@@ -41,47 +41,27 @@ a {
   padding: 1em 0.5em;
   display: block;
 }
-/* t0d */
-/* :global(body) {
-  background-color: gray;
-  color: black;
-  transition: background-color 0.3s;
-}
-:global(main) {
-  background-color: gray;
-  color: black;
-  transition: background-color 0.3s;
-}
-:global(body.dark-mode) {
-  background-color: black;
-  color: limegreen;
-}
-:global(main.dark-mode) {
-  background-color: black !important;
-  color: limegreen;
-} */
-/* t0d */
 </style>
 
 <nav>
   <ul>
-    <li>
+    <!-- <li>
       <a aria-current="{segment === undefined ? 'page' : undefined}" href="."
         >home</a>
     </li>
     <li>
       <a aria-current="{segment === 'about' ? 'page' : undefined}" href="about"
         >about</a>
-    </li>
+    </li> -->
 
     <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 		     the blog data when we hover over the link or tap it on a touchscreen -->
-    <li>
+    <!-- <li>
       <a
         rel="prefetch"
         aria-current="{segment === 'blog' ? 'page' : undefined}"
         href="blog">blog</a>
-    </li>
+    </li> -->
     <li>
       <a
         aria-current="{segment === 'tsqlHub' ? 'page' : undefined}"
