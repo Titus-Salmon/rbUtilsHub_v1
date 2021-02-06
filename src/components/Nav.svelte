@@ -70,6 +70,9 @@ a {
     </li>
   </ul>
   <!-- t0d -->
-  <DkMdBtn>MODE</DkMdBtn>
+  <button>
+    <DkMdBtn>MODE</DkMdBtn>
+  </button>
+  <!-- <DkMdBtn>MODE</DkMdBtn> -->
   <!-- t0d -->
 </nav>
