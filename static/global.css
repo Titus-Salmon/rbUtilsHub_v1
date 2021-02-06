@@ -1,9 +1,4 @@
 /* t0d */
-/* body {
-  background-color: gray;
-  color: black;
-  transition: background-color 0.3s;
-} */
 body {
   background-color: black;
 }
@@ -31,7 +26,13 @@ tr:nth-child(even) {
   background-color: #1e1e2f !important;
   /* not quite black to alternate with pure black */
 }
+textarea {
+  border-color: pink;
+  background-color: black;
+  color: red;
+}
 
+/*//v//LIGHT MODE CSS*********************************/
 main.light-mode-main {
   background-color: gray;
 }
@@ -57,7 +58,7 @@ tr.light-mode-tr {
 tr:nth-child(even).light-mode-tr {
   background-color: lightgray !important;
 }
-
+/*//^//LIGHT MODE CSS*********************************/
 /* t0d */
 
 body {
