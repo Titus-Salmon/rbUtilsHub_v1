@@ -19,7 +19,7 @@ th {
 }
 tr {
   background-color: black;
-  color: limegreen;
+  color: lime;
 }
 tr:nth-child(even) {
   /* not quite black to alternate with pure black */
@@ -27,9 +27,9 @@ tr:nth-child(even) {
   /* not quite black to alternate with pure black */
 }
 textarea {
-  border-color: pink;
+  border-color: red;
   background-color: black;
-  color: red;
+  color: lime;
 }
 
 /*//v//LIGHT MODE CSS*********************************/
