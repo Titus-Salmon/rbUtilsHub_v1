@@ -17,5 +17,5 @@ main {
 <Nav segment="{segment}" />
 
 <main>
-  <!-- <slot /> -->
+  <slot />
 </main>
