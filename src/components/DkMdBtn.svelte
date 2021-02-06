@@ -6,7 +6,7 @@ function darkModeToggle() {
   // main_t0d.classList.toggle("dark-mode");
   var chldrn = window.document.body.children;
   for (let i = 0; i < chldrn.length; i++) {
-    chldrn.classList.toggle("dark-mode");
+    chldrn[i].classList.toggle("dark-mode");
   }
   // for (let i = 0; i < window.document.children[0].children.length; i++) {
   //   window.document.children[0].children[i].classList.toggle("dark-mode");
