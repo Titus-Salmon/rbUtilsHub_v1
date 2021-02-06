@@ -14,16 +14,16 @@ function darkModeToggle() {
   //   allDocElements[i].classList.toggle("dark-mode");
   // }
 
-  var allDocTrElems = window.document.getElementsByTagName("tr");
-  for (let i = 0; i < allDocTrElems.length; i++) {
-    // allDocTrElems[i].classList.remove("dark-mode");
-    allDocTrElems[i].classList.toggle("dark-mode-tr");
-  }
-
   var allDocThElems = window.document.getElementsByTagName("th");
   for (let i = 0; i < allDocThElems.length; i++) {
     // allDocTrElems[i].classList.remove("dark-mode");
     allDocThElems[i].classList.toggle("dark-mode-th");
+  }
+
+  var allDocTrElems = window.document.getElementsByTagName("tr");
+  for (let i = 0; i < allDocTrElems.length; i++) {
+    // allDocTrElems[i].classList.remove("dark-mode");
+    allDocTrElems[i].classList.toggle("dark-mode-tr");
   }
 }
 </script>
