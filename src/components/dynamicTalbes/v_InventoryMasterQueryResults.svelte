@@ -4,10 +4,17 @@ import tableData from "../dynamicTalbes/tableStores/tableData1.js";
 let table_data;
 tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
 console.log(`table_data==> ${table_data}`);
+
+var tableRows = window.document.getElementsByTagName("tr");
+// for (let i = 0; i < tableRows.length; i++) {
+//   tableRows[i].classList.toggle("dark-mode-tr");
+// }
+
+let conditionalClass;
 </script>
 
 <style>
-.dark-mode {
+.dark-mode-tr {
   background-color: black;
   color: limegreen;
 }
@@ -26,7 +33,7 @@ th.dark-mode {
 tr:nth-child(even) {
   background-color: lightgray !important;
 }
-tr:nth-child(even).dark-mode {
+tr:nth-child(even).dark-mode-tr {
   /* not quite black to alternate with pure black */
   /* background-color: #1e1e2f !important; */
   background-color: white !important;
@@ -40,6 +47,13 @@ tr:nth-child(even).dark-mode {
 </style>
 
 <!-- <body class="dark-mode"> -->
+{#if localStorage.getItem("colorScheme") === "darkMode"}
+  {#each tableRows as tableRow}
+    {tableRow.classList.toggle("dark-mode-tr")}
+  {/each}
+{:else}
+  {(conditionalClass = "light-mode")}
+{/if}
 <table>
   <thead>
     <tr>

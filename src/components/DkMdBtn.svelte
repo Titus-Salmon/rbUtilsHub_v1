@@ -8,17 +8,7 @@ function darkModeToggle() {
   clickCount % 2 !== 0 //clickCount "odd" condition
     ? localStorage.setItem("colorScheme", "darkMode")
     : localStorage.setItem("colorScheme", "lightMode");
-  // if (clickCount % 2 !== 0) {
-  //   //if clickCount is odd
-  //   localStorage.setItem("colorScheme", "darkMode");
-  // } else {
-  //   localStorage.setItem("colorScheme", "lightMode");
-  // }
-  console.log(
-    `localStorage.getItem("colorScheme")_2==> ${localStorage.getItem(
-      "colorScheme"
-    )}`
-  );
+
   var allDocElements = window.document.getElementsByTagName("*");
   for (let i = 0; i < allDocElements.length; i++) {
     allDocElements[i].classList.toggle("dark-mode");
