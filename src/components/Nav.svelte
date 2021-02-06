@@ -84,6 +84,6 @@ a {
     </li>
   </ul>
   <!-- t0d -->
-  <DkMdBtn>Mode</DkMdBtn>
+  <DkMdBtn>MODE</DkMdBtn>
   <!-- t0d -->
 </nav>

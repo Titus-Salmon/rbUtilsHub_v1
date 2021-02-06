@@ -16,7 +16,7 @@ button {
   border: none;
   border-radius: 4px;
   padding: 0.5rem;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 th {
   background-color: black;
@@ -44,7 +44,7 @@ button.light-mode-button {
   border: none;
   border-radius: 4px;
   padding: 0.5rem;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 th.light-mode-th {
   background-color: lightgray;
