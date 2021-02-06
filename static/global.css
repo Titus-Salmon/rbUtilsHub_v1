@@ -9,7 +9,7 @@ main {
   color: black;
   transition: background-color 0.3s;
 }
-.dark-mode {
+.dark-mode > * {
   background-color: black;
   color: limegreen;
 }
