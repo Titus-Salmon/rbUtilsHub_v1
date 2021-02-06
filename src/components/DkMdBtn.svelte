@@ -43,7 +43,7 @@ button {
   padding: 0.5rem;
   text-transform: uppercase;
 }
-button.dark-mode-button {
+:global(button.dark-mode-button) {
   background-color: #0084f6;
   color: white;
 }
