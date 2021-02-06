@@ -17,6 +17,10 @@ main {
   background-color: black;
   color: limegreen;
 } */
+button.dark-mode-button {
+  background-color: #0084f6;
+  color: white;
+}
 th.dark-mode-th {
   background-color: black;
   color: #cc8500;

@@ -25,6 +25,12 @@ function darkModeToggle() {
     // allDocTrElems[i].classList.remove("dark-mode");
     allDocTrElems[i].classList.toggle("dark-mode-tr");
   }
+
+  var allDocButtonElems = window.document.getElementsByTagName("button");
+  for (let i = 0; i < allDocTrElems.length; i++) {
+    // allDocTrElems[i].classList.remove("dark-mode");
+    allDocTrElems[i].classList.toggle("dark-mode-button");
+  }
 }
 </script>
 
@@ -37,10 +43,10 @@ button {
   padding: 0.5rem;
   text-transform: uppercase;
 }
-:global(body.dark-mode) button {
+/* button.dark-mode-button {
   background-color: #0084f6;
   color: white;
-}
+} */
 </style>
 
 <button on:click="{darkModeToggle}">
