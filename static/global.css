@@ -55,7 +55,7 @@ tr.light-mode-tr {
   background-color: gray;
   color: black;
 }
-tr:nth-child(even).light-mode-tr {
+tr.light-mode-tr:nth-child(even) {
   background-color: lightgray !important;
 }
 /*//^//LIGHT MODE CSS*********************************/
