@@ -5,8 +5,11 @@ function darkModeToggle() {
   // var main_t0d = window.document.body.getElementsByTagName("main")[0];
   // main_t0d.classList.toggle("dark-mode");
   var chldrn = window.document.body.children;
-  var allChildrenAndGrandchildrenTagNames = chldrn.getElementsByTagName("*");
-  allChildrenAndGrandchildrenTagNames.classList.toggle("dark-mode");
+  // var allChildrenAndGrandchildrenTagNames = chldrn.getElementsByTagName("*");
+  for (let i = 0; i < chldrn.length; i++) {
+    chldrn[i].getElementsByTagName("*").classList.toggle("dark-mode");
+  }
+  // allChildrenAndGrandchildrenTagNames.classList.toggle("dark-mode");
   // for (let i = 0; i < chldrn.length; i++) {
   //   chldrn[i].classList.toggle("dark-mode");
   // }
