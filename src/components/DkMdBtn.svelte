@@ -1,5 +1,5 @@
 <script>
-let clicks = 0;
+let clickCount = 0;
 function darkModeToggle() {
   console.log(
     `localStorage.getItem("colorScheme")_1==> ${localStorage.getItem(
