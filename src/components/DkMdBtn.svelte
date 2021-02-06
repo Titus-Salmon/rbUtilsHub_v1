@@ -12,7 +12,7 @@ function darkModeToggle() {
   clickCount += 1;
   console.log(`clickCount % 2==> ${clickCount % 2}`);
   console.log(`typeof (clickCount % 2)==> ${typeof (clickCount % 2)}`);
-  if (clickCount % 2 !== 0) {
+  if (clickCount % 2 != 0) {
     //if clickCount is odd
     localStorage.setItem("colorScheme", "lightMode");
   } else {
