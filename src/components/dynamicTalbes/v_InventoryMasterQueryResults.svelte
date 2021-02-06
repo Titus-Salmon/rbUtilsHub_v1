@@ -15,23 +15,26 @@ th {
 }
 </style>
 
-<table>
-  <thead>
-    <tr>
-      <!-- {#if table_data !== undefined && table_data !== null && table_data !== ""} -->
-      {#each Object.keys(table_data[0]) as columnHeading}
-        <th>{columnHeading}</th>
-      {/each}
-      <!-- {/if} -->
-    </tr>
-  </thead>
-  <tbody>
-    {#each Object.values(table_data) as row}
+<!-- see if adding body tag solves the gray windowpane problem with color toggle -->
+<body>
+  <table>
+    <thead>
       <tr>
-        {#each Object.values(row) as cell}
-          <td>{cell}</td>
+        <!-- {#if table_data !== undefined && table_data !== null && table_data !== ""} -->
+        {#each Object.keys(table_data[0]) as columnHeading}
+          <th>{columnHeading}</th>
         {/each}
+        <!-- {/if} -->
       </tr>
-    {/each}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {#each Object.values(table_data) as row}
+        <tr>
+          {#each Object.values(row) as cell}
+            <td>{cell}</td>
+          {/each}
+        </tr>
+      {/each}
+    </tbody>
+  </table>
+</body>
