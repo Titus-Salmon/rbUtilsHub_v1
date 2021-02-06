@@ -13,6 +13,16 @@ function darkModeToggle() {
   for (let i = 0; i < allDocElements.length; i++) {
     allDocElements[i].classList.toggle("dark-mode");
   }
+
+  var allDocTrElems = window.document.getElementsByTagName("tr");
+  for (let i = 0; i < allDocTrElems.length; i++) {
+    allDocTrElems[i].classList.toggle("dark-mode-tr");
+  }
+
+  var allDocThElems = window.document.getElementsByTagName("th");
+  for (let i = 0; i < allDocThElems.length; i++) {
+    allDocThElems[i].classList.toggle("dark-mode-th");
+  }
 }
 </script>
 

@@ -17,6 +17,17 @@ main {
   background-color: black;
   color: limegreen;
 }
+th.dark-mode-th {
+  color: #cc8500 !important;
+}
+tr:nth-child(even).dark-mode-tr {
+  /* not quite black to alternate with pure black */
+  background-color: #1e1e2f !important;
+  /* not quite black to alternate with pure black */
+}
+tr:nth-child(even) {
+  background-color: lightgray !important;
+}
 
 /* t0d */
 

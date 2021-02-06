@@ -29,34 +29,8 @@ th {
   background: black;
   color: #cc8500;
 }
-th.dark-mode {
-  color: #cc8500 !important;
-}
-tr:nth-child(even) {
-  background-color: lightgray !important;
-}
-tr:nth-child(even).dark-mode-tr {
-  /* not quite black to alternate with pure black */
-  /* background-color: #1e1e2f !important; */
-  background-color: white !important;
-  /* not quite black to alternate with pure black */
-}
-/* tr:nth-child(even) { */
-/* not quite black to alternate with pure black */
-/* background-color: #1e1e2f; */
-/* not quite black to alternate with pure black */
-/* } */
 </style>
 
-<!-- <body class="dark-mode"> -->
-{#if localStorage.getItem("colorScheme") === "darkMode"}
-  {(tableRows = window.document.getElementsByTagName("tr"))}
-  {#each tableRows as tableRow}
-    {tableRow.classList.toggle("dark-mode-tr")}
-  {/each}
-{:else}
-  {(conditionalClass = "light-mode")}
-{/if}
 <table>
   <thead>
     <tr>
