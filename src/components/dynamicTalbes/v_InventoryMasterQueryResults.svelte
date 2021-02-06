@@ -50,7 +50,7 @@ tr:nth-child(even).dark-mode-tr {
 
 <!-- <body class="dark-mode"> -->
 {#if localStorage.getItem("colorScheme") === "darkMode"}
-{tableRows = window.document.getElementsByTagName("tr");}
+  {(tableRows = window.document.getElementsByTagName("tr"))}
   {#each tableRows as tableRow}
     {tableRow.classList.toggle("dark-mode-tr")}
   {/each}
