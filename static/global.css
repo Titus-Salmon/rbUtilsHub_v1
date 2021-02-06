@@ -27,12 +27,12 @@ tr.dark-mode-tr {
 }
 tr:nth-child(even).dark-mode-tr {
   /* not quite black to alternate with pure black */
-  background-color: #1e1e2f;
+  background-color: #1e1e2f !important;
   /* not quite black to alternate with pure black */
 }
 th {
-  background-color: darkgray;
-  color: lightseagreen;
+  background-color: lightgray;
+  color: black;
 }
 tr:nth-child(even) {
   background-color: lightgray !important;
