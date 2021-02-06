@@ -10,17 +10,23 @@ main {
   transition: background-color 0.3s;
 }
 .dark-mode > * {
-  background-color: black !important;
-  color: limegreen !important;
-}
-/* body.dark-mode {
   background-color: black;
   color: limegreen;
-} */
-/* main.dark-mode {
-  background-color: black !important;
-  color: limegreen;
-} */
+}
+th.dark-mode {
+  background: black;
+  color: #cc8500;
+}
+tr:nth-child(even) {
+  /* not quite black to alternate with pure black */
+  background-color: lightgray;
+  /* not quite black to alternate with pure black */
+}
+tr:nth-child(even).dark-mode {
+  /* not quite black to alternate with pure black */
+  background-color: #1e1e2f;
+  /* not quite black to alternate with pure black */
+}
 /* t0d */
 
 body {
@@ -29,7 +35,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.5;
-  color: #333;
+  /* color: #333; */
+  /* t0d */
+  color: black;
+  /* t0d */
 }
 
 h1,

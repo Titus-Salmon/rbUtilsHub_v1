@@ -13,14 +13,14 @@ table {
 th {
   position: sticky;
   top: 0; /* Don't forget this, required for the stickiness */
-  background: black;
-  color: #cc8500;
+  /* background: black;
+  color: #cc8500; */
 }
-tr:nth-child(even) {
-  /* not quite black to alternate with pure black */
-  background-color: #1e1e2f;
-  /* not quite black to alternate with pure black */
-}
+/* tr:nth-child(even) { */
+/* not quite black to alternate with pure black */
+/* background-color: #1e1e2f; */
+/* not quite black to alternate with pure black */
+/* } */
 </style>
 
 <!-- <body class="dark-mode"> -->
