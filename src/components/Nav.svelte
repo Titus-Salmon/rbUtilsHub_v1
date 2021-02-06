@@ -4,7 +4,7 @@ import DkMdBtn from "./DkMdBtn.svelte"; //t0d
 </script>
 
 <style>
-nav {
+/* nav {
   border-bottom: 1px solid rgba(255, 62, 0, 0.1);
   font-weight: 300;
   padding: 0 1em;
@@ -12,9 +12,9 @@ nav {
 ul {
   margin: 0;
   padding: 0;
-}
+} */
 /* clearfix */
-ul::after {
+/* ul::after {
   content: "";
   display: block;
   clear: both;
@@ -40,7 +40,7 @@ a {
   text-decoration: none;
   padding: 1em 0.5em;
   display: block;
-}
+} */
 </style>
 
 <nav>
