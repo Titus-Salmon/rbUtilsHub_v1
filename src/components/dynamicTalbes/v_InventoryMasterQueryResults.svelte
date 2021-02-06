@@ -5,7 +5,9 @@ let table_data;
 tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
 console.log(`table_data==> ${table_data}`);
 
-var tableRows = window.document.getElementsByTagName("tr");
+let tableRows;
+
+// var tableRows = window.document.getElementsByTagName("tr");
 // for (let i = 0; i < tableRows.length; i++) {
 //   tableRows[i].classList.toggle("dark-mode-tr");
 // }
@@ -48,6 +50,7 @@ tr:nth-child(even).dark-mode-tr {
 
 <!-- <body class="dark-mode"> -->
 {#if localStorage.getItem("colorScheme") === "darkMode"}
+{tableRows = window.document.getElementsByTagName("tr");}
   {#each tableRows as tableRow}
     {tableRow.classList.toggle("dark-mode-tr")}
   {/each}
