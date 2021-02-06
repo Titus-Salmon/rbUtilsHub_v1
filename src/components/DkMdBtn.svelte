@@ -4,18 +4,12 @@ function darkModeToggle() {
   // window.document.body.classList.toggle("dark-mode");
   // var main_t0d = window.document.body.getElementsByTagName("main")[0];
   // main_t0d.classList.toggle("dark-mode");
-  var chldrn = window.document.body.children;
-  // var allChildrenAndGrandchildrenTagNames = chldrn.getElementsByTagName("*");
-  for (let i = 0; i < chldrn.length; i++) {
-    chldrn[i].getElementsByTagName("*").classList.toggle("dark-mode");
+  // var chldrn = window.document.body.children;
+  var y = window.document.getElementsByTagName("*");
+  for (let i = 0; i < y.length; i++) {
+    console.log(`y[i]==> ${y[i]}`);
+    y[i].classList.toggle("dark-mode");
   }
-  // allChildrenAndGrandchildrenTagNames.classList.toggle("dark-mode");
-  // for (let i = 0; i < chldrn.length; i++) {
-  //   chldrn[i].classList.toggle("dark-mode");
-  // }
-  // for (let i = 0; i < window.document.children[0].children.length; i++) {
-  //   window.document.children[0].children[i].classList.toggle("dark-mode");
-  // }
 }
 </script>
 
