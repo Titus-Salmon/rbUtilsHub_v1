@@ -54,5 +54,5 @@ function darkModeToggle() {
 </style>
 
 <button on:click="{darkModeToggle}">
-  <!-- <slot /> -->
+  <slot />
 </button>
