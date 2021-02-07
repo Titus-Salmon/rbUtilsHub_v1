@@ -24,11 +24,11 @@ export async function post(req, res, next) {
         .on('data', chunk => (csv += chunk.toString()))
         .on('end', () => {
             console.log(`csv from saveToCSV==> ${csv}`)
-            fs.writeFile(process.cwd() + '/static/csv/' + req.body.data + '.csv', csv, function (err) {
+            fs.writeFile(`${process.cwd()}/static/csv/${req.body.data}.csv`, csv, function (err) {
                 if (err) throw err;
-                console.log(`~~~~~>> ${req.body.data} saved<<~~~~~`)
+                console.log(`~~~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved<<~~~~~`)
                 res.json({
-                    "response from saveToCSV": `~~~~~>> ${req.body.data} saved<<~~~~~`
+                    "response from saveToCSV": `${process.cwd()}/static/csv/${req.body.data}.csv saved`
                 })
             })
         })
