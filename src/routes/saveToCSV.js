@@ -1,9 +1,11 @@
 import tableData from "../components/dynamicTalbes/tableStores/tableData1.js"; //import table data from Svelte tableData1.js store
 let table_data;
-tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
-console.log(`table_data[0] from saveToCSV==> ${table_data[0]}`);
+// tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
+// console.log(`table_data[0] from saveToCSV==> ${table_data[0]}`);
 
 export async function post(req, res, next) {
+    tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
+    console.log(`table_data[0] from saveToCSV==> ${table_data[0]}`);
     res.setHeader('Content-Type', 'application/json')
     console.log(`is anybody home from saveToCSV.js`)
 
