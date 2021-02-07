@@ -1,4 +1,8 @@
 /* t0d */
+nav {
+  background-color: black;
+  color: lime;
+}
 body {
   background-color: black;
 }
@@ -33,6 +37,10 @@ textarea {
 }
 
 /*//v//LIGHT MODE CSS*********************************/
+nav.light-mode-nav {
+  background-color: gray;
+  color: black;
+}
 main.light-mode-main {
   background-color: gray;
 }

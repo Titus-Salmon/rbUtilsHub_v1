@@ -11,6 +11,11 @@ function darkModeToggle() {
   //   : localStorage.setItem("colorScheme", "lightMode");
   //^//don't really need this for now, but putting color scheme designation on click into localStorage may be useful at some point
 
+  var allDocNavElems = window.document.getElementsByTagName("nav");
+  for (let i = 0; i < allDocNavElems.length; i++) {
+    allDocNavElems[i].classList.toggle("light-mode-nav");
+  }
+
   var allDocMainElems = window.document.getElementsByTagName("main");
   for (let i = 0; i < allDocMainElems.length; i++) {
     allDocMainElems[i].classList.toggle("light-mode-main");
@@ -39,18 +44,6 @@ function darkModeToggle() {
 </script>
 
 <style>
-/* button {
-  background-color: #f76027;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem;
-  text-transform: uppercase;
-}
-:global(button.dark-mode-button) {
-  background-color: #0084f6;
-  color: white;
-} */
 </style>
 
 <button on:click="{darkModeToggle}">
