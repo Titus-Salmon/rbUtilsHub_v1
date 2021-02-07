@@ -1,6 +1,6 @@
 const odbc = require('odbc')
 const DSN = process.env.ODBC_CONN_STRING
-const catapultResArrCache = require('../../nodeCacheStuff/cache1')
+const catapultResArrCache = require('../../nodeCacheStuff/cache1.js')
 
 export async function post(req, res, next) {
 
