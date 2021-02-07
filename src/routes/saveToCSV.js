@@ -27,6 +27,9 @@ export async function post(req, res, next) {
             fs.writeFile(process.cwd() + '/static/csv/' + req.body.data + '.csv', csv, function (err) {
                 if (err) throw err;
                 console.log(`~~~~~>> ${req.body.data} saved<<~~~~~`)
+                res.json({
+                    "response from saveToCSV": `~~~~~>> ${req.body.data} saved<<~~~~~`
+                })
             })
         })
         .on('error', err => console.error(err));
