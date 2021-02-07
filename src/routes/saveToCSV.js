@@ -5,6 +5,7 @@
 console.log(`hello from top level of saveToCSV`)
 // const catapultResArrCache = require('../nodeCacheStuff/cache1')
 import catapultResArrCache from "../nodeCacheStuff/cache1.js"
+let catapultResArrCacheValue
 
 export async function post(req, res, next) {
 
