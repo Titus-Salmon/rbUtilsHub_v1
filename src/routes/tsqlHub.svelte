@@ -2,6 +2,7 @@
 import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../components/dynamicTalbes/v_InventoryMasterQueryResults.svelte";
 import tableData from "../components/dynamicTalbes/tableStores/tableData1.js";
+import DkMdBtn from "./DkMdBtn.svelte"; //t0d
 
 let tsqlQueryText;
 
@@ -52,6 +53,8 @@ function vInvMasterQuery() {
 
 <style>
 </style>
+
+<DkMdBtn>MODE</DkMdBtn>
 
 <textarea
   id="tsqlQueryText"
