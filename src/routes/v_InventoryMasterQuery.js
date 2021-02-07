@@ -1,5 +1,6 @@
 const odbc = require('odbc')
 const DSN = process.env.ODBC_CONN_STRING
+const catapultResArrCache = require('../../nodeCacheStuff/cache1')
 
 export async function post(req, res, next) {
 
@@ -149,6 +150,12 @@ export async function post(req, res, next) {
       catapultResArr.push(catapultResObj)
       srcRsXLS_tsql.push(catapultResObj)
     }
+    //V// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
+    catapultResArrCache.set('catapultResArrCache_key', catapultResArr)
+    console.log(`catapultResArrCache['data']['catapultResArrCache_key']['v'].length==> ${catapultResArrCache['data']['catapultResArrCache_key']['v'].length}`)
+    console.log(`catapultResArrCache['data']['catapultResArrCache_key']['v'][0]==> ${catapultResArrCache['data']['catapultResArrCache_key']['v'][0]}`)
+    console.log(`JSON.stringify(catapultResArrCache['data']['catapultResArrCache_key']['v'][0])==> ${JSON.stringify(catapultResArrCache['data']['catapultResArrCache_key']['v'][0])}`)
+    //^// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
   }
 
   odbc.connect(DSN, (error, connection) => {
