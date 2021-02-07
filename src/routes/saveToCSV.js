@@ -4,6 +4,9 @@ tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
 console.log(`table_data[0] from saveToCSV==> ${table_data[0]}`);
 
 export async function post(req, res, next) {
+    let table_data;
+    tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
+    console.log(`table_data[0] from saveToCSV==> ${table_data[0]}`);
     const fs = require('fs')
     const {
         AsyncParser
