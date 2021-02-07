@@ -1,4 +1,4 @@
-import tableData from "../dynamicTalbes/tableStores/tableData1.js"; //import table data from Svelte tableData1.js store
+import tableData from "../components/dynamicTalbes/tableStores/tableData1.js"; //import table data from Svelte tableData1.js store
 let table_data;
 tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
 console.log(`table_data[0] from saveToCSV==> ${table_data[0]}`);
