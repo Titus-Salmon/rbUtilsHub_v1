@@ -13,6 +13,7 @@ export async function post(req, res, next) {
     } = require('json2csv');
 
     const fields = Object.keys(table_data[0]); //these are the table headers (column names)
+    console.log(`fields from saveToCSV==> ${fields}`)
     const opts = {
         fields
     };
