@@ -33,11 +33,11 @@ export async function post(req, res, next) {
         // const csv = parser.parse(JSON.parse(req.body['save2CSVArrPost']))
         const csv = parser.parse(catapultResArrCacheValue)
         // console.log(`JSON.stringify(req.body['save2CSVArrPost'][0])-->${JSON.stringify(req.body['save2CSVArrPost'][0])}`)
-        console.log(`req.body['csvPost']-->${req.body['csvPost']}`)
-        console.log('csv.length=====>>', csv.length);
-        fs.writeFile(process.cwd() + '/public/csv-to-insert/' + req.body['csvPost'] + '.csv', csv, function (err) {
+        console.log(`req.body-->${req.body}`)
+        console.log(`csv.length=====>> ${csv.length}`);
+        fs.writeFile(`${process.cwd()}/static/csv/${req.body.data}.csv`, csv, function (err) {
             if (err) throw err;
-            console.log('~~~~~>>' + req.body['csvPost'] + 'saved<<~~~~~')
+            console.log(`~~~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved<<~~~~~`)
         })
     } catch (err) {
         console.error(err);
