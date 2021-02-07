@@ -2,11 +2,12 @@ const odbc = require('odbc')
 const DSN = process.env.ODBC_CONN_STRING
 console.log(`hello from top level of v_InventoryMasterQuery.js`)
 // const catapultResArrCache = require('../nodeCacheStuff/cache1')
+import catapultResArrCache from "../nodeCacheStuff/cache1.js"
 
 export async function post(req, res, next) {
   console.log(`hello from within the async function of v_InventoryMasterQuery.js`)
   // const catapultResArrCache = require('../nodeCacheStuff/cache1')
-  import catapultResArrCache from "../nodeCacheStuff/cache1.js"
+  // import catapultResArrCache from "../nodeCacheStuff/cache1.js"
 
   res.setHeader('Content-Type', 'application/json')
   console.log(`req.body.data==> ${req.body.data}`)

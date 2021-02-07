@@ -4,13 +4,13 @@
 // console.log(`table_data[0] from saveToCSV==> ${table_data[0]}`);
 console.log(`hello from top level of saveToCSV`)
 // const catapultResArrCache = require('../nodeCacheStuff/cache1')
-// import catapultResArrCache from "../nodeCacheStuff/cache1.js"
+import catapultResArrCache from "../nodeCacheStuff/cache1.js"
 
 export async function post(req, res, next) {
 
     console.log(`hello from within the async function of saveToCSV.js`)
     // const catapultResArrCache = require('../nodeCacheStuff/cache1')
-    import catapultResArrCache from "../nodeCacheStuff/cache1.js"
+    // import catapultResArrCache from "../nodeCacheStuff/cache1.js"
 
     catapultResArrCacheValue = catapultResArrCache.take('catapultResArrCache_key') // this also deletes the key
 
