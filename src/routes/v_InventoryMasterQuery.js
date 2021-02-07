@@ -5,7 +5,8 @@ console.log(`hello from top level of v_InventoryMasterQuery.js`)
 
 export async function post(req, res, next) {
   console.log(`hello from within the async function of v_InventoryMasterQuery.js`)
-  const catapultResArrCache = require('../nodeCacheStuff/cache1')
+  // const catapultResArrCache = require('../nodeCacheStuff/cache1')
+  import catapultResArrCache from "../nodeCacheStuff/cache1.js"
 
   res.setHeader('Content-Type', 'application/json')
   console.log(`req.body.data==> ${req.body.data}`)

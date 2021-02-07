@@ -9,7 +9,8 @@ console.log(`hello from top level of saveToCSV`)
 export async function post(req, res, next) {
 
     console.log(`hello from within the async function of saveToCSV.js`)
-    const catapultResArrCache = require('../nodeCacheStuff/cache1')
+    // const catapultResArrCache = require('../nodeCacheStuff/cache1')
+    import catapultResArrCache from "../nodeCacheStuff/cache1.js"
 
     catapultResArrCacheValue = catapultResArrCache.take('catapultResArrCache_key') // this also deletes the key
 
