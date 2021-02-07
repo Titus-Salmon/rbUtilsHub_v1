@@ -1,6 +1,7 @@
 const odbc = require('odbc')
 const DSN = process.env.ODBC_CONN_STRING
-const catapultResArrCache = require('../nodeCacheStuff/cache1.js')
+console.log(`hello from top level of v_InventoryMasterQuery.js`)
+const catapultResArrCache = require('../nodeCacheStuff/cache1')
 
 export async function post(req, res, next) {
 

@@ -2,7 +2,7 @@
 // let table_data;
 // tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
 // console.log(`table_data[0] from saveToCSV==> ${table_data[0]}`);
-
+console.log(`hello from top level of saveToCSV`)
 const catapultResArrCache = require('../nodeCacheStuff/cache1')
 // import catapultResArrCache from "../nodeCacheStuff/cache1.js"
 
