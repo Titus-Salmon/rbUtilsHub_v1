@@ -2,7 +2,7 @@
 import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../components/dynamicTalbes/v_InventoryMasterQueryResults.svelte";
 import tableData from "../components/dynamicTalbes/tableStores/tableData1.js";
-import DkMdBtn from "./DkMdBtn.svelte"; //t0d
+import DkMdBtn from "../components/DkMdBtn.svelte"; //t0d
 
 let tsqlQueryText;
 
