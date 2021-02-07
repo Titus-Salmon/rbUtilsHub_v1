@@ -15,7 +15,7 @@ export async function post(req, res, next) {
 
     parseAsync(table_data, opts)
         .then(csv => console.log(`csv from saveToCSV==> ${csv}`))
-        .then(fs.writeFile(process.cwd() + '/public/csv-to-insert/' + req.body.data + '.csv', csv, function (err) {
+        .then(fs.writeFile(process.cwd() + '/static/csv/' + req.body.data + '.csv', csv, function (err) {
             if (err) throw err;
             console.log(`~~~~~>> ${req.body.data} saved<<~~~~~`)
         }))
