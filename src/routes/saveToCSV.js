@@ -14,7 +14,9 @@ export async function post(req, res, next) {
     // import catapultResArrCache from "../nodeCacheStuff/cache1.js"
 
     catapultResArrCacheValue = catapultResArrCache.take('catapultResArrCache_key') // this also deletes the key
-    let firstRowOfTableObj = catapultResArrCache['data']['catapultResArrCache_key']['v'][0]
+    // let firstRowOfTableObj = catapultResArrCache['data']['catapultResArrCache_key']['v'][0]
+    console.log(`catapultResArrCacheValue[0]==> ${catapultResArrCacheValue[0]}`)
+    let firstRowOfTableObj = catapultResArrCacheValue[0]
 
     //begin csv generator //////////////////////////////////////////////////////////////////////////
     const {
