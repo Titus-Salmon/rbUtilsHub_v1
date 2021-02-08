@@ -32,8 +32,6 @@ function vInvMasterQuery() {
       );
       tableData.set(queryResJSON); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
-      // queryResJSONArr.push(queryResJSON); //push table query results to array outside of this function, so the results
-      //can be used by saveToCSV()
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
@@ -53,9 +51,6 @@ function saveToCSV() {
     .then((saveToCSVresult) => saveToCSVresult.json())
     .then((saveToCSVresultJSON) => {
       console.log(
-        // `JSON.stringify(saveToCSVresultJSON[0])==> ${JSON.stringify(
-        //   saveToCSVresultJSON[0]
-        // )}`
         `JSON.stringify(saveToCSVresultJSON)==> ${JSON.stringify(
           saveToCSVresultJSON
         )}`

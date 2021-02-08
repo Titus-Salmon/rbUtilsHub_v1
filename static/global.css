@@ -35,6 +35,9 @@ textarea {
   background-color: black;
   color: lime;
 }
+p {
+  color: lime;
+}
 
 /*//v//LIGHT MODE CSS*********************************/
 nav.light-mode-nav {
@@ -65,6 +68,9 @@ tr.light-mode-tr {
 }
 tr.light-mode-tr:nth-child(even) {
   background-color: lightgray !important;
+}
+p.light-mode-p {
+  color: black;
 }
 /*//^//LIGHT MODE CSS*********************************/
 /* t0d */
