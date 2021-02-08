@@ -31,7 +31,7 @@ export async function post(req, res, next) {
         console.log(`csv.length from saveToCSV==>> ${csv.length}`);
         fs.writeFile(`${process.cwd()}/static/csv/${req.body.data}.csv`, csv, function (err) {
             if (err) throw err;
-            console.log(`~~~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved<<~~~~~`)
+            console.log(`===>> ${process.cwd()}/static/csv/${req.body.data}.csv saved<<===`)
         })
         res.json({
             "response from saveToCSV": `~~~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved<<~~~~~`
