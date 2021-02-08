@@ -55,8 +55,11 @@ function saveToCSV() {
     .then((saveToCSVresult) => saveToCSVresult.json())
     .then((saveToCSVresultJSON) => {
       console.log(
-        `JSON.stringify(saveToCSVresultJSON[0])==> ${JSON.stringify(
-          saveToCSVresultJSON[0]
+        // `JSON.stringify(saveToCSVresultJSON[0])==> ${JSON.stringify(
+        //   saveToCSVresultJSON[0]
+        // )}`
+        `JSON.stringify(saveToCSVresultJSON)==> ${JSON.stringify(
+          saveToCSVresultJSON
         )}`
       );
     });
