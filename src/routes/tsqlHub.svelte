@@ -101,7 +101,7 @@ function saveToCSV() {
   bind:this="{saveToCSVfilename}" />
 <button on:click="{saveToCSV}">saveToCSV</button>
 
-{#if saveToCSVresultJSON}
+{#if saveToCSVresultJSON !== undefined}
   <p>
     {Object.values(saveToCSVresultJSON)}
   </p>
