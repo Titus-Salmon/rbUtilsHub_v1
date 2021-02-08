@@ -6,9 +6,7 @@ import DkMdBtn from "../components/DkMdBtn.svelte"; //t0d
 
 let tsqlQueryText;
 let saveToCSVfilename;
-
-let queryResJSONArr = []; //this is to hold the entire JSON table data response outside the scope of the vInvMasterQuery
-//function, so the data can be accessible to the saveToCSV function, as well.
+let saveToCSVresponse;
 
 function vInvMasterQuery() {
   fetch("v_InventoryMasterQuery", {
@@ -62,6 +60,7 @@ function saveToCSV() {
           saveToCSVresultJSON
         )}`
       );
+      saveToCSVresponse = saveToCSVresultJSON;
     });
 }
 </script>
@@ -101,9 +100,9 @@ function saveToCSV() {
   bind:this="{saveToCSVfilename}" />
 <button on:click="{saveToCSV}">saveToCSV</button>
 
-{#if saveToCSVresultJSON !== undefined}
+{#if saveToCSVresponse !== undefined}
   <p>
-    {Object.values(saveToCSVresultJSON)}
+    {Object.values(saveToCSVresponse)}
   </p>
 {/if}
 
