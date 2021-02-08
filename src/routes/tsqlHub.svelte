@@ -101,4 +101,10 @@ function saveToCSV() {
   bind:this="{saveToCSVfilename}" />
 <button on:click="{saveToCSV}">saveToCSV</button>
 
+{#if saveToCSVresultJSON}
+  <p>
+    {Object.values(saveToCSVresultJSON)}
+  </p>
+{/if}
+
 <V_InventoryMasterQueryResultsTable />
