@@ -86,9 +86,9 @@ label.light-mode-label {
   color: black;
 }
 input.light-mode-input {
-  border-color: red;
-  background-color: black;
-  color: lime;
+  border-color: black;
+  background-color: lightgray;
+  color: black;
 }
 p.light-mode-p {
   color: black;
