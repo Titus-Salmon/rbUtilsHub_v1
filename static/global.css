@@ -35,6 +35,14 @@ textarea {
   background-color: black;
   color: lime;
 }
+label {
+  color: lime;
+}
+input {
+  border-color: red;
+  background-color: black;
+  color: lime;
+}
 p {
   color: lime;
 }
@@ -68,6 +76,19 @@ tr.light-mode-tr {
 }
 tr.light-mode-tr:nth-child(even) {
   background-color: lightgray !important;
+}
+textarea.light-mode-textarea {
+  border-color: black;
+  background-color: lightgray;
+  color: black;
+}
+label.light-mode-label {
+  color: black;
+}
+input.light-mode-input {
+  border-color: red;
+  background-color: black;
+  color: lime;
 }
 p.light-mode-p {
   color: black;

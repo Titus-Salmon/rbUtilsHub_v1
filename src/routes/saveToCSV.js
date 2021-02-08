@@ -8,7 +8,6 @@ export async function post(req, res, next) {
     console.log(`hello from within the async function of saveToCSV.js`)
 
     catapultResArrCacheValue = catapultResArrCache.take('catapultResArrCache_key') // this also deletes the key
-    // let firstRowOfTableObj = catapultResArrCache['data']['catapultResArrCache_key']['v'][0]
     console.log(`catapultResArrCacheValue[0]==> ${catapultResArrCacheValue[0]}`)
     let firstRowOfTableObj = catapultResArrCacheValue[0]
 

@@ -41,6 +41,21 @@ function darkModeToggle() {
     allDocButtonElems[i].classList.toggle("light-mode-button");
   }
 
+  var allDocTextAreaElems = window.document.getElementsByTagName("textarea");
+  for (let i = 0; i < allDocTextAreaElems.length; i++) {
+    allDocTextAreaElems[i].classList.toggle("light-mode-textarea");
+  }
+
+  var allDocLabelElems = window.document.getElementsByTagName("label");
+  for (let i = 0; i < allDocLabelElems.length; i++) {
+    allDocLabelElems[i].classList.toggle("light-mode-label");
+  }
+
+  var allDocInputElems = window.document.getElementsByTagName("input");
+  for (let i = 0; i < allDocInputElems.length; i++) {
+    allDocInputElems[i].classList.toggle("light-mode-input");
+  }
+
   var allDocPElems = window.document.getElementsByTagName("p");
   for (let i = 0; i < allDocPElems.length; i++) {
     allDocPElems[i].classList.toggle("light-mode-p");
