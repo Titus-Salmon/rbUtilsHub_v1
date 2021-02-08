@@ -34,7 +34,7 @@ export async function post(req, res, next) {
             console.log(`~~~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved<<~~~~~`)
         })
         res.json({
-            "response from saveToCSV": "apparently this could be anything"
+            "response from saveToCSV": `~~~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved<<~~~~~`
         })
     } catch (err) {
         console.error(err);

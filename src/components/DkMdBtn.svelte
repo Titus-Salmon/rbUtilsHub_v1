@@ -40,6 +40,11 @@ function darkModeToggle() {
   for (let i = 0; i < allDocButtonElems.length; i++) {
     allDocButtonElems[i].classList.toggle("light-mode-button");
   }
+
+  var allDocPElems = window.document.getElementsByTagName("p");
+  for (let i = 0; i < allDocPElems.length; i++) {
+    allDocPElems[i].classList.toggle("light-mode-p");
+  }
 }
 </script>
 
