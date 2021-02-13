@@ -6,11 +6,13 @@ function darkModeToggle() {
   // if (localStorage.getItem("colorScheme") !== null) {
   //   localStorage.removeItem("colorScheme");
   // }
-  clickCount += 1;
+  // clickCount += 1;
   console.log(`clickCount from INSIDE darkModeToggle()==> ${clickCount}`);
   clickCount % 2 !== 0 //clickCount "odd" condition
     ? localStorage.setItem("colorScheme", "lightMode")
     : localStorage.setItem("colorScheme", "darkMode");
+
+  clickCount += 1;
 
   console.log(
     `JSON.stringify(localStorage)==> ${JSON.stringify(localStorage)}`
