@@ -1,11 +1,15 @@
 <script>
 let clickCount = 0;
+if (localStorage.getItem("colorScheme") !== null) {
+  localStorage.removeItem("colorScheme");
+}
+localStorage.setItem("colorScheme", "darkMode");
 function darkModeToggle() {
   //v//don't really need this for now, but putting color scheme designation on click into localStorage may be useful at some point
-  if (localStorage.getItem("colorScheme") !== null) {
-    localStorage.removeItem("colorScheme");
-  }
-  localStorage.setItem("colorScheme", "darkMode");
+  // if (localStorage.getItem("colorScheme") !== null) {
+  //   localStorage.removeItem("colorScheme");
+  // }
+  // localStorage.setItem("colorScheme", "darkMode");
   clickCount += 1;
   clickCount % 2 !== 0 //clickCount "odd" condition
     ? localStorage.setItem("colorScheme", "lightMode")
