@@ -52,7 +52,7 @@ a {
     <li>
       <a
         aria-current="{segment === 'tsqlHub' ? 'page' : undefined}"
-        href="tsqlHub">tsqlHub</a>
+        href="/pages/tsqlHub">tsqlHub</a>
     </li>
   </ul>
 </nav>
