@@ -1,15 +1,15 @@
 <script>
 import { onMount } from "svelte";
-import V_InventoryMasterQueryResultsTable from "../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
-import tableData from "../../stores/dynamicTables/tableData1.js";
-import DkMdBtn from "../../components/UI/DkMdBtn.svelte"; //t0d
+import V_InventoryMasterQueryResultsTable from "../../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
+import tableData from "../../../stores/dynamicTables/tableData1.js";
+import DkMdBtn from "../../../components/UI/DkMdBtn.svelte"; //t0d
 
 let tsqlQueryText;
 let saveToCSVfilename;
 let saveToCSVresponse;
 
 function vInvMasterQuery() {
-  fetch("server_routes/v_InventoryMasterQuery", {
+  fetch("server_routes/rt_T-SQL/v_InventoryMasterQuery", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -39,7 +39,7 @@ function vInvMasterQuery() {
 }
 
 function saveToCSV() {
-  fetch("saveToCSV", {
+  fetch("server_routes/saveToCSV", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
