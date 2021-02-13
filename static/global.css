@@ -4,125 +4,78 @@
   --surface1: black;
   --surface2: #1e1e2f;
   --surface3: gray;
+  --surface4: #0084f6;
   --element1: lime;
   --element2: #cc8500;
   --element3: pink;
   --element4: red;
+  --element5: white;
 }
 
 :root[color-mode="light"] {
   --surface1: gray;
   --surface2: lightgray;
   --surface3: white;
+  --surface4: #cc8500;
   --element1: black;
   --element2: black;
   --element3: black;
   --element4: black;
+  --element5: black;
 }
 
 nav {
-  background-color: black;
-  color: pink;
+  background-color: var(--surface1);
+  color: var(--element3);
 }
 body {
-  background-color: black;
+  background-color: var(--surface1);
 }
 main {
-  background-color: black;
+  background-color: var(--surface1);
 }
 button {
-  background-color: #0084f6;
-  color: white;
+  background-color: var(--surface4);
+  color: var(--element5);
   border: none;
   border-radius: 4px;
   padding: 0.5rem;
   /* text-transform: uppercase; */
 }
 th {
-  background-color: black;
-  color: #cc8500;
+  background-color: var(--surface1);
+  color: var(--element2);
 }
 tr {
-  background-color: black;
-  color: lime;
+  background-color: var(--surface1);
+  color: var(--element1);
 }
 tr:nth-child(even) {
   /* not quite black to alternate with pure black */
-  background-color: #1e1e2f !important;
+  background-color: var(--surface2) !important;
   /* not quite black to alternate with pure black */
 }
 textarea {
-  border-color: red;
-  background-color: black;
-  color: lime;
+  border-color: var(--element4);
+  background-color: var(--surface1);
+  color: var(--element1);
 }
 label {
-  color: lime;
+  color: var(--element1);
 }
 input {
-  border-color: red;
-  background-color: black;
-  color: lime;
+  border-color: var(--element4);
+  background-color: var(--surface1);
+  color: var(element1);
 }
 p {
-  color: lime;
+  color: var(element1);
 }
 a {
-  background-color: black;
-  color: lime;
+  background-color: var(--surface1);
+  color: var(--element1);
 }
 
-/*//v//LIGHT MODE CSS*********************************/
-nav.light-mode-nav {
-  background-color: gray;
-  color: black;
-}
-main.light-mode-main {
-  background-color: gray;
-}
-body.light-mode-body {
-  background-color: gray;
-}
-button.light-mode-button {
-  background-color: #f76027;
-  color: black;
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem;
-  /* text-transform: uppercase; */
-}
-th.light-mode-th {
-  background-color: lightgray;
-  color: black;
-}
-tr.light-mode-tr {
-  background-color: gray;
-  color: black;
-}
-tr.light-mode-tr:nth-child(even) {
-  background-color: lightgray !important;
-}
-textarea.light-mode-textarea {
-  border-color: black;
-  background-color: lightgray;
-  color: black;
-}
-label.light-mode-label {
-  color: black;
-}
-input.light-mode-input {
-  border-color: black;
-  background-color: lightgray;
-  color: black;
-}
-p.light-mode-p {
-  color: black;
-}
-a.light-mode-a {
-  background-color: gray;
-  color: black;
-}
-/*//^//LIGHT MODE CSS*********************************/
 /* t0d */
 
 body {

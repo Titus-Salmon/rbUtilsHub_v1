@@ -21,9 +21,9 @@ function darkModeToggle() {
   //^//don't really need this for now, but putting color scheme designation on click into localStorage may be useful at some point
 
   if (localStorage["colorScheme"] == "darkMode") {
-    document.documentElement.setItem("color-mode", "dark");
+    window.document.documentElement.setItem("color-mode", "dark");
   } else {
-    document.documentElement.setItem("color-mode", "light");
+    window.document.documentElement.setItem("color-mode", "light");
   }
 
   // var allDocNavElems = window.document.getElementsByTagName("nav");
