@@ -23,7 +23,7 @@ function darkModeToggle() {
   if (localStorage["colorScheme"] == "darkMode") {
     document.documentElement.setItem("color-mode", "dark");
   } else {
-    document.documentElement.setItem("color-mode", "dark");
+    document.documentElement.setItem("color-mode", "light");
   }
 
   // var allDocNavElems = window.document.getElementsByTagName("nav");
