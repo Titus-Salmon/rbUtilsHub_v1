@@ -9,8 +9,8 @@ function darkModeToggle() {
   console.log(
     `JSON.stringify(localStorage1)==> ${JSON.stringify(localStorage)}`
   );
-  if (!localStorage.getItem("clickCounter")) {
-    localStorage["clickCounter"] = 1;
+  if (localStorage.getItem("clickCounter") == 0) {
+    localStorage["clickCounter"] += 1;
     // localStorage.setItem("clickCounter", parseInt(1));
   } else {
     // localStorage["clickCounter"] = parseInt(localStorage["clickCounter"]) + 1;
