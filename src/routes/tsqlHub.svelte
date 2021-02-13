@@ -9,7 +9,7 @@ let saveToCSVfilename;
 let saveToCSVresponse;
 
 function vInvMasterQuery() {
-  fetch("v_InventoryMasterQuery", {
+  this.fetch("../controllers/v_InventoryMasterQuery", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
