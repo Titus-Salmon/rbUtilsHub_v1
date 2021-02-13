@@ -6,13 +6,11 @@ function darkModeToggle() {
   // if (localStorage.getItem("colorScheme") !== null) {
   //   localStorage.removeItem("colorScheme");
   // }
-  // clickCount += 1;
+  clickCount += 1;
   console.log(`clickCount from INSIDE darkModeToggle()==> ${clickCount}`);
   clickCount % 2 !== 0 //clickCount "odd" condition
     ? localStorage.setItem("colorScheme", "lightMode")
     : localStorage.setItem("colorScheme", "darkMode");
-
-  clickCount += 1;
 
   console.log(
     `JSON.stringify(localStorage)==> ${JSON.stringify(localStorage)}`
@@ -24,11 +22,16 @@ function darkModeToggle() {
   );
   //^//don't really need this for now, but putting color scheme designation on click into localStorage may be useful at some point
 
-  if (localStorage["colorScheme"] == "darkMode") {
-    window.document.documentElement.setAttribute("color-mode", "dark");
-  } else {
-    window.document.documentElement.setAttribute("color-mode", "light");
+  if (localStorage["colorScheme"] == "lightMode") {
+    return window.document.documentElement.setAttribute("color-mode", "light");
   }
+  window.document.documentElement.setAttribute("color-mode", "dark");
+
+  // if (localStorage["colorScheme"] == "darkMode") {
+  //   window.document.documentElement.setAttribute("color-mode", "dark");
+  // } else {
+  //   window.document.documentElement.setAttribute("color-mode", "light");
+  // }
 
   // var allDocNavElems = window.document.getElementsByTagName("nav");
   // for (let i = 0; i < allDocNavElems.length; i++) {
