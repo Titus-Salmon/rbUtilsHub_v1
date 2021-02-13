@@ -1,5 +1,5 @@
 <script>
-let clickCount = 0;
+let clickCount;
 console.log(`clickCount from outside darkModeToggle()==> ${clickCount}`);
 function darkModeToggle() {
   //v//don't really need this for now, but putting color scheme designation on click into localStorage may be useful at some point
