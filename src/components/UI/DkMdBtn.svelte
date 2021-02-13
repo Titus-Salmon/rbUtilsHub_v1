@@ -5,6 +5,7 @@ function darkModeToggle() {
   if (localStorage.getItem("colorScheme") !== null) {
     localStorage.removeItem("colorScheme");
   }
+  localStorage.setItem("colorScheme", "darkMode");
   clickCount += 1;
   clickCount % 2 !== 0 //clickCount "odd" condition
     ? localStorage.setItem("colorScheme", "lightMode")
