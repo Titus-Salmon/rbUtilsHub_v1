@@ -1,45 +1,16 @@
 <script>
-// let clickCount;
-// console.log(`clickCount from outside darkModeToggle()==> ${clickCount}`);
 function darkModeToggle() {
-  //v//don't really need this for now, but putting color scheme designation on click into localStorage may be useful at some point
-  // if (localStorage.getItem("colorScheme") !== null) {
-  //   localStorage.removeItem("colorScheme");
-  // }
-  console.log(
-    `JSON.stringify(localStorage1)==> ${JSON.stringify(localStorage)}`
-  );
   if (localStorage.getItem("clickCounter") == 0) {
+    //this is kind of an odd bird, because it concatenates the result after adding 1
+    //to produce 01, instead of 1, but it works. Maybe something to spend some time on down the road, but the way it's currently written
+    //is kind of cool.
     localStorage["clickCounter"] += 1;
-    // localStorage.setItem("clickCounter", parseInt(1));
   } else {
-    // localStorage["clickCounter"] = parseInt(localStorage["clickCounter"]) + 1;
     localStorage["clickCounter"] = 0;
   }
-
-  console.log(
-    `localStorage["clickCounter"]==> ${localStorage["clickCounter"]}`
-  );
-
   localStorage["clickCounter"] % 2 !== 0 //clickCount "odd" condition
     ? localStorage.setItem("colorScheme", "lightMode")
     : localStorage.setItem("colorScheme", "darkMode");
-
-  // clickCount += 1;
-  // console.log(`clickCount from INSIDE darkModeToggle()==> ${clickCount}`);
-  // clickCount % 2 !== 0 //clickCount "odd" condition
-  //   ? localStorage.setItem("colorScheme", "lightMode")
-  //   : localStorage.setItem("colorScheme", "darkMode");
-
-  console.log(
-    `JSON.stringify(localStorage)==> ${JSON.stringify(localStorage)}`
-  );
-  console.log(
-    `JSON.stringify(localStorage['colorScheme'])==> ${JSON.stringify(
-      localStorage["colorScheme"]
-    )}`
-  );
-  //^//don't really need this for now, but putting color scheme designation on click into localStorage may be useful at some point
 
   if (localStorage["colorScheme"] == "lightMode") {
     return window.document.documentElement.setAttribute("color-mode", "light");

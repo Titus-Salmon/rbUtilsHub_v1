@@ -14,9 +14,9 @@
 
 :root[color-mode="light"] {
   --surface1: gray;
-  --surface2: lightgray;
-  --surface3: white;
-  --surface4: #cc8500;
+  --surface2: #999999;
+  --surface3: lightgray;
+  --surface4: orange;
   --element1: black;
   --element2: black;
   --element3: black;
