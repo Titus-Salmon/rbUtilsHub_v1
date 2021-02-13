@@ -39,7 +39,7 @@ function vInvMasterQuery() {
 }
 
 function saveToCSV() {
-  fetch("server_routes/saveToCSV", {
+  fetch("server_routes/rt_T-SQL/saveToCSV", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
