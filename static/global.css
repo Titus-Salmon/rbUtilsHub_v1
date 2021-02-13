@@ -46,6 +46,10 @@ input {
 p {
   color: lime;
 }
+a {
+  background-color: black;
+  color: lime;
+}
 
 /*//v//LIGHT MODE CSS*********************************/
 nav.light-mode-nav {
@@ -91,6 +95,10 @@ input.light-mode-input {
   color: black;
 }
 p.light-mode-p {
+  color: black;
+}
+a.light-mode-a {
+  background-color: gray;
   color: black;
 }
 /*//^//LIGHT MODE CSS*********************************/
