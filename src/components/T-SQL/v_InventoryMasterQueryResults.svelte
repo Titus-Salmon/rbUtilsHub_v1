@@ -1,5 +1,5 @@
 <script>
-import tableData from "../dynamicTalbes/tableStores/tableData1.js";
+import tableData from "../../stores/dynamicTables/tableData1.js";
 let table_data;
 tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
 console.log(
