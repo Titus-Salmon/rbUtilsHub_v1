@@ -9,7 +9,7 @@ function darkModeToggle() {
   if (!localStorage.getItem("clickCounter")) {
     localStorage.setItem("clickCounter", 1);
   } else {
-    localStorage["clickCounter"] = localStorage["clickCounter"] + 1;
+    localStorage["clickCounter"] = parseInt(localStorage["clickCounter"]) + 1;
   }
 
   console.log(
