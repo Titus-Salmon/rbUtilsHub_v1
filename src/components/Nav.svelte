@@ -49,10 +49,20 @@ a {
       <a aria-current="{segment === undefined ? 'page' : undefined}" href="."
         >index</a>
     </li>
-    <li>
+    <!-- <li>
       <a
         aria-current="{segment === 'tsqlHub' ? 'page' : undefined}"
         href="/pages/pg_T-SQL/tsqlHub">tsqlHub</a>
+    </li> -->
+    <li>
+      <a
+        aria-current="{segment === 'toDo' ? 'page' : undefined}"
+        href="/pages/pg_toDo/toDo">toDo</a>
+    </li>
+    <li>
+      <a
+        aria-current="{segment === 'notes' ? 'page' : undefined}"
+        href="/pages/pg_notes/notes">notes</a>
     </li>
   </ul>
 </nav>
