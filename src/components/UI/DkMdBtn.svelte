@@ -10,7 +10,8 @@ function darkModeToggle() {
     localStorage["clickCounter"] = 1;
     // localStorage.setItem("clickCounter", parseInt(1));
   } else {
-    localStorage["clickCounter"] = parseInt(localStorage["clickCounter"]) + 1;
+    // localStorage["clickCounter"] = parseInt(localStorage["clickCounter"]) + 1;
+    localStorage["clickCounter"] = 0;
   }
 
   console.log(
