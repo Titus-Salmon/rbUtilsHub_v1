@@ -1,5 +1,5 @@
 <script>
-import DkMdBtn from "../components/DkMdBtn.svelte"; //t0d
+import DkMdBtn from "../components/UI/DkMdBtn.svelte"; //t0d
 </script>
 
 <style>
