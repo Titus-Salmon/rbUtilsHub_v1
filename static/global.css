@@ -131,9 +131,9 @@ h1 {
   font-size: 2em;
 }
 
-a {
+/* a {
   color: inherit;
-}
+} */
 
 code {
   font-family: menlo, inconsolata, monospace;
