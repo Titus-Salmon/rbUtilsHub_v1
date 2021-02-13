@@ -1,16 +1,30 @@
 <script>
-let clickCount;
-console.log(`clickCount from outside darkModeToggle()==> ${clickCount}`);
+// let clickCount;
+// console.log(`clickCount from outside darkModeToggle()==> ${clickCount}`);
 function darkModeToggle() {
   //v//don't really need this for now, but putting color scheme designation on click into localStorage may be useful at some point
   // if (localStorage.getItem("colorScheme") !== null) {
   //   localStorage.removeItem("colorScheme");
   // }
-  clickCount += 1;
-  console.log(`clickCount from INSIDE darkModeToggle()==> ${clickCount}`);
-  clickCount % 2 !== 0 //clickCount "odd" condition
+  if (!localStorage.getItem("clickCounter")) {
+    localStorage.setItem("clickCounter", 1);
+  } else {
+    localStorage["clickCounter"] = localStorage["clickCounter"] + 1;
+  }
+
+  console.log(
+    `localStorage["clickCounter"]==> ${localStorage["clickCounter"]}`
+  );
+
+  localStorage["clickCounter"] % 2 !== 0 //clickCount "odd" condition
     ? localStorage.setItem("colorScheme", "lightMode")
     : localStorage.setItem("colorScheme", "darkMode");
+
+  // clickCount += 1;
+  // console.log(`clickCount from INSIDE darkModeToggle()==> ${clickCount}`);
+  // clickCount % 2 !== 0 //clickCount "odd" condition
+  //   ? localStorage.setItem("colorScheme", "lightMode")
+  //   : localStorage.setItem("colorScheme", "darkMode");
 
   console.log(
     `JSON.stringify(localStorage)==> ${JSON.stringify(localStorage)}`
