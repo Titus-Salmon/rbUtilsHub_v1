@@ -10,7 +10,9 @@ function darkModeToggle() {
     ? localStorage.setItem("colorScheme", "darkMode")
     : localStorage.setItem("colorScheme", "lightMode");
 
-  console.log(`localStorage==> ${localStorage}`);
+  console.log(
+    `JSON.stringify(localStorage)==> ${JSON.stringify(localStorage)}`
+  );
   //^//don't really need this for now, but putting color scheme designation on click into localStorage may be useful at some point
 
   var allDocNavElems = window.document.getElementsByTagName("nav");
