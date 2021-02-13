@@ -1,4 +1,25 @@
 /* t0d */
+
+:root[color-mode="dark"] {
+  --surface1: black;
+  --surface2: #1e1e2f;
+  --surface3: gray;
+  --element1: lime;
+  --element2: #cc8500;
+  --element3: pink;
+  --element4: red;
+}
+
+:root[color-mode="light"] {
+  --surface1: gray;
+  --surface2: lightgray;
+  --surface3: white;
+  --element1: black;
+  --element2: black;
+  --element3: black;
+  --element4: black;
+}
+
 nav {
   background-color: black;
   color: pink;
