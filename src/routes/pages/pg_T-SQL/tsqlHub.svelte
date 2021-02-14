@@ -6,12 +6,6 @@ import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 import table_data from "../../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
 // import Modal1 from "../../../components/UI/Modal1.svelte";
 
-console.log(
-  `Object.keys(table_data[0]) from outside1 vInvMasterQuery()==> ${Object.keys(
-    table_data[0]
-  )}`
-);
-
 let tsqlQueryText;
 let saveToCSVfilename;
 let saveToCSVresponse;
