@@ -6,7 +6,7 @@ import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 
 let tsqlQueryText;
 
-let saveToCSVfilename;
+let saveToCSVfileName;
 let saveToCSVresponse;
 
 let save2CSVcreatePopFileName;
@@ -59,7 +59,7 @@ function saveToCSV() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      data: saveToCSVfilename.value,
+      data: saveToCSVfileName.value,
     }),
   })
     .then((saveToCSVresult) => saveToCSVresult.json())
@@ -109,7 +109,7 @@ function saveToCSV() {
           type="text"
           id="saveToCSV"
           name="saveToCSV"
-          bind:this="{saveToCSVfilename}" />
+          bind:this="{saveToCSVfileName}" />
       </div>
       <div style="text-align:center">
         <button on:click="{saveToCSV}">saveToCSV</button>
