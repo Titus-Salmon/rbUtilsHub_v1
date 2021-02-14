@@ -95,62 +95,62 @@ function saveToCSV() {
 {#if Object.keys($tableData).length > 1}
   <div class="flexbox">
     <div>
-      <div style="display: block">
+      <div style="text-align:center">
         <label for="saveToCSV">File Name</label>
       </div>
-      <div style="display: block">
+      <div style="text-align:center">
         <input
           type="text"
           id="saveToCSV"
           name="saveToCSV"
           bind:this="{saveToCSVfilename}" />
       </div>
-      <div style="display: block">
+      <div style="text-align:center">
         <button on:click="{saveToCSV}">saveToCSV</button>
       </div>
     </div>
     <div>
-      <div style="display: block">
+      <div style="text-align:center">
         <label for="saveToCSV">File Name</label>
       </div>
-      <div style="display: block">
+      <div style="text-align:center">
         <input
           type="text"
           id="saveToCSV"
           name="saveToCSV"
           bind:this="{saveToCSVfilename}" />
       </div>
-      <div style="display: block">
+      <div style="text-align:center">
         <button on:click="{saveToCSV}">saveToCSV</button>
       </div>
     </div>
     <div>
-      <div style="display: block">
+      <div style="text-align:center">
         <label for="saveToCSV">File Name</label>
       </div>
-      <div style="display: block">
+      <div style="text-align:center">
         <input
           type="text"
           id="saveToCSV"
           name="saveToCSV"
           bind:this="{saveToCSVfilename}" />
       </div>
-      <div style="display: block">
+      <div style="text-align:center">
         <button on:click="{saveToCSV}">saveToCSV</button>
       </div>
     </div>
     <div>
-      <div style="display: block">
+      <div style="text-align:center">
         <label for="saveToCSV">File Name</label>
       </div>
-      <div style="display: block">
+      <div style="text-align:center">
         <input
           type="text"
           id="saveToCSV"
           name="saveToCSV"
           bind:this="{saveToCSVfilename}" />
       </div>
-      <div style="display: block">
+      <div style="text-align:center">
         <button on:click="{saveToCSV}">saveToCSV</button>
       </div>
     </div>
