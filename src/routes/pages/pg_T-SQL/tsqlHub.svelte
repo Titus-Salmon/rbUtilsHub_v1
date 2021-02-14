@@ -9,6 +9,7 @@ import table_data from "../../../components/T-SQL/v_InventoryMasterQueryResults.
 console.log(
   `table_data.length from outside vInvMasterQuery()==> ${table_data.length}`
 );
+console.log(`table_data[0] from outside vInvMasterQuery()==> ${table_data[0]}`);
 
 let tsqlQueryText;
 let saveToCSVfilename;
@@ -47,8 +48,13 @@ function vInvMasterQuery() {
     .then((queryResJSON) => {
       tableData.set(queryResJSON); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
+    })
+    .then(() => {
       console.log(
         `table_data.length from INSIDE vInvMasterQuery()==> ${table_data.length}`
+      );
+      console.log(
+        `table_data[0] from INSIDE vInvMasterQuery()==> ${table_data[0]}`
       );
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
