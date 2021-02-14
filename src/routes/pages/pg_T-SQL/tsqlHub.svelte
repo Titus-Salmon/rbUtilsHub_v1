@@ -5,8 +5,13 @@ import tableData from "../../../stores/dynamicTables/tableData1.js";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 
 let tsqlQueryText;
+
 let saveToCSVfilename;
 let saveToCSVresponse;
+
+let save2CSVcreatePopFileName;
+let save2CSVcreatePopFileNameResponse;
+
 let queryText = `
 SELECT 
 INV_PK, INV_CPK, INV_ScanCode, ORD_SupplierStockNumber, INV_Name, INV_Size, INV_ReceiptAlias, inv_default, convert(varchar(10), 
@@ -94,6 +99,7 @@ function saveToCSV() {
 <!--v-- NOTE: you must use the $ to access the tableData store -->
 {#if Object.keys($tableData).length > 1}
   <div class="flexbox">
+    <!--v-- ***saveToCSV*********************************************************** -->
     <div>
       <div style="text-align:center">
         <label for="saveToCSV">File Name</label>
@@ -109,51 +115,49 @@ function saveToCSV() {
         <button on:click="{saveToCSV}">saveToCSV</button>
       </div>
     </div>
+    <!--v-- ***save2CSVcreatePop*********************************************************** -->
     <div>
       <div style="text-align:center">
-        <label for="saveToCSV">File Name</label>
+        <label for="save2CSVcreatePopFileName">File Name</label>
       </div>
       <div style="text-align:center">
         <input
           type="text"
-          id="saveToCSV"
-          name="saveToCSV"
-          bind:this="{saveToCSVfilename}" />
+          id="save2CSVcreatePopFileName"
+          name="save2CSVcreatePopFileName"
+          bind:this="{save2CSVcreatePopFileName}" />
       </div>
       <div style="text-align:center">
-        <button on:click="{saveToCSV}">saveToCSV</button>
-      </div>
-    </div>
-    <div>
-      <div style="text-align:center">
-        <label for="saveToCSV">File Name</label>
+        <label for="save2CSVcreatePopTableName">Table Name</label>
       </div>
       <div style="text-align:center">
         <input
           type="text"
-          id="saveToCSV"
-          name="saveToCSV"
-          bind:this="{saveToCSVfilename}" />
+          id="save2CSVcreatePopTableName"
+          name="save2CSVcreatePopTableName"
+          bind:this="{save2CSVcreatePopTableName}" />
       </div>
       <div style="text-align:center">
-        <button on:click="{saveToCSV}">saveToCSV</button>
+        <button on:click="{save2CSVcreatePop}">save2CSVcreatePop</button>
       </div>
     </div>
+    <!--v-- ***saveToXLSX*********************************************************** -->
     <div>
       <div style="text-align:center">
-        <label for="saveToCSV">File Name</label>
+        <label for="saveToXLSX">File Name</label>
       </div>
       <div style="text-align:center">
         <input
           type="text"
-          id="saveToCSV"
-          name="saveToCSV"
-          bind:this="{saveToCSVfilename}" />
+          id="saveToXLSX"
+          name="saveToXLSX"
+          bind:this="{saveToXLSXfileName}" />
       </div>
       <div style="text-align:center">
-        <button on:click="{saveToCSV}">saveToCSV</button>
+        <button on:click="{saveToXLSX}">saveToXLSX</button>
       </div>
     </div>
+    <!-- ************************************************************** -->
   </div>
 {/if}
 <!--^-- only show inputs & buttons here if tableData store has been populated with query results -->
