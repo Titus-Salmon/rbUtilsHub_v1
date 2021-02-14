@@ -82,8 +82,8 @@ function saveToCSV() {
   <textarea
     id="tsqlQueryText"
     name="tblQryPost"
-    cols="500"
-    rows="11"
+    cols="150"
+    rows="15"
     wrap="soft"
     bind:this="{tsqlQueryText}">
     {queryText}
