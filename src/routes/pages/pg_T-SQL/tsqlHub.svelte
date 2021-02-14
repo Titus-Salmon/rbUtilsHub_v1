@@ -6,6 +6,16 @@ import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 // import Modal1 from "../../../components/UI/Modal1.svelte";
 
 console.log(`$tableData from outside vInvMasterQuery()==> ${$tableData}`);
+console.log(
+  `Object.keys($tableData) from outside vInvMasterQuery()==> ${Object.keys(
+    $tableData
+  )}`
+);
+console.log(
+  `JSON.stringify($tableData) from outside vInvMasterQuery()==> ${JSON.stringify(
+    $tableData
+  )}`
+);
 
 let tsqlQueryText;
 let saveToCSVfilename;
@@ -47,6 +57,16 @@ function vInvMasterQuery() {
     })
     .then(() => {
       console.log(`$tableData from inside vInvMasterQuery()==> ${$tableData}`);
+      console.log(
+        `Object.keys($tableData) from inside vInvMasterQuery()==> ${Object.keys(
+          $tableData
+        )}`
+      );
+      console.log(
+        `JSON.stringify($tableData) from inside vInvMasterQuery()==> ${JSON.stringify(
+          $tableData
+        )}`
+      );
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
