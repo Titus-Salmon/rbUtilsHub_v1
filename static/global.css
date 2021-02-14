@@ -56,7 +56,7 @@ tr:nth-child(even) {
   /* not quite black to alternate with pure black */
 }
 textarea {
-  border-color: var(--element4);
+  border-color: var(--element2);
   background-color: var(--surface1);
   color: var(--element1);
 }

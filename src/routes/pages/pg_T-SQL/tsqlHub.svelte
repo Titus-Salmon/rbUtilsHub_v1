@@ -7,9 +7,7 @@ import table_data from "../../../components/T-SQL/v_InventoryMasterQueryResults.
 // import Modal1 from "../../../components/UI/Modal1.svelte";
 
 console.log(
-  `JSON.stringify(table_data) from outside vInvMasterQuery()==> ${JSON.stringify(
-    table_data
-  )}`
+  `table_data.length from outside vInvMasterQuery()==> ${table_data.length}`
 );
 
 let tsqlQueryText;
@@ -50,9 +48,7 @@ function vInvMasterQuery() {
       tableData.set(queryResJSON); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
       console.log(
-        `JSON.stringify(table_data) from INSIDE vInvMasterQuery()==> ${JSON.stringify(
-          table_data
-        )}`
+        `table_data.length from INSIDE vInvMasterQuery()==> ${table_data.length}`
       );
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
