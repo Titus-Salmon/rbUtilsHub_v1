@@ -3,24 +3,6 @@ import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
 import tableData from "../../../stores/dynamicTables/tableData1.js";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
-// import Modal1 from "../../../components/UI/Modal1.svelte";
-
-console.log(`$tableData from outside vInvMasterQuery()==> ${$tableData}`);
-console.log(
-  `Object.keys($tableData) from outside vInvMasterQuery()==> ${Object.keys(
-    $tableData
-  )}`
-);
-console.log(
-  `Object.keys($tableData).length from outside vInvMasterQuery()==> ${
-    Object.keys($tableData).length
-  }`
-);
-console.log(
-  `JSON.stringify($tableData) from outside vInvMasterQuery()==> ${JSON.stringify(
-    $tableData
-  )}`
-);
 
 let tsqlQueryText;
 let saveToCSVfilename;
@@ -59,24 +41,6 @@ function vInvMasterQuery() {
     .then((queryResJSON) => {
       tableData.set(queryResJSON); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
-    })
-    .then(() => {
-      console.log(`$tableData from inside vInvMasterQuery()==> ${$tableData}`);
-      console.log(
-        `Object.keys($tableData) from inside vInvMasterQuery()==> ${Object.keys(
-          $tableData
-        )}`
-      );
-      console.log(
-        `Object.keys($tableData).length from inside vInvMasterQuery()==> ${
-          Object.keys($tableData).length
-        }`
-      );
-      console.log(
-        `JSON.stringify($tableData) from inside vInvMasterQuery()==> ${JSON.stringify(
-          $tableData
-        )}`
-      );
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
@@ -127,16 +91,42 @@ function saveToCSV() {
   >vInvMasterQuery</button>
 
 <!--v-- only show inputs & buttons here if tableData store has been populated with query results -->
+<!--v-- NOTE: you must use the $ to access the tableData store -->
 {#if Object.keys($tableData).length > 1}
-  <label for="saveToCSV">File Name</label>
-  <input
-    style="display:block; margin: 0 auto"
-    type="text"
-    id="saveToCSV"
-    name="saveToCSV"
-    bind:this="{saveToCSVfilename}" />
-  <button style="display:block; margin: 1rem auto" on:click="{saveToCSV}"
-    >saveToCSV</button>
+  <div style="display:block; margin: 0 auto">
+    <label for="saveToCSV">File Name</label>
+    <input
+      style="margin: 0 auto"
+      type="text"
+      id="saveToCSV"
+      name="saveToCSV"
+      bind:this="{saveToCSVfilename}" />
+    <button style="margin: 1rem auto" on:click="{saveToCSV}">saveToCSV</button>
+    <label for="saveToCSV">File Name</label>
+    <input
+      style="margin: 0 auto"
+      type="text"
+      id="saveToCSV"
+      name="saveToCSV"
+      bind:this="{saveToCSVfilename}" />
+    <button style="margin: 1rem auto" on:click="{saveToCSV}">saveToCSV</button>
+    <label for="saveToCSV">File Name</label>
+    <input
+      style="margin: 0 auto"
+      type="text"
+      id="saveToCSV"
+      name="saveToCSV"
+      bind:this="{saveToCSVfilename}" />
+    <button style="margin: 1rem auto" on:click="{saveToCSV}">saveToCSV</button>
+    <label for="saveToCSV">File Name</label>
+    <input
+      style="margin: 0 auto"
+      type="text"
+      id="saveToCSV"
+      name="saveToCSV"
+      bind:this="{saveToCSVfilename}" />
+    <button style="margin: 1rem auto" on:click="{saveToCSV}">saveToCSV</button>
+  </div>
 {/if}
 <!--^-- only show inputs & buttons here if tableData store has been populated with query results -->
 
