@@ -10,6 +10,11 @@ console.log(
     tableData
   )}`
 );
+console.log(
+  `Object.keys(tableData).length from outside vInvMasterQuery()==> ${
+    Object.keys(tableData).length
+  })`
+);
 
 let tsqlQueryText;
 let saveToCSVfilename;
@@ -46,15 +51,12 @@ function vInvMasterQuery() {
     //from the backend as JSON
 
     .then((queryResJSON) => {
-      console.log(
-        `JSON.stringify(queryResJSON[0])==> ${JSON.stringify(queryResJSON[0])}`
-      );
       tableData.set(queryResJSON); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
       console.log(
-        `JSON.stringify(tableData) from INSIDE vInvMasterQuery()==> ${JSON.stringify(
-          tableData
-        )}`
+        `Object.keys(tableData).length from INSIDE vInvMasterQuery()==> ${
+          Object.keys(tableData).length
+        })`
       );
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
@@ -102,9 +104,8 @@ function saveToCSV() {
   </textarea>
 </div>
 
-<button
-  style="display:block; margin: 0 auto; padding: 1rem"
-  on:click="{vInvMasterQuery}">vInvMasterQuery</button>
+<button style="display:block; margin: 1rem auto" on:click="{vInvMasterQuery}"
+  >vInvMasterQuery</button>
 
 <label for="saveToCSV">File Name</label>
 <input
@@ -112,9 +113,8 @@ function saveToCSV() {
   id="saveToCSV"
   name="saveToCSV"
   bind:this="{saveToCSVfilename}" />
-<button
-  style="display:block; margin: 0 auto; padding: 1rem"
-  on:click="{saveToCSV}">saveToCSV</button>
+<button style="display:block; margin: 1rem auto" on:click="{saveToCSV}"
+  >saveToCSV</button>
 
 {#if saveToCSVresponse !== undefined}
   <p>
