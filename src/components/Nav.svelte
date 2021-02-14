@@ -4,11 +4,11 @@ export let segment;
 </script>
 
 <style>
-nav {
+/* nav {
   border-bottom: 1px solid rgba(255, 62, 0, 0.1);
   font-weight: 300;
   padding: 0 1em;
-}
+} */
 ul {
   margin: 0;
   padding: 0;
@@ -45,24 +45,33 @@ a {
 
 <nav>
   <ul>
-    <li>
-      <a aria-current="{segment === undefined ? 'page' : undefined}" href="."
-        >index</a>
-    </li>
-    <!-- <li>
-      <a
-        aria-current="{segment === 'tsqlHub' ? 'page' : undefined}"
-        href="/pages/pg_T-SQL/tsqlHub">tsqlHub</a>
-    </li> -->
-    <li>
-      <a
-        aria-current="{segment === 'toDo' ? 'page' : undefined}"
-        href="/pages/pg_toDo/toDo">toDo</a>
-    </li>
-    <li>
-      <a
-        aria-current="{segment === 'notes' ? 'page' : undefined}"
-        href="/pages/pg_notes/notes">notes</a>
-    </li>
+    <div class="flexbox">
+      <div>
+        <li>
+          <a
+            aria-current="{segment === undefined ? 'page' : undefined}"
+            href=".">index</a>
+        </li>
+        <!-- <li>
+          <a
+            aria-current="{segment === 'tsqlHub' ? 'page' : undefined}"
+            href="/pages/pg_T-SQL/tsqlHub">tsqlHub</a>
+        </li> -->
+      </div>
+      <div>
+        <li>
+          <a
+            aria-current="{segment === 'toDo' ? 'page' : undefined}"
+            href="/pages/pg_toDo/toDo">toDo</a>
+        </li>
+      </div>
+      <div>
+        <li>
+          <a
+            aria-current="{segment === 'notes' ? 'page' : undefined}"
+            href="/pages/pg_notes/notes">notes</a>
+        </li>
+      </div>
+    </div>
   </ul>
 </nav>

@@ -90,6 +90,12 @@ a {
   justify-content: center;
 }
 
+nav {
+  border-bottom: 1px solid var(--element6);
+  font-weight: 300;
+  padding: 0 1em;
+}
+
 /* t0d */
 
 body {
