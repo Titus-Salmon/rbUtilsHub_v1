@@ -10,6 +10,12 @@ console.log(
   `table_data.length from outside vInvMasterQuery()==> ${table_data.length}`
 );
 console.log(`table_data[0] from outside vInvMasterQuery()==> ${table_data[0]}`);
+console.log(`table_data from outside vInvMasterQuery()==> ${table_data}`);
+console.log(
+  `JSON.stringify(table_data) from outside vInvMasterQuery()==> ${JSON.stringify(
+    table_data
+  )}`
+);
 
 let tsqlQueryText;
 let saveToCSVfilename;
@@ -55,6 +61,12 @@ function vInvMasterQuery() {
       );
       console.log(
         `table_data[0] from INSIDE vInvMasterQuery()==> ${table_data[0]}`
+      );
+      console.log(`table_data from INSIDE vInvMasterQuery()==> ${table_data}`);
+      console.log(
+        `JSON.stringify(table_data) from INSIDE vInvMasterQuery()==> ${JSON.stringify(
+          table_data
+        )}`
       );
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
