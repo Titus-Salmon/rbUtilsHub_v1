@@ -126,14 +126,19 @@ function saveToCSV() {
 <button style="display:block; margin: 1rem auto" on:click="{vInvMasterQuery}"
   >vInvMasterQuery</button>
 
-<label for="saveToCSV">File Name</label>
-<input
-  type="text"
-  id="saveToCSV"
-  name="saveToCSV"
-  bind:this="{saveToCSVfilename}" />
-<button style="display:block; margin: 1rem auto" on:click="{saveToCSV}"
-  >saveToCSV</button>
+<!--v-- only show inputs & buttons here if tableData store has been populated with query results -->
+{#if Object.keys($tableData).length > 1}
+  <label for="saveToCSV">File Name</label>
+  <input
+    style="display:block; margin: 0 auto"
+    type="text"
+    id="saveToCSV"
+    name="saveToCSV"
+    bind:this="{saveToCSVfilename}" />
+  <button style="display:block; margin: 1rem auto" on:click="{saveToCSV}"
+    >saveToCSV</button>
+{/if}
+<!--^-- only show inputs & buttons here if tableData store has been populated with query results -->
 
 {#if saveToCSVresponse !== undefined}
   <p>
