@@ -10,7 +10,8 @@
   --element3: pink;
   --element4: red;
   --element5: white;
-  --element6: cyan;
+  --element6: #9c4be7;
+  --element7: #cda5f3;
 }
 
 :root[color-mode="light"] {
@@ -24,6 +25,7 @@
   --element4: black;
   --element5: black;
   --element6: black;
+  --element7: black;
 }
 
 nav {
@@ -72,7 +74,7 @@ label {
 input {
   border-color: var(--element2);
   background-color: var(--surface1);
-  color: var(--element1);
+  color: var(--element7);
 }
 p {
   color: var(--element1);
