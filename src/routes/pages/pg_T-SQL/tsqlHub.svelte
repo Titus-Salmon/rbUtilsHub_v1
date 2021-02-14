@@ -11,9 +11,9 @@ console.log(
   )}`
 );
 console.log(
-  `Object.keys(tableData).length from outside vInvMasterQuery()==> ${
-    Object.keys(tableData).length
-  })`
+  `Object.keys(tableData) from outside vInvMasterQuery()==> ${Object.keys(
+    tableData
+  )})`
 );
 
 let tsqlQueryText;
@@ -54,9 +54,9 @@ function vInvMasterQuery() {
       tableData.set(queryResJSON); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
       console.log(
-        `Object.keys(tableData).length from INSIDE vInvMasterQuery()==> ${
-          Object.keys(tableData).length
-        })`
+        `Object.keys(tableData) from INSIDE vInvMasterQuery()==> ${Object.keys(
+          tableData
+        )})`
       );
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
