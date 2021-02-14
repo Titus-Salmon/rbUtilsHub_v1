@@ -5,14 +5,20 @@ import tableData from "../../../stores/dynamicTables/tableData1.js";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 // import Modal1 from "../../../components/UI/Modal1.svelte";
 
+console.log(
+  `JSON.stringify(tableData) from outside vInvMasterQuery()==> ${JSON.stringify(
+    tableData
+  )}`
+);
+
 let tsqlQueryText;
 let saveToCSVfilename;
 let saveToCSVresponse;
 let queryText = `
 SELECT 
-INV_PK, INV_CPK, INV_ScanCode, ORD_SupplierStockNumber, INV_Name, INV_Size, INV_ReceiptAlias, inv_default, 
-convert(varchar(10), POS_TimeStamp, 120), INV_DateCreated, INV_EMP_FK_CreatedBy, ord_quantityinorderunit, oup_name, sto_number, 
-dpt_name, dpt_number, SIB_IdealMargin, ven_companyname, convert(varchar(10), inv_lastreceived, 120), convert(varchar(10), inv_lastsold, 120), 
+INV_PK, INV_CPK, INV_ScanCode, ORD_SupplierStockNumber, INV_Name, INV_Size, INV_ReceiptAlias, inv_default, convert(varchar(10), 
+POS_TimeStamp, 120), INV_DateCreated, INV_EMP_FK_CreatedBy, ord_quantityinorderunit, oup_name, sto_number, dpt_name, dpt_number, 
+SIB_IdealMargin, ven_companyname, convert(varchar(10), inv_lastreceived, 120), convert(varchar(10), inv_lastsold, 120), 
 inv_lastcost, SIB_BasePrice, inv_onhand, inv_onorder, inv_intransit, inv_memo, PI1_Description, PI2_Description, PI3_Description, 
 PI4_Description, INV_PowerField1, INV_PowerField2, INV_PowerField3, INV_PowerField4 
 FROM
@@ -45,6 +51,11 @@ function vInvMasterQuery() {
       );
       tableData.set(queryResJSON); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
+      console.log(
+        `JSON.stringify(tableData) from INSIDE vInvMasterQuery()==> ${JSON.stringify(
+          tableData
+        )}`
+      );
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
@@ -83,7 +94,7 @@ function saveToCSV() {
     class="query"
     id="tsqlQueryText"
     name="tblQryPost"
-    cols="150"
+    cols="133"
     rows="15"
     wrap="soft"
     bind:this="{tsqlQueryText}">
@@ -101,7 +112,9 @@ function saveToCSV() {
   id="saveToCSV"
   name="saveToCSV"
   bind:this="{saveToCSVfilename}" />
-<button on:click="{saveToCSV}">saveToCSV</button>
+<button
+  style="display:block; margin: 0 auto; padding: 1rem"
+  on:click="{saveToCSV}">saveToCSV</button>
 
 {#if saveToCSVresponse !== undefined}
   <p>
