@@ -10,6 +10,7 @@
   --element3: pink;
   --element4: red;
   --element5: white;
+  --element6: cyan;
 }
 
 :root[color-mode="light"] {
@@ -22,6 +23,7 @@
   --element3: black;
   --element4: black;
   --element5: black;
+  --element6: black;
 }
 
 nav {
@@ -65,15 +67,15 @@ textarea.query {
   padding: 1rem;
 }
 label {
-  color: var(--element1);
+  color: var(--element6);
 }
 input {
-  border-color: var(--element4);
+  border-color: var(--element2);
   background-color: var(--surface1);
-  color: var(element1);
+  color: var(--element1);
 }
 p {
-  color: var(element1);
+  color: var(--element1);
 }
 a {
   background-color: var(--surface1);
