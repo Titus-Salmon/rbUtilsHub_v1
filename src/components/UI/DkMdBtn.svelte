@@ -83,6 +83,8 @@ function darkModeToggle() {
 <style>
 </style>
 
-<button style="display:block; margin: 0 auto" on:click="{darkModeToggle}">
+<button
+  style="display:block; margin: 0 auto; padding: 1rem"
+  on:click="{darkModeToggle}">
   <slot />
 </button>

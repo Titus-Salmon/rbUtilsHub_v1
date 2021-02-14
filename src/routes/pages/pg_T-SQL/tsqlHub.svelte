@@ -91,8 +91,9 @@ function saveToCSV() {
   </textarea>
 </div>
 
-<button style="display:block; margin: 0 auto" on:click="{vInvMasterQuery}"
-  >vInvMasterQuery</button>
+<button
+  style="display:block; margin: 0 auto; padding: 1rem"
+  on:click="{vInvMasterQuery}">vInvMasterQuery</button>
 
 <label for="saveToCSV">File Name</label>
 <input
