@@ -12,6 +12,11 @@ console.log(
   )}`
 );
 console.log(
+  `Object.keys($tableData).length from outside vInvMasterQuery()==> ${
+    Object.keys($tableData).length
+  }`
+);
+console.log(
   `JSON.stringify($tableData) from outside vInvMasterQuery()==> ${JSON.stringify(
     $tableData
   )}`
@@ -61,6 +66,11 @@ function vInvMasterQuery() {
         `Object.keys($tableData) from inside vInvMasterQuery()==> ${Object.keys(
           $tableData
         )}`
+      );
+      console.log(
+        `Object.keys($tableData).length from inside vInvMasterQuery()==> ${
+          Object.keys($tableData).length
+        }`
       );
       console.log(
         `JSON.stringify($tableData) from inside vInvMasterQuery()==> ${JSON.stringify(
