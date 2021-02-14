@@ -80,6 +80,12 @@ a {
   color: var(--element1);
 }
 
+.flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* t0d */
 
 body {

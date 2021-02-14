@@ -93,39 +93,51 @@ function saveToCSV() {
 <!--v-- only show inputs & buttons here if tableData store has been populated with query results -->
 <!--v-- NOTE: you must use the $ to access the tableData store -->
 {#if Object.keys($tableData).length > 1}
-  <div style="display:block; margin: 0 auto">
-    <label for="saveToCSV">File Name</label>
-    <input
-      style="margin: 0 auto"
-      type="text"
-      id="saveToCSV"
-      name="saveToCSV"
-      bind:this="{saveToCSVfilename}" />
-    <button style="margin: 1rem auto" on:click="{saveToCSV}">saveToCSV</button>
-    <label for="saveToCSV">File Name</label>
-    <input
-      style="margin: 0 auto"
-      type="text"
-      id="saveToCSV"
-      name="saveToCSV"
-      bind:this="{saveToCSVfilename}" />
-    <button style="margin: 1rem auto" on:click="{saveToCSV}">saveToCSV</button>
-    <label for="saveToCSV">File Name</label>
-    <input
-      style="margin: 0 auto"
-      type="text"
-      id="saveToCSV"
-      name="saveToCSV"
-      bind:this="{saveToCSVfilename}" />
-    <button style="margin: 1rem auto" on:click="{saveToCSV}">saveToCSV</button>
-    <label for="saveToCSV">File Name</label>
-    <input
-      style="margin: 0 auto"
-      type="text"
-      id="saveToCSV"
-      name="saveToCSV"
-      bind:this="{saveToCSVfilename}" />
-    <button style="margin: 1rem auto" on:click="{saveToCSV}">saveToCSV</button>
+  <div class="flexbox">
+    <div>
+      <label for="saveToCSV">File Name</label>
+      <input
+        style="margin: 0 auto"
+        type="text"
+        id="saveToCSV"
+        name="saveToCSV"
+        bind:this="{saveToCSVfilename}" />
+      <button style="margin: 1rem auto" on:click="{saveToCSV}"
+        >saveToCSV</button>
+    </div>
+    <div>
+      <label for="saveToCSV">File Name</label>
+      <input
+        style="margin: 0 auto"
+        type="text"
+        id="saveToCSV"
+        name="saveToCSV"
+        bind:this="{saveToCSVfilename}" />
+      <button style="margin: 1rem auto" on:click="{saveToCSV}"
+        >saveToCSV</button>
+    </div>
+    <div>
+      <label for="saveToCSV">File Name</label>
+      <input
+        style="margin: 0 auto"
+        type="text"
+        id="saveToCSV"
+        name="saveToCSV"
+        bind:this="{saveToCSVfilename}" />
+      <button style="margin: 1rem auto" on:click="{saveToCSV}"
+        >saveToCSV</button>
+    </div>
+    <div>
+      <label for="saveToCSV">File Name</label>
+      <input
+        style="margin: 0 auto"
+        type="text"
+        id="saveToCSV"
+        name="saveToCSV"
+        bind:this="{saveToCSVfilename}" />
+      <button style="margin: 1rem auto" on:click="{saveToCSV}"
+        >saveToCSV</button>
+    </div>
   </div>
 {/if}
 <!--^-- only show inputs & buttons here if tableData store has been populated with query results -->
