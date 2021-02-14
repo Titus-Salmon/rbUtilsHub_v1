@@ -76,7 +76,7 @@ function saveToCSV() {
 <style>
 </style>
 
-<DkMdBtn style="display:block; margin: 0 auto">MODE</DkMdBtn>
+<DkMdBtn>MODE</DkMdBtn>
 
 <div style="text-align:center">
   <textarea
