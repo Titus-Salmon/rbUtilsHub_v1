@@ -7,13 +7,8 @@ import table_data from "../../../components/T-SQL/v_InventoryMasterQueryResults.
 // import Modal1 from "../../../components/UI/Modal1.svelte";
 
 console.log(
-  `table_data.length from outside vInvMasterQuery()==> ${table_data.length}`
-);
-console.log(`table_data[0] from outside vInvMasterQuery()==> ${table_data[0]}`);
-console.log(`table_data from outside vInvMasterQuery()==> ${table_data}`);
-console.log(
-  `JSON.stringify(table_data) from outside vInvMasterQuery()==> ${JSON.stringify(
-    table_data
+  `Object.keys(table_data[0]) from outside1 vInvMasterQuery()==> ${Object.keys(
+    table_data[0]
   )}`
 );
 
@@ -57,15 +52,8 @@ function vInvMasterQuery() {
     })
     .then(() => {
       console.log(
-        `table_data.length from INSIDE vInvMasterQuery()==> ${table_data.length}`
-      );
-      console.log(
-        `table_data[0] from INSIDE vInvMasterQuery()==> ${table_data[0]}`
-      );
-      console.log(`table_data from INSIDE vInvMasterQuery()==> ${table_data}`);
-      console.log(
-        `JSON.stringify(table_data) from INSIDE vInvMasterQuery()==> ${JSON.stringify(
-          table_data
+        `Object.keys(table_data[0]) from INSIDE vInvMasterQuery()==> ${Object.keys(
+          table_data[0]
         )}`
       );
     });
