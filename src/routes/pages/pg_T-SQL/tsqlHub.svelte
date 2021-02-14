@@ -3,16 +3,13 @@ import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
 import tableData from "../../../stores/dynamicTables/tableData1.js";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
+import table_data from "../../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
 // import Modal1 from "../../../components/UI/Modal1.svelte";
 
 console.log(
-  `tableData['set'] from outside vInvMasterQuery()==> ${tableData["set"]})`
-);
-console.log(
-  `tableData['update'] from outside vInvMasterQuery()==> ${tableData["update"]})`
-);
-console.log(
-  `tableData['subscribe'] from outside vInvMasterQuery()==> ${tableData["subscribe"]})`
+  `JSON.stringify(table_data) from outside vInvMasterQuery()==> ${JSON.stringify(
+    table_data
+  )}`
 );
 
 let tsqlQueryText;
@@ -53,13 +50,9 @@ function vInvMasterQuery() {
       tableData.set(queryResJSON); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
       console.log(
-        `tableData['set'] from INSIDE vInvMasterQuery()==> ${tableData["set"]})`
-      );
-      console.log(
-        `tableData['update'] from INSIDE vInvMasterQuery()==> ${tableData["update"]})`
-      );
-      console.log(
-        `tableData['subscribe'] from INSIDE vInvMasterQuery()==> ${tableData["subscribe"]})`
+        `JSON.stringify(table_data) from INSIDE vInvMasterQuery()==> ${JSON.stringify(
+          table_data
+        )}`
       );
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",

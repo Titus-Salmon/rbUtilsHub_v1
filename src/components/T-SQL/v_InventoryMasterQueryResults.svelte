@@ -1,6 +1,6 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1.js";
-let table_data;
+export let table_data;
 tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
 console.log(
   `table_data[0] from v_InventoryMasterQueryResults.svelte==> ${table_data[0]}`
