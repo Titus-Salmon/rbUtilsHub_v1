@@ -60,6 +60,11 @@ textarea {
   background-color: var(--surface1);
   color: var(--element1);
 }
+textarea.query1 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 label {
   color: var(--element1);
 }

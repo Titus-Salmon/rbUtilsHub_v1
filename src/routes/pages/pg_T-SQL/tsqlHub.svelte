@@ -2,7 +2,8 @@
 import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
 import tableData from "../../../stores/dynamicTables/tableData1.js";
-import DkMdBtn from "../../../components/UI/DkMdBtn.svelte"; //t0d
+import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
+// import Modal1 from "../../../components/UI/Modal1.svelte";
 
 let tsqlQueryText;
 let saveToCSVfilename;
@@ -66,6 +67,7 @@ function saveToCSV() {
 <DkMdBtn>MODE</DkMdBtn>
 
 <textarea
+  class="query1"
   id="tsqlQueryText"
   name="tblQryPost"
   cols="30"
