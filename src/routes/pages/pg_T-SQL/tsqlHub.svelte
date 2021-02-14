@@ -76,7 +76,7 @@ function saveToCSV() {
 <style>
 </style>
 
-<DkMdBtn style="display:block; margin 0 auto">MODE</DkMdBtn>
+<DkMdBtn style="display:block; margin: 0 auto">MODE</DkMdBtn>
 
 <div style="text-align:center">
   <textarea
@@ -91,7 +91,7 @@ function saveToCSV() {
   </textarea>
 </div>
 
-<button style="display:block; margin 0 auto" on:click="{vInvMasterQuery}"
+<button style="display:block; margin: 0 auto" on:click="{vInvMasterQuery}"
   >vInvMasterQuery</button>
 
 <label for="saveToCSV">File Name</label>
