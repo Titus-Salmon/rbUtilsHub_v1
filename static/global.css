@@ -60,6 +60,10 @@ textarea {
   background-color: var(--surface1);
   color: var(--element1);
 }
+textarea.query {
+  box-sizing: border-box;
+  padding: 1rem;
+}
 label {
   color: var(--element1);
 }

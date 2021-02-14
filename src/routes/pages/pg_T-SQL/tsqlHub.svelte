@@ -76,11 +76,12 @@ function saveToCSV() {
 <style>
 </style>
 
-<DkMdBtn>MODE</DkMdBtn>
+<!-- <DkMdBtn>MODE</DkMdBtn> -->
 
 <div style="text-align:center">
+  <DkMdBtn>MODE</DkMdBtn>
   <textarea
-    style="box-sizing:border-box; padding:1rem"
+    class="query"
     id="tsqlQueryText"
     name="tblQryPost"
     cols="150"
@@ -89,9 +90,10 @@ function saveToCSV() {
     bind:this="{tsqlQueryText}">
     {queryText}
   </textarea>
+  <button on:click="{vInvMasterQuery}">vInvMasterQuery</button>
 </div>
 
-<button on:click="{vInvMasterQuery}">vInvMasterQuery</button>
+<!-- <button on:click="{vInvMasterQuery}">vInvMasterQuery</button> -->
 
 <label for="saveToCSV">File Name</label>
 <input
