@@ -78,7 +78,7 @@ function saveToCSV() {
 
 <DkMdBtn>MODE</DkMdBtn>
 
-<div style="text-align:center; bx-sizing:border-box; padding:1rem">
+<div style="text-align:center; box-sizing:border-box; padding:1rem">
   <textarea
     id="tsqlQueryText"
     name="tblQryPost"
