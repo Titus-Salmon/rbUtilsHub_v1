@@ -3,8 +3,9 @@ import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
 import tableData from "../../../stores/dynamicTables/tableData1.js";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
-import table_data from "../../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
 // import Modal1 from "../../../components/UI/Modal1.svelte";
+
+console.log(`$tableData from outside vInvMasterQuery()==> ${$tableData}`);
 
 let tsqlQueryText;
 let saveToCSVfilename;
@@ -45,11 +46,7 @@ function vInvMasterQuery() {
       //& we are overwriting the "Store" with set()
     })
     .then(() => {
-      console.log(
-        `Object.keys(table_data[0]) from INSIDE vInvMasterQuery()==> ${Object.keys(
-          table_data[0]
-        )}`
-      );
+      console.log(`$tableData from inside vInvMasterQuery()==> ${$tableData}`);
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
