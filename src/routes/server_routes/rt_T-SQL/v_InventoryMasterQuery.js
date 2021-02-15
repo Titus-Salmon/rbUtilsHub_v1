@@ -17,6 +17,20 @@ export async function post(req, res, next) {
   var srcRsXLS_tsql = []
 
   function showcatapultResults(result) {
+    // let queriedColumns = Object.keys(result[0])
+    // console.log(`queriedColumns==> ${queriedColumns}`)
+    // for (let h = 0; h < queriedColumns.length; h++) {
+    //   for (let i = 0; i < result.length; i++) {
+    //     let catapultResObj = {}
+    //     catapultResObj['ri_t0d'] = i + 1
+    //     if (typeof result[i][`${queriedColumns[h]}`] == 'string') {
+    //       catapultResObj[`${queriedColumns[h]}`] = result[i][`${queriedColumns[h]}`].trim()
+    //     } else {
+    //       catapultResObj[`${queriedColumns[h]}`] = result[i][`${queriedColumns[h]}`]
+    //     }
+    //     catapultResObj['actlMarg'] = Math.round(((result[i]['SIB_BasePrice'] - result[i]['inv_lastcost']) / (result[i]['SIB_BasePrice'])) * 100)
+    //   }
+    // }
     for (let i = 0; i < result.length; i++) {
       let catapultResObj = {}
       catapultResObj['ri_t0d'] = i + 1 //create sequential record id (ri_t0d) column for saving as csv; you will NOT
@@ -60,6 +74,9 @@ export async function post(req, res, next) {
       } else {
         catapultResObj['invDefault'] = result[i]['inv_default']
       }
+
+      console.log(`typeof result[i]['POS_TimeStamp']==> ${typeof result[i]['POS_TimeStamp']}`)
+
       catapultResObj['posTimeStamp'] = unescape(result[i]['POS_TimeStamp'])
       catapultResObj['invDateCreated'] = result[i]['INV_DateCreated']
       catapultResObj['invEmpFkCreatedBy'] = result[i]['INV_EMP_FK_CreatedBy']
