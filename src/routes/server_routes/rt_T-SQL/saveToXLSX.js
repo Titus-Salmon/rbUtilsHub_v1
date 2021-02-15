@@ -1,5 +1,6 @@
 const xl = require('excel4node')
 import catapultResArrCache from "../../../nodeCacheStuff/cache1"
+let catapultResArrCacheValue
 
 export async function post(req, res, next) {
 
