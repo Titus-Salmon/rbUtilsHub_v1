@@ -24,7 +24,7 @@ th {
 
 <!-- see if adding body tag solves the gray windowpane problem with color toggle -->
 <body>
-  <table style="width:100%">
+  <table style="max-width:1333px">
     <thead>
       <tr>
         <!-- {#if table_data !== undefined && table_data !== null && table_data !== ""} -->
