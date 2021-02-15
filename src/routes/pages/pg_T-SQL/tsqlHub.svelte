@@ -86,7 +86,8 @@ function saveToCSVcreatePop() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      data: saveToCSVcreatePopFileName.value,
+      fileNameData: saveToCSVcreatePopFileName.value,
+      tableNameData: saveToCSVcreatePopTableName.value,
     }),
   })
     .then((saveToCSVcreatePopResult) => saveToCSVcreatePopResult.json())
