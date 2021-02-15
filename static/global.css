@@ -96,6 +96,19 @@ nav {
   padding: 0 1em;
 }
 
+/* .invName-col
+  .invRecepitAlias-col
+  .invMemo-col
+  .pi1Description-col
+  .pi2Description-col
+  .invPowerField1-col {
+  width: 6%;
+} */
+
+.widen-column {
+  width: 6%;
+}
+
 /* t0d */
 
 body {
