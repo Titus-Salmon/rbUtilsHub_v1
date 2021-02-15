@@ -130,7 +130,7 @@ function saveToXLSX() {
     class="query"
     id="tsqlQueryText"
     name="tblQryPost"
-    cols="150"
+    cols="175"
     rows="15"
     wrap="soft"
     bind:this="{tsqlQueryText}">
