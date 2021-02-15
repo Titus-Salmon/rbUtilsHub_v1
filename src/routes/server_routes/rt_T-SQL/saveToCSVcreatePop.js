@@ -43,6 +43,8 @@ export async function post(req, res, next) {
   }
 
   function createPopTable() {
+    //the LOAD DATA LOCAL INFILE part below is a little tricky, because you can't use ${process.cwd()/static/csv}/${fileName}.csv
+    //to get to your file, but have to use ./static/csv/${fileName} instead. IMPORTANT!
     connection.query(`
     CREATE TABLE ${tableName} (ri_t0d int NOT NULL AUTO_INCREMENT, ${columnNames}, PRIMARY KEY (ri_t0d));
 
@@ -52,17 +54,9 @@ export async function post(req, res, next) {
       console.log(error || response);
     }).on('end', function () {
       res.json({
-        "response from saveToCSVcreatePop": `
-        ~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv saved <<~~~~~
-        ~~~~~>> MySQL table: ${tableName} created in RB DB<<~~~~~`
+        "response1 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv saved <<~~~~~`,
+        "response2 from saveToCSVcreatePop": `~~~~~>> MySQL table: ${tableName} created in RB DB<<~~~~~`
       })
-      // res.render('vw-MySqlTableHub', {
-      //   title: `vw-MySqlTableHub **Populated Table <<${tableName}>>**`,
-      //   // tableColNames: tableColumnNames,
-      //   sqlTablePopulated: {
-      //     tablePopulated: tableName,
-      //   },
-      // })
     })
   }
 

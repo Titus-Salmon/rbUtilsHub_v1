@@ -221,7 +221,10 @@ function saveToXLSX() {
 
 {#if saveToCSVcreatePopResponse !== undefined}
   <p>
-    {Object.values(saveToCSVcreatePopResponse)}
+    {saveToCSVcreatePopResponse["response1 from saveToCSVcreatePop"]}
+  </p>
+  <p>
+    {saveToCSVcreatePopResponse["response2 from saveToCSVcreatePop"]}
   </p>
 {/if}
 
