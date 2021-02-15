@@ -24,16 +24,12 @@ th {
 
 <!-- see if adding body tag solves the gray windowpane problem with color toggle -->
 <body>
-  <table style="max-width:1333px">
+  <table>
     <thead>
       <tr>
         <!-- {#if table_data !== undefined && table_data !== null && table_data !== ""} -->
         {#each Object.keys(table_data[0]) as columnHeading}
-          {#if columnHeading == "invName" || columnHeading == "invRecepitAlias" || columnHeading == "invMemo" || columnHeading == "pi1Description" || columnHeading == "pi2Description" || columnHeading == "invPowerField1"}
-            <th class="widen-column">{columnHeading}</th>
-          {:else}
-            <th>{columnHeading}</th>
-          {/if}
+          <th>{columnHeading}</th>
         {/each}
         <!-- {/if} -->
       </tr>
