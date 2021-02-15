@@ -10,10 +10,12 @@ let saveToCSVfileName;
 let saveToCSVresponse;
 
 let saveToCSVcreatePopFileName;
-let saveToCSVcreatePopFileNameResponse;
+// let saveToCSVcreatePopFileNameResponse;
 
 let saveToCSVcreatePopTableName;
-let saveToCSVcreatePopTableNameResponse;
+// let saveToCSVcreatePopTableNameResponse;
+
+let saveToCSVcreatePopResponse;
 
 let saveToXLSXfileName;
 let saveToXLSXfileNameResponse;
@@ -214,6 +216,12 @@ function saveToXLSX() {
 {#if saveToCSVresponse !== undefined}
   <p>
     {Object.values(saveToCSVresponse)}
+  </p>
+{/if}
+
+{#if saveToCSVcreatePopResponse !== undefined}
+  <p>
+    {Object.values(saveToCSVcreatePopResponse)}
   </p>
 {/if}
 
