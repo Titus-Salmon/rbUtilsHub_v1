@@ -21,25 +21,25 @@ export async function post(req, res, next) {
     console.log(`queriedColumns==> ${queriedColumns}`)
 
     for (let i = 0; i < result.length; i++) {
+      let rowData = result[i]
       let catapultResObj = {}
       catapultResObj['ri_t0d'] = i + 1
       for (let j = 0; j < queriedColumns.length; j++) {
+        let colName = queriedColumns[j]
 
-        if (queriedColumns[j] === 'POS_TimeStamp') {
-          console.log(`queriedColumns[j] before sanitizing==> ${queriedColumns[j]}`)
-          catapultResObj[`${queriedColumns[j]}`] = unescape(result[i][`${queriedColumns[j]}`])
-          console.log(`queriedColumns[j] after sanitizing==> ${queriedColumns[j]}`)
+        if (colName === 'POS_TimeStamp') {
+          catapultResObj[`${colName}`] = unescape(rowData[`${colName}`])
         }
 
-        if (typeof result[i][`${queriedColumns[j]}`] === 'string' &&
-          result[i][`${queriedColumns[j]}`] !== '') {
-          catapultResObj[`${queriedColumns[j]}`] = result[i][`${queriedColumns[j]}`].trim()
+        if (typeof rowData[`${colName}`] === 'string' &&
+          rowData[`${colName}`] !== '') {
+          catapultResObj[`${colName}`] = rowData[`${colName}`].trim()
         } else {
-          catapultResObj[`${queriedColumns[j]}`] = result[i][`${queriedColumns[j]}`]
+          catapultResObj[`${colName}`] = rowData[`${colName}`]
         }
 
-        if (queriedColumns[j] === 'SIB_IdealMargin') {
-          catapultResObj['actlMarg'] = Math.round(((result[i]['SIB_BasePrice'] - result[i]['inv_lastcost']) / (result[i]['SIB_BasePrice'])) * 100)
+        if (colName === 'SIB_IdealMargin') {
+          catapultResObj['actlMarg'] = Math.round(((rowData['SIB_BasePrice'] - rowData['inv_lastcost']) / (rowData['SIB_BasePrice'])) * 100)
         }
 
       }
@@ -229,16 +229,7 @@ export async function post(req, res, next) {
       if (error) {
         console.error(error)
       }
-      console.log(`result.length~~~> ${result.length}`)
-      let queriedColumns_0 = Object.keys(result[0])
-      console.log(`typeof queriedColumns_0==> ${typeof queriedColumns_0}`)
-      console.log(`JSON.stringify(queriedColumns_0)==> ${JSON.stringify(queriedColumns_0)}`)
-      console.log(`JSON.stringify(result[0])==> ${JSON.stringify(result[0])}`)
-      console.log(`result['columns'].length==> ${result['columns'].length}`)
-      console.log(`JSON.stringify(result['columns'])==> ${JSON.stringify(result['columns'])}`)
-      console.log(`JSON.stringify(result['columns'][2])==> ${JSON.stringify(result['columns'][2])}`)
       showcatapultResults(result)
-
       res.json(catapultResArr)
     })
   })
