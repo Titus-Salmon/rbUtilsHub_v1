@@ -9,8 +9,11 @@ let tsqlQueryText;
 let saveToCSVfileName;
 let saveToCSVresponse;
 
-let save2CSVcreatePopFileName;
-let save2CSVcreatePopFileNameResponse;
+let saveToCSVcreatePopFileName;
+let saveToCSVcreatePopFileNameResponse;
+
+let saveToCSVcreatePopTableName;
+let saveToCSVcreatePopTableNameResponse;
 
 let queryText = `
 SELECT 
@@ -118,24 +121,24 @@ function saveToCSV() {
     <!--v-- ***save2CSVcreatePop*********************************************************** -->
     <div>
       <div style="text-align:center">
-        <label for="save2CSVcreatePopFileName">File Name</label>
+        <label for="saveToCSVcreatePopFileName">File Name</label>
       </div>
       <div style="text-align:center">
         <input
           type="text"
-          id="save2CSVcreatePopFileName"
-          name="save2CSVcreatePopFileName"
-          bind:this="{save2CSVcreatePopFileName}" />
+          id="saveToCSVcreatePopFileName"
+          name="saveToCSVcreatePopFileName"
+          bind:this="{saveToCSVcreatePopFileName}" />
       </div>
       <div style="text-align:center">
-        <label for="save2CSVcreatePopTableName">Table Name</label>
+        <label for="saveToCSVcreatePopTableName">Table Name</label>
       </div>
       <div style="text-align:center">
         <input
           type="text"
-          id="save2CSVcreatePopTableName"
-          name="save2CSVcreatePopTableName"
-          bind:this="{save2CSVcreatePopTableName}" />
+          id="saveToCSVcreatePopTableName"
+          name="saveToCSVcreatePopTableName"
+          bind:this="{saveToCSVcreatePopTableName}" />
       </div>
       <div style="text-align:center">
         <button on:click="{save2CSVcreatePop}">save2CSVcreatePop</button>
