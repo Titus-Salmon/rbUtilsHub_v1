@@ -40,10 +40,10 @@ export async function post(req, res, next) {
         catapultResObj['ordSuppStockNum'] = result[i]['ORD_SupplierStockNumber']
       }
       if (typeof result[i]['INV_Name'] == 'string') {
-        catapultResObj['..........invName..........'] = result[i]['INV_Name'].trim()
+        catapultResObj['invName'] = result[i]['INV_Name'].trim()
         // catapultResObj['_________invName_________'].replace(',', '') //remove any commas in name so csv doesn't get horked
       } else {
-        catapultResObj['..........invName..........'] = result[i]['INV_Name']
+        catapultResObj['invName'] = result[i]['INV_Name']
       }
       if (typeof result[i]['INV_Size'] == 'string') {
         catapultResObj['invSize'] = result[i]['INV_Size'].trim()
@@ -51,9 +51,9 @@ export async function post(req, res, next) {
         catapultResObj['invSize'] = result[i]['INV_Size']
       }
       if (typeof result[i]['INV_ReceiptAlias'] == 'string') {
-        catapultResObj['........invReceiptAlias........'] = result[i]['INV_ReceiptAlias'].trim()
+        catapultResObj['invReceiptAlias'] = result[i]['INV_ReceiptAlias'].trim()
       } else {
-        catapultResObj['........invReceiptAlias........'] = result[i]['INV_ReceiptAlias']
+        catapultResObj['invReceiptAlias'] = result[i]['INV_ReceiptAlias']
       }
       if (typeof result[i]['inv_default'] == 'string') {
         catapultResObj['invDefault'] = result[i]['inv_default'].trim()
@@ -107,49 +107,49 @@ export async function post(req, res, next) {
       catapultResObj['invOnorder'] = result[i]['inv_onorder']
       catapultResObj['invIntransit'] = result[i]['inv_intransit']
       if (typeof result[i]['inv_memo'] == 'string') {
-        catapultResObj['..........invMemo..........'] = result[i]['inv_memo'].trim()
+        catapultResObj['invMemo'] = result[i]['inv_memo'].trim()
       } else {
-        catapultResObj['..........invMemo..........'] = result[i]['inv_memo']
+        catapultResObj['invMemo'] = result[i]['inv_memo']
       }
       if (typeof result[i]['PI1_Description'] == 'string') {
-        catapultResObj['.......pi1Description.......'] = result[i]['PI1_Description'].trim()
+        catapultResObj['pi1Description'] = result[i]['PI1_Description'].trim()
       } else {
-        catapultResObj['.......pi1Description.......'] = result[i]['PI1_Description']
+        catapultResObj['pi1Description'] = result[i]['PI1_Description']
       }
       if (typeof result[i]['PI2_Description'] == 'string') {
-        catapultResObj['.......pi2Description.......'] = result[i]['PI2_Description'].trim()
+        catapultResObj['pi2Description'] = result[i]['PI2_Description'].trim()
       } else {
-        catapultResObj['.......pi2Description.......'] = result[i]['PI2_Description']
+        catapultResObj['pi2Description'] = result[i]['PI2_Description']
       }
       if (typeof result[i]['PI3_Description'] == 'string') {
-        catapultResObj['.......pi3Description.......'] = result[i]['PI3_Description'].trim()
+        catapultResObj['pi3Description'] = result[i]['PI3_Description'].trim()
       } else {
-        catapultResObj['.......pi3Description.......'] = result[i]['PI3_Description']
+        catapultResObj['pi3Description'] = result[i]['PI3_Description']
       }
       if (typeof result[i]['PI4_Description'] == 'string') {
-        catapultResObj['.......pi4Description.......'] = result[i]['PI4_Description'].trim()
+        catapultResObj['pi4Description'] = result[i]['PI4_Description'].trim()
       } else {
-        catapultResObj['.......pi4Description.......'] = result[i]['PI4_Description']
+        catapultResObj['pi4Description'] = result[i]['PI4_Description']
       }
       if (typeof result[i]['INV_PowerField1'] == 'string') {
-        catapultResObj['.......invPowerField1.......'] = result[i]['INV_PowerField1'].trim()
+        catapultResObj['invPowerField1'] = result[i]['INV_PowerField1'].trim()
       } else {
-        catapultResObj['.......invPowerField1.......'] = result[i]['INV_PowerField1']
+        catapultResObj['invPowerField1'] = result[i]['INV_PowerField1']
       }
       if (typeof result[i]['INV_PowerField2'] == 'string') {
-        catapultResObj['.......invPowerField2.......'] = result[i]['INV_PowerField2'].trim()
+        catapultResObj['invPowerField2'] = result[i]['INV_PowerField2'].trim()
       } else {
-        catapultResObj['.......invPowerField2.......'] = result[i]['INV_PowerField2']
+        catapultResObj['invPowerField2'] = result[i]['INV_PowerField2']
       }
       if (typeof result[i]['INV_PowerField3'] == 'string') {
-        catapultResObj['.......invPowerField3.......'] = result[i]['INV_PowerField3'].trim()
+        catapultResObj['invPowerField3'] = result[i]['INV_PowerField3'].trim()
       } else {
-        catapultResObj['.......invPowerField3.......'] = result[i]['INV_PowerField3']
+        catapultResObj['invPowerField3'] = result[i]['INV_PowerField3']
       }
       if (typeof result[i]['INV_PowerField4'] == 'string') {
-        catapultResObj['.......invPowerField4.......'] = result[i]['INV_PowerField4'].trim()
+        catapultResObj['invPowerField4'] = result[i]['INV_PowerField4'].trim()
       } else {
-        catapultResObj['.......invPowerField4.......'] = result[i]['INV_PowerField4']
+        catapultResObj['invPowerField4'] = result[i]['INV_PowerField4']
       }
 
       catapultResArr.push(catapultResObj)
