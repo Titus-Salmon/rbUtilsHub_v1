@@ -53,7 +53,7 @@ export async function post(req, res, next) {
     }).on('end', function () {
       res.json({
         "response from saveToCSVcreatePop": `
-        ~~~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved <<~~~~~
+        ~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv saved <<~~~~~
         ~~~~~>> MySQL table: ${tableName} created in RB DB<<~~~~~`
       })
       // res.render('vw-MySqlTableHub', {
@@ -69,11 +69,11 @@ export async function post(req, res, next) {
   try {
     const parser = new Parser(opts);
     const csv = parser.parse(catapultResArrCacheValue)
-    console.log(`req.body['csvPost']-->${req.body['csvPost']}`)
+    console.log(`fileName-->${fileName}`)
     console.log('csv.length=====>>', csv.length);
-    fs.writeFile(process.cwd() + '/public/csv-to-insert/' + req.body['csvPost'] + '.csv', csv, function (err) {
+    fs.writeFile(`${process.cwd()}/static/csv/${fileName}.csv`, csv, function (err) {
       if (err) throw err;
-      console.log('~~~~~>>' + req.body['csvPost'] + 'saved<<~~~~~')
+      console.log('~~~~~>>' + fileName + 'saved<<~~~~~')
       createPopTable()
     })
   } catch (err) {
