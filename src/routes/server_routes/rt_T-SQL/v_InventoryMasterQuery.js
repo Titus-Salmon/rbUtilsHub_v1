@@ -38,7 +38,9 @@ export async function post(req, res, next) {
           catapultResObj[`${queriedColumns[j]}`] = result[i][`${queriedColumns[j]}`]
         }
 
-        catapultResObj['actlMarg'] = Math.round(((result[i]['SIB_BasePrice'] - result[i]['inv_lastcost']) / (result[i]['SIB_BasePrice'])) * 100)
+        if (queriedColumns[j] === 'SIB_IdealMargin') {
+          catapultResObj['actlMarg'] = Math.round(((result[i]['SIB_BasePrice'] - result[i]['inv_lastcost']) / (result[i]['SIB_BasePrice'])) * 100)
+        }
 
       }
       catapultResArr.push(catapultResObj)
