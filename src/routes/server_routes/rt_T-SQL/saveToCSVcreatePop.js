@@ -46,7 +46,7 @@ export async function post(req, res, next) {
     connection.query(`
     CREATE TABLE ${tableName} (ri_t0d int NOT NULL AUTO_INCREMENT, ${columnNames}, PRIMARY KEY (ri_t0d));
 
-    LOAD DATA LOCAL INFILE '../../../../static/csv/${fileName}.csv' INTO TABLE ${tableName} FIELDS TERMINATED BY ','
+    LOAD DATA LOCAL INFILE '${process.cwd()}/static/csv/${fileName}.csv' INTO TABLE ${tableName} FIELDS TERMINATED BY ','
        ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;
     `, (error, response) => {
       console.log(error || response);
