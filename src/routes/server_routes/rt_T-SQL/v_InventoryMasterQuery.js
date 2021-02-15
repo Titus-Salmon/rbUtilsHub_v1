@@ -21,6 +21,8 @@ export async function post(req, res, next) {
     console.log(`queriedColumns==> ${queriedColumns}`)
 
     for (let i = 0; i < result.length; i++) {
+      let catapultResObj = {}
+      catapultResObj['ri_t0d'] = i + 1
       for (let j = 0; j < queriedColumns.length; j++) {
 
         if (queriedColumns[j] === 'POS_TimeStamp') {
