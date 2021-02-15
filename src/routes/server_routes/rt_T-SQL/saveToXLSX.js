@@ -159,7 +159,7 @@ export async function post(req, res, next) {
     }
   }
 
-  wb.write(`${process.cwd()}/static/xlsx/${fileName}.xlxs`)
+  wb.write(`${process.cwd()}/static/xlsx/${fileName}.xlsx`)
 
   res.json({
     "response from saveToXLSX": `~~~~~>> ${process.cwd()}/static/xlsx/${fileName}.xlsx saved <<~~~~~`
