@@ -19,27 +19,58 @@ export async function post(req, res, next) {
   function showcatapultResults(result) {
     let queriedColumns = Object.keys(result[0])
     console.log(`queriedColumns==> ${queriedColumns}`)
-    for (let h = 0; h < queriedColumns.length; h++) {
-      for (let i = 0; i < result.length; i++) {
-        let catapultResObj = {}
-        catapultResObj['ri_t0d'] = i + 1
-        if (typeof result[i][`${queriedColumns[h]}`] == 'string') {
-          if (queriedColumns[h] === 'POS_TimeStamp') {
-            catapultResObj[`${queriedColumns[h]}`] = unescape(result[i][`${queriedColumns[h]}`])
-          } else {
-            catapultResObj[`${queriedColumns[h]}`] = result[i][`${queriedColumns[h]}`].trim()
-          }
 
-        } else {
-          catapultResObj[`${queriedColumns[h]}`] = result[i][`${queriedColumns[h]}`]
+    for (let i = 0; i < result.length; i++) {
+      for (let j = 0; j < queriedColumns.length; j++) {
+
+        if (queriedColumns[j] === 'POS_TimeStamp') {
+          console.log(`queriedColumns[j] before sanitizing==> ${queriedColumns[j]}`)
+          catapultResObj[`${queriedColumns[j]}`] = unescape(result[i][`${queriedColumns[j]}`])
+          console.log(`queriedColumns[j] after sanitizing==> ${queriedColumns[j]}`)
         }
+
+        if (typeof result[i][`${queriedColumns[j]}`] === 'string' &&
+          result[i][`${queriedColumns[j]}`] !== '') {
+          catapultResObj[`${queriedColumns[j]}`] = result[i][`${queriedColumns[j]}`].trim()
+        } else {
+          catapultResObj[`${queriedColumns[j]}`] = result[i][`${queriedColumns[j]}`]
+        }
+
         catapultResObj['actlMarg'] = Math.round(((result[i]['SIB_BasePrice'] - result[i]['inv_lastcost']) / (result[i]['SIB_BasePrice'])) * 100)
 
-        catapultResArr.push(catapultResObj)
-        srcRsXLS_tsql.push(catapultResObj)
-
       }
+      catapultResArr.push(catapultResObj)
+      srcRsXLS_tsql.push(catapultResObj)
     }
+
+
+
+
+
+
+    // let queriedColumns = Object.keys(result[0])
+    // console.log(`queriedColumns==> ${queriedColumns}`)
+    // for (let h = 0; h < queriedColumns.length; h++) {
+    //   for (let i = 0; i < result.length; i++) {
+    //     let catapultResObj = {}
+    //     catapultResObj['ri_t0d'] = i + 1
+    //     if (typeof result[i][`${queriedColumns[h]}`] == 'string') {
+    //       if (queriedColumns[h] === 'POS_TimeStamp') {
+    //         catapultResObj[`${queriedColumns[h]}`] = unescape(result[i][`${queriedColumns[h]}`])
+    //       } else {
+    //         catapultResObj[`${queriedColumns[h]}`] = result[i][`${queriedColumns[h]}`].trim()
+    //       }
+
+    //     } else {
+    //       catapultResObj[`${queriedColumns[h]}`] = result[i][`${queriedColumns[h]}`]
+    //     }
+    //     catapultResObj['actlMarg'] = Math.round(((result[i]['SIB_BasePrice'] - result[i]['inv_lastcost']) / (result[i]['SIB_BasePrice'])) * 100)
+
+    //     catapultResArr.push(catapultResObj)
+    //     srcRsXLS_tsql.push(catapultResObj)
+
+    //   }
+    // }
     // for (let i = 0; i < result.length; i++) {
     //   let catapultResObj = {}
     //   catapultResObj['ri_t0d'] = i + 1 //create sequential record id (ri_t0d) column for saving as csv; you will NOT
