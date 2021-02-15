@@ -214,16 +214,16 @@ function saveToXLSX() {
 <!--^-- only show inputs & buttons here if tableData store has been populated with query results -->
 
 {#if saveToCSVresponse !== undefined}
-  <p>
+  <p style="text-align:center">
     {Object.values(saveToCSVresponse)}
   </p>
 {/if}
 
 {#if saveToCSVcreatePopResponse !== undefined}
-  <p>
+  <p style="text-align:center">
     {saveToCSVcreatePopResponse["response1 from saveToCSVcreatePop"]}
   </p>
-  <p>
+  <p style="text-align:center">
     {saveToCSVcreatePopResponse["response2 from saveToCSVcreatePop"]}
   </p>
 {/if}
