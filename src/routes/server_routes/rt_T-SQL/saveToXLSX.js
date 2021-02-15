@@ -21,7 +21,7 @@ export async function post(req, res, next) {
     let reorderedResObj = {}
     // THE ORDER OF THE FOLLOWING OBJECT KEYS IS CRITICAL TO THE ORDER OF EXCEL COLUMNS
     reorderedResObj['invScanCode'] = catapultResArrCacheValue[a]['invScanCode']
-    reorderedResObj['ordSupplierStockNumber'] = catapultResArrCacheValue[a]['ordSupplierStockNumber']
+    reorderedResObj['ordSuppStockNum'] = catapultResArrCacheValue[a]['ordSuppStockNum']
     reorderedResObj['invName'] = catapultResArrCacheValue[a]['invName']
     reorderedResObj['invSize'] = catapultResArrCacheValue[a]['invSize']
     reorderedResObj['invReceiptAlias'] = catapultResArrCacheValue[a]['invReceiptAlias']
@@ -31,7 +31,7 @@ export async function post(req, res, next) {
     reorderedResObj['invEmpFkCreatedBy'] = catapultResArrCacheValue[a]['invEmpFkCreatedBy']
     reorderedResObj['oupName'] = catapultResArrCacheValue[a]['oupName']
     reorderedResObj['stoNumber'] = catapultResArrCacheValue[a]['stoNumber']
-    reorderedResObj['stoName'] = catapultResArrCacheValue[a]['stoName']
+    // reorderedResObj['stoName'] = catapultResArrCacheValue[a]['stoName']
     reorderedResObj['brdName'] = catapultResArrCacheValue[a]['brdName']
     reorderedResObj['dptName'] = catapultResArrCacheValue[a]['dptName']
     reorderedResObj['dptNumber'] = catapultResArrCacheValue[a]['dptNumber']
