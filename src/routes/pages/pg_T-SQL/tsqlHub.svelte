@@ -78,6 +78,48 @@ function saveToCSV() {
       saveToCSVresponse = saveToCSVresultJSON;
     });
 }
+
+function saveToCSVcreatePop() {
+  fetch("server_routes/rt_T-SQL/saveToCSVcreatePop", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      data: saveToCSVcreatePopFileName.value,
+    }),
+  })
+    .then((saveToCSVcreatePopResult) => saveToCSVcreatePopResult.json())
+    .then((saveToCSVcreatePopResultJSON) => {
+      console.log(
+        `JSON.stringify(saveToCSVcreatePopResultJSON)==> ${JSON.stringify(
+          saveToCSVcreatePopResultJSON
+        )}`
+      );
+      saveToCSVcreatePopResponse = saveToCSVcreatePopResultJSON;
+    });
+}
+
+function saveToXLSX() {
+  fetch("server_routes/rt_T-SQL/saveToXLSX", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      data: saveToXLSXfileName.value,
+    }),
+  })
+    .then((saveToXLSXresult) => saveToXLSXresult.json())
+    .then((saveToXLSXresultJSON) => {
+      console.log(
+        `JSON.stringify(saveToXLSXresultJSON)==> ${JSON.stringify(
+          saveToXLSXresultJSON
+        )}`
+      );
+      saveToXLSXresponse = saveToXLSXresultJSON;
+    });
+}
 </script>
 
 <style>
@@ -144,7 +186,7 @@ function saveToCSV() {
           bind:this="{saveToCSVcreatePopTableName}" />
       </div>
       <div style="text-align:center">
-        <button on:click="{save2CSVcreatePop}">save2CSVcreatePop</button>
+        <button on:click="{saveToCSVcreatePop}">save2CSVcreatePop</button>
       </div>
     </div>
     <!--v-- ***saveToXLSX*********************************************************** -->
