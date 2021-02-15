@@ -32,7 +32,7 @@ th {
           {#if columnHeading == "invName" || columnHeading == "invRecepitAlias" || columnHeading == "invMemo" || columnHeading == "pi1Description" || columnHeading == "pi2Description" || columnHeading == "invPowerField1"}
             <th class="widen-column">{columnHeading}</th>
           {:else}
-            <th class="widen-column">{columnHeading}</th>
+            <th>{columnHeading}</th>
           {/if}
         {/each}
         <!-- {/if} -->
