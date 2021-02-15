@@ -15,6 +15,9 @@ let saveToCSVcreatePopFileNameResponse;
 let saveToCSVcreatePopTableName;
 let saveToCSVcreatePopTableNameResponse;
 
+let saveToXLSXfileName;
+let saveToXLSXfileNameResponse;
+
 let queryText = `
 SELECT 
 INV_PK, INV_CPK, INV_ScanCode, ORD_SupplierStockNumber, INV_Name, INV_Size, INV_ReceiptAlias, inv_default, convert(varchar(10), 
