@@ -10,15 +10,11 @@ let saveToCSVfileName;
 let saveToCSVresponse;
 
 let saveToCSVcreatePopFileName;
-// let saveToCSVcreatePopFileNameResponse;
-
 let saveToCSVcreatePopTableName;
-// let saveToCSVcreatePopTableNameResponse;
-
 let saveToCSVcreatePopResponse;
 
 let saveToXLSXfileName;
-let saveToXLSXfileNameResponse;
+let saveToXLSXresponse;
 
 let queryText = `
 SELECT 
@@ -225,6 +221,12 @@ function saveToXLSX() {
   </p>
   <p style="text-align:center; color: var(--element6)">
     {saveToCSVcreatePopResponse["response2 from saveToCSVcreatePop"]}
+  </p>
+{/if}
+
+{#if saveToXLSXresponse !== undefined}
+  <p style="text-align:center; color: var(--element6)">
+    {saveToXLSXresponse["response from saveToXLSX"]}
   </p>
 {/if}
 
