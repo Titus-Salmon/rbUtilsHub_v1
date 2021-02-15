@@ -140,7 +140,7 @@ function saveToXLSX() {
   </textarea>
 </div>
 
-<button style="display:block; margin: 1rem auto" on:click="{vInvMasterQuery}"
+<button style="display:block; margin: 0 auto" on:click="{vInvMasterQuery}"
   >vInvMasterQuery</button>
 
 <!--v-- only show inputs & buttons here if tableData store has been populated with query results -->
