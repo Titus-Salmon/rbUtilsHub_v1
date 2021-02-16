@@ -52,6 +52,7 @@ function vInvMasterQuery() {
       //& we are overwriting the "Store" with set()
       paginData.set(queryResJSON.totalPages); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
+      console.log(`queryResJSON.totalPages==> ${queryResJSON.totalPages}`);
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
