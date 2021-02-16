@@ -51,7 +51,7 @@ function paginate() {
       </div>
       <div style="text-align:center">
         <input
-          type="text"
+          type="number"
           id="prevPage"
           name="prevPage"
           value="{paginData.currentPage - 1}"
@@ -68,7 +68,7 @@ function paginate() {
       </div>
       <div style="text-align:center">
         <input
-          type="text"
+          type="number"
           id="nxtPage"
           name="nxtPage"
           value="{paginData.currentPage + 1}"
