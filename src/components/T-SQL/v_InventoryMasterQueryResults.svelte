@@ -2,6 +2,10 @@
 import tableData from "../../stores/dynamicTables/tableData1.js";
 let table_data;
 tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
+
+import paginData from "../../stores/pagination/pagination1.js";
+let pagin_data;
+paginData.subscribe((paginData_t0d) => (pagin_data = paginData_t0d));
 </script>
 
 <style>
@@ -15,6 +19,7 @@ th {
 </style>
 
 <body>
+  <p>Total Pages: {pagin_data.totalPages}</p>
   <table>
     <thead>
       <tr>
