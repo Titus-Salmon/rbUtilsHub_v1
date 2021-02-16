@@ -48,17 +48,14 @@ function vInvMasterQuery() {
     //from the backend as JSON
 
     .then((queryResJSON1) => {
-      tableData.set(queryResJSON1.catapultResArr); //passing backend response to frontend "Store"
+      tableData.set(queryResJSON1.catapultResArr); //passing backend response to frontend tableData "Store"
+      //& we are overwriting the "Store" with set()
+      paginData.set(queryResJSON2.totalPages); //passing backend response to frontend paginData "Store"
       //& we are overwriting the "Store" with set()
     })
     //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
     //and at that point we can use this JSON object to do whatever with, such as stringify it, or
     //display it in a table on the frontend
-    .then((queryResJSON2) => {
-      paginData.set(queryResJSON2.totalPages); //passing backend response to frontend "Store"
-      //& we are overwriting the "Store" with set()
-    });
-}
 
 function saveToCSV() {
   fetch("server_routes/rt_T-SQL/saveToCSV", {
