@@ -6,7 +6,7 @@ export async function get(req, res, next) {
 
   //[1] take URLforWhatPageToDisplay, and extract the page # to display
   console.log(`req.query==> ${req.query}`)
-  console.log(`req.query.value==> ${req.query.value}`)
+  console.log(`req.query.page.value==> ${req.query.page.value}`)
   console.log(`JSON.stringify(req.query)==> ${JSON.stringify(req.query)}`)
   let page = parseInt(decodeURIComponent(req.query.page))
   console.log(`page==> ${page}`)
