@@ -9,8 +9,8 @@ import paginData from "../../stores/pagination/st_pagination1.js";
 
 <body>
   <!--v-- NOTE: you must use the $ to access the paginData store -->
-  {#if typeof $paginData.totalRows === "number"}
-    <p>$paginData.totalRows==> {$paginData.totalRows}</p>
-    <p>typeof $paginData.totalRows==> {typeof $paginData.totalRows}</p>
+  {#if typeof $paginData.totalPages === "number"}
+    <p>$paginData.totalPages==> {$paginData.totalPages}</p>
+    <p>typeof $paginData.totalPages==> {typeof $paginData.totalPages}</p>
   {/if}
 </body>
