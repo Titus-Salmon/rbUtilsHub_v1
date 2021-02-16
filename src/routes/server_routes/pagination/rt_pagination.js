@@ -9,6 +9,9 @@ export async function get(req, res, next) {
   console.log(`JSON.stringify(req.query)==> ${JSON.stringify(req.query)}`)
   let page = parseInt(decodeURIComponent(req.query.page))
   console.log(`page==> ${page}`)
+
+  let page_t0d = decodeURIComponent(req.query.page)
+  console.log(`page_t0d==> ${page_t0d}`)
   // let tableName = decodeURIComponent(req.query.tableName)
   // let numQueryRes = decodeURIComponent(req.query.numQueryRes)
 
