@@ -8,7 +8,8 @@ import paginData from "../../stores/pagination/pagination1.js";
 </style>
 
 <body>
-  <p>$paginData==> {$paginData}</p>
-  <p>typeof $paginData==> {typeof $paginData}</p>
-  <!-- {/if} -->
+  {#if typeof $paginData === "number"}
+    <p>$paginData==> {$paginData}</p>
+    <p>typeof $paginData==> {typeof $paginData}</p>
+  {/if}
 </body>
