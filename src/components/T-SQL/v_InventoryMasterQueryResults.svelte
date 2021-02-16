@@ -20,8 +20,8 @@ th {
 
 <body>
   <p>Total Pages1: {Object.values(pagin_data[0])}</p>
-  <p>Total Pages2: {$pagin_data[0].totalPages}</p>
-  <p>Total Pages3: {$pagin_data.totalPages}</p>
+  <!-- <p>Total Pages2: {$pagin_data[0].totalPages}</p>
+  <p>Total Pages3: {$pagin_data.totalPages}</p> -->
   <table>
     <thead>
       <tr>
