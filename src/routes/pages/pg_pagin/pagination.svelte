@@ -6,6 +6,8 @@ import tableData from "../../../stores/dynamicTables/tableData1.js";
 // paginData.subscribe((paginData_t0d) => (pagin_data = paginData_t0d));
 
 let pageToDisplay = 0;
+let forward;
+let reverse;
 
 function paginate(direction) {
   console.log(`$paginData==> ${$paginData}`);
@@ -107,8 +109,9 @@ function paginate(direction) {
           bind:this="{pageToDisplay}" />
       </div> -->
       <div style="text-align:center">
-        <button bind:this="{reverse}" on:click="{paginate('reverse')}"
-          >prev</button>
+        <!-- <button bind:this="{reverse}" on:click="{paginate('reverse')}"
+          >prev</button> -->
+        <button on:click="{paginate('reverse')}">prev</button>
       </div>
     </div>
     <!-- ************************************************************** -->
@@ -126,8 +129,9 @@ function paginate(direction) {
           bind:this="{pageToDisplay}" />
       </div> -->
       <div style="text-align:center">
-        <button bind:this="{forward}" on:click="{paginate('forward')}"
-          >next</button>
+        <!-- <button bind:this="{forward}" on:click="{paginate('forward')}"
+          >next</button> -->
+        <button on:click="{paginate('forward')}">next</button>
       </div>
     </div>
     <!-- ************************************************************** -->
