@@ -43,7 +43,7 @@ export async function post(req, res, next) {
       catapultResArr.push(catapultResObj)
       srcRsXLS_tsql.push(catapultResObj)
       if (catapultResArr.length > 100) {
-        for (let i = 0; i < 100 i++) {
+        for (let i = 0; i < 100; i++) {
           catapultResArr_pag1.push(catapultResArr[i])
         }
       } else {
