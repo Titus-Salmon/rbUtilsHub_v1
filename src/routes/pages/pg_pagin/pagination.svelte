@@ -54,7 +54,7 @@ function paginate() {
           type="number"
           id="prevPage"
           name="prevPage"
-          value="{paginData.currentPage - 1}"
+          value="{$paginData.currentPage - 1}"
           bind:this="{pageToDisplay}" />
       </div>
       <div style="text-align:center">
@@ -71,7 +71,7 @@ function paginate() {
           type="number"
           id="nxtPage"
           name="nxtPage"
-          value="{paginData.currentPage + 1}"
+          value="{$paginData.currentPage + 1}"
           bind:this="{pageToDisplay}" />
       </div>
       <div style="text-align:center">
