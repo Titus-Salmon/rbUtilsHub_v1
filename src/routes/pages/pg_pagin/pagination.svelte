@@ -13,10 +13,10 @@ function paginate(direction) {
   console.log(`Object.values($paginData)1==> ${Object.values($paginData)}`);
 
   if (direction === "forward") {
-    pageToDisplay.value += 1;
+    pageToDisplay += 1;
   }
   if (direction === "reverse") {
-    pageToDisplay.value -= 1;
+    pageToDisplay -= 1;
   }
 
   fetch(`server_routes/pagination/rt_pagination?page=${pageToDisplay.value}`, {
