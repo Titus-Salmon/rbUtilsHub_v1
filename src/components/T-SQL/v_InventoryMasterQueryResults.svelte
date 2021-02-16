@@ -19,7 +19,7 @@ th {
 </style>
 
 <body>
-  {#if pagin_data[0]["totalPages"]}
+  {#if pagin_data[0]}
     <p>Total Pages1: {Object.values(pagin_data)}</p>
     <p>Total Pages2: {pagin_data[0]["totalPages"]}</p>
   {/if}
