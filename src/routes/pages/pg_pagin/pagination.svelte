@@ -53,7 +53,7 @@ function paginate() {
 
   <div class="flexbox">
     <!--v-- ***prevPage*********************************************************** -->
-    <div>
+    <!-- <div>
       <div style="text-align:center">
         <label for="prevPage">prevPage</label>
       </div>
@@ -68,9 +68,9 @@ function paginate() {
       <div style="text-align:center">
         <button on:click="{paginate}">prevPage</button>
       </div>
-    </div>
+    </div> -->
     <!--v-- ***nxtPage*********************************************************** -->
-    <div>
+    <!-- <div>
       <div style="text-align:center">
         <label for="nxtPage">nxtPage</label>
       </div>
@@ -84,6 +84,23 @@ function paginate() {
       </div>
       <div style="text-align:center">
         <button on:click="{paginate}">nxtPage</button>
+      </div>
+    </div> -->
+    <!--v-- ***pageToDisplay*********************************************************** -->
+    <div>
+      <div style="text-align:center">
+        <label for="pageToDisplay">pageToDisplay</label>
+      </div>
+      <div style="text-align:center">
+        <input
+          type="number"
+          id="pageToDisplay"
+          name="pageToDisplay"
+          value="{$paginData.currentPage}"
+          bind:this="{pageToDisplay}" />
+      </div>
+      <div style="text-align:center">
+        <button on:click="{paginate}">pageToDisplay</button>
       </div>
     </div>
     <!-- ************************************************************** -->
