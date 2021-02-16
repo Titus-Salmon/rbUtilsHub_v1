@@ -12,12 +12,15 @@ export async function post(req, res, next) {
   let catapultResArr = []
   var srcRsXLS_tsql = []
 
-  function showcatapultResults(result) {
+  let totalPages
+
+  async function showcatapultResults(result) {
     let queriedColumns = Object.keys(result[0])
     console.log(`queriedColumns==> ${queriedColumns}`)
 
-    for (let i = 0; i < result.length; i++) {
-      let rowData = result[i]
+    for (let i = 0; i < result.length; i++) { //we are abstracting query result handling here, in order to be able to provide
+      //front-end results for any columns that are queried, not just a fixed set of columns 
+      let rowData = result[i] //data from row #i
       let catapultResObj = {}
       catapultResObj['ri_t0d'] = i + 1
       for (let j = 0; j < queriedColumns.length; j++) {
@@ -47,13 +50,21 @@ export async function post(req, res, next) {
     //^// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
   }
 
+  async function paginCalcs() { //we are hard-coding page length to 100 results per page for now
+    totalPages = Math.ceil(catapultResArr.length / 100)
+  }
+
   odbc.connect(DSN, (error, connection) => {
     connection.query(`${catapultDbQuery}`, (error, result) => {
       if (error) {
         console.error(error)
       }
-      showcatapultResults(result)
-      res.json(catapultResArr)
+      showcatapultResults(result).then(paginCalcs()).then(() => {
+        res.json({
+          "catapultResArr": catapultResArr,
+          "totalPages": totalPages
+        })
+      })
     })
   })
 }
