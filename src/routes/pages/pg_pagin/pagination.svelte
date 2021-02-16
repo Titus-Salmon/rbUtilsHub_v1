@@ -8,12 +8,6 @@ let pageToDisplay;
 function paginate() {
   fetch("server_routes/pagination/rt_pagination", {
     method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      data: `?page=${pageToDisplay}`,
-    }),
   })
     .then((queryRes) => queryRes.json())
     .then((queryResJSON) => {
