@@ -71,7 +71,7 @@ function paginate() {
           type="number"
           id="nxtPage"
           name="nxtPage"
-          value="{$paginData.currentPage + 1}"
+          value="1"
           bind:this="{pageToDisplay}" />
       </div>
       <div style="text-align:center">
