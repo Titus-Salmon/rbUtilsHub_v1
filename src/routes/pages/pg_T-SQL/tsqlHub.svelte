@@ -1,6 +1,7 @@
 <script>
 import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
+import Pagination from "../../../components/UI/pagination.svelte";
 import tableData from "../../../stores/dynamicTables/tableData1.js";
 import paginData from "../../../stores/pagination/pagination1.js";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
@@ -233,4 +234,5 @@ function saveToXLSX() {
   </p>
 {/if}
 
+<Pagination />
 <V_InventoryMasterQueryResultsTable />
