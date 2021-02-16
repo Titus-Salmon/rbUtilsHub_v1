@@ -8,6 +8,8 @@ import tableData from "../../../stores/dynamicTables/tableData1.js";
 let pageToDisplay;
 
 function paginate() {
+  console.log(`$paginData==> ${$paginData}`);
+
   fetch(`server_routes/pagination/rt_pagination?page=${pageToDisplay.value}`, {
     method: "GET",
   })
