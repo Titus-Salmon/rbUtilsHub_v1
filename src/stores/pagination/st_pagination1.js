@@ -3,7 +3,10 @@ import {
 } from 'svelte/store'
 
 const paginData = writable([{
-  // defaultVal: 'defaultVal'
+  totalPages: null,
+  currentPage: null,
+  nextPage: null,
+  prevPage: null
 }])
 
 export default paginData

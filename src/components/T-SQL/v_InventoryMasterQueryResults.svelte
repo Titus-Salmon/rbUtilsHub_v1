@@ -18,6 +18,7 @@ th {
   <table>
     <thead>
       <tr>
+        <!--v-- NOTE: you must use the $ to access the tableData store -->
         {#each Object.keys($tableData[0]) as columnHeading}
           <th>{columnHeading}</th>
         {/each}

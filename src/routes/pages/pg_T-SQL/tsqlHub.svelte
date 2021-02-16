@@ -3,7 +3,7 @@ import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
 import Pagination from "../../../components/UI/pagination.svelte";
 import tableData from "../../../stores/dynamicTables/tableData1.js";
-import paginData from "../../../stores/pagination/pagination1.js";
+import paginData from "../../../stores/pagination/st_pagination1.js";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 
 let tsqlQueryText;
@@ -51,7 +51,32 @@ function vInvMasterQuery() {
     .then((queryResJSON) => {
       tableData.set(queryResJSON.catapultResArr); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
-      paginData.set(queryResJSON.totalPages); //passing backend response to frontend "Store"
+      paginData.totalPages.set(queryResJSON.totalPages); //passing backend response to frontend "Store"
+      //& we are overwriting the "Store" with set()
+      console.log(`queryResJSON.totalPages==> ${queryResJSON.totalPages}`);
+    });
+  //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
+  //and at that point we can use this JSON object to do whatever with, such as stringify it, or
+  //display it in a table on the frontend
+}
+
+function paginate() {
+  fetch("server_routes/pagination/rt_pagination", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      //'Access-Control-Allow-Origin': '*',
+    },
+    //mode: 'cors',
+    body: JSON.stringify({
+      data: URLforWhatPageToDisplay,
+    }),
+  })
+    .then((queryRes) => queryRes.json())
+    .then((queryResJSON) => {
+      tableData.set(queryResJSON.catapultResArr_pag); //passing backend response to frontend "Store"
+      //& we are overwriting the "Store" with set()
+      paginData.set(queryResJSON.currentPage); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
       console.log(`queryResJSON.totalPages==> ${queryResJSON.totalPages}`);
     });
