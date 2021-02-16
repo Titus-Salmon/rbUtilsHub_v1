@@ -1,4 +1,5 @@
 <script>
+import { onMount } from "svelte";
 import paginData from "../../../stores/pagination/st_pagination1.js";
 import tableData from "../../../stores/dynamicTables/tableData1.js";
 // let pagin_data;
@@ -6,8 +7,12 @@ import tableData from "../../../stores/dynamicTables/tableData1.js";
 
 let pageToDisplay;
 
+// onMount(() => {
+//   const ctx = canvas.getContext("2d");
+// });
+
 function paginate() {
-  fetch(`server_routes/pagination/rt_pagination?page=${pageToDisplay}`, {
+  fetch(`server_routes/pagination/rt_pagination?page=${pageToDisplay.value}`, {
     method: "GET",
   })
     .then((queryRes) => queryRes.json())
