@@ -7,10 +7,6 @@ import tableData from "../../../stores/dynamicTables/tableData1.js";
 
 let pageToDisplay;
 
-// onMount(() => {
-//   const ctx = canvas.getContext("2d");
-// });
-
 function paginate() {
   fetch(`server_routes/pagination/rt_pagination?page=${pageToDisplay.value}`, {
     method: "GET",
@@ -76,7 +72,7 @@ function paginate() {
           type="number"
           id="nxtPage"
           name="nxtPage"
-          value="1"
+          value="{$paginData.currentPage + 1}"
           bind:this="{pageToDisplay}" />
       </div>
       <div style="text-align:center">
