@@ -58,82 +58,48 @@ function paginate(direction) {
   {#if typeof $paginData.totalPages === "number"}
     <p>$paginData.totalPages==> {$paginData.totalPages}</p>
     <p>typeof $paginData.totalPages==> {typeof $paginData.totalPages}</p>
-  {/if}
 
-  <div class="flexbox">
-    <!--v-- ***prevPage*********************************************************** -->
-    <!-- <div>
-      <div style="text-align:center">
-        <label for="prevPage">prevPage</label>
+    <div class="flexbox">
+      <!--v-- ***pageToDisplay--reverse*********************************************************** -->
+      <div>
+        <div style="text-align:center">
+          <label for="pageToDisplay">pageToDisplay</label>
+        </div>
+        <!-- <div style="text-align:center">
+          <input
+            type="number"
+            id="pageToDisplay"
+            name="pageToDisplay"
+            value="{$paginData.currentPage}"
+            bind:this="{pageToDisplay}" />
+        </div> -->
+        <div style="text-align:center">
+          <!-- <button bind:this="{reverse}" on:click="{paginate('reverse')}"
+            >prev</button> -->
+          <button on:click="{paginate('reverse')}">prev</button>
+        </div>
       </div>
-      <div style="text-align:center">
-        <input
-          type="number"
-          id="prevPage"
-          name="prevPage"
-          value="{$paginData.currentPage - 1}"
-          bind:this="{pageToDisplay}" />
+      <!-- ************************************************************** -->
+      <!--v-- ***pageToDisplay--forward*********************************************************** -->
+      <div>
+        <div style="text-align:center">
+          <label for="pageToDisplay">pageToDisplay</label>
+        </div>
+        <!-- <div style="text-align:center">
+          <input
+            type="number"
+            id="pageToDisplay"
+            name="pageToDisplay"
+            value="{$paginData.currentPage}"
+            bind:this="{pageToDisplay}" />
+        </div> -->
+        <div style="text-align:center">
+          <!-- <button bind:this="{forward}" on:click="{paginate('forward')}"
+            >next</button> -->
+          <button on:click="{paginate('forward')}">next</button>
+        </div>
       </div>
-      <div style="text-align:center">
-        <button on:click="{paginate}">prevPage</button>
-      </div>
-    </div> -->
-    <!--v-- ***nxtPage*********************************************************** -->
-    <!-- <div>
-      <div style="text-align:center">
-        <label for="nxtPage">nxtPage</label>
-      </div>
-      <div style="text-align:center">
-        <input
-          type="number"
-          id="nxtPage"
-          name="nxtPage"
-          value="{$paginData.currentPage + 1}"
-          bind:this="{pageToDisplay}" />
-      </div>
-      <div style="text-align:center">
-        <button on:click="{paginate}">nxtPage</button>
-      </div>
-    </div> -->
-    <!--v-- ***pageToDisplay--reverse*********************************************************** -->
-    <div>
-      <div style="text-align:center">
-        <label for="pageToDisplay">pageToDisplay</label>
-      </div>
-      <!-- <div style="text-align:center">
-        <input
-          type="number"
-          id="pageToDisplay"
-          name="pageToDisplay"
-          value="{$paginData.currentPage}"
-          bind:this="{pageToDisplay}" />
-      </div> -->
-      <div style="text-align:center">
-        <!-- <button bind:this="{reverse}" on:click="{paginate('reverse')}"
-          >prev</button> -->
-        <button on:click="{paginate('reverse')}">prev</button>
-      </div>
+      <!-- ************************************************************** -->
     </div>
-    <!-- ************************************************************** -->
-    <!--v-- ***pageToDisplay--forward*********************************************************** -->
-    <div>
-      <div style="text-align:center">
-        <label for="pageToDisplay">pageToDisplay</label>
-      </div>
-      <!-- <div style="text-align:center">
-        <input
-          type="number"
-          id="pageToDisplay"
-          name="pageToDisplay"
-          value="{$paginData.currentPage}"
-          bind:this="{pageToDisplay}" />
-      </div> -->
-      <div style="text-align:center">
-        <!-- <button bind:this="{forward}" on:click="{paginate('forward')}"
-          >next</button> -->
-        <button on:click="{paginate('forward')}">next</button>
-      </div>
-    </div>
-    <!-- ************************************************************** -->
-  </div>
+  {/if}
 </body>
