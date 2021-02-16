@@ -42,14 +42,16 @@ export async function post(req, res, next) {
       }
       catapultResArr.push(catapultResObj)
       srcRsXLS_tsql.push(catapultResObj)
-      if (catapultResArr.length > 100) {
-        for (let i = 0; i < 100; i++) {
-          catapultResArr_pag1.push(catapultResArr[i])
-        }
-      } else {
-        catapultResArr_pag1 = catapultResArr
-      }
     }
+
+    if (catapultResArr.length > 100) {
+      for (let i = 0; i < 100; i++) {
+        catapultResArr_pag1.push(catapultResArr[i])
+      }
+    } else {
+      catapultResArr_pag1 = catapultResArr
+    }
+
     //V// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
     catapultResArrCache.set('catapultResArrCache_key', catapultResArr)
     console.log(`catapultResArrCache['data']['catapultResArrCache_key']['v'].length==> ${catapultResArrCache['data']['catapultResArrCache_key']['v'].length}`)
