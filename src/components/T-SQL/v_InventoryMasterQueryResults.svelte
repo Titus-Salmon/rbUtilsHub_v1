@@ -1,15 +1,7 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1.js";
-export let table_data;
+let table_data;
 tableData.subscribe((tableData_t0d) => (table_data = tableData_t0d));
-console.log(
-  `table_data[0] from v_InventoryMasterQueryResults.svelte==> ${table_data[0]}`
-); //this starts off as an empty object, because the tableData1.js store also starts off empty
-console.log(
-  `JSON.stringify(table_data[0]) from v_InventoryMasterQueryResults.svelte==> ${JSON.stringify(
-    table_data[0]
-  )}`
-);
 </script>
 
 <style>

@@ -2,6 +2,7 @@
 import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
 import tableData from "../../../stores/dynamicTables/tableData1.js";
+import paginData from "../../../stores/pagination/pagination1.js";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 
 let tsqlQueryText;
@@ -46,13 +47,17 @@ function vInvMasterQuery() {
     //[2] this result must then be converted to JSON via the json() method on the frontend, even though it was already sent
     //from the backend as JSON
 
-    .then((queryResJSON) => {
-      tableData.set(queryResJSON.catapultResArr); //passing backend response to frontend "Store"
+    .then((queryResJSON1) => {
+      tableData.set(queryResJSON1.catapultResArr); //passing backend response to frontend "Store"
+      //& we are overwriting the "Store" with set()
+    })
+    //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
+    //and at that point we can use this JSON object to do whatever with, such as stringify it, or
+    //display it in a table on the frontend
+    .then((queryResJSON2) => {
+      paginData.set(queryResJSON2.totalPages); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
     });
-  //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
-  //and at that point we can use this JSON object to do whatever with, such as stringify it, or
-  //display it in a table on the frontend
 }
 
 function saveToCSV() {
