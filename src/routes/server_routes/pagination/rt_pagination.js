@@ -28,8 +28,8 @@ export async function get(req, res, next) {
 
   for (let i = 0; i < 100; i++) {
     catapultResArr_pagin.push(catapultResArrCache['data']['catapultResArrCache_key']['v'][offset + i])
-    console.log(`catapultResArr_pagin.push(catapultResArrCache['data']['catapultResArrCache_key']['v'][offset + i])==> 
-    ${catapultResArr_pagin.push(catapultResArrCache['data']['catapultResArrCache_key']['v'][offset + i])}`)
+    console.log(`catapultResArrCache['data']['catapultResArrCache_key']['v'][offset + i]==> 
+    ${catapultResArrCache['data']['catapultResArrCache_key']['v'][offset + i]}`)
   }
 
   //[3] send those entries from the backend (here) to the frontend via a res.json()
