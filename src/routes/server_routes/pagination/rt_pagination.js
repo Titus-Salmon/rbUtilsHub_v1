@@ -5,6 +5,7 @@ export async function get(req, res, next) {
   let catapultResArr_pagin = []
 
   //[1] take URLforWhatPageToDisplay, and extract the page # to display
+  console.log(`req.query==> ${req.query}`)
   let page = parseInt(decodeURIComponent(req.query.page))
   // let tableName = decodeURIComponent(req.query.tableName)
   // let numQueryRes = decodeURIComponent(req.query.numQueryRes)
