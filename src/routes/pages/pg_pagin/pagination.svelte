@@ -1,5 +1,6 @@
 <script>
 import paginData from "../../../stores/pagination/st_pagination1.js";
+import tableData from "../../../stores/dynamicTables/tableData1.js";
 // let pagin_data;
 // paginData.subscribe((paginData_t0d) => (pagin_data = paginData_t0d));
 
