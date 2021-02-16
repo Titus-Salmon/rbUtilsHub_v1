@@ -6,6 +6,7 @@ export async function get(req, res, next) {
 
   //[1] take URLforWhatPageToDisplay, and extract the page # to display
   console.log(`req.query==> ${req.query}`)
+  console.log(`JSON.stringify(req.query)==> ${JSON.stringify(req.query)}`)
   let page = parseInt(decodeURIComponent(req.query.page))
   // let tableName = decodeURIComponent(req.query.tableName)
   // let numQueryRes = decodeURIComponent(req.query.numQueryRes)
@@ -29,8 +30,8 @@ export async function get(req, res, next) {
 
   for (let i = 0; i < 100; i++) {
     catapultResArr_pagin.push(catapultResArrCache['data']['catapultResArrCache_key']['v'][offset + i])
-    console.log(`catapultResArrCache['data']['catapultResArrCache_key']['v'][offset + i]==> 
-    ${catapultResArrCache['data']['catapultResArrCache_key']['v'][offset + i]}`)
+    // console.log(`catapultResArrCache['data']['catapultResArrCache_key']['v'][offset + i]==> 
+    // ${catapultResArrCache['data']['catapultResArrCache_key']['v'][offset + i]}`)
   }
 
   //[3] send those entries from the backend (here) to the frontend via a res.json()
