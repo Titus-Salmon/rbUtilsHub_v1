@@ -9,9 +9,11 @@ export async function post(req, res, next) {
   console.log(`req.body.data==> ${req.body.data}`)
   let catapultDbQuery = req.body.data
 
-  let catapultResArr = []
-  let catapultResArr_pag1 = []
-  var srcRsXLS_tsql = []
+  let catapultResArr = [] //array that holds all query results Objs
+  let catapultResArr_1stPage = [] //array that holds 1st page of query results Objs
+  var srcRsXLS_tsql = [] //array that holds all query results Objs for generating excel files. Do we need a separate array for this?
+  //maybe not, but keeping it this way, in case we need it to be separate from catapultResArr in the future. Just cleaner to handle
+  //it this way.
 
   let totalPages
 
@@ -36,7 +38,7 @@ export async function post(req, res, next) {
         } else {
           catapultResObj[`${colName}`] = rowData[`${colName}`]
         }
-        if (colName.toLowerCase() === 'sib_idealmargin') {
+        if (colName.toLowerCase() === 'sib_idealmargin') { //calculates actual margin, and adds that row to result set
           catapultResObj['actlMarg'] = Math.round(((rowData['sib_baseprice'] - rowData['inv_lastcost']) / (rowData['sib_baseprice'])) * 100)
         }
       }
@@ -44,12 +46,14 @@ export async function post(req, res, next) {
       srcRsXLS_tsql.push(catapultResObj)
     }
 
-    if (catapultResArr.length > 100) {
+    if (catapultResArr.length > 100) { //if there are more than 100 query results, only push the 1st 100 into the 1st page
+      //result set (catapultResArr_1stPage)
       for (let i = 0; i < 100; i++) {
-        catapultResArr_pag1.push(catapultResArr[i])
+        catapultResArr_1stPage.push(catapultResArr[i])
       }
     } else {
-      catapultResArr_pag1 = catapultResArr
+      catapultResArr_1stPage = catapultResArr //if there are 100 or less total query results, the 1st page results are set equal
+      //to the whole query result dataset (catapultResArr)
     }
 
     //V// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
@@ -71,8 +75,8 @@ export async function post(req, res, next) {
       }
       showcatapultResults(result).then(paginCalcs()).then(() => {
         res.json({
-          "catapultResArr": catapultResArr,
-          "catapultResArr_pag1": catapultResArr_pag1,
+          "catapultResArr": catapultResArr, //this is the entire result set (which we actually may not need to passing to the front)
+          "catapultResArr_1stPage": catapultResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
           "totalPages": totalPages
         })
       })

@@ -7,10 +7,17 @@ import tableData from "../../../stores/dynamicTables/tableData1.js";
 
 let pageToDisplay;
 
-function paginate() {
+function paginate(direction) {
   console.log(`$paginData==> ${$paginData}`);
   console.log(`Object.keys($paginData)1==> ${Object.keys($paginData)}`);
   console.log(`Object.values($paginData)1==> ${Object.values($paginData)}`);
+
+  if (direction === "forward") {
+    pageToDisplay.value += 1;
+  }
+  if (direction === "reverse") {
+    pageToDisplay.value -= 1;
+  }
 
   fetch(`server_routes/pagination/rt_pagination?page=${pageToDisplay.value}`, {
     method: "GET",
@@ -86,7 +93,7 @@ function paginate() {
         <button on:click="{paginate}">nxtPage</button>
       </div>
     </div> -->
-    <!--v-- ***pageToDisplay*********************************************************** -->
+    <!--v-- ***pageToDisplay--reverse*********************************************************** -->
     <div>
       <div style="text-align:center">
         <label for="pageToDisplay">pageToDisplay</label>
@@ -100,7 +107,25 @@ function paginate() {
           bind:this="{pageToDisplay}" />
       </div>
       <div style="text-align:center">
-        <button on:click="{paginate}">pageToDisplay</button>
+        <button on:click="{paginate('reverse')}">prev</button>
+      </div>
+    </div>
+    <!-- ************************************************************** -->
+    <!--v-- ***pageToDisplay--forward*********************************************************** -->
+    <div>
+      <div style="text-align:center">
+        <label for="pageToDisplay">pageToDisplay</label>
+      </div>
+      <div style="text-align:center">
+        <input
+          type="number"
+          id="pageToDisplay"
+          name="pageToDisplay"
+          value="{$paginData.currentPage}"
+          bind:this="{pageToDisplay}" />
+      </div>
+      <div style="text-align:center">
+        <button on:click="{paginate('forward')}">next</button>
       </div>
     </div>
     <!-- ************************************************************** -->
