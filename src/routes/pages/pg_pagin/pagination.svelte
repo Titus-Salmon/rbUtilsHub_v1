@@ -5,7 +5,7 @@ import tableData from "../../../stores/dynamicTables/tableData1.js";
 // let pagin_data;
 // paginData.subscribe((paginData_t0d) => (pagin_data = paginData_t0d));
 
-let pageToDisplay;
+let pageToDisplay = 0;
 
 function paginate(direction) {
   console.log(`$paginData==> ${$paginData}`);
@@ -19,7 +19,7 @@ function paginate(direction) {
     pageToDisplay -= 1;
   }
 
-  fetch(`server_routes/pagination/rt_pagination?page=${pageToDisplay.value}`, {
+  fetch(`server_routes/pagination/rt_pagination?page=${pageToDisplay}`, {
     method: "GET",
   })
     .then((queryRes) => queryRes.json())
@@ -98,16 +98,17 @@ function paginate(direction) {
       <div style="text-align:center">
         <label for="pageToDisplay">pageToDisplay</label>
       </div>
-      <div style="text-align:center">
+      <!-- <div style="text-align:center">
         <input
           type="number"
           id="pageToDisplay"
           name="pageToDisplay"
           value="{$paginData.currentPage}"
           bind:this="{pageToDisplay}" />
-      </div>
+      </div> -->
       <div style="text-align:center">
-        <button on:click="{paginate('reverse')}">prev</button>
+        <button bind:this="{reverse}" on:click="{paginate('reverse')}"
+          >prev</button>
       </div>
     </div>
     <!-- ************************************************************** -->
@@ -116,16 +117,17 @@ function paginate(direction) {
       <div style="text-align:center">
         <label for="pageToDisplay">pageToDisplay</label>
       </div>
-      <div style="text-align:center">
+      <!-- <div style="text-align:center">
         <input
           type="number"
           id="pageToDisplay"
           name="pageToDisplay"
           value="{$paginData.currentPage}"
           bind:this="{pageToDisplay}" />
-      </div>
+      </div> -->
       <div style="text-align:center">
-        <button on:click="{paginate('forward')}">next</button>
+        <button bind:this="{forward}" on:click="{paginate('forward')}"
+          >next</button>
       </div>
     </div>
     <!-- ************************************************************** -->
