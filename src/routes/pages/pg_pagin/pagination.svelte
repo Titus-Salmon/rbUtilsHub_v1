@@ -80,7 +80,7 @@ function paginate(direction) {
         <div style="text-align:center">
           <!-- <button bind:this="{reverse}" on:click="{paginate('reverse')}"
             >prev</button> -->
-          <button on:click="{paginate('reverse')}">prev</button>
+          <button on:click|preventDefault="{paginate('reverse')}">prev</button>
         </div>
       </div>
       <!-- ************************************************************** -->
@@ -100,7 +100,7 @@ function paginate(direction) {
         <div style="text-align:center">
           <!-- <button bind:this="{forward}" on:click="{paginate('forward')}"
             >next</button> -->
-          <button on:click="{paginate('forward')}">next</button>
+          <button on:click|preventDefault="{paginate('forward')}">next</button>
         </div>
       </div>
       <!-- ************************************************************** -->
