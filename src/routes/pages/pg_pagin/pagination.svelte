@@ -12,6 +12,12 @@ function paginate() {
   })
     .then((queryRes) => queryRes.json())
     .then((queryResJSON) => {
+      console.log(`queryResJSON from pagination.svelte==> ${queryResJSON}`);
+      console.log(
+        `JSON.stringify(queryResJSON) from pagination.svelte==> ${JSON.stringify(
+          queryResJSON
+        )}`
+      );
       tableData.set(queryResJSON.catapultResArr_pagin); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
       paginData.set({
