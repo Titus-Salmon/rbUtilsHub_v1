@@ -2,9 +2,10 @@
 import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
 import Pagination from "../../../components/UI/pagination.svelte";
+import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
+
 import tableData from "../../../stores/dynamicTables/tableData1.js";
 import paginData from "../../../stores/pagination/st_pagination1.js";
-import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 
 let tsqlQueryText;
 
@@ -60,30 +61,31 @@ function vInvMasterQuery() {
   //display it in a table on the frontend
 }
 
-function paginate() {
-  fetch("server_routes/pagination/rt_pagination", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      //'Access-Control-Allow-Origin': '*',
-    },
-    //mode: 'cors',
-    body: JSON.stringify({
-      data: URLforWhatPageToDisplay,
-    }),
-  })
-    .then((queryRes) => queryRes.json())
-    .then((queryResJSON) => {
-      tableData.set(queryResJSON.catapultResArr_pag); //passing backend response to frontend "Store"
-      //& we are overwriting the "Store" with set()
-      paginData.set(queryResJSON.currentPage); //passing backend response to frontend "Store"
-      //& we are overwriting the "Store" with set()
-      console.log(`queryResJSON.totalPages==> ${queryResJSON.totalPages}`);
-    });
-  //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
-  //and at that point we can use this JSON object to do whatever with, such as stringify it, or
-  //display it in a table on the frontend
-}
+// function paginate() {
+//   fetch("server_routes/pagination/rt_pagination", {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       data: `?page=${pageToDisplay}`,
+//     }),
+//   })
+//     .then((queryRes) => queryRes.json())
+//     .then((queryResJSON) => {
+//       tableData.set(queryResJSON.catapultResArr_pagin); //passing backend response to frontend "Store"
+//       //& we are overwriting the "Store" with set()
+//       paginData.set({
+//         currentPage: queryResJSON.currentPage,
+//         nextPage: queryResJSON.nextPage,
+//         prevPage: queryResJSON.prevPage,
+//       }); //passing backend response to frontend "Store"
+//       //& we are overwriting the "Store" with set()
+//     });
+//   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
+//   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
+//   //display it in a table on the frontend
+// }
 
 function saveToCSV() {
   fetch("server_routes/rt_T-SQL/saveToCSV", {
