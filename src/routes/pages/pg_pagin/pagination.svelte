@@ -7,7 +7,7 @@ import tableData from "../../../stores/dynamicTables/tableData1.js";
 let pageToDisplay;
 
 function paginate() {
-  fetch("server_routes/pagination/rt_pagination", {
+  fetch(`server_routes/pagination/rt_pagination?page=${pageToDisplay}`, {
     method: "GET",
   })
     .then((queryRes) => queryRes.json())
