@@ -4,8 +4,8 @@ import {
 
 const paginData = writable([{
   totalPages: null,
-  currentPage: null,
-  nextPage: null,
+  currentPage: 0,
+  nextPage: 1,
   prevPage: null
 }])
 

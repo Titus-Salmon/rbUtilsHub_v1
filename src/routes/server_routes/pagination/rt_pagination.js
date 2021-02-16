@@ -42,6 +42,8 @@ export async function get(req, res, next) {
   //[3] send those entries from the backend (here) to the frontend via a res.json()
   res.json({
     catapultResArr_pagin: catapultResArr_pagin,
-    currentPage: page //etc...
+    currentPage: page,
+    nextPage: page + 1,
+    prevPage: page - 1,
   })
 }
