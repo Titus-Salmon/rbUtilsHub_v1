@@ -10,6 +10,7 @@ export async function post(req, res, next) {
   let catapultDbQuery = req.body.data
 
   let catapultResArr = []
+  let catapultResArr_pag1 = []
   var srcRsXLS_tsql = []
 
   let totalPages
@@ -41,6 +42,13 @@ export async function post(req, res, next) {
       }
       catapultResArr.push(catapultResObj)
       srcRsXLS_tsql.push(catapultResObj)
+      if (catapultResArr.length > 100) {
+        for (let i = 0; i < 100 i++) {
+          catapultResArr_pag1.push(catapultResArr[i])
+        }
+      } else {
+        catapultResArr_pag1 = catapultResArr
+      }
     }
     //V// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
     catapultResArrCache.set('catapultResArrCache_key', catapultResArr)
@@ -62,6 +70,7 @@ export async function post(req, res, next) {
       showcatapultResults(result).then(paginCalcs()).then(() => {
         res.json({
           "catapultResArr": catapultResArr,
+          "catapultResArr_pag1": catapultResArr_pag1,
           "totalPages": totalPages
         })
       })

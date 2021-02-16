@@ -50,7 +50,8 @@ function vInvMasterQuery() {
     //from the backend as JSON
 
     .then((queryResJSON) => {
-      tableData.set(queryResJSON.catapultResArr); //passing backend response to frontend "Store"
+      tableData.set(queryResJSON.catapultResArr_pag1);
+      // tableData.set(queryResJSON.catapultResArr); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
       paginData.set({ totalPages: queryResJSON.totalPages }); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
