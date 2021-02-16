@@ -19,7 +19,7 @@ th {
 </style>
 
 <body>
-  <p>Total Pages: {pagin_data.totalPages}</p>
+  <p>Total Pages: {pagin_data[0].totalPages}</p>
   <table>
     <thead>
       <tr>
