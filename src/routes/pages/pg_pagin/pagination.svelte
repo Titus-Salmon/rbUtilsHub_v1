@@ -9,6 +9,8 @@ let pageToDisplay;
 
 function paginate() {
   console.log(`$paginData==> ${$paginData}`);
+  console.log(`Object.keys($paginData)==> ${Object.keys($paginData)}`);
+  console.log(`Object.values($paginData)==> ${Object.values($paginData)}`);
 
   fetch(`server_routes/pagination/rt_pagination?page=${pageToDisplay.value}`, {
     method: "GET",
