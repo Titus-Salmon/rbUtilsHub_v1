@@ -55,11 +55,7 @@ function vInvMasterQuery() {
         `queryResJSON.catapultResArr_1stPage==> ${queryResJSON.catapultResArr_1stPage}`
       ); //passing backend response to frontend "Store" & we are overwriting the "Store" with set()
       paginData.update((currentData) => {
-        console.log(
-          `JSON.stringify(currentData) from vInvMasterQuery()==> ${JSON.stringify(
-            currentData
-          )}`
-        );
+        //THIS WORKS
         console.log(
           `JSON.stringify(currentData[0]) from vInvMasterQuery()1==> ${JSON.stringify(
             currentData[0]
