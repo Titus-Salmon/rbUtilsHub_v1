@@ -60,6 +60,10 @@ function paginate(direction) {
 <body>
   <!--v-- NOTE: you must use the $ to access the paginData store -->
   {#if $paginData !== undefined}
+    <p>$paginData==> {$paginData}</p>
+    <p>JSON.stringify($paginData)==> {JSON.stringify($paginData)}</p>
+    <p>paginData==> {paginData}</p>
+    <p>JSON.stringify(paginData)==> {JSON.stringify(paginData)}</p>
     <p>$paginData.totalPages==> {$paginData.totalPages}</p>
     <p>typeof $paginData.totalPages==> {typeof $paginData.totalPages}</p>
 
