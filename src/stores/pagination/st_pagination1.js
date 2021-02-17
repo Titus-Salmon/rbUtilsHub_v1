@@ -9,4 +9,6 @@ const paginData = writable([{
   prevPage: -1
 }])
 
-export default paginData
+export default {
+  paginData
+}
