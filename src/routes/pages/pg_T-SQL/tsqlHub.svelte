@@ -54,17 +54,17 @@ function vInvMasterQuery() {
       console.log(
         `queryResJSON.catapultResArr_1stPage==> ${queryResJSON.catapultResArr_1stPage}`
       ); //passing backend response to frontend "Store" & we are overwriting the "Store" with set()
-      paginData.update((currentData) => {
+      paginData.update((paginData) => {
         //THIS WORKS
         console.log(
-          `JSON.stringify(currentData[0]) from vInvMasterQuery()1==> ${JSON.stringify(
-            currentData[0]
+          `JSON.stringify(paginData[0]) from vInvMasterQuery()1==> ${JSON.stringify(
+            paginData[0]
           )}`
         );
-        currentData[0].totalPages = queryResJSON.totalPages;
+        paginData[0].totalPages = queryResJSON.totalPages;
         console.log(
-          `JSON.stringify(currentData[0]) from vInvMasterQuery()2==> ${JSON.stringify(
-            currentData[0]
+          `JSON.stringify(paginData[0]) from vInvMasterQuery()2==> ${JSON.stringify(
+            paginData[0]
           )}`
         );
       }); //passing backend response to frontend "Store"

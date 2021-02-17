@@ -59,9 +59,9 @@ function paginate(direction) {
 
 <body>
   <!--v-- NOTE: you must use the $ to access the paginData store -->
-  {#if typeof $paginData[0].totalPages === "number"}
-    <p>$paginData[0].totalPages==> {$paginData[0].totalPages}</p>
-    <p>typeof $paginData[0].totalPages==> {typeof $paginData[0].totalPages}</p>
+  {#if typeof $paginData.totalPages === "number"}
+    <p>$paginData.totalPages==> {$paginData.totalPages}</p>
+    <p>typeof $paginData.totalPages==> {typeof $paginData.totalPages}</p>
 
     <div class="flexbox">
       <!--v-- ***pageToDisplay--reverse*********************************************************** -->
