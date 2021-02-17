@@ -5,7 +5,7 @@ import Pagination from "../../../components/UI/pagination.svelte";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 
 import tableData from "../../../stores/dynamicTables/tableData1.js";
-import paginData from "../../../stores/pagination/st_pagination1.js";
+import { paginData } from "../../../stores/pagination/st_pagination1.js";
 
 let tsqlQueryText;
 
