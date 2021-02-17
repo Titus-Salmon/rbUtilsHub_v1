@@ -61,11 +61,16 @@ function vInvMasterQuery() {
           )}`
         );
         console.log(
-          `JSON.stringify(currentData[0]) from vInvMasterQuery()==> ${JSON.stringify(
+          `JSON.stringify(currentData[0]) from vInvMasterQuery()1==> ${JSON.stringify(
             currentData[0]
           )}`
         );
         currentData[0].totalPages = queryResJSON.totalPages;
+        console.log(
+          `JSON.stringify(currentData[0]) from vInvMasterQuery()2==> ${JSON.stringify(
+            currentData[0]
+          )}`
+        );
       }); //passing backend response to frontend "Store"
       //& we are updating, NOT overwriting the "Store" with update()
       console.log(`queryResJSON.totalPages==> ${queryResJSON.totalPages}`);
