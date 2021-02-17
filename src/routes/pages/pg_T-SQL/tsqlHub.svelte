@@ -75,7 +75,7 @@ function vInvMasterQuery() {
         currentData.prevPage = queryResJSON.prevPage;
       });
       console.log(
-        `$paginData[0].totalPages after update from vInvMasterQuery()==> ${$paginData[0].totalPages}`
+        `paginData[0].totalPages after update from vInvMasterQuery()==> ${paginData[0].totalPages}`
       );
       console.log(
         `$paginData[0].currentPage after update from vInvMasterQuery()==> ${$paginData[0].currentPage}`
