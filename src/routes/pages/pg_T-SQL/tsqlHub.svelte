@@ -81,14 +81,14 @@ function vInvMasterQuery() {
           currentData.prevPage = queryResJSON.prevPage;
         },
       ]);
-      paginData.set([
-        {
-          totalPages: queryResJSON.totalPages,
-          currentPage: queryResJSON.currentPage,
-          nextPage: queryResJSON.nextPage,
-          prevPage: queryResJSON.prevPage,
-        },
-      ]);
+      // paginData.set([
+      //   {
+      //     totalPages: queryResJSON.totalPages,
+      //     currentPage: queryResJSON.currentPage,
+      //     nextPage: queryResJSON.nextPage,
+      //     prevPage: queryResJSON.prevPage,
+      //   },
+      // ]);
       console.log(
         `JSON.stringify($paginData) after update from vInvMasterQuery()==> ${JSON.stringify(
           $paginData
