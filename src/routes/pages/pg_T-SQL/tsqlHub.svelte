@@ -83,6 +83,14 @@ function vInvMasterQuery() {
         )}`
       );
       console.log(
+        `paginData[0] after update from vInvMasterQuery()==> ${paginData[0]}`
+      );
+      console.log(
+        `JSON.stringify(paginData[0]) after update from vInvMasterQuery()==> ${JSON.stringify(
+          paginData[0]
+        )}`
+      );
+      console.log(
         `paginData.totalPages after update from vInvMasterQuery()==> ${paginData.totalPages}`
       );
       console.log(
