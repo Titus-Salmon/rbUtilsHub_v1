@@ -56,12 +56,36 @@ function vInvMasterQuery() {
       console.log(
         `queryResJSON.catapultResArr_1stPage==> ${queryResJSON.catapultResArr_1stPage}`
       ); //passing backend response to frontend "Store" & we are overwriting the "Store" with set()
+      console.log(
+        `paginData[0].totalPages before update from vInvMasterQuery()==> ${paginData[0].totalPages}`
+      );
+      console.log(
+        `paginData[0].currentPage before update from vInvMasterQuery()==> ${paginData[0].currentPage}`
+      );
+      console.log(
+        `paginData[0].nextPage before update from vInvMasterQuery()==> ${paginData[0].nextPage}`
+      );
+      console.log(
+        `paginData[0].prevPage before update from vInvMasterQuery()==> ${paginData[0].prevPage}`
+      );
       paginData.update((currentData) => {
         currentData[0].totalPages = queryResJSON.totalPages;
         currentData[0].currentPage = queryResJSON.currentPage;
         currentData[0].nextPage = queryResJSON.nextPage;
         currentData[0].prevPage = queryResJSON.prevPage;
       });
+      console.log(
+        `paginData[0].totalPages after update from vInvMasterQuery()==> ${paginData[0].totalPages}`
+      );
+      console.log(
+        `paginData[0].currentPage after update from vInvMasterQuery()==> ${paginData[0].currentPage}`
+      );
+      console.log(
+        `paginData[0].nextPage after update from vInvMasterQuery()==> ${paginData[0].nextPage}`
+      );
+      console.log(
+        `paginData[0].prevPage after update from vInvMasterQuery()==> ${paginData[0].prevPage}`
+      );
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
