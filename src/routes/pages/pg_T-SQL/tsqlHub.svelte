@@ -73,6 +73,15 @@ function vInvMasterQuery() {
       // console.log(
       //   `$paginData[0].prevPage before update from vInvMasterQuery()==> ${$paginData[0].prevPage}`
       // );
+      // paginData.update((currentData) => currentData);
+      currentData = [
+        {
+          totalPages: queryResJSON.totalPages,
+          currentPage: queryResJSON.currentPage,
+          nextPage: queryResJSON.nextPage,
+          prevPage: queryResJSON.prevPage,
+        },
+      ];
       paginData.update((currentData) => currentData);
       // paginData.update((currentData) => {
       //   currentData.totalPages = queryResJSON.totalPages;
