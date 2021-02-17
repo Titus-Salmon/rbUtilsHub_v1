@@ -276,5 +276,9 @@ function saveToXLSX() {
   </p>
 {/if}
 
-<Pagination />
+<p>
+  JSON.stringify($paginData)==> {JSON.stringify($paginData)}
+</p>
+
+<!-- <Pagination /> -->
 <V_InventoryMasterQueryResultsTable />
