@@ -75,7 +75,15 @@ function vInvMasterQuery() {
       // );
       // paginData.update((currentData) => currentData);
       paginData.update((currentData) => {
-        currentData[0].totalPages = queryResJSON.totalPages;
+        currentData = [
+          {
+            totalPages: queryResJSON.totalPages,
+            currentPage: queryResJSON.currentPage,
+            nextPage: queryResJSON.nextPage,
+            prevPage: queryResJSON.prevPage,
+          },
+        ];
+        return currentData;
       });
       // paginData.update((currentData) => currentData);
       // paginData.update((currentData) => {
