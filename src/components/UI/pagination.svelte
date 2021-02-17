@@ -1,6 +1,6 @@
 <script>
 import { onMount } from "svelte";
-import { paginData } from "../../stores/pagination/st_pagination1.js";
+import paginData from "../../stores/pagination/st_pagination1.js";
 import tableData from "../../stores/dynamicTables/tableData1.js";
 
 // let pageToDisplay;
