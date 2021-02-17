@@ -1,7 +1,7 @@
 <script>
 import { onMount } from "svelte";
 import V_InventoryMasterQueryResultsTable from "../../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
-import Pagination from "../../pages/pg_pagin/pagination.svelte";
+import Pagination from "../../../components/UI/pagination.svelte";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 
 import tableData from "../../../stores/dynamicTables/tableData1.js";
@@ -20,6 +20,7 @@ let saveToXLSXfileName;
 let saveToXLSXresponse;
 
 let totalPages_t0d;
+let currentPage_t0d;
 let nextPage_t0d;
 let prevPage_t0d;
 
@@ -40,9 +41,7 @@ function vInvMasterQuery() {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      //'Access-Control-Allow-Origin': '*',
     },
-    //mode: 'cors',
     body: JSON.stringify({
       data: tsqlQueryText.value,
     }),
@@ -52,28 +51,17 @@ function vInvMasterQuery() {
     //[1] the "queryRes" argument represents the result of the previous fetch()
     //[2] this result must then be converted to JSON via the json() method on the frontend, even though it was already sent
     //from the backend as JSON
-
     .then((queryResJSON) => {
       tableData.set(queryResJSON.catapultResArr_1stPage);
       console.log(
         `queryResJSON.catapultResArr_1stPage==> ${queryResJSON.catapultResArr_1stPage}`
       ); //passing backend response to frontend "Store" & we are overwriting the "Store" with set()
       paginData.update((currentData) => {
-        //THIS WORKS
-        console.log(
-          `JSON.stringify(currentData[0]) from vInvMasterQuery()1==> ${JSON.stringify(
-            currentData[0]
-          )}`
-        );
         currentData[0].totalPages = queryResJSON.totalPages;
-        console.log(
-          `JSON.stringify(currentData[0]) from vInvMasterQuery()2==> ${JSON.stringify(
-            currentData[0]
-          )}`
-        );
-      }); //passing backend response to frontend "Store"
-      //& we are updating, NOT overwriting the "Store" with update()
-      console.log(`queryResJSON.totalPages==> ${queryResJSON.totalPages}`);
+        currentData[0].currentPage = queryResJSON.currentPage;
+        currentData[0].nextPage = queryResJSON.nextPage;
+        currentData[0].prevPage = queryResJSON.prevPage;
+      });
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
@@ -303,5 +291,5 @@ function saveToXLSX() {
   JSON.stringify($paginData[0])==> {JSON.stringify($paginData[0])}
 </p> -->
 
-<!-- <Pagination /> -->
+<Pagination />
 <V_InventoryMasterQueryResultsTable />

@@ -78,7 +78,10 @@ export async function post(req, res, next) {
           "catapultResArr": catapultResArr, //this is the entire result set (which we actually may not need to passing to the front)
           "catapultResArr_1stPage": catapultResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
           // "catapultResArr_pagin": catapultResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
-          "totalPages": totalPages
+          "totalPages": totalPages,
+          "currentPage": 0,
+          "nextPage": 1,
+          "prevPage": null
         })
       })
     })
