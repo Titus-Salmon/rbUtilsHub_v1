@@ -78,6 +78,9 @@ function vInvMasterQuery() {
         `paginData after update from vInvMasterQuery()==> ${paginData}`
       );
       console.log(
+        `$paginData after update from vInvMasterQuery()==> ${$paginData}`
+      );
+      console.log(
         `JSON.stringify(paginData) after update from vInvMasterQuery()==> ${JSON.stringify(
           paginData
         )}`
