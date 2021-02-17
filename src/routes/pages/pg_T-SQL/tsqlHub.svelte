@@ -73,20 +73,22 @@ function vInvMasterQuery() {
       // console.log(
       //   `$paginData[0].prevPage before update from vInvMasterQuery()==> ${$paginData[0].prevPage}`
       // );
-      paginData.update((currentData) => {
-        currentData.totalPages = queryResJSON.totalPages;
-        currentData.currentPage = queryResJSON.currentPage;
-        currentData.nextPage = queryResJSON.nextPage;
-        currentData.prevPage = queryResJSON.prevPage;
-      });
-      // paginData.set([
-      //   {
-      //     totalPages: queryResJSON.totalPages,
-      //     currentPage: queryResJSON.currentPage,
-      //     nextPage: queryResJSON.nextPage,
-      //     prevPage: queryResJSON.prevPage,
-      //   },
-      // ]);
+      paginData.update([
+        (currentData) => {
+          currentData.totalPages = queryResJSON.totalPages;
+          currentData.currentPage = queryResJSON.currentPage;
+          currentData.nextPage = queryResJSON.nextPage;
+          currentData.prevPage = queryResJSON.prevPage;
+        },
+      ]);
+      paginData.set([
+        {
+          totalPages: queryResJSON.totalPages,
+          currentPage: queryResJSON.currentPage,
+          nextPage: queryResJSON.nextPage,
+          prevPage: queryResJSON.prevPage,
+        },
+      ]);
       console.log(
         `JSON.stringify($paginData) after update from vInvMasterQuery()==> ${JSON.stringify(
           $paginData
