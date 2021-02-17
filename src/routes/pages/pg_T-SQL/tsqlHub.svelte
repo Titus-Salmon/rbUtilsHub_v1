@@ -276,7 +276,5 @@ function saveToXLSX() {
   </p>
 {/if}
 
-{#if $paginData !== undefined}
-  <Pagination />
-{/if}
+<Pagination />
 <V_InventoryMasterQueryResultsTable />
