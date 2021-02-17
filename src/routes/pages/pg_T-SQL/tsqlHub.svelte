@@ -278,6 +278,7 @@ function saveToXLSX() {
 
 <p>
   JSON.stringify($paginData)==> {JSON.stringify($paginData)}
+  JSON.stringify($paginData[0])==> {JSON.stringify($paginData[0])}
 </p>
 
 <!-- <Pagination /> -->
