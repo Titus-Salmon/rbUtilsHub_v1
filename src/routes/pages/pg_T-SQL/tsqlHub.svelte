@@ -19,11 +19,6 @@ let saveToCSVcreatePopResponse;
 let saveToXLSXfileName;
 let saveToXLSXresponse;
 
-let totalPages_t0d;
-let currentPage_t0d;
-let nextPage_t0d;
-let prevPage_t0d;
-
 let queryText = `
 SELECT 
 inv_ScanCode, ord_supplierstocknumber, inv_name, inv_size, inv_receiptalias, inv_default, ord_quantityinorderunit, oup_name, sto_number, brd_name, 
@@ -61,18 +56,6 @@ function vInvMasterQuery() {
           $paginData
         )}`
       );
-      // console.log(
-      //   `$paginData[0].totalPages before update from vInvMasterQuery()==> ${$paginData[0].totalPages}`
-      // );
-      // console.log(
-      //   `$paginData[0].currentPage before update from vInvMasterQuery()==> ${$paginData[0].currentPage}`
-      // );
-      // console.log(
-      //   `$paginData[0].nextPage before update from vInvMasterQuery()==> ${$paginData[0].nextPage}`
-      // );
-      // console.log(
-      //   `$paginData[0].prevPage before update from vInvMasterQuery()==> ${$paginData[0].prevPage}`
-      // );
       // paginData.update((currentData) => currentData);
       paginData.update((currentData) => {
         currentData = [
@@ -85,13 +68,6 @@ function vInvMasterQuery() {
         ];
         return currentData;
       });
-      // paginData.update((currentData) => currentData);
-      // paginData.update((currentData) => {
-      //   currentData.totalPages = queryResJSON.totalPages;
-      //   currentData.currentPage = queryResJSON.currentPage;
-      //   currentData.nextPage = queryResJSON.nextPage;
-      //   currentData.prevPage = queryResJSON.prevPage;
-      // });
       // paginData.set([
       //   {
       //     totalPages: queryResJSON.totalPages,
@@ -105,37 +81,6 @@ function vInvMasterQuery() {
           $paginData
         )}`
       );
-      // console.log(
-      //   `paginData after update from vInvMasterQuery()==> ${paginData}`
-      // );
-      // console.log(
-      //   `$paginData after update from vInvMasterQuery()==> ${$paginData}`
-      // );
-      // console.log(
-      //   `JSON.stringify(paginData) after update from vInvMasterQuery()==> ${JSON.stringify(
-      //     paginData
-      //   )}`
-      // );
-      // console.log(
-      //   `paginData[0] after update from vInvMasterQuery()==> ${paginData[0]}`
-      // );
-      // console.log(
-      //   `JSON.stringify(paginData[0]) after update from vInvMasterQuery()==> ${JSON.stringify(
-      //     paginData[0]
-      //   )}`
-      // );
-      // console.log(
-      //   `paginData.totalPages after update from vInvMasterQuery()==> ${paginData.totalPages}`
-      // );
-      // console.log(
-      //   `$paginData[0].currentPage after update from vInvMasterQuery()==> ${$paginData[0].currentPage}`
-      // );
-      // console.log(
-      //   `$paginData[0].nextPage after update from vInvMasterQuery()==> ${$paginData[0].nextPage}`
-      // );
-      // console.log(
-      //   `$paginData[0].prevPage after update from vInvMasterQuery()==> ${$paginData[0].prevPage}`
-      // );
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
@@ -360,10 +305,10 @@ function saveToXLSX() {
   </p>
 {/if}
 
-<!-- <p>
+<p>
   JSON.stringify($paginData)==> {JSON.stringify($paginData)}
   JSON.stringify($paginData[0])==> {JSON.stringify($paginData[0])}
-</p> -->
+</p>
 
-<Pagination />
+<!-- <Pagination /> -->
 <V_InventoryMasterQueryResultsTable />
