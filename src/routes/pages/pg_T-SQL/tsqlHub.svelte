@@ -55,6 +55,11 @@ function vInvMasterQuery() {
         `queryResJSON.catapultResArr_1stPage==> ${queryResJSON.catapultResArr_1stPage}`
       ); //passing backend response to frontend "Store" & we are overwriting the "Store" with set()
       paginData.update((currentData) => {
+        console.log(
+          `JSON.stringify(currentData) form vInvMasterQuery()==> ${JSON.stringify(
+            currentData
+          )}`
+        );
         currentData.totalPages = queryResJSON.totalPages;
       }); //passing backend response to frontend "Store"
       //& we are updating, NOT overwriting the "Store" with update()
