@@ -19,6 +19,10 @@ let saveToCSVcreatePopResponse;
 let saveToXLSXfileName;
 let saveToXLSXresponse;
 
+let totalPages_t0d;
+let nextPage_t0d;
+let prevPage_t0d;
+
 let queryText = `
 SELECT 
 inv_ScanCode, ord_supplierstocknumber, inv_name, inv_size, inv_receiptalias, inv_default, ord_quantityinorderunit, oup_name, sto_number, brd_name, 
@@ -76,31 +80,49 @@ function vInvMasterQuery() {
   //display it in a table on the frontend
 }
 
-// function paginate() {
-//   fetch("server_routes/pagination/rt_pagination", {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       data: `?page=${pageToDisplay}`,
-//     }),
-//   })
-//     .then((queryRes) => queryRes.json())
-//     .then((queryResJSON) => {
-//       tableData.set(queryResJSON.catapultResArr_pagin); //passing backend response to frontend "Store"
-//       //& we are overwriting the "Store" with set()
-//       paginData.set({
-//         currentPage: queryResJSON.currentPage,
-//         nextPage: queryResJSON.nextPage,
-//         prevPage: queryResJSON.prevPage,
-//       }); //passing backend response to frontend "Store"
-//       //& we are overwriting the "Store" with set()
-//     });
-//   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
-//   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
-//   //display it in a table on the frontend
-// }
+function paginate(direction) {
+  if (typeof $paginData.totalPages === "number") {
+    console.log(`$paginData==> ${$paginData}`);
+    console.log(`Object.keys($paginData)1==> ${Object.keys($paginData)}`);
+    console.log(`Object.values($paginData)1==> ${Object.values($paginData)}`);
+
+    if (direction === "forward") {
+      pageToDisplay = $paginData.currentPage + 1;
+    }
+    if (direction === "reverse") {
+      pageToDisplay = $paginData.currentPage - 1;
+    }
+
+    fetch(`server_routes/pagination/rt_pagination?page=${pageToDisplay}`, {
+      method: "GET",
+    })
+      .then((queryRes) => queryRes.json())
+      .then((queryResJSON) => {
+        console.log(`queryResJSON from pagination.svelte==> ${queryResJSON}`);
+        console.log(
+          `JSON.stringify(queryResJSON) from pagination.svelte==> ${JSON.stringify(
+            queryResJSON
+          )}`
+        );
+        tableData.set(queryResJSON.catapultResArr_pagin); //passing backend response to frontend "Store"
+        //& we are overwriting the "Store" with set()
+        // paginData.set({
+        //   currentPage: queryResJSON.currentPage,
+        //   nextPage: queryResJSON.nextPage,
+        //   prevPage: queryResJSON.prevPage,
+        // }); //passing backend response to frontend "Store"
+        // //& we are overwriting the "Store" with set()
+
+        // console.log(`Object.keys($paginData)2==> ${Object.keys($paginData)}`);
+        // console.log(
+        //   `Object.values($paginData)2==> ${Object.values($paginData)}`
+        // );
+      });
+    //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
+    //and at that point we can use this JSON object to do whatever with, such as stringify it, or
+    //display it in a table on the frontend
+  }
+}
 
 function saveToCSV() {
   fetch("server_routes/rt_T-SQL/saveToCSV", {
@@ -276,10 +298,10 @@ function saveToXLSX() {
   </p>
 {/if}
 
-<p>
+<!-- <p>
   JSON.stringify($paginData)==> {JSON.stringify($paginData)}
   JSON.stringify($paginData[0])==> {JSON.stringify($paginData[0])}
-</p>
+</p> -->
 
 <!-- <Pagination /> -->
 <V_InventoryMasterQueryResultsTable />
