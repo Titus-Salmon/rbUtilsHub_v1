@@ -59,7 +59,7 @@ function paginate(direction) {
 
 <body>
   <!--v-- NOTE: you must use the $ to access the paginData store -->
-  {#if paginData.totalPages !== undefined}
+  {#if paginData !== undefined}
     <p>paginData.totalPages==> {paginData.totalPages}</p>
     <p>typeof paginData.totalPages==> {typeof paginData.totalPages}</p>
 
