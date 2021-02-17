@@ -6,6 +6,7 @@ import tableData from "../../../stores/dynamicTables/tableData1.js";
 // paginData.subscribe((paginData_t0d) => (pagin_data = paginData_t0d));
 
 let pageToDisplay;
+let paginData_t0d = $paginData;
 // let forward;
 // let reverse;
 
@@ -59,11 +60,9 @@ function paginate(direction) {
 
 <!-- <body> -->
 <!--v-- NOTE: you must use the $ to access the paginData store -->
-<p>JSON.stringify($paginData)1==> {JSON.stringify($paginData)}</p>
-<p>$paginData[0].totalPages1==> {$paginData[0].totalPages}</p>
-{#if $paginData !== undefined}
-  <p>JSON.stringify($paginData)2==> {JSON.stringify($paginData)}</p>
-  <p>$paginData[0].totalPages2==> {$paginData[0].totalPages}</p>
+{#if paginData_t0d !== undefined}
+  <p>JSON.stringify(paginData_t0d)2==> {JSON.stringify(paginData_t0d)}</p>
+  <p>paginData_t0d[0].totalPages2==> {paginData_t0d[0].totalPages}</p>
 
   <div class="flexbox">
     <!--v-- ***pageToDisplay--reverse*********************************************************** -->
