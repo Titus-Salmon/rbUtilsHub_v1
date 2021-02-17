@@ -56,11 +56,16 @@ function vInvMasterQuery() {
       ); //passing backend response to frontend "Store" & we are overwriting the "Store" with set()
       paginData.update((currentData) => {
         console.log(
-          `JSON.stringify(currentData) form vInvMasterQuery()==> ${JSON.stringify(
+          `JSON.stringify(currentData) from vInvMasterQuery()==> ${JSON.stringify(
             currentData
           )}`
         );
-        currentData.totalPages = queryResJSON.totalPages;
+        console.log(
+          `JSON.stringify(currentData[0]) from vInvMasterQuery()==> ${JSON.stringify(
+            currentData[0]
+          )}`
+        );
+        currentData[0].totalPages = queryResJSON.totalPages;
       }); //passing backend response to frontend "Store"
       //& we are updating, NOT overwriting the "Store" with update()
       console.log(`queryResJSON.totalPages==> ${queryResJSON.totalPages}`);
