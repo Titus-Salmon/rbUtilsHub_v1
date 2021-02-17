@@ -57,19 +57,19 @@ function paginate(direction) {
 <style>
 </style>
 
-<body>
-  <!--v-- NOTE: you must use the $ to access the paginData store -->
-  {#if $paginData !== undefined}
-    <p>JSON.stringify($paginData)==> {JSON.stringify($paginData)}</p>
-    <p>$paginData[0].totalPages==> {$paginData[0].totalPages}</p>
+<!-- <body> -->
+<!--v-- NOTE: you must use the $ to access the paginData store -->
+{#if $paginData !== undefined}
+  <p>JSON.stringify($paginData)==> {JSON.stringify($paginData)}</p>
+  <p>$paginData[0].totalPages==> {$paginData[0].totalPages}</p>
 
-    <div class="flexbox">
-      <!--v-- ***pageToDisplay--reverse*********************************************************** -->
-      <div>
-        <div style="text-align:center">
-          <label for="pageToDisplay">pageToDisplay</label>
-        </div>
-        <!-- <div style="text-align:center">
+  <div class="flexbox">
+    <!--v-- ***pageToDisplay--reverse*********************************************************** -->
+    <div>
+      <div style="text-align:center">
+        <label for="pageToDisplay">pageToDisplay</label>
+      </div>
+      <!-- <div style="text-align:center">
           <input
             type="number"
             id="pageToDisplay"
@@ -77,19 +77,19 @@ function paginate(direction) {
             value="{$paginData.currentPage}"
             bind:this="{pageToDisplay}" />
         </div> -->
-        <div style="text-align:center">
-          <!-- <button bind:this="{reverse}" on:click="{paginate('reverse')}"
+      <div style="text-align:center">
+        <!-- <button bind:this="{reverse}" on:click="{paginate('reverse')}"
             >prev</button> -->
-          <button on:click|preventDefault="{paginate('reverse')}">prev</button>
-        </div>
+        <button on:click|preventDefault="{paginate('reverse')}">prev</button>
       </div>
-      <!-- ************************************************************** -->
-      <!--v-- ***pageToDisplay--forward*********************************************************** -->
-      <div>
-        <div style="text-align:center">
-          <label for="pageToDisplay">pageToDisplay</label>
-        </div>
-        <!-- <div style="text-align:center">
+    </div>
+    <!-- ************************************************************** -->
+    <!--v-- ***pageToDisplay--forward*********************************************************** -->
+    <div>
+      <div style="text-align:center">
+        <label for="pageToDisplay">pageToDisplay</label>
+      </div>
+      <!-- <div style="text-align:center">
           <input
             type="number"
             id="pageToDisplay"
@@ -97,13 +97,13 @@ function paginate(direction) {
             value="{$paginData.currentPage}"
             bind:this="{pageToDisplay}" />
         </div> -->
-        <div style="text-align:center">
-          <!-- <button bind:this="{forward}" on:click="{paginate('forward')}"
+      <div style="text-align:center">
+        <!-- <button bind:this="{forward}" on:click="{paginate('forward')}"
             >next</button> -->
-          <button on:click|preventDefault="{paginate('forward')}">next</button>
-        </div>
+        <button on:click|preventDefault="{paginate('forward')}">next</button>
       </div>
-      <!-- ************************************************************** -->
     </div>
-  {/if}
-</body>
+    <!-- ************************************************************** -->
+  </div>
+{/if}
+<!-- </body> -->
