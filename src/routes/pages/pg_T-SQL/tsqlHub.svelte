@@ -53,11 +53,9 @@ function vInvMasterQuery() {
       tableData.set(queryResJSON.catapultResArr_1stPage);
       console.log(
         `queryResJSON.catapultResArr_1stPage==> ${queryResJSON.catapultResArr_1stPage}`
-      );
-      // tableData.set(queryResJSON.catapultResArr); //passing backend response to frontend "Store"
-      //& we are overwriting the "Store" with set()
-      paginData.set({ totalPages: queryResJSON.totalPages }); //passing backend response to frontend "Store"
-      //& we are overwriting the "Store" with set()
+      ); //passing backend response to frontend "Store" & we are overwriting the "Store" with set()
+      paginData.update({ totalPages: queryResJSON.totalPages }); //passing backend response to frontend "Store"
+      //& we are updating, NOT overwriting the "Store" with update()
       console.log(`queryResJSON.totalPages==> ${queryResJSON.totalPages}`);
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
