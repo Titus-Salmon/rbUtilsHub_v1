@@ -59,9 +59,11 @@ function paginate(direction) {
 
 <!-- <body> -->
 <!--v-- NOTE: you must use the $ to access the paginData store -->
+<p>JSON.stringify($paginData)1==> {JSON.stringify($paginData)}</p>
+<p>$paginData[0].totalPages1==> {$paginData[0].totalPages}</p>
 {#if $paginData !== undefined}
-  <p>JSON.stringify($paginData)==> {JSON.stringify($paginData)}</p>
-  <p>$paginData[0].totalPages==> {$paginData[0].totalPages}</p>
+  <p>JSON.stringify($paginData)2==> {JSON.stringify($paginData)}</p>
+  <p>$paginData[0].totalPages2==> {$paginData[0].totalPages}</p>
 
   <div class="flexbox">
     <!--v-- ***pageToDisplay--reverse*********************************************************** -->
