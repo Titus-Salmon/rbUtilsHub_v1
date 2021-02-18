@@ -22,7 +22,12 @@ let currPage;
       <label for="currPage">Current Page</label>
     </div>
     <div style="text-align:center">
-      <input type="text" id="currPage" name="currPage" bind:this="{currPage}" />
+      <input
+        type="text"
+        id="currPage"
+        name="currPage"
+        value="{$paginData.currentPage}"
+        bind:this="{currPage}" />
     </div>
   </div>
   <!--v-- ***nextButton*********************************************************** -->
