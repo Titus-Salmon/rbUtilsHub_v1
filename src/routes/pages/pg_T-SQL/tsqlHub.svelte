@@ -260,5 +260,9 @@ function saveToXLSX() {
   </p>
 {/if}
 
+<p style="text-align:center">
+  Total Pages: {$paginData[0].totalPages}
+</p>
+
 <PaginUI />
 <V_InventoryMasterQueryResultsTable />
