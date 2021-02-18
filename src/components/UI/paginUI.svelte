@@ -71,7 +71,7 @@ function paginate(page) {
   <!--v-- ***currPageDispl*********************************************************** -->
   <div>
     <div style="text-align:center">
-      <label for="page">Current Page</label>
+      <label for="page">Page</label>
     </div>
     <div style="text-align:center">
       <input
@@ -82,7 +82,7 @@ function paginate(page) {
         bind:this="{page}" />
     </div>
     <div style="text-align:center">
-      <button on:click="{() => paginate(page)}">next</button>
+      <button on:click="{() => paginate(page.value)}">goTo</button>
     </div>
   </div>
   <!--v-- ***nextButton*********************************************************** -->
