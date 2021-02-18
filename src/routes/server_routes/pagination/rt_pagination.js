@@ -1,5 +1,5 @@
 import catapultResArrCache from "../../../nodeCacheStuff/cache1"
-import paginCache from "../../../nodeCacheStuff/cache1"
+// import paginCache from "../../../nodeCacheStuff/cache1"
 
 export async function get(req, res, next) {
 
@@ -45,7 +45,7 @@ export async function get(req, res, next) {
   //[3] send those entries from the backend (here) to the frontend via a res.json()
   res.json({
     catapultResArr_pagin: catapultResArr_pagin,
-    totalPages: paginCache['data']['paginCache_key']['v'][0],
+    totalPages: numPgs,
     currentPage: page,
     nextPage: page + 1,
     prevPage: page - 1,
