@@ -5,7 +5,8 @@ import tableData from "../../stores/dynamicTables/tableData1.js";
 
 let page;
 let pageToDisplay;
-let pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`;
+let pageBlurb;
+// let pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`;
 // if ($paginData[0].totalPages !== null) {
 //   pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`;
 // } else {
@@ -78,6 +79,7 @@ function paginate(page) {
   <div>
     <div style="text-align:center">
       {#if $paginData[0].totalPages !== null}
+        {(pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`)}
         <label for="page">{pageBlurb}</label>
       {:else}
         <label for="page">Page</label>
