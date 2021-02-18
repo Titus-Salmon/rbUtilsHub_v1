@@ -3,10 +3,10 @@ import { onMount } from "svelte";
 import paginData from "../../stores/pagination/st_pagination1.js";
 import tableData from "../../stores/dynamicTables/tableData1.js";
 
-let currPage;
+let page;
 let pageToDisplay;
 
-function paginate(direction) {
+function paginate(page) {
   //if (typeof $paginData.totalPages === "number") {
   console.log(`$paginData[0]==> ${$paginData[0]}`);
   console.log(`Object.keys($paginData[0])1==> ${Object.keys($paginData[0])}`);
@@ -14,11 +14,15 @@ function paginate(direction) {
     `Object.values($paginData[0])1==> ${Object.values($paginData[0])}`
   );
 
-  if (direction === "forward") {
+  if (page === "forward") {
     pageToDisplay = $paginData[0].currentPage + 1;
   }
-  if (direction === "reverse") {
+  if (page === "reverse") {
     pageToDisplay = $paginData[0].currentPage - 1;
+  }
+  if (page !== "forward" && page !== "reverse") {
+    console.log(`typeof page from paginate(page)==> ${typeof page}`);
+    pageToDisplay = page;
   }
 
   fetch(`server_routes/pagination/rt_pagination?page=${pageToDisplay}`, {
@@ -67,21 +71,23 @@ function paginate(direction) {
   <!--v-- ***currPageDispl*********************************************************** -->
   <div>
     <div style="text-align:center">
-      <label for="currPage">Current Page</label>
+      <label for="page">Current Page</label>
     </div>
     <div style="text-align:center">
       <input
         type="text"
-        id="currPage"
-        name="currPage"
+        id="page"
+        name="page"
         value="{$paginData[0].currentPage}"
-        bind:this="{currPage}" />
+        bind:this="{page}" />
+    </div>
+    <div style="text-align:center">
+      <button on:click="{() => paginate(page)}">next</button>
     </div>
   </div>
   <!--v-- ***nextButton*********************************************************** -->
   <div>
     <div style="text-align:center">
-      <!-- <button on:click|preventDefault="{paginate('forward')}">next</button> -->
       <button on:click="{() => paginate('forward')}">next</button>
     </div>
   </div>
