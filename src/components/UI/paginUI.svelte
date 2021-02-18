@@ -4,18 +4,21 @@ import paginData from "../../stores/pagination/st_pagination1.js";
 import tableData from "../../stores/dynamicTables/tableData1.js";
 
 let currPage;
+let pageToDisplay;
 
 function paginate(direction) {
   //if (typeof $paginData.totalPages === "number") {
-  console.log(`$paginData==> ${$paginData}`);
-  console.log(`Object.keys($paginData)1==> ${Object.keys($paginData)}`);
-  console.log(`Object.values($paginData)1==> ${Object.values($paginData)}`);
+  console.log(`$paginData[0]==> ${$paginData[0]}`);
+  console.log(`Object.keys($paginData[0])1==> ${Object.keys($paginData[0])}`);
+  console.log(
+    `Object.values($paginData[0])1==> ${Object.values($paginData[0])}`
+  );
 
   if (direction === "forward") {
-    pageToDisplay = $paginData.currentPage + 1;
+    pageToDisplay = $paginData[0].currentPage + 1;
   }
   if (direction === "reverse") {
-    pageToDisplay = $paginData.currentPage - 1;
+    pageToDisplay = $paginData[0].currentPage - 1;
   }
 
   fetch(`server_routes/pagination/rt_pagination?page=${pageToDisplay}`, {
