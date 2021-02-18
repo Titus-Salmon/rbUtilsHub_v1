@@ -77,14 +77,25 @@ function paginate(page) {
   </div>
   <!--v-- ***currPageDispl*********************************************************** -->
   <div>
-    <div style="text-align:center">
+    <!-- <div style="text-align:center">
       {#if $paginData[0].totalPages !== null}
         {(pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`)}
         <label for="page">{pageBlurb}</label>
       {:else}
         <label for="page">Page</label>
       {/if}
-    </div>
+    </div> -->
+    {#if $paginData[0].totalPages !== null}
+      {(pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`)}
+      <div style="text-align:center">
+        <label for="page">{pageBlurb}</label>
+      </div>
+    {:else}
+      <div style="text-align:center">
+        <label for="page">Page</label>
+      </div>
+    {/if}
+
     <div style="text-align:center">
       <input
         style="text-align: center"
