@@ -26,7 +26,7 @@ let currPage;
         type="text"
         id="currPage"
         name="currPage"
-        value="{$paginData.currentPage}"
+        value="{$paginData[0].currentPage}"
         bind:this="{currPage}" />
     </div>
   </div>
