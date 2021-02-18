@@ -57,7 +57,8 @@ function paginate(direction) {
   <!--v-- ***prevButton*********************************************************** -->
   <div>
     <div style="text-align:center">
-      <button on:click|preventDefault="{paginate('reverse')}">prev</button>
+      <!-- <button on:click|preventDefault="{paginate('reverse')}">prev</button> -->
+      <button on:click="{paginate('reverse')}">prev</button>
     </div>
   </div>
   <!--v-- ***currPageDispl*********************************************************** -->
@@ -77,7 +78,8 @@ function paginate(direction) {
   <!--v-- ***nextButton*********************************************************** -->
   <div>
     <div style="text-align:center">
-      <button on:click|preventDefault="{paginate('forward')}">next</button>
+      <!-- <button on:click|preventDefault="{paginate('forward')}">next</button> -->
+      <button on:click="{paginate('forward')}">next</button>
     </div>
   </div>
 </div>
