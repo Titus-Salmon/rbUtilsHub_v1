@@ -1,6 +1,7 @@
 const odbc = require('odbc')
 const DSN = process.env.ODBC_CONN_STRING
 import catapultResArrCache from "../../../nodeCacheStuff/cache1"
+import paginCache from "../../../nodeCacheStuff/cache1"
 
 export async function post(req, res, next) {
   console.log(`hello from within the async function of v_InventoryMasterQuery.js`)
@@ -68,6 +69,10 @@ export async function post(req, res, next) {
     totalPages = Math.ceil(catapultResArr.length / 100)
   }
 
+  //V// CACHE totalPages IN BACKEND //////////////////////////////////////////////////////////////////////////////
+  paginCache.set('paginCache_totalPages_key', totalPages)
+  //^// CACHE totalPages IN BACKEND //////////////////////////////////////////////////////////////////////////////
+
   odbc.connect(DSN, (error, connection) => {
     connection.query(`${catapultDbQuery}`, (error, result) => {
       if (error) {
@@ -75,7 +80,7 @@ export async function post(req, res, next) {
       }
       showcatapultResults(result).then(paginCalcs()).then(() => {
         res.json({
-          "catapultResArr": catapultResArr, //this is the entire result set (which we actually may not need to passing to the front)
+          "catapultResArr": catapultResArr, //this is the entire result set (which we actually may not need to be passing to the front)
           "catapultResArr_1stPage": catapultResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
           // "catapultResArr_pagin": catapultResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
           "totalPages": totalPages,
