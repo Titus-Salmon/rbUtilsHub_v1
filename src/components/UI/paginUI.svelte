@@ -71,10 +71,12 @@ function paginate(page) {
   <!--v-- ***currPageDispl*********************************************************** -->
   <div>
     <div style="text-align:center">
-      <label for="page">Page</label>
+      <label for="page"
+        >Page {$paginData[0].currentPage} of {$paginData[0].totalPages}</label>
     </div>
     <div style="text-align:center">
       <input
+        style="text-align: center"
         type="text"
         id="page"
         name="page"
