@@ -1,5 +1,4 @@
 import catapultResArrCache from "../../../nodeCacheStuff/cache1"
-// import paginCache from "../../../nodeCacheStuff/cache1"
 
 export async function get(req, res, next) {
 
@@ -14,10 +13,6 @@ export async function get(req, res, next) {
 
   let page_t0d = decodeURIComponent(req.query.page)
   console.log(`page_t0d==> ${page_t0d}`)
-  // let tableName = decodeURIComponent(req.query.tableName)
-  // let numQueryRes = decodeURIComponent(req.query.numQueryRes)
-
-  // let offset = page * numQueryRes
 
   let offset = page * 100
 
@@ -32,7 +27,7 @@ export async function get(req, res, next) {
   //^// access CACHEd V_INVENTORYMASTER QUERY RESULTS from BACKEND //////////////////////////////////////////////////////////////////////////////
 
   let totalRows = catapultResArrCache['data']['catapultResArrCache_key']['v'].length
-  let numPgs = totalRows / 100
+  let numPgs = Math.ceil(totalRows / 100)
 
   for (let i = 0; i < 100; i++) {
     if (catapultResArrCache['data']['catapultResArrCache_key']['v'][offset + i] !== undefined) {
