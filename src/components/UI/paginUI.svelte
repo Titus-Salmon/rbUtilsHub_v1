@@ -78,6 +78,7 @@ function paginate(page) {
         type="text"
         id="page"
         name="page"
+        size="2"
         value="{$paginData[0].currentPage}"
         bind:this="{page}" />
     </div>
