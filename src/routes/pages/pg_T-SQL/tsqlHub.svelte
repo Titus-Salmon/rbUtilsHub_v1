@@ -261,6 +261,7 @@ function saveToXLSX() {
 {/if}
 
 <p style="text-align:center">
+  JSON.stringify($paginData)==> {JSON.stringify($paginData)}
   Total Pages: {$paginData[0].totalPages}
 </p>
 
