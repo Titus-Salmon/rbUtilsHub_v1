@@ -23,7 +23,7 @@ export async function post(req, res, next) {
   let columnNames = Object.keys(catapultResArrCacheValue[0])
 
   for (let t0d = 0; t0d < catapultResArrCacheValue.length; t0d++) {
-    resObj = {}
+    let resObj = {}
     resObj[`${columnNames[t0d]}`] = catapultResArrCacheValue[t0d][`${columnNames[t0d]}`]
 
     srcRsXLS_abstracted.push(resObj)
