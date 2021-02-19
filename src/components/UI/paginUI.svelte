@@ -18,7 +18,7 @@ async function paginate(page) {
     if ($paginData[0].currentPage + 1 <= $paginData[0].totalPages) {
       pageToDisplay = $paginData[0].currentPage + 1;
     } else {
-      alert(`You're already at the last page.`);
+      return alert(`You're already at the last page.`);
     }
   }
   if (page === "reverse") {
@@ -26,7 +26,7 @@ async function paginate(page) {
     if ($paginData[0].currentPage - 1 >= 1) {
       pageToDisplay = $paginData[0].currentPage - 1;
     } else {
-      alert(`You can't go back further than the 1st page.`);
+      return alert(`You can't go back further than the 1st page.`);
     }
   }
   //what to do when user types value into "goTo" input
@@ -36,7 +36,9 @@ async function paginate(page) {
     if (page <= $paginData[0].totalPages && page >= 1) {
       pageToDisplay = page;
     } else {
-      alert(`The value you've entered isn't in the range of possible pages.`);
+      return alert(
+        `The value you've entered isn't in the range of possible pages.`
+      );
     }
   }
 
