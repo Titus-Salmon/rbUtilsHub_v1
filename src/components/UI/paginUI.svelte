@@ -5,19 +5,8 @@ import tableData from "../../stores/dynamicTables/tableData1.js";
 
 let page;
 let pageToDisplay;
-// let pageBlurb = "Page";
-
-// async function setPageBlurb() {
-//   // pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`;
-//   if ($paginData[0].totalPages !== null) {
-//     pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`;
-//   } else {
-//     pageBlurb = `Page ${$paginData[0].currentPage}`;
-//   }
-// }
 
 async function paginate(page) {
-  //if (typeof $paginData.totalPages === "number") {
   console.log(`$paginData[0]==> ${$paginData[0]}`);
   console.log(`Object.keys($paginData[0])1==> ${Object.keys($paginData[0])}`);
   console.log(
@@ -63,7 +52,6 @@ async function paginate(page) {
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
   //display it in a table on the frontend
-  //}
 }
 </script>
 
@@ -74,15 +62,11 @@ async function paginate(page) {
   <!--v-- ***prevButton*********************************************************** -->
   <div>
     <div style="text-align:center">
-      <!-- <button on:click|preventDefault="{paginate('reverse')}">prev</button> -->
       <button on:click="{() => paginate('reverse')}">prev</button>
     </div>
   </div>
   <!--v-- ***currPageDispl*********************************************************** -->
   <div>
-    <!-- <div style="text-align:center">
-      <label for="page">{pageBlurb}</label>
-    </div> -->
     <div style="text-align:center">
       <input
         style="text-align: center"

@@ -266,9 +266,9 @@ function saveToXLSX() {
 </p>
 
 {#if $paginData[0].totalPages === null}
-  <p>Page</p>
+  <p style="text-align:center; margin: 0">Page</p>
 {:else}
-  <p>
+  <p style="text-align:center; margin: 0">
     Page {$paginData[0].currentPage} of {$paginData[0].totalPages}
   </p>
 {/if}
