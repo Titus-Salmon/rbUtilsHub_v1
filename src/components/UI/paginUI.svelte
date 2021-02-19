@@ -14,14 +14,24 @@ async function paginate(page) {
   );
 
   if (page === "forward") {
-    pageToDisplay = $paginData[0].currentPage + 1;
+    //don't go forward if you're at the last page
+    if ($paginData[0].currentPage + 1 < $paginData[0].totalPages) {
+      pageToDisplay = $paginData[0].currentPage + 1;
+    }
   }
   if (page === "reverse") {
-    pageToDisplay = $paginData[0].currentPage - 1;
+    //don't go backwards if you're at the 1st page
+    if ($paginData[0].currentPage - 1 > 0) {
+      pageToDisplay = $paginData[0].currentPage - 1;
+    }
   }
+  //what to do when user types value into "goTo" input
   if (page !== "forward" && page !== "reverse") {
     console.log(`typeof page from paginate(page)==> ${typeof page}`);
-    pageToDisplay = page;
+    //don't go to pages outside range of possible values
+    if (page <= $paginData[0].totalPages && page > 0) {
+      pageToDisplay = page;
+    }
   }
 
   fetch(`server_routes/pagination/rt_pagination?page=${pageToDisplay}`, {

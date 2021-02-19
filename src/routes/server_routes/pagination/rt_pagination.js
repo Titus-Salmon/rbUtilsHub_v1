@@ -14,7 +14,9 @@ export async function get(req, res, next) {
   let page_t0d = decodeURIComponent(req.query.page)
   console.log(`page_t0d==> ${page_t0d}`)
 
-  let offset = (page - 1) * 100
+  let offset = (page - 1) * 100 //we have to subtract 1 from page value here because when we're sending a GET request
+  //to page 1, we want our offset to be 0 (i.e. start at the beginning of our results array, rather than starting at the
+  //position 100)
 
 
   //[2] take page # to display, and extract relevant entries from cached catapultResArr (nodeCacheStuff)
