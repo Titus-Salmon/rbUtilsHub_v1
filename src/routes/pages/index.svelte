@@ -1,5 +1,5 @@
 <script>
-import DkMdBtn from "../components/UI/DkMdBtn.svelte"; //t0d
+import DkMdBtn from "../../components/UI/DkMdBtn.svelte"; //t0d
 // import V_InventoryMasterQueryResults from "../components/T-SQL/v_InventoryMasterQueryResults.svelte"; //t0d
 
 export let segment;
