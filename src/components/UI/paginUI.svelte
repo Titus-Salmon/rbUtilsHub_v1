@@ -23,7 +23,7 @@ async function paginate(page) {
   }
   if (page === "reverse") {
     //don't go backwards if you're at the 1st page
-    if ($paginData[0].currentPage - 1 >= 0) {
+    if ($paginData[0].currentPage - 1 >= 1) {
       pageToDisplay = $paginData[0].currentPage - 1;
     } else {
       alert(`You can't go back further than the 1st page.`);
@@ -33,7 +33,7 @@ async function paginate(page) {
   if (page !== "forward" && page !== "reverse") {
     console.log(`typeof page from paginate(page)==> ${typeof page}`);
     //don't go to pages outside range of possible values
-    if (page <= $paginData[0].totalPages && page > 0) {
+    if (page <= $paginData[0].totalPages && page >= 1) {
       pageToDisplay = page;
     } else {
       alert(`The value you've entered isn't in the range of possible pages.`);
