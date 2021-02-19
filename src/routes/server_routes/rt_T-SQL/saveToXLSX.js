@@ -21,6 +21,8 @@ export async function post(req, res, next) {
 
   //Need to provide abstraction to allow for any query's column combination/selection////////////////////////////////////
   let columnNames = Object.keys(catapultResArrCacheValue[0])
+  console.log(`typeof columnNames==> ${typeof columnNames}`)
+  console.log(`columnNames==> ${columnNames}`)
 
   for (let t0d = 0; t0d < catapultResArrCacheValue.length; t0d++) {
     let resObj = {}
