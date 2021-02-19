@@ -17,7 +17,7 @@ export async function post(req, res, next) {
   ///̶/̶(̶W̶I̶T̶H̶O̶U̶T̶ m̶o̶d̶i̶f̶y̶i̶n̶g̶ t̶h̶e̶ o̶r̶i̶g̶i̶n̶a̶l̶ s̶r̶c̶R̶s̶X̶L̶S̶_̶t̶s̶q̶l̶ a̶r̶r̶a̶y̶)̶.̶
 
   var srcRsXLS_selectiveReordering = []
-  srcRsXLS_abstracted = []
+  var srcRsXLS_abstracted = []
 
   //Need to provide abstraction to allow for any query's column combination/selection////////////////////////////////////
   let columnNames = Object.keys(catapultResArrCacheValue[0])
