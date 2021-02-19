@@ -42,8 +42,8 @@ async function paginate(page) {
           {
             totalPages: queryResJSON.totalPages,
             currentPage: queryResJSON.currentPage,
-            nextPage: queryResJSON.nextPage,
-            prevPage: queryResJSON.prevPage,
+            // nextPage: queryResJSON.nextPage,
+            // prevPage: queryResJSON.prevPage,
           },
         ];
         return currentData;

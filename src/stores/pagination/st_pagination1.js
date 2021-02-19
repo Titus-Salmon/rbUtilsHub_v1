@@ -4,9 +4,9 @@ import {
 
 const paginData = writable([{
   totalPages: null,
-  currentPage: 0,
-  nextPage: 1,
-  prevPage: -1
+  currentPage: null,
+  // nextPage: 1,
+  // prevPage: -1
 }])
 
 export default paginData

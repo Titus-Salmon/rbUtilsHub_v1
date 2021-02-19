@@ -42,7 +42,7 @@ export async function get(req, res, next) {
     catapultResArr_pagin: catapultResArr_pagin,
     totalPages: numPgs,
     currentPage: page,
-    nextPage: page + 1,
-    prevPage: page - 1,
+    // nextPage: page + 1,
+    // prevPage: page - 1,
   })
 }
