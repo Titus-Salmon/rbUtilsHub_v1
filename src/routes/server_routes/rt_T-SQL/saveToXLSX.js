@@ -72,6 +72,8 @@ export async function post(req, res, next) {
 
   console.log(`JSON.stringify(srcRsXLS_selectiveReordering[0])==> ${JSON.stringify(srcRsXLS_selectiveReordering[0])}`)
 
+  console.log(`JSON.stringify(srcRsXLS_abstracted[0])==> ${JSON.stringify(srcRsXLS_abstracted[0])}`)
+
 
   // Create a new instance of a Workbook class
   var wb = new xl.Workbook()
