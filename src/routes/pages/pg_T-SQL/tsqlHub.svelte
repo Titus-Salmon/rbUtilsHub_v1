@@ -265,5 +265,13 @@ function saveToXLSX() {
   Total Pages: {$paginData[0].totalPages}
 </p>
 
+{#if $paginData[0].totalPages === null}
+  <p>Page</p>
+{:else}
+  <p>
+    Page {$paginData[0].currentPage} of {$paginData[0].totalPages}
+  </p>
+{/if}
+
 <PaginUI />
 <V_InventoryMasterQueryResultsTable />

@@ -5,7 +5,7 @@ import tableData from "../../stores/dynamicTables/tableData1.js";
 
 let page;
 let pageToDisplay;
-let pageBlurb = "Page";
+// let pageBlurb = "Page";
 
 // async function setPageBlurb() {
 //   // pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`;
@@ -57,7 +57,6 @@ async function paginate(page) {
             prevPage: queryResJSON.prevPage,
           },
         ];
-        pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`;
         return currentData;
       });
     });
@@ -81,19 +80,9 @@ async function paginate(page) {
   </div>
   <!--v-- ***currPageDispl*********************************************************** -->
   <div>
-    <!-- {#if $paginData[0].totalPages !== null}
-      {(pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`)}
-      <div style="text-align:center">
-        <label for="page">{pageBlurb}</label>
-      </div>
-    {:else}
-      <div style="text-align:center">
-        <label for="page">Page</label>
-      </div>
-    {/if} -->
-    <div style="text-align:center">
+    <!-- <div style="text-align:center">
       <label for="page">{pageBlurb}</label>
-    </div>
+    </div> -->
     <div style="text-align:center">
       <input
         style="text-align: center"
