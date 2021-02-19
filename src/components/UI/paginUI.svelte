@@ -6,12 +6,15 @@ import tableData from "../../stores/dynamicTables/tableData1.js";
 let page;
 let pageToDisplay;
 let pageBlurb;
-// let pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`;
-// if ($paginData[0].totalPages !== null) {
-//   pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`;
-// } else {
-//   pageBlurb = `Page ${$paginData[0].currentPage}`;
-// }
+
+function setPageBlurb() {
+  // pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`;
+  if ($paginData[0].totalPages !== null) {
+    pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`;
+  } else {
+    pageBlurb = `Page ${$paginData[0].currentPage}`;
+  }
+}
 
 function paginate(page) {
   //if (typeof $paginData.totalPages === "number") {
