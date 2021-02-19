@@ -5,7 +5,7 @@ import tableData from "../../stores/dynamicTables/tableData1.js";
 
 let page;
 let pageToDisplay;
-let pageBlurb;
+let pageBlurb = "Page";
 
 async function setPageBlurb() {
   // pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`;
