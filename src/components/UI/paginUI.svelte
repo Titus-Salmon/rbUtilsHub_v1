@@ -15,7 +15,7 @@ async function paginate(page) {
 
   if (page === "forward") {
     //don't go forward if you're at the last page
-    if ($paginData[0].currentPage + 1 < $paginData[0].totalPages) {
+    if ($paginData[0].currentPage + 1 <= $paginData[0].totalPages) {
       pageToDisplay = $paginData[0].currentPage + 1;
     } else {
       alert(`You're already at the last page.`);
@@ -23,7 +23,7 @@ async function paginate(page) {
   }
   if (page === "reverse") {
     //don't go backwards if you're at the 1st page
-    if ($paginData[0].currentPage - 1 > 0) {
+    if ($paginData[0].currentPage - 1 >= 0) {
       pageToDisplay = $paginData[0].currentPage - 1;
     } else {
       alert(`You can't go back further than the 1st page.`);
