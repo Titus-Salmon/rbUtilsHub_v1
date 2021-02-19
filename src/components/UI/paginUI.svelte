@@ -7,7 +7,7 @@ let page;
 let pageToDisplay;
 let pageBlurb;
 
-function setPageBlurb() {
+async function setPageBlurb() {
   // pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`;
   if ($paginData[0].totalPages !== null) {
     pageBlurb = `Page ${$paginData[0].currentPage} of ${$paginData[0].totalPages}`;
@@ -16,7 +16,7 @@ function setPageBlurb() {
   }
 }
 
-function paginate(page) {
+async function paginate(page) {
   //if (typeof $paginData.totalPages === "number") {
   console.log(`$paginData[0]==> ${$paginData[0]}`);
   console.log(`Object.keys($paginData[0])1==> ${Object.keys($paginData[0])}`);
@@ -75,7 +75,8 @@ function paginate(page) {
   <div>
     <div style="text-align:center">
       <!-- <button on:click|preventDefault="{paginate('reverse')}">prev</button> -->
-      <button on:click="{() => paginate('reverse')}">prev</button>
+      <button on:click="{() => paginate('reverse').then(setPageBlurb())}"
+        >prev</button>
     </div>
   </div>
   <!--v-- ***currPageDispl*********************************************************** -->
@@ -104,13 +105,15 @@ function paginate(page) {
         bind:this="{page}" />
     </div>
     <div style="text-align:center">
-      <button on:click="{() => paginate(page.value)}">goTo</button>
+      <button on:click="{() => paginate(page.value).then(setPageBlurb())}"
+        >goTo</button>
     </div>
   </div>
   <!--v-- ***nextButton*********************************************************** -->
   <div>
     <div style="text-align:center">
-      <button on:click="{() => paginate('forward')}">next</button>
+      <button on:click="{() => paginate('forward').then(setPageBlurb())}"
+        >next</button>
     </div>
   </div>
 </div>
