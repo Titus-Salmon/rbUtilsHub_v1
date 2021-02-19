@@ -8,6 +8,7 @@ export async function post(req, res, next) {
 
   catapultResArrCacheValue = catapultResArrCache.take('catapultResArrCache_key') // this also deletes the key
   console.log(`JSON.stringify(catapultResArrCacheValue[0])==> ${JSON.stringify(catapultResArrCacheValue[0])}`)
+  console.log(`Object.keys(catapultResArrCacheValue[0])==> ${Object.keys(catapultResArrCacheValue[0])}`)
 
   ///̶/̶N̶O̶T̶E̶+̶+̶+̶+̶+̶+̶+̶+̶>̶>̶>̶ s̶r̶c̶R̶s̶X̶L̶S̶_̶t̶s̶q̶l̶ i̶s̶ t̶h̶e̶ o̶r̶i̶g̶i̶n̶a̶l̶ a̶r̶r̶a̶y̶ t̶h̶a̶t̶ h̶o̶l̶d̶s̶ t̶h̶e̶ c̶o̶l̶l̶e̶c̶t̶i̶o̶n̶ o̶f̶ S̶e̶a̶r̶c̶h̶R̶e̶s̶u̶l̶t̶s̶ o̶b̶j̶e̶c̶t̶s̶ {̶c̶o̶l̶u̶m̶n̶N̶a̶m̶e̶:̶ c̶e̶l̶l̶V̶a̶l̶u̶e̶}̶
   ///̶/̶H̶O̶W̶E̶V̶E̶R̶,̶ s̶i̶n̶c̶e̶ t̶h̶e̶ i̶n̶h̶e̶r̶e̶n̶t̶ o̶r̶d̶e̶r̶ (̶f̶r̶o̶m̶ s̶h̶o̶w̶S̶e̶a̶r̶c̶h̶R̶e̶s̶u̶l̶t̶s̶(̶)̶)̶ o̶f̶ t̶h̶e̶s̶e̶ k̶e̶y̶:̶v̶a̶l̶u̶e̶ p̶a̶i̶r̶s̶ i̶s̶ n̶o̶t̶ t̶h̶e̶ o̶r̶d̶e̶r̶ w̶e̶ w̶a̶n̶t̶ t̶o̶ d̶i̶s̶p̶l̶a̶y̶ t̶h̶e̶m̶
