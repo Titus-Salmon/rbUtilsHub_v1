@@ -92,7 +92,7 @@ async function paginate(page) {
       </div>
     {/if} -->
     <div style="text-align:center">
-      <label for="page">Page</label>
+      <label for="page">{pageBlurb}</label>
     </div>
     <div style="text-align:center">
       <input
