@@ -260,20 +260,10 @@ function saveToXLSX() {
   </p>
 {/if}
 
-<p style="text-align:center">
+<!-- <p style="text-align:center">
   JSON.stringify($paginData)==> {JSON.stringify($paginData)}
   Total Pages: {$paginData[0].totalPages}
-</p>
-
-<!-- {#if $paginData[0].totalPages === null}
-  <p style="text-align:center; margin: 0">Page</p>
-{:else}
-  <p style="text-align:center; margin: 0">
-    Page {$paginData[0].currentPage} of {$paginData[0].totalPages}
-  </p>
-{/if}
-
-<PaginUI /> -->
+</p> -->
 
 {#if $paginData[0].totalPages !== null}
   <p style="text-align:center; margin: 0">
