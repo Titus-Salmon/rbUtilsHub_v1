@@ -175,6 +175,9 @@ export async function post(req, res, next) {
   //   }
   // }
 
+  console.log(`Object.keys(srcRsXLS_abstracted[0])==> ${Object.keys(srcRsXLS_abstracted[0])}`)
+  console.log(`Object.values(srcRsXLS_abstracted[0])==> ${Object.values(srcRsXLS_abstracted[0])}`)
+
   for (let i = 0; i < Object.keys(srcRsXLS_abstracted[0]).length; i++) {
 
     ws.cell(1, i + 1) //this targets "header" cells
