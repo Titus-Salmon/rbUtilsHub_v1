@@ -1,6 +1,5 @@
 <script>
 import { onMount } from "svelte";
-// import V_InventoryMasterQueryResultsTable from "../../../components/T-SQL/v_InventoryMasterQueryResults.svelte";
 import QueryResultsTable1 from "../../../components/queryResTbls/queryResultsTable1.svelte";
 import PaginUI from "../../../components/UI/paginUI.svelte";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
@@ -273,5 +272,4 @@ function saveToXLSX() {
   <PaginUI />
 {/if}
 
-<!-- <V_InventoryMasterQueryResultsTable /> -->\
 <QueryResultsTable1 />
