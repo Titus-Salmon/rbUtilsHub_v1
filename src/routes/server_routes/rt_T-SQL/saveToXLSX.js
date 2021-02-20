@@ -177,24 +177,25 @@ export async function post(req, res, next) {
 
   console.log(`Object.keys(srcRsXLS_abstracted[0])==> ${Object.keys(srcRsXLS_abstracted[0])}`)
   console.log(`Object.values(srcRsXLS_abstracted[0])==> ${Object.values(srcRsXLS_abstracted[0])}`)
+  console.log(`Object.values(srcRsXLS_abstracted)==> ${Object.values(srcRsXLS_abstracted)}`)
 
-  for (let i = 0; i < Object.keys(srcRsXLS_abstracted[0]).length; i++) {
+  for (let i = 0; i < Object.keys(srcRsXLS_abstracted).length; i++) {
 
     ws.cell(1, i + 1) //this targets "header" cells
-      .string(`${Object.keys(srcRsXLS_abstracted[0])[i]}`)
+      .string(`${Object.keys(srcRsXLS_abstracted)[i]}`)
       .style(headerStyle)
 
     for (let j = 0; j < srcRsXLS_abstracted.length; j++) {
       ws.cell(j + 2, i + 1)
         .string(`${Object.values(srcRsXLS_abstracted[j])[i]}`)
         .style(bodyStyle)
-      if (Object.keys(srcRsXLS_abstracted[0])[i] == 'charm') {
+      if (Object.keys(srcRsXLS_abstracted)[i] == 'charm') {
         ws.cell(j + 2, i + 1).style(charmHilite)
       }
-      if (Object.keys(srcRsXLS_abstracted[0])[i] == 'ediPrice') {
+      if (Object.keys(srcRsXLS_abstracted)[i] == 'ediPrice') {
         ws.cell(j + 2, i + 1).style(ediPriceHilite)
       }
-      if (Object.keys(srcRsXLS_abstracted[0])[i] == 'sibBasePrice') {
+      if (Object.keys(srcRsXLS_abstracted)[i] == 'sibBasePrice') {
         ws.cell(j + 2, i + 1).style(sibBasePriceHilite)
       }
       if (Object.values(srcRsXLS_abstracted[j])[i] == 'invalid oupName') {
