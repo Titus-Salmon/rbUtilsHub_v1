@@ -183,7 +183,7 @@ export async function post(req, res, next) {
   for (let i = 0; i < Object.keys(srcRsXLS_abstracted[0]).length; i++) {
 
     ws.cell(1, i + 1) //this targets "header" cells
-      .string(`${Object.keys(srcRsXLS_abstracted[0])}`)
+      .string(`${Object.keys(srcRsXLS_abstracted[0][i])}`)
       .style(headerStyle)
 
     for (let j = 0; j < srcRsXLS_abstracted.length; j++) {
