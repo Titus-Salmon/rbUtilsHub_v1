@@ -180,10 +180,10 @@ export async function post(req, res, next) {
   console.log(`Object.values(srcRsXLS_abstracted[0])==> ${Object.values(srcRsXLS_abstracted[0])}`)
   console.log(`Object.values(srcRsXLS_abstracted)==> ${Object.values(srcRsXLS_abstracted)}`)
 
-  for (let i = 0; i < Object.keys(srcRsXLS_abstracted[0]).length; i++) {
+  for (let i = 0; i < columnNames.length; i++) {
 
     ws.cell(1, i + 1) //this targets "header" cells
-      .string(`${Object.keys(srcRsXLS_abstracted[0][i])}`)
+      .string(`${columnNames[i]}`)
       .style(headerStyle)
 
     for (let j = 0; j < srcRsXLS_abstracted.length; j++) {
