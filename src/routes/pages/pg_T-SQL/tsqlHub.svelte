@@ -251,9 +251,9 @@ function saveToXLSX() {
   </p>
 {/if} -->
 
-{#if saveToCSVresultJSON !== undefined}
+{#if saveToCSVresponse !== undefined}
   <p style="text-align:center; color: var(--element6)">
-    {Object.values(saveToCSVresultJSON)}
+    {Object.values(saveToCSVresponse)}
   </p>
 {/if}
 
