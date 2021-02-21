@@ -11,7 +11,7 @@ import saveToCSV from "../../../libT0d/saveToCSV.js";
 
 let tsqlQueryText;
 
-// let saveToCSVfileName;
+let saveToCSVfileName;
 // let saveToCSVresponse;
 
 let saveToCSVcreatePopFileName;
@@ -189,7 +189,7 @@ function saveToXLSX() {
           type="text"
           id="saveToCSV"
           name="saveToCSV"
-          bind:this="{saveToCSV.saveToCSVfileName}" />
+          bind:this="{saveToCSVfileName}" />
       </div>
       <div style="text-align:center">
         <button on:click="{saveToCSV.saveToCSV}">saveToCSV</button>
