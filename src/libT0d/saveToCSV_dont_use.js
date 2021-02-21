@@ -1,5 +1,6 @@
 module.exports = {
   saveToCSV: function () {
+    console.log(`h444444444444ll0 from v1th1n saveToCSV_dont_use`)
     fetch("server_routes/saveToCSV", {
         method: "POST",
         headers: {
