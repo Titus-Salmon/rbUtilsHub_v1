@@ -1,5 +1,5 @@
 const xl = require('excel4node')
-import queryResArrCache from "../../../nodeCacheStuff/cache1"
+import queryResArrCache from "../../nodeCacheStuff/cache1"
 let queryResArrCacheValue
 
 export async function post(req, res, next) {

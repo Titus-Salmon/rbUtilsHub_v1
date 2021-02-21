@@ -1,5 +1,5 @@
 const fs = require('fs')
-import queryResArrCache from "../../../nodeCacheStuff/cache1"
+import queryResArrCache from "../../nodeCacheStuff/cache1"
 let queryResArrCacheValue
 
 const mysql = require('mysql')
