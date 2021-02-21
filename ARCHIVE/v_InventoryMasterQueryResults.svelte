@@ -1,5 +1,5 @@
 <script>
-import tableData from "../../stores/dynamicTables/tableData1.js";
+import tableData from "../src/stores/dynamicTables/tableData1.js";
 </script>
 
 <style>

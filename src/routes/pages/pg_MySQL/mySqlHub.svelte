@@ -7,7 +7,7 @@ import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 import tableData from "../../../stores/dynamicTables/tableData1.js";
 import paginData from "../../../stores/pagination/st_pagination1.js";
 
-let tsqlQueryText;
+let mySqlQueryText;
 
 let saveToCSVfileName;
 let saveToCSVresponse;
@@ -21,14 +21,20 @@ let saveToXLSXresponse;
 
 let queryText = `
 SELECT 
-inv_ScanCode, ord_supplierstocknumber, inv_name, inv_size, inv_receiptalias, inv_default, ord_quantityinorderunit, oup_name, sto_number, brd_name, 
-dpt_name, dpt_number, sib_idealMargin, ven_companyname, convert(varchar(10), inv_lastreceived, 120), convert(varchar(10), inv_lastsold, 120), 
-inv_lastcost, sib_baseprice, inv_onhand, inv_onorder, inv_intransit, inv_memo, pi1_Description, pi2_Description, pi3_Description, pi4_Description, 
-inv_powerfield1, inv_powerfield2, inv_powerfield3, inv_powerfield4 
-FROM
-catapult.ecrs.v_InventoryMaster 
-WHERE trim(ven_companyname) IN ('EDI-ALOE')
-AND trim(dpt_number) != '999999' ORDER BY pi1_Description, pi2_Description
+nhcrt.ri_t0d, nhcrt.invPK, nhcrt.invCPK, nhcrt.invScanCode, nhcrt.ordSupplierStockNumber, nhcrt.invName, nhcrt.invSize, nhcrt.invReceiptAlias, 
+nhcrt.posTimeStamp, nhcrt.invDateCreated, nhcrt.ordQuantityInOrderUnit, nhcrt.oupName, nhcrt.stoNumber, nhcrt.brdName, nhcrt.dptName, 
+nhcrt.dptNumber, nhcrt.sibIdealMargin, nhcrt.actualMargT0d, nhcrt.venCompanyname, nhcrt.invLastcost, nhcrt.sibBasePrice, nhcrt.pi1Description, 
+nhcrt.pi2Description, nhcrt.pi3Description, nhcrt.invPowerField3, nhcrt.invPowerField4, 
+
+edi_table.* 
+
+FROM **nhcrtTableName** 
+
+nhcrt JOIN **ediTableName** edi_table 
+ON nhcrt.invScanCode 
+WHERE nhcrt.invScanCode = edi_table.**ediPrefix_upc** 
+
+ORDER BY nhcrt.pi1Description, nhcrt.pi2Description;
 `;
 
 function vInvMasterQuery() {
@@ -38,7 +44,7 @@ function vInvMasterQuery() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      data: tsqlQueryText.value,
+      data: mySqlQueryText.value,
     }),
   })
     .then((queryRes) => queryRes.json())
@@ -159,12 +165,12 @@ function saveToXLSX() {
 <div style="text-align:center">
   <textarea
     class="query"
-    id="tsqlQueryText"
+    id="mySqlQueryText"
     name="tblQryPost"
     cols="160"
     rows="15"
     wrap="soft"
-    bind:this="{tsqlQueryText}">
+    bind:this="{mySqlQueryText}">
     {queryText}
   </textarea>
 </div>
