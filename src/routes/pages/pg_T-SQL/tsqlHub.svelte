@@ -193,7 +193,8 @@ function saveToXLSX() {
           bind:this="{saveToCSVfileName}" />
       </div>
       <div style="text-align:center">
-        <button on:click="{saveToCSV.saveToCSV}">saveToCSV</button>
+        <button on:click="{saveToCSV.saveToCSV(saveToCSVfileName)}"
+          >saveToCSV</button>
       </div>
     </div>
     <!--v-- ***save2CSVcreatePop*********************************************************** -->

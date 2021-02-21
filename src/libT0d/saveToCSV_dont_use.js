@@ -1,5 +1,5 @@
 module.exports = {
-  saveToCSV: function () {
+  saveToCSV: function (flNm) {
     console.log(`h444444444444ll0 from v1th1n saveToCSV_dont_use`)
     fetch("server_routes/saveToCSV", {
         method: "POST",
@@ -7,7 +7,7 @@ module.exports = {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          data: saveToCSVfileName.value,
+          data: flNm.value,
         }),
       })
       .then((saveToCSVresult) => saveToCSVresult.json())
