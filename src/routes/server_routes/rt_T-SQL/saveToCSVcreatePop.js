@@ -60,6 +60,8 @@ export async function post(req, res, next) {
         //   "response2 from saveToCSVcreatePop": `~~~~~>> MySQL table: ${tableName} created in RB DB<<~~~~~`
         // })
         console.log(`hello from connection.query().on('end')`)
+        deleteCSV()
+        console.log(`~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv DELETED <<~~~~~`)
       })
   }
 
@@ -98,6 +100,6 @@ export async function post(req, res, next) {
   }
 
   saveCSV()
-  deleteCSV()
+  // deleteCSV()
 
 }
