@@ -10,6 +10,7 @@ import paginData from "../../../stores/pagination/st_pagination1.js";
 // import saveToCSV from "../../../libT0d/saveToCSV.js";
 // import saveToCSV from "../../../libT0d/saveToCSV_dont_use";
 import s4v3ToCSV from "../../../libT0d/s4v3ToCSV.svelte";
+const S4v3ToCSV = new s4v3ToCSV();
 
 let tsqlQueryText;
 
@@ -195,7 +196,7 @@ function saveToXLSX() {
           bind:this="{saveToCSVfileName}" />
       </div>
       <div style="text-align:center">
-        <button on:click="{s4v3ToCSV}">saveToCSV</button>
+        <button on:click="{S4v3ToCSV}">saveToCSV</button>
       </div>
     </div>
     <!--v-- ***save2CSVcreatePop*********************************************************** -->
