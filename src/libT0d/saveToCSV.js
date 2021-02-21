@@ -1,6 +1,5 @@
 module.exports = {
-  saveToCSV: (saveToCSVresponse) => {
-    let saveToCSVfileName;
+  saveToCSV: (saveToCSVfileName, saveToCSVresponse) => {
     fetch("server_routes/saveToCSV", {
         method: "POST",
         headers: {
