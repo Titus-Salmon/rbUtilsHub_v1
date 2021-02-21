@@ -1,6 +1,6 @@
 const odbc = require('odbc')
 const DSN = process.env.ODBC_CONN_STRING
-import catapultResArrCache from "../../../nodeCacheStuff/cache1"
+import queryResArrCache from "../../../nodeCacheStuff/cache1"
 
 export async function post(req, res, next) {
   console.log(`hello from within the async function of v_InventoryMasterQuery.js`)
@@ -9,10 +9,10 @@ export async function post(req, res, next) {
   console.log(`req.body.data==> ${req.body.data}`)
   let catapultDbQuery = req.body.data
 
-  let catapultResArr = [] //array that holds all query results Objs
-  let catapultResArr_1stPage = [] //array that holds 1st page of query results Objs
+  let queryResArr = [] //array that holds all query results Objs
+  let queryResArr_1stPage = [] //array that holds 1st page of query results Objs
   var srcRsXLS_tsql = [] //array that holds all query results Objs for generating excel files. Do we need a separate array for this?
-  //maybe not, but keeping it this way, in case we need it to be separate from catapultResArr in the future. Just cleaner to handle
+  //maybe not, but keeping it this way, in case we need it to be separate from queryResArr in the future. Just cleaner to handle
   //it this way.
 
   let totalPages
@@ -42,30 +42,30 @@ export async function post(req, res, next) {
           catapultResObj['actlMarg'] = Math.round(((rowData['sib_baseprice'] - rowData['inv_lastcost']) / (rowData['sib_baseprice'])) * 100)
         }
       }
-      catapultResArr.push(catapultResObj)
+      queryResArr.push(catapultResObj)
       srcRsXLS_tsql.push(catapultResObj)
     }
 
-    if (catapultResArr.length > 100) { //if there are more than 100 query results, only push the 1st 100 into the 1st page
-      //result set (catapultResArr_1stPage)
+    if (queryResArr.length > 100) { //if there are more than 100 query results, only push the 1st 100 into the 1st page
+      //result set (queryResArr_1stPage)
       for (let i = 0; i < 100; i++) {
-        catapultResArr_1stPage.push(catapultResArr[i])
+        queryResArr_1stPage.push(queryResArr[i])
       }
     } else {
-      catapultResArr_1stPage = catapultResArr //if there are 100 or less total query results, the 1st page results are set equal
-      //to the whole query result dataset (catapultResArr)
+      queryResArr_1stPage = queryResArr //if there are 100 or less total query results, the 1st page results are set equal
+      //to the whole query result dataset (queryResArr)
     }
 
     //V// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
-    catapultResArrCache.set('catapultResArrCache_key', catapultResArr)
-    console.log(`catapultResArrCache['data']['catapultResArrCache_key']['v'].length==> ${catapultResArrCache['data']['catapultResArrCache_key']['v'].length}`)
-    console.log(`catapultResArrCache['data']['catapultResArrCache_key']['v'][0]==> ${catapultResArrCache['data']['catapultResArrCache_key']['v'][0]}`)
-    console.log(`JSON.stringify(catapultResArrCache['data']['catapultResArrCache_key']['v'][0])==> ${JSON.stringify(catapultResArrCache['data']['catapultResArrCache_key']['v'][0])}`)
+    queryResArrCache.set('queryResArrCache_key', queryResArr)
+    console.log(`queryResArrCache['data']['queryResArrCache_key']['v'].length==> ${queryResArrCache['data']['queryResArrCache_key']['v'].length}`)
+    console.log(`queryResArrCache['data']['queryResArrCache_key']['v'][0]==> ${queryResArrCache['data']['queryResArrCache_key']['v'][0]}`)
+    console.log(`JSON.stringify(queryResArrCache['data']['queryResArrCache_key']['v'][0])==> ${JSON.stringify(queryResArrCache['data']['queryResArrCache_key']['v'][0])}`)
     //^// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
   }
 
   async function paginCalcs() { //we are hard-coding page length to 100 results per page for now
-    totalPages = Math.ceil(catapultResArr.length / 100)
+    totalPages = Math.ceil(queryResArr.length / 100)
   }
 
   odbc.connect(DSN, (error, connection) => {
@@ -75,9 +75,9 @@ export async function post(req, res, next) {
       }
       showcatapultResults(result).then(paginCalcs()).then(() => {
         res.json({
-          catapultResArr: catapultResArr, //this is the entire result set (which we actually may not need to be passing to the front)
-          catapultResArr_1stPage: catapultResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
-          // "catapultResArr_pagin": catapultResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
+          queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
+          queryResArr_1stPage: queryResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
+          // "queryResArr_pagin": queryResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
           totalPages: totalPages,
           currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
           // nextPage: 1,
