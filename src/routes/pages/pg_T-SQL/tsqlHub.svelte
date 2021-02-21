@@ -242,9 +242,9 @@ function saveToXLSX() {
 {/if}
 <!--^-- only show inputs & buttons here if tableData store has been populated with query results -->
 
-{#if saveToCSVresponse !== undefined}
+{#if saveToCSV.saveToCSVresponse !== undefined}
   <p style="text-align:center; color: var(--element6)">
-    {Object.values(saveToCSVresponse)}
+    {Object.values(saveToCSV.saveToCSVresponse)}
   </p>
 {/if}
 
