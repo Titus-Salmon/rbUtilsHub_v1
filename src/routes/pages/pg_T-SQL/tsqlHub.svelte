@@ -251,9 +251,9 @@ function saveToXLSX() {
   </p>
 {/if} -->
 
-{#if saveToCSV.saveToCSVresponse !== undefined}
+{#if saveToCSV.saveToCSV.saveToCSVresponse !== undefined}
   <p style="text-align:center; color: var(--element6)">
-    {Object.values(saveToCSV.saveToCSVresponse)}
+    {Object.values(saveToCSV.saveToCSV.saveToCSVresponse)}
   </p>
 {/if}
 
