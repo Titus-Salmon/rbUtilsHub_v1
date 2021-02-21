@@ -7,7 +7,7 @@ import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 import tableData from "../../../stores/dynamicTables/tableData1.js";
 import paginData from "../../../stores/pagination/st_pagination1.js";
 
-const saveToCSV = require("../../../libT0d/saveToCSV");
+import saveToCSV from "../../../libT0d/saveToCSV.js";
 
 let tsqlQueryText;
 
