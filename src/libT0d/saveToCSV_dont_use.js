@@ -1,5 +1,6 @@
 module.exports = {
   saveToCSV: function (flNm) {
+    let saveToCSVresArr = []
     console.log(`h444444444444ll0 from v1th1n saveToCSV_dont_use`)
     fetch("server_routes/saveToCSV", {
         method: "POST",
@@ -17,9 +18,11 @@ module.exports = {
           saveToCSVresultJSON
         )}`
         );
-        this.saveToCSVresponse = saveToCSVresultJSON;
+        // this.saveToCSVresponse = saveToCSVresultJSON;
         // return saveToCSVresponse
+        saveToCSVresArr.push(saveToCSVresultJSON)
       });
+    this.response = saveToCSVresArr
   },
   // rspns: {
   //   saveToCSVresultJSON

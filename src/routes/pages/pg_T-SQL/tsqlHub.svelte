@@ -257,8 +257,12 @@ function saveToXLSX() {
   </p>
 {/if} -->
 
-{#if saveToCSV.saveToCSV.saveToCSVresultJSON["response from saveToCSV"] !== undefined}
+<!-- {#if saveToCSV.saveToCSV.saveToCSVresultJSON["response from saveToCSV"] !== undefined}
   <p>{saveToCSV.saveToCSV.saveToCSVresultJSON["response from saveToCSV"]}</p>
+{/if} -->
+
+{#if saveToCSV.saveToCSV.response !== undefined}
+  <p>{saveToCSV.saveToCSV.response[0]}</p>
 {/if}
 
 {console.log(`saveToCSV.saveToCSV==> ${saveToCSV.saveToCSV}`)}
