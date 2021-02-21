@@ -71,12 +71,14 @@ export async function post(req, res, next) {
       console.log(`~~~~~>> ${fileName} saved <<~~~~~`)
       console.log(`~~~~~>> populating ${tableName} table <<~~~~~`)
       createPopTable()
-    }).then(fs.unlink(`${process.cwd()}/static/csv/${fileName}.csv`, () => {
-      console.log(`~~~~~>> ${fileName} deleted <<~~~~~`)
-      res.json({
-        "response3 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv deleted <<~~~~~`
+    }).then(() => {
+      fs.unlink(`${process.cwd()}/static/csv/${fileName}.csv`, () => {
+        console.log(`~~~~~>> ${fileName} deleted <<~~~~~`)
+        res.json({
+          "response3 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv deleted <<~~~~~`
+        })
       })
-    }))
+    })
   } catch (err) {
     console.error(err);
   }
