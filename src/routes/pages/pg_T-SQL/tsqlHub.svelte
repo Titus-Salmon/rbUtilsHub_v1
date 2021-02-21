@@ -258,6 +258,9 @@ function saveToXLSX() {
 {/if} -->
 
 {console.log(`saveToCSV.saveToCSV==> ${saveToCSV.saveToCSV}`)}
+{console.log(
+  `saveToCSV.saveToCSV.saveToCSVresponse==> ${saveToCSV.saveToCSV.saveToCSVresponse}`
+)}
 
 {#if saveToCSVcreatePopResponse !== undefined}
   <!-- <p style="text-align:center; color: var(--element6)">
