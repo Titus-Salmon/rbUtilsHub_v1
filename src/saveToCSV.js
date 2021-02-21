@@ -1,4 +1,4 @@
-const saveToCSV = (function saveCSV() {
+export default saveToCSV = (function saveCSV() {
   fetch("server_routes/saveToCSV", {
       method: "POST",
       headers: {
@@ -19,4 +19,4 @@ const saveToCSV = (function saveCSV() {
     });
   // return { subscribe: saveToCSV.subscribe };
 })()
-export default saveToCSV;
+// export default saveToCSV;
