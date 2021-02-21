@@ -1,15 +1,16 @@
 const fs = require('fs')
 console.log(`hello from top level of saveToCSV`)
-import catapultResArrCache from "../../nodeCacheStuff/cache1"
-let catapultResArrCacheValue
+import queryResArrCache from "../../nodeCacheStuff/cache1"
+let queryResArrCacheValue
 
 export async function post(req, res, next) {
 
     console.log(`hello from within the async function of saveToCSV.js`)
 
-    catapultResArrCacheValue = catapultResArrCache.take('catapultResArrCache_key') // this also deletes the key
-    console.log(`catapultResArrCacheValue[0]==> ${catapultResArrCacheValue[0]}`)
-    let firstRowOfTableObj = catapultResArrCacheValue[0]
+    // queryResArrCacheValue = queryResArrCache.take('queryResArrCache_key') // this also deletes the key
+    queryResArrCacheValue = queryResArrCache.get('queryResArrCache_key') // use 'get' to leave key in memory
+    console.log(`queryResArrCacheValue[0]==> ${queryResArrCacheValue[0]}`)
+    let firstRowOfTableObj = queryResArrCacheValue[0]
 
     //begin csv generator //////////////////////////////////////////////////////////////////////////
     const {
@@ -25,7 +26,7 @@ export async function post(req, res, next) {
 
     try {
         const parser = new Parser(opts);
-        const csv = parser.parse(catapultResArrCacheValue)
+        const csv = parser.parse(queryResArrCacheValue)
         console.log(`req.body from saveToCSV==>${req.body}`)
         console.log(`csv.length from saveToCSV==>> ${csv.length}`);
         fs.writeFile(`${process.cwd()}/static/csv/${req.body.data}.csv`, csv, function (err) {

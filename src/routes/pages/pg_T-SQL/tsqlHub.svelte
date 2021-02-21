@@ -279,5 +279,4 @@ function saveToXLSX() {
   <PaginUI />
 {/if}
 
-<!-- <V_InventoryMasterQueryResultsTable /> -->\
 <QueryResultsTable1 />
