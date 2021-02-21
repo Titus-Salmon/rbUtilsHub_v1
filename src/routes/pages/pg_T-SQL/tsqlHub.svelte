@@ -7,7 +7,8 @@ import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 import tableData from "../../../stores/dynamicTables/tableData1.js";
 import paginData from "../../../stores/pagination/st_pagination1.js";
 
-import saveToCSV from "../../../libT0d/saveToCSV.js";
+// import saveToCSV from "../../../libT0d/saveToCSV.js";
+import saveToCSV from "../../../libT0d/saveToCSV_dont_use";
 
 let tsqlQueryText;
 
@@ -192,7 +193,7 @@ function saveToXLSX() {
           bind:this="{saveToCSVfileName}" />
       </div>
       <div style="text-align:center">
-        <button on:click="{saveToCSV.saveCSV}">saveToCSV</button>
+        <button on:click="{saveToCSV}">saveToCSV</button>
       </div>
     </div>
     <!--v-- ***save2CSVcreatePop*********************************************************** -->

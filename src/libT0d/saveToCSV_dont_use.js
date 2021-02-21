@@ -1,5 +1,5 @@
 module.exports = {
-  saveToCSV: (saveToCSVfileName, saveToCSVresponse) => {
+  saveToCSV: function () {
     fetch("server_routes/saveToCSV", {
         method: "POST",
         headers: {
@@ -13,8 +13,8 @@ module.exports = {
       .then((saveToCSVresultJSON) => {
         console.log(
           `JSON.stringify(saveToCSVresultJSON)==> ${JSON.stringify(
-            saveToCSVresultJSON
-          )}`
+          saveToCSVresultJSON
+        )}`
         );
         saveToCSVresponse = saveToCSVresultJSON;
       });
