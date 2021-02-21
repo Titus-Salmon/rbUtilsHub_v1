@@ -93,7 +93,7 @@ function rbDBquery() {
 }
 
 function saveToCSV() {
-  fetch("server_routes/rt_T-SQL/saveToCSV", {
+  fetch("server_routes/saveToCSV", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -114,7 +114,7 @@ function saveToCSV() {
 }
 
 function saveToCSVcreatePop() {
-  fetch("server_routes/rt_T-SQL/saveToCSVcreatePop", {
+  fetch("server_routes/saveToCSVcreatePop", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -136,7 +136,7 @@ function saveToCSVcreatePop() {
 }
 
 function saveToXLSX() {
-  fetch("server_routes/rt_T-SQL/saveToXLSX", {
+  fetch("server_routes/saveToXLSX", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
