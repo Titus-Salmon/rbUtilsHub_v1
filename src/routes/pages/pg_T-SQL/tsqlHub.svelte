@@ -13,8 +13,8 @@ import saveToCSV from "../../../libT0d/saveToCSV_dont_use";
 let tsqlQueryText;
 
 let saveToCSVfileName;
-let saveToCSVresponse;
-let saveToCSVresultJSON;
+// let saveToCSVresponse;
+// let saveToCSVresultJSON;
 
 let saveToCSVcreatePopFileName;
 let saveToCSVcreatePopTableName;
@@ -251,9 +251,9 @@ function saveToXLSX() {
   </p>
 {/if} -->
 
-{#if saveToCSVresponse !== undefined}
+{#if saveToCSV.saveToCSVresponse !== undefined}
   <p style="text-align:center; color: var(--element6)">
-    {Object.values(saveToCSVresponse)}
+    {Object.values(saveToCSV.saveToCSVresponse)}
   </p>
 {/if}
 

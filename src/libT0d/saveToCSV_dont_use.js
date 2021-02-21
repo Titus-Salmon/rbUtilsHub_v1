@@ -17,8 +17,8 @@ module.exports = {
           saveToCSVresultJSON
         )}`
         );
-        let saveToCSVresponse = saveToCSVresultJSON;
-        return saveToCSVresponse
+        this.saveToCSVresponse = saveToCSVresultJSON;
+        // return saveToCSVresponse
       });
   },
   // rspns: {
