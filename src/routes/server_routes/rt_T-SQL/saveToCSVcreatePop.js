@@ -43,7 +43,7 @@ export async function post(req, res, next) {
     columnNames.push(columnName)
   }
 
-  async function createPopTable() {
+  function createPopTable() {
     //the LOAD DATA LOCAL INFILE part below is a little tricky, because you can't use ${process.cwd()/static/csv}/${fileName}.csv
     //to get to your file, but have to use ./static/csv/${fileName} instead. IMPORTANT!
     connection.query(`
@@ -73,7 +73,7 @@ export async function post(req, res, next) {
         if (err) throw err;
         console.log(`~~~~~>> ${fileName} saved <<~~~~~`)
         console.log(`~~~~~>> populating ${tableName} table <<~~~~~`)
-        //createPopTable()
+        createPopTable()
       })
     } catch (err) {
       console.error(err);
@@ -97,6 +97,6 @@ export async function post(req, res, next) {
     }
   }
 
-  saveCSV().then(createPopTable()).then(deleteCSV())
+  saveCSV().then(deleteCSV())
 
 }
