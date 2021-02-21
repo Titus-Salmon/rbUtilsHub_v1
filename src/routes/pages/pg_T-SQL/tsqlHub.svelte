@@ -8,12 +8,13 @@ import tableData from "../../../stores/dynamicTables/tableData1.js";
 import paginData from "../../../stores/pagination/st_pagination1.js";
 
 // import saveToCSV from "../../../libT0d/saveToCSV.js";
-import saveToCSV from "../../../libT0d/saveToCSV_dont_use";
+// import saveToCSV from "../../../libT0d/saveToCSV_dont_use";
+import s4v3ToCSV from "../../../libT0d/s4v3ToCSV.svelte";
 
 let tsqlQueryText;
 
 let saveToCSVfileName;
-// let saveToCSVresponse;
+let saveToCSVresponse;
 // let saveToCSVresultJSON;
 
 let saveToCSVcreatePopFileName;
@@ -194,8 +195,7 @@ function saveToXLSX() {
           bind:this="{saveToCSVfileName}" />
       </div>
       <div style="text-align:center">
-        <button on:click="{saveToCSV.saveToCSV(saveToCSVfileName)}"
-          >saveToCSV</button>
+        <button on:click="{s4v3ToCSV}">saveToCSV</button>
       </div>
     </div>
     <!--v-- ***save2CSVcreatePop*********************************************************** -->
@@ -245,11 +245,11 @@ function saveToXLSX() {
 {/if}
 <!--^-- only show inputs & buttons here if tableData store has been populated with query results -->
 
-<!-- {#if saveToCSVresponse !== undefined}
+{#if saveToCSVresponse !== undefined}
   <p style="text-align:center; color: var(--element6)">
     {Object.values(saveToCSVresponse)}
   </p>
-{/if} -->
+{/if}
 
 <!-- {#if saveToCSV.saveToCSV(saveToCSVfileName).saveToCSVresponse !== undefined}
   <p style="text-align:center; color: var(--element6)">
@@ -261,14 +261,14 @@ function saveToXLSX() {
   <p>{saveToCSV.saveToCSV.saveToCSVresultJSON["response from saveToCSV"]}</p>
 {/if} -->
 
-{#if saveToCSV.saveToCSV.response !== undefined}
+<!-- {#if saveToCSV.saveToCSV.response !== undefined}
   <p>{saveToCSV.saveToCSV.response[0]}</p>
-{/if}
+{/if} -->
 
-{console.log(`saveToCSV.saveToCSV==> ${saveToCSV.saveToCSV}`)}
+<!-- {console.log(`saveToCSV.saveToCSV==> ${saveToCSV.saveToCSV}`)}
 {console.log(
   `saveToCSV.saveToCSV.saveToCSVresponse==> ${saveToCSV.saveToCSV.saveToCSVresponse}`
-)}
+)} -->
 
 {#if saveToCSVcreatePopResponse !== undefined}
   <!-- <p style="text-align:center; color: var(--element6)">
