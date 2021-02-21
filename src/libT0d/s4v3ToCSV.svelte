@@ -1,5 +1,5 @@
 <script context="module">
-export function s4v3ToCSV() {
+export function s4v3ToCSV(target) {
   fetch("server_routes/saveToCSV", {
     method: "POST",
     headers: {
@@ -16,7 +16,7 @@ export function s4v3ToCSV() {
           saveToCSVresultJSON
         )}`
       );
-      this.saveToCSVresponse = saveToCSVresultJSON;
+      target.saveToCSVresponse = saveToCSVresultJSON;
     });
 }
 </script>
