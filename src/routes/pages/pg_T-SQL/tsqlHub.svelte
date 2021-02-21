@@ -7,7 +7,7 @@ import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 import tableData from "../../../stores/dynamicTables/tableData1.js";
 import paginData from "../../../stores/pagination/st_pagination1.js";
 
-import saveToCSV from "../../../libT0d/saveToCSV.js";
+// import saveToCSV from "../../../libT0d/saveToCSV.js";
 
 let tsqlQueryText;
 
@@ -89,26 +89,26 @@ function vInvMasterQuery() {
   //display it in a table on the frontend
 }
 
-// function saveToCSV() {
-//   fetch("server_routes/saveToCSV", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       data: saveToCSVfileName.value,
-//     }),
-//   })
-//     .then((saveToCSVresult) => saveToCSVresult.json())
-//     .then((saveToCSVresultJSON) => {
-//       console.log(
-//         `JSON.stringify(saveToCSVresultJSON)==> ${JSON.stringify(
-//           saveToCSVresultJSON
-//         )}`
-//       );
-//       saveToCSVresponse = saveToCSVresultJSON;
-//     });
-// }
+function saveToCSV() {
+  fetch("server_routes/saveToCSV", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      data: saveToCSVfileName.value,
+    }),
+  })
+    .then((saveToCSVresult) => saveToCSVresult.json())
+    .then((saveToCSVresultJSON) => {
+      console.log(
+        `JSON.stringify(saveToCSVresultJSON)==> ${JSON.stringify(
+          saveToCSVresultJSON
+        )}`
+      );
+      saveToCSVresponse = saveToCSVresultJSON;
+    });
+}
 
 function saveToCSVcreatePop() {
   fetch("server_routes/saveToCSVcreatePop", {
@@ -189,10 +189,10 @@ function saveToXLSX() {
           type="text"
           id="saveToCSV"
           name="saveToCSV"
-          bind:this="{saveToCSVfileName.value}" />
+          bind:this="{saveToCSVfileName}" />
       </div>
       <div style="text-align:center">
-        <button on:click="{saveToCSV.saveToCSV}">saveToCSV</button>
+        <button on:click="{saveToCSV}">saveToCSV</button>
       </div>
     </div>
     <!--v-- ***save2CSVcreatePop*********************************************************** -->
@@ -242,9 +242,9 @@ function saveToXLSX() {
 {/if}
 <!--^-- only show inputs & buttons here if tableData store has been populated with query results -->
 
-{#if saveToCSV.saveToCSVresponse !== undefined}
+{#if saveToCSVresponse !== undefined}
   <p style="text-align:center; color: var(--element6)">
-    {Object.values(saveToCSV.saveToCSVresponse)}
+    {Object.values(saveToCSVresponse)}
   </p>
 {/if}
 
