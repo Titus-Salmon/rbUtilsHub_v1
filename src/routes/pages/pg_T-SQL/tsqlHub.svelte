@@ -189,7 +189,7 @@ function saveToXLSX() {
           type="text"
           id="saveToCSV"
           name="saveToCSV"
-          bind:this="{saveToCSVfileName}" />
+          bind:this="{saveToCSV.saveToCSVfileName}" />
       </div>
       <div style="text-align:center">
         <button on:click="{saveToCSV.saveToCSV}">saveToCSV</button>
