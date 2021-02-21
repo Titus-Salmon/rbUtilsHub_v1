@@ -1,8 +1,8 @@
-import catapultResArrCache from "../../../nodeCacheStuff/cache1"
+import queryResArrCache from "../../../nodeCacheStuff/cache1"
 
 export async function get(req, res, next) {
 
-  let catapultResArr_pagin = []
+  let queryResArr_pagin = []
 
   //[1] take URLforWhatPageToDisplay, and extract the page # to display
   console.log(`req.query==> ${req.query}`)
@@ -19,29 +19,29 @@ export async function get(req, res, next) {
   //position 100)
 
 
-  //[2] take page # to display, and extract relevant entries from cached catapultResArr (nodeCacheStuff)
+  //[2] take page # to display, and extract relevant entries from cached queryResArr (nodeCacheStuff)
   //i.e., if we're going to display page #2, we display "rows" 101-200 from tha array (elements 100-199)
 
   //V// access CACHEd V_INVENTORYMASTER QUERY RESULTS from BACKEND //////////////////////////////////////////////////////////////////////////////
-  console.log(`catapultResArrCache['data']['catapultResArrCache_key']['v'].length==> ${catapultResArrCache['data']['catapultResArrCache_key']['v'].length}`)
-  console.log(`catapultResArrCache['data']['catapultResArrCache_key']['v'][0]==> ${catapultResArrCache['data']['catapultResArrCache_key']['v'][0]}`)
-  console.log(`JSON.stringify(catapultResArrCache['data']['catapultResArrCache_key']['v'][0])==> ${JSON.stringify(catapultResArrCache['data']['catapultResArrCache_key']['v'][0])}`)
+  console.log(`queryResArrCache['data']['queryResArrCache_key']['v'].length==> ${queryResArrCache['data']['queryResArrCache_key']['v'].length}`)
+  console.log(`queryResArrCache['data']['queryResArrCache_key']['v'][0]==> ${queryResArrCache['data']['queryResArrCache_key']['v'][0]}`)
+  console.log(`JSON.stringify(queryResArrCache['data']['queryResArrCache_key']['v'][0])==> ${JSON.stringify(queryResArrCache['data']['queryResArrCache_key']['v'][0])}`)
   //^// access CACHEd V_INVENTORYMASTER QUERY RESULTS from BACKEND //////////////////////////////////////////////////////////////////////////////
 
-  let totalRows = catapultResArrCache['data']['catapultResArrCache_key']['v'].length
+  let totalRows = queryResArrCache['data']['queryResArrCache_key']['v'].length
   let numPgs = Math.ceil(totalRows / 100)
 
   for (let i = 0; i < 100; i++) {
-    if (catapultResArrCache['data']['catapultResArrCache_key']['v'][offset + i] !== undefined) {
-      catapultResArr_pagin.push(catapultResArrCache['data']['catapultResArrCache_key']['v'][offset + i])
-      console.log(`catapultResArrCache['data']['catapultResArrCache_key']['v'][${offset + i}]==> 
-      ${catapultResArrCache['data']['catapultResArrCache_key']['v'][offset + i]}`)
+    if (queryResArrCache['data']['queryResArrCache_key']['v'][offset + i] !== undefined) {
+      queryResArr_pagin.push(queryResArrCache['data']['queryResArrCache_key']['v'][offset + i])
+      console.log(`queryResArrCache['data']['queryResArrCache_key']['v'][${offset + i}]==> 
+      ${queryResArrCache['data']['queryResArrCache_key']['v'][offset + i]}`)
     }
   }
 
   //[3] send those entries from the backend (here) to the frontend via a res.json()
   res.json({
-    catapultResArr_pagin: catapultResArr_pagin,
+    queryResArr_pagin: queryResArr_pagin,
     totalPages: numPgs,
     currentPage: page,
     // nextPage: page + 1,

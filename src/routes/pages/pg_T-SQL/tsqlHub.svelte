@@ -47,9 +47,9 @@ function vInvMasterQuery() {
     //[2] this result must then be converted to JSON via the json() method on the frontend, even though it was already sent
     //from the backend as JSON
     .then((queryResJSON) => {
-      tableData.set(queryResJSON.catapultResArr_1stPage);
+      tableData.set(queryResJSON.queryResArr_1stPage);
       console.log(
-        `queryResJSON.catapultResArr_1stPage==> ${queryResJSON.catapultResArr_1stPage}`
+        `queryResJSON.queryResArr_1stPage==> ${queryResJSON.queryResArr_1stPage}`
       ); //passing backend response to frontend "Store" & we are overwriting the "Store" with set()
       console.log(
         `JSON.stringify($paginData) before update from vInvMasterQuery()==> ${JSON.stringify(

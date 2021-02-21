@@ -1,26 +1,26 @@
 const xl = require('excel4node')
-import catapultResArrCache from "../../../nodeCacheStuff/cache1"
-let catapultResArrCacheValue
+import queryResArrCache from "../../../nodeCacheStuff/cache1"
+let queryResArrCacheValue
 
 export async function post(req, res, next) {
 
   let fileName = req.body.data
 
-  catapultResArrCacheValue = catapultResArrCache.take('catapultResArrCache_key') // this also deletes the key
-  console.log(`JSON.stringify(catapultResArrCacheValue[0])==> ${JSON.stringify(catapultResArrCacheValue[0])}`)
-  console.log(`Object.keys(catapultResArrCacheValue[0])==> ${Object.keys(catapultResArrCacheValue[0])}`)
+  queryResArrCacheValue = queryResArrCache.take('queryResArrCache_key') // this also deletes the key
+  console.log(`JSON.stringify(queryResArrCacheValue[0])==> ${JSON.stringify(queryResArrCacheValue[0])}`)
+  console.log(`Object.keys(queryResArrCacheValue[0])==> ${Object.keys(queryResArrCacheValue[0])}`)
 
   var srcRsXLS_abstracted = []
 
   //Need to provide abstraction to allow for any query's column combination/selection////////////////////////////////////
-  let columnNames = Object.keys(catapultResArrCacheValue[0])
+  let columnNames = Object.keys(queryResArrCacheValue[0])
   console.log(`typeof columnNames==> ${typeof columnNames}`)
   console.log(`columnNames==> ${columnNames}`)
 
-  for (let a = 0; a < catapultResArrCacheValue.length; a++) {
+  for (let a = 0; a < queryResArrCacheValue.length; a++) {
     let resObj = {}
     for (let b = 0; b < columnNames.length; b++) {
-      resObj[`${columnNames[b]}`] = catapultResArrCacheValue[a][`${columnNames[b]}`]
+      resObj[`${columnNames[b]}`] = queryResArrCacheValue[a][`${columnNames[b]}`]
     }
     srcRsXLS_abstracted.push(resObj)
   }

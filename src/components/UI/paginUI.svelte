@@ -53,7 +53,7 @@ async function paginate(page) {
           queryResJSON
         )}`
       );
-      tableData.set(queryResJSON.catapultResArr_pagin); //passing backend response to frontend "Store"
+      tableData.set(queryResJSON.resArr_pagin); //passing backend response to frontend "Store"
       //& we are overwriting the "Store" with set()
       paginData.update((currentData) => {
         currentData = [
