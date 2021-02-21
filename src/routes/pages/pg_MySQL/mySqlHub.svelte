@@ -28,11 +28,11 @@ nhcrt.pi2Description, nhcrt.pi3Description, nhcrt.invPowerField3, nhcrt.invPower
 
 edi_table.* 
 
-FROM **nhcrtTableName** 
+FROM nhcrtTableName 
 
-nhcrt JOIN **ediTableName** edi_table 
+nhcrt JOIN ediTableName edi_table 
 ON nhcrt.invScanCode 
-WHERE nhcrt.invScanCode = edi_table.**ediPrefix_upc** 
+WHERE nhcrt.invScanCode = edi_table.ediPrefix_upc 
 
 ORDER BY nhcrt.pi1Description, nhcrt.pi2Description;
 `;
