@@ -1,4 +1,5 @@
 export default saveToCSV = (function saveCSV() {
+  console.log(`h4ll0 from v1th1n saveToCSV`)
   fetch("server_routes/saveToCSV", {
       method: "POST",
       headers: {
