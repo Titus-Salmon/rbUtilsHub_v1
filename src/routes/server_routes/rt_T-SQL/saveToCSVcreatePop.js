@@ -88,7 +88,7 @@ export async function post(req, res, next) {
         res.json({
           "response1 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv SAVED <<~~~~~`,
           "response2 from saveToCSVcreatePop": `~~~~~>> MySQL table: ${tableName} created in RB DB<<~~~~~`,
-          "response1 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv DELETED <<~~~~~`
+          "response3 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv DELETED <<~~~~~`
         })
       })
     } catch (err) {
@@ -96,6 +96,6 @@ export async function post(req, res, next) {
     }
   }
 
-  saveCSV.then(createPopTable()).then(deleteCSV())
+  saveCSV().then(createPopTable()).then(deleteCSV())
 
 }
