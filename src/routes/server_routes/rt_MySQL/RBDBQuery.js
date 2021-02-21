@@ -16,7 +16,7 @@ export async function post(req, res, next) {
 
   let queryResArr = [] //array that holds all query results Objs
   let queryResArr_1stPage = [] //array that holds 1st page of query results Objs
-  var srcRsXLS_tsql = [] //array that holds all query results Objs for generating excel files. Do we need a separate array for this?
+  var srcRsXLS = [] //array that holds all query results Objs for generating excel files. Do we need a separate array for this?
   //maybe not, but keeping it this way, in case we need it to be separate from queryResArr in the future. Just cleaner to handle
   //it this way.
 
@@ -34,21 +34,15 @@ export async function post(req, res, next) {
       for (let j = 0; j < queriedColumns.length; j++) {
         let colName = queriedColumns[j]
 
-        if (colName.toLowerCase() === 'pos_timeStamp') {
-          rbDBresObj[`${colName}`] = unescape(rowData[`${colName}`])
-        }
-        if (typeof rowData[`${colName}`] === 'string' &&
-          rowData[`${colName}`] !== '') {
-          rbDBresObj[`${colName}`] = rowData[`${colName}`].trim()
-        } else {
-          rbDBresObj[`${colName}`] = rowData[`${colName}`]
-        }
-        if (colName.toLowerCase() === 'sib_idealmargin') { //calculates actual margin, and adds that row to result set
-          rbDBresObj['actlMarg'] = Math.round(((rowData['sib_baseprice'] - rowData['inv_lastcost']) / (rowData['sib_baseprice'])) * 100)
-        }
+        // if (colName.toLowerCase() === 'pos_timeStamp') {
+        //   rbDBresObj[`${colName}`] = unescape(rowData[`${colName}`])
+        // }
+
+        rbDBresObj[`${colName}`] = rowData[`${colName}`]
+
       }
       queryResArr.push(rbDBresObj)
-      srcRsXLS_tsql.push(rbDBresObj)
+      srcRsXLS.push(rbDBresObj)
     }
 
     if (queryResArr.length > 100) { //if there are more than 100 query results, only push the 1st 100 into the 1st page
@@ -73,22 +67,40 @@ export async function post(req, res, next) {
     totalPages = Math.ceil(queryResArr.length / 100)
   }
 
-  odbc.connect(DSN, (error, connection) => {
-    connection.query(`${RBDbQuery}`, (error, result) => {
-      if (error) {
-        console.error(error)
-      }
-      rbDBqueryResults(result).then(paginCalcs()).then(() => {
-        res.json({
-          queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
-          queryResArr_1stPage: queryResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
-          // "queryResArr_pagin": queryResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
-          totalPages: totalPages,
-          currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
-          // nextPage: 1,
-          // prevPage: null
-        })
+  // odbc.connect(DSN, (error, connection) => {
+  //   connection.query(`${RBDbQuery}`, (error, result) => {
+  //     if (error) {
+  //       console.error(error)
+  //     }
+  //     rbDBqueryResults(result).then(paginCalcs()).then(() => {
+  //       res.json({
+  //         queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
+  //         queryResArr_1stPage: queryResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
+  //         // "queryResArr_pagin": queryResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
+  //         totalPages: totalPages,
+  //         currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
+  //         // nextPage: 1,
+  //         // prevPage: null
+  //       })
+  //     })
+  //   })
+  // })
+
+  connection.query(RBDbQuery, function (err, rows, fields) {
+    if (err) throw err
+    console.log(`rows.length==>${rows.length}`)
+    console.log('rows[0]==>', rows[0])
+    rbDBqueryResults(rows).then(paginCalcs()).then(() => {
+      res.json({
+        queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
+        queryResArr_1stPage: queryResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
+        // "queryResArr_pagin": queryResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
+        totalPages: totalPages,
+        currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
+        // nextPage: 1,
+        // prevPage: null
       })
     })
   })
+
 }

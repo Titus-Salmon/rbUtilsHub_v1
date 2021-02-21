@@ -37,8 +37,8 @@ WHERE nhcrt.invScanCode = edi_table.**ediPrefix_upc**
 ORDER BY nhcrt.pi1Description, nhcrt.pi2Description;
 `;
 
-function vInvMasterQuery() {
-  fetch("server_routes/rt_T-SQL/v_InventoryMasterQuery", {
+function rbDBquery() {
+  fetch("server_routes/rt_MySQL/RBDBQuery", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -53,12 +53,12 @@ function vInvMasterQuery() {
     //[2] this result must then be converted to JSON via the json() method on the frontend, even though it was already sent
     //from the backend as JSON
     .then((queryResJSON) => {
-      tableData.set(queryResJSON.catapultResArr_1stPage);
+      tableData.set(queryResJSON.queryResArr_1stPage);
       console.log(
-        `queryResJSON.catapultResArr_1stPage==> ${queryResJSON.catapultResArr_1stPage}`
+        `queryResJSON.queryResArr_1stPage==> ${queryResJSON.queryResArr_1stPage}`
       ); //passing backend response to frontend "Store" & we are overwriting the "Store" with set()
       console.log(
-        `JSON.stringify($paginData) before update from vInvMasterQuery()==> ${JSON.stringify(
+        `JSON.stringify($paginData) before update from rbDBquery()==> ${JSON.stringify(
           $paginData
         )}`
       );
@@ -82,7 +82,7 @@ function vInvMasterQuery() {
       //   },
       // ]);
       console.log(
-        `JSON.stringify($paginData) after update from vInvMasterQuery()==> ${JSON.stringify(
+        `JSON.stringify($paginData) after update from rbDBquery()==> ${JSON.stringify(
           $paginData
         )}`
       );
@@ -175,8 +175,8 @@ function saveToXLSX() {
   </textarea>
 </div>
 
-<button style="display:block; margin: 0 auto 1rem" on:click="{vInvMasterQuery}"
-  >vInvMasterQuery</button>
+<button style="display:block; margin: 0 auto 1rem" on:click="{rbDBquery}"
+  >rbDBquery</button>
 
 <!--v-- only show inputs & buttons here if tableData store has been populated with query results -->
 <!--v-- NOTE: you must use the $ to access the tableData store -->
