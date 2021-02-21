@@ -63,7 +63,7 @@ export async function post(req, res, next) {
       })
   }
 
-  async function saveCSV() {
+  function saveCSV() {
     try {
       const parser = new Parser(opts);
       const csv = parser.parse(queryResArrCacheValue)
@@ -80,7 +80,7 @@ export async function post(req, res, next) {
     }
   }
 
-  async function deleteCSV() {
+  function deleteCSV() {
     try {
       fs.unlink(`${process.cwd()}/static/csv/${fileName}.csv`, function (err) {
         if (err) throw err;
@@ -97,6 +97,7 @@ export async function post(req, res, next) {
     }
   }
 
-  saveCSV().then(deleteCSV())
+  saveCSV()
+  deleteCSV()
 
 }
