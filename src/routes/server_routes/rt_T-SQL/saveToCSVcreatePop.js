@@ -43,7 +43,7 @@ export async function post(req, res, next) {
     columnNames.push(columnName)
   }
 
-  function createPopTable() {
+  async function createPopTable() {
     //the LOAD DATA LOCAL INFILE part below is a little tricky, because you can't use ${process.cwd()/static/csv}/${fileName}.csv
     //to get to your file, but have to use ./static/csv/${fileName} instead. IMPORTANT!
     connection.query(`
@@ -53,34 +53,49 @@ export async function post(req, res, next) {
        ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;
     `, (error, response) => {
       console.log(error || response);
-    }).on('end', function () {
-      res.json({
-        "response1 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv saved <<~~~~~`,
-        "response2 from saveToCSVcreatePop": `~~~~~>> MySQL table: ${tableName} created in RB DB<<~~~~~`
-      })
     })
+    // .on('end', function () {
+    //   res.json({
+    //     "response1 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv saved <<~~~~~`,
+    //     "response2 from saveToCSVcreatePop": `~~~~~>> MySQL table: ${tableName} created in RB DB<<~~~~~`
+    //   })
+    // })
   }
 
-  try {
-    const parser = new Parser(opts);
-    const csv = parser.parse(queryResArrCacheValue)
-    console.log(`fileName-->${fileName}`)
-    console.log('csv.length=====>>', csv.length);
-    fs.writeFile(`${process.cwd()}/static/csv/${fileName}.csv`, csv, function (err) {
-      if (err) throw err;
-      console.log(`~~~~~>> ${fileName} saved <<~~~~~`)
-      console.log(`~~~~~>> populating ${tableName} table <<~~~~~`)
-      createPopTable()
-    }).then(() => {
-      fs.unlink(`${process.cwd()}/static/csv/${fileName}.csv`, () => {
+  async function saveCSV() {
+    try {
+      const parser = new Parser(opts);
+      const csv = parser.parse(queryResArrCacheValue)
+      console.log(`fileName-->${fileName}`)
+      console.log('csv.length=====>>', csv.length);
+      fs.writeFile(`${process.cwd()}/static/csv/${fileName}.csv`, csv, function (err) {
+        if (err) throw err;
+        console.log(`~~~~~>> ${fileName} saved <<~~~~~`)
+        console.log(`~~~~~>> populating ${tableName} table <<~~~~~`)
+        //createPopTable()
+      })
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function deleteCSV() {
+    try {
+      fs.unlink(`${process.cwd()}/static/csv/${fileName}.csv`, function (err) {
+        if (err) throw err;
         console.log(`~~~~~>> ${fileName} deleted <<~~~~~`)
+        //createPopTable()
         res.json({
-          "response3 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv deleted <<~~~~~`
+          "response1 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv SAVED <<~~~~~`,
+          "response2 from saveToCSVcreatePop": `~~~~~>> MySQL table: ${tableName} created in RB DB<<~~~~~`,
+          "response1 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv DELETED <<~~~~~`
         })
       })
-    })
-  } catch (err) {
-    console.error(err);
+    } catch (err) {
+      console.error(err);
+    }
   }
+
+  saveCSV.then(createPopTable()).then(deleteCSV())
 
 }
