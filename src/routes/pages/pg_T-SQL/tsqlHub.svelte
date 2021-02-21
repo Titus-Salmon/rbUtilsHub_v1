@@ -248,11 +248,14 @@ function saveToXLSX() {
 
 {#if saveToCSVcreatePopResponse !== undefined}
   <p style="text-align:center; color: var(--element6)">
+    {Object.values(saveToCSVcreatePopResponse)}
+  </p>
+  <!-- <p style="text-align:center; color: var(--element6)">
     {saveToCSVcreatePopResponse["response1 from saveToCSVcreatePop"]}
   </p>
   <p style="text-align:center; color: var(--element6)">
     {saveToCSVcreatePopResponse["response2 from saveToCSVcreatePop"]}
-  </p>
+  </p> -->
 {/if}
 
 {#if saveToXLSXresponse !== undefined}
