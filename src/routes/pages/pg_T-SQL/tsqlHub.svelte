@@ -14,6 +14,7 @@ let tsqlQueryText;
 
 let saveToCSVfileName;
 let saveToCSVresponse;
+let saveToCSVresultJSON;
 
 let saveToCSVcreatePopFileName;
 let saveToCSVcreatePopTableName;
@@ -250,9 +251,9 @@ function saveToXLSX() {
   </p>
 {/if} -->
 
-{#if saveToCSV.rspns !== undefined}
+{#if saveToCSVresultJSON !== undefined}
   <p style="text-align:center; color: var(--element6)">
-    {Object.values(saveToCSV.rspns)}
+    {Object.values(saveToCSVresultJSON)}
   </p>
 {/if}
 
