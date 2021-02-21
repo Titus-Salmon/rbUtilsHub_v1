@@ -82,7 +82,7 @@ export async function post(req, res, next) {
 
   function deleteCSV() {
     try {
-      fs.unlink(`${process.cwd()}/static/csv/${fileName}.csv`, function (err) {
+      fs.unlinkSync(`${process.cwd()}/static/csv/${fileName}.csv`, function (err) {
         if (err) throw err;
         console.log(`~~~~~>> ${fileName} deleted <<~~~~~`)
         //createPopTable()
@@ -98,6 +98,6 @@ export async function post(req, res, next) {
   }
 
   saveCSV()
-  //deleteCSV()
+  deleteCSV()
 
 }
