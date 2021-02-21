@@ -68,9 +68,15 @@ export async function post(req, res, next) {
     console.log('csv.length=====>>', csv.length);
     fs.writeFile(`${process.cwd()}/static/csv/${fileName}.csv`, csv, function (err) {
       if (err) throw err;
-      console.log('~~~~~>>' + fileName + 'saved<<~~~~~')
+      console.log(`~~~~~>> ${fileName} saved <<~~~~~`)
+      console.log(`~~~~~>> populating ${tableName} table <<~~~~~`)
       createPopTable()
-    })
+    }).then(fs.unlink(`${process.cwd()}/static/csv/${fileName}.csv`, () => {
+      console.log(`~~~~~>> ${fileName} deleted <<~~~~~`)
+      res.json({
+        "response3 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv deleted <<~~~~~`
+      })
+    }))
   } catch (err) {
     console.error(err);
   }
