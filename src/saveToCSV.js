@@ -1,13 +1,13 @@
-const saveToCsv = () => {
+(function () {
   fetch("server_routes/saveToCSV", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      data: saveToCSVfileName.value,
-    }),
-  })
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: saveToCSVfileName.value,
+      }),
+    })
     .then((saveToCSVresult) => saveToCSVresult.json())
     .then((saveToCSVresultJSON) => {
       console.log(
@@ -18,5 +18,5 @@ const saveToCsv = () => {
       saveToCSVresponse = saveToCSVresultJSON;
     });
   // return { subscribe: saveToCSV.subscribe };
-};
+})()
 export default saveToCsv;
