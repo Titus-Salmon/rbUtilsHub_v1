@@ -1,4 +1,4 @@
-(function () {
+const saveToCSV = (function () {
   fetch("server_routes/saveToCSV", {
       method: "POST",
       headers: {
