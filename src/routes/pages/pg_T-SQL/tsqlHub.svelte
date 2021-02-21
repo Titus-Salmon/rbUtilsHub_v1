@@ -7,7 +7,7 @@ import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 import tableData from "../../../stores/dynamicTables/tableData1.js";
 import paginData from "../../../stores/pagination/st_pagination1.js";
 
-// import saveToCSV from "../../../libT0d/saveToCSV.js";
+import saveToCSV from "../../../libT0d/saveToCSV.js";
 
 let tsqlQueryText;
 
@@ -89,26 +89,26 @@ function vInvMasterQuery() {
   //display it in a table on the frontend
 }
 
-function saveToCSV() {
-  fetch("server_routes/saveToCSV", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      data: saveToCSVfileName.value,
-    }),
-  })
-    .then((saveToCSVresult) => saveToCSVresult.json())
-    .then((saveToCSVresultJSON) => {
-      console.log(
-        `JSON.stringify(saveToCSVresultJSON)==> ${JSON.stringify(
-          saveToCSVresultJSON
-        )}`
-      );
-      saveToCSVresponse = saveToCSVresultJSON;
-    });
-}
+// function saveToCSV() {
+//   fetch("server_routes/saveToCSV", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       data: saveToCSVfileName.value,
+//     }),
+//   })
+//     .then((saveToCSVresult) => saveToCSVresult.json())
+//     .then((saveToCSVresultJSON) => {
+//       console.log(
+//         `JSON.stringify(saveToCSVresultJSON)==> ${JSON.stringify(
+//           saveToCSVresultJSON
+//         )}`
+//       );
+//       saveToCSVresponse = saveToCSVresultJSON;
+//     });
+// }
 
 function saveToCSVcreatePop() {
   fetch("server_routes/saveToCSVcreatePop", {
