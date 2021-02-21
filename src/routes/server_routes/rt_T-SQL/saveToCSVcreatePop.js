@@ -52,14 +52,15 @@ export async function post(req, res, next) {
     LOAD DATA LOCAL INFILE './static/csv/${fileName}.csv' INTO TABLE ${tableName} FIELDS TERMINATED BY ','
        ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;
     `, (error, response) => {
-      console.log(error || response);
-    })
-    // .on('end', function () {
-    //   res.json({
-    //     "response1 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv saved <<~~~~~`,
-    //     "response2 from saveToCSVcreatePop": `~~~~~>> MySQL table: ${tableName} created in RB DB<<~~~~~`
-    //   })
-    // })
+        console.log(error || response);
+      })
+      .on('end', function () {
+        // res.json({
+        //   "response1 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv saved <<~~~~~`,
+        //   "response2 from saveToCSVcreatePop": `~~~~~>> MySQL table: ${tableName} created in RB DB<<~~~~~`
+        // })
+        console.log(`hello from connection.query().on('end')`)
+      })
   }
 
   async function saveCSV() {
