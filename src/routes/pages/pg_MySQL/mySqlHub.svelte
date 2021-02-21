@@ -21,7 +21,7 @@ let saveToXLSXresponse;
 
 let queryText = `
 SELECT 
-nhcrt.ri_t0d, nhcrt.invPK, nhcrt.invCPK, nhcrt.invScanCode, nhcrt.ordSupplierStockNumber, nhcrt.invName, nhcrt.invSize, nhcrt.invReceiptAlias, 
+nhcrt.ri_t0d, nhcrt.invScanCode, nhcrt.ordSupplierStockNumber, nhcrt.invName, nhcrt.invSize, nhcrt.invReceiptAlias, 
 nhcrt.posTimeStamp, nhcrt.invDateCreated, nhcrt.ordQuantityInOrderUnit, nhcrt.oupName, nhcrt.stoNumber, nhcrt.brdName, nhcrt.dptName, 
 nhcrt.dptNumber, nhcrt.sibIdealMargin, nhcrt.actualMargT0d, nhcrt.venCompanyname, nhcrt.invLastcost, nhcrt.sibBasePrice, nhcrt.pi1Description, 
 nhcrt.pi2Description, nhcrt.pi3Description, nhcrt.invPowerField3, nhcrt.invPowerField4, 
