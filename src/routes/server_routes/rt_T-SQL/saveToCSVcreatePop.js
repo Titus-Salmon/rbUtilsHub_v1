@@ -15,7 +15,8 @@ const connection = mysql.createConnection({
 
 export async function post(req, res, next) {
 
-  queryResArrCacheValue = queryResArrCache.take('queryResArrCache_key') // this also deletes the key
+  // queryResArrCacheValue = queryResArrCache.take('queryResArrCache_key') // 'take' also deletes the key
+  queryResArrCacheValue = queryResArrCache.get('queryResArrCache_key') // use 'get' to leave key in memory
   console.log(`queryResArrCacheValue[0]==> ${queryResArrCacheValue[0]}`)
   let firstRowOfTableObj = queryResArrCacheValue[0]
 

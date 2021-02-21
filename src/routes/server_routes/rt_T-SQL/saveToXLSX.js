@@ -6,7 +6,8 @@ export async function post(req, res, next) {
 
   let fileName = req.body.data
 
-  queryResArrCacheValue = queryResArrCache.take('queryResArrCache_key') // this also deletes the key
+  // queryResArrCacheValue = queryResArrCache.take('queryResArrCache_key') // this also deletes the key
+  queryResArrCacheValue = queryResArrCache.get('queryResArrCache_key') // use 'get' to leave key in memory
   console.log(`JSON.stringify(queryResArrCacheValue[0])==> ${JSON.stringify(queryResArrCacheValue[0])}`)
   console.log(`Object.keys(queryResArrCacheValue[0])==> ${Object.keys(queryResArrCacheValue[0])}`)
 
