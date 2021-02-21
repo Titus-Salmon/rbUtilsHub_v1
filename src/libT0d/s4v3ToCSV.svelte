@@ -16,7 +16,7 @@ export function s4v3ToCSV() {
           saveToCSVresultJSON
         )}`
       );
-      saveToCSVresponse = saveToCSVresultJSON;
+      this.saveToCSVresponse = saveToCSVresultJSON;
     });
 }
 </script>
