@@ -17,10 +17,10 @@ module.exports = {
           saveToCSVresultJSON
         )}`
         );
-        // saveToCSVresponse = saveToCSVresultJSON;
+        saveToCSVresponse = saveToCSVresultJSON;
       });
   },
-  rspns: {
-    saveToCSVresultJSON
-  }
+  // rspns: {
+  //   saveToCSVresultJSON
+  //}
 }
