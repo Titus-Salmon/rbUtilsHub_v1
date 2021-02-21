@@ -21,20 +21,20 @@ let saveToXLSXresponse;
 
 let queryText = `
 SELECT 
-nhcrt.ri_t0d, nhcrt.invScanCode, nhcrt.ordSupplierStockNumber, nhcrt.invName, nhcrt.invSize, nhcrt.invReceiptAlias, 
-nhcrt.posTimeStamp, nhcrt.invDateCreated, nhcrt.ordQuantityInOrderUnit, nhcrt.oupName, nhcrt.stoNumber, nhcrt.brdName, nhcrt.dptName, 
-nhcrt.dptNumber, nhcrt.sibIdealMargin, nhcrt.actualMargT0d, nhcrt.venCompanyname, nhcrt.invLastcost, nhcrt.sibBasePrice, nhcrt.pi1Description, 
-nhcrt.pi2Description, nhcrt.pi3Description, nhcrt.invPowerField3, nhcrt.invPowerField4, 
+nhcrt.ri_t0d, nhcrt.inv_ScanCode, nhcrt.ord_supplierstocknumber, nhcrt.inv_name, nhcrt.inv_size, nhcrt.inv_receiptalias, nhcrt.inv_datecreated, 
+nhcrt.ord_quantityinorderunit, nhcrt.oup_name, nhcrt.sto_number, nhcrt.brd_name, nhcrt.dpt_name, nhcrt.dpt_number, nhcrt.sib_idealmargin, 
+nhcrt.actlMarg, nhcrt.ven_companyname, nhcrt.ven_code, nhcrt.asc_scancode, nhcrt.asc_receiptalias, nhcrt.asc_quantity, nhcrt.inv_lastcost, 
+nhcrt.sib_baseprice, nhcrt.pi1_description, nhcrt.pi2_description, nhcrt.pi3_description, nhcrt.inv_powerfield3, nhcrt.inv_powerfield4, 
 
 edi_table.* 
 
 FROM nhcrtTableName 
 
 nhcrt JOIN ediTableName edi_table 
-ON nhcrt.invScanCode 
-WHERE nhcrt.invScanCode = edi_table.ediPrefix_upc 
+ON nhcrt.inv_ScanCode 
+WHERE nhcrt.inv_ScanCode = edi_table.ediPrefix_upc 
 
-ORDER BY nhcrt.pi1Description, nhcrt.pi2Description;
+ORDER BY nhcrt.pi1_description, nhcrt.pi1_description;
 `;
 
 function rbDBquery() {
