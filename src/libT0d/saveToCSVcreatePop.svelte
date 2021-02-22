@@ -24,14 +24,16 @@ function saveToCSVcreatePop() {
       );
       saveToCSVcreatePopResponse = saveToCSVcreatePopResultJSON;
 
-      utilResponses.update((currentData) => {
-        currentData = [
-          {
-            saveToCSVcreatePop: Object.values(saveToCSVcreatePopResponse),
-          },
-        ];
-        return currentData;
-      });
+      utilResponses.set(saveToCSVcreatePopResponse);
+
+      // utilResponses.update((currentData) => {
+      //   currentData = [
+      //     {
+      //       utilResponse: Object.values(saveToCSVcreatePopResponse),
+      //     },
+      //   ];
+      //   return currentData;
+      // });
     });
 }
 </script>

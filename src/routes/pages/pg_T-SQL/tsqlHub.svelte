@@ -33,20 +33,20 @@ import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
 <!--^-- only show inputs & buttons here if tableData store has been populated with query results -->
 
 <div>
-  {#if $utilResponses[0].saveToCSV !== null}
+  {#if $utilResponses[0].utilResponse !== null}
     <p style="text-align:center; color: var(--element6)">
-      {Object.values($utilResponses[0].saveToCSV)}
+      {Object.values($utilResponses[0].utilResponse)}
     </p>
   {/if}
 </div>
 
-<div>
+<!-- <div>
   {#if $utilResponses[0].saveToCSVcreatePop !== null}
     <p style="text-align:center; color: var(--element6)">
       {Object.values($utilResponses[0].saveToCSVcreatePop)}
     </p>
   {/if}
-</div>
+</div> -->
 
 {#if $paginData[0].totalPages !== null}
   <p style="text-align:center; margin: 0">

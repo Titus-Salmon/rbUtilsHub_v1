@@ -1,4 +1,5 @@
 <script>
+import utilResponses from "../stores/utilResponses/st_utilResponses";
 let saveToXLSXfileName;
 let saveToXLSXresponse;
 
@@ -20,6 +21,7 @@ function saveToXLSX() {
         )}`
       );
       saveToXLSXresponse = saveToXLSXresultJSON;
+      utilResponses.set(saveToCSVcreatePopResponse);
     });
 }
 </script>

@@ -21,14 +21,16 @@ function saveToCSV() {
       );
       saveToCSVresponse = saveToCSVresultJSON;
 
-      utilResponses.update((currentData) => {
-        currentData = [
-          {
-            saveToCSV: Object.values(saveToCSVresponse),
-          },
-        ];
-        return currentData;
-      });
+      utilResponses.set(saveToCSVresponse);
+
+      // utilResponses.update((currentData) => {
+      //   currentData = [
+      //     {
+      //       utilResponse: Object.values(saveToCSVresponse),
+      //     },
+      //   ];
+      //   return currentData;
+      // });
     });
 }
 </script>
