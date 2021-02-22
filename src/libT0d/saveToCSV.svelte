@@ -49,11 +49,4 @@ function saveToCSV() {
   <div style="text-align:center">
     <button on:click="{saveToCSV}">saveToCSV</button>
   </div>
-  <!-- <div>
-    {#if saveToCSVresponse !== undefined}
-      <p style="text-align:center; color: var(--element6)">
-        {Object.values(saveToCSVresponse)}
-      </p>
-    {/if}
-  </div> -->
 </div>

@@ -21,7 +21,7 @@ function saveToXLSX() {
         )}`
       );
       saveToXLSXresponse = saveToXLSXresultJSON;
-      utilResponses.set(saveToCSVcreatePopResponse);
+      utilResponses.set([{ utilResponse: saveToXLSXresponse }]);
     });
 }
 </script>
@@ -39,12 +39,5 @@ function saveToXLSX() {
   </div>
   <div style="text-align:center">
     <button on:click="{saveToXLSX}">saveToXLSX</button>
-  </div>
-  <div>
-    {#if saveToXLSXresponse !== undefined}
-      <p style="text-align:center; color: var(--element6)">
-        {saveToXLSXresponse["response from saveToXLSX"]}
-      </p>
-    {/if}
   </div>
 </div>

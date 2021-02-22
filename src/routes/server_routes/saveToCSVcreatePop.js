@@ -55,10 +55,6 @@ export async function post(req, res, next) {
         console.log(error || response);
       })
       .on('end', function () {
-        // res.json({
-        //   "response1 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv saved <<~~~~~`,
-        //   "response2 from saveToCSVcreatePop": `~~~~~>> MySQL table: ${tableName} created in RB DB<<~~~~~`
-        // })
         console.log(`hello from connection.query().on('end')`)
         deleteCSV()
         console.log(`~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv DELETED <<~~~~~`)
@@ -92,12 +88,6 @@ export async function post(req, res, next) {
       fs.unlinkSync(`${process.cwd()}/static/csv/${fileName}.csv`, function (err) {
         if (err) throw err;
         console.log(`~~~~~>> ${fileName} deleted <<~~~~~`)
-        //createPopTable()
-        // res.json({
-        //   "response1 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv SAVED <<~~~~~`,
-        //   "response2 from saveToCSVcreatePop": `~~~~~>> MySQL table: ${tableName} created in RB DB<<~~~~~`,
-        //   "response3 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv DELETED <<~~~~~`
-        // })
       })
     } catch (err) {
       console.error(err);
@@ -105,6 +95,5 @@ export async function post(req, res, next) {
   }
 
   saveCSV()
-  // deleteCSV()
 
 }

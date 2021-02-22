@@ -40,14 +40,6 @@ import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
   {/if}
 </div>
 
-<!-- <div>
-  {#if $utilResponses[0].saveToCSVcreatePop !== null}
-    <p style="text-align:center; color: var(--element6)">
-      {Object.values($utilResponses[0].saveToCSVcreatePop)}
-    </p>
-  {/if}
-</div> -->
-
 {#if $paginData[0].totalPages !== null}
   <p style="text-align:center; margin: 0">
     Page {$paginData[0].currentPage} of {$paginData[0].totalPages}
