@@ -1,4 +1,5 @@
 <script>
+import utilResponses from "../stores/utilResponses/st_utilResponses";
 let saveToCSVcreatePopFileName;
 let saveToCSVcreatePopTableName;
 let saveToCSVcreatePopResponse;
@@ -22,6 +23,15 @@ function saveToCSVcreatePop() {
         )}`
       );
       saveToCSVcreatePopResponse = saveToCSVcreatePopResultJSON;
+
+      utilResponses.update((currentData) => {
+        currentData = [
+          {
+            saveToCSVcreatePop: Object.values(saveToCSVcreatePopResponse),
+          },
+        ];
+        return currentData;
+      });
     });
 }
 </script>

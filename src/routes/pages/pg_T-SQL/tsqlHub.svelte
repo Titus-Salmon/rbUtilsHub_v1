@@ -12,8 +12,6 @@ import VInvMasterQuery from "../../../libT0d/T-SQL/vInvMasterQuery.svelte";
 import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
 import SaveToCSVcreatePop from "../../../libT0d/saveToCSVcreatePop.svelte";
 import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
-
-import saveToCSVresponse from "../../../libT0d/saveToCSV.svelte";
 </script>
 
 <style>
@@ -38,6 +36,14 @@ import saveToCSVresponse from "../../../libT0d/saveToCSV.svelte";
   {#if $utilResponses[0].saveToCSV !== null}
     <p style="text-align:center; color: var(--element6)">
       {Object.values($utilResponses[0].saveToCSV)}
+    </p>
+  {/if}
+</div>
+
+<div>
+  {#if $utilResponses[0].saveToCSVcreatePop !== null}
+    <p style="text-align:center; color: var(--element6)">
+      {Object.values($utilResponses[0].saveToCSVcreatePop)}
     </p>
   {/if}
 </div>

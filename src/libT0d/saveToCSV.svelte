@@ -1,7 +1,7 @@
 <script>
 import utilResponses from "../stores/utilResponses/st_utilResponses";
 let saveToCSVfileName;
-export let saveToCSVresponse;
+let saveToCSVresponse;
 function saveToCSV() {
   fetch("server_routes/saveToCSV", {
     method: "POST",
