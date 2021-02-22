@@ -35,9 +35,9 @@ import saveToCSVresponse from "../../../libT0d/saveToCSV.svelte";
 <!--^-- only show inputs & buttons here if tableData store has been populated with query results -->
 
 <div>
-  {#if $utilResponses.saveToCSV !== null}
+  {#if $utilResponses[0].saveToCSV !== null}
     <p style="text-align:center; color: var(--element6)">
-      {Object.values($utilResponses.saveToCSV)}
+      {Object.values($utilResponses[0].saveToCSV)}
     </p>
   {/if}
 </div>
