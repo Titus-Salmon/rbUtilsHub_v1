@@ -7,17 +7,20 @@ import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 import tableData from "../../../stores/dynamicTables/tableData1.js";
 import paginData from "../../../stores/pagination/st_pagination1.js";
 
-import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
 import VInvMasterQuery from "../../../libT0d/T-SQL/vInvMasterQuery.svelte";
+import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
+import SaveToCSVcreatePop from "../../../libT0d/saveToCSVcreatePop.svelte";
+import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
+import SaveToXlsx from "../../../libT0d/saveToXLSX.svelte";
 
-let tsqlQueryText;
+// let tsqlQueryText;
 
-let saveToCSVcreatePopFileName;
-let saveToCSVcreatePopTableName;
-let saveToCSVcreatePopResponse;
+// let saveToCSVcreatePopFileName;
+// let saveToCSVcreatePopTableName;
+// let saveToCSVcreatePopResponse;
 
-let saveToXLSXfileName;
-let saveToXLSXresponse;
+// let saveToXLSXfileName;
+// let saveToXLSXresponse;
 
 // let queryText = `
 // SELECT
@@ -108,48 +111,48 @@ let saveToXLSXresponse;
 //     });
 // }
 
-function saveToCSVcreatePop() {
-  fetch("server_routes/saveToCSVcreatePop", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      fileNameData: saveToCSVcreatePopFileName.value,
-      tableNameData: saveToCSVcreatePopTableName.value,
-    }),
-  })
-    .then((saveToCSVcreatePopResult) => saveToCSVcreatePopResult.json())
-    .then((saveToCSVcreatePopResultJSON) => {
-      console.log(
-        `JSON.stringify(saveToCSVcreatePopResultJSON)==> ${JSON.stringify(
-          saveToCSVcreatePopResultJSON
-        )}`
-      );
-      saveToCSVcreatePopResponse = saveToCSVcreatePopResultJSON;
-    });
-}
+// function saveToCSVcreatePop() {
+//   fetch("server_routes/saveToCSVcreatePop", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       fileNameData: saveToCSVcreatePopFileName.value,
+//       tableNameData: saveToCSVcreatePopTableName.value,
+//     }),
+//   })
+//     .then((saveToCSVcreatePopResult) => saveToCSVcreatePopResult.json())
+//     .then((saveToCSVcreatePopResultJSON) => {
+//       console.log(
+//         `JSON.stringify(saveToCSVcreatePopResultJSON)==> ${JSON.stringify(
+//           saveToCSVcreatePopResultJSON
+//         )}`
+//       );
+//       saveToCSVcreatePopResponse = saveToCSVcreatePopResultJSON;
+//     });
+// }
 
-function saveToXLSX() {
-  fetch("server_routes/saveToXLSX", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      data: saveToXLSXfileName.value,
-    }),
-  })
-    .then((saveToXLSXresult) => saveToXLSXresult.json())
-    .then((saveToXLSXresultJSON) => {
-      console.log(
-        `JSON.stringify(saveToXLSXresultJSON)==> ${JSON.stringify(
-          saveToXLSXresultJSON
-        )}`
-      );
-      saveToXLSXresponse = saveToXLSXresultJSON;
-    });
-}
+// function saveToXLSX() {
+//   fetch("server_routes/saveToXLSX", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       data: saveToXLSXfileName.value,
+//     }),
+//   })
+//     .then((saveToXLSXresult) => saveToXLSXresult.json())
+//     .then((saveToXLSXresultJSON) => {
+//       console.log(
+//         `JSON.stringify(saveToXLSXresultJSON)==> ${JSON.stringify(
+//           saveToXLSXresultJSON
+//         )}`
+//       );
+//       saveToXLSXresponse = saveToXLSXresultJSON;
+//     });
+// }
 </script>
 
 <style>
@@ -180,8 +183,9 @@ function saveToXLSX() {
 {#if Object.keys($tableData).length > 1}
   <div class="flexbox">
     <SaveToCSV />
+    <SaveToCSVcreatePop />
+    <SaveToXlsx />
   </div>
-
   <div class="flexbox">
     <!--v-- ***saveToCSV*********************************************************** -->
     <!-- <div>
@@ -200,7 +204,7 @@ function saveToXLSX() {
       </div>
     </div> -->
     <!--v-- ***save2CSVcreatePop*********************************************************** -->
-    <div>
+    <!-- <div>
       <div style="text-align:center">
         <label for="saveToCSVcreatePopFileName">File Name</label>
       </div>
@@ -224,9 +228,9 @@ function saveToXLSX() {
       <div style="text-align:center">
         <button on:click="{saveToCSVcreatePop}">save2CSVcreatePop</button>
       </div>
-    </div>
+    </div> -->
     <!--v-- ***saveToXLSX*********************************************************** -->
-    <div>
+    <!-- <div>
       <div style="text-align:center">
         <label for="saveToXLSX">File Name</label>
       </div>
@@ -240,7 +244,7 @@ function saveToXLSX() {
       <div style="text-align:center">
         <button on:click="{saveToXLSX}">saveToXLSX</button>
       </div>
-    </div>
+    </div> -->
     <!-- ************************************************************** -->
   </div>
 {/if}
@@ -271,10 +275,7 @@ function saveToXLSX() {
   `saveToCSV.saveToCSV.saveToCSVresponse==> ${saveToCSV.saveToCSV.saveToCSVresponse}`
 )} -->
 
-{#if saveToCSVcreatePopResponse !== undefined}
-  <!-- <p style="text-align:center; color: var(--element6)">
-    {Object.values(saveToCSVcreatePopResponse)}
-  </p> -->
+<!-- {#if saveToCSVcreatePopResponse !== undefined}
   <p style="text-align:center; color: var(--element6)">
     {saveToCSVcreatePopResponse["response1 from saveToCSVcreatePop"]}
   </p>
@@ -284,13 +285,13 @@ function saveToXLSX() {
   <p style="text-align:center; color: var(--element6)">
     {saveToCSVcreatePopResponse["response3 from saveToCSVcreatePop"]}
   </p>
-{/if}
+{/if} -->
 
-{#if saveToXLSXresponse !== undefined}
+<!-- {#if saveToXLSXresponse !== undefined}
   <p style="text-align:center; color: var(--element6)">
     {saveToXLSXresponse["response from saveToXLSX"]}
   </p>
-{/if}
+{/if} -->
 
 <!-- <p style="text-align:center">
   JSON.stringify($paginData)==> {JSON.stringify($paginData)}
