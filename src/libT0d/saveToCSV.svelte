@@ -1,6 +1,6 @@
 <script>
-let saveToCSVfileName;
-let saveToCSVresponse;
+export let saveToCSVfileName;
+export let saveToCSVresponse;
 function saveToCSV() {
   fetch("server_routes/saveToCSV", {
     method: "POST",
@@ -37,11 +37,11 @@ function saveToCSV() {
   <div style="text-align:center">
     <button on:click="{saveToCSV}">saveToCSV</button>
   </div>
-  <div>
+  <!-- <div>
     {#if saveToCSVresponse !== undefined}
       <p style="text-align:center; color: var(--element6)">
         {Object.values(saveToCSVresponse)}
       </p>
     {/if}
-  </div>
+  </div> -->
 </div>
