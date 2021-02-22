@@ -21,7 +21,7 @@ function saveToCSV() {
       );
       saveToCSVresponse = saveToCSVresultJSON;
 
-      utilResponses.set(saveToCSVresponse);
+      utilResponses.set(utilResponse.saveToCSVresponse);
 
       // utilResponses.update((currentData) => {
       //   currentData = [
