@@ -1,5 +1,5 @@
 <script>
-export let saveToCSVfileName;
+let saveToCSVfileName;
 export let saveToCSVresponse;
 function saveToCSV() {
   fetch("server_routes/saveToCSV", {
