@@ -1,4 +1,5 @@
 <script>
+import utilResponses from "../stores/utilResponses/st_utilResponses";
 let saveToCSVfileName;
 export let saveToCSVresponse;
 function saveToCSV() {
@@ -19,6 +20,15 @@ function saveToCSV() {
         )}`
       );
       saveToCSVresponse = saveToCSVresultJSON;
+
+      utilResponses.update((currentData) => {
+        currentData = [
+          {
+            saveToCSV: Object.values(saveToCSVresponse),
+          },
+        ];
+        return currentData;
+      });
     });
 }
 </script>

@@ -4,8 +4,9 @@ import QueryResultsTable1 from "../../../components/queryResTbls/queryResultsTab
 import PaginUI from "../../../components/UI/paginUI.svelte";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 
-import tableData from "../../../stores/dynamicTables/tableData1.js";
-import paginData from "../../../stores/pagination/st_pagination1.js";
+import tableData from "../../../stores/dynamicTables/tableData1";
+import paginData from "../../../stores/pagination/st_pagination1";
+import utilResponses from "../../../stores/utilResponses/st_utilResponses";
 
 import VInvMasterQuery from "../../../libT0d/T-SQL/vInvMasterQuery.svelte";
 import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
@@ -26,7 +27,7 @@ import saveToCSVresponse from "../../../libT0d/saveToCSV.svelte";
 <!--v-- NOTE: you must use the $ to access the tableData store -->
 {#if Object.keys($tableData).length > 1}
   <div class="flexbox">
-    <SaveToCSV saveToCSVresponse />
+    <SaveToCSV />
     <SaveToCSVcreatePop />
     <SaveToXLSX />
   </div>
@@ -34,9 +35,9 @@ import saveToCSVresponse from "../../../libT0d/saveToCSV.svelte";
 <!--^-- only show inputs & buttons here if tableData store has been populated with query results -->
 
 <div>
-  {#if saveToCSVresponse !== undefined}
+  {#if $utilResponses.saveToCSV !== null}
     <p style="text-align:center; color: var(--element6)">
-      {Object.values(saveToCSVresponse)}
+      {Object.values($utilResponses.saveToCSV)}
     </p>
   {/if}
 </div>
