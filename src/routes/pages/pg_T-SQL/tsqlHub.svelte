@@ -13,8 +13,8 @@ import SaveToCSV from "../../../libT0d/s4v3ToCSV.svelte";
 
 let tsqlQueryText;
 
-let saveToCSVfileName;
-let saveToCSVresponse;
+// let saveToCSVfileName;
+// let saveToCSVresponse;
 // let saveToCSVresultJSON;
 
 let saveToCSVcreatePopFileName;
@@ -184,7 +184,7 @@ function saveToXLSX() {
   <SaveToCSV />
   <div class="flexbox">
     <!--v-- ***saveToCSV*********************************************************** -->
-    <div>
+    <!-- <div>
       <div style="text-align:center">
         <label for="saveToCSV">File Name</label>
       </div>
@@ -198,7 +198,7 @@ function saveToXLSX() {
       <div style="text-align:center">
         <button on:click="{s4v3ToCSV}">saveToCSV</button>
       </div>
-    </div>
+    </div> -->
     <!--v-- ***save2CSVcreatePop*********************************************************** -->
     <div>
       <div style="text-align:center">
@@ -246,11 +246,11 @@ function saveToXLSX() {
 {/if}
 <!--^-- only show inputs & buttons here if tableData store has been populated with query results -->
 
-{#if saveToCSVresponse !== undefined}
+<!-- {#if saveToCSVresponse !== undefined}
   <p style="text-align:center; color: var(--element6)">
     {Object.values(saveToCSVresponse)}
   </p>
-{/if}
+{/if} -->
 
 <!-- {#if saveToCSV.saveToCSV(saveToCSVfileName).saveToCSVresponse !== undefined}
   <p style="text-align:center; color: var(--element6)">

@@ -1,5 +1,6 @@
 <script>
 let saveToCSVfileName;
+let saveToCSVresponse;
 function s4v3ToCSV() {
   fetch("server_routes/saveToCSV", {
     method: "POST",
@@ -37,3 +38,8 @@ function s4v3ToCSV() {
     <button on:click="{s4v3ToCSV}">saveToCSV</button>
   </div>
 </div>
+{#if saveToCSVresponse !== undefined}
+  <p style="text-align:center; color: var(--element6)">
+    {Object.values(saveToCSVresponse)}
+  </p>
+{/if}
