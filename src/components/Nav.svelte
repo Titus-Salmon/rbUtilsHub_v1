@@ -52,11 +52,20 @@ a {
             aria-current="{segment === undefined ? 'page' : undefined}"
             href=".">index</a>
         </li>
-        <!-- <li>
+      </div>
+      <div>
+        <li>
           <a
             aria-current="{segment === 'tsqlHub' ? 'page' : undefined}"
             href="/pages/pg_T-SQL/tsqlHub">tsqlHub</a>
-        </li> -->
+        </li>
+      </div>
+      <div>
+        <li>
+          <a
+            aria-current="{segment === 'mySqlHub' ? 'page' : undefined}"
+            href="/pages/pg_MySQL/mySqlHub">mySqlHub</a>
+        </li>
       </div>
       <div>
         <li>
