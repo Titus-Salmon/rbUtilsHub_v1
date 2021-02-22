@@ -26,7 +26,7 @@ import saveToCSVresponse from "../../../libT0d/saveToCSV.svelte";
 <!--v-- NOTE: you must use the $ to access the tableData store -->
 {#if Object.keys($tableData).length > 1}
   <div class="flexbox">
-    <SaveToCSV />
+    <SaveToCSV saveToCSVresponse />
     <SaveToCSVcreatePop />
     <SaveToXLSX />
   </div>
