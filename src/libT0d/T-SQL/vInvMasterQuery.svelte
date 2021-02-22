@@ -1,5 +1,5 @@
 <script>
-import paginData from "../../../stores/pagination/st_pagination1.js";
+import paginData from "../../stores/pagination/st_pagination1";
 let tsqlQueryText;
 let queryText = `
 SELECT 
