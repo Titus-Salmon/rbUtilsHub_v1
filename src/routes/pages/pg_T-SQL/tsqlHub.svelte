@@ -8,6 +8,7 @@ import tableData from "../../../stores/dynamicTables/tableData1.js";
 import paginData from "../../../stores/pagination/st_pagination1.js";
 
 import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
+import VInvMasterQuery from "../../../libT0d/T-SQL/vInvMasterQuery.svelte";
 
 let tsqlQueryText;
 
@@ -155,6 +156,8 @@ function saveToXLSX() {
 </style>
 
 <DkMdBtn>MODE</DkMdBtn>
+
+<VInvMasterQuery />
 
 <!-- <div style="text-align:center">
   <textarea
