@@ -1,5 +1,6 @@
 <script>
 import paginData from "../../stores/pagination/st_pagination1";
+import tableData from "../../stores/dynamicTables/tableData1";
 let tsqlQueryText;
 let queryText = `
 SELECT 
