@@ -9,8 +9,7 @@ import paginData from "../../../stores/pagination/st_pagination1.js";
 
 // import saveToCSV from "../../../libT0d/saveToCSV.js";
 // import saveToCSV from "../../../libT0d/saveToCSV_dont_use";
-import s4v3ToCSV from "../../../libT0d/s4v3ToCSV.svelte";
-const S4v3ToCSV = new s4v3ToCSV();
+import SaveToCSV from "../../../libT0d/s4v3ToCSV.svelte";
 
 let tsqlQueryText;
 
@@ -182,6 +181,7 @@ function saveToXLSX() {
 <!--v-- only show inputs & buttons here if tableData store has been populated with query results -->
 <!--v-- NOTE: you must use the $ to access the tableData store -->
 {#if Object.keys($tableData).length > 1}
+  <SaveToCSV />
   <div class="flexbox">
     <!--v-- ***saveToCSV*********************************************************** -->
     <div>
@@ -196,7 +196,7 @@ function saveToXLSX() {
           bind:this="{saveToCSVfileName}" />
       </div>
       <div style="text-align:center">
-        <button on:click="{S4v3ToCSV}">saveToCSV</button>
+        <button on:click="{s4v3ToCSV}">saveToCSV</button>
       </div>
     </div>
     <!--v-- ***save2CSVcreatePop*********************************************************** -->

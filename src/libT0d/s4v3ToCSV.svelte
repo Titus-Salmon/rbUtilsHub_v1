@@ -1,5 +1,6 @@
-<script context="module">
-export function s4v3ToCSV(target) {
+<script>
+let saveToCSVfileName;
+function s4v3ToCSV() {
   fetch("server_routes/saveToCSV", {
     method: "POST",
     headers: {
@@ -16,7 +17,23 @@ export function s4v3ToCSV(target) {
           saveToCSVresultJSON
         )}`
       );
-      target.saveToCSVresponse = saveToCSVresultJSON;
+      saveToCSVresponse = saveToCSVresultJSON;
     });
 }
 </script>
+
+<div>
+  <div style="text-align:center">
+    <label for="saveToCSV">File Name</label>
+  </div>
+  <div style="text-align:center">
+    <input
+      type="text"
+      id="saveToCSV"
+      name="saveToCSV"
+      bind:this="{saveToCSVfileName}" />
+  </div>
+  <div style="text-align:center">
+    <button on:click="{s4v3ToCSV}">saveToCSV</button>
+  </div>
+</div>
