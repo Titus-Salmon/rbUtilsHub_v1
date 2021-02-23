@@ -15,7 +15,7 @@ nhcrt JOIN ediTableName edi_table
 ON nhcrt.inv_ScanCode 
 WHERE nhcrt.inv_ScanCode = edi_table.ediPrefix_upc 
 
-ORDER BY dpt_name, nhcrt.pi1_description, nhcrt.pi1_description;
+ORDER BY nhcrt.dpt_name, nhcrt.pi1_description, nhcrt.pi1_description;
 `;
 </script>
 
