@@ -2,14 +2,15 @@
 import NejQueryModal from "./nejQueryModal.svelte";
 import ShowTablesQueryModal from "./showTablesQueryModal.svelte";
 
-const querySelect = window.document.getElementById("querySelect");
-const selectedQuery = querySelect.options[querySelect.selectedIndex].value;
+// const querySelect = window.document.getElementById("querySelect");
+// const selectedQuery = querySelect.options[querySelect.selectedIndex].value;
+let querySelect;
 </script>
 
 <style></style>
 
 <div>
-  <select name="querySelect" id="querySelect">
+  <select name="querySelect" id="querySelect" bind:this="{querySelect}">
     <option value="nej">nej</option>
     <option value="showTables">showTables</option>
     <option value="createNhcrt">createNhcrt</option>
@@ -19,10 +20,10 @@ const selectedQuery = querySelect.options[querySelect.selectedIndex].value;
   </select>
 </div>
 
-{#if selectedQuery === "nej"}
+{#if querySelect.options[querySelect.selectedIndex].value === "nej"}
   <NejQueryModal />
 {/if}
 
-{#if selectedQuery === "showTables"}
+{#if querySelect.options[querySelect.selectedIndex].value === "showTables"}
   <ShowTablesQueryModal />
 {/if}
