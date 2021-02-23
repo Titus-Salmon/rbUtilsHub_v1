@@ -2,7 +2,7 @@
 import NejQueryModal from "./nejQueryModal.svelte";
 import ShowTablesQueryModal from "./showTablesQueryModal.svelte";
 
-const querySelect = document.getElementById("querySelect");
+const querySelect = window.document.getElementById("querySelect");
 const selectedQuery = querySelect.options[querySelect.selectedIndex].value;
 </script>
 
