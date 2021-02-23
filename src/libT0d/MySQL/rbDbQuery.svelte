@@ -1,24 +1,27 @@
 <script>
 import paginData from "../../stores/pagination/st_pagination1";
 import tableData from "../../stores/dynamicTables/tableData1";
-let mySqlQueryText;
-let queryText = `
-SELECT 
-nhcrt.ri_t0d, nhcrt.inv_ScanCode, nhcrt.ord_supplierstocknumber, nhcrt.inv_name, nhcrt.inv_size, nhcrt.inv_receiptalias, nhcrt.inv_datecreated, 
-nhcrt.ord_quantityinorderunit, nhcrt.oup_name, nhcrt.sto_number, nhcrt.brd_name, nhcrt.dpt_name, nhcrt.dpt_number, nhcrt.sib_idealmargin, 
-nhcrt.actlMarg, nhcrt.ven_companyname, nhcrt.ven_code, nhcrt.asc_scancode, nhcrt.asc_receiptalias, nhcrt.asc_quantity, nhcrt.inv_lastcost, 
-nhcrt.sib_baseprice, nhcrt.pi1_description, nhcrt.pi2_description, nhcrt.pi3_description, nhcrt.inv_powerfield3, nhcrt.inv_powerfield4, 
 
-edi_table.* 
+import NejQueryModal from "../../components/MySQL/nejQueryModal.svelte";
 
-FROM nhcrtTableName 
+// let mySqlQueryText;
+// let queryText = `
+// SELECT
+// nhcrt.ri_t0d, nhcrt.inv_ScanCode, nhcrt.ord_supplierstocknumber, nhcrt.inv_name, nhcrt.inv_size, nhcrt.inv_receiptalias, nhcrt.inv_datecreated,
+// nhcrt.ord_quantityinorderunit, nhcrt.oup_name, nhcrt.sto_number, nhcrt.brd_name, nhcrt.dpt_name, nhcrt.dpt_number, nhcrt.sib_idealmargin,
+// nhcrt.actlMarg, nhcrt.ven_companyname, nhcrt.ven_code, nhcrt.asc_scancode, nhcrt.asc_receiptalias, nhcrt.asc_quantity, nhcrt.inv_lastcost,
+// nhcrt.sib_baseprice, nhcrt.pi1_description, nhcrt.pi2_description, nhcrt.pi3_description, nhcrt.inv_powerfield3, nhcrt.inv_powerfield4,
 
-nhcrt JOIN ediTableName edi_table 
-ON nhcrt.inv_ScanCode 
-WHERE nhcrt.inv_ScanCode = edi_table.ediPrefix_upc 
+// edi_table.*
 
-ORDER BY nhcrt.pi1_description, nhcrt.pi1_description;
-`;
+// FROM nhcrtTableName
+
+// nhcrt JOIN ediTableName edi_table
+// ON nhcrt.inv_ScanCode
+// WHERE nhcrt.inv_ScanCode = edi_table.ediPrefix_upc
+
+// ORDER BY nhcrt.pi1_description, nhcrt.pi1_description;
+// `;
 
 function rbDBquery() {
   fetch("server_routes/rt_MySQL/RBDBQuery", {
@@ -76,7 +79,7 @@ function rbDBquery() {
 }
 </script>
 
-<div style="text-align:center">
+<!-- <div style="text-align:center">
   <textarea
     class="query"
     id="mySqlQueryText"
@@ -87,7 +90,9 @@ function rbDBquery() {
     bind:this="{mySqlQueryText}">
     {queryText}
   </textarea>
-</div>
+</div> -->
+
+<NejQueryModal />
 
 <button style="display:block; margin: 0 auto 1rem" on:click="{rbDBquery}"
   >rbDBquery</button>
