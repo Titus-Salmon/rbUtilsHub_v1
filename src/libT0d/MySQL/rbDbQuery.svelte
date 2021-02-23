@@ -2,7 +2,8 @@
 import paginData from "../../stores/pagination/st_pagination1";
 import tableData from "../../stores/dynamicTables/tableData1";
 
-import NejQueryModal from "../../components/MySQL/nejQueryModal.svelte";
+// import NejQueryModal from "../../components/MySQL/nejQueryModal.svelte";
+import QuerySelectDropdown from "../../components/MySQL/querySelectDropdown.svelte";
 
 // let mySqlQueryText;
 // let queryText = `
@@ -92,7 +93,9 @@ function rbDBquery() {
   </textarea>
 </div> -->
 
-<NejQueryModal />
+<QuerySelectDropdown />
+
+<!-- <NejQueryModal /> -->
 
 <button style="display:block; margin: 0 auto 1rem" on:click="{rbDBquery}"
   >rbDBquery</button>
