@@ -77,7 +77,7 @@ function popTable() {
   </div>
 </form>
 
-<div>
+<!-- <div>
   <div style="text-align:center">
     <label for="popTableFile">File Name</label>
   </div>
@@ -101,4 +101,4 @@ function popTable() {
   <div style="text-align:center">
     <button on:click="{popTable}">popTable</button>
   </div>
-</div>
+</div> -->
