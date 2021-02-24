@@ -19,6 +19,26 @@ let popTableResponse;
 //   }
 // }
 
+function test() {
+  const formData = new FormData();
+  // const fileField = document.querySelector('input[type="file"]');
+
+  // formData.append("username", "abc123");
+  // formData.append("avatar", fileField.files[0]);
+  formData.append("popTableFile_t0d", popTableFile[0]);
+
+  fetch("server_routes/rt_MySQL/test")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(`data from populateTableModal.svelte==> ${data}`);
+      console.log(
+        `JSON.stringify(data) from populateTableModal.svelte==> ${JSON.stringify(
+          data
+        )}`
+      );
+    });
+}
+
 function popTable() {
   if (popTableFile.length > 0) {
     const formData = new FormData();
@@ -97,7 +117,7 @@ function popTable() {
   <input type="submit" value="Upload file" />
 </form> -->
 
-<form
+<!-- <form
   id="popTableForm"
   method="POST"
   action="http://localhost:3333/server_routes/rt_MySQL/popTable"
@@ -129,4 +149,12 @@ function popTable() {
         >popTable</button>
     </div>
   </div>
-</form>
+</form> -->
+
+<input
+  type="file"
+  id="popTableFile"
+  name="popTableFile"
+  bind:files="{popTableFile}" />
+
+<button on:click="{test}">test</button>
