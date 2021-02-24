@@ -25,7 +25,7 @@ function popTable() {
     formData.append("popTableTableName", popTableTableName.value);
     formData.append("popTableFile", popTableFile[0]);
 
-    fetch("server_routes/rt_MySQL/popTable", {
+    fetch("server_routes/rt_MySQL/popTable2", {
       method: "POST",
       // headers: {
       //   "Content-Type": "application/json",
