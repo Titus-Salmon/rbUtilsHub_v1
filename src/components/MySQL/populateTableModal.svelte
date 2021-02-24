@@ -72,7 +72,7 @@ function popTable() {
       type="file"
       id="popTableFile"
       name="popTableFile"
-      bind:this="{popTableFile}" />
+      bind:files="{popTableFile}" />
   </div>
   <div style="text-align:center">
     <label for="popTableTableName">Table Name</label>
