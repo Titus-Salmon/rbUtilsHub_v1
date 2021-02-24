@@ -1,5 +1,5 @@
 <script>
-import utilResponses from "../stores/utilResponses/st_utilResponses";
+import utilResponses from "../../stores/utilResponses/st_utilResponses";
 let popTableFile;
 let popTableTableName;
 let popTableResponse;
