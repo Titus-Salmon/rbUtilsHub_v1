@@ -17,7 +17,7 @@ app.use(fileUpload({
   debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
 }))
 
-app.post('/server_routes/rt_MySQL/popTable2', function (req, res, next) {
+app.post('/popTable2', function (req, res, next) {
   console.log(`req.files==> ${req.files}`)
   console.log(`JSON.stringify(req.files)==> ${JSON.stringify(req.files)}`)
   console.log(`req.body==> ${req.body}`)
