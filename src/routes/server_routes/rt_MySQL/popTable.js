@@ -17,36 +17,7 @@ express().use(fileUpload({
 }))
 
 export async function post(req, res, next) {
-
-  // // queryResArrCacheValue = queryResArrCache.take('queryResArrCache_key') // 'take' also deletes the key
-  // queryResArrCacheValue = queryResArrCache.get('queryResArrCache_key') // use 'get' to leave key in memory
-  // console.log(`queryResArrCacheValue[0]==> ${queryResArrCacheValue[0]}`)
-  // let firstRowOfTableObj = queryResArrCacheValue[0]
-
-  // //begin csv generator //////////////////////////////////////////////////////////////////////////
-  // const {
-  //   Parser
-  // } = require('json2csv')
-
-  // const fields = Object.keys(firstRowOfTableObj)
-  // console.log(`fields==> ${fields}`)
-
-  // const opts = {
-  //   fields
-  // }
-
-  // let fileName = req.body.fileNameData
-
-  // let tableName = req.body.tableNameData
-  // let columnNames = []
-  // for (let i = 1; i < fields.length; i++) { //start count at 1, not 0, in order to skip the ri_t0d, which will be added as auto_increment
-  //   //in the query below
-  //   let columnName = fields[i] + ' VARCHAR(255)'
-  //   console.log(`columnName==> ${columnName}`)
-  //   columnNames.push(columnName)
-  // }
-
-
+  console.log(`JSON.stringify(req)==> ${JSON.stringify(req)}`)
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   if (Object.keys(req.files).length === 0) {
     return res.status(400).send('No files were uploaded.');
