@@ -27,7 +27,10 @@ function test() {
   // formData.append("avatar", fileField.files[0]);
   formData.append("popTableFile_t0d", popTableFile[0]);
 
-  fetch("server_routes/rt_MySQL/test")
+  fetch("server_routes/rt_MySQL/test", {
+    method: "POST",
+    body: formData,
+  })
     .then((response) => response.json())
     .then((data) => {
       console.log(`data from populateTableModal.svelte==> ${data}`);
