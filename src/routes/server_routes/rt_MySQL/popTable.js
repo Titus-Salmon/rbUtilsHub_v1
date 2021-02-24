@@ -17,7 +17,7 @@ express().use(fileUpload({
 }))
 
 export async function post(req, res, next) {
-  console.log(`JSON.stringify(req)==> ${JSON.stringify(req)}`)
+  console.log(`req.body==> ${req.body}`)
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   if (Object.keys(req.files).length === 0) {
     return res.status(400).send('No files were uploaded.');
