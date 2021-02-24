@@ -28,7 +28,7 @@ function test() {
   const fileField = document.querySelector('input[type="file"]');
 
   // formData.append("username", "abc123");
-  formData.append("fileField.popTableFile[0]", fileField.popTableFile[0]);
+  formData.append("popTableFile[0]", popTableFile[0]);
   // formData.append("popTableFile_t0d", popTableFile[0]);
   // formData.append("popTableFile_t0d", "popTableFile_t0d");
 
@@ -163,6 +163,6 @@ function popTable() {
   type="file"
   id="popTableFile"
   name="popTableFile"
-  bind:this="{popTableFile}" />
+  bind:fileField="{popTableFile}" />
 
 <button on:click="{test}">test</button>
