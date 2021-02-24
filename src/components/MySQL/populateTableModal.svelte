@@ -22,10 +22,10 @@ let popTableResponse;
 function popTable() {
   if (popTableFile.length > 0) {
     const formData = new FormData();
-    // formData.append(popTableTableName, popTableTableName.value);
-    // formData.append(popTableFile, popTableFile[0]);
-    formData.append(popTableTableName);
-    formData.append(popTableFile);
+    // formData.append("popTableTableName", popTableTableName.value);
+    // formData.append("popTableFile", popTableFile[0]);
+    formData.append(popTableTableName, popTableTableName);
+    formData.append(popTableFile, popTableFile);
 
     fetch("server_routes/rt_MySQL/popTable", {
       method: "POST",
