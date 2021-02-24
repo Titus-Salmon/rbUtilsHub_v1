@@ -11,6 +11,23 @@ let popTableResponse;
 // console.log(`formData==> ${formData}`);
 // console.log(`JSON.stringify(formData)==> ${JSON.stringify(formData)}`);
 
+function upload() {
+  const formData = new FormData();
+  formData.append("damName", value);
+  formData.append("dataFile", files[0]);
+  const upload = fetch("http://localhost:8080/file", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      console.log("Success:", result);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+
 function popTable() {
   const formData = new FormData();
   formData.append("popTableTableName", popTableTableName.value);
@@ -56,7 +73,7 @@ function popTable() {
 }
 </script>
 
-<form
+<!-- <form
   id="popTable"
   name="popTable"
   method="POST"
@@ -70,14 +87,13 @@ function popTable() {
     <label for="popTableFile">Upload file:</label>
     <input type="file" id="popTableFile" name="popTableFile" />
   </div>
-  <!-- <input type="submit" value="Submit!" /> -->
   <div style="text-align:center">
     <button type="submit" form="popTable" on:click="{popTable}"
       >popTable</button>
   </div>
-</form>
+</form> -->
 
-<!-- <div>
+<div>
   <div style="text-align:center">
     <label for="popTableFile">File Name</label>
   </div>
@@ -86,7 +102,7 @@ function popTable() {
       type="file"
       id="popTableFile"
       name="popTableFile"
-      bind:this="{popTableFile}" />
+      bind:files="{popTableFile}" />
   </div>
   <div style="text-align:center">
     <label for="popTableTableName">Table Name</label>
@@ -96,9 +112,9 @@ function popTable() {
       type="text"
       id="popTableTableName"
       name="popTableTableName"
-      bind:this="{popTableTableName}" />
+      bind:value="{popTableTableName}" />
   </div>
   <div style="text-align:center">
     <button on:click="{popTable}">popTable</button>
   </div>
-</div> -->
+</div>
