@@ -31,7 +31,7 @@ function upload() {
 function popTable() {
   const formData = new FormData();
   formData.append("popTableTableName", popTableTableName.value);
-  formData.append("popTableFile", popTableFile.files[0]);
+  formData.append("popTableFile", popTableFile[0]);
 
   // console.log(`formData==> ${formData}`);
   // console.log(`JSON.stringify(formData)==> ${JSON.stringify(formData)}`);
