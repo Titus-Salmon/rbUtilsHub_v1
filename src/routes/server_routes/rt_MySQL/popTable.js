@@ -1,5 +1,6 @@
 const express = require('express')
 const fileUpload = require('express-fileupload')
+const router = express.Router()
 
 const mysql = require('mysql')
 
@@ -16,10 +17,14 @@ const connection = mysql.createConnection({
 //   debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
 // }))
 
-export async function post(req, res, next) {
-  express().use(fileUpload({
-    debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
-  }))
+router.use(fileUpload({
+  debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
+}))
+
+export async function router(req, res, next) {
+  // express().use(fileUpload({
+  //   debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
+  // }))
   console.log(`req.body.formData==> ${req.body.formData}`)
   console.log(`req.files==> ${req.files}`)
   console.log(`JSON.stringify(req.files)==> ${JSON.stringify(req.files)}`)
@@ -59,7 +64,4 @@ export async function post(req, res, next) {
       "response1 from popTable": `~~~~~>> ${process.cwd()}/static/csv-to-insert/${fileName}.csv SAVED <<~~~~~`,
     })
   })
-
-
-
 }
