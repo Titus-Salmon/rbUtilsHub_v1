@@ -29,8 +29,9 @@ function test() {
   console.log(`fileField==> ${fileField}`);
   console.log(`fileField.files==> ${fileField.files}`);
   console.log(`fileField.files[0]==> ${fileField.files[0]}`);
-  console.log(`fileField.files[0][0]==> ${fileField.files[0][0]}`);
-  formData.append("fileField.files[0]", fileField.files[0]);
+  popTableFile = fileField.files[0];
+  // formData.append("fileField.files[0]", fileField.files[0]);
+  formData.append("popTableFile", popTableFile);
 
   // formData.append("username", "abc123");
   // formData.append("popTableFile[0]", popTableFile[0]);
@@ -164,6 +165,10 @@ function popTable() {
   </div>
 </form> -->
 
-<input type="file" id="popTableFile" name="popTableFile" />
+<input
+  type="file"
+  id="popTableFile"
+  name="popTableFile"
+  bind:this="{popTableFile}" />
 
 <button on:click="{test}">test</button>
