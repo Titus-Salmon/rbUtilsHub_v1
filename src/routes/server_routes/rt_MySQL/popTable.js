@@ -12,11 +12,14 @@ const connection = mysql.createConnection({
   multipleStatements: true
 })
 
-express().use(fileUpload({
-  debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
-}))
+// express().use(fileUpload({
+//   debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
+// }))
 
 export async function post(req, res, next) {
+  express().use(fileUpload({
+    debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
+  }))
   console.log(`req.files==> ${req.files}`)
   console.log(`JSON.stringify(req.files)==> ${JSON.stringify(req.files)}`)
   console.log(`req.body==> ${req.body}`)
