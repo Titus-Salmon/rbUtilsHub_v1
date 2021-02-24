@@ -3,15 +3,18 @@ import utilResponses from "../../stores/utilResponses/st_utilResponses";
 let popTableFile;
 let popTableTableName;
 let popTableResponse;
+
 // const formData = new FormData();
-// const fileField = document.querySelector('input[type="file"]');
-// formData.append('username', 'abc123');
-// formData.append('avatar', fileField.files[0]);
+// formData.append("popTableTableName", popTableTableName);
+// formData.append("popTableFile", popTableFile);
+
+// console.log(`formData==> ${formData}`);
+// console.log(`JSON.stringify(formData)==> ${JSON.stringify(formData)}`);
 
 function popTable() {
   const formData = new FormData();
-  formData.append("popTableTableName", popTableTableName);
-  formData.append("popTableFile", popTableFile);
+  formData.append("popTableTableName", popTableTableName.value);
+  formData.append("popTableFile", popTableFile.files[0]);
 
   console.log(`formData==> ${formData}`);
   console.log(`JSON.stringify(formData)==> ${JSON.stringify(formData)}`);
