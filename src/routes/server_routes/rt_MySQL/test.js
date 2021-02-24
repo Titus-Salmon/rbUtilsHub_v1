@@ -18,6 +18,8 @@ export async function post(req, res, next) {
   console.log(`req from test.js==> ${req}`)
   console.log(`req.length from test.js==> ${req.length}`)
   console.log(`Object.keys(req) from test.js==> ${Object.keys(req)}`)
-  console.log(`Object.values(req) from test.js==> ${Object.values(req)}`)
+  console.log(`req.body from test.js==> ${req.body}`)
+  console.log(`Object.keys(req.body) from test.js==> ${Object.keys(req.body)}`)
+  // console.log(`Object.values(req) from test.js==> ${Object.values(req)}`)
 
 }
