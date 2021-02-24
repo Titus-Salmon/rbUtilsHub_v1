@@ -27,6 +27,8 @@ function test() {
   const formData = new FormData();
   const fileField = document.querySelector('input[type="file"]');
   console.log(`fileField==> ${fileField}`);
+  console.log(`fileField.files==> ${fileField.files}`);
+  console.log(`fileField.files[0]==> ${fileField.files[0]}`);
   formData.append("fileField.files[0]", fileField.files[0]);
 
   // formData.append("username", "abc123");
