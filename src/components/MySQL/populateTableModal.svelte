@@ -26,6 +26,7 @@ function test() {
   // formData.append("username", "abc123");
   // formData.append("avatar", fileField.files[0]);
   formData.append("popTableFile_t0d", popTableFile[0]);
+  formData.append("popTableFile_t0d", "popTableFile_t0d");
 
   fetch("server_routes/rt_MySQL/test", {
     method: "POST",
