@@ -22,7 +22,7 @@ let popTableResponse;
 function popTable() {
   if (popTableFile.length > 0) {
     const formData = new FormData();
-    formData.append("popTableTableName", "aaagaiatest");
+    formData.append("popTableTableName", popTableTableName);
     formData.append("popTableFile", popTableFile[0]);
     // formData.append(popTableTableName, popTableTableName);
     // formData.append(popTableFile, popTableFile);
@@ -100,6 +100,7 @@ function popTable() {
 <form
   id="popTableForm"
   method="POST"
+  action="http://localhost:3333/server_routes/rt_MySQL/popTable"
   encType="multipart/form-data"
   accept-charset="UTF-8">
   <div>
@@ -113,7 +114,7 @@ function popTable() {
         name="popTableFile"
         bind:files="{popTableFile}" />
     </div>
-    <!-- <div style="text-align:center">
+    <div style="text-align:center">
       <label for="popTableTableName">Table Name</label>
     </div>
     <div style="text-align:center">
@@ -122,7 +123,7 @@ function popTable() {
         id="popTableTableName"
         name="popTableTableName"
         bind:this="{popTableTableName}" />
-    </div> -->
+    </div>
     <div style="text-align:center">
       <button type="submit" form="popTableForm" on:click="{popTable}"
         >popTable</button>
