@@ -23,4 +23,8 @@ export async function post(req, res, next) {
   console.log(`Object.keys(req.body) from test.js==> ${Object.keys(req.body)}`)
   // console.log(`Object.values(req) from test.js==> ${Object.values(req)}`)
 
+  res.json({
+    "response from test.js": "response"
+  })
+
 }
