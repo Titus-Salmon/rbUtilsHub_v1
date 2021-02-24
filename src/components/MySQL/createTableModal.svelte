@@ -5,7 +5,7 @@ let createTableColNames;
 let createTableResponse;
 
 function createTable() {
-  fetch("server_routes/createTable", {
+  fetch("server_routes/rt_MySQL/createTable", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

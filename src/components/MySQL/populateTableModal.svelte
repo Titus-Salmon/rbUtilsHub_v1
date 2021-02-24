@@ -5,7 +5,7 @@ let popTableTableName;
 let popTableResponse;
 
 function popTable() {
-  fetch("server_routes/popTable", {
+  fetch("server_routes/rt_MySQL/popTable", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
