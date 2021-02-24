@@ -3,17 +3,29 @@ import utilResponses from "../../stores/utilResponses/st_utilResponses";
 let popTableFile;
 let popTableTableName;
 let popTableResponse;
+// const formData = new FormData();
+// const fileField = document.querySelector('input[type="file"]');
+// formData.append('username', 'abc123');
+// formData.append('avatar', fileField.files[0]);
 
 function popTable() {
+  const formData = new FormData();
+  formData.append("popTableTableName", popTableTableName);
+  formData.append("popTableFile", popTableFile);
+
+  console.log(`formData==> ${formData}`);
+  console.log(`JSON.stringify(formData)==> ${JSON.stringify(formData)}`);
+
   fetch("server_routes/rt_MySQL/popTable", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      popTableFile: popTableFile.value,
-      popTableTableName: popTableTableName.value,
-    }),
+    // headers: {
+    //   "Content-Type": "application/json",
+    // },
+    // body: JSON.stringify({
+    //   popTableFile: popTableFile.value,
+    //   popTableTableName: popTableTableName.value,
+    // }),
+    body: formData,
   })
     .then((popTableResult) => popTableResult.json())
     .then((popTableResultJSON) => {
