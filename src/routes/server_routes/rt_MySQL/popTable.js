@@ -20,6 +20,7 @@ export async function post(req, res, next) {
   express().use(fileUpload({
     debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
   }))
+  console.log(`JSON.stringify(req)==> ${JSON.stringify(req)}`)
   console.log(`req.files==> ${req.files}`)
   console.log(`JSON.stringify(req.files)==> ${JSON.stringify(req.files)}`)
   console.log(`req.body==> ${req.body}`)
