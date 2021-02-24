@@ -17,6 +17,8 @@ express().use(fileUpload({
 }))
 
 export async function post(req, res, next) {
+  console.log(`req.files==> ${req.files}`)
+  console.log(`JSON.stringify(req.files)==> ${JSON.stringify(req.files)}`)
   console.log(`req.body==> ${req.body}`)
   console.log(`JSON.stringify(req.body)==> ${JSON.stringify(req.body)}`)
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
