@@ -19,14 +19,18 @@ let popTableResponse;
 //   }
 // }
 
+const formData = new FormData();
+formData.append("popTableFile_t0d", popTableFile[0]);
+formData.append("popTableFile_t0d", "popTableFile_t0d");
+
 function test() {
-  const formData = new FormData();
+  // const formData = new FormData();
   // const fileField = document.querySelector('input[type="file"]');
 
   // formData.append("username", "abc123");
   // formData.append("avatar", fileField.files[0]);
-  formData.append("popTableFile_t0d", popTableFile[0]);
-  formData.append("popTableFile_t0d", "popTableFile_t0d");
+  // formData.append("popTableFile_t0d", popTableFile[0]);
+  // formData.append("popTableFile_t0d", "popTableFile_t0d");
 
   fetch("server_routes/rt_MySQL/test", {
     method: "POST",
