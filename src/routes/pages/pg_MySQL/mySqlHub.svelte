@@ -13,6 +13,7 @@ import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
 import SaveToCSVcreatePop from "../../../libT0d/saveToCSVcreatePop.svelte";
 import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
 
+import CreateTableModal from "../../../components/MySQL/createTableModal.svelte";
 import PopulateTableModal from "../../../components/MySQL/populateTableModal.svelte";
 </script>
 
@@ -21,7 +22,11 @@ import PopulateTableModal from "../../../components/MySQL/populateTableModal.sve
 
 <DkMdBtn>MODE</DkMdBtn>
 
-<PopulateTableModal />
+<div class="flexbox">
+  <CreateTableModal />
+  <PopulateTableModal />
+</div>
+
 <RbDbQuery />
 
 <!--v-- only show inputs & buttons here if tableData store has been populated with query results -->
