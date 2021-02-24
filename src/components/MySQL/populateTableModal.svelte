@@ -26,6 +26,7 @@ let popTableResponse;
 function test() {
   const formData = new FormData();
   const fileField = document.querySelector('input[type="file"]');
+  console.log(`fileField==> ${fileField}`);
   formData.append("fileField.files[0]", fileField.files[0]);
 
   // formData.append("username", "abc123");
