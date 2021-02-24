@@ -18,56 +18,34 @@ express().use(fileUpload({
 
 export async function post(req, res, next) {
 
-  // queryResArrCacheValue = queryResArrCache.take('queryResArrCache_key') // 'take' also deletes the key
-  queryResArrCacheValue = queryResArrCache.get('queryResArrCache_key') // use 'get' to leave key in memory
-  console.log(`queryResArrCacheValue[0]==> ${queryResArrCacheValue[0]}`)
-  let firstRowOfTableObj = queryResArrCacheValue[0]
+  // // queryResArrCacheValue = queryResArrCache.take('queryResArrCache_key') // 'take' also deletes the key
+  // queryResArrCacheValue = queryResArrCache.get('queryResArrCache_key') // use 'get' to leave key in memory
+  // console.log(`queryResArrCacheValue[0]==> ${queryResArrCacheValue[0]}`)
+  // let firstRowOfTableObj = queryResArrCacheValue[0]
 
-  //begin csv generator //////////////////////////////////////////////////////////////////////////
-  const {
-    Parser
-  } = require('json2csv')
+  // //begin csv generator //////////////////////////////////////////////////////////////////////////
+  // const {
+  //   Parser
+  // } = require('json2csv')
 
-  const fields = Object.keys(firstRowOfTableObj)
-  console.log(`fields==> ${fields}`)
+  // const fields = Object.keys(firstRowOfTableObj)
+  // console.log(`fields==> ${fields}`)
 
-  const opts = {
-    fields
-  }
-
-  let fileName = req.body.fileNameData
-
-  let tableName = req.body.tableNameData
-  let columnNames = []
-  for (let i = 1; i < fields.length; i++) { //start count at 1, not 0, in order to skip the ri_t0d, which will be added as auto_increment
-    //in the query below
-    let columnName = fields[i] + ' VARCHAR(255)'
-    console.log(`columnName==> ${columnName}`)
-    columnNames.push(columnName)
-  }
-
-  // function createPopTable() {
-  //   //the LOAD DATA LOCAL INFILE part below is a little tricky, because you can't use ${process.cwd()/static/csv}/${fileName}.csv
-  //   //to get to your file, but have to use ./static/csv/${fileName} instead. IMPORTANT!
-  //   connection.query(`
-  //   CREATE TABLE ${tableName} (ri_t0d int NOT NULL AUTO_INCREMENT, ${columnNames}, PRIMARY KEY (ri_t0d));
-
-  //   LOAD DATA LOCAL INFILE './static/csv/${fileName}.csv' INTO TABLE ${tableName} FIELDS TERMINATED BY ','
-  //      ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;
-  //   `, (error, response) => {
-  //       console.log(error || response);
-  //     })
-  //     .on('end', function () {
-  //       console.log(`hello from connection.query().on('end')`)
-  //       deleteCSV()
-  //       console.log(`~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv DELETED <<~~~~~`)
-  //       res.json({
-  //         "response1 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv SAVED <<~~~~~`,
-  //         "response2 from saveToCSVcreatePop": `~~~~~>> MySQL table: ${tableName} created in RB DB<<~~~~~`,
-  //         "response3 from saveToCSVcreatePop": `~~~~~>> ${process.cwd()}/static/csv/${fileName}.csv DELETED <<~~~~~`
-  //       })
-  //     })
+  // const opts = {
+  //   fields
   // }
+
+  // let fileName = req.body.fileNameData
+
+  // let tableName = req.body.tableNameData
+  // let columnNames = []
+  // for (let i = 1; i < fields.length; i++) { //start count at 1, not 0, in order to skip the ri_t0d, which will be added as auto_increment
+  //   //in the query below
+  //   let columnName = fields[i] + ' VARCHAR(255)'
+  //   console.log(`columnName==> ${columnName}`)
+  //   columnNames.push(columnName)
+  // }
+
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   if (Object.keys(req.files).length === 0) {
