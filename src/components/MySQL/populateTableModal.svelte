@@ -29,6 +29,7 @@ function test() {
   console.log(`fileField==> ${fileField}`);
   console.log(`fileField.files==> ${fileField.files}`);
   console.log(`fileField.files[0]==> ${fileField.files[0]}`);
+  console.log(`fileField.files[0][0]==> ${fileField.files[0][0]}`);
   formData.append("fileField.files[0]", fileField.files[0]);
 
   // formData.append("username", "abc123");
