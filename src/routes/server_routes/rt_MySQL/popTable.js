@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
   multipleStatements: true
 })
 
-express.use(fileUpload({
+express().use(fileUpload({
   debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
 }))
 
