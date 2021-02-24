@@ -17,11 +17,14 @@ const connection = mysql.createConnection({
 //   debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
 // }))
 
-router.use(fileUpload({
-  debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
-}))
+// router.use(fileUpload({
+//   debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
+// }))
 
-export async function router(req, res, next) {
+export async function post(req, res, next) {
+  router.use(fileUpload({
+    debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
+  }))
   // express().use(fileUpload({
   //   debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
   // }))
