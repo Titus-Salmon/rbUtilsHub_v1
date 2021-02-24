@@ -56,7 +56,12 @@ function popTable() {
 }
 </script>
 
-<form id="popTable" name="popTable">
+<form
+  id="popTable"
+  name="popTable"
+  method="POST"
+  encType="multipart/form-data"
+  accept-charset="UTF-8">
   <div style="text-align:center">
     <label for="popTableTableName">Table Name:</label>
     <input type="text" id="popTableTableName" name="popTableTableName" />
@@ -72,7 +77,7 @@ function popTable() {
   </div>
 </form>
 
-<!-- <div>
+<div>
   <div style="text-align:center">
     <label for="popTableFile">File Name</label>
   </div>
@@ -96,4 +101,4 @@ function popTable() {
   <div style="text-align:center">
     <button on:click="{popTable}">popTable</button>
   </div>
-</div> -->
+</div>
