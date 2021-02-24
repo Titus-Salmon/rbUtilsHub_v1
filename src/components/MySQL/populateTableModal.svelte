@@ -19,13 +19,13 @@ let popTableResponse;
 //   }
 // }
 
-async function popTable() {
+function popTable() {
   if (popTableFile.length > 0) {
     const formData = new FormData();
     formData.append("popTableTableName", popTableTableName.value);
     formData.append("popTableFile", popTableFile[0]);
 
-    await fetch("server_routes/rt_MySQL/popTable", {
+    fetch("server_routes/rt_MySQL/popTable", {
       method: "POST",
       // headers: {
       //   "Content-Type": "application/json",
