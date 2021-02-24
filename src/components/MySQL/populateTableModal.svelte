@@ -22,7 +22,7 @@ let popTableResponse;
 function popTable() {
   if (popTableFile.length > 0) {
     const formData = new FormData();
-    formData.append("popTableTableName", popTableTableName.value);
+    formData.append("popTableTableName", "aaagaiatest");
     formData.append("popTableFile", popTableFile[0]);
     // formData.append(popTableTableName, popTableTableName);
     // formData.append(popTableFile, popTableFile);
@@ -97,7 +97,7 @@ function popTable() {
   <input type="submit" value="Upload file" />
 </form> -->
 
-<form id="popTableForm" on:submit|preventDefault="{popTable}">
+<form id="popTableForm">
   <div>
     <div style="text-align:center">
       <label for="popTableFile">File Name</label>
@@ -109,7 +109,7 @@ function popTable() {
         name="popTableFile"
         bind:files="{popTableFile}" />
     </div>
-    <div style="text-align:center">
+    <!-- <div style="text-align:center">
       <label for="popTableTableName">Table Name</label>
     </div>
     <div style="text-align:center">
@@ -118,7 +118,7 @@ function popTable() {
         id="popTableTableName"
         name="popTableTableName"
         bind:this="{popTableTableName}" />
-    </div>
+    </div> -->
     <div style="text-align:center">
       <button type="submit" form="popTableForm" on:click="{popTable}"
         >popTable</button>
