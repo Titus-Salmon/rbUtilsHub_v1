@@ -12,6 +12,8 @@ import RbDbQuery from "../../../libT0d/MySQL/rbDbQuery.svelte";
 import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
 import SaveToCSVcreatePop from "../../../libT0d/saveToCSVcreatePop.svelte";
 import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
+
+import PopulateTableModal from "../../../components/MySQL/populateTableModal.svelte";
 </script>
 
 <style>
@@ -19,6 +21,7 @@ import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
 
 <DkMdBtn>MODE</DkMdBtn>
 
+<PopulateTableModal />
 <RbDbQuery />
 
 <!--v-- only show inputs & buttons here if tableData store has been populated with query results -->

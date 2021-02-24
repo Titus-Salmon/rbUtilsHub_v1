@@ -16,7 +16,6 @@ let selected;
     <option value="nej">nej</option>
     <option value="showTables">showTables</option>
     <option value="createTable">createTable</option>
-    <option value="populateTable">populateTable</option>
     <option value="deleteTables">deleteTables</option>
   </select>
 </div>
@@ -31,10 +30,6 @@ let selected;
 
 {#if selected === "createTable"}
   <CreateTableQueryModal />
-{/if}
-
-{#if selected === "populateTable"}
-  <PopulateTableQueryModal />
 {/if}
 
 {#if selected === "deleteTables"}

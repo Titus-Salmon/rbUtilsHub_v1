@@ -8,3 +8,6 @@ package.json
 package-lock.json
 ARCHIVE
 SCRAP
+csv
+csv-to-insert
+xlsx
