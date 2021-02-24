@@ -26,9 +26,10 @@ let popTableResponse;
 function test() {
   const formData = new FormData();
   const fileField = document.querySelector('input[type="file"]');
+  formData.append("fileField.files[0]", fileField.files[0]);
 
   // formData.append("username", "abc123");
-  formData.append("popTableFile[0]", popTableFile[0]);
+  // formData.append("popTableFile[0]", popTableFile[0]);
   // formData.append("popTableFile_t0d", popTableFile[0]);
   // formData.append("popTableFile_t0d", "popTableFile_t0d");
 
@@ -159,10 +160,6 @@ function popTable() {
   </div>
 </form> -->
 
-<input
-  type="file"
-  id="popTableFile"
-  name="popTableFile"
-  bind:fileField="{popTableFile}" />
+<input type="file" id="popTableFile" name="popTableFile" />
 
 <button on:click="{test}">test</button>
