@@ -56,7 +56,23 @@ function popTable() {
 }
 </script>
 
-<div>
+<form id="popTable" name="popTable">
+  <div style="text-align:center">
+    <label for="popTableTableName">Table Name:</label>
+    <input type="text" id="popTableTableName" name="popTableTableName" />
+  </div>
+  <div style="text-align:center">
+    <label for="popTableFile">Upload file:</label>
+    <input type="file" id="popTableFile" name="popTableFile" />
+  </div>
+  <!-- <input type="submit" value="Submit!" /> -->
+  <div style="text-align:center">
+    <button type="submit" form="popTable" on:click="{popTable}"
+      >popTable</button>
+  </div>
+</form>
+
+<!-- <div>
   <div style="text-align:center">
     <label for="popTableFile">File Name</label>
   </div>
@@ -80,4 +96,4 @@ function popTable() {
   <div style="text-align:center">
     <button on:click="{popTable}">popTable</button>
   </div>
-</div>
+</div> -->
