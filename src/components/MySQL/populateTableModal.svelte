@@ -16,8 +16,8 @@ function popTable() {
   formData.append("popTableTableName", popTableTableName.value);
   formData.append("popTableFile", popTableFile.files[0]);
 
-  console.log(`formData==> ${formData}`);
-  console.log(`JSON.stringify(formData)==> ${JSON.stringify(formData)}`);
+  // console.log(`formData==> ${formData}`);
+  // console.log(`JSON.stringify(formData)==> ${JSON.stringify(formData)}`);
 
   fetch("server_routes/rt_MySQL/popTable", {
     method: "POST",
@@ -30,6 +30,9 @@ function popTable() {
     // }),
     body: formData,
   })
+    .then(
+      console.log(`JSON.stringify(formData)==> ${JSON.stringify(formData)}`)
+    )
     .then((popTableResult) => popTableResult.json())
     .then((popTableResultJSON) => {
       console.log(
