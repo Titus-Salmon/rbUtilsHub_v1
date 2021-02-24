@@ -19,16 +19,16 @@ let popTableResponse;
 //   }
 // }
 
-const formData = new FormData();
-formData.append("popTableFile_t0d", popTableFile[0]);
-formData.append("popTableFile_t0d", "popTableFile_t0d");
+// const formData = new FormData();
+// formData.append("popTableFile_t0d", popTableFile[0]);
+// formData.append("popTableFile_t0d", "popTableFile_t0d");
 
 function test() {
-  // const formData = new FormData();
-  // const fileField = document.querySelector('input[type="file"]');
+  const formData = new FormData();
+  const fileField = document.querySelector('input[type="file"]');
 
   // formData.append("username", "abc123");
-  // formData.append("avatar", fileField.files[0]);
+  formData.append("fileField.popTableFile[0]", fileField.popTableFile[0]);
   // formData.append("popTableFile_t0d", popTableFile[0]);
   // formData.append("popTableFile_t0d", "popTableFile_t0d");
 
@@ -163,6 +163,6 @@ function popTable() {
   type="file"
   id="popTableFile"
   name="popTableFile"
-  bind:files="{popTableFile}" />
+  bind:this="{popTableFile}" />
 
 <button on:click="{test}">test</button>
