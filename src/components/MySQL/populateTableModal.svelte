@@ -97,7 +97,11 @@ function popTable() {
   <input type="submit" value="Upload file" />
 </form> -->
 
-<form id="popTableForm">
+<form
+  id="popTableForm"
+  method="POST"
+  encType="multipart/form-data"
+  accept-charset="UTF-8">
   <div>
     <div style="text-align:center">
       <label for="popTableFile">File Name</label>
