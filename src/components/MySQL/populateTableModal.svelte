@@ -65,7 +65,7 @@ function popTable() {
 }
 </script>
 
-<div>
+<!-- <div>
   <div style="text-align:center">
     <label for="popTableFile">File Name</label>
   </div>
@@ -89,4 +89,39 @@ function popTable() {
   <div style="text-align:center">
     <button on:click="{popTable}">popTable</button>
   </div>
-</div>
+</div> -->
+
+<!-- <form on:submit|preventDefault="{popTable}">
+  <label for="popTableFile">File</label>
+  <input required id="popTableFile" type="file" bind:files="{popTableFile}" />
+  <input type="submit" value="Upload file" />
+</form> -->
+
+<form id="popTableForm" on:submit|preventDefault="{popTable}">
+  <div>
+    <div style="text-align:center">
+      <label for="popTableFile">File Name</label>
+    </div>
+    <div style="text-align:center">
+      <input
+        type="file"
+        id="popTableFile"
+        name="popTableFile"
+        bind:files="{popTableFile}" />
+    </div>
+    <div style="text-align:center">
+      <label for="popTableTableName">Table Name</label>
+    </div>
+    <div style="text-align:center">
+      <input
+        type="text"
+        id="popTableTableName"
+        name="popTableTableName"
+        bind:this="{popTableTableName}" />
+    </div>
+    <div style="text-align:center">
+      <button type="submit" form="popTableForm" on:click="{popTable}"
+        >popTable</button>
+    </div>
+  </div>
+</form>
