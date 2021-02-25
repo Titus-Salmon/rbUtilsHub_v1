@@ -3,7 +3,6 @@ import paginData from "../../stores/pagination/st_pagination1";
 import tableData from "../../stores/dynamicTables/tableData1";
 
 import QuerySelectDropdown from "../../components/MySQL/querySelectDropdown.svelte";
-// import PopulateTable from "../../components/MySQL/populateTableModal.svelte";
 
 function rbDBquery() {
   fetch("server_routes/rt_MySQL/RBDBQuery", {
@@ -62,7 +61,6 @@ function rbDBquery() {
 </script>
 
 <QuerySelectDropdown />
-<!-- <PopulateTable /> -->
 
 <button style="display:block; margin: 0 auto 1rem" on:click="{rbDBquery}"
   >rbDBquery</button>

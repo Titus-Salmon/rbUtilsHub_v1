@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
 import queryResArrCache from "../../../nodeCacheStuff/cache1"
 
 export async function post(req, res, next) {
-  console.log(`hello from within the async function of v_InventoryMasterQuery.js`)
+  console.log(`hello from within the async function of RBDBQuery.js`)
 
   res.setHeader('Content-Type', 'application/json')
   console.log(`req.body.data==> ${req.body.data}`)
@@ -33,10 +33,6 @@ export async function post(req, res, next) {
       rbDBresObj['ri_t0d'] = i + 1
       for (let j = 0; j < queriedColumns.length; j++) {
         let colName = queriedColumns[j]
-
-        // if (colName.toLowerCase() === 'pos_timeStamp') {
-        //   rbDBresObj[`${colName}`] = unescape(rowData[`${colName}`])
-        // }
 
         rbDBresObj[`${colName}`] = rowData[`${colName}`]
 
@@ -67,25 +63,6 @@ export async function post(req, res, next) {
     totalPages = Math.ceil(queryResArr.length / 100)
   }
 
-  // odbc.connect(DSN, (error, connection) => {
-  //   connection.query(`${RBDbQuery}`, (error, result) => {
-  //     if (error) {
-  //       console.error(error)
-  //     }
-  //     rbDBqueryResults(result).then(paginCalcs()).then(() => {
-  //       res.json({
-  //         queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
-  //         queryResArr_1stPage: queryResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
-  //         // "queryResArr_pagin": queryResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
-  //         totalPages: totalPages,
-  //         currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
-  //         // nextPage: 1,
-  //         // prevPage: null
-  //       })
-  //     })
-  //   })
-  // })
-
   connection.query(RBDbQuery, function (err, rows, fields) {
     if (err) throw err
     console.log(`rows.length==>${rows.length}`)
@@ -102,5 +79,4 @@ export async function post(req, res, next) {
       })
     })
   })
-
 }

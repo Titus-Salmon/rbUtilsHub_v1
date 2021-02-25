@@ -1,8 +1,6 @@
 <script>
 import NejQueryModal from "./nejQueryModal.svelte";
 import ShowTablesQueryModal from "./showTablesQueryModal.svelte";
-// import CreateTableQueryModal from "./createTableQueryModal_old.svelte";
-// import PopulateTableQueryModal from "./populateTableQueryModal.svelte";
 import DeleteTablesQueryModal from "./deleteTablesQueryModal.svelte";
 
 let selected;
@@ -15,7 +13,6 @@ let selected;
   <select name="querySelect" id="querySelect" bind:value="{selected}">
     <option value="nej">nej</option>
     <option value="showTables">showTables</option>
-    <!-- <option value="createTable">createTable</option> -->
     <option value="deleteTables">deleteTables</option>
   </select>
 </div>
@@ -27,10 +24,6 @@ let selected;
 {#if selected === "showTables"}
   <ShowTablesQueryModal />
 {/if}
-
-<!-- {#if selected === "createTable"}
-  <CreateTableQueryModal />
-{/if} -->
 
 {#if selected === "deleteTables"}
   <DeleteTablesQueryModal />

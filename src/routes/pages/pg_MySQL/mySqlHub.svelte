@@ -14,7 +14,7 @@ import SaveToCSVcreatePop from "../../../libT0d/saveToCSVcreatePop.svelte";
 import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
 
 import CreateTableModal from "../../../components/MySQL/createTableModal.svelte";
-import PopulateTableModal from "../../../components/MySQL/populateTableModal.svelte";
+import PopRbTableModal from "../../../components/MySQL/popRbTableModal.svelte";
 </script>
 
 <style>
@@ -24,7 +24,7 @@ import PopulateTableModal from "../../../components/MySQL/populateTableModal.sve
 
 <div class="flexbox">
   <CreateTableModal />
-  <PopulateTableModal />
+  <PopRbTableModal />
 </div>
 
 <RbDbQuery />
