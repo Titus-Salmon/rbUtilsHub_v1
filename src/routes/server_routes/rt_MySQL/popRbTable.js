@@ -39,10 +39,22 @@ export async function post(req, res, next) {
     }
   }).on('end', function () {
     // all rows have been received
+    deleteCSV()
     res.json({
-      "response1 from popTable": `
-      ~~~~~>> ${process.cwd()}/static/csv-to-insert/${fileToUpload.name}.csv SAVED <<~~~~~
-      ~~~~~>> ${tableToPopulate} POPULATED <<~~~~~`,
+      "response1 from popTable": `~~~~~>> ${process.cwd()}/static/csv-to-insert/${fileToUpload.name}.csv SAVED <<~~~~~`,
+      "response2 from popTable": `~~~~~>> ${tableToPopulate} POPULATED <<~~~~~`,
+      "response3 from popTable": `~~~~~>> ${fileToUpload.name} deleted <<~~~~~`,
     })
   })
+
+  function deleteCSV() {
+    try {
+      fs.unlinkSync(`${process.cwd()}/static/csv-to-insert/${fileToUpload.name}.csv`, function (err) {
+        if (err) throw err;
+        console.log(`~~~~~>> ${fileToUpload.name} deleted <<~~~~~`)
+      })
+    } catch (err) {
+      console.error(err);
+    }
+  }
 }
