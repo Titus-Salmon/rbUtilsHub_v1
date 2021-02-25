@@ -30,13 +30,9 @@ function test() {
   console.log(`fileField.files==> ${fileField.files}`);
   console.log(`fileField.files[0]==> ${fileField.files[0]}`);
   popTableFile = fileField.files[0];
-  // formData.append("fileField.files[0]", fileField.files[0]);
   formData.append("popTableFile", popTableFile);
-
-  // formData.append("username", "abc123");
-  // formData.append("popTableFile[0]", popTableFile[0]);
-  // formData.append("popTableFile_t0d", popTableFile[0]);
-  // formData.append("popTableFile_t0d", "popTableFile_t0d");
+  formData.append("popTableTableName[0]", popTableTableName[0]);
+  console.log(`Object.keys(formData)==> ${Object.keys(formData)}`);
 
   fetch("server_routes/rt_MySQL/test", {
     method: "POST",
@@ -170,5 +166,11 @@ function popTable() {
   id="popTableFile"
   name="popTableFile"
   bind:this="{popTableFile}" />
+
+<input
+  type="text"
+  id="popTableTableName"
+  name="popTableTableName"
+  bind:this="{popTableTableName}" />
 
 <button on:click="{test}">test</button>
