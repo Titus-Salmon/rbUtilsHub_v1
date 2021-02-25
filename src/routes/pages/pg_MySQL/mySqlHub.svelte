@@ -15,6 +15,7 @@ import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
 
 import CreateTableModal from "../../../components/MySQL/createTableModal.svelte";
 import PopRbTableModal from "../../../components/MySQL/popRbTableModal.svelte";
+import DeleteRbTableModal from "../../../components/MySQL/deleteRbTableModal.svelte";
 </script>
 
 <style>
@@ -25,6 +26,7 @@ import PopRbTableModal from "../../../components/MySQL/popRbTableModal.svelte";
 <div class="flexbox">
   <CreateTableModal />
   <PopRbTableModal />
+  <DeleteRbTableModal />
 </div>
 
 <RbDbQuery />
