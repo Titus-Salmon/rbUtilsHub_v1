@@ -32,7 +32,7 @@ function popRbTable() {
 }
 </script>
 
-<div>
+<div style="padding: 0 1rem">
   <div style="text-align:center">
     <input
       type="file"

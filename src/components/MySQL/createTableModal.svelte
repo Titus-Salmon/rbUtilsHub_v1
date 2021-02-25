@@ -38,9 +38,9 @@ function createTable() {
 }
 </script>
 
-<div>
+<div style="padding: 0 1rem">
   <!-- //////////////table name//////////////////////////// -->
-  <div style="text-align:center">
+  <div style="text-align:center;">
     <label for="createTableTableName">Table Name</label>
   </div>
   <div style="text-align:center">
