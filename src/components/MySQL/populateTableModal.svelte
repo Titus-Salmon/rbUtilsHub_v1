@@ -4,25 +4,6 @@ let popTableFile;
 let popTableTableName;
 let popTableResponse;
 
-// let files;
-// let statusCode = "";
-
-// async function handleSubmit() {
-//   if (files.length > 0) {
-//     const formData = new FormData();
-//     formData.append("file", files[0]);
-//     const response = await fetch("/gateway/media_objects", {
-//       method: "POST",
-//       body: formData,
-//     });
-//     statusCode = response.status;
-//   }
-// }
-
-// const formData = new FormData();
-// formData.append("popTableFile_t0d", popTableFile[0]);
-// formData.append("popTableFile_t0d", "popTableFile_t0d");
-
 function test() {
   const formData = new FormData();
   const fileField = document.querySelector('input[type="file"]');
@@ -46,6 +27,16 @@ function test() {
           data
         )}`
       );
+      popTableResponse = data;
+      utilResponses.set([{ utilResponse: popTableResponse }]);
+      // utilResponses.update((currentData) => {
+      //   currentData = [
+      //     {
+      //       utilResponse: Object.values(popTableResponse),
+      //     },
+      //   ];
+      //   return currentData;
+      // });
     });
 }
 
