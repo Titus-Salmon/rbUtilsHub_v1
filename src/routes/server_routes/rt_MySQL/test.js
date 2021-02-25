@@ -22,6 +22,7 @@ export async function post(req, res, next) {
   console.log(`JSON.stringify(req.body) from test.js==> ${JSON.stringify(req.body)}`)
   console.log(`Object.keys(req.body) from test.js==> ${Object.keys(req.body)}`)
   console.log(`req.files==> ${req.files}`)
+  console.log(`JSON.stringify(req.files)==> ${JSON.stringify(req.files)}`)
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
