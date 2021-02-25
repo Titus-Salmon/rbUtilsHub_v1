@@ -24,7 +24,7 @@ ORDER BY nhcrt.dpt_name, nhcrt.pi1_description, nhcrt.pi1_description;`;
     id="mySqlQueryText"
     name="tblQryPost"
     cols="160"
-    rows="15"
+    rows="20"
     wrap="soft"
     bind:this="{mySqlQueryText}">
     {queryText}
