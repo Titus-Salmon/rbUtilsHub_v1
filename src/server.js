@@ -8,12 +8,15 @@ import * as sapper from '@sapper/server';
 // import cookieParser from 'cookie-parser'; //t0d
 // import logger from 'morgan'; //t0d
 
+// const popRbTableRouter = require('./routes/rt-popRbTableRouter') //t0d
+
 const app = express() //t0d
 const dotenv = require('dotenv') //t0d
 const uuid = require('uuid-v4') //t0d
 const helmet = require('helmet') //t0d
 const cookieParser = require('cookie-parser') //t0d
 const logger = require('morgan') //t0d
+const fileUpload = require('express-fileupload')
 
 const {
 	PORT,
@@ -66,6 +69,11 @@ app.use(express.urlencoded({
 app.use(cookieParser()) //t0d
 app.use(logger('dev')) //t0d
 
+// app.use('/popRbTable', popRbTableRouter) //t0d
+
+app.use(fileUpload({
+	debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
+}))
 
 
 //v//https://sapper.svelte.dev/docs#Server_routes says this block should be at end of server.js, so leaving it there//t0d
