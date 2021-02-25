@@ -36,8 +36,8 @@ export async function post(req, res, next) {
       return res.status(500).send(err);
   })
 
-  let tableToPopulate = req.body.popTableTableName.value
-  console.log(`req.body.popTableTableName.value==> ${req.body.popTableTableName.value}`)
+  let tableToPopulate = req.body['popTableTableName.value']
+  console.log(`req.body['popTableTableName.value']==> ${req.body['popTableTableName.value']}`)
 
   let popTableQuery = `LOAD DATA LOCAL INFILE './static/csv-to-insert/${fileToUpload.name}' INTO TABLE ${tableToPopulate} FIELDS TERMINATED BY ','
        ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;` //"IGNORE 1 LINES" skips the 1st row of the csv (which is the column name line)
