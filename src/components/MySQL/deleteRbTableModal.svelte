@@ -2,6 +2,7 @@
 import utilResponses from "../../stores/utilResponses/st_utilResponses";
 
 let tablesToDelete;
+let delTablesResponse;
 
 function deleteRbTable() {
   fetch("server_routes/rt_MySQL/deleteRbTable", {
@@ -15,12 +16,12 @@ function deleteRbTable() {
   })
     .then((response) => response.json())
     .then((data) => {
-      popTableResponse = data;
-      utilResponses.set([{ utilResponse: popTableResponse }]);
+      delTablesResponse = data;
+      utilResponses.set([{ utilResponse: delTablesResponse }]);
       // utilResponses.update((currentData) => {
       //   currentData = [
       //     {
-      //       utilResponse: Object.values(popTableResponse),
+      //       utilResponse: Object.values(delTablesResponse),
       //     },
       //   ];
       //   return currentData;
