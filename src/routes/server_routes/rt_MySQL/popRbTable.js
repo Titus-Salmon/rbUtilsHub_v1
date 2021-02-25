@@ -50,7 +50,7 @@ export async function post(req, res, next) {
 
   function deleteCSV() {
     try {
-      fs.unlinkSync(`${process.cwd()}/static/csv-to-insert/${fileToUpload.name}.csv`, function (err) {
+      fs.unlinkSync(`${process.cwd()}/static/csv-to-insert/${fileToUpload.name}`, function (err) {
         if (err) throw err;
         console.log(`~~~~~>> ${fileToUpload.name} deleted <<~~~~~`)
       })
