@@ -8,7 +8,7 @@ let selected;
 
 <style></style>
 
-<div style="padding-left: 1rem">
+<div style="padding-left: 6rem">
   <label for="querySelect">Select Query:</label>
   <select name="querySelect" id="querySelect" bind:value="{selected}">
     <option value="nej">nej</option>

@@ -76,6 +76,9 @@ input {
   background-color: var(--surface1);
   color: var(--element7);
 }
+input[type="file"] {
+  border: 1px solid var(--element2);
+}
 p {
   color: var(--element1);
 }
