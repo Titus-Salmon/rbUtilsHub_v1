@@ -66,7 +66,7 @@ textarea {
 }
 textarea.query {
   box-sizing: border-box;
-  padding: 0 1rem;
+  padding: -1rem 1rem 0;
 }
 label {
   color: var(--element6);
