@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
 
 export async function post(req, res, next) {
 
-  let tableName = deleteTablePostBody['delTblNamePost']
+  let tableName = req.body.tablesToDelete
 
   let mySqlQuery = `DROP TABLE ${tableName};`
 
