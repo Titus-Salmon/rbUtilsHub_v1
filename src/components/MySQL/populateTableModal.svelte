@@ -31,7 +31,7 @@ function test() {
   console.log(`fileField.files[0]==> ${fileField.files[0]}`);
   popTableFile = fileField.files[0];
   formData.append("popTableFile", popTableFile);
-  formData.append("popTableTableName", popTableTableName);
+  formData.append("popTableTableName.value", popTableTableName.value);
   console.log(`Object.keys(formData)==> ${Object.keys(formData)}`);
 
   fetch("server_routes/rt_MySQL/test", {
