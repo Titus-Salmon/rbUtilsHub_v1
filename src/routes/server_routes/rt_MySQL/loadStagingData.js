@@ -41,15 +41,19 @@ export async function post(req, res, next) {
       console.log(`JSON.stringify(loadedTableRows)==> ${JSON.stringify(loadedTableRows)}`)
       console.log(`JSON.stringify(rainbowCatRows[0])==> ${JSON.stringify(rainbowCatRows[0])}`)
       let discoToApplyCarryOver_WS = rainbowCatRows[0]['ongDscWS']
-      console.log(`discoToApplyCarryOver_WS==> ${discoToApplyCarryOver_WS}`)
       let discoToApplyCarryOver_Rtl = rainbowCatRows[0]['ongDscRtl']
-      console.log(`discoToApplyCarryOver_Rtl==> ${discoToApplyCarryOver_Rtl}`)
+      let marginProfile = rainbowCatRows[0]['wellnessMargins']
+      let eaNumDivide = rainbowCatRows[0]['EA_Num_divide']
+      let csNumDivide = rainbowCatRows[0]['CS_Num_divide']
 
       res.json({
         tableNameToLoad: tableNameToLoad,
         tableLoadError: loadErrors,
         ongDisco_WS: discoToApplyCarryOver_WS / 100,
-        ongDisco_Rtl: discoToApplyCarryOver_Rtl / 100
+        ongDisco_Rtl: discoToApplyCarryOver_Rtl / 100,
+        marginProfile: marginProfile,
+        eaNumDivide: eaNumDivide,
+        csNumDivide: csNumDivide
       })
     }
   })

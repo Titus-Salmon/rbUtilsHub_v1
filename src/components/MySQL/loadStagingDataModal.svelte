@@ -1,5 +1,5 @@
 <script>
-import utilResponses from "../../stores/utilResponses/st_utilResponses";
+import stagingData from "../../stores/stagingData/st_stagingData.js";
 let tableName;
 let loadStagingDataResponse;
 
@@ -22,12 +22,12 @@ function loadStagingData() {
       );
       loadStagingDataResponse = loadStagingDataResultJSON;
 
-      utilResponses.set([{ utilResponse: loadStagingDataResponse }]);
+      stagingData.set([{ stagingDataResponse: loadStagingDataResponse }]);
 
-      // utilResponses.update((currentData) => {
+      // stagingData.update((currentData) => {
       //   currentData = [
       //     {
-      //       utilResponse: Object.values(loadStagingDataResponse),
+      //       stagingDataResponse: Object.values(loadStagingDataResponse),
       //     },
       //   ];
       //   return currentData;
