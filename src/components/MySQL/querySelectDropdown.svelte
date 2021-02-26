@@ -2,6 +2,7 @@
 import NejQueryModal from "./queryModals/nejQueryModal.svelte";
 import ShowTablesQueryModal from "./queryModals/showTablesQueryModal.svelte";
 import SpinsQueryModal1 from "./queryModals/spinsQueryModal1.svelte";
+import CompEdiNhcrt from "./queryModals/compEdiNhcrt.svelte";
 
 let selected;
 </script>
@@ -14,6 +15,7 @@ let selected;
     <option value="nej">nej</option>
     <option value="showTables">showTables</option>
     <option value="spins1">spins1</option>
+    <option value="compEdiNhcrt">compEdiNhcrt</option>
   </select>
 </div>
 
@@ -27,4 +29,8 @@ let selected;
 
 {#if selected === "spins1"}
   <SpinsQueryModal1 />
+{/if}
+
+{#if selected === "compEdiNhcrt"}
+  <CompEdiNhcrt />
 {/if}
