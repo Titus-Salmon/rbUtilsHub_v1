@@ -8,6 +8,13 @@ const connection = mysql.createConnection({
   debug: true
 })
 
+import {
+  defaultMargArr
+} from '../../../libT0d/defaultMargs/defaultMargs';
+// let val = Hello;
+// console.log(val);
+console.log(`defaultMargArr[0]==> ${defaultMargArr[0]}`)
+
 export async function post(req, res, next) {
 
   let loadErrors = []
@@ -51,9 +58,10 @@ export async function post(req, res, next) {
         tableLoadError: loadErrors,
         ongDisco_WS: discoToApplyCarryOver_WS / 100,
         ongDisco_Rtl: discoToApplyCarryOver_Rtl / 100,
-        marginProfile: marginProfile,
+        marginProfile: JSON.parse(`${marginProfile}`),
         eaNumDivide: eaNumDivide,
-        csNumDivide: csNumDivide
+        csNumDivide: csNumDivide,
+        beerAlcMarg: beerAlcMarg
       })
     }
   })
