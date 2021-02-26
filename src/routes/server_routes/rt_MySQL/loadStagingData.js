@@ -13,7 +13,8 @@ import {
 } from '../../../libT0d/defaultMargs/defaultMargs';
 // let val = Hello;
 // console.log(val);
-console.log(`defaultMargArr[0]==> ${defaultMargArr[0]}`)
+let dfltMrgArr = defaultMargArr
+console.log(`dfltMrgArr[0]==> ${dfltMrgArr[0]}`)
 
 export async function post(req, res, next) {
 
