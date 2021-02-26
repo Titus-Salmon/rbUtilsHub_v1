@@ -1,4 +1,4 @@
-export default defaultMargArr = [{
+let defaultMargArr = [{
     '54': {
       'name': 'Beer & Alcohol',
       'dfltMrg': '20'
@@ -125,3 +125,5 @@ export default defaultMargArr = [{
     }
   }
 ]
+
+export default defaultMargArr
