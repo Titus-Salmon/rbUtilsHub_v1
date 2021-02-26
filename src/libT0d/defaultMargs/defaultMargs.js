@@ -1,129 +1,107 @@
 let defaultMargArr = [{
-    '54': {
-      'name': 'Beer & Alcohol',
-      'dfltMrg': '20'
-    }
+    "dptName": "(Beer & Alcohol)",
+    "dptNumb": "54",
+    "dfltMrg": "20"
   },
   {
-    '152': {
-      'name': 'Body Care',
-      'dfltMrg': '45'
-    }
+    "dptName": "(Body Care)",
+    "dptNumb": "152",
+    "dfltMrg": "45"
   },
   {
-    '9': {
-      'name': 'Books',
-      'dfltMrg': '40'
-    }
+    "dptName": "(Books)",
+    "dptNumb": "9",
+    "dfltMrg": "40"
   },
   {
-    '19': {
-      'name': 'Bulk',
-      'dfltMrg': '45'
-    }
+    "dptName": "(Bulk)",
+    "dptNumb": "19",
+    "dfltMrg": "45"
   },
   {
-    '30': {
-      'name': 'Bulk & Herb Prepack',
-      'dfltMrg': '45'
-    }
+    "dptName": "(Bulk & Herb Prepack)",
+    "dptNumb": "30",
+    "dfltMrg": "45"
   },
   {
-    '175': {
-      'name': 'CBD - Grocery',
-      'dfltMrg': '45'
-    }
+    "dptName": "(CBD - Grocery)",
+    "dptNumb": "175",
+    "dfltMrg": "45"
   },
   {
-    '176': {
-      'name': 'CBD - Supplements',
-      'dfltMrg': '50'
-    }
+    "dptName": "(CBD - Supplements)",
+    "dptNumb": "176",
+    "dfltMrg": "50"
   },
   {
-    '177': {
-      'name': 'CBD - Topicals',
-      'dfltMrg': '45'
-    }
+    "dptName": "(CBD - Topicals)",
+    "dptNumb": "177",
+    "dfltMrg": "45"
   },
   {
-    '148': {
-      'name': 'Consignments',
-      'dfltMrg': '20'
-    }
+    "dptName": "(Consignments)",
+    "dptNumb": "148",
+    "dfltMrg": "20"
   },
   {
-    '150': {
-      'name': 'General Merchandise',
-      'dfltMrg': '38'
-    }
+    "dptName": "(General Merchandise)",
+    "dptNumb": "150",
+    "dfltMrg": "38"
   },
   {
-    '13': {
-      'name': 'Gift Items',
-      'dfltMrg': '50'
-    }
+    "dptName": "(Gift Items)",
+    "dptNumb": "13",
+    "dfltMrg": "50"
   },
   {
-    '62': {
-      'name': 'Grab & Go',
-      'dfltMrg': '33'
-    }
+    "dptName": "(Grab & Go)",
+    "dptNumb": "62",
+    "dfltMrg": "33"
   },
   {
-    '25': {
-      'name': 'Grocery',
-      'dfltMrg': '38'
-    }
+    "dptName": "(Grocery)",
+    "dptNumb": "25",
+    "dfltMrg": "38"
   },
   {
-    '179': {
-      'name': 'Grocery - Local',
-      'dfltMrg': '33'
-    }
+    "dptName": "(Grocery - Local)",
+    "dptNumb": "179",
+    "dfltMrg": "33"
   },
   {
-    '38': {
-      'name': 'Grocery - Local Meat',
-      'dfltMrg': '25'
-    }
+    "dptName": "(Grocery - Local Meat)",
+    "dptNumb": "38",
+    "dfltMrg": "25"
   },
   {
-    '12': {
-      'name': 'HBA',
-      'dfltMrg': '45'
-    }
+    "dptName": "(HBA)",
+    "dptNumb": "12",
+    "dfltMrg": "45"
   },
   {
-    '158': {
-      'name': 'Herbs & Homeopathic',
-      'dfltMrg': '50' //changed from 40% per Andrea 20200715
-    }
+    "dptName": "(Herbs & Homeopathic)",
+    "dptNumb": "158",
+    "dfltMrg": "50" //changed from 40% per Andrea 20200715  
   },
   {
-    '80': {
-      'name': 'LifeBar',
-      'dfltMrg': '0'
-    }
+    "dptName": "(LifeBar)",
+    "dptNumb": "80",
+    "dfltMrg": "0"
   },
   {
-    '151': {
-      'name': 'Other',
-      'dfltMrg': '45'
-    }
+    "dptName": "(Other)",
+    "dptNumb": "151",
+    "dfltMrg": "45"
   },
   {
-    '155': {
-      'name': 'Refrigerated',
-      'dfltMrg': '33'
-    }
+    "dptName": "(Refrigerated)",
+    "dptNumb": "155",
+    "dfltMrg": "33"
   },
   {
-    '157': {
-      'name': 'Vitamins & Supplements',
-      'dfltMrg': '50' //changed from 40% per Andrea 20200715
-    }
+    "dptName": "(Vitamins & Supplements)",
+    "dptNumb": "157",
+    "dfltMrg": "50" //changed from 40% per Andrea 20200715  
   }
 ]
-
 export default defaultMargArr
