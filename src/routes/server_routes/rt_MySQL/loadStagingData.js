@@ -8,9 +8,7 @@ const connection = mysql.createConnection({
   debug: true
 })
 
-import {
-  defaultMargArr
-} from '../../../libT0d/defaultMargs/defaultMargs';
+import defaultMargArr from '../../../libT0d/defaultMargs/defaultMargs';
 // let val = Hello;
 // console.log(val);
 let dfltMrgArr = defaultMargArr
