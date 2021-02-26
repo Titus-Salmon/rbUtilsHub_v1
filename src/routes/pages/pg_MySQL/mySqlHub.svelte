@@ -58,6 +58,9 @@ import LoadstagingDataModal from "../../../components/MySQL/loadstagingDataModal
     <p style="text-align:center; color: var(--element6)">
       {Object.values($stagingData[0].stagingDataResponse)}
     </p>
+    <p style="text-align:center; color: var(--element6)">
+      {JSON.stringify($stagingData[0].stagingDataResponse)}
+    </p>
   {/if}
 </div>
 
