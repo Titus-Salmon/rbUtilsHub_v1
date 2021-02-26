@@ -66,6 +66,11 @@ app.use(fileUpload({
 	debug: true, //set debug mode to try and figure out [ERR_HTTP_HEADERS_SENT]
 }))
 
+//if you want to try to set server.timeout, you may need to daisychain your .timeout after the .listen() method below...
+//because there is no "server" variable in this setup; it appears to be set up in the app.use(sirv) portion below...
+// // server.timeout = 3600000 //set server timeout to 1 hour to avoid timing out on large catalogs --t0d
+// server.timeout = 21600000 //set server timeout to 6 hours to avoid timing out on very large HERE marker numbers --t0d
+// //(6 hours still doesn't work...)
 
 //v//https://sapper.svelte.dev/docs#Server_routes says this block should be at end of server.js, so leaving it there//t0d
 app // You can also use Polka
@@ -80,5 +85,5 @@ app // You can also use Polka
 	)
 	.listen(PORT, err => {
 		if (err) console.log('error', err);
-	});
+	}).timeout = 21600000;
 //^//https://sapper.svelte.dev/docs#Server_routes says this block should be at end of server.js, so leaving it there//t0d
