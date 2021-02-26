@@ -1,7 +1,7 @@
 <script>
-import NejQueryModal from "./nejQueryModal.svelte";
-import ShowTablesQueryModal from "./showTablesQueryModal.svelte";
-import DeleteTablesQueryModal from "./deleteTablesQueryModal.svelte";
+import NejQueryModal from "./queryModals/nejQueryModal.svelte";
+import ShowTablesQueryModal from "./queryModals/showTablesQueryModal.svelte";
+import SpinsQueryModal1 from "./queryModals/spinsQueryModal1.svelte";
 
 let selected;
 </script>
@@ -13,7 +13,7 @@ let selected;
   <select name="querySelect" id="querySelect" bind:value="{selected}">
     <option value="nej">nej</option>
     <option value="showTables">showTables</option>
-    <option value="deleteTables">deleteTables</option>
+    <option value="spins1">spins1</option>
   </select>
 </div>
 
@@ -25,6 +25,6 @@ let selected;
   <ShowTablesQueryModal />
 {/if}
 
-{#if selected === "deleteTables"}
-  <DeleteTablesQueryModal />
+{#if selected === "spins1"}
+  <SpinsQueryModal1 />
 {/if}

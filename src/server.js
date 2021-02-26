@@ -85,5 +85,5 @@ app // You can also use Polka
 	)
 	.listen(PORT, err => {
 		if (err) console.log('error', err);
-	}).timeout = 21600000;
+	}).timeout = 21600000; //set server timeout to 6 hours; this appears to work.
 //^//https://sapper.svelte.dev/docs#Server_routes says this block should be at end of server.js, so leaving it there//t0d

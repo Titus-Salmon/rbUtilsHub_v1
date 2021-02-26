@@ -1,6 +1,13 @@
 <script>
 let mySqlQueryText;
-let queryText = `DROP TABLE tableNamesAsCSV;`;
+let queryText = `
+SELECT * 
+
+FROM spins_data 
+
+WHERE spins_upc REGEXP 
+
+'751063150163|751063403009'`;
 </script>
 
 <div style="text-align:center">
@@ -9,7 +16,7 @@ let queryText = `DROP TABLE tableNamesAsCSV;`;
     id="mySqlQueryText"
     name="tblQryPost"
     cols="160"
-    rows="15"
+    rows="18"
     wrap="soft"
     bind:this="{mySqlQueryText}">
     {queryText}
