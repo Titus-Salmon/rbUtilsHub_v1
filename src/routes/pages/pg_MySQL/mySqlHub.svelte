@@ -7,6 +7,7 @@ import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 import tableData from "../../../stores/dynamicTables/tableData1";
 import paginData from "../../../stores/pagination/st_pagination1";
 import utilResponses from "../../../stores/utilResponses/st_utilResponses";
+import stagingData from "../../../stores/stagingData/st_stagingData.js";
 
 import RbDbQuery from "../../../libT0d/MySQL/rbDbQuery.svelte";
 import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
@@ -48,6 +49,14 @@ import LoadstagingDataModal from "../../../components/MySQL/loadstagingDataModal
   {#if $utilResponses[0].utilResponse !== null}
     <p style="text-align:center; color: var(--element6)">
       {Object.values($utilResponses[0].utilResponse)}
+    </p>
+  {/if}
+</div>
+
+<div>
+  {#if $stagingData[0].stagingDataResponse !== null}
+    <p style="text-align:center; color: var(--element6)">
+      {Object.values($stagingData[0].stagingDataResponse)}
     </p>
   {/if}
 </div>

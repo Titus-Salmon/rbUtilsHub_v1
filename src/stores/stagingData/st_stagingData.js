@@ -4,6 +4,7 @@ import {
 
 const stagingData = writable([{
   // defaultVal: 'defaultVal'
+  stagingDataResponse: null
 }])
 
 export default stagingData
