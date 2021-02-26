@@ -1,105 +1,105 @@
 let defaultMargArr = [{
-    "dptName": "(Beer & Alcohol)",
+    "dptName": "Beer & Alcohol",
     "dptNumb": "54",
     "dfltMrg": "20"
   },
   {
-    "dptName": "(Body Care)",
+    "dptName": "Body Care",
     "dptNumb": "152",
     "dfltMrg": "45"
   },
   {
-    "dptName": "(Books)",
+    "dptName": "Books",
     "dptNumb": "9",
     "dfltMrg": "40"
   },
   {
-    "dptName": "(Bulk)",
+    "dptName": "Bulk",
     "dptNumb": "19",
     "dfltMrg": "45"
   },
   {
-    "dptName": "(Bulk & Herb Prepack)",
+    "dptName": "Bulk & Herb Prepack",
     "dptNumb": "30",
     "dfltMrg": "45"
   },
   {
-    "dptName": "(CBD - Grocery)",
+    "dptName": "CBD - Grocery",
     "dptNumb": "175",
     "dfltMrg": "45"
   },
   {
-    "dptName": "(CBD - Supplements)",
+    "dptName": "CBD - Supplements",
     "dptNumb": "176",
     "dfltMrg": "50"
   },
   {
-    "dptName": "(CBD - Topicals)",
+    "dptName": "CBD - Topicals",
     "dptNumb": "177",
     "dfltMrg": "45"
   },
   {
-    "dptName": "(Consignments)",
+    "dptName": "Consignments",
     "dptNumb": "148",
     "dfltMrg": "20"
   },
   {
-    "dptName": "(General Merchandise)",
+    "dptName": "General Merchandise",
     "dptNumb": "150",
     "dfltMrg": "38"
   },
   {
-    "dptName": "(Gift Items)",
+    "dptName": "Gift Items",
     "dptNumb": "13",
     "dfltMrg": "50"
   },
   {
-    "dptName": "(Grab & Go)",
+    "dptName": "Grab & Go",
     "dptNumb": "62",
     "dfltMrg": "33"
   },
   {
-    "dptName": "(Grocery)",
+    "dptName": "Grocery",
     "dptNumb": "25",
     "dfltMrg": "38"
   },
   {
-    "dptName": "(Grocery - Local)",
+    "dptName": "Grocery - Local",
     "dptNumb": "179",
     "dfltMrg": "33"
   },
   {
-    "dptName": "(Grocery - Local Meat)",
+    "dptName": "Grocery - Local Meat",
     "dptNumb": "38",
     "dfltMrg": "25"
   },
   {
-    "dptName": "(HBA)",
+    "dptName": "HBA",
     "dptNumb": "12",
     "dfltMrg": "45"
   },
   {
-    "dptName": "(Herbs & Homeopathic)",
+    "dptName": "Herbs & Homeopathic",
     "dptNumb": "158",
     "dfltMrg": "50" //changed from 40% per Andrea 20200715  
   },
   {
-    "dptName": "(LifeBar)",
+    "dptName": "LifeBar",
     "dptNumb": "80",
     "dfltMrg": "0"
   },
   {
-    "dptName": "(Other)",
+    "dptName": "Other",
     "dptNumb": "151",
     "dfltMrg": "45"
   },
   {
-    "dptName": "(Refrigerated)",
+    "dptName": "Refrigerated",
     "dptNumb": "155",
     "dfltMrg": "33"
   },
   {
-    "dptName": "(Vitamins & Supplements)",
+    "dptName": "Vitamins & Supplements",
     "dptNumb": "157",
     "dfltMrg": "50" //changed from 40% per Andrea 20200715  
   }

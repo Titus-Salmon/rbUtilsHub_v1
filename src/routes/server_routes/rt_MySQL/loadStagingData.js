@@ -11,6 +11,9 @@ const connection = mysql.createConnection({
 import defaultMargArr from '../../../libT0d/defaultMargs/defaultMargs';
 console.log(`defaultMargArr[0]==> ${defaultMargArr[0]}`)
 console.log(`JSON.stringify(defaultMargArr[0])==> ${JSON.stringify(defaultMargArr[0])}`)
+console.log(`defaultMargArr[0]['dptName']`)
+console.log(`defaultMargArr[0]['dptNumb']`)
+console.log(`defaultMargArr[0]['dfltMrg']`)
 
 export async function post(req, res, next) {
 
