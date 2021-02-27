@@ -13,7 +13,7 @@ console.log(`defaultMargArr[0]==> ${defaultMargArr[0]}`)
 console.log(`JSON.stringify(defaultMargArr[0])==> ${JSON.stringify(defaultMargArr[0])}`)
 console.log(`defaultMargArr[0]['dptName']==> ${defaultMargArr[0]['dptName']}`)
 console.log(`defaultMargArr[0]['dptNumb']==> ${defaultMargArr[0]['dptNumb']}`)
-console.log(`defaultMargArr[0]['dfltMrg']==> ${defaultMargArr[0]['dfltMrg']}`)
+console.log(`defaultMargArr[0]['margin']==> ${defaultMargArr[0]['margin']}`)
 
 let ongDisco_WS
 let ongDisco_Rtl
@@ -70,18 +70,19 @@ export async function post(req, res, next) {
       for (let i = 0; i < defaultMargArr.length; i++) {
         for (let j = 0; j < Object.keys(vndrWllnssMrgns_parsed).length; j++) {
           if (defaultMargArr[i]['dptName'] === Object.keys(vndrWllnssMrgns_parsed)[j]) {
-            console.log(`defaultMargArr[i]['dfltMrg']==> ${defaultMargArr[i]['dfltMrg']}`)
+            console.log(`defaultMargArr[i]['margin']==> ${defaultMargArr[i]['margin']}`)
             console.log(`Object.keys(vndrWllnssMrgns_parsed)[j]==> ${Object.keys(vndrWllnssMrgns_parsed)[j]}`)
             //need to use wellness margins from rainbowcat, if they differ from the defaults
             //put staged margins in stagedMargArr
             //v//if default wellness margin !== vendor-specific wellness margin
-            if (defaultMargArr[i]['dfltMrg'] !== Object.values(vndrWllnssMrgns_parsed)[j]) {
+            if (defaultMargArr[i]['margin'] !== Object.values(vndrWllnssMrgns_parsed)[j]) {
               //use vendor-specific wellness margin
               //replace default value in stagedMargArr with vendor-specific value
               // let replacementMarg['dptName'] = 
               let replacementMarg = {
                 "dptName": `${Object.keys(vndrWllnssMrgns_parsed)[j]}`,
-                "dfltMrg": `${Object.values(vndrWllnssMrgns_parsed)[j]}`
+                "margin": `${Object.values(vndrWllnssMrgns_parsed)[j]},
+                "nonDefaultMargin":"nonDefaultMargin"`
               }
               stagedMargArr.splice(i, 1, replacementMarg)
             }
@@ -93,17 +94,6 @@ export async function post(req, res, next) {
       }
     }
   }).on('end', function () {
-    console.log(`whats going on here`)
-    // res.json({
-    //   tableNameToLoad: tableNameToLoad,
-    //   loadErrors: loadErrors,
-    //   ongDisco_WS_dcml: ongDisco_WS / 100,
-    //   ongDisco_Rtl_dcml: ongDisco_Rtl / 100,
-    //   marginProfile: JSON.parse(`${marginProfile}`),
-    //   eaNumDivide: eaNumDivide,
-    //   csNumDivide: csNumDivide,
-    //   stagedMargArr: stagedMargArr,
-    // })
     res.json({
       stagedMargins: stagedMargArr
     })

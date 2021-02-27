@@ -68,13 +68,24 @@ function calcResults() {
     <div style="text-align:center;">
       <label for="{stagedMargin.dptName}">{stagedMargin.dptName}</label>
     </div>
-    <div style="text-align:center">
-      <input
-        type="text"
-        id="{stagedMargin.dptName}"
-        name="{stagedMargin.dptName}"
-        bind:value="{stagedMargin.dfltMrg}" />
-    </div>
+    {#if stagedMargin.nonDefaultMargin}
+      <div style="text-align:center">
+        <input
+          style="background-color: red; color: black"
+          type="text"
+          id="{stagedMargin.dptName}"
+          name="{stagedMargin.dptName}"
+          bind:value="{stagedMargin.dfltMrg}" />
+      </div>
+    {:else}
+      <div style="text-align:center">
+        <input
+          type="text"
+          id="{stagedMargin.dptName}"
+          name="{stagedMargin.dptName}"
+          bind:value="{stagedMargin.dfltMrg}" />
+      </div>
+    {/if}
   {/each}
   <div style="text-align:center">
     <button on:click="{calcResults}">calcResults</button>
