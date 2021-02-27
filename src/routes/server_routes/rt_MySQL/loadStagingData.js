@@ -78,13 +78,14 @@ export async function post(req, res, next) {
             if (defaultMargArr[i]['dfltMrg'] !== Object.values(vndrWllnssMrgns_parsed)[j]) {
               //use vendor-specific wellness margin
               //replace default value in stagedMargArr with vendor-specific value
-              stagedMargArr.splice(i, 1, Object.values(vndrWllnssMrgns_parsed)[j])
+              stagedMargArr.splice(i, 1, vndrWllnssMrgns_parsed)[j]
             }
           }
         }
       }
-      console.log(`stagedMargArr==> ${stagedMargArr}`)
-
+      for (let k = 0; k < stagedMargArr.length; k++) {
+        console.log(`JSON.stringify(stagedMargArr[k])==> ${JSON.stringify(stagedMargArr[k])}`)
+      }
     }
   }).on('end', function () {
     console.log(`whats going on here`)
