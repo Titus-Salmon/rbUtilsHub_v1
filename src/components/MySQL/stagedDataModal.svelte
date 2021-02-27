@@ -68,7 +68,7 @@ function calcResults() {
     <div style="text-align:center;">
       <label for="{stagedMargin.dptName}">{stagedMargin.dptName}</label>
     </div>
-    {#if stagedMargin.nonDefaultMargin !== undefined}
+    {#if stagedMargin.nonDefaultMargin}
       <div style="text-align:center">
         <input
           style="background-color: red; color: black"

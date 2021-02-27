@@ -81,8 +81,8 @@ export async function post(req, res, next) {
               // let replacementMarg['dptName'] = 
               let replacementMarg = {
                 "dptName": `${Object.keys(vndrWllnssMrgns_parsed)[j]}`,
-                "margin": `${Object.values(vndrWllnssMrgns_parsed)[j]},
-                "nonDefaultMargin":"nonDefaultMargin"`
+                "margin": `${Object.values(vndrWllnssMrgns_parsed)[j]}`,
+                "nonDefaultMargin": "nonDefaultMargin"
               }
               stagedMargArr.splice(i, 1, replacementMarg)
             }
