@@ -73,7 +73,7 @@ function calcResults() {
         type="text"
         id="{stagedMargin.dptName}"
         name="{stagedMargin.dptName}"
-        bind:this="{stagedMargin.dfltMrg}" />
+        bind:value="{stagedMargin.dfltMrg}" />
     </div>
   {/each}
   <div style="text-align:center">
