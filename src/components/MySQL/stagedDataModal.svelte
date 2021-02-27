@@ -66,14 +66,14 @@ function calcResults() {
 {#if $stagingData[0].stagingDataResponse !== null}
   {#each Object.values($stagingData[0].stagingDataResponse.stagedMargins) as stagedMargin}
     <div style="text-align:center;">
-      <label for="{stagedMargin}">{stagedMargin}</label>
+      <label for="{stagedMargin.dptName}">{stagedMargin.dptName}</label>
     </div>
     <div style="text-align:center">
       <input
         type="text"
-        id="{stagedMargin}"
-        name="{stagedMargin}"
-        bind:this="{stagedMargin}" />
+        id="{stagedMargin.dptName}"
+        name="{stagedMargin.dptName}"
+        bind:this="{stagedMargin.dfltMrg}" />
     </div>
   {/each}
   <div style="text-align:center">
