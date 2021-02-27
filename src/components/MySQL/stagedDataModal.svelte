@@ -64,7 +64,7 @@ function calcResults() {
 </script>
 
 {#if $stagingData[0].stagingDataResponse !== null}
-  {#each Object.keys($stagingData[0].stagingDataResponse.stagedMargins) as stagedMargin}
+  {#each $stagingData[0].stagingDataResponse.stagedMargins.dfltMrg as stagedMargin}
     <div style="text-align:center;">
       <label for="{stagedMargin}">{stagedMargin}</label>
     </div>
