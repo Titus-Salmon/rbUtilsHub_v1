@@ -40,6 +40,10 @@ export async function post(req, res, next) {
   console.log(`ediVendorName==> ${ediVendorName}`)
   //^//here we are doing some regex & js "split" magic to extract the "catalog" name from the nej table name we're loading (nejTableNameYYYMMDD):
 
+  //v//regex to remove backslashes from wellnessMargins column
+  let regex2 = /(\\)/g
+  //^//regex to remove backslashes from wellnessMargins column
+
   connection.query(`
   SHOW COLUMNS FROM ${tableNameToLoad};
   SELECT * FROM rainbowcat WHERE ediName = '${ediVendorName}';
@@ -60,7 +64,9 @@ export async function post(req, res, next) {
       ongDisco_Rtl = rainbowCatRows[0]['ongDscRtl']
       eaNumDivide = rainbowCatRows[0]['EA_Num_divide']
       csNumDivide = rainbowCatRows[0]['CS_Num_divide']
-      vndrWllnssMrgns = JSON.parse(`${rainbowCatRows[0]['wellnessMargins']}`)
+      vndrWllnssMrgns = rainbowCatRows[0]['wellnessMargins']
+      vndrWllnssMrgns.replace(regex2, '') //get rid of backslashes that escape the quotes in this column
+      vndrWllnssMrgns = JSON.parse(`${vndrWllnssMrgns}`)
 
       for (let i = 0; i < defaultMargArr.length; i++) {
         for (let j = 0; j < Object.keys(vndrWllnssMrgns).length; j++) {
