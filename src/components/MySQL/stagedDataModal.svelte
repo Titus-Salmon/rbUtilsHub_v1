@@ -65,7 +65,6 @@ function calcResults() {
 
 {#if $stagingData[0].stagingDataResponse !== null}
   {#each Object.keys($stagingData[0].stagingDataResponse.stagedMargins) as stagedMargin}
-    <th>{columnHeading}</th>
     <div style="text-align:center;">
       <label for="{stagedMargin}">{stagedMargin}</label>
     </div>
@@ -77,10 +76,12 @@ function calcResults() {
         bind:this="{stagedMargin}" />
     </div>
   {/each}
+  <div style="text-align:center">
+    <button on:click="{calcResults}">calcResults</button>
+  </div>
 {/if}
 
-<div style="padding: 0 1rem">
-  <!-- //////////////staged margins//////////////////////////// -->
+<!-- <div style="padding: 0 1rem">
   <div style="text-align:center;">
     <label for="beerAlcMarg">Table Name</label>
   </div>
@@ -91,8 +92,7 @@ function calcResults() {
       name="beerAlcMarg"
       bind:this="{beerAlcMarg}" />
   </div>
-  <!-- //////////////button//////////////////////////// -->
   <div style="text-align:center">
     <button on:click="{calcResults}">calcResults</button>
   </div>
-</div>
+</div> -->
