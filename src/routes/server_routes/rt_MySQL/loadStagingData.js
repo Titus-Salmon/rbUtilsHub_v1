@@ -78,9 +78,10 @@ export async function post(req, res, next) {
             if (defaultMargArr[i]['dfltMrg'] !== Object.values(vndrWllnssMrgns_parsed)[j]) {
               //use vendor-specific wellness margin
               //replace default value in stagedMargArr with vendor-specific value
+              // let replacementMarg['dptName'] = 
               let replacementMarg = {
-                "dptName": `${Object.keys(vndrWllnssMrgns_parsed)[j]},
-                "dfltMrg":${Object.values(vndrWllnssMrgns_parsed)[j]}`
+                "dptName": `${Object.keys(vndrWllnssMrgns_parsed)[j]}`,
+                "dfltMrg": `${Object.values(vndrWllnssMrgns_parsed)[j]}`
               }
               stagedMargArr.splice(i, 1, replacementMarg)
             }
