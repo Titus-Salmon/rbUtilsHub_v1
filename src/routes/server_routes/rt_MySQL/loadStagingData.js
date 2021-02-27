@@ -83,15 +83,16 @@ export async function post(req, res, next) {
 
     }
   }).on('end', function () {
-    res.json({
-      tableNameToLoad: tableNameToLoad,
-      loadErrors: loadErrors,
-      ongDisco_WS_dcml: ongDisco_WS / 100,
-      ongDisco_Rtl_dcml: ongDisco_Rtl / 100,
-      marginProfile: JSON.parse(`${marginProfile}`),
-      eaNumDivide: eaNumDivide,
-      csNumDivide: csNumDivide,
-      stagedMargArr: stagedMargArr
-    })
+    console.log(`whats going on here`)
+    // res.json({
+    //   tableNameToLoad: tableNameToLoad,
+    //   loadErrors: loadErrors,
+    //   ongDisco_WS_dcml: ongDisco_WS / 100,
+    //   ongDisco_Rtl_dcml: ongDisco_Rtl / 100,
+    //   marginProfile: JSON.parse(`${marginProfile}`),
+    //   eaNumDivide: eaNumDivide,
+    //   csNumDivide: csNumDivide,
+    //   stagedMargArr: stagedMargArr
+    // })
   })
 }
