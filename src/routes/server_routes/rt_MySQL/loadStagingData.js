@@ -15,14 +15,22 @@ console.log(`defaultMargArr[0]['dptName']==> ${defaultMargArr[0]['dptName']}`)
 console.log(`defaultMargArr[0]['dptNumb']==> ${defaultMargArr[0]['dptNumb']}`)
 console.log(`defaultMargArr[0]['dfltMrg']==> ${defaultMargArr[0]['dfltMrg']}`)
 
+let ongDisco_WS
+let ongDisco_Rtl
+let marginProfile
+let eaNumDivide
+let csNumDivide
+let stagedMargArr
+
 export async function post(req, res, next) {
 
   let loadErrors = []
+  let stagedMargArr = []
 
   let tableNameToLoad = req.body.tableName
   console.log(`req.body.tableName==> ${req.body.tableName}`)
 
-  //here we are doing some regex & js "split" magic to extract the "catalog" name from the nej table name we're loading (nejTableNameYYYMMDD):
+  //v//here we are doing some regex & js "split" magic to extract the "catalog" name from the nej table name we're loading (nejTableNameYYYMMDD):
   let regex1 = /(\d+)/g
   let vendorNameSplit1 = tableNameToLoad.split('nej')
   let vendorNameSplit2 = vendorNameSplit1[1]
@@ -30,6 +38,7 @@ export async function post(req, res, next) {
   let vendorName = vendorNameSplit3[0]
   let ediVendorName = `EDI-${vendorName.toUpperCase()}`
   console.log(`ediVendorName==> ${ediVendorName}`)
+  //^//here we are doing some regex & js "split" magic to extract the "catalog" name from the nej table name we're loading (nejTableNameYYYMMDD):
 
   connection.query(`
   SHOW COLUMNS FROM ${tableNameToLoad};
@@ -47,22 +56,33 @@ export async function post(req, res, next) {
       let rainbowCatRows = rows[1]
       console.log(`JSON.stringify(loadedTableRows)==> ${JSON.stringify(loadedTableRows)}`)
       console.log(`JSON.stringify(rainbowCatRows[0])==> ${JSON.stringify(rainbowCatRows[0])}`)
-      let discoToApplyCarryOver_WS = rainbowCatRows[0]['ongDscWS']
-      let discoToApplyCarryOver_Rtl = rainbowCatRows[0]['ongDscRtl']
-      let marginProfile = rainbowCatRows[0]['wellnessMargins']
-      let eaNumDivide = rainbowCatRows[0]['EA_Num_divide']
-      let csNumDivide = rainbowCatRows[0]['CS_Num_divide']
+      ongDisco_WS = rainbowCatRows[0]['ongDscWS']
+      ongDisco_Rtl = rainbowCatRows[0]['ongDscRtl']
+      eaNumDivide = rainbowCatRows[0]['EA_Num_divide']
+      csNumDivide = rainbowCatRows[0]['CS_Num_divide']
+      vndrWllnssMrgns = JSON.parse(`${rainbowCatRows[0]['wellnessMargins']}`)
 
-      res.json({
-        tableNameToLoad: tableNameToLoad,
-        tableLoadError: loadErrors,
-        ongDisco_WS: discoToApplyCarryOver_WS / 100,
-        ongDisco_Rtl: discoToApplyCarryOver_Rtl / 100,
-        marginProfile: JSON.parse(`${marginProfile}`),
-        eaNumDivide: eaNumDivide,
-        csNumDivide: csNumDivide,
-        beerAlcMarg: beerAlcMarg
-      })
+      for (let i = 0; i < defaultMargArr.length; i++) {
+        for (let j = 0; j < Object.keys(vndrWllnssMrgns).length; j++) {
+          if (defaultMarg[i]['dptName'] === Object.keys(vndrWllnssMrgns)[j]) {
+            console.log(`defaultMarg[i]['dfltMrg']==> ${defaultMarg[i]['dfltMrg']}`)
+            console.log(`Object.keys(vndrWllnssMrgns)[j]==> ${Object.keys(vndrWllnssMrgns)[j]}`)
+          }
+        }
+
+      }
+
     }
-  })
+  }).on('end', function () {
+    res.json({
+      tableNameToLoad: tableNameToLoad,
+      loadErrors: loadErrors,
+      ongDisco_WS_dcml: ongDisco_WS / 100,
+      ongDisco_Rtl_dcml: ongDisco_Rtl / 100,
+      marginProfile: JSON.parse(`${marginProfile}`),
+      eaNumDivide: eaNumDivide,
+      csNumDivide: csNumDivide,
+      stagedMargArr: stagedMargArr
+    })
+  }).then()
 }
