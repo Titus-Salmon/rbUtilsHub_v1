@@ -40,10 +40,6 @@ export async function post(req, res, next) {
   console.log(`ediVendorName==> ${ediVendorName}`)
   //^//here we are doing some regex & js "split" magic to extract the "catalog" name from the nej table name we're loading (nejTableNameYYYMMDD):
 
-  //v//regex to remove backslashes from wellnessMargins column
-  let regex2 = /(\\)/g
-  //^//regex to remove backslashes from wellnessMargins column
-
   connection.query(`
   SHOW COLUMNS FROM ${tableNameToLoad};
   SELECT * FROM rainbowcat WHERE ediName = '${ediVendorName}';
@@ -66,20 +62,18 @@ export async function post(req, res, next) {
       let csNumDivide = rainbowCatRows[0]['CS_Num_divide']
       let vndrWllnssMrgns = rainbowCatRows[0]['wellnessMargins']
       console.log(`vndrWllnssMrgns==> ${vndrWllnssMrgns}`)
-      // vndrWllnssMrgns.replace(regex2, '') //get rid of backslashes that escape the quotes in this column
       let vndrWllnssMrgns_parsed = JSON.parse(`${vndrWllnssMrgns}`)
       console.log(`Object.keys(vndrWllnssMrgns_parsed)==> ${Object.keys(vndrWllnssMrgns_parsed)}`)
       console.log(`Object.values(vndrWllnssMrgns_parsed)==> ${Object.values(vndrWllnssMrgns_parsed)}`)
 
-      // for (let i = 0; i < defaultMargArr.length; i++) {
-      //   for (let j = 0; j < Object.keys(vndrWllnssMrgns).length; j++) {
-      //     if (defaultMarg[i]['dptName'] === Object.keys(vndrWllnssMrgns)[j]) {
-      //       console.log(`defaultMarg[i]['dfltMrg']==> ${defaultMarg[i]['dfltMrg']}`)
-      //       console.log(`Object.keys(vndrWllnssMrgns)[j]==> ${Object.keys(vndrWllnssMrgns)[j]}`)
-      //     }
-      //   }
-
-      // }
+      for (let i = 0; i < defaultMargArr.length; i++) {
+        for (let j = 0; j < Object.keys(vndrWllnssMrgns_parsed).length; j++) {
+          if (defaultMarg[i]['dptName'] === Object.keys(vndrWllnssMrgns_parsed)[j]) {
+            console.log(`defaultMarg[i]['dfltMrg']==> ${defaultMarg[i]['dfltMrg']}`)
+            console.log(`Object.keys(vndrWllnssMrgns_parsed)[j]==> ${Object.keys(vndrWllnssMrgns_parsed)[j]}`)
+          }
+        }
+      }
 
     }
   }).on('end', function () {
