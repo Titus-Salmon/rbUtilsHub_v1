@@ -67,16 +67,18 @@ export async function post(req, res, next) {
       vndrWllnssMrgns = rainbowCatRows[0]['wellnessMargins']
       vndrWllnssMrgns.replace(regex2, '') //get rid of backslashes that escape the quotes in this column
       vndrWllnssMrgns = JSON.parse(`${vndrWllnssMrgns}`)
+      console.log(`Object.keys(vndrWllnssMrgns)==> ${Object.keys(vndrWllnssMrgns)}`)
+      console.log(`Object.values(vndrWllnssMrgns)==> ${Object.values(vndrWllnssMrgns)}`)
 
-      for (let i = 0; i < defaultMargArr.length; i++) {
-        for (let j = 0; j < Object.keys(vndrWllnssMrgns).length; j++) {
-          if (defaultMarg[i]['dptName'] === Object.keys(vndrWllnssMrgns)[j]) {
-            console.log(`defaultMarg[i]['dfltMrg']==> ${defaultMarg[i]['dfltMrg']}`)
-            console.log(`Object.keys(vndrWllnssMrgns)[j]==> ${Object.keys(vndrWllnssMrgns)[j]}`)
-          }
-        }
+      // for (let i = 0; i < defaultMargArr.length; i++) {
+      //   for (let j = 0; j < Object.keys(vndrWllnssMrgns).length; j++) {
+      //     if (defaultMarg[i]['dptName'] === Object.keys(vndrWllnssMrgns)[j]) {
+      //       console.log(`defaultMarg[i]['dfltMrg']==> ${defaultMarg[i]['dfltMrg']}`)
+      //       console.log(`Object.keys(vndrWllnssMrgns)[j]==> ${Object.keys(vndrWllnssMrgns)[j]}`)
+      //     }
+      //   }
 
-      }
+      // }
 
     }
   }).on('end', function () {
@@ -90,5 +92,5 @@ export async function post(req, res, next) {
       csNumDivide: csNumDivide,
       stagedMargArr: stagedMargArr
     })
-  }).then()
+  })
 }
