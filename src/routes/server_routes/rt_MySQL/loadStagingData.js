@@ -60,11 +60,11 @@ export async function post(req, res, next) {
       let rainbowCatRows = rows[1]
       console.log(`JSON.stringify(loadedTableRows)==> ${JSON.stringify(loadedTableRows)}`)
       console.log(`JSON.stringify(rainbowCatRows[0])==> ${JSON.stringify(rainbowCatRows[0])}`)
-      ongDisco_WS = rainbowCatRows[0]['ongDscWS']
-      ongDisco_Rtl = rainbowCatRows[0]['ongDscRtl']
-      eaNumDivide = rainbowCatRows[0]['EA_Num_divide']
-      csNumDivide = rainbowCatRows[0]['CS_Num_divide']
-      vndrWllnssMrgns = rainbowCatRows[0]['wellnessMargins']
+      let ongDisco_WS = rainbowCatRows[0]['ongDscWS']
+      let ongDisco_Rtl = rainbowCatRows[0]['ongDscRtl']
+      let eaNumDivide = rainbowCatRows[0]['EA_Num_divide']
+      let csNumDivide = rainbowCatRows[0]['CS_Num_divide']
+      let vndrWllnssMrgns = rainbowCatRows[0]['wellnessMargins']
       console.log(`vndrWllnssMrgns==> ${vndrWllnssMrgns}`)
       // vndrWllnssMrgns.replace(regex2, '') //get rid of backslashes that escape the quotes in this column
       // vndrWllnssMrgns = JSON.parse(`${vndrWllnssMrgns}`)
