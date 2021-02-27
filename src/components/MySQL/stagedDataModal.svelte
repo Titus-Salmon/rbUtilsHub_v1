@@ -71,7 +71,7 @@ function calcResults() {
     {#if stagedMargin.nonDefaultMargin}
       <div style="text-align:center">
         <input
-          style="background-color: red; color: black"
+          style="background-color: #ff6666; color: black"
           type="text"
           id="{stagedMargin.dptName}"
           name="{stagedMargin.dptName}"
