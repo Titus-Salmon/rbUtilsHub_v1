@@ -5,7 +5,7 @@ const connection = mysql.createConnection({
   password: process.env.RB_PW,
   database: process.env.RB_DB,
   multipleStatements: true,
-  debug: true
+  // debug: true
 })
 
 import defaultMargArr from '../../../libT0d/defaultMargs/defaultMargs';
