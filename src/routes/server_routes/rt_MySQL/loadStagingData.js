@@ -65,10 +65,11 @@ export async function post(req, res, next) {
       eaNumDivide = rainbowCatRows[0]['EA_Num_divide']
       csNumDivide = rainbowCatRows[0]['CS_Num_divide']
       vndrWllnssMrgns = rainbowCatRows[0]['wellnessMargins']
-      vndrWllnssMrgns.replace(regex2, '') //get rid of backslashes that escape the quotes in this column
-      vndrWllnssMrgns = JSON.parse(`${vndrWllnssMrgns}`)
-      console.log(`Object.keys(vndrWllnssMrgns)==> ${Object.keys(vndrWllnssMrgns)}`)
-      console.log(`Object.values(vndrWllnssMrgns)==> ${Object.values(vndrWllnssMrgns)}`)
+      console.log(`vndrWllnssMrgns==> ${vndrWllnssMrgns}`)
+      // vndrWllnssMrgns.replace(regex2, '') //get rid of backslashes that escape the quotes in this column
+      // vndrWllnssMrgns = JSON.parse(`${vndrWllnssMrgns}`)
+      // console.log(`Object.keys(vndrWllnssMrgns)==> ${Object.keys(vndrWllnssMrgns)}`)
+      // console.log(`Object.values(vndrWllnssMrgns)==> ${Object.values(vndrWllnssMrgns)}`)
 
       // for (let i = 0; i < defaultMargArr.length; i++) {
       //   for (let j = 0; j < Object.keys(vndrWllnssMrgns).length; j++) {
