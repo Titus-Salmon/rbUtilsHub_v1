@@ -67,9 +67,9 @@ export async function post(req, res, next) {
       let vndrWllnssMrgns = rainbowCatRows[0]['wellnessMargins']
       console.log(`vndrWllnssMrgns==> ${vndrWllnssMrgns}`)
       // vndrWllnssMrgns.replace(regex2, '') //get rid of backslashes that escape the quotes in this column
-      // vndrWllnssMrgns = JSON.parse(`${vndrWllnssMrgns}`)
-      // console.log(`Object.keys(vndrWllnssMrgns)==> ${Object.keys(vndrWllnssMrgns)}`)
-      // console.log(`Object.values(vndrWllnssMrgns)==> ${Object.values(vndrWllnssMrgns)}`)
+      vndrWllnssMrgns_parsed = JSON.parse(`${vndrWllnssMrgns_parsed}`)
+      console.log(`Object.keys(vndrWllnssMrgns_parsed)==> ${Object.keys(vndrWllnssMrgns_parsed)}`)
+      console.log(`Object.values(vndrWllnssMrgns_parsed)==> ${Object.values(vndrWllnssMrgns_parsed)}`)
 
       // for (let i = 0; i < defaultMargArr.length; i++) {
       //   for (let j = 0; j < Object.keys(vndrWllnssMrgns).length; j++) {
