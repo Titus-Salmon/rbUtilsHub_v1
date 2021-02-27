@@ -68,8 +68,8 @@ export async function post(req, res, next) {
 
       for (let i = 0; i < defaultMargArr.length; i++) {
         for (let j = 0; j < Object.keys(vndrWllnssMrgns_parsed).length; j++) {
-          if (defaultMarg[i]['dptName'] === Object.keys(vndrWllnssMrgns_parsed)[j]) {
-            console.log(`defaultMarg[i]['dfltMrg']==> ${defaultMarg[i]['dfltMrg']}`)
+          if (defaultMargArr[i]['dptName'] === Object.keys(vndrWllnssMrgns_parsed)[j]) {
+            console.log(`defaultMargArr[i]['dfltMrg']==> ${defaultMargArr[i]['dfltMrg']}`)
             console.log(`Object.keys(vndrWllnssMrgns_parsed)[j]==> ${Object.keys(vndrWllnssMrgns_parsed)[j]}`)
           }
         }
