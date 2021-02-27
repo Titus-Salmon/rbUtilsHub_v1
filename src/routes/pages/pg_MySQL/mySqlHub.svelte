@@ -18,6 +18,7 @@ import CreateTableModal from "../../../components/MySQL/createTableModal.svelte"
 import PopRbTableModal from "../../../components/MySQL/popRbTableModal.svelte";
 import DeleteRbTableModal from "../../../components/MySQL/deleteRbTableModal.svelte";
 import LoadstagingDataModal from "../../../components/MySQL/loadstagingDataModal.svelte";
+import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
 </script>
 
 <style>
@@ -61,6 +62,7 @@ import LoadstagingDataModal from "../../../components/MySQL/loadstagingDataModal
     <p style="text-align:center; color: var(--element6)">
       {JSON.stringify($stagingData[0].stagingDataResponse)}
     </p>
+    <StagedDataModal />
   {/if}
 </div>
 

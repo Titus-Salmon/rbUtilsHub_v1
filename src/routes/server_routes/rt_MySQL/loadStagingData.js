@@ -25,7 +25,8 @@ let stagedMargArr
 export async function post(req, res, next) {
 
   let loadErrors = []
-  let stagedMargArr = []
+  let stagedMargArr = defaultMargArr //initially set the staged margins array to the same as the default margins array
+  //but change the staged margins array as necessary, based on vendor-specific margins by splicing below
 
   let tableNameToLoad = req.body.tableName
   console.log(`req.body.tableName==> ${req.body.tableName}`)
@@ -71,6 +72,14 @@ export async function post(req, res, next) {
           if (defaultMargArr[i]['dptName'] === Object.keys(vndrWllnssMrgns_parsed)[j]) {
             console.log(`defaultMargArr[i]['dfltMrg']==> ${defaultMargArr[i]['dfltMrg']}`)
             console.log(`Object.keys(vndrWllnssMrgns_parsed)[j]==> ${Object.keys(vndrWllnssMrgns_parsed)[j]}`)
+            //need to use wellness margins from rainbowcat, if they differ from the defaults
+            //put staged margins in stagedMargArr
+            //v//if default wellness margin !== vendor-specific wellness margin
+            if (defaultMargArr[i]['dfltMrg'] !== Object.values(vndrWllnssMrgns_parsed)[j]) {
+              //use vendor-specific wellness margin
+              //replace default value in stagedMargArr with vendor-specific value
+              stagedMargArr.splice(stagedMargArr[i], 1, Object.values(vndrWllnssMrgns_parsed)[j])
+            }
           }
         }
       }
@@ -86,7 +95,10 @@ export async function post(req, res, next) {
     //   marginProfile: JSON.parse(`${marginProfile}`),
     //   eaNumDivide: eaNumDivide,
     //   csNumDivide: csNumDivide,
-    //   stagedMargArr: stagedMargArr
+    //   stagedMargArr: stagedMargArr,
     // })
+    res.json({
+      stagedMargins: stagedMargArr
+    })
   })
 }

@@ -94,6 +94,11 @@ let defaultMargArr = [{
     "dfltMrg": "45"
   },
   {
+    "dptName": "Pet Supplies",
+    "dptNumb": "183",
+    "dfltMrg": "38"
+  },
+  {
     "dptName": "Refrigerated",
     "dptNumb": "155",
     "dfltMrg": "33"
