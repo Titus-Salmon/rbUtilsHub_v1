@@ -4,7 +4,7 @@ import stagingData from "../../stores/stagingData/st_stagingData.js";
 // console.log(`JSON.stringify(defaultMargArr[0])==> ${JSON.stringify(defaultMargArr[0])}`)
 // console.log(`defaultMargArr[0]['dptName']==> ${defaultMargArr[0]['dptName']}`)
 // console.log(`defaultMargArr[0]['dptNumb']==> ${defaultMargArr[0]['dptNumb']}`)
-// console.log(`defaultMargArr[0]['dfltMrg']==> ${defaultMargArr[0]['dfltMrg']}`)
+// console.log(`defaultMargArr[0]['margin']==> ${defaultMargArr[0]['margin']}`)
 let tableName;
 let calcResultsResponse;
 // let beerAlcMarg,
@@ -75,7 +75,7 @@ function calcResults() {
           type="text"
           id="{stagedMargin.dptName}"
           name="{stagedMargin.dptName}"
-          bind:value="{stagedMargin.dfltMrg}" />
+          bind:value="{stagedMargin.margin}" />
       </div>
     {:else}
       <div style="text-align:center">
@@ -83,7 +83,7 @@ function calcResults() {
           type="text"
           id="{stagedMargin.dptName}"
           name="{stagedMargin.dptName}"
-          bind:value="{stagedMargin.dfltMrg}" />
+          bind:value="{stagedMargin.margin}" />
       </div>
     {/if}
   {/each}
