@@ -38,9 +38,12 @@ function calcResults() {
 
 {#if $stagingData[0].stagingDataResponse !== null}
   <div class="flexbox" style="align-items: flex-start">
-    <div>
+    <div style="padding: 0 1rem">
       <!--v-- staged margins ------------------------------------------------------------------------------------->
       {#if $stagingData[0].stagingDataResponse.stagedMargins}
+        <div style="text-align:center">
+          <p>Staged Margins</p>
+        </div>
         {#each Object.values($stagingData[0].stagingDataResponse.stagedMargins) as stagedMargin}
           <div style="text-align:center;">
             <label for="{stagedMargin.dptName}">{stagedMargin.dptName}</label>
@@ -68,7 +71,7 @@ function calcResults() {
       <!--^-- staged margins ------------------------------------------------------------------------------------->
     </div>
     <!---------------------------------------------------------------------------------------------------------------------------------->
-    <div>
+    <div style="padding: 0 1rem">
       <!--v-- staged charms - grocery------------------------------------------------------------------------------------->
       <!--v-- staged charms - grocery lower cutoffs ------------------------------------------------------------------------------------->
 
@@ -145,7 +148,7 @@ function calcResults() {
       <!--^-- staged charms  - grocery------------------------------------------------------------------------------------->
     </div>
     <!---------------------------------------------------------------------------------------------------------------------------------->
-    <div>
+    <div style="padding: 0 1rem">
       <!--v-- staged charms - wellness------------------------------------------------------------------------------------->
       <!--v-- staged charms - wellness lower cutoffs ------------------------------------------------------------------------------------->
 
