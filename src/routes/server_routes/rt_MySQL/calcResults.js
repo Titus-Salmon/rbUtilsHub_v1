@@ -27,7 +27,7 @@ export async function post(req, res, next) {
 
   connection.query(
     `SELECT * FROM ${stagedTableName} 
-    WHERE dptName != 'RB_CLEANUP' GROUP BY inv_ScanCode,
+    WHERE dpt_name != 'RB_CLEANUP' GROUP BY inv_ScanCode,
     inv_lastcost ORDER BY
     dpt_name ASC, pi1_description ASC, pi1_description ASC;
     `,
