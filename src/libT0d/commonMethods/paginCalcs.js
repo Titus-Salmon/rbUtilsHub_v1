@@ -5,7 +5,7 @@ async function paginCalcs(queryResArr) { //we are hard-coding page length to 100
 }
 
 export default {
-  paginCalcs,
   totalPages,
-  queryResArr
+  queryResArr,
+  paginCalcs
 }
