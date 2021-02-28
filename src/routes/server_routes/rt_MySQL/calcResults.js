@@ -18,6 +18,7 @@ export async function post(req, res, next) {
   // let tableName = req.body.data
 
   let stagedTableName = req.body.tableName
+  console.log(`JSON.stringify(req.body)==> ${JSON.stringify(req.body)}`)
   console.log(`stagedTableName==> ${stagedTableName}`)
 
   // //v//retrieve info from database table to display in DOM table/////////////////////////////////////////////////////////
