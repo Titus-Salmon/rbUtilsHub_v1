@@ -9,7 +9,6 @@ import queryResArrCache from "../../../nodeCacheStuff/cache1"
 
 import {
   totalPages,
-  queryResArr,
   paginCalcs
 } from "../../../libT0d/commonMethods/paginCalcs"
 
@@ -74,7 +73,7 @@ export async function post(req, res, next) {
     if (err) throw err
     console.log(`rows.length==>${rows.length}`)
     console.log('rows[0]==>', rows[0])
-    rbDBqueryResults(rows).then(paginCalcs(totalPages, queryResArr)).then(() => {
+    rbDBqueryResults(rows).then(paginCalcs(queryResArr)).then(() => {
       res.json({
         queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
         queryResArr_1stPage: queryResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
