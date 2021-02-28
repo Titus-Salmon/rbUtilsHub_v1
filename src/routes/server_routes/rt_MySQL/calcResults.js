@@ -8,6 +8,11 @@ const connection = mysql.createConnection({
 })
 
 import {
+  totalPages,
+  paginCalcs
+} from "../../../libT0d/commonMethods/paginCalcs"
+
+import {
   rbDBqueryResults
 } from "../../../libT0d/MySQL/rbDBqueryResults"
 
