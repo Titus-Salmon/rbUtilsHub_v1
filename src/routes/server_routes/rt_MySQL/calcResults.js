@@ -7,8 +7,6 @@ const connection = mysql.createConnection({
   multipleStatements: true //MUST HAVE to make more than 1 sql statement in a single query
 })
 
-import stagingData from "../../../stores/stagingData/st_stagingData";
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////V// ************* PREPARE TO REWRITE THE FUCK OUT OF THIS ***************** //////////////////////////////////////
 export async function post(req, res, next) {
@@ -19,7 +17,7 @@ export async function post(req, res, next) {
   // console.log(`req.body.data==> ${req.body.data}`)
   // let tableName = req.body.data
 
-  let stagedTableName = stagingData[0].tableName
+  let stagedTableName = req.body.data
   console.log(`stagedTableName==> ${stagedTableName}`)
 
   // //v//retrieve info from database table to display in DOM table/////////////////////////////////////////////////////////

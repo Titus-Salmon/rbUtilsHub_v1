@@ -16,7 +16,7 @@ function calcResults() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      tableName: tableName.value,
+      tableName: $stagingData[0].tableName,
     }),
   })
     .then((calcResultsResult) => calcResultsResult.json())
