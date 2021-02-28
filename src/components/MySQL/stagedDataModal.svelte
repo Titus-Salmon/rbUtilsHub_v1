@@ -226,8 +226,11 @@ function calcResults() {
     </div>
     <!------------------------------------------------------------------------------------------------------------------------>
     <div>
-      <!-- ongoing WS discos -->
+      <!-- ongoing WS discos ------------------------------------------------------------------>
       {#if $stagingData[0].stagingDataResponse}
+        <div style="text-align:center">
+          <p>Ongoing Discos</p>
+        </div>
         <div style="text-align:center;">
           <label for="ongDisco_WS">ongDisco_WS</label>
         </div>
@@ -238,9 +241,7 @@ function calcResults() {
             name="ongDisco_WS"
             bind:value="{$stagingData[0].stagingDataResponse.ongDisco_WS}" />
         </div>
-      {/if}
-      <!-- ongoing Rtl discos -->
-      {#if $stagingData[0].stagingDataResponse}
+        <!-- ongoing Rtl discos ------------------------------------------------------------------>
         <div style="text-align:center;">
           <label for="ongDisco_Rtl">ongDisco_Rtl</label>
         </div>
@@ -249,11 +250,12 @@ function calcResults() {
             type="text"
             id="ongDisco_Rtl"
             name="ongDisco_Rtl"
-            bind:value="{$stagingData[0].stagingDataResponse}" />
+            bind:value="{$stagingData[0].stagingDataResponse.ongDisco_Rtl}" />
         </div>
-      {/if}
-      <!-- divide cost by EA-## -->
-      {#if $stagingData[0].stagingDataResponse.eaNumDivide}
+        <div style="text-align:center">
+          <p>Divide Cost By EA/CS</p>
+        </div>
+        <!-- divide cost by EA-## ------------------------------------------------------------------>
         <div style="text-align:center;">
           <label for="eaNumDivide">eaNumDivide</label>
         </div>
@@ -262,11 +264,9 @@ function calcResults() {
             type="text"
             id="eaNumDivide"
             name="eaNumDivide"
-            bind:value="{$stagingData[0].stagingDataResponse}" />
+            bind:value="{$stagingData[0].stagingDataResponse.eaNumDivide}" />
         </div>
-      {/if}
-      <!-- divide cost by CS-## -->
-      {#if $stagingData[0].stagingDataResponse.csNumDivide}
+        <!-- divide cost by CS-## ------------------------------------------------------------------>
         <div style="text-align:center;">
           <label for="csNumDivide">csNumDivide</label>
         </div>
@@ -275,7 +275,7 @@ function calcResults() {
             type="text"
             id="csNumDivide"
             name="csNumDivide"
-            bind:value="{$stagingData[0].stagingDataResponse}" />
+            bind:value="{$stagingData[0].stagingDataResponse.csNumDivide}" />
         </div>
       {/if}
     </div>
