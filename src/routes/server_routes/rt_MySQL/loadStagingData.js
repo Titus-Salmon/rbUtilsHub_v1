@@ -17,6 +17,8 @@ console.log(`defaultMargArr[0]['margin']==> ${defaultMargArr[0]['margin']}`)
 
 import marginStager from "../../../libT0d/stagingMethods/marginStager"
 
+import charmProfiles from "../../../libT0d/charmProfiles/charmProfiles"
+
 let ongDisco_WS
 let ongDisco_Rtl
 let marginProfile
@@ -69,29 +71,6 @@ export async function post(req, res, next) {
       console.log(`Object.keys(vndrWllnssMrgns_parsed)==> ${Object.keys(vndrWllnssMrgns_parsed)}`)
       console.log(`Object.values(vndrWllnssMrgns_parsed)==> ${Object.values(vndrWllnssMrgns_parsed)}`)
 
-      // for (let i = 0; i < defaultMargArr.length; i++) {
-      //   for (let j = 0; j < Object.keys(vndrWllnssMrgns_parsed).length; j++) {
-      //     if (defaultMargArr[i]['dptName'] === Object.keys(vndrWllnssMrgns_parsed)[j]) {
-      //       console.log(`defaultMargArr[i]['margin']==> ${defaultMargArr[i]['margin']}`)
-      //       console.log(`Object.keys(vndrWllnssMrgns_parsed)[j]==> ${Object.keys(vndrWllnssMrgns_parsed)[j]}`)
-      //       //need to use wellness margins from rainbowcat, if they differ from the defaults
-      //       //put staged margins in stagedMargArr
-      //       //v//if default wellness margin !== vendor-specific wellness margin
-      //       if (defaultMargArr[i]['margin'] !== Object.values(vndrWllnssMrgns_parsed)[j]) {
-      //         //use vendor-specific wellness margin
-      //         //replace default value in stagedMargArr with vendor-specific value
-      //         // let replacementMarg['dptName'] = 
-      //         let replacementMarg = {
-      //           "dptName": `${Object.keys(vndrWllnssMrgns_parsed)[j]}`,
-      //           "margin": `${Object.values(vndrWllnssMrgns_parsed)[j]}`,
-      //           "nonDefaultMargin": "nonDefaultMargin"
-      //         }
-      //         stagedMargArr.splice(i, 1, replacementMarg)
-      //       }
-      //     }
-      //   }
-      // }
-
       marginStager(defaultMargArr, vndrWllnssMrgns_parsed, stagedMargArr)
 
       for (let k = 0; k < stagedMargArr.length; k++) {
@@ -100,7 +79,8 @@ export async function post(req, res, next) {
     }
   }).on('end', function () {
     res.json({
-      stagedMargins: stagedMargArr
+      stagedMargins: stagedMargArr,
+      charmProfiles: charmProfiles
     })
   })
 }
