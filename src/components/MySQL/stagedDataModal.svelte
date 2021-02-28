@@ -227,7 +227,7 @@ function calcResults() {
     <!------------------------------------------------------------------------------------------------------------------------>
     <div>
       <!-- ongoing WS discos -->
-      {#if $stagingData[0].stagingDataResponse.ongDisco_WS}
+      {#if $stagingData[0].stagingDataResponse}
         <div style="text-align:center;">
           <label for="ongDisco_WS">ongDisco_WS</label>
         </div>
@@ -240,7 +240,7 @@ function calcResults() {
         </div>
       {/if}
       <!-- ongoing Rtl discos -->
-      {#if $stagingData[0].stagingDataResponse.ongDisco_Rtl}
+      {#if $stagingData[0].stagingDataResponse}
         <div style="text-align:center;">
           <label for="ongDisco_Rtl">ongDisco_Rtl</label>
         </div>
@@ -249,7 +249,7 @@ function calcResults() {
             type="text"
             id="ongDisco_Rtl"
             name="ongDisco_Rtl"
-            bind:value="{$stagingData[0].stagingDataResponse.ongDisco_Rtl}" />
+            bind:value="{$stagingData[0].stagingDataResponse}" />
         </div>
       {/if}
       <!-- divide cost by EA-## -->
@@ -262,7 +262,7 @@ function calcResults() {
             type="text"
             id="eaNumDivide"
             name="eaNumDivide"
-            bind:value="{$stagingData[0].stagingDataResponse.eaNumDivide}" />
+            bind:value="{$stagingData[0].stagingDataResponse}" />
         </div>
       {/if}
       <!-- divide cost by CS-## -->
@@ -275,7 +275,7 @@ function calcResults() {
             type="text"
             id="csNumDivide"
             name="csNumDivide"
-            bind:value="{$stagingData[0].stagingDataResponse.csNumDivide}" />
+            bind:value="{$stagingData[0].stagingDataResponse}" />
         </div>
       {/if}
     </div>
