@@ -4,7 +4,7 @@ async function paginCalcs(queryResArr) { //we are hard-coding page length to 100
   totalPages = Math.ceil(queryResArr.length / 100)
 }
 
-export default {
+export {
   totalPages,
   queryResArr,
   paginCalcs

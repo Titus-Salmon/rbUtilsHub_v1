@@ -8,9 +8,9 @@ const connection = mysql.createConnection({
 import queryResArrCache from "../../../nodeCacheStuff/cache1"
 
 import {
-  paginCalcs,
   totalPages,
-  queryResArr
+  queryResArr,
+  paginCalcs
 } from "../../../libT0d/commonMethods/paginCalcs"
 
 export async function post(req, res, next) {
