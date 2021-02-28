@@ -7,7 +7,9 @@ const connection = mysql.createConnection({
   multipleStatements: true //MUST HAVE to make more than 1 sql statement in a single query
 })
 
-import rbDBqueryResults from "../../../libT0d/MySQL/rbDBqueryResults"
+import {
+  rbDBqueryResults
+} from "../../../libT0d/MySQL/rbDBqueryResults"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////V// ************* PREPARE TO REWRITE THE FUCK OUT OF THIS ***************** //////////////////////////////////////
