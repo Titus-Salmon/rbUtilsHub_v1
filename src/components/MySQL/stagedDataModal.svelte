@@ -69,19 +69,19 @@ function calcResults() {
   {#if $stagingData[0].stagingDataResponse.charmProfiles.grocery}
     <div style="text-align:center;">
       <label
-        for="{stagingData[0].stagingDataResponse.charmProfiles.grocery
+        for="{$stagingData[0].stagingDataResponse.charmProfiles.grocery
           .lowerCutoffRqdRtl.name}"
-        >{stagingData[0].stagingDataResponse.charmProfiles.grocery
+        >{$stagingData[0].stagingDataResponse.charmProfiles.grocery
           .lowerCutoffRqdRtl.name}</label>
     </div>
     <div style="text-align:center">
       <input
         type="text"
-        id="{stagingData[0].stagingDataResponse.charmProfiles.grocery
+        id="{$stagingData[0].stagingDataResponse.charmProfiles.grocery
           .lowerCutoffRqdRtl.name}"
-        name="{stagingData[0].stagingDataResponse.charmProfiles.grocery
+        name="{$stagingData[0].stagingDataResponse.charmProfiles.grocery
           .lowerCutoffRqdRtl.name}"
-        bind:value="{stagingData[0].stagingDataResponse.charmProfiles.grocery
+        bind:value="{$stagingData[0].stagingDataResponse.charmProfiles.grocery
           .lowerCutoffRqdRtl.dollars}" />
     </div>
     {#each $stagingData[0].stagingDataResponse.charmProfiles.grocery.lowercutoffCharms as lowercutoffCharmGroc}
