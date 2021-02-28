@@ -74,10 +74,10 @@ const charmProfiles = {
       charmName: "lowerCutoffCharmWell4",
       cents: .49
     }, {
-      charmNanme: "lowerCutoffCharmWell5",
+      charmName: "lowerCutoffCharmWell5",
       cents: .79
     }, {
-      charmNanme: "lowerCutoffCharmWell6",
+      charmName: "lowerCutoffCharmWell6",
       cents: .79
     }, {
       charmName: "lowerCutoffCharmWell7",

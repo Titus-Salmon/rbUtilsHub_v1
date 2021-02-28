@@ -151,7 +151,7 @@ function calcResults() {
 
       {#if $stagingData[0].stagingDataResponse.charmProfiles.wellness}
         <div style="text-align:center">
-          <p>wellness Charm Profile - Lower Cutoffs</p>
+          <p>Wellness Charm Profile - Lower Cutoffs</p>
         </div>
         <div style="text-align:center;">
           <label
@@ -186,7 +186,7 @@ function calcResults() {
 
         <!--v-- staged charms - wellness defaults ------------------------------------------------------------------------------------->
         <div style="text-align:center">
-          <p>wellness Charm Profile - Defaults</p>
+          <p>Wellness Charm Profile - Defaults</p>
         </div>
         <div style="text-align:center;">
           <label
