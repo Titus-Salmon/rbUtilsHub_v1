@@ -32,34 +32,78 @@ const charmProfiles = {
 
     //everything between lowercutoffRqdRtl and uppercutofReqdRtl gets default charms applied
     //^//(double-ckeck that)
-    upperCutoffRqdRtl: 12,
+    upperCutoffRqdRtl: {
+      name: "upperCutoffRqdRtl",
+      dollars: 12
+    },
 
-    defaultCharm1: .29,
-    defaultCharm2: .49,
-    defaultCharm3: .79,
-    defaultCharm4: .99,
+    defaultCharms: [{
+      charmName: "defaultCharm1",
+      cents: .29
+    }, {
+      charmName: "defaultCharm2",
+      cents: .49
+    }, {
+      charmName: "defaultCharm3",
+      cents: .79
+    }, {
+      charmName: "defaultCharm4",
+      cents: .99
+    }]
   },
+
+
   wellness: {
     //everything below lowercutoffRqdRtl gets lowercutoff charms applied
     //^//(double-ckeck that)
-    lowerCutoffRqdRtl: 10,
+    lowerCutoffRqdRtl: {
+      name: "lowerCutoffRqdRtl",
+      dollars: 10
+    },
 
-    lowerCutoffCharm1: .29,
-    lowerCutoffCharm2: .29,
-    lowerCutoffCharm3: .49,
-    lowerCutoffCharm4: .49,
-    lowerCutoffCharm5: .79,
-    lowerCutoffCharm6: .79,
-    lowerCutoffCharm7: .99,
+    lowercutoffCharms: [{
+      charmName: "lowerCutoffCharm1",
+      cents: .29
+    }, {
+      charmName: "lowerCutoffCharm2",
+      cents: .29
+    }, {
+      charmName: "lowerCutoffCharm3",
+      cents: .49
+    }, {
+      charmName: "lowerCutoffCharm4",
+      cents: .49
+    }, {
+      charmNanme: "lowerCutoffCharm5",
+      cents: .79
+    }, {
+      charmNanme: "lowerCutoffCharm6",
+      cents: .79
+    }, {
+      charmName: "lowerCutoffCharm7",
+      cents: .99
+    }],
 
     //everything between lowercutoffRqdRtl and uppercutofReqdRtl gets default charms applied
     //^//(double-ckeck that)
-    upperCutoffRqdRtl: 9999,
+    upperCutoffRqdRtl: {
+      name: "upperCutoffRqdRtl",
+      dollars: 9999
+    },
 
-    defaultCharm1: .49,
-    defaultCharm2: .49,
-    defaultCharm3: .99,
-    defaultCharm4: .99,
+    defaultCharms: [{
+      charmName: "defaultCharm1",
+      cents: .49
+    }, {
+      charmName: "defaultCharm2",
+      cents: .49
+    }, {
+      charmName: "defaultCharm3",
+      cents: .99
+    }, {
+      charmName: "defaultCharm4",
+      cents: .99
+    }],
 
   }
 }
