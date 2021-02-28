@@ -18,14 +18,14 @@ let selected;
     <option value="showTables">showTables</option>
     <option value="spins1">spins1</option>
     <option value="compEdiNhcrt">compEdiNhcrt</option>
-    <option value="calcResults">calcResults</option>
+    <!-- <option value="calcResults">calcResults</option> -->
   </select>
 </div>
 
-{#if $stagingData[0].stagingDataResponse !== null}
+<!-- {#if $stagingData[0].stagingDataResponse !== null}
   {selected === "calcResults"}
   <CalcResultsQueryModal />
-{/if}
+{/if} -->
 
 {#if selected === "nej"}
   <NejQueryModal />
