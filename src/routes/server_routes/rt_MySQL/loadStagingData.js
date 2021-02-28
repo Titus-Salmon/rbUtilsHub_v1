@@ -85,6 +85,7 @@ export async function post(req, res, next) {
       ongDisco_Rtl: ongDisco_Rtl,
       eaNumDivide: eaNumDivide,
       csNumDivide: csNumDivide,
+      stagedTableName: tableNameToLoad
     })
   })
 }
