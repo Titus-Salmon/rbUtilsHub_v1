@@ -224,6 +224,61 @@ function calcResults() {
       {/if}
       <!--^-- staged charms  - wellness------------------------------------------------------------------------------------->
     </div>
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <div>
+      <!-- ongoing WS discos -->
+      {#if $stagingData[0].stagingDataResponse.ongDisco_WS}
+        <div style="text-align:center;">
+          <label for="ongDisco_WS">ongDisco_WS</label>
+        </div>
+        <div style="text-align:center">
+          <input
+            type="text"
+            id="ongDisco_WS"
+            name="ongDisco_WS"
+            bind:value="{$stagingData[0].stagingDataResponse.ongDisco_WS}" />
+        </div>
+      {/if}
+      <!-- ongoing Rtl discos -->
+      {#if $stagingData[0].stagingDataResponse.ongDisco_Rtl}
+        <div style="text-align:center;">
+          <label for="ongDisco_Rtl">ongDisco_Rtl</label>
+        </div>
+        <div style="text-align:center">
+          <input
+            type="text"
+            id="ongDisco_Rtl"
+            name="ongDisco_Rtl"
+            bind:value="{$stagingData[0].stagingDataResponse.ongDisco_Rtl}" />
+        </div>
+      {/if}
+      <!-- divide cost by EA-## -->
+      {#if $stagingData[0].stagingDataResponse.eaNumDivide}
+        <div style="text-align:center;">
+          <label for="eaNumDivide">eaNumDivide</label>
+        </div>
+        <div style="text-align:center">
+          <input
+            type="text"
+            id="eaNumDivide"
+            name="eaNumDivide"
+            bind:value="{$stagingData[0].stagingDataResponse.eaNumDivide}" />
+        </div>
+      {/if}
+      <!-- divide cost by CS-## -->
+      {#if $stagingData[0].stagingDataResponse.csNumDivide}
+        <div style="text-align:center;">
+          <label for="csNumDivide">csNumDivide</label>
+        </div>
+        <div style="text-align:center">
+          <input
+            type="text"
+            id="csNumDivide"
+            name="csNumDivide"
+            bind:value="{$stagingData[0].stagingDataResponse.csNumDivide}" />
+        </div>
+      {/if}
+    </div>
   </div>
 
   <div style="text-align:center">
