@@ -20,7 +20,7 @@ export async function post(req, res, next) {
   console.log(`req.body.data==> ${req.body.data}`)
   let RBDbQuery = req.body.data
 
-  // let queryResArr = [] //array that holds all query results Objs
+  let queryResArr = [] //array that holds all query results Objs
   let queryResArr_1stPage = [] //array that holds 1st page of query results Objs
   var srcRsXLS = [] //array that holds all query results Objs for generating excel files. Do we need a separate array for this?
   //maybe not, but keeping it this way, in case we need it to be separate from queryResArr in the future. Just cleaner to handle
