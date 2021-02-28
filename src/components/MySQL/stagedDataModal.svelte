@@ -1,6 +1,6 @@
 <script>
 import stagingData from "../../stores/stagingData/st_stagingData.js";
-let tableName = $stagingData[0].tableName;
+let tableName = $stagingData[0].stagedTableName;
 let calcResultsResponse;
 let imwOptions;
 let skuMismatchAllowance;
