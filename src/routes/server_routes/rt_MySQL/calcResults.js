@@ -21,6 +21,33 @@ export async function post(req, res, next) {
   console.log(`JSON.stringify(req.body)==> ${JSON.stringify(req.body)}`)
   console.log(`stagedTableName==> ${stagedTableName}`)
 
+  let queryResArr = []
+  let srcRsXLS = []
+  let queryResArr_1stPage = []
+
+  connection.query(
+    `SELECT * FROM ${stagedTableName} 
+    WHERE dptName != 'RB_CLEANUP' GROUP BY inv_ScanCode,
+    inv_lastcost ORDER BY
+    dpt_name ASC, pi1_description ASC, pi1_description ASC;
+    `,
+    function (err, rows, fields) {
+      if (err) throw err
+      console.log(`rows.length==>${rows.length}`)
+      console.log('rows[0]==>', rows[0])
+      rbDBqueryResults(rows, queryResArr, srcRsXLS, queryResArr_1stPage).then(paginCalcs(queryResArr)).then(() => {
+        res.json({
+          queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
+          queryResArr_1stPage: queryResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
+          // "queryResArr_pagin": queryResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
+          totalPages: totalPages,
+          currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
+          // nextPage: 1,
+          // prevPage: null
+        })
+      })
+    })
+
   // //v//retrieve info from database table to display in DOM table/////////////////////////////////////////////////////////
   // //filters by UPC & catapult cost (want to grab any differing cost items & make decision on what to do in showSearchResults())
   // connection.query( //1st query is pagination query; 2nd query is getting EDLP data; 3rd query is non-paginated query;
