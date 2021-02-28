@@ -1,5 +1,6 @@
 <script>
 import stagingData from "../../stores/stagingData/st_stagingData.js";
+import calcResStore from "../../stores/calcResults/st_calcResults";
 let tableName = $stagingData[0].stagingDataResponse.stagedTableName;
 let calcResultsResponse;
 let imwOptions;
@@ -28,7 +29,7 @@ function calcResults() {
       );
       calcResultsResponse = calcResultsResultJSON;
 
-      stagingData.set([{ stagingDataResponse: calcResultsResponse }]);
+      calcResStore.set([{ calcResultsResponse: calcResultsResponse }]);
 
       // stagingData.update((currentData) => {
       //   currentData = [
