@@ -3,7 +3,7 @@ import stagingData from "../../stores/stagingData/st_stagingData.js";
 let tableName;
 let calcResultsResponse;
 let imwOptions;
-let skuMismatchOptions;
+let skuMismatchAllowance;
 let dptFilter;
 let edlpSwitch;
 let skuToggle;
@@ -283,8 +283,10 @@ function calcResults() {
             name="csNumDivide"
             bind:value="{$stagingData[0].stagingDataResponse.csNumDivide}" />
         </div>
+
+        <!--dropdown options------------------------------------------------------------------------------------------>
         <!-- type of IMW -------------------------------------------------------------------------->
-        <div style="padding-left: 6rem">
+        <div style="text-align:center">
           <label for="querySelect">Type of IMW</label>
           <select name="querySelect" id="querySelect" bind:value="{imwOptions}">
             <option value="wholesale">Wholesale Update IMW</option>
@@ -293,20 +295,50 @@ function calcResults() {
           </select>
         </div>
 
-        <!-- SKU Mismatch Options -------------------------------------------------------------------------->
-        <div style="padding-left: 6rem">
+        <!-- SKU Mismatch Allowance -------------------------------------------------------------------------->
+        <div style="text-align:center">
           <label for="querySelect">SKU Mismatch Options</label>
           <select
             name="querySelect"
             id="querySelect"
-            bind:value="{skuMismatchOptions}">
-            <option value="allowMismatch">Wholesale Update IMW</option>
-            <option value="matchOnly">Retail Update IMW</option>
+            bind:value="{skuMismatchAllowance}">
+            <option value="allowMismatch">Allow SKU Mismatches</option>
+            <option value="matchOnly">Require SKU Match</option>
+          </select>
+        </div>
+
+        <!-- use EDI or Catapult SKU for IMW ----------------------------------------------------------------------------------------------->
+        <div style="text-align:center">
+          <label for="querySelect">Use EDI or Catapult SKU for IMW</label>
+          <select name="querySelect" id="querySelect" bind:value="{skuToggle}">
+            <option value="catapult">Catapult</option>
+            <option value="edi">EDI</option>
+          </select>
+        </div>
+
+        <!-- Flag SKU mismatch for IMW? ----------------------------------------------------------------------------------------------->
+        <div style="text-align:center">
+          <label for="querySelect">Flag SKU mismatch for IMW?</label>
+          <select
+            name="querySelect"
+            id="querySelect"
+            bind:value="{skuMismatchOption}">
+            <option value="yes">yes</option>
+            <option value="no">no</option>
+          </select>
+        </div>
+
+        <!-- include EDLP ----------------------------------------------------------------------------------------------->
+        <div style="text-align:center">
+          <label for="querySelect">Include EDLP</label>
+          <select name="querySelect" id="querySelect" bind:value="{edlpSwitch}">
+            <option value="no">no</option>
+            <option value="yes">yes</option>
           </select>
         </div>
 
         <!-- Dept Filter -------------------------------------------------------------------------->
-        <div style="padding-left: 6rem">
+        <div style="text-align:center">
           <label for="querySelect">Dept Filter</label>
           <select name="querySelect" id="querySelect" bind:value="{dptFilter}">
             <option value="none">none</option>
@@ -331,36 +363,6 @@ function calcResults() {
             <option value="151">Other</option>
             <option value="155">Refrigerated</option>
             <option value="157">Vitamins & Supplements</option>
-          </select>
-        </div>
-
-        <!-- include EDLP ----------------------------------------------------------------------------------------------->
-        <div style="padding-left: 6rem">
-          <label for="querySelect">Include EDLP</label>
-          <select name="querySelect" id="querySelect" bind:value="{edlpSwitch}">
-            <option value="no">no</option>
-            <option value="yes">yes</option>
-          </select>
-        </div>
-
-        <!-- use EDI or Catapult SKU for IMW ----------------------------------------------------------------------------------------------->
-        <div style="padding-left: 6rem">
-          <label for="querySelect">Use EDI or Catapult SKU for IMW</label>
-          <select name="querySelect" id="querySelect" bind:value="{skuToggle}">
-            <option value="catapult">Catapult</option>
-            <option value="edi">EDI</option>
-          </select>
-        </div>
-
-        <!-- Flag SKU mismatch for IMW? ----------------------------------------------------------------------------------------------->
-        <div style="padding-left: 6rem">
-          <label for="querySelect">Flag SKU mismatch for IMW?</label>
-          <select
-            name="querySelect"
-            id="querySelect"
-            bind:value="{skuMismatchOption}">
-            <option value="yes">yes</option>
-            <option value="no">no</option>
           </select>
         </div>
       {/if}
