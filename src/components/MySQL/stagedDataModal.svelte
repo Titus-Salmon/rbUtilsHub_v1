@@ -1,34 +1,7 @@
 <script>
 import stagingData from "../../stores/stagingData/st_stagingData.js";
-// import defaultMargArr from '../../../libT0d/defaultMargs/defaultMargs';
-// console.log(`JSON.stringify(defaultMargArr[0])==> ${JSON.stringify(defaultMargArr[0])}`)
-// console.log(`defaultMargArr[0]['dptName']==> ${defaultMargArr[0]['dptName']}`)
-// console.log(`defaultMargArr[0]['dptNumb']==> ${defaultMargArr[0]['dptNumb']}`)
-// console.log(`defaultMargArr[0]['margin']==> ${defaultMargArr[0]['margin']}`)
 let tableName;
 let calcResultsResponse;
-// let beerAlcMarg,
-//   bodyCareMarg,
-//   booksMarg,
-//   bulkMarg,
-//   bulkHrbPrpkMarg,
-//   cbdGrocMarg,
-//   cbdSuppMarg,
-//   cbdTopMarg,
-//   consignMarg,
-//   frozenMarg,
-//   genMerchMarg,
-//   grabGoMarg,
-//   giftMarg,
-//   grocMarg,
-//   grocLocMarg,
-//   grocLcMtMarg,
-//   hbaMarg,
-//   herbsHomeoMarg,
-//   lfBrMarg,
-//   otherMarg,
-//   refrigMarg,
-//   vitSuppMarg;
 
 function calcResults() {
   fetch("server_routes/rt_MySQL/calcResults", {
@@ -63,7 +36,7 @@ function calcResults() {
 }
 </script>
 
-{#if $stagingData[0].stagingDataResponse !== null}
+{#if $stagingData[0].stagingDataResponse.stagedMargins}
   {#each Object.values($stagingData[0].stagingDataResponse.stagedMargins) as stagedMargin}
     <div style="text-align:center;">
       <label for="{stagedMargin.dptName}">{stagedMargin.dptName}</label>
@@ -91,19 +64,3 @@ function calcResults() {
     <button on:click="{calcResults}">calcResults</button>
   </div>
 {/if}
-
-<!-- <div style="padding: 0 1rem">
-  <div style="text-align:center;">
-    <label for="beerAlcMarg">Table Name</label>
-  </div>
-  <div style="text-align:center">
-    <input
-      type="text"
-      id="beerAlcMarg"
-      name="beerAlcMarg"
-      bind:this="{beerAlcMarg}" />
-  </div>
-  <div style="text-align:center">
-    <button on:click="{calcResults}">calcResults</button>
-  </div>
-</div> -->
