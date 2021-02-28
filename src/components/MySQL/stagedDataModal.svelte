@@ -37,7 +37,7 @@ function calcResults() {
 </script>
 
 {#if $stagingData[0].stagingDataResponse !== null}
-  <div class="flexbox">
+  <div class="flexbox" style="align-items: flex-start">
     <div>
       <!--v-- staged margins ------------------------------------------------------------------------------------->
       {#if $stagingData[0].stagingDataResponse.stagedMargins}
