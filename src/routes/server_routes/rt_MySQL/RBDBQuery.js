@@ -7,7 +7,11 @@ const connection = mysql.createConnection({
 })
 import queryResArrCache from "../../../nodeCacheStuff/cache1"
 
-import paginCalcs from "../../../libT0d/commonMethods/paginCalcs"
+import {
+  paginCalcs,
+  totalPages,
+  queryResArr
+} from "../../../libT0d/commonMethods/paginCalcs"
 
 export async function post(req, res, next) {
   console.log(`hello from within the async function of RBDBQuery.js`)
@@ -16,13 +20,13 @@ export async function post(req, res, next) {
   console.log(`req.body.data==> ${req.body.data}`)
   let RBDbQuery = req.body.data
 
-  let queryResArr = [] //array that holds all query results Objs
+  // let queryResArr = [] //array that holds all query results Objs
   let queryResArr_1stPage = [] //array that holds 1st page of query results Objs
   var srcRsXLS = [] //array that holds all query results Objs for generating excel files. Do we need a separate array for this?
   //maybe not, but keeping it this way, in case we need it to be separate from queryResArr in the future. Just cleaner to handle
   //it this way.
 
-  let totalPages
+  // let totalPages
 
   async function rbDBqueryResults(result) {
 
