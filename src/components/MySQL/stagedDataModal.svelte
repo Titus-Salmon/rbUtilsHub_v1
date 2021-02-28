@@ -71,7 +71,9 @@ function calcResults() {
     <div>
       <!--v-- staged charms - grocery ------------------------------------------------------------------------------------->
       {#if $stagingData[0].stagingDataResponse.charmProfiles.grocery}
-        <div style="text-align:center">Grocery Charm Profile</div>
+        <div style="text-align:center">
+          <p>Grocery Charm Profile</p>
+        </div>
         <div style="text-align:center;">
           <label
             for="{$stagingData[0].stagingDataResponse.charmProfiles.grocery
