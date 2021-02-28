@@ -3,51 +3,51 @@ const charmProfiles = {
     //everything below lowercutoffRqdRtl gets lowercutoff charms applied
     //^//(double-ckeck that)
     lowerCutoffRqdRtl: {
-      name: "lowerCutoffRqdRtl",
+      name: "lowerCutoffRqdRtlGroc",
       dollars: 2
     },
 
     lowercutoffCharms: [{
-      charmName: "lowerCutoffCharm1",
+      charmName: "lowerCutoffCharmGroc1",
       cents: .19
     }, {
-      charmName: "lowerCutoffCharm2",
+      charmName: "lowerCutoffCharmGroc2",
       cents: .29
     }, {
-      charmName: "lowerCutoffCharm3",
+      charmName: "lowerCutoffCharmGroc3",
       cents: .39
     }, {
-      charmName: "lowerCutoffCharm4",
+      charmName: "lowerCutoffCharmGroc4",
       cents: .49
     }, {
-      charmName: "lowerCutoffCharm5",
+      charmName: "lowerCutoffCharmGroc5",
       cents: .59
     }, {
-      charmName: "lowerCutoffCharm6",
+      charmName: "lowerCutoffCharmGroc6",
       cents: .79
     }, {
-      charmName: "lowerCutoffCharm7",
+      charmName: "lowerCutoffCharmGroc7",
       cents: .99
     }],
 
     //everything between lowercutoffRqdRtl and uppercutofReqdRtl gets default charms applied
     //^//(double-ckeck that)
     upperCutoffRqdRtl: {
-      name: "upperCutoffRqdRtl",
+      name: "upperCutoffRqdRtlGroc",
       dollars: 12
     },
 
     defaultCharms: [{
-      charmName: "defaultCharm1",
+      charmName: "defaultCharmGroc1",
       cents: .29
     }, {
-      charmName: "defaultCharm2",
+      charmName: "defaultCharmGroc2",
       cents: .49
     }, {
-      charmName: "defaultCharm3",
+      charmName: "defaultCharmGroc3",
       cents: .79
     }, {
-      charmName: "defaultCharm4",
+      charmName: "defaultCharmGroc4",
       cents: .99
     }]
   },
@@ -57,51 +57,51 @@ const charmProfiles = {
     //everything below lowercutoffRqdRtl gets lowercutoff charms applied
     //^//(double-ckeck that)
     lowerCutoffRqdRtl: {
-      name: "lowerCutoffRqdRtl",
+      name: "lowerCutoffRqdRtlWell",
       dollars: 10
     },
 
     lowercutoffCharms: [{
-      charmName: "lowerCutoffCharm1",
+      charmName: "lowerCutoffCharmWell1",
       cents: .29
     }, {
-      charmName: "lowerCutoffCharm2",
+      charmName: "lowerCutoffCharmWell2",
       cents: .29
     }, {
-      charmName: "lowerCutoffCharm3",
+      charmName: "lowerCutoffCharmWell3",
       cents: .49
     }, {
-      charmName: "lowerCutoffCharm4",
+      charmName: "lowerCutoffCharmWell4",
       cents: .49
     }, {
-      charmNanme: "lowerCutoffCharm5",
+      charmNanme: "lowerCutoffCharmWell5",
       cents: .79
     }, {
-      charmNanme: "lowerCutoffCharm6",
+      charmNanme: "lowerCutoffCharmWell6",
       cents: .79
     }, {
-      charmName: "lowerCutoffCharm7",
+      charmName: "lowerCutoffCharmWell7",
       cents: .99
     }],
 
     //everything between lowercutoffRqdRtl and uppercutofReqdRtl gets default charms applied
     //^//(double-ckeck that)
     upperCutoffRqdRtl: {
-      name: "upperCutoffRqdRtl",
+      name: "upperCutoffRqdRtlWell",
       dollars: 9999
     },
 
     defaultCharms: [{
-      charmName: "defaultCharm1",
+      charmName: "defaultCharmWell1",
       cents: .49
     }, {
-      charmName: "defaultCharm2",
+      charmName: "defaultCharmWell2",
       cents: .49
     }, {
-      charmName: "defaultCharm3",
+      charmName: "defaultCharmWell3",
       cents: .99
     }, {
-      charmName: "defaultCharm4",
+      charmName: "defaultCharmWell4",
       cents: .99
     }],
 
