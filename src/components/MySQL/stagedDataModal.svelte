@@ -1,6 +1,6 @@
 <script>
 import stagingData from "../../stores/stagingData/st_stagingData.js";
-let tableName;
+let tableName = $stagingData[0].tableName;
 let calcResultsResponse;
 let imwOptions;
 let skuMismatchAllowance;
@@ -16,7 +16,7 @@ function calcResults() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      tableName: $stagingData[0].tableName,
+      tableName: tableName,
     }),
   })
     .then((calcResultsResult) => calcResultsResult.json())
