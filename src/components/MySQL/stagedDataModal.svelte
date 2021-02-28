@@ -1,6 +1,6 @@
 <script>
 import stagingData from "../../stores/stagingData/st_stagingData.js";
-let tableName = $stagingData[0].stagedTableName;
+let tableName = $stagingData[0].stagingDataResponse.stagedTableName;
 let calcResultsResponse;
 let imwOptions;
 let skuMismatchAllowance;
@@ -365,6 +365,18 @@ function calcResults() {
             <option value="157">Vitamins & Supplements</option>
           </select>
         </div>
+
+        <!-- Staged Table ------------------------------------------------------------------>
+        <!-- <div style="text-align:center;">
+          <label for="stagedTableName">Staged Table</label>
+        </div>
+        <div style="text-align:center">
+          <input
+            type="text"
+            id="stagedTableName"
+            name="stagedTableName"
+            bind:value="{$stagingData[0].stagingDataResponse.stagedTableName}" />
+        </div> -->
       {/if}
     </div>
   </div>
