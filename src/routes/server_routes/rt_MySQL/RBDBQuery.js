@@ -7,6 +7,8 @@ const connection = mysql.createConnection({
 })
 import queryResArrCache from "../../../nodeCacheStuff/cache1"
 
+import paginCalcs from "../../../libT0d/commonMethods/paginCalcs"
+
 export async function post(req, res, next) {
   console.log(`hello from within the async function of RBDBQuery.js`)
 
@@ -23,6 +25,7 @@ export async function post(req, res, next) {
   let totalPages
 
   async function rbDBqueryResults(result) {
+
     let queriedColumns = Object.keys(result[0])
     console.log(`queriedColumns==> ${queriedColumns}`)
 
@@ -59,15 +62,15 @@ export async function post(req, res, next) {
     //^// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
   }
 
-  async function paginCalcs() { //we are hard-coding page length to 100 results per page for now
-    totalPages = Math.ceil(queryResArr.length / 100)
-  }
+  // async function paginCalcs() { //we are hard-coding page length to 100 results per page for now
+  //   totalPages = Math.ceil(queryResArr.length / 100)
+  // }
 
   connection.query(RBDbQuery, function (err, rows, fields) {
     if (err) throw err
     console.log(`rows.length==>${rows.length}`)
     console.log('rows[0]==>', rows[0])
-    rbDBqueryResults(rows).then(paginCalcs()).then(() => {
+    rbDBqueryResults(rows).then(paginCalcs(totalPages, queryResArr)).then(() => {
       res.json({
         queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
         queryResArr_1stPage: queryResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
