@@ -41,6 +41,18 @@ function calcResults() {
 
       calcResStore.set([{ calcResStoreData: calcResultsResponse }]);
 
+      paginData.update((currentData) => {
+        currentData = [
+          {
+            totalPages: queryResJSON.totalPages,
+            currentPage: queryResJSON.currentPage,
+            nextPage: queryResJSON.nextPage,
+            prevPage: queryResJSON.prevPage,
+          },
+        ];
+        return currentData;
+      });
+
       // stagingData.update((currentData) => {
       //   currentData = [
       //     {
