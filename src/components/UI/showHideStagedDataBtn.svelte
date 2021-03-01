@@ -16,9 +16,9 @@ function showHidestagedData() {
 
   if (localStorage["showHidestagedData"] == "hide") {
     // return window.document.documentElement.setAttribute("color-mode", "light");
-    return (showHidestagedData.style.display = "none");
+    return (stagedDataModal.style.display = "none");
   }
-  showHidestagedData.style.display = "block";
+  stagedDataModal.style.display = "block";
 }
 </script>
 
