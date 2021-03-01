@@ -7,11 +7,20 @@ export async function post(req, res, next) {
 
   console.log(`hello from within the async function of save_imw_CSV.js`)
 
+  //save_imw_CSV_cache_key', populated_imw_arr
+
   // save_imw_CSV_cacheValue = save_imw_CSV_cache.take('save_imw_CSV_cache_key') // this also deletes the key
   save_imw_CSV_cacheValue = save_imw_CSV_cache.get('save_imw_CSV_cache_key') // use 'get' to leave key in memory
   console.log(`JSON.stringify(save_imw_CSV_cacheValue[0])==> ${JSON.stringify(save_imw_CSV_cacheValue[0])}`)
   console.log(`JSON.stringify(save_imw_CSV_cacheValue[1])==> ${JSON.stringify(save_imw_CSV_cacheValue[1])}`)
   let firstRowOf_imw_Obj = save_imw_CSV_cacheValue[0]
+
+  // //V// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
+  // queryResArrCache.set('queryResArrCache_key', queryResArr)
+  // console.log(`queryResArrCache['data']['queryResArrCache_key']['v'].length==> ${queryResArrCache['data']['queryResArrCache_key']['v'].length}`)
+  // console.log(`queryResArrCache['data']['queryResArrCache_key']['v'][0]==> ${queryResArrCache['data']['queryResArrCache_key']['v'][0]}`)
+  // console.log(`JSON.stringify(queryResArrCache['data']['queryResArrCache_key']['v'][0])==> ${JSON.stringify(queryResArrCache['data']['queryResArrCache_key']['v'][0])}`)
+  // //^// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
 
   //begin csv generator //////////////////////////////////////////////////////////////////////////
   const {
