@@ -16,6 +16,10 @@ import {
   rbDBqueryResults
 } from "../../../libT0d/MySQL/rbDBqueryResults"
 
+import {
+  blank_imw
+} from "../../../libT0d/imw/blank_imw"
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////V// ************* PREPARE TO REWRITE THE FUCK OUT OF THIS ***************** //////////////////////////////////////
 export async function post(req, res, next) {
@@ -31,6 +35,13 @@ export async function post(req, res, next) {
   let queryResArr = []
   let srcRsXLS = []
   let queryResArr_1stPage = []
+
+  function populateIMW() {
+    let populated_imw = blank_imw
+    for (let i = 0; i < queryResArr.length; i++) {
+      populated_imw.upc = queryResArr[i]['inv_ScanCode']
+    }
+  }
 
   connection.query(
     `SELECT * FROM ${stagedTableName} 
@@ -49,8 +60,7 @@ export async function post(req, res, next) {
           // "queryResArr_pagin": queryResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
           totalPages: totalPages,
           currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
-          // nextPage: 1,
-          // prevPage: null
+          populated_imw: populated_imw
         })
       })
     })

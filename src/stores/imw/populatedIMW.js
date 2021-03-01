@@ -2,8 +2,8 @@ import {
   writable
 } from 'svelte/store'
 
-const imw1 = writable([{
+const populatedIMW = writable([{
   // defaultVal: 'defaultVal'
 }])
 
-export default imw1
+export default populatedIMW

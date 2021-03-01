@@ -1,4 +1,4 @@
-const imw = {
+const blank_imw = {
   upc: "",
   deptID: "",
   deptName: "",
@@ -45,3 +45,7 @@ const imw = {
   csPkgMltpl: "",
   ovr: ""
 }
+
+export {
+  blank_imw
+};

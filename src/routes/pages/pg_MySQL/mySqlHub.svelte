@@ -57,12 +57,12 @@ import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
 
 <div>
   {#if $stagingData[0].stagingDataResponse !== null}
-    <p style="text-align:center; color: var(--element6)">
+    <!-- <p style="text-align:center; color: var(--element6)">
       {Object.values($stagingData[0].stagingDataResponse)}
     </p>
     <p style="text-align:center; color: var(--element6)">
       {JSON.stringify($stagingData[0].stagingDataResponse)}
-    </p>
+    </p> -->
     <ShowHideStagedDataBtn>show/hide</ShowHideStagedDataBtn>
     <div id="stagedDataModal">
       <StagedDataModal />

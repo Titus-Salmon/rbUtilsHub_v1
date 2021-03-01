@@ -4,6 +4,7 @@ import calcResStore from "../../stores/calcResults/st_calcResults";
 
 import paginData from "../../stores/pagination/st_pagination1";
 import tableData from "../../stores/dynamicTables/tableData1";
+import populatedIMW from "../../stores/imw/populatedIMW";
 
 let tableName = $stagingData[0].stagingDataResponse.stagedTableName;
 let calcResultsResponse;
@@ -32,11 +33,18 @@ function calcResults() {
         )}`
       );
 
+      // populatedIMW.set(calcResultsResultJSON.populated_imw);
+
       tableData.set(calcResultsResultJSON.queryResArr_1stPage);
 
       calcResultsResponse = calcResultsResultJSON;
 
       calcResStore.set([{ calcResStoreData: calcResultsResponse }]);
+      console.log(
+        `JSON.stringify(calcResStore[0].calcResStoreData.populated_imw)==> ${JSON.stringify(
+          calcResStore[0].calcResStoreData.populated_imw
+        )}`
+      );
 
       paginData.update((currentData) => {
         currentData = [
