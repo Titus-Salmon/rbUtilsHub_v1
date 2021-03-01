@@ -1,5 +1,6 @@
+let imwToPop = {}
+
 function blank_imw_creator() {
-  let imwToPop = {}
   imwToPop['upc'] = ""
   imwToPop['deptID'] = ""
   imwToPop['deptName'] = ""
@@ -49,5 +50,6 @@ function blank_imw_creator() {
 
 
 export {
-  blank_imw_creator
+  blank_imw_creator,
+  imwToPop
 };
