@@ -54,7 +54,7 @@ export async function post(req, res, next) {
 
     console.log(JSON.stringify(imwToPop_arr))
     //V// CACHE populateIMW RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
-    save_imw_CSV_cache.set('save_imw_CSV_cache_key', populated_imw_arr)
+    save_imw_CSV_cache.set('save_imw_CSV_cache_key', imwToPop_arr)
     console.log(`save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'].length==> ${save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'].length}`)
     console.log(`save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0]==> ${save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0]}`)
     console.log(`JSON.stringify(save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0])==> ${JSON.stringify(save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0])}`)
@@ -83,7 +83,7 @@ export async function post(req, res, next) {
             totalPages: totalPages,
             currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
             populated_imw: populated_imw,
-            populated_imw_arr: populated_imw_arr
+            imwToPop_arr: imwToPop_arr
           })
         })
     })
