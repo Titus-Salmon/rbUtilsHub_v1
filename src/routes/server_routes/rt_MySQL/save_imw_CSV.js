@@ -28,6 +28,7 @@ export async function post(req, res, next) {
     const parser = new Parser(opts);
     const csv = parser.parse(save_imw_CSV_cacheValue)
     console.log(`req.body from save_imw_CSV==>${req.body}`)
+    console.log(`JSON.stringify(req.body) from save_imw_CSV==>${JSON.stringify(req.body)}`)
     console.log(`csv.length from save_imw_CSV==>> ${csv.length}`);
     fs.writeFile(`${process.cwd()}/static/csv/${req.body.data}.csv`, csv, function (err) {
       if (err) throw err;
