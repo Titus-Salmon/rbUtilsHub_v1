@@ -1,6 +1,11 @@
 <script>
 import stagingData from "../../stores/stagingData/st_stagingData.js";
 import calcResStore from "../../stores/calcResults/st_calcResults";
+
+import calcResTableData from "../../stores/calcResults/st_calcResults";
+
+import CalcResTable from "../../components/queryResTbls/calcResTable.svelte";
+
 let tableName = $stagingData[0].stagingDataResponse.stagedTableName;
 let calcResultsResponse;
 let imwOptions;
@@ -27,6 +32,9 @@ function calcResults() {
           calcResultsResultJSON
         )}`
       );
+
+      calcResTableData.set(calcResultsResultJSON.queryResArr_1stPage);
+
       calcResultsResponse = calcResultsResultJSON;
 
       calcResStore.set([{ calcResultsResponse: calcResultsResponse }]);
@@ -385,4 +393,8 @@ function calcResults() {
   <div style="text-align:center">
     <button on:click="{calcResults}">calcResults</button>
   </div>
+
+  {#if $calcResStore[0].calcResultsResponse !== null}
+    <CalcResTable />
+  {/if}
 {/if}
