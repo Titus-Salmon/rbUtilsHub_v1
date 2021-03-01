@@ -79,8 +79,10 @@ import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
   <PaginUI />
 {/if}
 
-{#if $utilResponses[0].utilResponse.save_imw_CSVresponse}
-  <Save_imw_CSV />
+{#if $utilResponses[0].utilResponse !== null}
+  {#if $utilResponses[0].utilResponse.save_imw_CSVresponse}
+    <Save_imw_CSV />
+  {/if}
 {/if}
 
 <QueryResultsTable1 />
