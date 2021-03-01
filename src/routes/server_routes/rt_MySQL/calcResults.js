@@ -43,7 +43,7 @@ export async function post(req, res, next) {
   function populateIMW() {
     console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
     for (let i = 0; i < queryResArr.length; i++) {
-      populated_imw.upc = queryResArr[i]['inv_ScanCode']
+      populated_imw['upc'] = queryResArr[i]['inv_ScanCode']
       populated_imw_arr.push(populated_imw)
     }
     //V// CACHE populateIMW RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
