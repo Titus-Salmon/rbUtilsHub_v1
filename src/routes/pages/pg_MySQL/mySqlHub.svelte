@@ -1,7 +1,7 @@
 <script>
 import { onMount } from "svelte";
 import QueryResultsTable1 from "../../../components/queryResTbls/queryResultsTable1.svelte";
-import CalcResTable from "../../components/queryResTbls/calcResTable.svelte";
+import CalcResTable from "../../../components/queryResTbls/calcResTable.svelte";
 import PaginUI from "../../../components/UI/paginUI.svelte";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 
@@ -9,8 +9,8 @@ import tableData from "../../../stores/dynamicTables/tableData1";
 import paginData from "../../../stores/pagination/st_pagination1";
 import utilResponses from "../../../stores/utilResponses/st_utilResponses";
 import stagingData from "../../../stores/stagingData/st_stagingData.js";
-import calcResStore from "../../stores/calcResults/st_calcResults";
-import calcResTableData from "../../stores/dynamicTables/st_calcResTable";
+import calcResStore from "../../../stores/calcResults/st_calcResults";
+import calcResTableData from "../../../stores/dynamicTables/st_calcResTable";
 
 import RbDbQuery from "../../../libT0d/MySQL/rbDbQuery.svelte";
 import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
