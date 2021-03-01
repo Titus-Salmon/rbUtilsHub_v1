@@ -44,7 +44,7 @@ export async function post(req, res, next) {
   function populateIMW() {
     console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
     for (let i = 0; i < queryResArr.length; i++) {
-      populated_imw = blank_imw
+      [...populated_imw] = blank_imw
       populated_imw['upc'] = queryResArr[i]['inv_ScanCode']
       console.log(`populated_imw['upc']==> ${populated_imw['upc']}`)
       console.log(`queryResArr[i]['inv_ScanCode']==> ${queryResArr[i]['inv_ScanCode']}`)
