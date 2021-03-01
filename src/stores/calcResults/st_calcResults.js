@@ -4,7 +4,7 @@ import {
 
 const calcResStore = writable([{
   // defaultVal: 'defaultVal'
-  calcResStoreResponse: null
+  calcResStoreData: null
 }])
 
 export default calcResStore

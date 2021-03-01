@@ -37,7 +37,7 @@ function calcResults() {
 
       calcResultsResponse = calcResultsResultJSON;
 
-      calcResStore.set([{ calcResultsResponse: calcResultsResponse }]);
+      calcResStore.set([{ calcResStoreData: calcResultsResponse }]);
 
       // stagingData.update((currentData) => {
       //   currentData = [
@@ -394,7 +394,7 @@ function calcResults() {
     <button on:click="{calcResults}">calcResults</button>
   </div>
 
-  {#if $calcResStore[0].calcResultsResponse !== null}
+  {#if $calcResStore[0].calcResStoreData !== null}
     <CalcResTable />
   {/if}
 {/if}
