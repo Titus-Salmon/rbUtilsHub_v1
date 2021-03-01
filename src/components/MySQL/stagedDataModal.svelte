@@ -50,7 +50,6 @@ function calcResults() {
       calcResultsResponse = calcResultsResultJSON;
 
       calcResStore.set([{ calcResStoreData: calcResultsResponse }]);
-      //);
 
       paginData.update((currentData) => {
         currentData = [
