@@ -10,6 +10,7 @@ export async function post(req, res, next) {
   // save_imw_CSV_cacheValue = save_imw_CSV_cache.take('save_imw_CSV_cache_key') // this also deletes the key
   save_imw_CSV_cacheValue = save_imw_CSV_cache.get('save_imw_CSV_cache_key') // use 'get' to leave key in memory
   console.log(`JSON.stringify(save_imw_CSV_cacheValue[0])==> ${JSON.stringify(save_imw_CSV_cacheValue[0])}`)
+  console.log(`JSON.stringify(save_imw_CSV_cacheValue[1])==> ${JSON.stringify(save_imw_CSV_cacheValue[1])}`)
   let firstRowOf_imw_Obj = save_imw_CSV_cacheValue[0]
 
   //begin csv generator //////////////////////////////////////////////////////////////////////////
