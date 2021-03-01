@@ -35,9 +35,9 @@ export async function post(req, res, next) {
   let queryResArr = []
   let srcRsXLS = []
   let queryResArr_1stPage = []
+  let populated_imw = blank_imw
 
   function populateIMW() {
-    let populated_imw = blank_imw
     for (let i = 0; i < queryResArr.length; i++) {
       populated_imw.upc = queryResArr[i]['inv_ScanCode']
     }
