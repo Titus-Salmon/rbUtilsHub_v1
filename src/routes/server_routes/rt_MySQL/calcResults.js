@@ -37,20 +37,17 @@ export async function post(req, res, next) {
   let queryResArr = []
   let srcRsXLS = []
   let queryResArr_1stPage = []
-  // let populated_imw = blank_imw
+  let populated_imw = blank_imw
   let populated_imw
   let populated_imw_arr = []
 
   function populateIMW() {
     console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
     for (let i = 0; i < queryResArr.length; i++) {
-      // populated_imw = blank_imw
-      populated_imw = {}
       populated_imw['upc'] = queryResArr[i]['inv_ScanCode']
       console.log(`populated_imw['upc']==> ${populated_imw['upc']}`)
       console.log(`queryResArr[i]['inv_ScanCode']==> ${queryResArr[i]['inv_ScanCode']}`)
-      // populated_imw_arr.push(populated_imw)
-      populated_imw_arr.push(populated_imw['upc'])
+      return populated_imw_arr.push(populated_imw)
     }
     //V// CACHE populateIMW RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
     save_imw_CSV_cache.set('save_imw_CSV_cache_key', populated_imw_arr)
