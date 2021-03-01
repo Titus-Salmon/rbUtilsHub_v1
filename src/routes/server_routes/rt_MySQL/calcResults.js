@@ -38,7 +38,6 @@ export async function post(req, res, next) {
   let srcRsXLS = []
   let queryResArr_1stPage = []
   let populated_imw = blank_imw
-  let populated_imw
   let populated_imw_arr = []
 
   function populateIMW() {
