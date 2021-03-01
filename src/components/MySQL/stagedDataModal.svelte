@@ -2,8 +2,10 @@
 import stagingData from "../../stores/stagingData/st_stagingData.js";
 import calcResStore from "../../stores/calcResults/st_calcResults";
 
+import paginData from "../../stores/pagination/st_pagination1";
 import calcResTableData from "../../stores/dynamicTables/st_calcResTable";
 
+import PaginUI from "../../components/UI/paginUI.svelte";
 import CalcResTable from "../../components/queryResTbls/calcResTable.svelte";
 
 let tableName = $stagingData[0].stagingDataResponse.stagedTableName;
@@ -395,6 +397,12 @@ function calcResults() {
   </div>
 
   {#if $calcResStore[0].calcResStoreData !== null}
+    {#if $paginData[0].totalPages !== null}
+      <p style="text-align:center; margin: 0">
+        Page {$paginData[0].currentPage} of {$paginData[0].totalPages}
+      </p>
+      <PaginUI />
+    {/if}
     <CalcResTable />
   {/if}
 {/if}
