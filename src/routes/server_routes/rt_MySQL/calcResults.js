@@ -40,8 +40,7 @@ export async function post(req, res, next) {
   let queryResArr = []
   let srcRsXLS = []
   let queryResArr_1stPage = []
-  // let populated_imw = blank_imw
-  let imwToPop_arr = []
+  let populated_imw_arr = []
 
   function populateIMW() {
     console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
@@ -49,12 +48,12 @@ export async function post(req, res, next) {
       imwToPop['upc'] = queryResArr[i]['inv_ScanCode']
       console.log(`imwToPop['upc']==> ${imwToPop['upc']}`)
       console.log(`queryResArr[i]['inv_ScanCode']==> ${queryResArr[i]['inv_ScanCode']}`)
-      imwToPop_arr.push(imwToPop)
+      populated_imw_arr.push(imwToPop)
     }
 
-    console.log(JSON.stringify(imwToPop_arr))
+    console.log(JSON.stringify(populated_imw_arr))
     //V// CACHE populateIMW RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
-    save_imw_CSV_cache.set('save_imw_CSV_cache_key', imwToPop_arr)
+    save_imw_CSV_cache.set('save_imw_CSV_cache_key', populated_imw_arr)
     console.log(`save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'].length==> ${save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'].length}`)
     console.log(`save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0]==> ${save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0]}`)
     console.log(`JSON.stringify(save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0])==> ${JSON.stringify(save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0])}`)
@@ -82,8 +81,8 @@ export async function post(req, res, next) {
             // "queryResArr_pagin": queryResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
             totalPages: totalPages,
             currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
-            populated_imw: populated_imw,
-            imwToPop_arr: imwToPop_arr
+            // populated_imw: populated_imw,
+            populated_imw_arr: populated_imw_arr
           })
         })
     })
