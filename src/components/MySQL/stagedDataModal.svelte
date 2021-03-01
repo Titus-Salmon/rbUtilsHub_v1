@@ -412,12 +412,12 @@ function calcResults() {
     {console.log(
       `JSON.stringify($paginData[0])==> ${JSON.stringify($paginData[0])}`
     )}
-    {#if $paginData[0].totalPages !== null}
+    <!-- {#if $paginData[0].totalPages !== null}
       <p style="text-align:center; margin: 0">
         Page {$paginData[0].currentPage} of {$paginData[0].totalPages}
       </p>
       <PaginUI />
-    {/if}
+    {/if} -->
     <CalcResTable />
   {/if}
 {/if}
