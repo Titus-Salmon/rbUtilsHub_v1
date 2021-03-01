@@ -36,10 +36,12 @@ export async function post(req, res, next) {
   let srcRsXLS = []
   let queryResArr_1stPage = []
   let populated_imw = blank_imw
+  let populated_imw_arr = []
 
   function populateIMW() {
     for (let i = 0; i < queryResArr.length; i++) {
       populated_imw.upc = queryResArr[i]['inv_ScanCode']
+      populated_imw_arr.push(populated_imw)
     }
   }
 
@@ -63,7 +65,8 @@ export async function post(req, res, next) {
             // "queryResArr_pagin": queryResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
             totalPages: totalPages,
             currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
-            populated_imw: populated_imw
+            populated_imw: populated_imw,
+            populated_imw_arr: populated_imw_arr
           })
         })
     })
