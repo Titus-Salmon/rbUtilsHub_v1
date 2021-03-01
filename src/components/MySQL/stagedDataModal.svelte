@@ -5,9 +5,6 @@ import calcResStore from "../../stores/calcResults/st_calcResults";
 import paginData from "../../stores/pagination/st_pagination1";
 import tableData from "../../stores/dynamicTables/tableData1";
 
-import PaginUI from "../../components/UI/paginUI.svelte";
-import CalcResTable from "../../components/queryResTbls/calcResTable.svelte";
-
 let tableName = $stagingData[0].stagingDataResponse.stagedTableName;
 let calcResultsResponse;
 let imwOptions;
@@ -388,18 +385,6 @@ function calcResults() {
             <option value="157">Vitamins & Supplements</option>
           </select>
         </div>
-
-        <!-- Staged Table ------------------------------------------------------------------>
-        <!-- <div style="text-align:center;">
-          <label for="stagedTableName">Staged Table</label>
-        </div>
-        <div style="text-align:center">
-          <input
-            type="text"
-            id="stagedTableName"
-            name="stagedTableName"
-            bind:value="{$stagingData[0].stagingDataResponse.stagedTableName}" />
-        </div> -->
       {/if}
     </div>
   </div>
@@ -407,11 +392,4 @@ function calcResults() {
   <div style="text-align:center">
     <button on:click="{calcResults}">calcResults</button>
   </div>
-
-  <!-- {#if $calcResStore[0].calcResStoreData !== null}
-    {console.log(
-      `JSON.stringify($paginData[0])==> ${JSON.stringify($paginData[0])}`
-    )}
-    <CalcResTable />
-  {/if} -->
 {/if}
