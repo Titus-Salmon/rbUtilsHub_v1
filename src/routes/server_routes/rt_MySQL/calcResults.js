@@ -46,6 +46,8 @@ export async function post(req, res, next) {
     for (let i = 0; i < queryResArr.length; i++) {
       populated_imw = blank_imw
       populated_imw['upc'] = queryResArr[i]['inv_ScanCode']
+      console.log(`populated_imw['upc']==> ${populated_imw['upc']}`)
+      console.log(`queryResArr[i]['inv_ScanCode']==> ${queryResArr[i]['inv_ScanCode']}`)
       populated_imw_arr.push(populated_imw)
     }
     //V// CACHE populateIMW RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
@@ -53,6 +55,7 @@ export async function post(req, res, next) {
     console.log(`save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'].length==> ${save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'].length}`)
     console.log(`save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0]==> ${save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0]}`)
     console.log(`JSON.stringify(save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0])==> ${JSON.stringify(save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0])}`)
+    console.log(`JSON.stringify(save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][1])==> ${JSON.stringify(save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][1])}`)
     //^// CACHE populateIMW RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
   }
 
