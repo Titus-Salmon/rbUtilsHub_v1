@@ -40,14 +40,15 @@ export async function post(req, res, next) {
   let populated_imw = blank_imw
   let populated_imw_arr = []
 
-  function populateIMW() {
+  function populateIMW(...populated_imw) {
     console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
     for (let i = 0; i < queryResArr.length; i++) {
-      populated_imw[i]['upc'] = queryResArr[i]['inv_ScanCode']
-      console.log(`populated_imw[i]['upc']==> ${populated_imw[i]['upc']}`)
+      populated_imw['upc'] = queryResArr[i]['inv_ScanCode']
+      console.log(`populated_imw['upc']==> ${populated_imw['upc']}`)
       console.log(`queryResArr[i]['inv_ScanCode']==> ${queryResArr[i]['inv_ScanCode']}`)
     }
     populated_imw_arr.push(populated_imw)
+    console.log(JSON.stringify(populated_imw_arr))
     //V// CACHE populateIMW RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
     save_imw_CSV_cache.set('save_imw_CSV_cache_key', populated_imw_arr)
     console.log(`save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'].length==> ${save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'].length}`)
