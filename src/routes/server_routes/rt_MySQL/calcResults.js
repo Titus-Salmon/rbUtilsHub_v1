@@ -52,7 +52,7 @@ export async function post(req, res, next) {
       imwToPop_arr.push(imwToPop)
     }
 
-    console.log(JSON.stringify(populated_imw_arr))
+    console.log(JSON.stringify(imwToPop_arr))
     //V// CACHE populateIMW RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
     save_imw_CSV_cache.set('save_imw_CSV_cache_key', populated_imw_arr)
     console.log(`save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'].length==> ${save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'].length}`)
