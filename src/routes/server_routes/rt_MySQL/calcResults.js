@@ -46,8 +46,9 @@ export async function post(req, res, next) {
       populated_imw['upc'] = queryResArr[i]['inv_ScanCode']
       console.log(`populated_imw['upc']==> ${populated_imw['upc']}`)
       console.log(`queryResArr[i]['inv_ScanCode']==> ${queryResArr[i]['inv_ScanCode']}`)
+      populated_imw_arr.push(populated_imw)
     }
-    populated_imw_arr.push(populated_imw)
+
     console.log(JSON.stringify(populated_imw_arr))
     //V// CACHE populateIMW RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
     save_imw_CSV_cache.set('save_imw_CSV_cache_key', populated_imw_arr)
