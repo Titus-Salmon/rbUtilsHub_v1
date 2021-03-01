@@ -15,6 +15,8 @@ import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
 import SaveToCSVcreatePop from "../../../libT0d/saveToCSVcreatePop.svelte";
 import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
 
+import Save_imw_CSV from "../../../libT0d/save_imw_CSV.svelte";
+
 import CreateTableModal from "../../../components/MySQL/createTableModal.svelte";
 import PopRbTableModal from "../../../components/MySQL/popRbTableModal.svelte";
 import DeleteRbTableModal from "../../../components/MySQL/deleteRbTableModal.svelte";
@@ -75,6 +77,10 @@ import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
     Page {$paginData[0].currentPage} of {$paginData[0].totalPages}
   </p>
   <PaginUI />
+{/if}
+
+{#if $utilResponses[0].utilResponse.save_imw_CSVresponse}
+  <Save_imw_CSV />
 {/if}
 
 <QueryResultsTable1 />

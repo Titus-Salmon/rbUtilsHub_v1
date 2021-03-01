@@ -7,6 +7,8 @@ const connection = mysql.createConnection({
   multipleStatements: true //MUST HAVE to make more than 1 sql statement in a single query
 })
 
+import save_imw_CSV_cache from "../../../nodeCacheStuff/cache1"
+
 import {
   totalPages,
   paginCalcs
@@ -43,6 +45,12 @@ export async function post(req, res, next) {
       populated_imw.upc = queryResArr[i]['inv_ScanCode']
       populated_imw_arr.push(populated_imw)
     }
+    //V// CACHE populateIMW RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
+    save_imw_CSV_cache.set('save_imw_CSV_cache_key', populated_imw_arr)
+    console.log(`save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'].length==> ${save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'].length}`)
+    console.log(`save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0]==> ${save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0]}`)
+    console.log(`JSON.stringify(save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0])==> ${JSON.stringify(save_imw_CSV_cache['data']['save_imw_CSV_cache_key']['v'][0])}`)
+    //^// CACHE populateIMW RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
   }
 
   connection.query(
