@@ -1,4 +1,4 @@
-const blank_imw = {
+const blank_imw = [{
   upc: "",
   deptID: "",
   deptName: "",
@@ -44,7 +44,7 @@ const blank_imw = {
   dscMltplr: "",
   csPkgMltpl: "",
   ovr: ""
-}
+}]
 
 export {
   blank_imw
