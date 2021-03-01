@@ -9,6 +9,7 @@ import tableData from "../../../stores/dynamicTables/tableData1";
 import paginData from "../../../stores/pagination/st_pagination1";
 import utilResponses from "../../../stores/utilResponses/st_utilResponses";
 import stagingData from "../../../stores/stagingData/st_stagingData.js";
+import calcResStore from "../../../stores/calcResults/st_calcResults";
 
 import RbDbQuery from "../../../libT0d/MySQL/rbDbQuery.svelte";
 import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
@@ -79,7 +80,7 @@ import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
   <PaginUI />
 {/if}
 
-{#if $utilResponses[0].utilResponse !== null}
+{#if $calcResStore[0].calcResStoreData !== null}
   <!-- {#if $utilResponses[0].utilResponse.save_imw_CSVresponse} -->
   <Save_imw_CSV />
   <!-- {/if} -->
