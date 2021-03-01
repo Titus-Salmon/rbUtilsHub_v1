@@ -19,8 +19,8 @@ import {
 } from "../../../libT0d/MySQL/rbDBqueryResults"
 
 import {
-  blank_imw
-} from "../../../libT0d/imw/blank_imw"
+  blank_imw_creator
+} from "../../../libT0d/imw/blank_imw_creator"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////V// ************* PREPARE TO REWRITE THE FUCK OUT OF THIS ***************** //////////////////////////////////////
@@ -34,19 +34,21 @@ export async function post(req, res, next) {
   console.log(`JSON.stringify(req.body)==> ${JSON.stringify(req.body)}`)
   console.log(`stagedTableName==> ${stagedTableName}`)
 
+  blank_imw_creator()
+
   let queryResArr = []
   let srcRsXLS = []
   let queryResArr_1stPage = []
-  let populated_imw = blank_imw
-  let populated_imw_arr = []
+  // let populated_imw = blank_imw
+  let imwToPop_arr = []
 
   function populateIMW() {
     console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
     for (let i = 0; i < queryResArr.length; i++) {
-      populated_imw['upc'] = queryResArr[i]['inv_ScanCode']
-      console.log(`populated_imw['upc']==> ${populated_imw['upc']}`)
+      imwToPop['upc'] = queryResArr[i]['inv_ScanCode']
+      console.log(`imwToPop['upc']==> ${imwToPop['upc']}`)
       console.log(`queryResArr[i]['inv_ScanCode']==> ${queryResArr[i]['inv_ScanCode']}`)
-      populated_imw_arr.push(...populated_imw)
+      imwToPop_arr.push(imwToPop)
     }
 
     console.log(JSON.stringify(populated_imw_arr))
