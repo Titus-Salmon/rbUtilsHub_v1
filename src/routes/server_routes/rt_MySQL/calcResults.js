@@ -49,7 +49,7 @@ export async function post(req, res, next) {
       imwToPop['upc'] = queryResArr[i]['inv_ScanCode']
       console.log(`imwToPop['upc']==> ${imwToPop['upc']}`)
       console.log(`queryResArr[i]['inv_ScanCode']==> ${queryResArr[i]['inv_ScanCode']}`)
-      populated_imw_arr.push(imwToPop)
+      populated_imw_arr.push(...imwToPop)
     }
 
     console.log(JSON.stringify(populated_imw_arr))
