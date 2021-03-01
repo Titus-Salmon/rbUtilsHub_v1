@@ -44,10 +44,10 @@ function calcResults() {
       paginData.update((currentData) => {
         currentData = [
           {
-            totalPages: queryResJSON.totalPages,
-            currentPage: queryResJSON.currentPage,
-            nextPage: queryResJSON.nextPage,
-            prevPage: queryResJSON.prevPage,
+            totalPages: calcResultsResultJSON.totalPages,
+            currentPage: calcResultsResultJSON.currentPage,
+            nextPage: calcResultsResultJSON.nextPage,
+            prevPage: calcResultsResultJSON.prevPage,
           },
         ];
         return currentData;
