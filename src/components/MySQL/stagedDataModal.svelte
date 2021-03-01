@@ -34,6 +34,11 @@ function calcResults() {
       );
 
       // populatedIMW.set(calcResultsResultJSON.populated_imw);
+      console.log(
+        `JSON.stringify(calcResultsResultJSON.populated_imw)==> ${JSON.stringify(
+          calcResultsResultJSON.populated_imw
+        )}`
+      );
 
       tableData.set(calcResultsResultJSON.queryResArr_1stPage);
 
