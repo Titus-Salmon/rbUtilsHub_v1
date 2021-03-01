@@ -23,8 +23,6 @@ export async function post(req, res, next) {
   console.log(`h4ll0 from within the async function of calcResults.js`)
 
   res.setHeader('Content-Type', 'application/json')
-  // console.log(`req.body.data==> ${req.body.data}`)
-  // let tableName = req.body.data
 
   let stagedTableName = req.body.tableName
   console.log(`JSON.stringify(req.body)==> ${JSON.stringify(req.body)}`)

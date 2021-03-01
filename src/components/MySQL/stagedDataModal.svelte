@@ -3,7 +3,7 @@ import stagingData from "../../stores/stagingData/st_stagingData.js";
 import calcResStore from "../../stores/calcResults/st_calcResults";
 
 import paginData from "../../stores/pagination/st_pagination1";
-import calcResTableData from "../../stores/dynamicTables/st_calcResTable";
+import tableData from "../../stores/dynamicTables/tableData1";
 
 import PaginUI from "../../components/UI/paginUI.svelte";
 import CalcResTable from "../../components/queryResTbls/calcResTable.svelte";
@@ -35,7 +35,7 @@ function calcResults() {
         )}`
       );
 
-      calcResTableData.set(calcResultsResultJSON.queryResArr_1stPage);
+      tableData.set(calcResultsResultJSON.queryResArr_1stPage);
 
       calcResultsResponse = calcResultsResultJSON;
 
