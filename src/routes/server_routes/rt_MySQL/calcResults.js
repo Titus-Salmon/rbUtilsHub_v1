@@ -38,12 +38,13 @@ export async function post(req, res, next) {
   let srcRsXLS = []
   let queryResArr_1stPage = []
   // let populated_imw = blank_imw
+  let populated_imw
   let populated_imw_arr = []
 
   function populateIMW() {
     console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
     for (let i = 0; i < queryResArr.length; i++) {
-      let populated_imw = blank_imw
+      populated_imw = blank_imw
       populated_imw['upc'] = queryResArr[i]['inv_ScanCode']
       populated_imw_arr.push(populated_imw)
     }
