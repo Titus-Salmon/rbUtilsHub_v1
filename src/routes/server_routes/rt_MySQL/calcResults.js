@@ -40,7 +40,7 @@ export async function post(req, res, next) {
   let populated_imw = blank_imw
   let populated_imw_arr = []
 
-  function populateIMW(...populated_imw) {
+  function populateIMW(populated_imw) {
     console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
     for (let i = 0; i < queryResArr.length; i++) {
       populated_imw['upc'] = queryResArr[i]['inv_ScanCode']
