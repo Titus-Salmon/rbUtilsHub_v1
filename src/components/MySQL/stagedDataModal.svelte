@@ -2,7 +2,7 @@
 import stagingData from "../../stores/stagingData/st_stagingData.js";
 import calcResStore from "../../stores/calcResults/st_calcResults";
 
-import calcResTableData from "../../stores/calcResults/st_calcResults";
+import calcResTableData from "../../stores/dynamicTables/st_calcResTable";
 
 import CalcResTable from "../../components/queryResTbls/calcResTable.svelte";
 
