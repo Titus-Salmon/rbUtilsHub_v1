@@ -81,6 +81,8 @@ import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
     `JSON.stringify($paginData[0])==> ${JSON.stringify($paginData[0])}`
   )}
   <CalcResTable />
+{:else}
+  <QueryResultsTable1 />
 {/if}
 
-<QueryResultsTable1 />
+<!-- <QueryResultsTable1 /> -->
