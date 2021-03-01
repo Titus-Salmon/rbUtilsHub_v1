@@ -408,16 +408,10 @@ function calcResults() {
     <button on:click="{calcResults}">calcResults</button>
   </div>
 
-  {#if $calcResStore[0].calcResStoreData !== null}
+  <!-- {#if $calcResStore[0].calcResStoreData !== null}
     {console.log(
       `JSON.stringify($paginData[0])==> ${JSON.stringify($paginData[0])}`
     )}
-    <!-- {#if $paginData[0].totalPages !== null}
-      <p style="text-align:center; margin: 0">
-        Page {$paginData[0].currentPage} of {$paginData[0].totalPages}
-      </p>
-      <PaginUI />
-    {/if} -->
     <CalcResTable />
-  {/if}
+  {/if} -->
 {/if}
