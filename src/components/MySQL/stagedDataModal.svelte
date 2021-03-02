@@ -30,6 +30,7 @@ function calcResults() {
   // formData.append("popTableFile", popTableFile);
   // formData.append("popTableTableName", popTableTableName.value);
   console.log(`Object.keys(formData)==> ${Object.keys(formData)}`);
+  console.log(`JSON.stringify(formData)==> ${JSON.stringify(formData)}`);
 
   fetch("server_routes/rt_MySQL/calcResults", {
     method: "POST",
