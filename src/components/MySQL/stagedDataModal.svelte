@@ -25,7 +25,8 @@ function calcResults() {
     )}`
   );
 
-  let postBodyObj = {};
+  let postBodyObj = { tableName: tableName }; //start with this, and populate it further below with all the looped
+  //input values
 
   for (let i = 0; i < stagedMarginValues.length; i++) {
     let inputId = stagedMarginValues[i]["dptName"];
@@ -43,9 +44,10 @@ function calcResults() {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      tableName: tableName,
-    }),
+    // body: JSON.stringify({
+    //   tableName: tableName,
+    // }),
+    body: JSON.stringify(postBodyObj),
   })
     .then((calcResultsResult) => calcResultsResult.json())
     .then((calcResultsResultJSON) => {
