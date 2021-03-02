@@ -46,6 +46,9 @@ export async function post(req, res, next) {
   //Need to grab ahold of incoming form data from stagedDataModal.svelte in order to tell which type of IMW is intended...
 
   async function populateIMW() {
+
+    console.log(`JSON.stringify(req.body)==> ${JSON.stringify(req.body)}`)
+
     console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
     for (let i = 0; i < queryResArr.length; i++) {
       let imwToPop = {}
