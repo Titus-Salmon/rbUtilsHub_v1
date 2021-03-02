@@ -15,19 +15,16 @@ let skuToggle;
 let skuMismatchOption;
 
 function calcResults() {
-  let stagedMarginValues = Object.values(
-    $stagingData[0].stagingDataResponse.stagedMargins
-  );
-  console.log(`stagedMarginValues.length==> ${stagedMarginValues.length}`);
-  console.log(
-    `JSON.stringify(stagedMarginValues)==> ${JSON.stringify(
-      stagedMarginValues
-    )}`
-  );
-
   let postBodyObj = { tableName: tableName }; //start with this, and populate it further below with all the looped
   //input values
 
+  ///here we are populating our postBodyObj with all the input values from our looped inputs below
+  //(department margins, department charm profiles, ongoing discos, divide cost by ea/cs, type of imw, sku mismatch,
+  //edi/catapult sku, flag sku mismatch, include edlp, dept filter)
+  //v//dept margins///////////////////////////////////////////////////////////////////
+  let stagedMarginValues = Object.values(
+    $stagingData[0].stagingDataResponse.stagedMargins
+  );
   for (let i = 0; i < stagedMarginValues.length; i++) {
     let inputId = stagedMarginValues[i]["dptName"];
     let inputValue = document.getElementById(`${inputId}`).value;
@@ -36,6 +33,28 @@ function calcResults() {
       `stagedMarginValues[${i}]["dptName"]==> ${stagedMarginValues[i]["dptName"]}`
     );
   }
+  //^//dept margins///////////////////////////////////////////////////////////////////
+
+  //v//department charm profiles///////////////////////////////////////////////////////////////////
+  let lowerCutoffRqdRtlGroc =
+    $stagingData[0].stagingDataResponse.charmProfiles.grocery.lowerCutoffRqdRtl
+      .name;
+  let inputId = lowerCutoffRqdRtlGroc;
+  let inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+
+  let stagedlowercutoffCharmsGroc = Object.values(
+    $stagingData[0].stagingDataResponse.charmProfiles.grocery.lowercutoffCharms
+  );
+  for (let i = 0; i < stagedlowercutoffCharmsGroc.length; i++) {
+    let inputId = stagedlowercutoffCharmsGroc[i]["charmName"];
+    let inputValue = document.getElementById(`${inputId}`).value;
+    postBodyObj[`${inputId}`] = inputValue;
+    console.log(
+      `stagedlowercutoffCharmsGroc[${i}]["charmName"]==> ${stagedlowercutoffCharmsGroc[i]["charmName"]}`
+    );
+  }
+  //^//department charm profiles///////////////////////////////////////////////////////////////////
 
   console.log(`JSON.stringify(postBodyObj)==> ${JSON.stringify(postBodyObj)}`);
 
