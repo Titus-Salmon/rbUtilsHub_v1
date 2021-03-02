@@ -14,7 +14,11 @@ let edlpSwitch;
 let skuToggle;
 let skuMismatchOption;
 
+let inputId;
+let inputValue;
+
 function calcResults() {
+  //v//**********************************************************************************************************************/
   let postBodyObj = { tableName: tableName }; //start with this, and populate it further below with all the looped
   //input values
 
@@ -26,8 +30,8 @@ function calcResults() {
     $stagingData[0].stagingDataResponse.stagedMargins
   );
   for (let i = 0; i < stagedMarginValues.length; i++) {
-    let inputId = stagedMarginValues[i]["dptName"];
-    let inputValue = document.getElementById(`${inputId}`).value;
+    inputId = stagedMarginValues[i]["dptName"];
+    inputValue = document.getElementById(`${inputId}`).value;
     postBodyObj[`${inputId}`] = inputValue;
     console.log(
       `stagedMarginValues[${i}]["dptName"]==> ${stagedMarginValues[i]["dptName"]}`
@@ -35,26 +39,151 @@ function calcResults() {
   }
   //^//dept margins///////////////////////////////////////////////////////////////////
 
-  //v//department charm profiles///////////////////////////////////////////////////////////////////
+  //v//grocery department charm profiles///////////////////////////////////////////////////////////////////
+  //grocery lower cutoff/////////////////////////////////
   let lowerCutoffRqdRtlGroc =
     $stagingData[0].stagingDataResponse.charmProfiles.grocery.lowerCutoffRqdRtl
       .name;
-  let inputId = lowerCutoffRqdRtlGroc;
-  let inputValue = document.getElementById(`${inputId}`).value;
+  inputId = lowerCutoffRqdRtlGroc;
+  inputValue = document.getElementById(`${inputId}`).value;
   postBodyObj[`${inputId}`] = inputValue;
 
   let stagedlowercutoffCharmsGroc = Object.values(
     $stagingData[0].stagingDataResponse.charmProfiles.grocery.lowercutoffCharms
   );
   for (let i = 0; i < stagedlowercutoffCharmsGroc.length; i++) {
-    let inputId = stagedlowercutoffCharmsGroc[i]["charmName"];
-    let inputValue = document.getElementById(`${inputId}`).value;
+    inputId = stagedlowercutoffCharmsGroc[i]["charmName"];
+    inputValue = document.getElementById(`${inputId}`).value;
     postBodyObj[`${inputId}`] = inputValue;
     console.log(
       `stagedlowercutoffCharmsGroc[${i}]["charmName"]==> ${stagedlowercutoffCharmsGroc[i]["charmName"]}`
     );
   }
-  //^//department charm profiles///////////////////////////////////////////////////////////////////
+
+  //grocery defaults/////////////////////////////////
+  let upperCutoffRqdRtlGroc =
+    $stagingData[0].stagingDataResponse.charmProfiles.grocery.upperCutoffRqdRtl
+      .name;
+  inputId = upperCutoffRqdRtlGroc;
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+
+  let defaultCharmsGroc = Object.values(
+    $stagingData[0].stagingDataResponse.charmProfiles.grocery.defaultCharms
+  );
+  for (let i = 0; i < defaultCharmsGroc.length; i++) {
+    inputId = defaultCharmsGroc[i]["charmName"];
+    inputValue = document.getElementById(`${inputId}`).value;
+    postBodyObj[`${inputId}`] = inputValue;
+    console.log(
+      `defaultCharmsGroc[${i}]["charmName"]==> ${defaultCharmsGroc[i]["charmName"]}`
+    );
+  }
+  //^//grocery department charm profiles///////////////////////////////////////////////////////////////////
+
+  //v//wellness department charm profiles///////////////////////////////////////////////////////////////////
+  //wellness lower cutoff/////////////////////////////////
+  let lowerCutoffRqdRtlWell =
+    $stagingData[0].stagingDataResponse.charmProfiles.wellness.lowerCutoffRqdRtl
+      .name;
+  inputId = lowerCutoffRqdRtlWell;
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+
+  let stagedlowercutoffCharmsWell = Object.values(
+    $stagingData[0].stagingDataResponse.charmProfiles.wellness.lowercutoffCharms
+  );
+  for (let i = 0; i < stagedlowercutoffCharmsWell.length; i++) {
+    inputId = stagedlowercutoffCharmsWell[i]["charmName"];
+    inputValue = document.getElementById(`${inputId}`).value;
+    postBodyObj[`${inputId}`] = inputValue;
+    console.log(
+      `stagedlowercutoffCharmsWell[${i}]["charmName"]==> ${stagedlowercutoffCharmsWell[i]["charmName"]}`
+    );
+  }
+
+  //wellness defaults/////////////////////////////////
+  let upperCutoffRqdRtlWell =
+    $stagingData[0].stagingDataResponse.charmProfiles.wellness.upperCutoffRqdRtl
+      .name;
+  inputId = upperCutoffRqdRtlWell;
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+
+  let defaultCharmsWell = Object.values(
+    $stagingData[0].stagingDataResponse.charmProfiles.grocery.defaultCharms
+  );
+  for (let i = 0; i < defaultCharmsWell.length; i++) {
+    inputId = defaultCharmsWell[i]["charmName"];
+    inputValue = document.getElementById(`${inputId}`).value;
+    postBodyObj[`${inputId}`] = inputValue;
+    console.log(
+      `defaultCharmsWell[${i}]["charmName"]==> ${defaultCharmsWell[i]["charmName"]}`
+    );
+  }
+  //^//wellness department charm profiles///////////////////////////////////////////////////////////////////
+
+  //v//ongoing discos///////////////////////////////////////////////////////////////////////////////////////
+  //ongDisco_WS
+  inputId = "ongDisco_WS";
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+
+  //ongDisco_Rtl
+  inputId = "ongDisco_Rtl";
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+  //^//ongoing discos///////////////////////////////////////////////////////////////////////////////////////
+
+  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+  inputId = "eaNumDivide";
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+
+  //v//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
+  inputId = "csNumDivide";
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+
+  //v//typeOfIMW/////////////////////////////////////////////////////////////////////////////////////
+  inputId = "typeOfIMW";
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+
+  //v//skuMismatchAllowance/////////////////////////////////////////////////////////////////////////////////////
+  inputId = "skuMismatchAllowance";
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+
+  //v//ediOrCatapultSku/////////////////////////////////////////////////////////////////////////////////////
+  inputId = "ediOrCatapultSku";
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+
+  //v//flagSkuMismatch/////////////////////////////////////////////////////////////////////////////////////
+  inputId = "flagSkuMismatch";
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+
+  //v//includeEdlp/////////////////////////////////////////////////////////////////////////////////////
+  inputId = "includeEdlp";
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+
+  //v//deptFilter/////////////////////////////////////////////////////////////////////////////////////
+  inputId = "deptFilter";
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+
+  //^//**********************************************************************************************************************/
 
   console.log(`JSON.stringify(postBodyObj)==> ${JSON.stringify(postBodyObj)}`);
 
@@ -364,8 +493,8 @@ function calcResults() {
         <!--dropdown options------------------------------------------------------------------------------------------>
         <!-- type of IMW -------------------------------------------------------------------------->
         <div style="text-align:center">
-          <label for="querySelect">Type of IMW</label>
-          <select name="querySelect" id="querySelect" bind:value="{imwOptions}">
+          <label for="typeOfIMW">Type of IMW</label>
+          <select name="typeOfIMW" id="typeOfIMW" bind:value="{imwOptions}">
             <option value="wholesale">Wholesale Update IMW</option>
             <option value="retail">Retail Update IMW</option>
             <option value="new">New Item IMW</option>
@@ -374,10 +503,10 @@ function calcResults() {
 
         <!-- SKU Mismatch Allowance -------------------------------------------------------------------------->
         <div style="text-align:center">
-          <label for="querySelect">SKU Mismatch Options</label>
+          <label for="skuMismatchAllowance">SKU Mismatch Options</label>
           <select
-            name="querySelect"
-            id="querySelect"
+            name="skuMismatchAllowance"
+            id="skuMismatchAllowance"
             bind:value="{skuMismatchAllowance}">
             <option value="allowMismatch">Allow SKU Mismatches</option>
             <option value="matchOnly">Require SKU Match</option>
@@ -386,8 +515,11 @@ function calcResults() {
 
         <!-- use EDI or Catapult SKU for IMW ----------------------------------------------------------------------------------------------->
         <div style="text-align:center">
-          <label for="querySelect">Use EDI or Catapult SKU for IMW</label>
-          <select name="querySelect" id="querySelect" bind:value="{skuToggle}">
+          <label for="ediOrCatapultSku">Use EDI or Catapult SKU for IMW</label>
+          <select
+            name="ediOrCatapultSku"
+            id="ediOrCatapultSku"
+            bind:value="{skuToggle}">
             <option value="catapult">Catapult</option>
             <option value="edi">EDI</option>
           </select>
@@ -395,10 +527,10 @@ function calcResults() {
 
         <!-- Flag SKU mismatch for IMW? ----------------------------------------------------------------------------------------------->
         <div style="text-align:center">
-          <label for="querySelect">Flag SKU mismatch for IMW?</label>
+          <label for="flagSkuMismatch">Flag SKU mismatch for IMW?</label>
           <select
-            name="querySelect"
-            id="querySelect"
+            name="flagSkuMismatch"
+            id="flagSkuMismatch"
             bind:value="{skuMismatchOption}">
             <option value="yes">yes</option>
             <option value="no">no</option>
@@ -407,8 +539,8 @@ function calcResults() {
 
         <!-- include EDLP ----------------------------------------------------------------------------------------------->
         <div style="text-align:center">
-          <label for="querySelect">Include EDLP</label>
-          <select name="querySelect" id="querySelect" bind:value="{edlpSwitch}">
+          <label for="includeEdlp">Include EDLP</label>
+          <select name="includeEdlp" id="includeEdlp" bind:value="{edlpSwitch}">
             <option value="no">no</option>
             <option value="yes">yes</option>
           </select>
@@ -416,8 +548,8 @@ function calcResults() {
 
         <!-- Dept Filter -------------------------------------------------------------------------->
         <div style="text-align:center">
-          <label for="querySelect">Dept Filter</label>
-          <select name="querySelect" id="querySelect" bind:value="{dptFilter}">
+          <label for="deptFilter">Dept Filter</label>
+          <select name="deptFilter" id="deptFilter" bind:value="{dptFilter}">
             <option value="none">none</option>
             <option value="54">Beer & Alcohol</option>
             <option value="152">Body Care</option>
