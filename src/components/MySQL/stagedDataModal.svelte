@@ -25,23 +25,18 @@ function calcResults() {
     )}`
   );
 
-let postBodyObj = {}
+  let postBodyObj = {};
 
   for (let i = 0; i < stagedMarginValues.length; i++) {
-    let inputId = stagedMarginValues[i]["dptName"]
-    let inputValue = document.getElementById(`${inputId}`).value
-    postBodyObj[`${inputId}`] = inputValue
+    let inputId = stagedMarginValues[i]["dptName"];
+    let inputValue = document.getElementById(`${inputId}`).value;
+    postBodyObj[`${inputId}`] = inputValue;
     console.log(
       `stagedMarginValues[${i}]["dptName"]==> ${stagedMarginValues[i]["dptName"]}`
     );
   }
 
-  console.log(`JSON.stringify(postBodyObj)==> ${JSON.stringify(postBodyObj)}`
-
-  // formData.append("popTableFile", popTableFile);
-  // formData.append("popTableTableName", popTableTableName.value);
-  console.log(`Object.keys(formData)==> ${Object.keys(formData)}`);
-  console.log(`JSON.stringify(formData)==> ${JSON.stringify(formData)}`);
+  console.log(`JSON.stringify(postBodyObj)==> ${JSON.stringify(postBodyObj)}`);
 
   fetch("server_routes/rt_MySQL/calcResults", {
     method: "POST",
