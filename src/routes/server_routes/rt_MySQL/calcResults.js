@@ -48,8 +48,51 @@ export async function post(req, res, next) {
       let imwToPop = {}
       blank_imw_creator(imwToPop)
       imwToPop['upc'] = queryResArr[i]['inv_ScanCode']
-      console.log(`imwToPop['upc']==> ${imwToPop['upc']}`)
-      console.log(`queryResArr[i]['inv_ScanCode']==> ${queryResArr[i]['inv_ScanCode']}`)
+      imwToPop['deptID'] = ""
+      imwName['deptName'] = ""
+      imwName['rcptAlias'] = ""
+      imwName['brand'] = ""
+      imwName['itemName'] = ""
+      imwName['size'] = ""
+      imwName['sugstdRtl'] = ""
+      imwName['lastCost'] = ""
+      imwName['charm'] = ""
+      imwName['autoDiscount'] = ""
+      imwName['idealMarg'] = ""
+      imwName['wtPrfl'] = ""
+      imwName['tax1'] = ""
+      imwName['tax2'] = ""
+      imwName['tax3'] = ""
+      imwName['spclTndr1'] = ""
+      imwName['spclTndr2'] = ""
+      imwName['posPrmpt'] = ""
+      imwName['lctn'] = ""
+      imwName['altID'] = ""
+      imwName['altRcptAlias'] = ""
+      imwName['pkgQnt'] = ""
+      imwName['imwSKU'] = ""
+      imwName['splrID'] = ""
+      imwName['unit'] = ""
+      imwName['numPkgs'] = ""
+      imwName['pf1'] = ""
+      imwName['pf2'] = ""
+      imwName['pf3'] = ""
+      imwName['pf4'] = ""
+      imwName['pf5'] = ""
+      imwName['pf6'] = ""
+      imwName['pf7'] = ""
+      imwName['pf8'] = ""
+      imwName['onhndQnt'] = ""
+      imwName['rdrPnt'] = ""
+      imwName['mcl'] = ""
+      imwName['rdrQnt'] = ""
+      imwName['memo'] = ""
+      imwName['flrRsn'] = ""
+      imwName['dsd'] = ""
+      imwName['dscMltplr'] = ""
+      imwName['csPkgMltpl'] = ""
+      imwName['ovr'] = ""
+
       populated_imw_arr.push(imwToPop)
     }
 

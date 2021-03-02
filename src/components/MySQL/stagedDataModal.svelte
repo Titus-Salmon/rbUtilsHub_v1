@@ -15,6 +15,21 @@ let skuToggle;
 let skuMismatchOption;
 
 function calcResults() {
+  const formData = new FormData();
+  let stagedMarginNames = Object.keys(
+    $stagingData[0].stagingDataResponse.stagedMargins
+  );
+  let stagedMarginValues = Object.values(
+    $stagingData[0].stagingDataResponse.stagedMargins
+  );
+  for (let i = 0; i < stagedMarginValues.length; i++) {
+    formData.append(`${stagedMarginNames[i]}`, stagedMarginValues[i]);
+  }
+
+  // formData.append("popTableFile", popTableFile);
+  // formData.append("popTableTableName", popTableTableName.value);
+  console.log(`Object.keys(formData)==> ${Object.keys(formData)}`);
+
   fetch("server_routes/rt_MySQL/calcResults", {
     method: "POST",
     headers: {
