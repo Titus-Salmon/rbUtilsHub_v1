@@ -29,6 +29,9 @@ function calcResults() {
     )}`
   );
   for (let i = 0; i < stagedMarginValues.length; i++) {
+    console.log(
+      `stagedMarginValues[${i}]["dptName"]==> ${stagedMarginValues[i]["dptName"]}`
+    );
     formData.append(
       `${stagedMarginValues[i]["dptName"]}`,
       stagedMarginValues[i]["dptName"]
