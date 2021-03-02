@@ -15,10 +15,6 @@ let skuToggle;
 let skuMismatchOption;
 
 function calcResults() {
-  const formData = new FormData();
-  let stagedMarginNames = Object.keys(
-    $stagingData[0].stagingDataResponse.stagedMargins
-  );
   let stagedMarginValues = Object.values(
     $stagingData[0].stagingDataResponse.stagedMargins
   );
@@ -28,15 +24,19 @@ function calcResults() {
       stagedMarginValues
     )}`
   );
+
+let postBodyObj = {}
+
   for (let i = 0; i < stagedMarginValues.length; i++) {
+    let inputId = stagedMarginValues[i]["dptName"]
+    let inputValue = document.getElementById(`${inputId}`).value
+    postBodyObj[`${inputId}`] = inputValue
     console.log(
       `stagedMarginValues[${i}]["dptName"]==> ${stagedMarginValues[i]["dptName"]}`
     );
-    formData.append(
-      `${stagedMarginValues[i]["dptName"]}`,
-      stagedMarginValues[i]["dptName"]
-    );
   }
+
+  console.log(`JSON.stringify(postBodyObj)==> ${JSON.stringify(postBodyObj)}`
 
   // formData.append("popTableFile", popTableFile);
   // formData.append("popTableTableName", popTableTableName.value);
