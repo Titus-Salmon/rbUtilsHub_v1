@@ -42,7 +42,7 @@ export async function post(req, res, next) {
   let queryResArr_1stPage = []
   let populated_imw_arr = []
 
-  function populateIMW(populated_imw_arr) {
+  async function populateIMW() {
     console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
     for (let i = 0; i < queryResArr.length; i++) {
       blank_imw_creator()
@@ -74,7 +74,7 @@ export async function post(req, res, next) {
       console.log('rows[0]==>', rows[0])
       rbDBqueryResults(rows, queryResArr, srcRsXLS, queryResArr_1stPage)
         .then(paginCalcs(queryResArr))
-        .then(populateIMW(...populated_imw_arr))
+        .then(populateIMW())
         .then(() => {
           res.json({
             queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
