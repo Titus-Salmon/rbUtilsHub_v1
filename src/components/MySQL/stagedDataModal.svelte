@@ -22,6 +22,7 @@ function calcResults() {
   let stagedMarginValues = Object.values(
     $stagingData[0].stagingDataResponse.stagedMargins
   );
+  console.log(`stagedMarginValues.length==> ${stagedMarginValues.length}`);
   for (let i = 0; i < stagedMarginValues.length; i++) {
     formData.append(`${stagedMarginNames[i]}`, stagedMarginValues[i]);
   }
