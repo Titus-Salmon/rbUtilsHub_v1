@@ -45,10 +45,24 @@ export async function post(req, res, next) {
   //need to distinguish between Rtl and WS IMWs, so will need separate populateIMW functions. 
   //Need to grab ahold of incoming form data from stagedDataModal.svelte in order to tell which type of IMW is intended...
 
-  async function populateIMW() {
+  async function populateIMW(rows) {
+
+    console.log(`JSON.stringify(rows[0])==> ${JSON.stringify(rows[0])}`)
 
     console.log(`JSON.stringify(req.body)==> ${JSON.stringify(req.body)}`)
-    //JSON.stringify(req.body)==> 
+
+    if (req.body.typeOfIMW === "wholesale") {
+      wholesaleCalcs()
+    } else {
+      retailCalcs()
+    }
+
+    function wholesaleCalcs() {
+      //populate imw with wholesales from vendor-supplied catalog
+      //(this is just a starting point; we will massage these values later)
+    }
+
+    // JSON.stringify(req.body)==> 
     //{"tableName":"nejgarden20210227",
     //"beerAlc":"20","bodyCare":"45","books":"40","bulk":"45","bulkHerbPrepack":"45","cbdGroc":"45","cbdSupp":"45","cbdTop":"45",
     //"consignments":"20","genMerch":"38","gift":"50","grabGo":"33","grocery":"38","groceryLocal":"33","groceryLocalMeat":"25",
@@ -66,19 +80,28 @@ export async function post(req, res, next) {
     //"lowerCutoffCharmWell5":"0.79","lowerCutoffCharmWell6":"0.79","lowerCutoffCharmWell7":"0.99",
 
     //"upperCutoffRqdRtlWell":"9999",
-
-
+    //"defaultCharmWell1":"0.49","defaultCharmWell2":"0.49","defaultCharmWell3":"0.99","defaultCharmWell4":"0.99",
 
     //"ongDisco_WS":"","ongDisco_Rtl":"",
-
     //"eaNumDivide":"no","csNumDivide":"",
-
     //"typeOfIMW":"wholesale",
     //"skuMismatchAllowance":"allowMismatch",
     //"ediOrCatapultSku":"catapult",
     //"flagSkuMismatch":"yes",
     //"includeEdlp":"no",
     //"deptFilter":"none"}
+
+    //retail charm calcs are based on the following logic:
+    // if (reqdRetail<lowerCutRqdRtl) {
+    //   perform lower cutoff charm calcs
+    // } else {
+    //   if (reqdRetail<upperCharmRqdRtl) {
+    //     perform upper cutoff charm calcs
+    //   } else {
+    //     use the defaultcharm4 calcs
+    //   }
+    // }
+
 
     console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
     for (let i = 0; i < queryResArr.length; i++) {
@@ -148,7 +171,7 @@ export async function post(req, res, next) {
       console.log('rows[0]==>', rows[0])
       rbDBqueryResults(rows, queryResArr, srcRsXLS, queryResArr_1stPage)
         .then(paginCalcs(queryResArr))
-        .then(populateIMW())
+        .then(populateIMW(rows))
         .then(() => {
           res.json({
             queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
