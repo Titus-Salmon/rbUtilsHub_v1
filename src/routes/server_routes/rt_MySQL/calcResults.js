@@ -62,13 +62,53 @@ export async function post(req, res, next) {
       //the following fields need to be populated for WS IMW:
       //Item ID(UPC), Last Cost, Ideal Margin(?), Supplier Unit ID(SKU), Supplier ID(EDI-VENDORNAME), Num Pkgs,
       //Case Pk Mult, Ovr, PF1, PF2, PF5(YYYY-MM-DD WS UPDT(pf5)), PF6(EDI-VENDORNAME)
+
+      //lay out logic for
+      //[1] wholesale calcs, taking into account:
+      //any ongoing discos
+      let discoMulti;
+      (function discoMulti() {
+        if (req.body.ongDisco_WS !== null) {
+          //if there is a disco, apply it to get the actual cost
+          discoMulti = req.body.ongDisco_WS
+        } else {
+          //if there is no disco, just use 0 as the multiplier, so as not to change the base vendor cost
+          discoMulti = 0
+        }
+      }())
+
+      //ea/cs division to get to unit cost (use Catapult oup_name vals to calc)
+      let eaCsNum;
+      let venCost;
+      let unitCost;
+
+      function eaCsNumDiv(n) {
+        eaCsNum = queryResArr[n]['oup_name'].split('-')[1]
+        venCost = queryResArr[n][`${venCatPrefix}_cost`]
+        if (req.body.eaCsNumDivide === 'yes') {
+          //domathToGetToUnitCost
+          //unitCost = vendorCost/eaCsNum
+          unitCost = (venCost / eaCsNum) - (venCost / eaCsNum) * discoMulti
+        } else {
+          unitCost = venCost - venCost * discoMulti
+        }
+      }
+
+      //[2] Num Pkgs ("Quantity" in WebOffice) - corresponds to CS-##
+
+      //[3] Case Pk Mult ("Case Pack Multiple" in WebOffice) - corresponds to EA-##
+      //Set Ovr variable to "1" for such items (allow override)
+
+
       console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
       for (let i = 0; i < queryResArr.length; i++) {
+        eaCsNumDiv(i)
         let imwToPop = {}
         blank_imw_creator(imwToPop)
         imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
         imwToPop['sugstdRtl'] = ""
-        imwToPop['lastCost'] = `${queryResArr[i][`${venCatPrefix}_cost`]}`
+        // imwToPop['lastCost'] = `${queryResArr[i][`${venCatPrefix}_cost`]}`
+        imwToPop['lastCost'] = `${unitCost}`
         imwToPop['charm'] = ""
         imwToPop['autoDiscount'] = ""
         imwToPop['idealMarg'] = `${queryResArr[i]['sib_idealmargin']}`
@@ -91,7 +131,7 @@ export async function post(req, res, next) {
         imwToPop['pf2'] = `${queryResArr[i]['pi2_description']}`
         imwToPop['pf3'] = ""
         imwToPop['pf4'] = ""
-        imwToPop['pf5'] = ""
+        imwToPop['pf5'] = `${new Date().toISOString().split('T', 1)[0]} WS UPDT (pf5)` //Power Field 5 - today's date
         imwToPop['pf6'] = `${queryResArr[i]['ven_companyname']}`
         imwToPop['pf7'] = ""
         imwToPop['pf8'] = ""
