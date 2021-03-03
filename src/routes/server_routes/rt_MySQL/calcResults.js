@@ -28,6 +28,11 @@ import {
   ongDiscoMulti
 } from "../../../libT0d/calcResults/ongDiscoMulti"
 
+import {
+  unitCost,
+  eaCsNumDiv
+} from "../../../libT0d/calcResults/"
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////V// ************* PREPARE TO REWRITE THE FUCK OUT OF THIS ***************** //////////////////////////////////////
 export async function post(req, res, next) {
@@ -72,32 +77,23 @@ export async function post(req, res, next) {
       // //[1] wholesale calcs, taking into account:
       // //any ongoing discos
       ongDiscoMulti()
-      // let discoMulti;
-      // (function ongDiscoMulti() {
-      //   if (req.body.ongDisco_WS !== null) {
-      //     //if there is a disco, apply it to get the actual cost
-      //     discoMulti = req.body.ongDisco_WS / 100
-      //   } else {
-      //     //if there is no disco, just use 0 as the multiplier, so as not to change the base vendor cost
-      //     discoMulti = 0
-      //   }
-      // }())
 
       //ea/cs division to get to unit cost (use Catapult oup_name vals to calc)
-      let eaCsNum;
-      let venCost;
-      let unitCost;
+      //we take care of this by calling eaCsNumDiv(i) in the loop below
+      // let eaCsNum;
+      // let venCost;
+      // let unitCost;
 
-      function eaCsNumDiv(n) {
-        eaCsNum = queryResArr[n]['oup_name'].split('-')[1]
-        venCost = queryResArr[n][`${venCatPrefix}_cost`]
-        if (req.body.eaCsNumDivide === 'yes') {
-          //domathToGetToUnitCost
-          unitCost = (venCost / eaCsNum) - (venCost / eaCsNum) * discoMulti
-        } else {
-          unitCost = venCost - venCost * discoMulti
-        }
-      }
+      // function eaCsNumDiv(n) {
+      //   eaCsNum = queryResArr[n]['oup_name'].split('-')[1]
+      //   venCost = queryResArr[n][`${venCatPrefix}_cost`]
+      //   if (req.body.eaCsNumDivide === 'yes') {
+      //     //domathToGetToUnitCost
+      //     unitCost = (venCost / eaCsNum) - (venCost / eaCsNum) * discoMulti
+      //   } else {
+      //     unitCost = venCost - venCost * discoMulti
+      //   }
+      // }
 
       //[2] Num Pkgs ("Quantity" in WebOffice) - corresponds to CS-##
       let nmPk;
