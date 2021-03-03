@@ -23,6 +23,11 @@ import {
   imwToPop
 } from "../../../libT0d/imw/blank_imw_creator"
 
+import {
+  discoMulti,
+  ongDiscoMulti
+} from "../../../libT0d/calcResults/ongDiscoMulti"
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////V// ************* PREPARE TO REWRITE THE FUCK OUT OF THIS ***************** //////////////////////////////////////
 export async function post(req, res, next) {
@@ -63,19 +68,20 @@ export async function post(req, res, next) {
       //Item ID(UPC), Last Cost, Ideal Margin(?), Supplier Unit ID(SKU), Supplier ID(EDI-VENDORNAME), Num Pkgs,
       //Case Pk Mult, Ovr, PF1, PF2, PF5(YYYY-MM-DD WS UPDT(pf5)), PF6(EDI-VENDORNAME)
 
-      //lay out logic for
-      //[1] wholesale calcs, taking into account:
-      //any ongoing discos
-      let discoMulti;
-      (function ongDiscoMulti() {
-        if (req.body.ongDisco_WS !== null) {
-          //if there is a disco, apply it to get the actual cost
-          discoMulti = req.body.ongDisco_WS / 100
-        } else {
-          //if there is no disco, just use 0 as the multiplier, so as not to change the base vendor cost
-          discoMulti = 0
-        }
-      }())
+      // //lay out logic for
+      // //[1] wholesale calcs, taking into account:
+      // //any ongoing discos
+      ongDiscoMulti()
+      // let discoMulti;
+      // (function ongDiscoMulti() {
+      //   if (req.body.ongDisco_WS !== null) {
+      //     //if there is a disco, apply it to get the actual cost
+      //     discoMulti = req.body.ongDisco_WS / 100
+      //   } else {
+      //     //if there is no disco, just use 0 as the multiplier, so as not to change the base vendor cost
+      //     discoMulti = 0
+      //   }
+      // }())
 
       //ea/cs division to get to unit cost (use Catapult oup_name vals to calc)
       let eaCsNum;
