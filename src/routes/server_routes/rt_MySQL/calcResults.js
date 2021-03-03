@@ -108,11 +108,14 @@ export async function post(req, res, next) {
       //[3] Case Pk Mult ("Case Pack Multiple" in WebOffice) - corresponds to EA-##
       //Set Ovr variable to "1" for such items (allow override)
       let csPk;
+      let ovr;
 
       function csPkMltCalc(n) {
+        ovr = ""
         let oupNameLetters = queryResArr[n]['oup_name'].split('-')[0]
         if (oupNameLetters.toLowerCase() === 'ea') {
           csPk = queryResArr[n]['oup_name'].split('-')[1]
+          ovr = "1"
         } else {
           csPk = ""
         }
@@ -164,7 +167,7 @@ export async function post(req, res, next) {
         imwToPop['dsd'] = ""
         imwToPop['dscMltplr'] = ""
         imwToPop['csPkgMltpl'] = csPk
-        imwToPop['ovr'] = ""
+        imwToPop['ovr'] = ovr
 
         populated_imw_arr.push(imwToPop)
       }
