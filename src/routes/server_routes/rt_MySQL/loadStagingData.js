@@ -35,6 +35,8 @@ export async function post(req, res, next) {
   let tableNameToLoad = req.body.tableName
   console.log(`req.body.tableName==> ${req.body.tableName}`)
 
+  let venCatPrefix = req.body.venCatPrefix
+
   //v//here we are doing some regex & js "split" magic to extract the "catalog" name from the nej table name we're loading (nejTableNameYYYMMDD):
   let regex1 = /(\d+)/g
   let vendorNameSplit1 = tableNameToLoad.split('nej')
@@ -85,7 +87,8 @@ export async function post(req, res, next) {
       ongDisco_Rtl: ongDisco_Rtl,
       eaNumDivide: eaNumDivide,
       csNumDivide: csNumDivide,
-      stagedTableName: tableNameToLoad
+      stagedTableName: tableNameToLoad,
+      venCatPrefix: venCatPrefix
     })
   })
 }

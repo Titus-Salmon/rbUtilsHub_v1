@@ -35,6 +35,8 @@ export async function post(req, res, next) {
   console.log(`JSON.stringify(req.body)==> ${JSON.stringify(req.body)}`)
   console.log(`stagedTableName==> ${stagedTableName}`)
 
+  let venCatPrefix = req.body.venCatPrefix
+
   // blank_imw_creator()
 
   let queryResArr = []
@@ -60,9 +62,9 @@ export async function post(req, res, next) {
       for (let i = 0; i < queryResArr.length; i++) {
         let imwToPop = {}
         blank_imw_creator(imwToPop)
-        imwToPop['upc'] = queryResArr[i]['inv_ScanCode']
+        imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
         imwToPop['sugstdRtl'] = ""
-        imwToPop['lastCost'] = ""
+        imwToPop['lastCost'] = `${queryResArr[i][`${venCatPrefix}_cost`]}`
         imwToPop['charm'] = ""
         imwToPop['autoDiscount'] = ""
         imwToPop['idealMarg'] = ""

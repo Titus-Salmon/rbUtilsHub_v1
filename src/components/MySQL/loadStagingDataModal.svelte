@@ -1,6 +1,7 @@
 <script>
 import stagingData from "../../stores/stagingData/st_stagingData.js";
 let tableName;
+let venCatPrefix; //the prefix for portal vendor catalog (i.e. gol for garden of life: gol_upc, etc...)
 let loadStagingDataResponse;
 
 function loadStagingData() {
@@ -11,6 +12,7 @@ function loadStagingData() {
     },
     body: JSON.stringify({
       tableName: tableName.value,
+      venCatPrefix: venCatPrefix.value,
     }),
   })
     .then((loadStagingDataResult) => loadStagingDataResult.json())
@@ -46,7 +48,20 @@ function loadStagingData() {
       type="text"
       id="tableName"
       name="tableName"
+      required
       bind:this="{tableName}" />
+  </div>
+  <!-- //////////////vendor catalog prefix//////////////////////////// -->
+  <div style="text-align:center;">
+    <label for="venPrefix">Vendor Catalog Prefix</label>
+  </div>
+  <div style="text-align:center">
+    <input
+      type="text"
+      id="venPrefix"
+      name="venPrefix"
+      required
+      bind:this="{venCatPrefix}" />
   </div>
   <!-- //////////////button//////////////////////////// -->
   <div style="text-align:center">

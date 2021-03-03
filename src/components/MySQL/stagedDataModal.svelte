@@ -6,6 +6,7 @@ import paginData from "../../stores/pagination/st_pagination1";
 import tableData from "../../stores/dynamicTables/tableData1";
 
 let tableName = $stagingData[0].stagingDataResponse.stagedTableName;
+let venCatPrefix = $stagingData[0].stagingDataResponse.venCatPrefix;
 let calcResultsResponse;
 let imwOptions;
 let skuMismatchAllowance;
@@ -19,7 +20,7 @@ let inputValue;
 
 function calcResults() {
   //v//**********************************************************************************************************************/
-  let postBodyObj = { tableName: tableName }; //start with this, and populate it further below with all the looped
+  let postBodyObj = { tableName: tableName, venCatPrefix: venCatPrefix }; //start with this, and populate it further below with all the looped
   //input values
 
   ///here we are populating our postBodyObj with all the input values from our looped inputs below
