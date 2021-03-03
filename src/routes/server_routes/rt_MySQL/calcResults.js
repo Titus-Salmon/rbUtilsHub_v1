@@ -58,6 +58,10 @@ export async function post(req, res, next) {
     function wholesaleCalcs() {
       //populate imw with wholesales from vendor-supplied catalog
       //(this is just a starting point; we will massage these values later)
+
+      //the following fields need to be populated for WS IMW:
+      //Item ID(UPC), Last Cost, Ideal Margin(?), Supplier Unit ID(SKU), Supplier ID(EDI-VENDORNAME), Num Pkgs,
+      //Case Pk Mult, Ovr, PF1, PF2, PF5(YYYY-MM-DD WS UPDT(pf5)), PF6(EDI-VENDORNAME)
       console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
       for (let i = 0; i < queryResArr.length; i++) {
         let imwToPop = {}
@@ -67,7 +71,7 @@ export async function post(req, res, next) {
         imwToPop['lastCost'] = `${queryResArr[i][`${venCatPrefix}_cost`]}`
         imwToPop['charm'] = ""
         imwToPop['autoDiscount'] = ""
-        imwToPop['idealMarg'] = ""
+        imwToPop['idealMarg'] = `${queryResArr[i]['sib_idealmargin']}`
         imwToPop['wtPrfl'] = ""
         imwToPop['tax1'] = ""
         imwToPop['tax2'] = ""
@@ -79,16 +83,16 @@ export async function post(req, res, next) {
         imwToPop['altID'] = ""
         imwToPop['altRcptAlias'] = ""
         imwToPop['pkgQnt'] = ""
-        imwToPop['imwSKU'] = ""
-        imwToPop['splrID'] = ""
+        imwToPop['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
+        imwToPop['splrID'] = `${queryResArr[i]['ven_companyname']}`
         imwToPop['unit'] = ""
         imwToPop['numPkgs'] = ""
-        imwToPop['pf1'] = ""
-        imwToPop['pf2'] = ""
+        imwToPop['pf1'] = `${queryResArr[i]['pi1_description']}`
+        imwToPop['pf2'] = `${queryResArr[i]['pi2_description']}`
         imwToPop['pf3'] = ""
         imwToPop['pf4'] = ""
         imwToPop['pf5'] = ""
-        imwToPop['pf6'] = ""
+        imwToPop['pf6'] = `${queryResArr[i]['ven_companyname']}`
         imwToPop['pf7'] = ""
         imwToPop['pf8'] = ""
         imwToPop['onhndQnt'] = ""
