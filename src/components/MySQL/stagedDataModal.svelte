@@ -25,6 +25,7 @@ function calcResults() {
   ///here we are populating our postBodyObj with all the input values from our looped inputs below
   //(department margins, department charm profiles, ongoing discos, divide cost by ea/cs, type of imw, sku mismatch,
   //edi/catapult sku, flag sku mismatch, include edlp, dept filter)
+
   //v//dept margins///////////////////////////////////////////////////////////////////
   let stagedMarginValues = Object.values(
     $stagingData[0].stagingDataResponse.stagedMargins
@@ -111,7 +112,7 @@ function calcResults() {
   postBodyObj[`${inputId}`] = inputValue;
 
   let defaultCharmsWell = Object.values(
-    $stagingData[0].stagingDataResponse.charmProfiles.grocery.defaultCharms
+    $stagingData[0].stagingDataResponse.charmProfiles.wellness.defaultCharms
   );
   for (let i = 0; i < defaultCharmsWell.length; i++) {
     inputId = defaultCharmsWell[i]["charmName"];
