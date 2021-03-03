@@ -70,7 +70,7 @@ export async function post(req, res, next) {
       (function ongDiscoMulti() {
         if (req.body.ongDisco_WS !== null) {
           //if there is a disco, apply it to get the actual cost
-          discoMulti = req.body.ongDisco_WS
+          discoMulti = req.body.ongDisco_WS / 100
         } else {
           //if there is no disco, just use 0 as the multiplier, so as not to change the base vendor cost
           discoMulti = 0
