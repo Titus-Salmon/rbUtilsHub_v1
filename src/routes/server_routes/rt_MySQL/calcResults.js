@@ -67,7 +67,7 @@ export async function post(req, res, next) {
       //[1] wholesale calcs, taking into account:
       //any ongoing discos
       let discoMulti;
-      (function discoMulti() {
+      (function ongDiscoMulti() {
         if (req.body.ongDisco_WS !== null) {
           //if there is a disco, apply it to get the actual cost
           discoMulti = req.body.ongDisco_WS
