@@ -163,7 +163,7 @@ export async function post(req, res, next) {
         imwToPop['flrRsn'] = ""
         imwToPop['dsd'] = ""
         imwToPop['dscMltplr'] = ""
-        imwToPop['csPkgMltpl'] = ""
+        imwToPop['csPkgMltpl'] = csPk
         imwToPop['ovr'] = ""
 
         populated_imw_arr.push(imwToPop)
