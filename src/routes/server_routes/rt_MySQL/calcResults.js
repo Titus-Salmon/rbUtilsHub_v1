@@ -33,6 +33,17 @@ import {
   eaCsNumDiv
 } from "../../../libT0d/calcResults/"
 
+import {
+  nmPk,
+  numPkgsCalc
+} from "../../../libT0d/calcResults/numPkgsCalc"
+
+import {
+  csPk,
+  ovr,
+  csPkMltCalc
+} from "../../../libT0d/calcResults/csPkMltCalc"
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////V// ************* PREPARE TO REWRITE THE FUCK OUT OF THIS ***************** //////////////////////////////////////
 export async function post(req, res, next) {
@@ -73,55 +84,20 @@ export async function post(req, res, next) {
       //Item ID(UPC), Last Cost, Ideal Margin(?), Supplier Unit ID(SKU), Supplier ID(EDI-VENDORNAME), Num Pkgs,
       //Case Pk Mult, Ovr, PF1, PF2, PF5(YYYY-MM-DD WS UPDT(pf5)), PF6(EDI-VENDORNAME)
 
-      // //lay out logic for
-      // //[1] wholesale calcs, taking into account:
-      // //any ongoing discos
+      //lay out logic for
+      //[1] wholesale calcs, taking into account:
+      //any ongoing discos
       ongDiscoMulti()
 
-      //ea/cs division to get to unit cost (use Catapult oup_name vals to calc)
+      //[1a] ea/cs division to get to unit cost (use Catapult oup_name vals to calc)
       //we take care of this by calling eaCsNumDiv(i) in the loop below
-      // let eaCsNum;
-      // let venCost;
-      // let unitCost;
-
-      // function eaCsNumDiv(n) {
-      //   eaCsNum = queryResArr[n]['oup_name'].split('-')[1]
-      //   venCost = queryResArr[n][`${venCatPrefix}_cost`]
-      //   if (req.body.eaCsNumDivide === 'yes') {
-      //     //domathToGetToUnitCost
-      //     unitCost = (venCost / eaCsNum) - (venCost / eaCsNum) * discoMulti
-      //   } else {
-      //     unitCost = venCost - venCost * discoMulti
-      //   }
-      // }
 
       //[2] Num Pkgs ("Quantity" in WebOffice) - corresponds to CS-##
-      let nmPk;
-
-      function numPkgsCalc(n) {
-        let oupNameLetters = queryResArr[n]['oup_name'].split('-')[0]
-        if (oupNameLetters.toLowerCase() === 'cs') {
-          nmPk = queryResArr[n]['oup_name'].split('-')[1]
-        } else {
-          nmPk = ""
-        }
-      }
+      //we take care of this by calling numPkgsCalc(i) in the loop below
 
       //[3] Case Pk Mult ("Case Pack Multiple" in WebOffice) - corresponds to EA-##
       //Set Ovr variable to "1" for such items (allow override)
-      let csPk;
-      let ovr;
-
-      function csPkMltCalc(n) {
-        ovr = ""
-        let oupNameLetters = queryResArr[n]['oup_name'].split('-')[0]
-        if (oupNameLetters.toLowerCase() === 'ea') {
-          csPk = queryResArr[n]['oup_name'].split('-')[1]
-          ovr = "1"
-        } else {
-          csPk = ""
-        }
-      }
+      //we take care of this by calling csPkMltCalc(i) in the loop below
 
       console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
       for (let i = 0; i < queryResArr.length; i++) {
