@@ -87,7 +87,6 @@ export async function post(req, res, next) {
         venCost = queryResArr[n][`${venCatPrefix}_cost`]
         if (req.body.eaCsNumDivide === 'yes') {
           //domathToGetToUnitCost
-          //unitCost = vendorCost/eaCsNum
           unitCost = (venCost / eaCsNum) - (venCost / eaCsNum) * discoMulti
         } else {
           unitCost = venCost - venCost * discoMulti
@@ -95,14 +94,35 @@ export async function post(req, res, next) {
       }
 
       //[2] Num Pkgs ("Quantity" in WebOffice) - corresponds to CS-##
+      let nmPk;
+
+      function numPkgsCalc(n) {
+        let oupNameLetters = queryResArr[n]['oup_name'].split('-')[0]
+        if (oupNameLetters.toLowerCase() === 'cs') {
+          nmPk = queryResArr[n]['oup_name'].split('-')[1]
+        } else {
+          nmPk = ""
+        }
+      }
 
       //[3] Case Pk Mult ("Case Pack Multiple" in WebOffice) - corresponds to EA-##
       //Set Ovr variable to "1" for such items (allow override)
+      let csPk;
 
+      function csPkMltCalc(n) {
+        let oupNameLetters = queryResArr[n]['oup_name'].split('-')[0]
+        if (oupNameLetters.toLowerCase() === 'ea') {
+          csPk = queryResArr[n]['oup_name'].split('-')[1]
+        } else {
+          csPk = ""
+        }
+      }
 
       console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
       for (let i = 0; i < queryResArr.length; i++) {
         eaCsNumDiv(i)
+        numPkgsCalc(i)
+        csPkMltCalc(i)
         let imwToPop = {}
         blank_imw_creator(imwToPop)
         imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
@@ -126,7 +146,7 @@ export async function post(req, res, next) {
         imwToPop['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
         imwToPop['splrID'] = `${queryResArr[i]['ven_companyname']}`
         imwToPop['unit'] = ""
-        imwToPop['numPkgs'] = ""
+        imwToPop['numPkgs'] = nmPk
         imwToPop['pf1'] = `${queryResArr[i]['pi1_description']}`
         imwToPop['pf2'] = `${queryResArr[i]['pi2_description']}`
         imwToPop['pf3'] = ""
