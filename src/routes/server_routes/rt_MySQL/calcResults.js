@@ -45,11 +45,7 @@ export async function post(req, res, next) {
   //need to distinguish between Rtl and WS IMWs, so will need separate populateIMW functions. 
   //Need to grab ahold of incoming form data from stagedDataModal.svelte in order to tell which type of IMW is intended...
 
-  async function populateIMW(rows) {
-
-    console.log(`JSON.stringify(rows[0])==> ${JSON.stringify(rows[0])}`)
-
-    console.log(`JSON.stringify(req.body)==> ${JSON.stringify(req.body)}`)
+  async function populateIMW() {
 
     if (req.body.typeOfIMW === "wholesale") {
       wholesaleCalcs()
@@ -60,6 +56,52 @@ export async function post(req, res, next) {
     function wholesaleCalcs() {
       //populate imw with wholesales from vendor-supplied catalog
       //(this is just a starting point; we will massage these values later)
+      console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
+      for (let i = 0; i < queryResArr.length; i++) {
+        let imwToPop = {}
+        blank_imw_creator(imwToPop)
+        imwToPop['upc'] = queryResArr[i]['inv_ScanCode']
+        imwToPop['sugstdRtl'] = ""
+        imwToPop['lastCost'] = ""
+        imwToPop['charm'] = ""
+        imwToPop['autoDiscount'] = ""
+        imwToPop['idealMarg'] = ""
+        imwToPop['wtPrfl'] = ""
+        imwToPop['tax1'] = ""
+        imwToPop['tax2'] = ""
+        imwToPop['tax3'] = ""
+        imwToPop['spclTndr1'] = ""
+        imwToPop['spclTndr2'] = ""
+        imwToPop['posPrmpt'] = ""
+        imwToPop['lctn'] = ""
+        imwToPop['altID'] = ""
+        imwToPop['altRcptAlias'] = ""
+        imwToPop['pkgQnt'] = ""
+        imwToPop['imwSKU'] = ""
+        imwToPop['splrID'] = ""
+        imwToPop['unit'] = ""
+        imwToPop['numPkgs'] = ""
+        imwToPop['pf1'] = ""
+        imwToPop['pf2'] = ""
+        imwToPop['pf3'] = ""
+        imwToPop['pf4'] = ""
+        imwToPop['pf5'] = ""
+        imwToPop['pf6'] = ""
+        imwToPop['pf7'] = ""
+        imwToPop['pf8'] = ""
+        imwToPop['onhndQnt'] = ""
+        imwToPop['rdrPnt'] = ""
+        imwToPop['mcl'] = ""
+        imwToPop['rdrQnt'] = ""
+        imwToPop['memo'] = ""
+        imwToPop['flrRsn'] = ""
+        imwToPop['dsd'] = ""
+        imwToPop['dscMltplr'] = ""
+        imwToPop['csPkgMltpl'] = ""
+        imwToPop['ovr'] = ""
+
+        populated_imw_arr.push(imwToPop)
+      }
     }
 
     // JSON.stringify(req.body)==> 
@@ -103,52 +145,7 @@ export async function post(req, res, next) {
     // }
 
 
-    console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
-    for (let i = 0; i < queryResArr.length; i++) {
-      let imwToPop = {}
-      blank_imw_creator(imwToPop)
-      imwToPop['upc'] = queryResArr[i]['inv_ScanCode']
-      imwToPop['sugstdRtl'] = ""
-      imwToPop['lastCost'] = ""
-      imwToPop['charm'] = ""
-      imwToPop['autoDiscount'] = ""
-      imwToPop['idealMarg'] = ""
-      imwToPop['wtPrfl'] = ""
-      imwToPop['tax1'] = ""
-      imwToPop['tax2'] = ""
-      imwToPop['tax3'] = ""
-      imwToPop['spclTndr1'] = ""
-      imwToPop['spclTndr2'] = ""
-      imwToPop['posPrmpt'] = ""
-      imwToPop['lctn'] = ""
-      imwToPop['altID'] = ""
-      imwToPop['altRcptAlias'] = ""
-      imwToPop['pkgQnt'] = ""
-      imwToPop['imwSKU'] = ""
-      imwToPop['splrID'] = ""
-      imwToPop['unit'] = ""
-      imwToPop['numPkgs'] = ""
-      imwToPop['pf1'] = ""
-      imwToPop['pf2'] = ""
-      imwToPop['pf3'] = ""
-      imwToPop['pf4'] = ""
-      imwToPop['pf5'] = ""
-      imwToPop['pf6'] = ""
-      imwToPop['pf7'] = ""
-      imwToPop['pf8'] = ""
-      imwToPop['onhndQnt'] = ""
-      imwToPop['rdrPnt'] = ""
-      imwToPop['mcl'] = ""
-      imwToPop['rdrQnt'] = ""
-      imwToPop['memo'] = ""
-      imwToPop['flrRsn'] = ""
-      imwToPop['dsd'] = ""
-      imwToPop['dscMltplr'] = ""
-      imwToPop['csPkgMltpl'] = ""
-      imwToPop['ovr'] = ""
 
-      populated_imw_arr.push(imwToPop)
-    }
 
     //V// CACHE populateIMW RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
     save_imw_CSV_cache.set('save_imw_CSV_cache_key', populated_imw_arr)
@@ -169,9 +166,10 @@ export async function post(req, res, next) {
       if (err) throw err
       console.log(`rows.length==>${rows.length}`)
       console.log('rows[0]==>', rows[0])
-      rbDBqueryResults(rows, queryResArr, srcRsXLS, queryResArr_1stPage)
+      rbDBqueryResults(rows, queryResArr, srcRsXLS, queryResArr_1stPage) //queryResArr gets populated and cached with
+        //the query results from the above query
         .then(paginCalcs(queryResArr))
-        .then(populateIMW(rows))
+        .then(populateIMW())
         .then(() => {
           res.json({
             queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
