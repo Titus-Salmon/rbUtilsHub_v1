@@ -1,9 +1,9 @@
-      let discoMulti;
+      let discoMulti_WS;
 
-      function ongDiscoMulti(reqBody) {
+      function ongDiscoMulti_WS(reqBody) {
         if (reqBody.ongDisco_WS !== null) {
           //if there is a disco, apply it to get the actual cost
-          discoMulti = reqBody.ongDisco_WS / 100
+          discoMulti_WS = reqBody.ongDisco_WS / 100
         } else {
           //if there is no disco, just use 0 as the multiplier, so as not to change the base vendor cost
           discoMulti = 0
@@ -11,6 +11,6 @@
       }
 
       export {
-        discoMulti,
-        ongDiscoMulti
+        discoMulti_WS,
+        ongDiscoMulti_WS
       }

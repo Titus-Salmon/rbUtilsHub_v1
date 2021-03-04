@@ -20,13 +20,12 @@ import {
 
 import {
   blank_imw_creator,
-  imwToPop
 } from "../../../libT0d/imw/blank_imw_creator"
 
 import {
-  discoMulti,
-  ongDiscoMulti
-} from "../../../libT0d/calcResults/ongDiscoMulti"
+  discoMulti_WS,
+  ongDiscoMulti_WS
+} from "../../../libT0d/calcResults/ongDiscoMulti_WS"
 
 import {
   unitCost,
@@ -88,7 +87,7 @@ export async function post(req, res, next) {
       //lay out logic for
       //[1] wholesale calcs, taking into account:
       //any ongoing discos
-      ongDiscoMulti(req.body)
+      ongDiscoMulti_WS(req.body)
 
       //[2] ea/cs division to get to unit cost (use Catapult oup_name vals to calc)
       //this is taken care of in eaCsNumDiv() below 
@@ -103,14 +102,14 @@ export async function post(req, res, next) {
       for (let i = 0; i < queryResArr.length; i++) {
         let catapultCost = queryResArr[i]['inv_lastcost']
         let vendorRawCost = queryResArr[i][`${req.body.venCatPrefix}_cost`]
-        let vendorActlCost = vendorRawCost - (vendorRawCost * discoMulti)
+        let vendorActlCost = vendorRawCost - (vendorRawCost * discoMulti_WS)
         //convert both catapultCost and vendorActlCost to rounded ##.## format
         //(because if one is, say, 21.990 and the other is 21.99, they weill be considered different)
         vendorActlCost = Math.round(vendorActlCost * 100) / 100
         catapultCost = Math.round(catapultCost * 100) / 100
         console.log(`vendorActlCost==> ${vendorActlCost} | catapultCost==> ${catapultCost}`)
         if (catapultCost !== vendorActlCost) {
-          eaCsNumDiv(i, req.body, queryResArr, discoMulti)
+          eaCsNumDiv(i, req.body, queryResArr, discoMulti_WS)
           numPkgsCalc(i, queryResArr)
           csPkMltCalc(i, queryResArr)
           let imwToPop = {}
