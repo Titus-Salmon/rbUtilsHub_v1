@@ -31,7 +31,7 @@ import {
 import {
   unitCost,
   eaCsNumDiv
-} from "../../../libT0d/calcResults/"
+} from "../../../libT0d/calcResults/eaCsNumDiv"
 
 import {
   nmPk,
