@@ -99,52 +99,62 @@ export async function post(req, res, next) {
 
       console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
       for (let i = 0; i < queryResArr.length; i++) {
-        eaCsNumDiv(i, req.body, queryResArr, discoMulti)
-        numPkgsCalc(i, queryResArr)
-        csPkMltCalc(i, queryResArr)
-        let imwToPop = {}
-        blank_imw_creator(imwToPop)
-        imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
-        imwToPop['sugstdRtl'] = ""
-        imwToPop['lastCost'] = `${unitCost}`
-        imwToPop['charm'] = ""
-        imwToPop['autoDiscount'] = ""
-        imwToPop['idealMarg'] = `${queryResArr[i]['sib_idealmargin']}`
-        imwToPop['wtPrfl'] = ""
-        imwToPop['tax1'] = ""
-        imwToPop['tax2'] = ""
-        imwToPop['tax3'] = ""
-        imwToPop['spclTndr1'] = ""
-        imwToPop['spclTndr2'] = ""
-        imwToPop['posPrmpt'] = ""
-        imwToPop['lctn'] = ""
-        imwToPop['altID'] = ""
-        imwToPop['altRcptAlias'] = ""
-        imwToPop['pkgQnt'] = ""
-        imwToPop['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
-        imwToPop['splrID'] = `${queryResArr[i]['ven_companyname']}`
-        imwToPop['unit'] = ""
-        imwToPop['numPkgs'] = nmPk
-        imwToPop['pf1'] = `${queryResArr[i]['pi1_description']}`
-        imwToPop['pf2'] = `${queryResArr[i]['pi2_description']}`
-        imwToPop['pf3'] = ""
-        imwToPop['pf4'] = ""
-        imwToPop['pf5'] = `${new Date().toISOString().split('T', 1)[0]} WS UPDT (pf5)` //Power Field 5 - today's date
-        imwToPop['pf6'] = `${queryResArr[i]['ven_companyname']}`
-        imwToPop['pf7'] = ""
-        imwToPop['pf8'] = ""
-        imwToPop['onhndQnt'] = ""
-        imwToPop['rdrPnt'] = ""
-        imwToPop['mcl'] = ""
-        imwToPop['rdrQnt'] = ""
-        imwToPop['memo'] = ""
-        imwToPop['flrRsn'] = ""
-        imwToPop['dsd'] = ""
-        imwToPop['dscMltplr'] = ""
-        imwToPop['csPkgMltpl'] = csPk
-        imwToPop['ovr'] = ovr
+        let catapultCost = queryResArr[i]['inv_lastcost']
+        let vendorRawCost = queryResArr[i][`${req.body.venCatPrefix}_cost`]
+        let vendorActlCost = vendorRawCost - (vendorRawCost * discoMulti)
+        vendorActlCost = Math.round(vendorActlCost * 100) / 100
+        if (catapultCost !== vendorActlCost) {
+          eaCsNumDiv(i, req.body, queryResArr, discoMulti)
+          numPkgsCalc(i, queryResArr)
+          csPkMltCalc(i, queryResArr)
+          let imwToPop = {}
+          blank_imw_creator(imwToPop)
+          imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
+          imwToPop['sugstdRtl'] = ""
+          imwToPop['lastCost'] = `${unitCost}`
+          imwToPop['charm'] = ""
+          imwToPop['autoDiscount'] = ""
+          imwToPop['idealMarg'] = `${queryResArr[i]['sib_idealmargin']}`
+          imwToPop['wtPrfl'] = ""
+          imwToPop['tax1'] = ""
+          imwToPop['tax2'] = ""
+          imwToPop['tax3'] = ""
+          imwToPop['spclTndr1'] = ""
+          imwToPop['spclTndr2'] = ""
+          imwToPop['posPrmpt'] = ""
+          imwToPop['lctn'] = ""
+          imwToPop['altID'] = ""
+          imwToPop['altRcptAlias'] = ""
+          imwToPop['pkgQnt'] = ""
+          imwToPop['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
+          imwToPop['splrID'] = `${queryResArr[i]['ven_companyname']}`
+          imwToPop['unit'] = ""
+          imwToPop['numPkgs'] = nmPk
+          imwToPop['pf1'] = `${queryResArr[i]['pi1_description']}`
+          imwToPop['pf2'] = `${queryResArr[i]['pi2_description']}`
+          imwToPop['pf3'] = ""
+          imwToPop['pf4'] = ""
+          imwToPop['pf5'] = `${new Date().toISOString().split('T', 1)[0]} WS UPDT (pf5)` //Power Field 5 - today's date
+          imwToPop['pf6'] = `${queryResArr[i]['ven_companyname']}`
+          imwToPop['pf7'] = ""
+          imwToPop['pf8'] = ""
+          imwToPop['onhndQnt'] = ""
+          imwToPop['rdrPnt'] = ""
+          imwToPop['mcl'] = ""
+          imwToPop['rdrQnt'] = ""
+          imwToPop['memo'] = ""
+          imwToPop['flrRsn'] = ""
+          imwToPop['dsd'] = ""
+          imwToPop['dscMltplr'] = ""
+          imwToPop['csPkgMltpl'] = csPk
+          imwToPop['ovr'] = ovr
 
-        populated_imw_arr.push(imwToPop)
+          populated_imw_arr.push(imwToPop)
+        } else {
+          res.json({
+            wholesaleCalcsResponse: "no items are in need of wholesale updates"
+          })
+        }
       }
     }
 
