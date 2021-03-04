@@ -61,6 +61,7 @@ export async function post(req, res, next) {
   // blank_imw_creator()
 
   let queryResArr = []
+  let modifiedQueryResArr = []
   let srcRsXLS = []
   let queryResArr_1stPage = []
   let populated_imw_arr = []
@@ -78,7 +79,6 @@ export async function post(req, res, next) {
     }
 
     function wholesaleCalcs() {
-      let modifiedQueryResArr = []
       //populate imw with wholesales from vendor-supplied catalog
 
       //the following fields need to be populated for WS IMW:
