@@ -64,6 +64,7 @@ export async function post(req, res, next) {
   let srcRsXLS = []
   let queryResArr_1stPage = []
   let populated_imw_arr = []
+  let calcResStatus
 
   //need to distinguish between Rtl and WS IMWs, so will need separate populateIMW functions. 
   //Need to grab ahold of incoming form data from stagedDataModal.svelte in order to tell which type of IMW is intended...
@@ -77,8 +78,6 @@ export async function post(req, res, next) {
     }
 
     function wholesaleCalcs() {
-      calcResStatus = `There were ${populated_imw_arr.length} items in need of wholesale update. 
-      populated_imw_arr.length = ${populated_imw_arr.length}`
       //populate imw with wholesales from vendor-supplied catalog
 
       //the following fields need to be populated for WS IMW:
@@ -155,10 +154,10 @@ export async function post(req, res, next) {
           imwToPop['ovr'] = ovr
 
           populated_imw_arr.push(imwToPop)
-        } else {
-          calcResStatus = `There were no items in need of wholesale update. populated_imw_arr.length = ${populated_imw_arr.length}`
         }
       }
+      calcResStatus = `There were ${populated_imw_arr.length} items in need of wholesale update. 
+      populated_imw_arr.length = ${populated_imw_arr.length}`
     }
 
     // JSON.stringify(req.body)==> 
