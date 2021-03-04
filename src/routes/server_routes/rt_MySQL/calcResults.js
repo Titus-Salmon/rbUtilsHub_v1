@@ -22,6 +22,9 @@ import {
   blank_imw_creator,
   imwToPop
 } from "../../../libT0d/imw/blank_imw_creator"
+import {
+  ongDiscoMulti
+} from "../../../libT0d/calcResults/ongDiscoMulti"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////V// ************* PREPARE TO REWRITE THE FUCK OUT OF THIS ***************** //////////////////////////////////////
@@ -66,16 +69,17 @@ export async function post(req, res, next) {
       //lay out logic for
       //[1] wholesale calcs, taking into account:
       //any ongoing discos
-      let discoMulti;
-      (function ongDiscoMulti() {
-        if (req.body.ongDisco_WS !== null) {
-          //if there is a disco, apply it to get the actual cost
-          discoMulti = req.body.ongDisco_WS / 100
-        } else {
-          //if there is no disco, just use 0 as the multiplier, so as not to change the base vendor cost
-          discoMulti = 0
-        }
-      }())
+      // let discoMulti;
+      // (function ongDiscoMulti() {
+      //   if (req.body.ongDisco_WS !== null) {
+      //     //if there is a disco, apply it to get the actual cost
+      //     discoMulti = req.body.ongDisco_WS / 100
+      //   } else {
+      //     //if there is no disco, just use 0 as the multiplier, so as not to change the base vendor cost
+      //     discoMulti = 0
+      //   }
+      // }())
+      ongDiscoMulti()
 
       //ea/cs division to get to unit cost (use Catapult oup_name vals to calc)
       let eaCsNum;
