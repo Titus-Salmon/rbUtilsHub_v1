@@ -101,7 +101,7 @@ export async function post(req, res, next) {
 
       console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
       for (let i = 0; i < queryResArr.length; i++) {
-        eaCsNumDiv(i)
+        eaCsNumDiv(i, req.body)
         numPkgsCalc(i)
         csPkMltCalc(i)
         let imwToPop = {}
