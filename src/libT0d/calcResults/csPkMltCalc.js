@@ -1,7 +1,7 @@
 let csPk;
 let ovr;
 
-function csPkMltCalc(n) {
+function csPkMltCalc(n, queryResArr) {
   csPk = ""
   ovr = ""
   let oupNameLetters = queryResArr[n]['oup_name'].split('-')[0]

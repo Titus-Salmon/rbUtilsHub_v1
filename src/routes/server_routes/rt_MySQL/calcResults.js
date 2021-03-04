@@ -38,6 +38,12 @@ import {
   numPkgsCalc
 } from "../../../libT0d/calcResults/numPkgsCalc"
 
+import {
+  csPk,
+  ovr,
+  csPkMltCalc
+} from "../../../libT0d/calcResults/csPkMltCalc"
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////V// ************* PREPARE TO REWRITE THE FUCK OUT OF THIS ***************** //////////////////////////////////////
 export async function post(req, res, next) {
@@ -87,38 +93,30 @@ export async function post(req, res, next) {
       //this is taken care of in eaCsNumDiv() below 
 
       //[2] Num Pkgs ("Quantity" in WebOffice) - corresponds to CS-##
-      // let nmPk;
+      //this is taken care of in numPkgsCalc() below 
 
-      // function numPkgsCalc(n) {
-      //   let oupNameLetters = queryResArr[n]['oup_name'].split('-')[0]
-      //   if (oupNameLetters.toLowerCase() === 'cs') {
-      //     nmPk = queryResArr[n]['oup_name'].split('-')[1]
-      //   } else {
-      //     nmPk = ""
-      //   }
-      // }
 
       //[3] Case Pk Mult ("Case Pack Multiple" in WebOffice) - corresponds to EA-##
       //Set Ovr variable to "1" for such items (allow override)
-      let csPk;
-      let ovr;
+      // let csPk;
+      // let ovr;
 
-      function csPkMltCalc(n) {
-        ovr = ""
-        let oupNameLetters = queryResArr[n]['oup_name'].split('-')[0]
-        if (oupNameLetters.toLowerCase() === 'ea') {
-          csPk = queryResArr[n]['oup_name'].split('-')[1]
-          ovr = "1"
-        } else {
-          csPk = ""
-        }
-      }
+      // function csPkMltCalc(n) {
+      //   ovr = ""
+      //   let oupNameLetters = queryResArr[n]['oup_name'].split('-')[0]
+      //   if (oupNameLetters.toLowerCase() === 'ea') {
+      //     csPk = queryResArr[n]['oup_name'].split('-')[1]
+      //     ovr = "1"
+      //   } else {
+      //     csPk = ""
+      //   }
+      // }
 
       console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
       for (let i = 0; i < queryResArr.length; i++) {
         eaCsNumDiv(i, req.body, queryResArr, discoMulti)
         numPkgsCalc(i, queryResArr)
-        csPkMltCalc(i)
+        csPkMltCalc(i, queryResArr)
         let imwToPop = {}
         blank_imw_creator(imwToPop)
         imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
