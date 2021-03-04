@@ -229,6 +229,7 @@ export async function post(req, res, next) {
         //the query results from the above query
         .then(paginCalcs(queryResArr))
         .then(populateIMW())
+        .then(rbDBqueryResults(rows, modifiedQueryResArr, srcRsXLS, queryResArr_1stPage))
         .then(() => {
           res.json({
             queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
