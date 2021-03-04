@@ -1,7 +1,7 @@
       let discoMulti;
 
-      function ongDiscoMulti() {
-        if (req.body.ongDisco_WS !== null) {
+      function ongDiscoMulti(reqBody) {
+        if (reqBody.ongDisco_WS !== null) {
           //if there is a disco, apply it to get the actual cost
           discoMulti = req.body.ongDisco_WS / 100
         } else {

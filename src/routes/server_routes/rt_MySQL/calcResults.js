@@ -79,7 +79,7 @@ export async function post(req, res, next) {
       //     discoMulti = 0
       //   }
       // }())
-      ongDiscoMulti()
+      ongDiscoMulti(req.body)
 
       //ea/cs division to get to unit cost (use Catapult oup_name vals to calc)
       let eaCsNum;
