@@ -76,7 +76,7 @@ export async function post(req, res, next) {
   async function populateIMW() {
 
     if (req.body.typeOfIMW === "wholesale") {
-      wholesaleCalcs(req.body)
+      wholesaleCalcs(req.body, queryResArr)
     } else {
       retailCalcs()
     }
