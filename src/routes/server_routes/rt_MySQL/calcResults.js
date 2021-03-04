@@ -45,7 +45,7 @@ export async function post(req, res, next) {
   console.log(`JSON.stringify(req.body)==> ${JSON.stringify(req.body)}`)
   console.log(`stagedTableName==> ${stagedTableName}`)
 
-  let venCatPrefix = req.body.venCatPrefix
+  // let venCatPrefix = req.body.venCatPrefix
 
   // blank_imw_creator()
 
