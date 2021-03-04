@@ -227,9 +227,8 @@ export async function post(req, res, next) {
       console.log('rows[0]==>', rows[0])
       rbDBqueryResults(rows, queryResArr, srcRsXLS, queryResArr_1stPage) //queryResArr gets populated and cached with
         //the query results from the above query
-        .then(paginCalcs(queryResArr))
+        // .then(paginCalcs(queryResArr))
         .then(populateIMW())
-        .then(rbDBqueryResults(rows, modifiedQueryResArr, srcRsXLS, queryResArr_1stPage))
         .then(paginCalcs(modifiedQueryResArr))
         .then(() => {
           res.json({
