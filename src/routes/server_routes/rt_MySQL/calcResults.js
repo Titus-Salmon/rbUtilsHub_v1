@@ -78,7 +78,6 @@ export async function post(req, res, next) {
 
     function wholesaleCalcs() {
       //populate imw with wholesales from vendor-supplied catalog
-      //(this is just a starting point; we will massage these values later)
 
       //the following fields need to be populated for WS IMW:
       //Item ID(UPC), Last Cost, Ideal Margin(?), Supplier Unit ID(SKU), Supplier ID(EDI-VENDORNAME), Num Pkgs,
@@ -89,28 +88,14 @@ export async function post(req, res, next) {
       //any ongoing discos
       ongDiscoMulti(req.body)
 
-      //ea/cs division to get to unit cost (use Catapult oup_name vals to calc)
+      //[2] ea/cs division to get to unit cost (use Catapult oup_name vals to calc)
       //this is taken care of in eaCsNumDiv() below 
 
-      //[2] Num Pkgs ("Quantity" in WebOffice) - corresponds to CS-##
+      //[3] Num Pkgs ("Quantity" in WebOffice) - corresponds to CS-##
       //this is taken care of in numPkgsCalc() below 
 
-
-      //[3] Case Pk Mult ("Case Pack Multiple" in WebOffice) - corresponds to EA-##
-      //Set Ovr variable to "1" for such items (allow override)
-      // let csPk;
-      // let ovr;
-
-      // function csPkMltCalc(n) {
-      //   ovr = ""
-      //   let oupNameLetters = queryResArr[n]['oup_name'].split('-')[0]
-      //   if (oupNameLetters.toLowerCase() === 'ea') {
-      //     csPk = queryResArr[n]['oup_name'].split('-')[1]
-      //     ovr = "1"
-      //   } else {
-      //     csPk = ""
-      //   }
-      // }
+      //[4] Case Pk Mult ("Case Pack Multiple" in WebOffice) - corresponds to EA-##
+      //this is taken care of in csPkMltCalc() below 
 
       console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
       for (let i = 0; i < queryResArr.length; i++) {
@@ -121,7 +106,6 @@ export async function post(req, res, next) {
         blank_imw_creator(imwToPop)
         imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
         imwToPop['sugstdRtl'] = ""
-        // imwToPop['lastCost'] = `${queryResArr[i][`${venCatPrefix}_cost`]}`
         imwToPop['lastCost'] = `${unitCost}`
         imwToPop['charm'] = ""
         imwToPop['autoDiscount'] = ""
