@@ -227,19 +227,21 @@ export async function post(req, res, next) {
       console.log('rows[0]==>', rows[0])
       rbDBqueryResults(rows, queryResArr, srcRsXLS, queryResArr_1stPage) //queryResArr gets populated and cached with
         //the query results from the above query
-        // .then(paginCalcs(queryResArr))
         .then(populateIMW())
-        .then(paginCalcs(modifiedQueryResArr))
+        .then(paginCalcs(modifiedQueryResArr)) //however, we only want to show the results for items that need wholesale
+        //or retail updates, therefore, we only do our pagination (and subsequent display) for items that meet these
+        //criteria. These items are kept in the modifiedQueryResArr
         .then(() => {
           res.json({
-            queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
+            // queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
             queryResArr_1stPage: queryResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
             // "queryResArr_pagin": queryResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
             totalPages: totalPages,
             currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
             // populated_imw: populated_imw,
-            populated_imw_arr: populated_imw_arr,
-            calcResStatus: calcResStatus,
+            // populated_imw_arr: populated_imw_arr,
+            calcResStatus: calcResStatus, //right now we're not using this in the front end, but we probably should in order to help
+            //out with notification of when we return an empty result because no items are in need of updating
             modifiedQueryResArr: modifiedQueryResArr
           })
         })
