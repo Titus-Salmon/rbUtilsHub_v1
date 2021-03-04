@@ -53,12 +53,12 @@ export async function post(req, res, next) {
   async function populateIMW() {
 
     if (req.body.typeOfIMW === "wholesale") {
-      wholesaleCalcs()
+      wholesaleCalcs(req.body)
     } else {
       retailCalcs()
     }
 
-    function wholesaleCalcs() {
+    function wholesaleCalcs(reqBody) {
       //populate imw with wholesales from vendor-supplied catalog
       //(this is just a starting point; we will massage these values later)
 
@@ -79,7 +79,7 @@ export async function post(req, res, next) {
       //     discoMulti = 0
       //   }
       // }())
-      ongDiscoMulti(req.body)
+      ongDiscoMulti(reqBody)
 
       //ea/cs division to get to unit cost (use Catapult oup_name vals to calc)
       let eaCsNum;
