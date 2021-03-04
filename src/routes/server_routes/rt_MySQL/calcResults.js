@@ -65,7 +65,7 @@ export async function post(req, res, next) {
   let queryResArr_1stPage = []
   let populated_imw_arr = []
 
-  //need to distinguish between Rtl and WS IMWs, so will need separate populateIMW functions. 
+  //need to distinguish between Rtl and WS IMWs
   //Need to grab ahold of incoming form data from stagedDataModal.svelte in order to tell which type of IMW is intended...
 
   async function populateIMW() {
