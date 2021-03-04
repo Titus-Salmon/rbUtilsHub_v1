@@ -221,7 +221,8 @@ function calcResults() {
       );
 
       // tableData.set(calcResultsResultJSON.queryResArr_1stPage);
-      tableData.set(calcResultsResultJSON.populated_imw_arr);
+      // tableData.set(calcResultsResultJSON.populated_imw_arr);
+      tableData.set(calcResultsResultJSON.modifiedQueryResArr);
 
       calcResultsResponse = calcResultsResultJSON;
 

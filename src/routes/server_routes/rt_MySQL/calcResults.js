@@ -78,6 +78,7 @@ export async function post(req, res, next) {
     }
 
     function wholesaleCalcs() {
+      let modifiedQueryResArr = []
       //populate imw with wholesales from vendor-supplied catalog
 
       //the following fields need to be populated for WS IMW:
@@ -155,6 +156,7 @@ export async function post(req, res, next) {
           imwToPop['ovr'] = ovr
 
           populated_imw_arr.push(imwToPop)
+          modifiedQueryResArr.push(queryResArr[i])
         }
       }
       calcResStatus = `There were ${populated_imw_arr.length} items in need of wholesale update. 
@@ -236,7 +238,8 @@ export async function post(req, res, next) {
             currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
             // populated_imw: populated_imw,
             populated_imw_arr: populated_imw_arr,
-            calcResStatus: calcResStatus
+            calcResStatus: calcResStatus,
+            modifiedQueryResArr: modifiedQueryResArr
           })
         })
     })
