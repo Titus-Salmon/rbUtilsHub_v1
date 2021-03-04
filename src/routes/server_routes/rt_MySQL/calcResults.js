@@ -77,6 +77,8 @@ export async function post(req, res, next) {
     }
 
     function wholesaleCalcs() {
+      calcResStatus = `There were ${populated_imw_arr.length} items in need of wholesale update. 
+      populated_imw_arr.length = ${populated_imw_arr.length}`
       //populate imw with wholesales from vendor-supplied catalog
 
       //the following fields need to be populated for WS IMW:
@@ -154,9 +156,7 @@ export async function post(req, res, next) {
 
           populated_imw_arr.push(imwToPop)
         } else {
-          res.json({
-            wholesaleCalcsResponse: "no items are in need of wholesale updates"
-          })
+          calcResStatus = `There were no items in need of wholesale update. populated_imw_arr.length = ${populated_imw_arr.length}`
         }
       }
     }
@@ -235,7 +235,8 @@ export async function post(req, res, next) {
             totalPages: totalPages,
             currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
             // populated_imw: populated_imw,
-            populated_imw_arr: populated_imw_arr
+            populated_imw_arr: populated_imw_arr,
+            calcResStatus: calcResStatus
           })
         })
     })
