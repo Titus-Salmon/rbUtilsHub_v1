@@ -23,7 +23,7 @@ import {
   csPkMltCalc
 } from "../../libT0d/calcResults/csPkMltCalc"
 
-function wholesaleCalcs(reqBody, queryResArr) {
+function wholesaleCalcs(reqBody, queryResArr, populated_imw_arr) {
   //populate imw with wholesales from vendor-supplied catalog
 
   //the following fields need to be populated for WS IMW:
