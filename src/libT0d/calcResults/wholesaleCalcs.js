@@ -47,7 +47,7 @@ function wholesaleCalcs(reqBody, queryResArr) {
   console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
   for (let i = 0; i < queryResArr.length; i++) {
     let catapultCost = queryResArr[i]['inv_lastcost']
-    let vendorRawCost = queryResArr[i][`${req.body.venCatPrefix}_cost`]
+    let vendorRawCost = queryResArr[i][`${reqBody.venCatPrefix}_cost`]
     let vendorActlCost = vendorRawCost - (vendorRawCost * discoMulti_WS)
     //convert both catapultCost and vendorActlCost to rounded ##.## format
     //(because if one is, say, 21.990 and the other is 21.99, they weill be considered different)
@@ -55,7 +55,7 @@ function wholesaleCalcs(reqBody, queryResArr) {
     catapultCost = Math.round(catapultCost * 100) / 100
     console.log(`vendorActlCost==> ${vendorActlCost} | catapultCost==> ${catapultCost}`)
     if (catapultCost !== vendorActlCost) {
-      eaCsNumDiv(i, req.body, queryResArr, discoMulti_WS)
+      eaCsNumDiv(i, reqBody, queryResArr, discoMulti_WS)
       numPkgsCalc(i, queryResArr)
       csPkMltCalc(i, queryResArr)
       let imwToPop = {}
