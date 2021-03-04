@@ -33,6 +33,11 @@ import {
   eaCsNumDiv
 } from "../../../libT0d/calcResults/eaCsNumDiv"
 
+import {
+  nmPk,
+  numPkgsCalc
+} from "../../../libT0d/calcResults/numPkgsCalc"
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////V// ************* PREPARE TO REWRITE THE FUCK OUT OF THIS ***************** //////////////////////////////////////
 export async function post(req, res, next) {
@@ -79,32 +84,19 @@ export async function post(req, res, next) {
       ongDiscoMulti(req.body)
 
       //ea/cs division to get to unit cost (use Catapult oup_name vals to calc)
-      // let eaCsNum;
-      // let venCost;
-      // let unitCost;
-
-      // function eaCsNumDiv(n) {
-      //   eaCsNum = queryResArr[n]['oup_name'].split('-')[1]
-      //   venCost = queryResArr[n][`${venCatPrefix}_cost`]
-      //   if (req.body.eaCsNumDivide === 'yes') {
-      //     //domathToGetToUnitCost
-      //     unitCost = (venCost / eaCsNum) - (venCost / eaCsNum) * discoMulti
-      //   } else {
-      //     unitCost = venCost - venCost * discoMulti
-      //   }
-      // }
+      //this is taken care of in eaCsNumDiv() below 
 
       //[2] Num Pkgs ("Quantity" in WebOffice) - corresponds to CS-##
-      let nmPk;
+      // let nmPk;
 
-      function numPkgsCalc(n) {
-        let oupNameLetters = queryResArr[n]['oup_name'].split('-')[0]
-        if (oupNameLetters.toLowerCase() === 'cs') {
-          nmPk = queryResArr[n]['oup_name'].split('-')[1]
-        } else {
-          nmPk = ""
-        }
-      }
+      // function numPkgsCalc(n) {
+      //   let oupNameLetters = queryResArr[n]['oup_name'].split('-')[0]
+      //   if (oupNameLetters.toLowerCase() === 'cs') {
+      //     nmPk = queryResArr[n]['oup_name'].split('-')[1]
+      //   } else {
+      //     nmPk = ""
+      //   }
+      // }
 
       //[3] Case Pk Mult ("Case Pack Multiple" in WebOffice) - corresponds to EA-##
       //Set Ovr variable to "1" for such items (allow override)
@@ -125,7 +117,7 @@ export async function post(req, res, next) {
       console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
       for (let i = 0; i < queryResArr.length; i++) {
         eaCsNumDiv(i, req.body, queryResArr, discoMulti)
-        numPkgsCalc(i)
+        numPkgsCalc(i, queryResArr)
         csPkMltCalc(i)
         let imwToPop = {}
         blank_imw_creator(imwToPop)
