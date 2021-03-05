@@ -56,6 +56,7 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
   for (let i = 0; i < queryResArr.length; i++) {
 
     for (let j = 0; j < stagedDptMargData.length; j++) {
+      console.log(`stagedDptMargData[${j}]['dptNumb']==> ${stagedDptMargData[j]['dptNumb']}`)
       if (queryResArr[i]['dpt_number'] === stagedDptMargData[j]['dptNumb']) {
         let marginToApply = stagedDptMargData[j]['margin'] / 100
         let reqdRtl = unitCost / (1 - marginToApply)
