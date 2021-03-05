@@ -53,6 +53,8 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
 
   console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
 
+  console.log(`stagedDptMargData.length==> ${stagedDptMargData.length}`)
+
   for (let i = 0; i < queryResArr.length; i++) {
 
     for (let j = 0; j < stagedDptMargData.length; j++) {
