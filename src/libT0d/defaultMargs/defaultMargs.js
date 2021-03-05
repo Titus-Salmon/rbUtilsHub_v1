@@ -109,6 +109,4 @@ let defaultMargArr = [{
     "margin": "50" //changed from 40% per Andrea 20200715  
   }
 ]
-export {
-  defaultMargArr
-}
+export default defaultMargArr

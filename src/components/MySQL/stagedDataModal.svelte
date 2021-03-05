@@ -257,6 +257,9 @@ function calcResults() {
     <div style="padding: 0 1rem">
       <!--v-- staged margins ------------------------------------------------------------------------------------->
       {#if $stagingData[0].stagingDataResponse.stagedMargins}
+        {console.log(
+          `JSON.stringify($stagingData[0].stagingDataResponse.stagedMargins)==> ${$stagingData[0].stagingDataResponse.stagedMargins}`
+        )}
         <div style="text-align:center">
           <p>Staged Margins</p>
         </div>
