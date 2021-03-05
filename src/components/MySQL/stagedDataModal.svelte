@@ -20,8 +20,17 @@ let inputValue;
 
 function calcResults() {
   //v//**********************************************************************************************************************/
-  let postBodyObj = { tableName: tableName, venCatPrefix: venCatPrefix }; //start with this, and populate it further below with all the looped
-  //input values
+  //can we just send stagingData.stagingDataResponse.stagedMargins to backend, because it contains all the following:
+  //stagedMargins: [{dptName: vitSupp, dptNumb: '157'; margin: '50'}, ...]
+  //this way, we can tap into the dpt numbers in order to apply dpt-specific margins in retailCalc function
+  //YES, we can. For now, let's just hard code them into the postBodyObj, along with tableName and venCatPrefix:
+  let stagedMargins_t0d = $stagingData[0].stagingDataResponse.stagedMargins;
+  //////////////////////////////////////////////////////////////////////////////
+  let postBodyObj = {
+    tableName: tableName,
+    venCatPrefix: venCatPrefix,
+    stagedMargins_t0d: stagedMargins_t0d,
+  }; //start with this, and populate it further below with all the looped
 
   ///here we are populating our postBodyObj with all the input values from our looped inputs below
   //(department margins, department charm profiles, ongoing discos, divide cost by ea/cs, type of imw, sku mismatch,
@@ -257,9 +266,6 @@ function calcResults() {
     <div style="padding: 0 1rem">
       <!--v-- staged margins ------------------------------------------------------------------------------------->
       {#if $stagingData[0].stagingDataResponse.stagedMargins}
-        {console.log(
-          `JSON.stringify($stagingData[0].stagingDataResponse.stagedMargins)==> ${$stagingData[0].stagingDataResponse.stagedMargins}`
-        )}
         <div style="text-align:center">
           <p>Staged Margins</p>
         </div>
