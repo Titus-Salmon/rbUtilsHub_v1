@@ -61,7 +61,11 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       console.log(`stagedDptMargData[${j}]['dptNumb']==> ${stagedDptMargData[j]['dptNumb']}`)
       if (queryResArr[i]['dpt_number'] === stagedDptMargData[j]['dptNumb']) {
         let marginToApply = stagedDptMargData[j]['margin'] / 100
+        console.log(`marginToApply==> ${marginToApply}`)
+        console.log(`unitCost==> ${unitCost}`)
         let reqdRtl = unitCost / (1 - marginToApply)
+        console.log(`reqdRtl==> ${reqdRtl}`)
+        console.log(`typeof reqdRtl==> ${typeof reqdRtl}`)
         reqdRtl = Math.round(reqdRtl * 100) / 100 //convert reqdRtl to rounded 2-decimal-place number
         console.log(`reqdRtl for [${i}] ${queryResArr[i]['inv_ScanCode']}_${queryResArr[i]['inv_name']} ==> ${reqdRtl}`)
       }
