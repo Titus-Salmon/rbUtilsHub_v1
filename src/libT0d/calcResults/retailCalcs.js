@@ -138,7 +138,7 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
           //}
           // console.log(`[${i}] charm==> ${charm}`)
         }
-        console.log(`[${i}] charm==> ${charm}`)
+        console.log(`[${i}] charm | typeof charm==> ${charm} ${typeof charm}`)
       }
     }
 
