@@ -57,6 +57,10 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
 
   for (let i = 0; i < queryResArr.length; i++) {
 
+    eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
+    numPkgsCalc(i, queryResArr)
+    csPkMltCalc(i, queryResArr)
+
     for (let j = 0; j < stagedDptMargData.length; j++) {
       console.log(`stagedDptMargData[${j}]['dptNumb']==> ${stagedDptMargData[j]['dptNumb']}`)
       if (queryResArr[i]['dpt_number'] === stagedDptMargData[j]['dptNumb']) {
@@ -74,9 +78,9 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
     let catapultRtl = queryResArr[i]['sib_baseprice']
 
     if (catapultRtl !== rqdRtl) { //****IMPORTANT!!!!!******this will need to be switched out from "rqdRtl" to "charm"****************
-      eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
-      numPkgsCalc(i, queryResArr)
-      csPkMltCalc(i, queryResArr)
+      // eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
+      // numPkgsCalc(i, queryResArr)
+      // csPkMltCalc(i, queryResArr)
       let imwToPop = {}
       blank_imw_creator(imwToPop)
       imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
