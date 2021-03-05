@@ -29,21 +29,9 @@ import {
 
 function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResArr, calcResStatus) {
 
-  // //loop through the departments in defaultMargArr, and set a new actlMargArr where the margin values are
-  // //taken from req.body.vitSupp, etc...MAY NOT BE NECESSARY, since all of this data should be in the staged data store
-
-  // let actlMargArr = defaultMargArr // 1st we set actlMargArr to defaultMargArr, but we will be modifying 
-  // //select parts of actlMargArr below, leaving the rest unchanged.
-  // for (let i = 0; i < actlMargArr.length; i++) {
-  //   for (let j = 0; j < Object.keys(reqBody).length; j++)
-  //     if (actlMargArr[i]['dptName'] === Object.keys(reqBody)[j]) {
-  //       actlMargArr[i]['margin'] = Object.values(reqBody)[j]
-  //     }
-  // }
-
-  // return console.log(`JSON.stringify(actlMargArr)==> ${JSON.stringify(actlMargArr)}`)
-
   //populate imw with retails from vendor-supplied catalog
+  let stagedDptMargData = reqBody.stagedDptMargData
+  //so stagedDptMargData = [{dptName: vitSupp, dptNumb: '157'; margin: '50'}, ...]
 
   //the following fields need to be populated for Rtl IMW:
   //Item ID(UPC), Sugg Rtl, Ideal Margin(?), Supplier Unit ID(SKU), Supplier ID(EDI-VENDORNAME), Num Pkgs,
@@ -65,9 +53,10 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
 
   console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
   for (let i = 0; i < queryResArr.length; i++) {
-    let catapultCost = queryResArr[i]['inv_lastcost']
-    let vendorRawCost = queryResArr[i][`${reqBody.venCatPrefix}_cost`]
-    let vendorActlCost = vendorRawCost - (vendorRawCost * discoMulti_Rtl)
+
+    // let catapultCost = queryResArr[i]['inv_lastcost']
+    // let vendorRawCost = queryResArr[i][`${reqBody.venCatPrefix}_cost`]
+    // let vendorActlCost = vendorRawCost - (vendorRawCost * discoMulti_Rtl)
     //convert both catapultCost and vendorActlCost to rounded ##.## format
     //(because if one is, say, 21.990 and the other is 21.99, they weill be considered different)
     vendorActlCost = Math.round(vendorActlCost * 100) / 100
@@ -80,8 +69,18 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       let imwToPop = {}
       blank_imw_creator(imwToPop)
       imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
-      let reqdRtl = unitCost / (1 - marginAsDecimal)
-      reqdRtl = Math.round(reqdRtl * 100) / 100 //convert reqdRtl to rounded 2-decimal-place number
+
+      for (let j = 0; j < stagedDptMargData.length; j++) {
+        if (queryResArr[i]['dpt_number'] === stagedDptMargData[j]['dptNumb']) {
+          let marginToApply = stagedDptMargData[j]['margin'] / 100
+          let reqdRtl = unitCost / (1 - marginToApply)
+          reqdRtl = Math.round(reqdRtl * 100) / 100 //convert reqdRtl to rounded 2-decimal-place number
+        }
+      }
+      console.log(`reqdRtl for ${queryResArr[i]['inv_ScanCode']}_${queryResArr[i]['inv_name']} ==> ${reqdRtl}`)
+
+      // let reqdRtl = unitCost / (1 - marginAsDecimal)
+      // reqdRtl = Math.round(reqdRtl * 100) / 100 //convert reqdRtl to rounded 2-decimal-place number
       imwToPop['sugstdRtl'] = `${charm}` //need -- will be same as charm
       imwToPop['lastCost'] = ""
       imwToPop['charm'] = `${unitCost}/(${1}-${marginAsDecimal})` //need to do the charm calcs & convert to rounded 2-decimal format

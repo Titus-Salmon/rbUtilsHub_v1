@@ -24,7 +24,7 @@ function calcResults() {
   //stagedMargins: [{dptName: vitSupp, dptNumb: '157'; margin: '50'}, ...]
   //this way, we can tap into the dpt numbers in order to apply dpt-specific margins in retailCalc function
   //YES, we can. For now, let's just hard code them into the postBodyObj, along with tableName and venCatPrefix:
-  let stagedMargins_t0d = $stagingData[0].stagingDataResponse.stagedMargins;
+  let stagedDptMargData = $stagingData[0].stagingDataResponse.stagedMargins;
   //////////////////////////////////////////////////////////////////////////////
   let postBodyObj = {
     tableName: tableName,
