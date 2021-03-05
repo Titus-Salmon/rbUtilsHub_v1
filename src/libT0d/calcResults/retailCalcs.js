@@ -23,11 +23,14 @@ import {
   csPkMltCalc
 } from "../../libT0d/calcResults/csPkMltCalc"
 
-// import {
-//   defaultMargArr
-// } from "../../libT0d/defaultMargs/defaultMargs"
+import {
+  dptNameNumbMargMaster
+} from "../../libT0d/defaultMargs/dptNameNumbMargMaster"
 
 function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResArr, calcResStatus) {
+
+  let charm
+  let dptAbbr
 
   //populate imw with retails from vendor-supplied catalog
   let stagedDptMargData = reqBody.stagedDptMargData
@@ -65,16 +68,77 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
       numPkgsCalc(i, queryResArr)
       csPkMltCalc(i, queryResArr)
-      console.log(`stagedDptMargData[${j}]['dptNumb']==> ${stagedDptMargData[j]['dptNumb']}`)
       if (queryResArr[i]['dpt_number'] === stagedDptMargData[j]['dptNumb']) {
         let marginToApply = stagedDptMargData[j]['margin'] / 100
-        console.log(`marginToApply==> ${marginToApply}`)
-        console.log(`unitCost==> ${unitCost}`)
         let reqdRtl = unitCost / (1 - marginToApply)
-        console.log(`reqdRtl==> ${reqdRtl}`)
-        console.log(`typeof reqdRtl==> ${typeof reqdRtl}`)
         reqdRtl = Math.round(reqdRtl * 100) / 100 //convert reqdRtl to rounded 2-decimal-place number
         console.log(`reqdRtl for [${i}] ${queryResArr[i]['inv_ScanCode']}_${queryResArr[i]['inv_name']} ==> ${reqdRtl}`)
+
+        //retail charm calcs are based on the following logic:
+        // if (reqdRetail<lowerCutRqdRtl) {
+        //   perform lower cutoff charm calcs
+        // } else {
+        //   if (reqdRetail<upperCharmRqdRtl) {
+        //     perform upper cutoff charm calcs
+        //   } else {
+        //     use the defaultcharm4 calcs
+        //   }
+        // }
+        //1st, we have to check whether we're dealing with a grocery or wellness item
+        //(in order to apply the appropriate charm profile):
+        for (let k = 0; k < dptNameNumbMargMaster.length; k++) {
+          if (dptNameNumbMargMaster[k]['mainDpt'] === 'grocery') {
+            dptAbbr = "Groc"
+          }
+          if (dptNameNumbMargMaster[k]['mainDpt'] === 'wellness') {
+            dptAbbr = "Well"
+          }
+          //if (dptNameNumbMargMaster[k]['mainDpt'] === 'grocery') {
+          if (reqdRtl < reqBody[`lowerCutoffRqdRtl${dptAbbr}`]) {
+            //perform lower cutoff charm calcs
+            if (reqdRtl % 1 < .20) {
+              return charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}1`]
+            }
+            if (reqdRtl % 1 < .30) {
+              return charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}2`]
+            }
+            if (reqdRtl % 1 < .40) {
+              return charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}3`]
+            }
+            if (reqdRtl % 1 < .50) {
+              return charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}4`]
+            }
+            if (reqdRtl % 1 < .60) {
+              return charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}5`]
+            }
+            if (reqdRtl % 1 < .80) {
+              return charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}6`]
+            }
+            if (reqdRtl % 1 > .80) {
+              return charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}7`]
+            }
+          } else {
+            if (reqdRtl < reqBody[`upperCutoffRqdRtl${dptAbbr}`]) {
+              if (reqdRtl % 1 <= .35) {
+                return charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}1`]
+              }
+              if (reqdRtl % 1 <= .55) {
+                return charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}2`]
+              }
+              if (reqdRtl % 1 <= .855) {
+                return charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}3`]
+              }
+              if (reqdRtl % 1 > .856) {
+                return charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}4`]
+              }
+            } else {
+              return charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}4`]
+            }
+          }
+          //}
+          console.log(`[${i}] charm==> ${charm}`)
+        }
+
       }
     }
 
