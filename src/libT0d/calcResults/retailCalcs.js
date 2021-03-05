@@ -67,6 +67,7 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       }
     }
 
+    let catapultRtl = queryResArr[i]['sib_baseprice']
 
     if (catapultRtl !== rqdRtl) { //****IMPORTANT!!!!!******this will need to be switched out from "rqdRtl" to "charm"****************
       eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
