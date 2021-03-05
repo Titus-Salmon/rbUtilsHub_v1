@@ -1,7 +1,13 @@
 function marginStager(defaultMargins, vendorMargins, stagedMargins) {
   for (let i = 0; i < defaultMargins.length; i++) {
     for (let j = 0; j < Object.keys(vendorMargins).length; j++) {
-      if (defaultMargins[i]['dptName'] === Object.keys(vendorMargins)[j]) {
+      //v//need to separate out dptName from dptNumber, since they're in the form of: vitSupp_157, for example
+      let departmentName = Object.keys(vendorMargins)[j]
+      departmentName = departmentName.split('_')[0]
+      let departmentNumber = Object.keys(vendorMargins)[j]
+      departmentNumber = departmentNumber.split('_')[1]
+      //^//need to separate out dptName from dptNumber, since they're in the form of: vitSupp_157, for example
+      if (defaultMargins[i]['dptName'] === departmentName) {
         console.log(`defaultMargins[i]['margin']==> ${defaultMargins[i]['margin']}`)
         console.log(`Object.keys(vendorMargins)[j]==> ${Object.keys(vendorMargins)[j]}`)
         //need to use wellness margins from rainbowcat, if they differ from the defaults
@@ -12,7 +18,8 @@ function marginStager(defaultMargins, vendorMargins, stagedMargins) {
           //replace default value in stagedMargins with vendor-specific value
           // let replacementMarg['dptName'] = 
           let replacementMarg = {
-            "dptName": `${Object.keys(vendorMargins)[j]}`,
+            "dptName": `${departmentName}`,
+            "dptNumb": `${departmentNumber}`,
             "margin": `${Object.values(vendorMargins)[j]}`,
             "nonDefaultMargin": "nonDefaultMargin"
           }
