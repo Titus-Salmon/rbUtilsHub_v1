@@ -97,42 +97,51 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
           if (reqdRtl < reqBody[`lowerCutoffRqdRtl${dptAbbr}`]) {
             //perform lower cutoff charm calcs
             if (reqdRtl % 1 < .20) {
-              return charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}1`]
-            }
-            if (reqdRtl % 1 < .30) {
-              return charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}2`]
-            }
-            if (reqdRtl % 1 < .40) {
-              return charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}3`]
-            }
-            if (reqdRtl % 1 < .50) {
-              return charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}4`]
-            }
-            if (reqdRtl % 1 < .60) {
-              return charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}5`]
-            }
-            if (reqdRtl % 1 < .80) {
-              return charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}6`]
-            }
-            if (reqdRtl % 1 > .80) {
-              return charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}7`]
+              charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}1`]
+            } else {
+              if (reqdRtl % 1 < .30) {
+                charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}2`]
+              } else {
+                if (reqdRtl % 1 < .40) {
+                  charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}3`]
+                } else {
+                  if (reqdRtl % 1 < .50) {
+                    charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}4`]
+                  } else {
+                    if (reqdRtl % 1 < .60) {
+                      charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}5`]
+                    } else {
+                      if (reqdRtl % 1 < .80) {
+                        charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}6`]
+                      } else {
+                        if (reqdRtl % 1 > .80) {
+                          charm = reqdRtl - reqdRtl % 1 + reqBody[`lowerCutoffCharm${dptAbbr}7`]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           } else {
             if (reqdRtl < reqBody[`upperCutoffRqdRtl${dptAbbr}`]) {
               if (reqdRtl % 1 <= .35) {
-                return charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}1`]
-              }
-              if (reqdRtl % 1 <= .55) {
-                return charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}2`]
-              }
-              if (reqdRtl % 1 <= .855) {
-                return charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}3`]
-              }
-              if (reqdRtl % 1 > .856) {
-                return charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}4`]
+                charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}1`]
+              } else {
+                if (reqdRtl % 1 <= .55) {
+                  charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}2`]
+                } else {
+                  if (reqdRtl % 1 <= .855) {
+                    charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}3`]
+                  } else {
+                    if (reqdRtl % 1 > .856) {
+                      charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}4`]
+                    }
+                  }
+                }
               }
             } else {
-              return charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}4`]
+              charm = reqdRtl - reqdRtl % 1 + reqBody[`defaultCharm${dptAbbr}4`]
             }
           }
           //}
