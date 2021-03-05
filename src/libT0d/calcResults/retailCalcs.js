@@ -52,32 +52,25 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
   //this is taken care of in csPkMltCalc() below 
 
   console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
+
   for (let i = 0; i < queryResArr.length; i++) {
 
-    // let catapultCost = queryResArr[i]['inv_lastcost']
-    // let vendorRawCost = queryResArr[i][`${reqBody.venCatPrefix}_cost`]
-    // let vendorActlCost = vendorRawCost - (vendorRawCost * discoMulti_Rtl)
-    //convert both catapultCost and vendorActlCost to rounded ##.## format
-    //(because if one is, say, 21.990 and the other is 21.99, they weill be considered different)
-    vendorActlCost = Math.round(vendorActlCost * 100) / 100
-    catapultCost = Math.round(catapultCost * 100) / 100
-    console.log(`vendorActlCost==> ${vendorActlCost} | catapultCost==> ${catapultCost}`)
-    if (catapultCost !== vendorActlCost) {
+    for (let j = 0; j < stagedDptMargData.length; j++) {
+      if (queryResArr[i]['dpt_number'] === stagedDptMargData[j]['dptNumb']) {
+        let marginToApply = stagedDptMargData[j]['margin'] / 100
+        let reqdRtl = unitCost / (1 - marginToApply)
+        reqdRtl = Math.round(reqdRtl * 100) / 100 //convert reqdRtl to rounded 2-decimal-place number
+      }
+    }
+    console.log(`reqdRtl for ${queryResArr[i]['inv_ScanCode']}_${queryResArr[i]['inv_name']} ==> ${reqdRtl}`)
+
+    if (catapultRtl !== rqdRtl) { //****IMPORTANT!!!!!******this will need to be switched out from "rqdRtl" to "charm"****************
       eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
       numPkgsCalc(i, queryResArr)
       csPkMltCalc(i, queryResArr)
       let imwToPop = {}
       blank_imw_creator(imwToPop)
       imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
-
-      for (let j = 0; j < stagedDptMargData.length; j++) {
-        if (queryResArr[i]['dpt_number'] === stagedDptMargData[j]['dptNumb']) {
-          let marginToApply = stagedDptMargData[j]['margin'] / 100
-          let reqdRtl = unitCost / (1 - marginToApply)
-          reqdRtl = Math.round(reqdRtl * 100) / 100 //convert reqdRtl to rounded 2-decimal-place number
-        }
-      }
-      console.log(`reqdRtl for ${queryResArr[i]['inv_ScanCode']}_${queryResArr[i]['inv_name']} ==> ${reqdRtl}`)
 
       // let reqdRtl = unitCost / (1 - marginAsDecimal)
       // reqdRtl = Math.round(reqdRtl * 100) / 100 //convert reqdRtl to rounded 2-decimal-place number
