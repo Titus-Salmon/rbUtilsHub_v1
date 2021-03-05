@@ -57,11 +57,14 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
 
   for (let i = 0; i < queryResArr.length; i++) {
 
-    eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
-    numPkgsCalc(i, queryResArr)
-    csPkMltCalc(i, queryResArr)
+    // eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
+    // numPkgsCalc(i, queryResArr)
+    // csPkMltCalc(i, queryResArr)
 
     for (let j = 0; j < stagedDptMargData.length; j++) {
+      eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
+      numPkgsCalc(i, queryResArr)
+      csPkMltCalc(i, queryResArr)
       console.log(`stagedDptMargData[${j}]['dptNumb']==> ${stagedDptMargData[j]['dptNumb']}`)
       if (queryResArr[i]['dpt_number'] === stagedDptMargData[j]['dptNumb']) {
         let marginToApply = stagedDptMargData[j]['margin'] / 100
