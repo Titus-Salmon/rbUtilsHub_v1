@@ -60,9 +60,10 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
         let marginToApply = stagedDptMargData[j]['margin'] / 100
         let reqdRtl = unitCost / (1 - marginToApply)
         reqdRtl = Math.round(reqdRtl * 100) / 100 //convert reqdRtl to rounded 2-decimal-place number
+        console.log(`reqdRtl for [${i}] ${queryResArr[i]['inv_ScanCode']}_${queryResArr[i]['inv_name']} ==> ${reqdRtl}`)
       }
     }
-    console.log(`reqdRtl for ${queryResArr[i]['inv_ScanCode']}_${queryResArr[i]['inv_name']} ==> ${reqdRtl}`)
+
 
     if (catapultRtl !== rqdRtl) { //****IMPORTANT!!!!!******this will need to be switched out from "rqdRtl" to "charm"****************
       eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
