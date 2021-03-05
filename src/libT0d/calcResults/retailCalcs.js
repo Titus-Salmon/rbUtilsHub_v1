@@ -97,42 +97,42 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
           if (reqdRtl < reqBody[`lowerCutoffRqdRtl${dptAbbr}`]) {
             //perform lower cutoff charm calcs
             if (reqdRtl % 1 > .80) {
-              charm = reqdRtl - reqdRtl % 1 + parseint(reqBody[`lowerCutoffCharm${dptAbbr}7`])
+              charm = reqdRtl - reqdRtl % 1 + parseInt(reqBody[`lowerCutoffCharm${dptAbbr}7`])
             }
             if (reqdRtl % 1 < .80) {
-              charm = reqdRtl - reqdRtl % 1 + parseint(reqBody[`lowerCutoffCharm${dptAbbr}6`])
+              charm = reqdRtl - reqdRtl % 1 + parseInt(reqBody[`lowerCutoffCharm${dptAbbr}6`])
             }
             if (reqdRtl % 1 < .60) {
-              charm = reqdRtl - reqdRtl % 1 + parseint(reqBody[`lowerCutoffCharm${dptAbbr}5`])
+              charm = reqdRtl - reqdRtl % 1 + parseInt(reqBody[`lowerCutoffCharm${dptAbbr}5`])
             }
             if (reqdRtl % 1 < .50) {
-              charm = reqdRtl - reqdRtl % 1 + parseint(reqBody[`lowerCutoffCharm${dptAbbr}4`])
+              charm = reqdRtl - reqdRtl % 1 + parseInt(reqBody[`lowerCutoffCharm${dptAbbr}4`])
             }
             if (reqdRtl % 1 < .40) {
-              charm = reqdRtl - reqdRtl % 1 + parseint(reqBody[`lowerCutoffCharm${dptAbbr}3`])
+              charm = reqdRtl - reqdRtl % 1 + parseInt(reqBody[`lowerCutoffCharm${dptAbbr}3`])
             }
             if (reqdRtl % 1 < .30) {
-              charm = reqdRtl - reqdRtl % 1 + parseint(reqBody[`lowerCutoffCharm${dptAbbr}2`])
+              charm = reqdRtl - reqdRtl % 1 + parseInt(reqBody[`lowerCutoffCharm${dptAbbr}2`])
             }
             if (reqdRtl % 1 < .20) {
-              charm = reqdRtl - reqdRtl % 1 + parseint(reqBody[`lowerCutoffCharm${dptAbbr}1`])
+              charm = reqdRtl - reqdRtl % 1 + parseInt(reqBody[`lowerCutoffCharm${dptAbbr}1`])
             }
           } else {
             if (reqdRtl < reqBody[`upperCutoffRqdRtl${dptAbbr}`]) {
               if (reqdRtl % 1 > .856) {
-                charm = reqdRtl - reqdRtl % 1 + parseint(reqBody[`defaultCharm${dptAbbr}4`])
+                charm = reqdRtl - reqdRtl % 1 + parseInt(reqBody[`defaultCharm${dptAbbr}4`])
               }
               if (reqdRtl % 1 <= .855) {
-                charm = reqdRtl - reqdRtl % 1 + parseint(reqBody[`defaultCharm${dptAbbr}3`])
+                charm = reqdRtl - reqdRtl % 1 + parseInt(reqBody[`defaultCharm${dptAbbr}3`])
               }
               if (reqdRtl % 1 <= .55) {
-                charm = reqdRtl - reqdRtl % 1 + parseint(reqBody[`defaultCharm${dptAbbr}2`])
+                charm = reqdRtl - reqdRtl % 1 + parseInt(reqBody[`defaultCharm${dptAbbr}2`])
               }
               if (reqdRtl % 1 <= .35) {
-                charm = reqdRtl - reqdRtl % 1 + parseint(reqBody[`defaultCharm${dptAbbr}1`])
+                charm = reqdRtl - reqdRtl % 1 + parseInt(reqBody[`defaultCharm${dptAbbr}1`])
               }
             } else {
-              charm = reqdRtl - reqdRtl % 1 + parseint(reqBody[`defaultCharm${dptAbbr}4`])
+              charm = reqdRtl - reqdRtl % 1 + parseInt(reqBody[`defaultCharm${dptAbbr}4`])
             }
           }
           //}
