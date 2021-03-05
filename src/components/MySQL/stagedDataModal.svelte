@@ -29,7 +29,7 @@ function calcResults() {
   let postBodyObj = {
     tableName: tableName,
     venCatPrefix: venCatPrefix,
-    stagedMargins_t0d: stagedMargins_t0d,
+    stagedDptMargData: stagedDptMargData,
   }; //start with this, and populate it further below with all the looped
 
   ///here we are populating our postBodyObj with all the input values from our looped inputs below
