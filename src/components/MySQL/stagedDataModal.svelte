@@ -261,6 +261,7 @@ function calcResults() {
           <p>Staged Margins</p>
         </div>
         {#each Object.values($stagingData[0].stagingDataResponse.stagedMargins) as stagedMargin}
+          <!-- department name   ----------------------------------------------------------->
           <div style="text-align:center;">
             <label for="{stagedMargin.dptName}">{stagedMargin.dptName}</label>
           </div>
@@ -280,6 +281,28 @@ function calcResults() {
                 id="{stagedMargin.dptName}"
                 name="{stagedMargin.dptName}"
                 bind:value="{stagedMargin.margin}" />
+            </div>
+          {/if}
+          <!-- department number ------------------------------------------------------------------------>
+          <div style="text-align:center;">
+            <label for="{stagedMargin.dptNumb}">{stagedMargin.dptNumb}</label>
+          </div>
+          {#if stagedMargin.nonDefaultMargin}
+            <div style="text-align:center">
+              <input
+                style="background-color: #ff6666; color: black"
+                type="text"
+                id="{stagedMargin.dptNumb}"
+                name="{stagedMargin.dptNumb}"
+                bind:value="{stagedMargin.dptNumb}" />
+            </div>
+          {:else}
+            <div style="text-align:center">
+              <input
+                type="text"
+                id="{stagedMargin.dptNumb}"
+                name="{stagedMargin.dptNumb}"
+                bind:value="{stagedMargin.dptNumb}" />
             </div>
           {/if}
         {/each}

@@ -6,7 +6,7 @@
           discoMulti_WS = reqBody.ongDisco_WS / 100
         } else {
           //if there is no disco, just use 0 as the multiplier, so as not to change the base vendor cost
-          discoMulti = 0
+          discoMulti_WS = 0
         }
       }
 

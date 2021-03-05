@@ -78,7 +78,7 @@ export async function post(req, res, next) {
     if (req.body.typeOfIMW === "wholesale") {
       wholesaleCalcs(req.body, queryResArr, populated_imw_arr, modifiedQueryResArr, calcResStatus)
     } else {
-      retailCalcs()
+      retailCalcs(req.body, queryResArr, populated_imw_arr, modifiedQueryResArr, calcResStatus)
     }
 
     // function wholesaleCalcs() {
