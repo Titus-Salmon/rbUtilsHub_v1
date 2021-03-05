@@ -284,7 +284,7 @@ function calcResults() {
             </div>
           {/if}
           <!-- department number ------------------------------------------------------------------------>
-          <div style="text-align:center;">
+          <!-- <div style="text-align:center;">
             <label for="{stagedMargin.dptNumb}">{stagedMargin.dptNumb}</label>
           </div>
           {#if stagedMargin.nonDefaultMargin}
@@ -304,7 +304,7 @@ function calcResults() {
                 name="{stagedMargin.dptNumb}"
                 bind:value="{stagedMargin.dptNumb}" />
             </div>
-          {/if}
+          {/if} -->
         {/each}
       {/if}
       <!--^-- staged margins ------------------------------------------------------------------------------------->

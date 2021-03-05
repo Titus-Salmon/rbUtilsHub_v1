@@ -23,7 +23,26 @@ import {
   csPkMltCalc
 } from "../../libT0d/calcResults/csPkMltCalc"
 
+import {
+  defaultMargArr
+} from "../../libT0d/defaultMargs/defaultMargs"
+
 function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResArr, calcResStatus) {
+
+  //loop through the departments in defaultMargArr, and set a new actlMargArr where the margin values are
+  //taken from req.body.vitSupp, etc...
+
+  let actlMargArr = defaultMargArr // 1st we set actlMargArr to defaultMargArr, but we will be modifying 
+  //select parts of actlMargArr below, leaving the rest unchanged.
+  for (let i = 0; i < actlMargArr.length; i++) {
+    for (let j = 0; j < Object.keys(reqBody).length; j++)
+      if (actlMargArr[i]['dptName'] === Object.keys(reqBody)[j]) {
+        actlMargArr[i]['margin'] = Object.values(reqBody)[j]
+      }
+  }
+
+  return console.log(`JSON.stringify(actlMargArr)==> ${JSON.stringify(actlMargArr)}`)
+
   //populate imw with retails from vendor-supplied catalog
 
   //the following fields need to be populated for Rtl IMW:
