@@ -23,9 +23,9 @@ import {
   csPkMltCalc
 } from "../../libT0d/calcResults/csPkMltCalc"
 
-import {
-  dptNameNumbMargMaster
-} from "../../libT0d/defaultMargs/dptNameNumbMargMaster"
+import
+dptNameNumbMargMaster
+from "../../libT0d/defaultMargs/dptNameNumbMargMaster"
 
 function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResArr, calcResStatus) {
 
