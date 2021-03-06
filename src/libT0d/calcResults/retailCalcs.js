@@ -210,8 +210,15 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       //^//to modifiedQueryResArr, in order to show for review purposes on frontend
 
       populated_imw_arr.push(imwToPop) //this holds data for the IMW
-      modifiedQueryResArr.push(queryResArr[i]) //this holds data for displaying query results
+      // modifiedQueryResArr.push(queryResArr[i]) //this holds data for displaying query results
       //AND we are adding come calcResults as well (see above), for review purposes
+      //we need some way of reordering our columns for the review array (modifiedQueryResArr), so why not
+      //just try defining the array specifically
+      let reviewObj = {}
+      reviewObj['upc'] = `${queryResArr[i]['inv_ScanCode']}`
+      reviewObj['charm'] = charm
+
+      modifiedQueryResArr.push(reviewObj) //this holds data for displaying review results
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
