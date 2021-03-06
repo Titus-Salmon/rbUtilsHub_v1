@@ -203,9 +203,15 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       imwToPop['csPkgMltpl'] = csPk
       imwToPop['ovr'] = ovr
 
+      //v//ADD numPkgs, csPkgMltpl, ovr, reqdRtl, charm, rbDefaultMarg(for dept), appliedMargin, appliedWSdisco, appliedRtlDisco
+      //v//to modifiedQueryResArr, in order to show for review purposes on frontend
+      queryResArr[i]['charm'] = charm
+      //^//ADD numPkgs, csPkgMltpl, ovr, reqdRtl, charm, rbDefaultMarg(for dept), appliedMargin, appliedWSdisco, appliedRtlDisco
+      //^//to modifiedQueryResArr, in order to show for review purposes on frontend
+
       populated_imw_arr.push(imwToPop) //this holds data for the IMW
       modifiedQueryResArr.push(queryResArr[i]) //this holds data for displaying query results
-      //AND we are adding come calcResults as well, for review purposes
+      //AND we are adding come calcResults as well (see above), for review purposes
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
