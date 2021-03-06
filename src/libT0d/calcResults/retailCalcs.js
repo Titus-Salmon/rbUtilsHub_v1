@@ -144,68 +144,70 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
               charm = reqdRtl - reqdRtl % 1 + parseFloat(reqBody[`defaultCharm${dptAbbr}4`])
             }
           }
-          ///////////////////////////////////////////////////////////////////////////////////////////////////
-          let catapultRtl = queryResArr[i]['sib_baseprice']
-
-          if (catapultRtl !== charm) {
-            // eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
-            // numPkgsCalc(i, queryResArr)
-            // csPkMltCalc(i, queryResArr)
-            let imwToPop = {}
-            blank_imw_creator(imwToPop)
-            imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
-
-            // let reqdRtl = unitCost / (1 - marginAsDecimal)
-            // reqdRtl = Math.round(reqdRtl * 100) / 100 //convert reqdRtl to rounded 2-decimal-place number
-            imwToPop['sugstdRtl'] = `${charm}` //need -- will be same as charm
-            imwToPop['lastCost'] = ""
-            imwToPop['charm'] = `${charm}`
-            imwToPop['autoDiscount'] = ""
-            imwToPop['idealMarg'] = `${queryResArr[i]['sib_idealmargin']}`
-            imwToPop['wtPrfl'] = ""
-            imwToPop['tax1'] = ""
-            imwToPop['tax2'] = ""
-            imwToPop['tax3'] = ""
-            imwToPop['spclTndr1'] = ""
-            imwToPop['spclTndr2'] = ""
-            imwToPop['posPrmpt'] = ""
-            imwToPop['lctn'] = ""
-            imwToPop['altID'] = ""
-            imwToPop['altRcptAlias'] = ""
-            imwToPop['pkgQnt'] = ""
-            imwToPop['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
-            imwToPop['splrID'] = `${queryResArr[i]['ven_companyname']}`
-            imwToPop['unit'] = ""
-            imwToPop['numPkgs'] = nmPk
-            imwToPop['pf1'] = `${queryResArr[i]['pi1_description']}`
-            imwToPop['pf2'] = `${queryResArr[i]['pi2_description']}`
-            imwToPop['pf3'] = ""
-            imwToPop['pf4'] = ""
-            imwToPop['pf5'] = `${new Date().toISOString().split('T', 1)[0]} Rtl UPDT (pf5)` //Power Field 5 - today's date
-            imwToPop['pf6'] = `${queryResArr[i]['ven_companyname']}`
-            imwToPop['pf7'] = ""
-            imwToPop['pf8'] = `actual msrp: ${charm}`
-            imwToPop['onhndQnt'] = ""
-            imwToPop['rdrPnt'] = ""
-            imwToPop['mcl'] = ""
-            imwToPop['rdrQnt'] = ""
-            imwToPop['memo'] = ""
-            imwToPop['flrRsn'] = ""
-            imwToPop['dsd'] = ""
-            imwToPop['dscMltplr'] = ""
-            imwToPop['csPkgMltpl'] = csPk
-            imwToPop['ovr'] = ovr
-
-            populated_imw_arr.push(imwToPop)
-            modifiedQueryResArr.push(queryResArr[i])
-            ////////////////////////////////////////////////////////////////////////////////////////////////////
-          }
           console.log(`[${i}] charm | typeof charm==> ${charm} ${typeof charm}`)
         }
       }
     }
     calcResStatus = `There were ${populated_imw_arr.length} items in need of retail update. 
   populated_imw_arr.length = ${populated_imw_arr.length}`
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    let catapultRtl = queryResArr[i]['sib_baseprice']
+
+    if (catapultRtl !== charm) {
+      // eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
+      // numPkgsCalc(i, queryResArr)
+      // csPkMltCalc(i, queryResArr)
+      let imwToPop = {}
+      blank_imw_creator(imwToPop)
+      imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
+
+      // let reqdRtl = unitCost / (1 - marginAsDecimal)
+      // reqdRtl = Math.round(reqdRtl * 100) / 100 //convert reqdRtl to rounded 2-decimal-place number
+      imwToPop['sugstdRtl'] = `${charm}` //need -- will be same as charm
+      imwToPop['lastCost'] = ""
+      imwToPop['charm'] = `${charm}`
+      imwToPop['autoDiscount'] = ""
+      imwToPop['idealMarg'] = `${queryResArr[i]['sib_idealmargin']}`
+      imwToPop['wtPrfl'] = ""
+      imwToPop['tax1'] = ""
+      imwToPop['tax2'] = ""
+      imwToPop['tax3'] = ""
+      imwToPop['spclTndr1'] = ""
+      imwToPop['spclTndr2'] = ""
+      imwToPop['posPrmpt'] = ""
+      imwToPop['lctn'] = ""
+      imwToPop['altID'] = ""
+      imwToPop['altRcptAlias'] = ""
+      imwToPop['pkgQnt'] = ""
+      imwToPop['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
+      imwToPop['splrID'] = `${queryResArr[i]['ven_companyname']}`
+      imwToPop['unit'] = ""
+      imwToPop['numPkgs'] = nmPk
+      imwToPop['pf1'] = `${queryResArr[i]['pi1_description']}`
+      imwToPop['pf2'] = `${queryResArr[i]['pi2_description']}`
+      imwToPop['pf3'] = ""
+      imwToPop['pf4'] = ""
+      imwToPop['pf5'] = `${new Date().toISOString().split('T', 1)[0]} Rtl UPDT (pf5)` //Power Field 5 - today's date
+      imwToPop['pf6'] = `${queryResArr[i]['ven_companyname']}`
+      imwToPop['pf7'] = ""
+      imwToPop['pf8'] = `actual msrp: ${charm}`
+      imwToPop['onhndQnt'] = ""
+      imwToPop['rdrPnt'] = ""
+      imwToPop['mcl'] = ""
+      imwToPop['rdrQnt'] = ""
+      imwToPop['memo'] = ""
+      imwToPop['flrRsn'] = ""
+      imwToPop['dsd'] = ""
+      imwToPop['dscMltplr'] = ""
+      imwToPop['csPkgMltpl'] = csPk
+      imwToPop['ovr'] = ovr
+
+      populated_imw_arr.push(imwToPop)
+      modifiedQueryResArr.push(queryResArr[i])
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
   }
 }
 export {
