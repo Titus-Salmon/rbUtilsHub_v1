@@ -35,6 +35,7 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
   let charm
   let dptAbbr
   let reqdRtl
+  let marginToApply
 
   //populate imw with retails from vendor-supplied catalog
   let stagedDptMargData = reqBody.stagedDptMargData
@@ -73,8 +74,8 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       numPkgsCalc(i, queryResArr)
       csPkMltCalc(i, queryResArr)
       if (queryResArr[i]['dpt_number'] === stagedDptMargData[j]['dptNumb']) {
-        let marginToApply = stagedDptMargData[j]['margin'] / 100
-        let reqdRtl = unitCost / (1 - marginToApply)
+        marginToApply = stagedDptMargData[j]['margin'] / 100
+        reqdRtl = unitCost / (1 - marginToApply)
         reqdRtl = Math.round(reqdRtl * 100) / 100 //convert reqdRtl to rounded 2-decimal-place number
         console.log(`reqdRtl for [${i}] ${queryResArr[i]['inv_ScanCode']}_${queryResArr[i]['inv_name']} ==> ${reqdRtl}`)
 
@@ -187,7 +188,7 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       imwToPop['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
       imwToPop['splrID'] = `${queryResArr[i]['ven_companyname']}`
       imwToPop['unit'] = ""
-      imwToPop['numPkgs'] = nmPk
+      imwToPop['numPkgs'] = `${nmPk}`
       imwToPop['pf1'] = `${queryResArr[i]['pi1_description']}`
       imwToPop['pf2'] = `${queryResArr[i]['pi2_description']}`
       imwToPop['pf3'] = ""
@@ -204,8 +205,8 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       imwToPop['flrRsn'] = ""
       imwToPop['dsd'] = ""
       imwToPop['dscMltplr'] = ""
-      imwToPop['csPkgMltpl'] = csPk
-      imwToPop['ovr'] = ovr
+      imwToPop['csPkgMltpl'] = `${csPk}`
+      imwToPop['ovr'] = `${ovr}`
 
       // //v//ADD numPkgs, csPkgMltpl, ovr, reqdRtl, charm, rbDefaultMarg(for dept), appliedMargin, appliedWSdisco, appliedRtlDisco
       // //v//to modifiedQueryResArr, in order to show for review purposes on frontend
@@ -235,9 +236,9 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       reviewObj['pkgQnt'] = `${queryResArr[i]['asc_quantity']}` //***this is pkg qty for ALD ID***
       reviewObj['splrID'] = `${queryResArr[i]['ven_companyname']}`
       reviewObj['unit'] = `${queryResArr[i]['oup_name']}`
-      reviewObj['numPkgs'] = nmPk
-      reviewObj['csPkgMltpl'] = csPk
-      reviewObj['ovr'] = ovr
+      reviewObj['numPkgs'] = `${nmPk}`
+      reviewObj['csPkgMltpl'] = `${csPk}`
+      reviewObj['ovr'] = `${ovr}`
       reviewObj['pf1'] = `${queryResArr[i]['pi1_description']}`
       reviewObj['pf2'] = `${queryResArr[i]['pi2_description']}`
       // reviewObj['pf3'] = ""
