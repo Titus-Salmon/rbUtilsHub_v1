@@ -203,8 +203,9 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       imwToPop['csPkgMltpl'] = csPk
       imwToPop['ovr'] = ovr
 
-      populated_imw_arr.push(imwToPop)
-      modifiedQueryResArr.push(queryResArr[i])
+      populated_imw_arr.push(imwToPop) //this holds data for the IMW
+      modifiedQueryResArr.push(queryResArr[i]) //this holds data for displaying query results
+      //AND we are adding come calcResults as well, for review purposes
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
