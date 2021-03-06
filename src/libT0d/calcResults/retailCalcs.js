@@ -223,9 +223,9 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       reviewObj['size'] = `${queryResArr[i]['inv_size']}`
       reviewObj['lastCost'] = `${queryResArr[i]['inv_lastcost']}`
       reviewObj['ediCost'] = `${queryResArr[i][`${reqBody.venCatPrefix}_cost`]}`
-      reviewObj['WS_disco'] = `${queryResArr[i][`${reqBody.ongDisco_WS}`]}`
+      reviewObj['WS_disco'] = `${reqBody.ongDisco_WS}`
       reviewObj['ediCostMod'] = `${unitCost}`
-      reviewObj['Rtl_disco'] = `${queryResArr[i][`${reqBody.ongDisco_Rtl}`]}`
+      reviewObj['Rtl_disco'] = `${reqBody.ongDisco_Rtl}`
       reviewObj['reqdRtl'] = `${reqdRtl}`
       reviewObj['charm'] = `${charm}`
       reviewObj['idealMarg'] = `${queryResArr[i]['sib_idealmargin']}`
