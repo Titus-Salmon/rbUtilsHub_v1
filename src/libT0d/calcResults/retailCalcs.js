@@ -212,7 +212,7 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       //^//ADD numPkgs, csPkgMltpl, ovr, reqdRtl, charm, rbDefaultMarg(for dept), appliedMargin, appliedWSdisco, appliedRtlDisco
       //^//to modifiedQueryResArr, in order to show for review purposes on frontend
 
-      reviewObj = {}
+      let reviewObj = {}
       reviewObj['upc'] = `${queryResArr[i]['inv_ScanCode']}`
       reviewObj['charm'] = charm
 
