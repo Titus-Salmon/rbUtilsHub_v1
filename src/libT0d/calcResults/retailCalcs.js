@@ -34,6 +34,7 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
 
   let charm
   let dptAbbr
+  let reqdRtl
 
   //populate imw with retails from vendor-supplied catalog
   let stagedDptMargData = reqBody.stagedDptMargData
@@ -206,11 +207,11 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       imwToPop['csPkgMltpl'] = csPk
       imwToPop['ovr'] = ovr
 
-      //v//ADD numPkgs, csPkgMltpl, ovr, reqdRtl, charm, rbDefaultMarg(for dept), appliedMargin, appliedWSdisco, appliedRtlDisco
-      //v//to modifiedQueryResArr, in order to show for review purposes on frontend
-      queryResArr[i]['charm'] = charm
-      //^//ADD numPkgs, csPkgMltpl, ovr, reqdRtl, charm, rbDefaultMarg(for dept), appliedMargin, appliedWSdisco, appliedRtlDisco
-      //^//to modifiedQueryResArr, in order to show for review purposes on frontend
+      // //v//ADD numPkgs, csPkgMltpl, ovr, reqdRtl, charm, rbDefaultMarg(for dept), appliedMargin, appliedWSdisco, appliedRtlDisco
+      // //v//to modifiedQueryResArr, in order to show for review purposes on frontend
+      // queryResArr[i]['charm'] = charm
+      // //^//ADD numPkgs, csPkgMltpl, ovr, reqdRtl, charm, rbDefaultMarg(for dept), appliedMargin, appliedWSdisco, appliedRtlDisco
+      // //^//to modifiedQueryResArr, in order to show for review purposes on frontend
 
       let reviewObj = {}
       reviewObj['upc'] = `${queryResArr[i]['inv_ScanCode']}`
@@ -224,8 +225,8 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       reviewObj['WS_disco'] = `${queryResArr[i][`${reqBody.ongDisco_WS}`]}`
       reviewObj['ediCostMod'] = `${unitCost}`
       reviewObj['Rtl_disco'] = `${queryResArr[i][`${reqBody.ongDisco_Rtl}`]}`
-      reviewObj['reqdRtl'] = reqdRtl
-      reviewObj['charm'] = charm
+      reviewObj['reqdRtl'] = `${reqdRtl}`
+      reviewObj['charm'] = `${charm}`
       reviewObj['idealMarg'] = `${queryResArr[i]['sib_idealmargin']}`
       reviewObj['actlMarg'] = `${queryResArr[i]['actlMarg']}`
       reviewObj['appliedMargin'] = `${marginToApply*100}`
