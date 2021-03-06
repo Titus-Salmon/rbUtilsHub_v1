@@ -27,6 +27,9 @@ import
 dptNameNumbMargMaster
 from "../../libT0d/defaultMargs/dptNameNumbMargMaster"
 
+import queryResArrCache from "../../nodeCacheStuff/cache1" //we will use this to overwrite the queryResArrCache initially set from
+//within rbDBqueryResults, so that we display only what we want to display for review purposes.
+
 function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResArr, calcResStatus) {
 
   let charm
@@ -209,16 +212,27 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       //^//ADD numPkgs, csPkgMltpl, ovr, reqdRtl, charm, rbDefaultMarg(for dept), appliedMargin, appliedWSdisco, appliedRtlDisco
       //^//to modifiedQueryResArr, in order to show for review purposes on frontend
 
-      populated_imw_arr.push(imwToPop) //this holds data for the IMW
-      // modifiedQueryResArr.push(queryResArr[i]) //this holds data for displaying query results
-      //AND we are adding come calcResults as well (see above), for review purposes
-      //we need some way of reordering our columns for the review array (modifiedQueryResArr), so why not
-      //just try defining the array specifically
-      let reviewObj = {}
+      reviewObj = {}
       reviewObj['upc'] = `${queryResArr[i]['inv_ScanCode']}`
       reviewObj['charm'] = charm
 
-      modifiedQueryResArr.push(reviewObj) //this holds data for displaying review results
+      populated_imw_arr.push(imwToPop) //this holds data for the IMW
+      // modifiedQueryResArr.push(queryResArr[i]) //this holds data for displaying query results
+      modifiedQueryResArr.push(reviewObj) //this holds data for displaying REVIEW results
+      //AND we are adding come calcResults as well (see above), for review purposes
+      //we need some way of reordering our columns for the review array (modifiedQueryResArr), so why not
+      //just try defining the array specifically...
+      //NO, try creating a new table type to display review results, and make it's display take precedence
+      //over the standard table1, if some condition is present, such as some "reviewTable" variable in
+      //a store, say the ___________ store...
+      //OR...................
+      //just overwrite your cache with the review results, and everything should fall in place
+      //V// CACHE QUERY RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
+      queryResArrCache.set('queryResArrCache_key', modifiedQueryResArr)
+      console.log(`queryResArrCache['data']['queryResArrCache_key']['v'].length==> ${queryResArrCache['data']['queryResArrCache_key']['v'].length}`)
+      console.log(`queryResArrCache['data']['queryResArrCache_key']['v'][0]==> ${queryResArrCache['data']['queryResArrCache_key']['v'][0]}`)
+      console.log(`JSON.stringify(queryResArrCache['data']['queryResArrCache_key']['v'][0])==> ${JSON.stringify(queryResArrCache['data']['queryResArrCache_key']['v'][0])}`)
+      //^// CACHE QUERY RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
