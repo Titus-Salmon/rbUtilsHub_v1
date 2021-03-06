@@ -214,7 +214,37 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
 
       let reviewObj = {}
       reviewObj['upc'] = `${queryResArr[i]['inv_ScanCode']}`
+      reviewObj['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
+      reviewObj['deptName'] = `${queryResArr[i]['dpt_name']}`
+      reviewObj['rcptAlias'] = `${queryResArr[i]['inv_receiptalias']}`
+      reviewObj['brand'] = `${queryResArr[i]['brd_name']}`
+      reviewObj['size'] = `${queryResArr[i]['inv_size']}`
+      reviewObj['lastCost'] = `${queryResArr[i]['inv_lastcost']}`
+      reviewObj['ediCost'] = `${queryResArr[i][`${reqBody.venCatPrefix}_cost`]}`
+      reviewObj['WS_disco'] = `${queryResArr[i][`${reqBody.ongDisco_WS}`]}`
+      reviewObj['ediCostMod'] = `${unitCost}`
+      reviewObj['Rtl_disco'] = `${queryResArr[i][`${reqBody.ongDisco_Rtl}`]}`
+      reviewObj['rqdRtl'] = rqdRtl
       reviewObj['charm'] = charm
+      reviewObj['idealMarg'] = `${queryResArr[i]['sib_idealmargin']}`
+      reviewObj['actlMarg'] = `${queryResArr[i]['actlMarg']}`
+      reviewObj['appliedMargin'] = `${marginToApply*100}`
+      reviewObj['altID'] = `${queryResArr[i]['asc_scancode']}`
+      reviewObj['altRcptAlias'] = `${queryResArr[i]['asc_receiptalias']}`
+      reviewObj['pkgQnt'] = `${queryResArr[i]['asc_quantity']}` //***this is pkg qty for ALD ID***
+      reviewObj['splrID'] = `${queryResArr[i]['ven_companyname']}`
+      reviewObj['unit'] = `${queryResArr[i]['oup_name']}`
+      reviewObj['numPkgs'] = nmPk
+      reviewObj['csPkgMltpl'] = csPk
+      reviewObj['ovr'] = ovr
+      reviewObj['pf1'] = `${queryResArr[i]['pi1_description']}`
+      reviewObj['pf2'] = `${queryResArr[i]['pi2_description']}`
+      // reviewObj['pf3'] = ""
+      // reviewObj['pf4'] = ""
+      // reviewObj['pf5'] = ""
+      // reviewObj['pf6'] = ""
+      // reviewObj['pf7'] = ""
+      // reviewObj['pf8'] = ""
 
       populated_imw_arr.push(imwToPop) //this holds data for the IMW
       // modifiedQueryResArr.push(queryResArr[i]) //this holds data for displaying query results
