@@ -84,7 +84,6 @@ import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
   <!-- {#if $utilResponses[0].utilResponse.save_imw_CSVresponse} -->
   <div class="flexbox">
     <Save_imw_CSV />
-    <SaveToXLSX />
   </div>
   <!-- {/if} -->
 {/if}

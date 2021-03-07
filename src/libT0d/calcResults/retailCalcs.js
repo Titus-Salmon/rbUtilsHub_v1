@@ -198,7 +198,7 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       reviewObj['upc'] = `${queryResArr[i]['inv_ScanCode']}`
       reviewObj['cpltSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
       reviewObj['ediSKU'] = `${queryResArr[i][`${reqBody.venCatPrefix}_sku`]}`
-      if (reviewObj['cpltSKU'] !== reviewObj['ediSKU']) { //flag SKU mismatches, if they occur
+      if ((reviewObj['cpltSKU']).toLowerCase() !== (reviewObj['ediSKU']).toLowerCase()) { //flag SKU mismatches, if they occur
         reviewObj['skuMismatch'] = `${reviewObj['upc']}`
       } else {
         reviewObj['skuMismatch'] = ""
