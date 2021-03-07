@@ -16,6 +16,9 @@ function tableHighlight() {
       `tblCells[i].parentNode.childNodes.length==> ${tblCells[i].parentNode.childNodes.length}`
     );
     console.log(
+      `tblCells[i].parentNode.childNodes[0]==> ${tblCells[i].parentNode.childNodes[0]}`
+    );
+    console.log(
       `tblCells[i].parentNode.childNodes[0].innerHTML==> ${tblCells[i].parentNode.childNodes[0].innerHTML}`
     );
   }
