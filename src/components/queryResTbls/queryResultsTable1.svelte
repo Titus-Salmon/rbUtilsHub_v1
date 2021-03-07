@@ -1,18 +1,25 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
 
-let tblColNames = Object.keys($tableData[0]);
-
 function tableHighlight() {
   console.log(
     `Object.keys($tableData[0]) from queryResultsTable1.svelte==> ${Object.keys(
       $tableData[0]
     )}`
   );
+  const rsltTblBdy = document.getElementById("rsltTblBdy");
+  let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
-  // let colNames = Object.keys($tableData[0]);
-  // for (let i = 0; i < colNames.length; i++) {
-  // }
+  for (let i = 0; i < tblCells.length; i++) {
+    console.log(
+      "tblCells[i].parentNode.childNodes.length==>",
+      tblCells[i].parentNode.childNodes.length
+    );
+    console.log(
+      "tblCells[i].parentNode.childNodes[0].innerHTML==>",
+      tblCells[i].parentNode.childNodes[0].innerHTML
+    );
+  }
 }
 </script>
 
@@ -39,7 +46,7 @@ th {
         {/each}
       </tr>
     </thead>
-    <tbody>
+    <tbody id="rsltTblBdy">
       {#each Object.values($tableData) as row}
         <tr>
           {#each Object.values(row) as cell}
