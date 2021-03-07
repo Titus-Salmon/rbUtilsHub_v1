@@ -20,6 +20,12 @@ function tableHighlight() {
       if (tblCols[m] === "ediCostMod") {
         ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
       }
+      if (tblCols[m] === "basePrice") {
+        basePrice_cell = tblCells[k].parentNode.childNodes[m];
+      }
+      if (tblCols[m] === "charm") {
+        charm_cell = tblCells[k].parentNode.childNodes[m];
+      }
     }
     if (
       Math.abs(
