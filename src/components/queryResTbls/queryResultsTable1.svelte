@@ -9,6 +9,10 @@ function tableHighlight() {
   );
   const rsltTblBdy = document.getElementById("rsltTblBdy");
   let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
+  let tblRows = rsltTblBdy.getElementsByTagName("tr"); //targets all rows in table
+
+  console.log(`JSON.stringify(tblRows[0])==> ${JSON.stringify(tblRows[0])}`);
+
   console.log(`tblCells.length==> ${tblCells.length}`);
 
   console.log(
