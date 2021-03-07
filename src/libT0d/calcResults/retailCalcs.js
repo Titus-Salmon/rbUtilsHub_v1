@@ -1,28 +1,23 @@
 import {
   blank_imw_creator,
 } from "../../libT0d/imw/blank_imw_creator"
-
 import {
   discoMulti_Rtl,
   ongDiscoMulti_Rtl
 } from "../../libT0d/calcResults/ongDiscoMulti_Rtl"
-
 import {
   unitCost,
   eaCsNumDiv
 } from "../../libT0d/calcResults/eaCsNumDiv"
-
 import {
   nmPk,
   numPkgsCalc
 } from "../../libT0d/calcResults/numPkgsCalc"
-
 import {
   csPk,
   ovr,
   csPkMltCalc
 } from "../../libT0d/calcResults/csPkMltCalc"
-
 import
 dptNameNumbMargMaster
 from "../../libT0d/defaultMargs/dptNameNumbMargMaster"
@@ -64,10 +59,6 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
   console.log(`stagedDptMargData.length==> ${stagedDptMargData.length}`)
 
   for (let i = 0; i < queryResArr.length; i++) {
-
-    // eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
-    // numPkgsCalc(i, queryResArr)
-    // csPkMltCalc(i, queryResArr)
 
     for (let j = 0; j < stagedDptMargData.length; j++) {
       eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
@@ -151,23 +142,16 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
         }
       }
     }
-    calcResStatus = `There were ${populated_imw_arr.length} items in need of retail update. 
-  populated_imw_arr.length = ${populated_imw_arr.length}`
+    calcResStatus = `There were ${populated_imw_arr.length} items in need of retail update. populated_imw_arr.length = ${populated_imw_arr.length}`
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     let catapultRtl = queryResArr[i]['sib_baseprice']
 
-    if (catapultRtl !== charm) {
-      // eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
-      // numPkgsCalc(i, queryResArr)
-      // csPkMltCalc(i, queryResArr)
+    if (catapultRtl !== charm) { //only include results in need of retail update
       let imwToPop = {}
       blank_imw_creator(imwToPop)
       imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
-
-      // let reqdRtl = unitCost / (1 - marginAsDecimal)
-      // reqdRtl = Math.round(reqdRtl * 100) / 100 //convert reqdRtl to rounded 2-decimal-place number
-      imwToPop['sugstdRtl'] = `${charm}` //need -- will be same as charm
+      imwToPop['sugstdRtl'] = `${charm}`
       imwToPop['lastCost'] = ""
       imwToPop['charm'] = `${charm}`
       imwToPop['autoDiscount'] = ""
@@ -206,12 +190,10 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       imwToPop['csPkgMltpl'] = `${csPk}`
       imwToPop['ovr'] = `${ovr}`
 
-      // //v//ADD numPkgs, csPkgMltpl, ovr, reqdRtl, charm, rbDefaultMarg(for dept), appliedMargin, appliedWSdisco, appliedRtlDisco
-      // //v//to modifiedQueryResArr, in order to show for review purposes on frontend
-      // queryResArr[i]['charm'] = charm
-      // //^//ADD numPkgs, csPkgMltpl, ovr, reqdRtl, charm, rbDefaultMarg(for dept), appliedMargin, appliedWSdisco, appliedRtlDisco
-      // //^//to modifiedQueryResArr, in order to show for review purposes on frontend
+      populated_imw_arr.push(imwToPop) //this holds data for the IMW
 
+      // //v//ADD numPkgs, csPkgMltpl, ovr, reqdRtl, charm, rbDefaultMarg(for dept), appliedMargin, appliedWSdisco, appliedRtlDisco, etc.
+      // //v//to modifiedQueryResArr, in order to show for review purposes on frontend
       let reviewObj = {}
       reviewObj['upc'] = `${queryResArr[i]['inv_ScanCode']}`
       reviewObj['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
@@ -247,16 +229,9 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       // reviewObj['pf7'] = ""
       // reviewObj['pf8'] = ""
 
-      populated_imw_arr.push(imwToPop) //this holds data for the IMW
-      // modifiedQueryResArr.push(queryResArr[i]) //this holds data for displaying query results
       modifiedQueryResArr.push(reviewObj) //this holds data for displaying REVIEW results
       //AND we are adding come calcResults as well (see above), for review purposes
       //we need some way of reordering our columns for the review array (modifiedQueryResArr), so why not
-      //just try defining the array specifically...
-      //NO, try creating a new table type to display review results, and make it's display take precedence
-      //over the standard table1, if some condition is present, such as some "reviewTable" variable in
-      //a store, say the ___________ store...
-      //OR...................
       //just overwrite your cache with the review results, and everything should fall in place
       //V// CACHE QUERY RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
       queryResArrCache.set('queryResArrCache_key', modifiedQueryResArr)
@@ -264,9 +239,11 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       console.log(`queryResArrCache['data']['queryResArrCache_key']['v'][0]==> ${queryResArrCache['data']['queryResArrCache_key']['v'][0]}`)
       console.log(`JSON.stringify(queryResArrCache['data']['queryResArrCache_key']['v'][0])==> ${JSON.stringify(queryResArrCache['data']['queryResArrCache_key']['v'][0])}`)
       //^// CACHE QUERY RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
+
+      // //^//ADD numPkgs, csPkgMltpl, ovr, reqdRtl, charm, rbDefaultMarg(for dept), appliedMargin, appliedWSdisco, appliedRtlDisco
+      // //^//to modifiedQueryResArr, in order to show for review purposes on frontend
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-
   }
 }
 export {

@@ -34,6 +34,7 @@ function tableHighlight() {
       ) > 0.35
     ) {
       ediCostMod_cell.style.backgroundColor = "#ffb3ca";
+      ediCostMod_cell.style.color = "black";
     }
     if (
       Math.abs(
@@ -42,6 +43,7 @@ function tableHighlight() {
       ) > 0.05
     ) {
       ediCostMod_cell.style.backgroundColor = "#ff8533";
+      ediCostMod_cell.style.color = "black";
     }
 
     if (
@@ -50,6 +52,7 @@ function tableHighlight() {
       ) > 0.35
     ) {
       charm_cell.style.backgroundColor = "#ffdb4b";
+      charm_cell.style.color = "black";
     }
     if (
       Math.abs(
@@ -57,6 +60,7 @@ function tableHighlight() {
       ) > 0.05
     ) {
       charm_cell.style.backgroundColor = "#ff0000";
+      charm_cell.style.color = "black";
     }
   }
 }
