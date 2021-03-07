@@ -1,5 +1,11 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
+
+console.log(
+  `Object.keys($tableData[0]) from queryResultsTable1.svelte==> ${Object.keys(
+    $tableData[0]
+  )}`
+);
 </script>
 
 <style>
