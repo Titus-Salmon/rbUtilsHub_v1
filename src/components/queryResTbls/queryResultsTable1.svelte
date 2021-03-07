@@ -1,6 +1,8 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
 
+let tblColNames = Object.keys($tableData[0]);
+
 function tableHighlight() {
   console.log(
     `Object.keys($tableData[0]) from queryResultsTable1.svelte==> ${Object.keys(
@@ -29,7 +31,9 @@ th {
     <thead>
       <tr>
         <!--v-- NOTE: you must use the $ to access the tableData store -->
-        {tableHighlight()}
+        {#if tblColNames.length > 0}
+          {tableHighlight()}
+        {/if}
         {#each Object.keys($tableData[0]) as columnHeading}
           <th>{columnHeading}</th>
         {/each}
