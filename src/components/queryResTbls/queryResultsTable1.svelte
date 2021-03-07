@@ -12,6 +12,12 @@ function tableHighlight() {
   console.log(`tblCells.length==> ${tblCells.length}`);
 
   console.log(
+    `JSON.stringify(tblCells[0].parentNode)==> ${JSON.stringify(
+      tblCells[0].parentNode
+    )}`
+  );
+
+  console.log(
     `tblCells[0].parentNode.childNodes.length==> ${tblCells[0].parentNode.childNodes.length}`
   );
 
