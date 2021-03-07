@@ -7,6 +7,7 @@ function tableHighlight() {
       $tableData[0]
     )}`
   );
+
   // let colNames = Object.keys($tableData[0]);
   // for (let i = 0; i < colNames.length; i++) {
   // }
