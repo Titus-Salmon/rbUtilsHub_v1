@@ -11,18 +11,24 @@ function tableHighlight() {
   let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
   console.log(`tblCells.length==> ${tblCells.length}`);
 
-  // console.log(
-  //   `JSON.stringify(tblCells[0].parentNode.childNodes[0])==> ${JSON.stringify(
-  //     tblCells[0].parentNode.childNodes[0]
-  //   )}`
-  // );
+  console.log(
+    `tblCells[0].parentNode.childNodes.length==> ${tblCells[0].parentNode.childNodes.length}`
+  );
 
-  for (let i = 0; i < tblCells.length; i++) {
+  for (let i = 0; i < tblCells[0].parentNode.childNodes.length; i++) {
     console.log(
-      `JSON.stringify(tblCells[${i}].parentNode.childNodes[0])==> ${JSON.stringify(
-        tblCells[i].parentNode.childNodes[0]
+      `JSON.stringify(tblCells[0].parentNode.childNodes[${i}])==> ${JSON.stringify(
+        tblCells[0].parentNode.childNodes[i]
       )}`
     );
+  }
+
+  for (let i = 0; i < tblCells.length; i++) {
+    // console.log(
+    //   `JSON.stringify(tblCells[${i}].parentNode.childNodes[0])==> ${JSON.stringify(
+    //     tblCells[i].parentNode.childNodes[0]
+    //   )}`
+    // );
     // console.log(
     //   `tblCells[i].parentNode.childNodes.length==> ${tblCells[i].parentNode.childNodes.length}`
     // );
