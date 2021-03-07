@@ -1,5 +1,6 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
+let ri_t0d_test;
 
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
@@ -11,7 +12,7 @@ function tableHighlight() {
     // console.log(`tblCols[${i}]==> ${tblCols[i]}`);
     if (tblCols[i] === "ri_t0d") {
       for (let j = 0; j < tblCells.length; j++) {
-        let ri_t0d_test = cells[j].parentNode.childNodes[i];
+        ri_t0d_test = tblCells[j].parentNode.childNodes[i];
       }
     }
   }
