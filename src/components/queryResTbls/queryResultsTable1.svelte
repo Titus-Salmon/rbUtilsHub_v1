@@ -31,7 +31,7 @@ function tableHighlight() {
     }
     if (
       Math.abs(
-        (ediCostMod_cell.innerHTML - exist_ws.innerHTML) /
+        (ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) /
           ediCostMod_cell.innerHTML
       ) > 0.5
     ) {
