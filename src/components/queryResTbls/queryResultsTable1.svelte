@@ -9,17 +9,16 @@ function tableHighlight() {
   );
   const rsltTblBdy = document.getElementById("rsltTblBdy");
   let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
+  console.log(`tblCells.length==> ${tblCells.length}`);
 
-  for (let i = 0; i < tblCells.length; i++) {
-    console.log(
-      "tblCells[i].parentNode.childNodes.length==>",
-      tblCells[i].parentNode.childNodes.length
-    );
-    console.log(
-      "tblCells[i].parentNode.childNodes[0].innerHTML==>",
-      tblCells[i].parentNode.childNodes[0].innerHTML
-    );
-  }
+  // for (let i = 0; i < tblCells.length; i++) {
+  //   console.log(
+  //     `tblCells[i].parentNode.childNodes.length==> ${tblCells[i].parentNode.childNodes.length}`
+  //   );
+  //   console.log(
+  //     `tblCells[i].parentNode.childNodes[0].innerHTML==> ${tblCells[i].parentNode.childNodes[0].innerHTML}`
+  //   );
+  // }
 }
 </script>
 
@@ -38,15 +37,15 @@ th {
     <thead>
       <tr>
         <!--v-- NOTE: you must use the $ to access the tableData store -->
-        {#if Object.keys($tableData[0]).length > 0}
-          <!-- {tableHighlight()} -->
-        {/if}
         {#each Object.keys($tableData[0]) as columnHeading}
           <th>{columnHeading}</th>
         {/each}
       </tr>
     </thead>
     <tbody id="rsltTblBdy">
+      {#if Object.keys($tableData[0]).length > 0}
+        {tableHighlight()}
+      {/if}
       {#each Object.values($tableData) as row}
         <tr>
           {#each Object.values(row) as cell}
