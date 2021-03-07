@@ -2,11 +2,20 @@
 import tableData from "../../stores/dynamicTables/tableData1";
 
 function tableHighlight() {
+  const rsltTblBdy = document.getElementById("rsltTblBdy");
+  const tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
+
   let tblCols = Object.keys($tableData[0]);
   for (let i = 0; i < tblCols.length; i++) {
-    console.log(`typeof tblCols[${i}]==> ${typeof tblCols[i]}`);
-    console.log(`tblCols[${i}]==> ${tblCols[i]}`);
+    // console.log(`typeof tblCols[${i}]==> ${typeof tblCols[i]}`);
+    // console.log(`tblCols[${i}]==> ${tblCols[i]}`);
+    if (tblCols[i] === "ri_t0d") {
+      for (let j = 0; j < tblCells.length; j++) {
+        let ri_t0d_test = cells[j].parentNode.childNodes[i];
+      }
+    }
   }
+  console.log(`ri_t0d_test==> ${ri_t0d_test}`);
 }
 
 function tableHighlight_old() {
