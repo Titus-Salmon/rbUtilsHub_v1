@@ -77,7 +77,6 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
         marginToApply = stagedDptMargData[j]['margin'] / 100
         reqdRtl = unitCost / (1 - marginToApply)
         reqdRtl = Math.round(reqdRtl * 100) / 100 //convert reqdRtl to rounded 2-decimal-place number
-        console.log(`reqdRtl for [${i}] ${queryResArr[i]['inv_ScanCode']}_${queryResArr[i]['inv_name']} ==> ${reqdRtl}`)
 
         //retail charm calcs are based on the following logic:
         // if (reqdRetail<lowerCutRqdRtl) {
@@ -149,7 +148,6 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
               charm = reqdRtl - reqdRtl % 1 + parseFloat(reqBody[`defaultCharm${dptAbbr}4`])
             }
           }
-          console.log(`[${i}] charm | typeof charm==> ${charm} ${typeof charm}`)
         }
       }
     }
