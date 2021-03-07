@@ -1,6 +1,12 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
-let ri_t0d_test;
+
+// let exist_ws = cells[i].parentNode.childNodes[14];
+// let edi_cost_mod = cells[i].parentNode.childNodes[16];
+// let charm_price = cells[i].parentNode.childNodes[19];
+// let crnt_pr_cplt = cells[i].parentNode.childNodes[21];
+let lastCost_cell;
+let ediCostMod_cell;
 
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
@@ -10,66 +16,25 @@ function tableHighlight() {
   for (let i = 0; i < tblCols.length; i++) {
     // console.log(`typeof tblCols[${i}]==> ${typeof tblCols[i]}`);
     // console.log(`tblCols[${i}]==> ${tblCols[i]}`);
-    if (tblCols[i] === "ri_t0d") {
-      for (let j = 0; j < tblCells.length; j++) {
-        ri_t0d_test = tblCells[j].parentNode.childNodes[i];
+    for (let j = 0; j < tblCells.length; j++) {
+      if (tblCols[i] === "lastCost") {
+        lastCost_cell = tblCells[j].parentNode.childNodes[i];
+      }
+      if (tblCols[i] === "ediCostMod") {
+        ediCostMod_cell = tblCells[j].parentNode.childNodes[i];
+      }
+      if (
+        Math.abs(
+          (ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) /
+            ediCostMod_cell.innerHTML
+        ) > 0.05
+      ) {
+        ediCostMod_cell.style.backgroundColor = "#ffb3ca";
       }
     }
   }
   console.log(`ri_t0d_test==> ${ri_t0d_test}`);
   console.log(`ri_t0d_test.innerHTML==> ${ri_t0d_test.innerHTML}`);
-}
-
-function tableHighlight_old() {
-  console.log(
-    `Object.keys($tableData[0]) from queryResultsTable1.svelte==> ${Object.keys(
-      $tableData[0]
-    )}`
-  );
-  const rsltTblBdy = document.getElementById("rsltTblBdy");
-  let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
-  let tblRows = rsltTblBdy.getElementsByTagName("tr"); //targets all rows in table
-
-  console.log(`JSON.stringify(tblRows[0])==> ${JSON.stringify(tblRows[0])}`);
-  console.log(`tblRows[0]==> ${tblRows[0]}`);
-  console.log(`tblRows[0].innerHTML==> ${tblRows[0].innerHTML}`);
-
-  console.log(`tblCells.length==> ${tblCells.length}`);
-
-  console.log(
-    `JSON.stringify(tblCells[0].parentNode)==> ${JSON.stringify(
-      tblCells[0].parentNode
-    )}`
-  );
-
-  console.log(
-    `tblCells[0].parentNode.childNodes.length==> ${tblCells[0].parentNode.childNodes.length}`
-  );
-
-  for (let i = 0; i < tblCells[0].parentNode.childNodes.length; i++) {
-    console.log(
-      `JSON.stringify(tblCells[0].parentNode.childNodes[${i}])==> ${JSON.stringify(
-        tblCells[0].parentNode.childNodes[i]
-      )}`
-    );
-  }
-
-  for (let i = 0; i < tblCells.length; i++) {
-    // console.log(
-    //   `JSON.stringify(tblCells[${i}].parentNode.childNodes[0])==> ${JSON.stringify(
-    //     tblCells[i].parentNode.childNodes[0]
-    //   )}`
-    // );
-    // console.log(
-    //   `tblCells[i].parentNode.childNodes.length==> ${tblCells[i].parentNode.childNodes.length}`
-    // );
-    // console.log(
-    //   `tblCells[i].parentNode.childNodes[0]==> ${tblCells[i].parentNode.childNodes[0]}`
-    // );
-    // console.log(
-    //   `tblCells[i].parentNode.childNodes[0].innerHTML==> ${tblCells[i].parentNode.childNodes[0].innerHTML}`
-    // );
-  }
 }
 </script>
 
