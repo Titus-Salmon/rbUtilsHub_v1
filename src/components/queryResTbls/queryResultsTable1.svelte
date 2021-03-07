@@ -2,6 +2,14 @@
 import tableData from "../../stores/dynamicTables/tableData1";
 
 function tableHighlight() {
+  let tblCols = Object.keys($tableData[0]);
+  for (let i = 0; i < tblCols.length; i++) {
+    console.log(`typeof tblCols[${i}]==> ${typeof tblCols[i]}`);
+    console.log(`tblCols[${i}]==> ${tblCols[i]}`);
+  }
+}
+
+function tableHighlight_old() {
   console.log(
     `Object.keys($tableData[0]) from queryResultsTable1.svelte==> ${Object.keys(
       $tableData[0]
