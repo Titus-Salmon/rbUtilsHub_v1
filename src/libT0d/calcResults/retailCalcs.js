@@ -196,7 +196,13 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       // //v//to modifiedQueryResArr, in order to show for review purposes on frontend
       let reviewObj = {}
       reviewObj['upc'] = `${queryResArr[i]['inv_ScanCode']}`
-      reviewObj['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
+      reviewObj['cpltSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
+      reviewObj['ediSKU'] = `${queryResArr[i][`${reqBody.venCatPrefix}_sku`]}`
+      if (reviewObj['cpltSKU'] !== reviewObj['ediSKU']) { //flag SKU mismatches, if they occur
+        reviewObj['skuMismatch'] = `${reviewObj['upc']}`
+      } else {
+        reviewObj['skuMismatch'] = ""
+      }
       reviewObj['deptName'] = `${queryResArr[i]['dpt_name']}`
       reviewObj['rcptAlias'] = `${queryResArr[i]['inv_receiptalias']}`
       reviewObj['brand'] = `${queryResArr[i]['brd_name']}`
