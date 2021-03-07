@@ -20,7 +20,7 @@ function tableHighlight() {
       if (tblCols[m] === "ediCostMod") {
         ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
       }
-      if (tblCols[m] === "basePrice") {
+      if (tblCols[m] === "sib_baseprice") {
         basePrice_cell = tblCells[k].parentNode.childNodes[m];
       }
       if (tblCols[m] === "charm") {
