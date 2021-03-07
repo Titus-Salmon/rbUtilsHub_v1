@@ -11,14 +11,14 @@ function tableHighlight() {
   let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
   console.log(`tblCells.length==> ${tblCells.length}`);
 
-  // for (let i = 0; i < tblCells.length; i++) {
-  //   console.log(
-  //     `tblCells[i].parentNode.childNodes.length==> ${tblCells[i].parentNode.childNodes.length}`
-  //   );
-  //   console.log(
-  //     `tblCells[i].parentNode.childNodes[0].innerHTML==> ${tblCells[i].parentNode.childNodes[0].innerHTML}`
-  //   );
-  // }
+  for (let i = 0; i < tblCells.length; i++) {
+    console.log(
+      `tblCells[i].parentNode.childNodes.length==> ${tblCells[i].parentNode.childNodes.length}`
+    );
+    console.log(
+      `tblCells[i].parentNode.childNodes[0].innerHTML==> ${tblCells[i].parentNode.childNodes[0].innerHTML}`
+    );
+  }
 }
 </script>
 
