@@ -17,6 +17,7 @@ function tableHighlight() {
     }
   }
   console.log(`ri_t0d_test==> ${ri_t0d_test}`);
+  console.log(`ri_t0d_test.innerHTML==> ${ri_t0d_test.innerHTML}`);
 }
 
 function tableHighlight_old() {
