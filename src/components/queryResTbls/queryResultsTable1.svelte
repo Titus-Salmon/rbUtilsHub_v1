@@ -39,7 +39,7 @@ th {
       <tr>
         <!--v-- NOTE: you must use the $ to access the tableData store -->
         {#if Object.keys($tableData[0]).length > 0}
-          {tableHighlight()}
+          <!-- {tableHighlight()} -->
         {/if}
         {#each Object.keys($tableData[0]) as columnHeading}
           <th>{columnHeading}</th>
