@@ -12,6 +12,8 @@ function tableHighlight() {
   let tblRows = rsltTblBdy.getElementsByTagName("tr"); //targets all rows in table
 
   console.log(`JSON.stringify(tblRows[0])==> ${JSON.stringify(tblRows[0])}`);
+  console.log(`tblRows[0]==> ${tblRows[0]}`);
+  console.log(`tblRows[0].innerHTML==> ${tblRows[0].innerHTML}`);
 
   console.log(`tblCells.length==> ${tblCells.length}`);
 
