@@ -5,36 +5,59 @@ import tableData from "../../stores/dynamicTables/tableData1";
 // let edi_cost_mod = cells[i].parentNode.childNodes[16];
 // let charm_price = cells[i].parentNode.childNodes[19];
 // let crnt_pr_cplt = cells[i].parentNode.childNodes[21];
-let lastCost_cell;
-let ediCostMod_cell;
+// let lastCost_cell;
+// let ediCostMod_cell;
 
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
   const tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
   let tblCols = Object.keys($tableData[0]);
-  for (let i = 0; i < tblCols.length; i++) {
-    // console.log(`typeof tblCols[${i}]==> ${typeof tblCols[i]}`);
-    // console.log(`tblCols[${i}]==> ${tblCols[i]}`);
-    for (let j = 0; j < tblCells.length; j++) {
-      if (tblCols[i] === "lastCost") {
-        lastCost_cell = tblCells[j].parentNode.childNodes[i];
+
+  let lastCost_cell;
+  let ediCostMod_cell;
+
+  for (let k = 0; k < tblCells.length; k++) {
+    for (let l = 0; l < tblCols.length; l++) {
+      if (tblCols[l] === "lastCost") {
+        lastCost_cell = tblCells[k].parentNode.childNodes[l];
       }
-      if (tblCols[i] === "ediCostMod") {
-        ediCostMod_cell = tblCells[j].parentNode.childNodes[i];
-      }
-      if (
-        Math.abs(
-          (ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) /
-            ediCostMod_cell.innerHTML
-        ) > 0.05
-      ) {
-        ediCostMod_cell.style.backgroundColor = "#ffb3ca";
+      if (tblCols[l] === "ediCostMod") {
+        ediCostMod_cell = tblCells[k].parentNode.childNodes[l];
       }
     }
+    if (
+      Math.abs(
+        (ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) /
+          ediCostMod_cell.innerHTML
+      ) > 0.05
+    ) {
+      ediCostMod_cell.style.backgroundColor = "#ffb3ca";
+    }
   }
-  console.log(`ri_t0d_test==> ${ri_t0d_test}`);
-  console.log(`ri_t0d_test.innerHTML==> ${ri_t0d_test.innerHTML}`);
+
+  // for (let i = 0; i < tblCols.length; i++) {
+  //   // console.log(`typeof tblCols[${i}]==> ${typeof tblCols[i]}`);
+  //   // console.log(`tblCols[${i}]==> ${tblCols[i]}`);
+  //   for (let j = 0; j < tblCells.length; j++) {
+  //     if (tblCols[i] === "lastCost") {
+  //       lastCost_cell = tblCells[j].parentNode.childNodes[i];
+  //     }
+  //     if (tblCols[i] === "ediCostMod") {
+  //       ediCostMod_cell = tblCells[j].parentNode.childNodes[i];
+  //     }
+  //     if (
+  //       Math.abs(
+  //         (ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) /
+  //           ediCostMod_cell.innerHTML
+  //       ) > 0.05
+  //     ) {
+  //       ediCostMod_cell.style.backgroundColor = "#ffb3ca";
+  //     }
+  //   }
+  // }
+  // console.log(`ri_t0d_test==> ${ri_t0d_test}`);
+  // console.log(`ri_t0d_test.innerHTML==> ${ri_t0d_test.innerHTML}`);
 }
 </script>
 
