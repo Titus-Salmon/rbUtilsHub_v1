@@ -31,7 +31,7 @@ th {
     <thead>
       <tr>
         <!--v-- NOTE: you must use the $ to access the tableData store -->
-        {#if tblColNames.length > 0}
+        {#if Object.keys($tableData[0]).length > 0}
           {tableHighlight()}
         {/if}
         {#each Object.keys($tableData[0]) as columnHeading}
