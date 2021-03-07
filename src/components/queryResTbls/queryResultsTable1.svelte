@@ -43,9 +43,6 @@ th {
       </tr>
     </thead>
     <tbody id="rsltTblBdy">
-      {#if Object.keys($tableData[0]).length > 0}
-        {tableHighlight()}
-      {/if}
       {#each Object.values($tableData) as row}
         <tr>
           {#each Object.values(row) as cell}
@@ -53,6 +50,9 @@ th {
           {/each}
         </tr>
       {/each}
+      {#if Object.keys($tableData[0]).length > 0}
+        {tableHighlight()}
+      {/if}
     </tbody>
   </table>
 </body>
