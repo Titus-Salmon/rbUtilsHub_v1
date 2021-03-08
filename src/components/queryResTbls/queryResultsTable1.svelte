@@ -101,14 +101,15 @@ th {
         <tr>
           {#each Object.values(row) as cell}
             <td>{cell}</td>
-            {tableHighlight()}
           {/each}
         </tr>
       {/each}
       <!-- {#if Object.keys($tableData[0]).length > 0} -->
-      <!-- {#if Object.values($tableData).length > 0}
+      <!--v-- here we're targeting the 1st row (not the table head), to make sure we have data cells
+      to highlight; ptherwise an error is thrown -->
+      {#if Object.values($tableData[1]).length > 0}
         {tableHighlight()}
-      {/if} -->
+      {/if}
     </tbody>
   </table>
 </body>
