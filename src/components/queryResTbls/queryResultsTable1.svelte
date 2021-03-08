@@ -27,40 +27,50 @@ function tableHighlight() {
         charm_cell = tblCells[k].parentNode.childNodes[m];
       }
     }
-    if (
-      Math.abs(
-        (ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) /
-          ediCostMod_cell.innerHTML
-      ) > 0.35
-    ) {
-      ediCostMod_cell.style.backgroundColor = "#ffb3ca";
-      ediCostMod_cell.style.color = "black";
-    }
-    if (
-      Math.abs(
-        (ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) /
-          ediCostMod_cell.innerHTML
-      ) > 0.05
-    ) {
-      ediCostMod_cell.style.backgroundColor = "#ff8533";
-      ediCostMod_cell.style.color = "black";
+    if (ediCostMod_cell && lastCost_cell) {
+      //only do calcs on these cells if they exist (because sometimes your table results
+      //won't include such cells/columns), otherwise you'll throw an error
+      if (
+        Math.abs(
+          (ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) /
+            ediCostMod_cell.innerHTML
+        ) > 0.35
+      ) {
+        ediCostMod_cell.style.backgroundColor = "#ffb3ca";
+        ediCostMod_cell.style.color = "black";
+      }
+      if (
+        Math.abs(
+          (ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) /
+            ediCostMod_cell.innerHTML
+        ) > 0.05
+      ) {
+        ediCostMod_cell.style.backgroundColor = "#ff8533";
+        ediCostMod_cell.style.color = "black";
+      }
     }
 
-    if (
-      Math.abs(
-        (charm_cell.innerHTML - basePrice_cell.innerHTML) / charm_cell.innerHTML
-      ) > 0.35
-    ) {
-      charm_cell.style.backgroundColor = "#ffdb4b";
-      charm_cell.style.color = "black";
-    }
-    if (
-      Math.abs(
-        (charm_cell.innerHTML - basePrice_cell.innerHTML) / charm_cell.innerHTML
-      ) > 0.05
-    ) {
-      charm_cell.style.backgroundColor = "#ff0000";
-      charm_cell.style.color = "black";
+    if (charm_cell && basePrice_cell) {
+      //only do calcs on these cells if they exist (because sometimes your table results
+      //won't include such cells/columns), otherwise you'll throw an error
+      if (
+        Math.abs(
+          (charm_cell.innerHTML - basePrice_cell.innerHTML) /
+            charm_cell.innerHTML
+        ) > 0.35
+      ) {
+        charm_cell.style.backgroundColor = "#ffdb4b";
+        charm_cell.style.color = "black";
+      }
+      if (
+        Math.abs(
+          (charm_cell.innerHTML - basePrice_cell.innerHTML) /
+            charm_cell.innerHTML
+        ) > 0.05
+      ) {
+        charm_cell.style.backgroundColor = "#ff0000";
+        charm_cell.style.color = "black";
+      }
     }
   }
 }
