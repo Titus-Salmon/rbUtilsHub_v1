@@ -21,7 +21,7 @@ let inputValue;
 function calcResults() {
   let stagedDataModal = document.getElementById("stagedDataModal");
   stagedDataModal.style.display = "none"; //hide staged data after clicking calcResults button, to reduce clutter
-  localStorage.setItem("showHidestagedData", "hide"); //set localstorage to appropriate val, so as to not hork the clickcounter
+  // localStorage.setItem("showHidestagedData", "hide"); //set localstorage to appropriate val, so as to not hork the clickcounter
   //v//**********************************************************************************************************************/
   //can we just send stagingData.stagingDataResponse.stagedMargins to backend, because it contains all the following:
   //stagedMargins: [{dptName: vitSupp, dptNumb: '157'; margin: '50'}, ...]
