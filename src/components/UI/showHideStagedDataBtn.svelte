@@ -2,8 +2,6 @@
 function showHidestagedData() {
   let stagedDataModal = document.getElementById("stagedDataModal");
 
-  // localStorage.setItem("showHidestagedDataClickCounter", 0);
-
   if (localStorage.getItem("showHidestagedDataClickCounter") == 0) {
     //this is kind of an odd bird, because it concatenates the result after adding 1
     //to produce 01, instead of 1, but it works. Maybe something to spend some time on down the road, but the way it's currently written

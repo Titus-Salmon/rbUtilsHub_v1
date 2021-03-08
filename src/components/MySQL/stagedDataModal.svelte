@@ -19,6 +19,7 @@ let inputId;
 let inputValue;
 
 function calcResults() {
+  localStorage.setItem("showHidestagedData", "hide"); //hide staged data after clicking calcResults button, to reduce clutter
   //v//**********************************************************************************************************************/
   //can we just send stagingData.stagingDataResponse.stagedMargins to backend, because it contains all the following:
   //stagedMargins: [{dptName: vitSupp, dptNumb: '157'; margin: '50'}, ...]
