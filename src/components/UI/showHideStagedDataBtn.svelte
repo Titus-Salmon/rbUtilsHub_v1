@@ -2,7 +2,7 @@
 function showHidestagedData() {
   let stagedDataModal = document.getElementById("stagedDataModal");
 
-  localStorage.setItem("showHidestagedDataClickCounter", 0);
+  // localStorage.setItem("showHidestagedDataClickCounter", 0);
 
   if (localStorage.getItem("showHidestagedDataClickCounter") === 0) {
     //this is kind of an odd bird, because it concatenates the result after adding 1
