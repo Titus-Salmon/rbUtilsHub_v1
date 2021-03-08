@@ -107,7 +107,7 @@ th {
       <!-- {#if Object.keys($tableData[0]).length > 0} -->
       <!--v-- here we're targeting the 1st row (not the table head), to make sure we have data cells
       to highlight; ptherwise an error is thrown -->
-      {#if Object.values($tableData[1]).length > 0}
+      {#if Object.values($tableData[1]) !== undefined}
         {tableHighlight()}
       {/if}
     </tbody>
