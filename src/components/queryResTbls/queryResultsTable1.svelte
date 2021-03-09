@@ -115,12 +115,15 @@ th {
         )}
       {/if} -->
       <!-- {tableHighlight()} -->
+      {#if Object.values($tableData).length > 0}
+        {tableHighlight()}
+      {/if}
     </tbody>
     <!-- {#if Object.values($tableData).length > 0}
       {tableHighlight()}
     {/if} -->
   </table>
-  {#if Object.values($tableData).length > 0}
+  <!-- {#if Object.values($tableData).length > 0}
     {tableHighlight()}
-  {/if}
+  {/if} -->
 </body>
