@@ -76,9 +76,9 @@ function tableHighlight() {
   }
 }
 
-onMount(() => {
-  console.log(`component mounted --t0d`);
-});
+// onMount(() => {
+//   console.log(`component mounted --t0d`);
+// });
 </script>
 
 <style>
