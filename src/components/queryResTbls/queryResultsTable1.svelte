@@ -77,10 +77,14 @@ function tableHighlight() {
 }
 
 onMount(() => {
-  //if (Object.keys($tableData[0]).length > 0) {
-  console.log(`we mountyed t0d!`);
-  tableHighlight();
-  //}
+  if (Object.keys($tableData[0]).length > 0) {
+    console.log(
+      `we mountyed t0d! | Object.keys($tableData[0]).length ==> ${
+        Object.keys($tableData[0]).length
+      }`
+    );
+    // tableHighlight();
+  }
 });
 </script>
 
@@ -113,9 +117,9 @@ th {
         </tr>
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
-      <!-- {#if Object.keys($tableData[0]).length > 0}
+      {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
-      {/if} -->
+      {/if}
     </tbody>
   </table>
 </body>
