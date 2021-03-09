@@ -6,8 +6,10 @@ import tableData from "../../stores/dynamicTables/tableData1";
 //   let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 // }
 
-(function thisIsDumb() {
-  let rsltTblBdy = document.getElementById("rsltTblBdy");
+let rsltTblBdy;
+
+(function () {
+  rsltTblBdy = document.getElementById("rsltTblBdy");
 })();
 
 function tableHighlight() {
@@ -123,7 +125,7 @@ th {
           )}`
         )}
       {/if} -->
-      {#if rsltTblBdy !== null}
+      {#if rsltTblBdy !== null && rsltTblBdy !== undefined}
         {tableHighlight()}
       {/if}
     </tbody>
