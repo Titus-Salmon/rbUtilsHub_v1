@@ -104,14 +104,8 @@ th {
           {/each}
         </tr>
       {/each}
-      <!-- {#if Object.keys($tableData[0]).length > 0}
-        {tableHighlight()}
-      {/if} -->
-      {#if $tableData.length !== undefined}
-        {console.log(`$tableData.length==> ${$tableData.length}`)}
-        {console.log(
-          `JSON.stringify($tableData)==> ${JSON.stringify($tableData)}`
-        )}
+      <!-- if there is any data in the table store, call tableHighlight -->
+      {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
       {/if}
     </tbody>
