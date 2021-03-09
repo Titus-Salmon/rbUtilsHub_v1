@@ -78,6 +78,7 @@ function tableHighlight() {
 
 onMount(() => {
   //if (Object.keys($tableData[0]).length > 0) {
+  console.log(`we mountyed t0d!`);
   tableHighlight();
   //}
 });
