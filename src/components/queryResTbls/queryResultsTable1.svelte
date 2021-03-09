@@ -76,9 +76,11 @@ function tableHighlight() {
   }
 }
 
-// onMount(() => {
-//   console.log(`component mounted --t0d`);
-// });
+onMount(() => {
+  if (Object.keys($tableData[0]).length > 0) {
+    tableHighlight();
+  }
+});
 </script>
 
 <style>
@@ -110,9 +112,9 @@ th {
         </tr>
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
-      {#if Object.keys($tableData[0]).length > 0}
+      <!-- {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
-      {/if}
+      {/if} -->
     </tbody>
   </table>
 </body>
