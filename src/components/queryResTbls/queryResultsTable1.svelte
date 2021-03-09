@@ -108,9 +108,9 @@ th {
         {tableHighlight()}
       {/if} -->
       {#if $tableData.length !== undefined}
-        {console.log(`tableData.length==> ${tableData.length}`)}
+        {console.log(`$tableData.length==> ${$tableData.length}`)}
         {console.log(
-          `JSON.stringify(tableData)==> ${JSON.stringify(tableData)}`
+          `JSON.stringify($tableData)==> ${JSON.stringify($tableData)}`
         )}
         {tableHighlight()}
       {/if}
