@@ -2,8 +2,6 @@
 import tableData from "../../stores/dynamicTables/tableData1";
 
 function tableHighlight() {
-  // let rsltTbl = document.getElementById("rsltTbl");
-  // let tblCells = rsltTbl.getElementsByTagName("td"); //targets all cells in table
   const rsltTblBdy = document.getElementById("rsltTblBdy");
   const tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
@@ -89,7 +87,7 @@ th {
 </style>
 
 <body>
-  <table id="rsltTbl">
+  <table>
     <thead>
       <tr>
         <!--v-- NOTE: you must use the $ to access the tableData store -->
@@ -106,7 +104,7 @@ th {
           {/each}
         </tr>
       {/each}
-      {#if Object.values($tableData).length > 0}
+      {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
       {/if}
     </tbody>
