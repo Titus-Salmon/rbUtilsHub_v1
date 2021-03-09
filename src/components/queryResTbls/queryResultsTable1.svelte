@@ -107,10 +107,12 @@ th {
       <!-- {#if Object.keys($tableData[0]).length > 0} -->
       <!--v-- here we're targeting the 1st row (not the table head), to make sure we have data cells
       to highlight; ptherwise an error is thrown -->
-      {#if Object.values($tableData).length > 2}
+      {#if Object.values($tableData).length > 0}
         <!-- {tableHighlight()} -->
         {console.log(
-          `Object.values($tableData)==> ${Object.values($tableData)}`
+          `JSON.stringify(Object.values($tableData))==> ${JSON.stringify(
+            Object.values($tableData)
+          )}`
         )}
       {/if}
     </tbody>
