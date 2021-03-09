@@ -77,14 +77,8 @@ function tableHighlight() {
 }
 
 onMount(() => {
-  if (Object.keys($tableData[0]).length > 0) {
-    console.log(
-      `we mountyed t0d! | Object.keys($tableData[0]).length ==> ${
-        Object.keys($tableData[0]).length
-      }`
-    );
-    // tableHighlight();
-  }
+  location.reload();
+  console.log(`location.reload() from onMount()`);
 });
 </script>
 
