@@ -2,10 +2,10 @@
 import tableData from "../../stores/dynamicTables/tableData1";
 
 function tableHighlight() {
-  let rsltTbl = document.getElementById("rsltTbl");
-  // let rsltTblBdy = document.getElementById("rsltTblBdy");
-  // let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
-  let tblCells = rsltTbl.getElementsByTagName("td"); //targets all cells in table
+  // let rsltTbl = document.getElementById("rsltTbl");
+  // let tblCells = rsltTbl.getElementsByTagName("td"); //targets all cells in table
+  const rsltTblBdy = document.getElementById("rsltTblBdy");
+  const tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
   let tblCols = Object.keys($tableData[0]);
 
@@ -110,4 +110,5 @@ th {
         {tableHighlight()}
       {/if}
     </tbody>
-  </table></body>
+  </table>
+</body>
