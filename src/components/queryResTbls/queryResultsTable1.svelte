@@ -1,12 +1,9 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
 
-let rsltTblBdy;
-let tblCells;
-
 function tableHighlight() {
-  rsltTblBdy = document.getElementById("rsltTblBdy");
-  tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
+  let rsltTblBdy = document.getElementById("rsltTblBdy");
+  let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
   let tblCols = Object.keys($tableData[0]);
 
@@ -107,10 +104,10 @@ th {
           {/each}
         </tr>
       {/each}
-      <!-- {#if Object.values($tableData).length > 1}
-          {tableHighlight()}
-        {/if} -->
-      {#if tblCells !== undefined}
+      <!-- {#if Object.keys($tableData[0]).length > 0} -->
+      <!--v-- here we're targeting the 1st row (not the table head), to make sure we have data cells
+      to highlight; ptherwise an error is thrown -->
+      {#if Object.values($tableData).length > 2}
         {tableHighlight()}
       {/if}
     </tbody>
