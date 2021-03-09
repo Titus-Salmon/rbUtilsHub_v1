@@ -1,5 +1,5 @@
 <script>
-import { onMount } from "svelte";
+import { onMount, onDestroy } from "svelte";
 import QueryResultsTable1 from "../../../components/queryResTbls/queryResultsTable1.svelte";
 import PaginUI from "../../../components/UI/paginUI.svelte";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
@@ -24,7 +24,7 @@ import DeleteRbTableModal from "../../../components/MySQL/deleteRbTableModal.sve
 import LoadstagingDataModal from "../../../components/MySQL/loadstagingDataModal.svelte";
 import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
 
-onMount(() => {
+onDestroy(() => {
   return location.reload();
 });
 </script>
