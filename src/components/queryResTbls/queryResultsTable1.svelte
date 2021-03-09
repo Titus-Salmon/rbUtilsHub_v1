@@ -107,7 +107,7 @@ th {
       <!-- {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
       {/if} -->
-      {#if $tableData.length > 0}
+      {#if $tableData.length !== undefined}
         {console.log(`tableData.length==> ${tableData.length}`)}
         {console.log(
           `JSON.stringify(tableData)==> ${JSON.stringify(tableData)}`
