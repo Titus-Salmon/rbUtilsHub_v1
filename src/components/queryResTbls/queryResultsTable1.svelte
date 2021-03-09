@@ -1,19 +1,8 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
 
-// let rsltTblBdy = document.getElementById("rsltTblBdy");
-// if (rsltTblBdy !== null) {
-//   let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
-// }
-
-let rsltTblBdy;
-
-// (function () {
-//   rsltTblBdy = document.getElementById("rsltTblBdy");
-// })();
-
 function tableHighlight() {
-  // let rsltTblBdy = document.getElementById("rsltTblBdy");
+  let rsltTblBdy = document.getElementById("rsltTblBdy");
   let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
   let tblCols = Object.keys($tableData[0]);
@@ -125,10 +114,8 @@ th {
           )}`
         )}
       {/if} -->
-      {(rsltTblBdy = document.getElementById("rsltTblBdy"))}
-      {#if rsltTblBdy !== null && rsltTblBdy !== undefined}
-        {tableHighlight()}
-      {/if}
+      <!-- {tableHighlight()} -->
     </tbody>
   </table>
+  {tableHighlight()}
 </body>
