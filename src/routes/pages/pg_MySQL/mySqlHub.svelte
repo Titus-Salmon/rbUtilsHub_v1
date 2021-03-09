@@ -25,7 +25,7 @@ import LoadstagingDataModal from "../../../components/MySQL/loadstagingDataModal
 import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
 
 onMount(() => {
-  location.reload();
+  return location.reload();
 });
 </script>
 
