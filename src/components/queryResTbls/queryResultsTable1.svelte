@@ -117,5 +117,7 @@ th {
       <!-- {tableHighlight()} -->
     </tbody>
   </table>
-  {tableHighlight()}
+  {#if Object.values($tableData).length > 0}
+    {tableHighlight()}
+  {/if}
 </body>
