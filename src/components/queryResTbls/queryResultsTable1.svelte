@@ -8,9 +8,9 @@ import tableData from "../../stores/dynamicTables/tableData1";
 
 let rsltTblBdy;
 
-(function () {
-  rsltTblBdy = document.getElementById("rsltTblBdy");
-})();
+// (function () {
+//   rsltTblBdy = document.getElementById("rsltTblBdy");
+// })();
 
 function tableHighlight() {
   // let rsltTblBdy = document.getElementById("rsltTblBdy");
@@ -125,6 +125,7 @@ th {
           )}`
         )}
       {/if} -->
+      {(rsltTblBdy = document.getElementById("rsltTblBdy"))}
       {#if rsltTblBdy !== null && rsltTblBdy !== undefined}
         {tableHighlight()}
       {/if}
