@@ -77,9 +77,9 @@ function tableHighlight() {
 }
 
 onMount(() => {
-  if (Object.keys($tableData[0]).length > 0) {
-    tableHighlight();
-  }
+  //if (Object.keys($tableData[0]).length > 0) {
+  tableHighlight();
+  //}
 });
 </script>
 
