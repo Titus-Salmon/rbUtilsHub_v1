@@ -1,9 +1,12 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
 
+let rsltTblBdy = document.getElementById("rsltTblBdy");
+let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
+
 function tableHighlight() {
-  let rsltTblBdy = document.getElementById("rsltTblBdy");
-  let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
+  // let rsltTblBdy = document.getElementById("rsltTblBdy");
+  // let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
   let tblCols = Object.keys($tableData[0]);
 
@@ -115,6 +118,7 @@ th {
           )}`
         )}
       {/if}
+      {tableHighlight()}
     </tbody>
   </table>
 </body>
