@@ -2,8 +2,10 @@
 import tableData from "../../stores/dynamicTables/tableData1";
 
 function tableHighlight() {
-  let rsltTblBdy = document.getElementById("rsltTblBdy");
-  let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
+  let rsltTbl = document.getElementById("rsltTbl");
+  // let rsltTblBdy = document.getElementById("rsltTblBdy");
+  // let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
+  let tblCells = rsltTbl.getElementsByTagName("td"); //targets all cells in table
 
   let tblCols = Object.keys($tableData[0]);
 
@@ -87,7 +89,7 @@ th {
 </style>
 
 <body>
-  <table>
+  <table id="rsltTbl">
     <thead>
       <tr>
         <!--v-- NOTE: you must use the $ to access the tableData store -->
@@ -104,26 +106,8 @@ th {
           {/each}
         </tr>
       {/each}
-      <!-- {#if Object.keys($tableData[0]).length > 0} -->
-      <!--v-- here we're targeting the 1st row (not the table head), to make sure we have data cells
-      to highlight; ptherwise an error is thrown -->
-      <!-- {#if Object.values($tableData).length > 0}
-        {console.log(
-          `JSON.stringify(Object.values($tableData))==> ${JSON.stringify(
-            Object.values($tableData)
-          )}`
-        )}
-      {/if} -->
-      <!-- {tableHighlight()} -->
       {#if Object.values($tableData).length > 0}
         {tableHighlight()}
       {/if}
     </tbody>
-    <!-- {#if Object.values($tableData).length > 0}
-      {tableHighlight()}
-    {/if} -->
-  </table>
-  <!-- {#if Object.values($tableData).length > 0}
-    {tableHighlight()}
-  {/if} -->
-</body>
+  </table></body>
