@@ -1,7 +1,7 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
 
-let rsltTblBdy = document.getElementById("rsltTblBdy");
+let rsltTblBdy = window.document.getElementById("rsltTblBdy");
 // if (rsltTblBdy !== null) {
 //   let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 // }
