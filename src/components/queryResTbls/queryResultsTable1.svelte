@@ -101,13 +101,15 @@ th {
         <tr>
           {#each Object.values(row) as cell}
             <td>{cell}</td>
-            {tableHighlight()}
           {/each}
         </tr>
       {/each}
       <!-- {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
       {/if} -->
+      {#if $tableData.length > 0}
+        {tableHighlight()}
+      {/if}
     </tbody>
   </table>
 </body>
