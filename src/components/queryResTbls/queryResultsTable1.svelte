@@ -1,5 +1,8 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
+import { onMount } from "svelte";
+
+onMount(tableHighlight());
 
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
@@ -105,9 +108,9 @@ th {
         </tr>
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
-      {#if Object.keys($tableData[0]).length > 0}
+      <!-- {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
-      {/if}
+      {/if} -->
     </tbody>
   </table>
 </body>
