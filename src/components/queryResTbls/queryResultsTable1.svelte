@@ -1,6 +1,6 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
-import { onMount } from "svelte";
+import { onMount, onDestroy } from "svelte";
 
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
@@ -76,7 +76,7 @@ function tableHighlight() {
   }
 }
 
-onMount(() => {
+onDestroy(() => {
   location.reload();
   console.log(`location.reload() from onMount()`);
 });
