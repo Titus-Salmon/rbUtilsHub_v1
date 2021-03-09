@@ -47,7 +47,4 @@ import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
   <PaginUI />
 {/if}
 
-<!-- if there is any data in the table store, invoke QueryResultsTable1 component -->
-{#if Object.keys($tableData[0]).length > 0}
-  <QueryResultsTable1 />
-{/if}
+<QueryResultsTable1 />
