@@ -4,7 +4,10 @@ import { onMount, onDestroy } from "svelte";
 
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
-  if (rsltTblBdy === null || rsltTblBdy === undefined) {
+  // if (rsltTblBdy === null || rsltTblBdy === undefined) {
+  //   return;
+  // }
+  if (rsltTblBdy === null) {
     return;
   }
   const tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
