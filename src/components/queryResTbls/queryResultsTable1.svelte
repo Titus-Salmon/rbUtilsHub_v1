@@ -104,9 +104,10 @@ th {
           {/each}
         </tr>
       {/each}
-      {#if Object.keys($tableData[0]).length > 0}
+      <!-- {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
-      {/if}
+      {/if} -->
+      {tableHighlight()}
     </tbody>
   </table>
 </body>
