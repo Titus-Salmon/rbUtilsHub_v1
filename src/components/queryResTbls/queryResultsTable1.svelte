@@ -2,9 +2,10 @@
 import tableData from "../../stores/dynamicTables/tableData1";
 import { onMount, onDestroy } from "svelte";
 
-function tableHighlight() {
+function tableHighlight(cell) {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
-  const tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
+  // const tblCell = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
+  cell = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
   let tblCols = Object.keys($tableData[0]);
 
@@ -13,19 +14,19 @@ function tableHighlight() {
   let basePrice_cell;
   let charm_cell;
 
-  for (let k = 0; k < tblCells.length; k++) {
+  for (let k = 0; k < cell.length; k++) {
     for (let m = 0; m < tblCols.length; m++) {
       if (tblCols[m] === "lastCost") {
-        lastCost_cell = tblCells[k].parentNode.childNodes[m];
+        lastCost_cell = cell[k].parentNode.childNodes[m];
       }
       if (tblCols[m] === "ediCostMod") {
-        ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
+        ediCostMod_cell = cell[k].parentNode.childNodes[m];
       }
       if (tblCols[m] === "sib_baseprice") {
-        basePrice_cell = tblCells[k].parentNode.childNodes[m];
+        basePrice_cell = cell[k].parentNode.childNodes[m];
       }
       if (tblCols[m] === "charm") {
-        charm_cell = tblCells[k].parentNode.childNodes[m];
+        charm_cell = cell[k].parentNode.childNodes[m];
       }
     }
     if (ediCostMod_cell && lastCost_cell) {
@@ -75,11 +76,6 @@ function tableHighlight() {
     }
   }
 }
-
-onDestroy(() => {
-  location.reload();
-  console.log(`location.reload() from onMount()`);
-});
 </script>
 
 <style>
@@ -107,13 +103,14 @@ th {
         <tr>
           {#each Object.values(row) as cell}
             <td>{cell}</td>
+            {tableHighlight(cell)}
           {/each}
         </tr>
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
-      {#if Object.keys($tableData[0]).length > 0}
+      <!-- {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
-      {/if}
+      {/if} -->
     </tbody>
   </table>
 </body>
