@@ -112,7 +112,7 @@ th {
         {console.log(
           `JSON.stringify(tableData)==> ${JSON.stringify(tableData)}`
         )}
-        <!-- {tableHighlight()} -->
+        {tableHighlight()}
       {/if}
     </tbody>
   </table>
