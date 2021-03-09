@@ -108,7 +108,11 @@ th {
         {tableHighlight()}
       {/if} -->
       {#if $tableData.length > 0}
-        {tableHighlight()}
+        {console.log(`tableData.length==> ${tableData.length}`)}
+        {console.log(
+          `JSON.stringify(tableData)==> ${JSON.stringify(tableData)}`
+        )}
+        <!-- {tableHighlight()} -->
       {/if}
     </tbody>
   </table>
