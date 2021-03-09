@@ -2,8 +2,6 @@
 import tableData from "../../stores/dynamicTables/tableData1";
 import { onMount } from "svelte";
 
-onMount(tableHighlight());
-
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
   const tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
@@ -77,6 +75,12 @@ function tableHighlight() {
     }
   }
 }
+
+onMount(() => {
+  if (Object.keys($tableData[0]).length > 0) {
+    tableHighlight();
+  }
+});
 </script>
 
 <style>
