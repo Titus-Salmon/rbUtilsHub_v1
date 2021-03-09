@@ -1,6 +1,6 @@
 <script>
 import { onMount } from "svelte";
-import QueryResultsTable1 from "../../../components/queryResTbls/queryResultsTable1.svelte";
+import MysqlResTbl1 from "../../../components/MySQL/queryResultsTables/mysqlResTbl1.svelte";
 import PaginUI from "../../../components/UI/paginUI.svelte";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 import ShowHideStagedDataBtn from "../../../components/UI/showHideStagedDataBtn.svelte";
@@ -88,4 +88,4 @@ import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
   <!-- {/if} -->
 {/if}
 
-<QueryResultsTable1 />
+<MysqlResTbl1 />

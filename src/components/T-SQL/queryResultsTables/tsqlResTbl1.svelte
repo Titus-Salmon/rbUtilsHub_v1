@@ -1,7 +1,9 @@
 <script>
-import tableData from "../../stores/dynamicTables/tableData1";
+import tableData from "../../../stores/dynamicTables/tableData1";
 
 function tableHighlight() {
+  //currently not using this, and this was created for MySQL results. But in future, may
+  //want to have highlighting rules for the TSQL results...
   const rsltTblBdy = document.getElementById("rsltTblBdy");
   const tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
@@ -105,9 +107,9 @@ th {
         </tr>
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
-      {#if Object.keys($tableData[0]).length > 0}
+      <!-- {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
-      {/if}
+      {/if} -->
     </tbody>
   </table>
 </body>

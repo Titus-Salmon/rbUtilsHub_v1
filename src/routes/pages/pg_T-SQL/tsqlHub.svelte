@@ -1,6 +1,6 @@
 <script>
 import { onMount } from "svelte";
-import QueryResultsTable1 from "../../../components/queryResTbls/queryResultsTable1.svelte";
+import TsqlResTbl1 from "../../../components/T-SQL/queryResultsTables/tsqlResTbl1.svelte";
 import PaginUI from "../../../components/UI/paginUI.svelte";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 
@@ -47,4 +47,4 @@ import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
   <PaginUI />
 {/if}
 
-<QueryResultsTable1 />
+<TsqlResTbl1 />
