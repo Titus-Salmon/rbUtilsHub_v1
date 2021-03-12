@@ -1,6 +1,6 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
-import { onMount, onDestroy } from "svelte";
+import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
 
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
@@ -79,7 +79,7 @@ function tableHighlight() {
   }
 }
 
-onMount(() => {
+afterUpdate(() => {
   if (Object.keys($tableData[0]).length > 0) {
     tableHighlight();
   }
