@@ -80,11 +80,11 @@ function tableHighlight() {
 }
 
 afterUpdate(() => {
-  if ($tableData[0] !== undefined && $tableData[0] !== null) {
-    if (Object.keys($tableData[0]).length > 0) {
-      tableHighlight();
-    }
-  }
+  //if ($tableData[0] !== undefined && $tableData[0] !== null) {
+  //if (Object.keys($tableData[0]).length > 0) {
+  tableHighlight();
+  //}
+  //}
 });
 </script>
 

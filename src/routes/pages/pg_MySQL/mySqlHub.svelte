@@ -120,4 +120,8 @@ import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
   <!-- {/if} -->
 {/if}
 
-<QueryResultsTable1 />
+{#if $tableData[0] !== undefined && $tableData[0] !== null}
+  {#if Object.keys($tableData[0]).length > 0}
+    <QueryResultsTable1 />
+  {/if}
+{/if}
