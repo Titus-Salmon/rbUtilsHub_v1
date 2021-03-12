@@ -54,7 +54,7 @@ function wholesaleCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryRe
     vendorActlCost = Math.round(vendorActlCost * 100) / 100
     catapultCost = Math.round(catapultCost * 100) / 100
     console.log(`vendorActlCost==> ${vendorActlCost} | catapultCost==> ${catapultCost}`)
-    if (catapultCost !== vendorActlCost) {
+    if (catapultCost !== vendorActlCost) { //only include results in need of retail update
       eaCsNumDiv(i, reqBody, queryResArr, discoMulti_WS)
       numPkgsCalc(i, queryResArr)
       csPkMltCalc(i, queryResArr)
