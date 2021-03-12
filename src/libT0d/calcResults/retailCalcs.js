@@ -167,9 +167,17 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       imwToPop['altID'] = ""
       imwToPop['altRcptAlias'] = ""
       imwToPop['pkgQnt'] = ""
-      imwToPop['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
+
+      //v//handling for choosing to use EDI or Catapult SKU for IMW///////////////////
+      if (reqBody.skuToggle === 'edi') {
+        imwToPop['imwSKU'] = `${queryResArr[i][`${reqBody.venCatPrefix}_sku`]}`
+      } else {
+        imwToPop['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
+      }
+      //^//handling for choosing to use EDI or Catapult SKU for IMW///////////////////
+
       imwToPop['splrID'] = `${queryResArr[i]['ven_companyname']}`
-      imwToPop['unit'] = ""
+      imwToPop['unit'] = `${queryResArr[i]['oup_name']}`
       imwToPop['numPkgs'] = `${nmPk}`
       imwToPop['pf1'] = `${queryResArr[i]['pi1_description']}`
       imwToPop['pf2'] = `${queryResArr[i]['pi2_description']}`

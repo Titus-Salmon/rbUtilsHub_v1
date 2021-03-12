@@ -49,6 +49,7 @@ function wholesaleCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryRe
 
   console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`)
   for (let i = 0; i < queryResArr.length; i++) {
+
     let catapultCost = queryResArr[i]['inv_lastcost']
     let vendorRawCost = queryResArr[i][`${reqBody.venCatPrefix}_cost`]
     let vendorActlCost = vendorRawCost - (vendorRawCost * discoMulti_WS)
@@ -80,9 +81,18 @@ function wholesaleCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryRe
       imwToPop['altID'] = ""
       imwToPop['altRcptAlias'] = ""
       imwToPop['pkgQnt'] = ""
+
+      //v//handling for choosing to use EDI or Catapult SKU for IMW///////////////////
+      if (reqBody.skuToggle === 'edi') {
+        imwToPop['imwSKU'] = `${queryResArr[i][`${reqBody.venCatPrefix}_sku`]}`
+      } else {
+        imwToPop['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
+      }
+      //^//handling for choosing to use EDI or Catapult SKU for IMW///////////////////
+
       imwToPop['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
       imwToPop['splrID'] = `${queryResArr[i]['ven_companyname']}`
-      imwToPop['unit'] = ""
+      imwToPop['unit'] = `${queryResArr[i]['oup_name']}`
       imwToPop['numPkgs'] = nmPk
       imwToPop['pf1'] = `${queryResArr[i]['pi1_description']}`
       imwToPop['pf2'] = `${queryResArr[i]['pi2_description']}`
