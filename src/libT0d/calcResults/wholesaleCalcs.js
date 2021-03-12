@@ -83,7 +83,7 @@ function wholesaleCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryRe
       imwToPop['pkgQnt'] = ""
 
       //v//handling for choosing to use EDI or Catapult SKU for IMW///////////////////
-      if (reqBody.skuToggle === 'edi') {
+      if (reqBody.ediOrCatapultSku === 'edi') {
         imwToPop['imwSKU'] = `${queryResArr[i][`${reqBody.venCatPrefix}_sku`]}`
       } else {
         imwToPop['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`

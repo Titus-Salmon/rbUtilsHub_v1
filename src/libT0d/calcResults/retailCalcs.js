@@ -172,7 +172,7 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       console.log(`reqBody from retailCalcs==> ${reqBody}`)
       console.log(`JSON.stringify(reqBody) from retailCalcs==> ${JSON.stringify(reqBody)}`)
 
-      if (reqBody.skuToggle === 'edi') {
+      if (reqBody.ediOrCatapultSku === 'edi') {
         imwToPop['imwSKU'] = `${queryResArr[i][`${reqBody.venCatPrefix}_sku`]}`
       } else {
         imwToPop['imwSKU'] = `${queryResArr[i]['ord_supplierstocknumber']}`
