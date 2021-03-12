@@ -47,6 +47,13 @@ import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
 //   //tableHighlight() is still being called from the cache
 //   //^//I'm not sure if this is really the case or not, but it seems like there must be some better way to deal with this issue
 //   //maybe we could try calling tableHighlight within onMount, instead.
+//***********************************************IMPORTANT************************************************************************/
+///^//////////I think this reasoning is on the right track, and the solution appears to be calling tableHighlight within
+// *******afterUpdate()*************.
+//Thus, once the queryResultsTable1 component has been updated; i.e. data has been added from our query into
+//the table store, and the table is subsequently populated with cells and rows, tableHighlight is called, and no errors occur,
+//even when navigating to another page.
+//***********************************************IMPORTANT************************************************************************/
 // });
 </script>
 
