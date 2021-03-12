@@ -79,11 +79,11 @@ function tableHighlight() {
   }
 }
 
-afterUpdate(() => {
-  if (Object.keys($tableData[0]).length > 0) {
-    tableHighlight();
-  }
-});
+// afterUpdate(() => {
+//   if (Object.keys($tableData[0]).length > 0) {
+//     tableHighlight();
+//   }
+// });
 </script>
 
 <style>

@@ -9,7 +9,7 @@ async function rbDBqueryResults(result, queryResArr, srcRsXLS, queryResArr_1stPa
     //front-end results for any columns that are queried, not just a fixed set of columns 
     let rowData = result[i] //data from row #i
     let rbDBresObj = {}
-    rbDBresObj['ri_70d'] = i + 1 //start ri_t0d index numbering at 1, not 0
+    rbDBresObj['ri_t0d'] = i + 1 //start ri_t0d index numbering at 1, not 0
     for (let j = 0; j < queriedColumns.length; j++) {
       let colName = queriedColumns[j]
 
