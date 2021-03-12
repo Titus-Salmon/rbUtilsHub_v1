@@ -10,7 +10,7 @@ let venCatPrefix = $stagingData[0].stagingDataResponse.venCatPrefix;
 let calcResultsResponse;
 let imwOptions;
 // let skuMismatchAllowance;
-let dptFilter;
+// let dptFilter;
 let edlpSwitch;
 let skuToggle;
 // let skuMismatchOption;
@@ -193,11 +193,13 @@ function calcResults() {
   postBodyObj[`${inputId}`] = inputValue;
   //^//includeEdlp/////////////////////////////////////////////////////////////////////////////////////
 
-  //v//deptFilter/////////////////////////////////////////////////////////////////////////////////////
-  inputId = "deptFilter";
-  inputValue = document.getElementById(`${inputId}`).value;
-  postBodyObj[`${inputId}`] = inputValue;
-  //^//deptFilter/////////////////////////////////////////////////////////////////////////////////////
+  // //v//deptFilter/////////////////////////////////////////////////////////////////////////////////////
+  // //we never used this option anyway, so no need to bother for now, besides, we can always select for
+  // //specific dept at the query level in the 1st step of the whole process, so this is kind of a redundancy
+  // inputId = "deptFilter";
+  // inputValue = document.getElementById(`${inputId}`).value;
+  // postBodyObj[`${inputId}`] = inputValue;
+  // //^//deptFilter/////////////////////////////////////////////////////////////////////////////////////
 
   //^//**********************************************************************************************************************/
 
@@ -588,7 +590,7 @@ function calcResults() {
         </div>
 
         <!-- Dept Filter -------------------------------------------------------------------------->
-        <div style="text-align:center">
+        <!-- <div style="text-align:center">
           <label for="deptFilter">Dept Filter</label>
           <select name="deptFilter" id="deptFilter" bind:value="{dptFilter}">
             <option value="none">none</option>
@@ -614,7 +616,7 @@ function calcResults() {
             <option value="155">Refrigerated</option>
             <option value="157">Vitamins & Supplements</option>
           </select>
-        </div>
+        </div> -->
       {/if}
     </div>
   </div>
