@@ -4,12 +4,9 @@ import { onMount, onDestroy } from "svelte";
 
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
-  // if (rsltTblBdy === null || rsltTblBdy === undefined) {
+  // if (rsltTblBdy === null) {
   //   return;
   // }
-  if (rsltTblBdy === null) {
-    return;
-  }
   const tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
   let tblCols = Object.keys($tableData[0]);
@@ -81,6 +78,12 @@ function tableHighlight() {
     }
   }
 }
+
+onMount(() => {
+  if (Object.keys($tableData[0]).length > 0) {
+    tableHighlight();
+  }
+});
 </script>
 
 <style>
@@ -112,9 +115,9 @@ th {
         </tr>
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
-      {#if Object.keys($tableData[0]).length > 0}
+      <!-- {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
-      {/if}
+      {/if} -->
     </tbody>
   </table>
 </body>
