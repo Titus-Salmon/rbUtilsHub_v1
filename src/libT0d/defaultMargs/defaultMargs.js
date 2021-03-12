@@ -44,6 +44,11 @@ let defaultMargArr = [{
     "margin": "20"
   },
   {
+    "dptName": "frozen",
+    "dptNumb": "18",
+    "margin": "38"
+  },
+  {
     "dptName": "genMerch",
     "dptNumb": "150",
     "margin": "38"

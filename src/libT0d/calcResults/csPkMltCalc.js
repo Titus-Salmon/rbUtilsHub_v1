@@ -1,7 +1,7 @@
 let csPk;
 let ovr;
 
-function csPkMltCalc(n, queryResArr) {
+function csPkMltCalc(n, queryResArr) { //sets WebOffice Case Pack Multiple value (the ## in EA-##)
   csPk = ""
   ovr = ""
   let oupNameLetters = queryResArr[n]['oup_name'].split('-')[0]

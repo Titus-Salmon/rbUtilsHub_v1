@@ -24,6 +24,11 @@ let dptNameNumbMargMaster = [{
     "mainDpt": "grocery"
   },
   {
+    "dptName": "frozen",
+    "dptNumb": "18",
+    "margin": "38"
+  },
+  {
     "dptName": "genMerch",
     "dptNumb": "150",
     "margin": "38",
