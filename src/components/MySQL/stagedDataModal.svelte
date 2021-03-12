@@ -9,11 +9,11 @@ let tableName = $stagingData[0].stagingDataResponse.stagedTableName;
 let venCatPrefix = $stagingData[0].stagingDataResponse.venCatPrefix;
 let calcResultsResponse;
 let imwOptions;
-let skuMismatchAllowance;
+// let skuMismatchAllowance;
 let dptFilter;
 let edlpSwitch;
 let skuToggle;
-let skuMismatchOption;
+// let skuMismatchOption;
 
 let inputId;
 let inputValue;
@@ -153,49 +153,51 @@ function calcResults() {
   inputId = "eaNumDivide";
   inputValue = document.getElementById(`${inputId}`).value;
   postBodyObj[`${inputId}`] = inputValue;
-  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+  //^//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
 
   //v//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
   inputId = "csNumDivide";
   inputValue = document.getElementById(`${inputId}`).value;
   postBodyObj[`${inputId}`] = inputValue;
-  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+  //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
 
   //v//typeOfIMW/////////////////////////////////////////////////////////////////////////////////////
   inputId = "typeOfIMW";
   inputValue = document.getElementById(`${inputId}`).value;
   postBodyObj[`${inputId}`] = inputValue;
-  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+  //^//typeOfIMW/////////////////////////////////////////////////////////////////////////////////////
 
-  //v//skuMismatchAllowance/////////////////////////////////////////////////////////////////////////////////////
-  inputId = "skuMismatchAllowance";
-  inputValue = document.getElementById(`${inputId}`).value;
-  postBodyObj[`${inputId}`] = inputValue;
-  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+  // //v//skuMismatchAllowance/////////////////////////////////////////////////////////////////////////////////////
+  //we're allowing sku mismatches to show in our results by default, so no reason to have a dropdown for this
+  // inputId = "skuMismatchAllowance";
+  // inputValue = document.getElementById(`${inputId}`).value;
+  // postBodyObj[`${inputId}`] = inputValue;
+  // //^//skuMismatchAllowance/////////////////////////////////////////////////////////////////////////////////////
 
   //v//ediOrCatapultSku/////////////////////////////////////////////////////////////////////////////////////
   inputId = "ediOrCatapultSku";
   inputValue = document.getElementById(`${inputId}`).value;
   postBodyObj[`${inputId}`] = inputValue;
-  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+  //^//ediOrCatapultSku/////////////////////////////////////////////////////////////////////////////////////
 
-  //v//flagSkuMismatch/////////////////////////////////////////////////////////////////////////////////////
-  inputId = "flagSkuMismatch";
-  inputValue = document.getElementById(`${inputId}`).value;
-  postBodyObj[`${inputId}`] = inputValue;
-  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+  // //v//flagSkuMismatch/////////////////////////////////////////////////////////////////////////////////////
+  // //we're flagging sku mismatches by default, so no reason to have a dropdown for this
+  // inputId = "flagSkuMismatch";
+  // inputValue = document.getElementById(`${inputId}`).value;
+  // postBodyObj[`${inputId}`] = inputValue;
+  // //^//flagSkuMismatch/////////////////////////////////////////////////////////////////////////////////////
 
   //v//includeEdlp/////////////////////////////////////////////////////////////////////////////////////
   inputId = "includeEdlp";
   inputValue = document.getElementById(`${inputId}`).value;
   postBodyObj[`${inputId}`] = inputValue;
-  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+  //^//includeEdlp/////////////////////////////////////////////////////////////////////////////////////
 
   //v//deptFilter/////////////////////////////////////////////////////////////////////////////////////
   inputId = "deptFilter";
   inputValue = document.getElementById(`${inputId}`).value;
   postBodyObj[`${inputId}`] = inputValue;
-  //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+  //^//deptFilter/////////////////////////////////////////////////////////////////////////////////////
 
   //^//**********************************************************************************************************************/
 
@@ -541,7 +543,7 @@ function calcResults() {
         </div>
 
         <!-- SKU Mismatch Allowance -------------------------------------------------------------------------->
-        <div style="text-align:center">
+        <!-- <div style="text-align:center">
           <label for="skuMismatchAllowance">SKU Mismatch Options</label>
           <select
             name="skuMismatchAllowance"
@@ -550,7 +552,7 @@ function calcResults() {
             <option value="allowMismatch">Allow SKU Mismatches</option>
             <option value="matchOnly">Require SKU Match</option>
           </select>
-        </div>
+        </div> -->
 
         <!-- use EDI or Catapult SKU for IMW ----------------------------------------------------------------------------------------------->
         <div style="text-align:center">
@@ -565,7 +567,7 @@ function calcResults() {
         </div>
 
         <!-- Flag SKU mismatch for IMW? ----------------------------------------------------------------------------------------------->
-        <div style="text-align:center">
+        <!-- <div style="text-align:center">
           <label for="flagSkuMismatch">Flag SKU mismatch for IMW?</label>
           <select
             name="flagSkuMismatch"
@@ -574,7 +576,7 @@ function calcResults() {
             <option value="yes">yes</option>
             <option value="no">no</option>
           </select>
-        </div>
+        </div> -->
 
         <!-- include EDLP ----------------------------------------------------------------------------------------------->
         <div style="text-align:center">
