@@ -169,6 +169,9 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       imwToPop['pkgQnt'] = ""
 
       //v//handling for choosing to use EDI or Catapult SKU for IMW///////////////////
+      console.log(`reqBody from retailCalcs==> ${reqBody}`)
+      console.log(`JSON.stringify(reqBody) from retailCalcs==> ${JSON.stringify(reqBody)}`)
+
       if (reqBody.skuToggle === 'edi') {
         imwToPop['imwSKU'] = `${queryResArr[i][`${reqBody.venCatPrefix}_sku`]}`
       } else {
