@@ -106,11 +106,11 @@ th {
         {console.log(
           `JSON.stringify($tableData[0])==> ${JSON.stringify($tableData[0])}`
         )}
-        {#if $tableData[0] !== undefined && $tableData[0] !== null}
-          {#each Object.keys($tableData[0]) as columnHeading}
-            <th>{columnHeading}</th>
-          {/each}
-        {/if}
+        <!-- {#if $tableData[0] !== undefined && $tableData[0] !== null} -->
+        {#each Object.keys($tableData[0]) as columnHeading}
+          <th>{columnHeading}</th>
+        {/each}
+        <!-- {/if} -->
       </tr>
     </thead>
     <tbody id="rsltTblBdy">
