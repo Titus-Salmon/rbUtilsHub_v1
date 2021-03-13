@@ -33,7 +33,7 @@ export async function post(req, res, next) {
       //front-end results for any columns that are queried, not just a fixed set of columns 
       let rowData = result[i] //data from row #i
       let rbDBresObj = {}
-      rbDBresObj['ri_t0d'] = i + 1
+      // rbDBresObj['ri_t0d'] = i + 1
       for (let j = 0; j < queriedColumns.length; j++) {
         let colName = queriedColumns[j]
 
