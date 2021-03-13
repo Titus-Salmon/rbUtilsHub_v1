@@ -1,6 +1,6 @@
 <script>
 import { onMount, onDestroy } from "svelte";
-import QueryResultsTable1 from "../../../components/queryResTbls/queryResultsTable1.svelte";
+
 import PaginUI from "../../../components/UI/paginUI.svelte";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 import ShowHideStagedDataBtn from "../../../components/UI/showHideStagedDataBtn.svelte";
@@ -23,6 +23,8 @@ import PopRbTableModal from "../../../components/MySQL/popRbTableModal.svelte";
 import DeleteRbTableModal from "../../../components/MySQL/deleteRbTableModal.svelte";
 import LoadstagingDataModal from "../../../components/MySQL/loadstagingDataModal.svelte";
 import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
+
+import QueryResultsTable1 from "../../../components/queryResTbls/queryResultsTable1.svelte";
 
 // onDestroy(() => {
 //   return location.reload();
