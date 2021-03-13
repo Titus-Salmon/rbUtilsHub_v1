@@ -22,7 +22,9 @@ function rbDBquery() {
     .then((queryResJSON) => {
       tableData.set(queryResJSON.queryResArr_1stPage);
       console.log(
-        `queryResJSON.queryResArr_1stPage==> ${queryResJSON.queryResArr_1stPage}`
+        `JSON.stringify(queryResJSON.queryResArr_1stPage)==> ${JSON.stringify(
+          queryResJSON.queryResArr_1stPage
+        )}`
       ); //passing backend response to frontend "Store" & we are overwriting the "Store" with set()
       console.log(
         `JSON.stringify($paginData) before update from rbDBquery()==> ${JSON.stringify(
