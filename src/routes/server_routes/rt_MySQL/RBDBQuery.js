@@ -11,6 +11,9 @@ import {
   paginCalcs
 } from "../../../libT0d/commonMethods/paginCalcs"
 
+import queryResArrCache from "../../nodeCacheStuff/cache1"
+
+
 import {
   rbDBqueryResults
 } from "../../../libT0d/MySQL/rbDBqueryResults"
