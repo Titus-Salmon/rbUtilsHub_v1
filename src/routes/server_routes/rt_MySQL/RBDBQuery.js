@@ -43,6 +43,7 @@ export async function post(req, res, next) {
       // rbDBresObj['ri_70d'] = i + 1
       for (let j = 0; j < queriedColumns.length; j++) {
         let colName = queriedColumns[j]
+        console.log(`queriedColumns[${j}]==> ${queriedColumns[j]}`)
 
         rbDBresObj[`${colName}`] = rowData[`${colName}`]
 
