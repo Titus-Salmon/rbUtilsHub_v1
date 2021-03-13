@@ -103,9 +103,9 @@ th {
     <thead>
       <tr>
         <!--v-- NOTE: you must use the $ to access the tableData store -->
-        {console.log(
+        <!-- {console.log(
           `JSON.stringify($tableData[0])==> ${JSON.stringify($tableData[0])}`
-        )}
+        )} -->
         {#if $tableData[0] !== undefined && $tableData[0] !== null}
           {#each Object.keys($tableData[0]) as columnHeading}
             <th>{columnHeading}</th>
