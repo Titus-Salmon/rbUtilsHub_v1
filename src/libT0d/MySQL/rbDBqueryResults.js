@@ -1,6 +1,6 @@
 import queryResArrCache from "../../nodeCacheStuff/cache1"
 
-function rbDBqueryResults(result, queryResArr, srcRsXLS, queryResArr_1stPage) {
+async function rbDBqueryResults(result, queryResArr, srcRsXLS, queryResArr_1stPage) {
 
   let queriedColumns = Object.keys(result[0])
   console.log(`queriedColumns==> ${queriedColumns}`)
