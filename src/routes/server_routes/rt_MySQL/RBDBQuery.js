@@ -11,7 +11,7 @@ import {
   paginCalcs
 } from "../../../libT0d/commonMethods/paginCalcs"
 
-import queryResArrCache from "../../nodeCacheStuff/cache1"
+import queryResArrCache from "../../../nodeCacheStuff/cache1"
 
 
 import {
