@@ -2,6 +2,7 @@
 import tableData from "../../stores/dynamicTables/tableData1";
 import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
 import PaginUI from "../../../components/UI/paginUI.svelte";
+import paginData from "../../../stores/pagination/st_pagination1";
 
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
@@ -108,7 +109,12 @@ th {
 </style>
 
 <body>
-  <PaginUI />
+  {#if $paginData[0].totalPages !== null}
+    <p style="text-align:center; margin: 0">
+      Page {$paginData[0].currentPage} of {$paginData[0].totalPages}
+    </p>
+    <PaginUI />
+  {/if}
   <table>
     <thead>
       <tr>

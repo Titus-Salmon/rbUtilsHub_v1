@@ -105,12 +105,12 @@ import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
   {/if}
 </div>
 
-{#if $paginData[0].totalPages !== null}
+<!-- {#if $paginData[0].totalPages !== null}
   <p style="text-align:center; margin: 0">
     Page {$paginData[0].currentPage} of {$paginData[0].totalPages}
   </p>
   <PaginUI />
-{/if}
+{/if} -->
 
 {#if $calcResStore[0].calcResStoreData !== null}
   <!-- {#if $utilResponses[0].utilResponse.save_imw_CSVresponse} -->
