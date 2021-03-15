@@ -132,10 +132,14 @@ th {
           {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
             {#each Object.values(row) as cell}
               <td style="background-color: #ffb3ca; color: black">{cell}</td>
-            {:else}
-              <td>{cell}</td>
             {/each}
           {/if}
+        </tr>
+      {:else}
+        <tr>
+          {#each Object.values(row) as cell}
+            <td>{cell}</td>
+          {/each}
         </tr>
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
