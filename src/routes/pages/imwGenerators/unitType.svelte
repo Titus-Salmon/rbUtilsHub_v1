@@ -85,11 +85,10 @@ function generateUnitTypeIMW() {
         bind:this="{venCatPrefix}" />
     </div>
   </div>
-
-  <!-- //////////////button//////////////////////////// -->
-  <div style="text-align:center">
-    <button on:click="{generateUnitTypeIMW}">generateUnitTypeIMW</button>
-  </div>
+</div>
+<!-- //////////////button//////////////////////////// -->
+<div style="text-align:center">
+  <button on:click="{generateUnitTypeIMW}">generateUnitTypeIMW</button>
 </div>
 
 {#if Object.keys($imwGenResTbl[0]).length > 0}
