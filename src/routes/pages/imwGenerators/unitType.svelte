@@ -5,10 +5,6 @@ import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
 import utilResponses from "../../../stores/utilResponses/st_utilResponses";
 import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
 
-beforeUpdate(() => {
-  utilResponses.set([{ utilResponse: null }]);
-});
-
 let nhcrtTableName;
 let ediTableName;
 let venCatPrefix;
@@ -98,9 +94,9 @@ function generateUnitTypeIMW() {
 </div>
 
 {#if Object.keys($imwGenResTbl[0]).length > 0}
-  {#if $utilResponses[0]["utilResponse"] !== null}
+  {#if $utilResponses[0]["saveToCSVresponse"]}
     <div style="text-align:center">
-      <p>{$utilResponses[0]["utilResponse"]}</p>
+      <p>{$utilResponses[0]["saveToCSVresponse"]}</p>
     </div>
   {/if}
   <SaveToCSV />
