@@ -139,17 +139,22 @@ th {
       {#each Object.values($tableData) as row}
         <tr>
           {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
-            {#each Object.values(row) as cell}
-              <td style="background-color:#ffb3ca; color: black">{cell}</td>
+            {#each Object.keys(row) as colName}
+              {#if colName === "ediCostMod" || colName === "lastCost"}
+                {#each Object.values(row) as cell}
+                  <td style="background-color:#ffb3ca; color: black">{cell}</td>
+                {/each}
+              {:else}
+                {#each Object.values(row) as cell}
+                  <td>{cell}</td>
+                {/each}
+              {/if}
             {/each}
           {:else}
             {#each Object.values(row) as cell}
               <td>{cell}</td>
             {/each}
           {/if}
-          <!-- {#each Object.values(row) as cell}
-            <td>{cell}</td>
-          {/each} -->
         </tr>
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
