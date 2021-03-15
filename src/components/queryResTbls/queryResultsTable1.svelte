@@ -131,6 +131,7 @@ th {
         <tr>
           {#each Object.values(row) as cell}
             {#each Object.keys(row) as colName}
+              {console.log(`colName==> ${colName}`)}
               {#if colName === "lastCost"}
                 {(lastCost_cell = Object.values(row))}
                 {console.log(`lastCost_cell==> ${lastCost_cell}`)}
