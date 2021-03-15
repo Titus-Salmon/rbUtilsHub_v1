@@ -147,17 +147,21 @@ th {
       {#each $tableData as row}
         <tr>
           {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
-            {#if Object.keys($tableData) === "ediCostMod"}
-              <td style="bacckground-color:#ffb3ca; color: black"
-                >{Object.values($tableData)}</td>
-            {:else if Object.keys($tableData) === "lastCost"}
-              <td style="bacckground-color:#ffb3ca; color: black"
-                >{Object.values($tableData)}</td>
-            {:else}
-              <td>{Object.values($tableData)}</td>
-            {/if}
+            {#each Object.keys($tableData) as colName}
+              {#if colName === "ediCostMod"}
+                <td style="bacckground-color:#ffb3ca; color: black"
+                  >{$tableData[colName]}</td>
+              {:else if colName === "lastCost"}
+                <td style="bacckground-color:#ffb3ca; color: black"
+                  >{$tableData[colName]}</td>
+              {:else}
+                <td>{$tableData[colName]}</td>
+              {/if}
+            {/each}
           {:else}
-            <td>{Object.values($tableData)}</td>
+            {#each Object.values($tableData) as cell}
+              <td>{cell}</td>
+            {/each}
           {/if}
         </tr>
       {/each}
