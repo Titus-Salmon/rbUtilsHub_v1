@@ -144,9 +144,9 @@ th {
             {#each Object.values(row) as cell}
               {#if cell === row["ediCostMod"] || cell === row["lastCost"]}
                 <td style="background-color:#ffb3ca; color: black">{cell}</td>
+              {:else}
+                <td>{cell}</td>
               {/if}
-            {:else}
-              <td>{cell}</td>
             {/each}
             <!-- {:else}
             {#each Object.values(row) as cell}
