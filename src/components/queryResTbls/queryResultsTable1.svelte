@@ -152,6 +152,10 @@ th {
                 <td>{cell}</td>
               {/each}
             {/if}
+          {:else}
+            {#each Object.values(row) as cell}
+              <td>{cell}</td>
+            {/each}
           {/if}
         </tr>
       {/each}
