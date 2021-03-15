@@ -131,7 +131,9 @@ th {
         {#each Object.keys(row) as colName}
           {#if colName === "lastCost"}
             {(lastCost_cell = row[colName])}
-            {console.log(`lastCost_cell==> ${lastCost_cell}`)}
+          {/if}
+          {#if colName === "ediCostMod"}
+            {(ediCostMod_cell = row[colName])}
           {/if}
         {/each}
       {/each}
