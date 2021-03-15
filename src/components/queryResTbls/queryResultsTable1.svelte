@@ -149,10 +149,10 @@ th {
           {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
             {#each Object.keys(row) as colName}
               {#if colName === "ediCostMod"}
-                <td style="bacckground-color:#ffb3ca; color: black"
+                <td style="background-color:#ffb3ca; color: black"
                   >{row[colName]}</td>
               {:else if colName === "lastCost"}
-                <td style="bacckground-color:#ffb3ca; color: black"
+                <td style="background-color:#ffb3ca; color: black"
                   >{row[colName]}</td>
               {:else}
                 <td>{row[colName]}</td>
