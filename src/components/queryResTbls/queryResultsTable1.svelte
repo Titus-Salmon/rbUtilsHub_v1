@@ -130,7 +130,7 @@ th {
       {#each Object.values($tableData) as row}
         {#each Object.keys(row) as colName}
           {#if colName === "lastCost"}
-            {(lastCost_cell = Object.values(row))}
+            {(lastCost_cell = row[colName])}
             {console.log(`lastCost_cell==> ${lastCost_cell}`)}
           {/if}
         {/each}
