@@ -1,8 +1,8 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
 import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
-import PaginUI from "../../../components/UI/paginUI.svelte";
-import paginData from "../../../stores/pagination/st_pagination1";
+import PaginUI from "../../components/UI/paginUI.svelte";
+import paginData from "../../stores/pagination/st_pagination1";
 
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
