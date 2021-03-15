@@ -138,14 +138,10 @@ th {
 
       {#each Object.values($tableData) as row}
         <tr>
-          {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
-            {#if Object.keys(row) === "ediCostMod" || Object.keys(row) === "lastCost"}
+          {#if Object.keys(row) === "ediCostMod" || Object.keys(row) === "lastCost"}
+            {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
               {#each Object.values(row) as cell}
-                <!-- {#if cell === row["ediCostMod"] || cell === row["lastCost"]} -->
                 <td style="background-color:#ffb3ca; color: black">{cell}</td>
-                <!-- {:else} -->
-                <!-- <td>{cell}</td> -->
-                <!-- {/if} -->
               {/each}
             {:else}
               {#each Object.values(row) as cell}
