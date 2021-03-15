@@ -2,6 +2,12 @@
 import imwGenResTbl from "../../../stores/dynamicTables/st_imwGenResTbl";
 import ImwGenRsltsTbl from "../../../components/imwGenRsltsTables/imwGenRsltsTbl.svelte";
 import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
+import utilResponses from "../../stores/utilResponses/st_utilResponses";
+import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
+
+beforeUpdate(() => {
+  utilResponses.set([{ utilResponse: null }]);
+});
 
 let nhcrtTableName;
 let ediTableName;
@@ -90,6 +96,12 @@ function generateUnitTypeIMW() {
 <div style="text-align:center">
   <button on:click="{generateUnitTypeIMW}">generateUnitTypeIMW</button>
 </div>
+
+{#if $utilResponses[0]["utilResponse"] !== null}
+  <div style="text-align:center">
+    <p>{$utilResponses[0]["utilResponse"]}</p>
+  </div>
+{/if}
 
 {#if Object.keys($imwGenResTbl[0]).length > 0}
   <SaveToCSV />
