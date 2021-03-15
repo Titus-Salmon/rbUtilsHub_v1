@@ -148,10 +148,10 @@ th {
                 <td>{cell}</td>
               {/if}
             {/each}
-            <!-- {:else}
+          {:else}
             {#each Object.values(row) as cell}
               <td>{cell}</td>
-            {/each} -->
+            {/each}
           {/if}
         </tr>
       {/each}
