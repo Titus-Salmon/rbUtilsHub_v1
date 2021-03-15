@@ -11,6 +11,9 @@ export async function post(req, res, next) {
     queryResArrCacheValue = queryResArrCache.get('queryResArrCache_key') // use 'get' to leave key in memory
     console.log(`queryResArrCacheValue[0]==> ${queryResArrCacheValue[0]}`)
     let firstRowOfTableObj = queryResArrCacheValue[0]
+    if (firstRowOfTableObj['_#_']) { //delete the _#_ column if it exists, because we don't want that in any iut IMWs
+        delete firstRowOfTableObj['_#_']
+    }
 
     //begin csv generator //////////////////////////////////////////////////////////////////////////
     const {

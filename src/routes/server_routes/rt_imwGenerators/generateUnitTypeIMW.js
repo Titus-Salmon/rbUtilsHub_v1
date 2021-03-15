@@ -132,9 +132,7 @@ export async function post(req, res, next) {
       srsObj['ovr'] = '1'
 
       if (rows[i]['ord_supplierstocknumber'] !== '') { //don't include results with empty SKUs
-        if (Object.keys(rows[i]) !== '_#_') { //don't include _#_ column in IMW
-          srsObjArr.push(srsObj)
-        }
+        srsObjArr.push(srsObj)
       }
     }
 

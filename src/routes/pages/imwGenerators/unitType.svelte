@@ -97,13 +97,12 @@ function generateUnitTypeIMW() {
   <button on:click="{generateUnitTypeIMW}">generateUnitTypeIMW</button>
 </div>
 
-{#if $utilResponses[0]["utilResponse"] !== null}
-  <div style="text-align:center">
-    <p>{$utilResponses[0]["utilResponse"]}</p>
-  </div>
-{/if}
-
 {#if Object.keys($imwGenResTbl[0]).length > 0}
+  {#if $utilResponses[0]["utilResponse"] !== null}
+    <div style="text-align:center">
+      <p>{$utilResponses[0]["utilResponse"]}</p>
+    </div>
+  {/if}
   <SaveToCSV />
   <ImwGenRsltsTbl />
 {/if}
