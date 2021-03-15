@@ -20,14 +20,18 @@ export async function post(req, res, next) {
   //need to rename the column names to correspond to the new column names, and probably don't need to reassign
   //each column name as AS ..., since we're not removing commas now (because we're enclosing all results in quotes now)
   let query = `
-    SELECT DISTINCT nhcrt.invPK AS nhcrtInvPK, nhcrt.invCPK AS nhcrtInvCPK, nhcrt.invScanCode AS nhcrtInvScanCode,
-    nhcrt.ordSupplierStockNumber AS nhcrtOrdSupplierStockNumber, nhcrt.invName AS nhcrtInvName,
-    nhcrt.invReceiptAlias AS nhcrtInvReceiptAlias,
-    nhcrt.venCompanyname AS nhcrtVenCompanyName, nhcrt.pi1Description AS nhcrtPi1Description, nhcrt.pi2Description AS nhcrtPi2Description,
-    edi_table.${venCatPrefix}_upc AS edi_tableEDIprefixUPC, edi_table.${venCatPrefix}_unit_type AS edi_tableEDIprefixUnitType FROM ${nhcrtTableName}
-    nhcrt JOIN ${ediTableName} edi_table ON nhcrt.invScanCode
-    WHERE nhcrt.invScanCode = edi_table.${venCatPrefix}_upc
-    ORDER BY nhcrt.pi1Description, nhcrt.pi2Description;`
+  inv_ScanCode, ord_supplierstocknumber, inv_name, inv_size, inv_receiptalias, inv_datecreated, inv_default, ord_quantityinorderunit, oup_name, 
+  sto_number, brd_name, dpt_name, dpt_number, wgt_name, sib_idealMargin, ven_companyname, ven_code, asc_scancode, asc_receiptalias, asc_quantity, 
+  convert(varchar(10), inv_lastreceived, 120), convert(varchar(10), inv_lastsold, 120), inv_lastcost, sib_baseprice, inv_onhand, inv_onorder, 
+  inv_intransit, inv_memo, pi1_Description, pi2_Description, pi3_Description, pi4_Description, inv_powerfield1, inv_powerfield2, inv_powerfield3, 
+  inv_powerfield4 
+
+    SELECT DISTINCT nhcrt.inv_ScanCode, nhcrt.ord_supplierstocknumber, nhcrt.inv_name, nhcrt.inv_receiptalias,
+    nhcrt.ven_companyname, nhcrt.pi1_Description, nhcrt.pi2_Description,
+    edi_table.${venCatPrefix}_upc, edi_table.${venCatPrefix}_unit_type FROM ${nhcrtTableName}
+    nhcrt JOIN ${ediTableName} edi_table ON nhcrt.inv_ScanCode
+    WHERE nhcrt.inv_ScanCode = edi_table.${venCatPrefix}_upc
+    ORDER BY nhcrt.pi1_Description, nhcrt.pi2_Description;`
 
   function showSearchRes(rows) {
 
@@ -42,7 +46,7 @@ export async function post(req, res, next) {
       oupNameSplit = oupNameVar.split(/([0-9]+)/) //should split oupName into array with the digit as the 2nd array element
 
       srsObj['_#_'] = `${i + 1}`
-      srsObj['item_id'] = `${rows[i]['nhcrtInvScanCode']}`
+      srsObj['item_id'] = `${rows[i]['inv_ScanCode']}`
       srsObj['dept_id'] = ''
       srsObj['dept_name'] = ''
       // //v//replace any commas in receipt alias, so columns in IMW don't get shifted
@@ -50,7 +54,7 @@ export async function post(req, res, next) {
       // let saniReceiptAlias = nhcrtInvReceiptAlias.replace(",", "")
       // srsObj['recpt_alias'] = saniReceiptAlias
       // //^//replace any commas in receipt alias, so columns in IMW don't get shifted
-      srsObj['recpt_alias'] = `${rows[i]['nhcrtInvReceiptAlias']}` // here we use the receipt alias from Catapult, NOT the item name from EDI catalog
+      srsObj['recpt_alias'] = `${rows[i]['inv_receiptalias']}` // here we use the receipt alias from Catapult, NOT the item name from EDI catalog
       srsObj['brand'] = ''
       srsObj['item_name'] = ''
       srsObj['size'] = ''
@@ -70,9 +74,9 @@ export async function post(req, res, next) {
       srsObj['alternate_id'] = ''
       srsObj['alt_rcpt_alias'] = ''
       srsObj['pkg_qty'] = ''
-      srsObj['supp_unit_id'] = `${rows[i]['nhcrtOrdSupplierStockNumber']}` //here we use SKU from Catapult (ordSupplierStockNumber), NOT from EDI table (ediSKU)
-      srsObj['supplier_id'] = `${rows[i]['nhcrtVenCompanyName']}`
-      srsObj['unit'] = `${rows[i]['edi_tableEDIprefixUnitType']}` // here we use ${ediPrefix}_unit_type from EDI table, NOT from Catapult (nhcrt.oupName)
+      srsObj['supp_unit_id'] = `${rows[i]['ord_supplierstocknumber']}` //here we use SKU from Catapult (ord_supplierstocknumber), NOT from EDI table (ediSKU)
+      srsObj['supplier_id'] = `${rows[i]['ven_companyname']}`
+      srsObj['unit'] = `${rows[i][`${venCatPrefix}_unit_type`]}` // here we use ${venCatPrefix}_unit_type from EDI table, NOT from Catapult (nhcrt.oupName)
 
       if (oupNameSplit[0].toLowerCase().includes('cs') || oupNameSplit[0].toLowerCase().includes('case')) {
         if (oupNameSplit[1]) {
@@ -131,7 +135,7 @@ export async function post(req, res, next) {
 
       srsObj['ovr'] = '1'
 
-      if (rows[i]['nhcrtOrdSupplierStockNumber'] !== '') { //don't include results with empty SKUs
+      if (rows[i]['ord_supplierstocknumber'] !== '') { //don't include results with empty SKUs
         srsObjArr.push(srsObj)
       }
     }
