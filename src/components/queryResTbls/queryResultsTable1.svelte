@@ -2,12 +2,12 @@
 import tableData from "../../stores/dynamicTables/tableData1";
 import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
 
-function tableHighlight() {
+function tableHighlight(cell) {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
   // if (rsltTblBdy === null) {
   //   return;
   // }
-  const tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
+  cell = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
   let tblCols = Object.keys($tableData[0]);
 
@@ -16,23 +16,23 @@ function tableHighlight() {
   let basePrice_cell;
   let charm_cell;
 
-  for (let k = 0; k < tblCells.length; k++) {
+  for (let k = 0; k < cell.length; k++) {
     console.log(
-      "tblCells[k].parentNode.childNodes[0].innerHTML==>",
-      tblCells[k].parentNode.childNodes[0].innerHTML
+      "cell[k].parentNode.childNodes[0].innerHTML==>",
+      cell[k].parentNode.childNodes[0].innerHTML
     );
     for (let m = 0; m < tblCols.length; m++) {
       if (tblCols[m] === "lastCost") {
-        lastCost_cell = tblCells[k].parentNode.childNodes[m];
+        lastCost_cell = cell[k].parentNode.childNodes[m];
       }
       if (tblCols[m] === "ediCostMod") {
-        ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
+        ediCostMod_cell = cell[k].parentNode.childNodes[m];
       }
       if (tblCols[m] === "sib_baseprice") {
-        basePrice_cell = tblCells[k].parentNode.childNodes[m];
+        basePrice_cell = cell[k].parentNode.childNodes[m];
       }
       if (tblCols[m] === "charm") {
-        charm_cell = tblCells[k].parentNode.childNodes[m];
+        charm_cell = cell[k].parentNode.childNodes[m];
       }
     }
     if (ediCostMod_cell && lastCost_cell) {
@@ -126,7 +126,7 @@ th {
         <tr>
           {#each Object.values(row) as cell}
             <td>{cell}</td>
-            {tableHighlight()}
+            {tableHighlight(cell)}
           {/each}
         </tr>
       {/each}
