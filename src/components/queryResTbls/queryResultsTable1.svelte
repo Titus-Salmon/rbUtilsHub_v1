@@ -129,20 +129,23 @@ th {
     <tbody id="rsltTblBdy">
       {#each Object.values($tableData) as row}
         <tr>
-          {#each Object.values(row) as cell}
-            {#each Object.keys(row) as colName}
+          {#each Object.keys(row) as colName}
+            {#each Object.values(row) as cell}
               {#if colName === "lastCost"}
                 {(lastCost_cell = cell)}
               {/if}
               {#if colName === "ediCostMod"}
                 {(ediCostMod_cell = cell)}
               {/if}
+              {#if colName === "lastCost" || colName === "ediCostMod"}
+                {#if Math.abs((ediCostMod_cell - lastCost_cell) / ediCostMod_cell) > 0.35}
+                  <td style="background-color: #ffb3ca; color: black"
+                    >{cell}</td>
+                {/if}
+              {/if}
+            {:else}
+              <td>{cell}</td>
             {/each}
-            {#if Math.abs((ediCostMod_cell - lastCost_cell) / ediCostMod_cell) > 0.35}
-              <td style="background-color: #ffb3ca; color: black">{cell}</td>
-            {/if}
-          {:else}
-            <td>{cell}</td>
           {/each}
         </tr>
       {/each}
