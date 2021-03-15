@@ -7,7 +7,7 @@ function tableHighlight() {
   // if (rsltTblBdy === null) {
   //   return;
   // }
-  tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
+  let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
   let tblCols = Object.keys($tableData[0]);
 
