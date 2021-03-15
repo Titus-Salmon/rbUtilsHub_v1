@@ -126,10 +126,9 @@ th {
         </tr>
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
-      <!-- {#if Object.keys($tableData[0]).length > 0}
+      {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
-      {/if} -->
-      {tableHighlight()}
+      {/if}
     </tbody>
   </table>
 </body>
