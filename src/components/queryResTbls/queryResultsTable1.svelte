@@ -136,7 +136,7 @@ th {
             {#if colName === "ediCostMod"}
               {(ediCostMod_cell = row[colName])}
             {/if}
-            {#if Math.abs(ediCostMod_cell - lastCost_cell / ediCostMod_cell) > 0.35}
+            {#if Math.abs(ediCostMod_cell.innerHTML - lastCost_cell.innerHTML / ediCostMod_cell.innerHTML) > 0.35}
               {#each Object.values(row) as cell}
                 <td style="background-color:#ffdb4b; color: black">{cell}</td>
               {/each}
