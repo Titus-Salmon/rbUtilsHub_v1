@@ -131,7 +131,8 @@ th {
         <tr>
           {#each Object.keys(row) as colName}
             {#each Object.values(row) as cell}
-              <td>{colName[cell]}</td>{/each}
+              <td>{cell}</td>
+            {/each}
           {/each}
         </tr>
       {/each}
