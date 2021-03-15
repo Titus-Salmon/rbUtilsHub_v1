@@ -150,12 +150,12 @@ th {
             {#each Object.keys($tableData) as colName}
               {#if colName === "ediCostMod"}
                 <td style="bacckground-color:#ffb3ca; color: black"
-                  >{$tableData[colName]}</td>
+                  >{JSON.stringify($tableData[colName])}</td>
               {:else if colName === "lastCost"}
                 <td style="bacckground-color:#ffb3ca; color: black"
-                  >{$tableData[colName]}</td>
+                  >{JSON.stringify($tableData[colName])}</td>
               {:else}
-                <td>{$tableData[colName]}</td>
+                <td>{JSON.stringify($tableData[colName])}</td>
               {/if}
             {/each}
           {:else}
