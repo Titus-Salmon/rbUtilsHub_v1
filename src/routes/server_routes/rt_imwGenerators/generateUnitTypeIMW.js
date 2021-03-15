@@ -8,6 +8,8 @@ const connection = mysql.createConnection({
   multipleStatements: true //MUST HAVE to make more than 1 sql statement in a single query
 })
 
+import queryResArrCache from "../../../nodeCacheStuff/cache1"
+
 export async function post(req, res, next) {
 
   let nhcrtTableName = req.body.nhcrtTableName
@@ -133,6 +135,14 @@ export async function post(req, res, next) {
         srsObjArr.push(srsObj)
       }
     }
+
+    //V// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
+    queryResArrCache.set('queryResArrCache_key', srsObjArr)
+    console.log(`queryResArrCache['data']['queryResArrCache_key']['v'].length==> ${queryResArrCache['data']['queryResArrCache_key']['v'].length}`)
+    console.log(`queryResArrCache['data']['queryResArrCache_key']['v'][0]==> ${queryResArrCache['data']['queryResArrCache_key']['v'][0]}`)
+    console.log(`JSON.stringify(queryResArrCache['data']['queryResArrCache_key']['v'][0])==> ${JSON.stringify(queryResArrCache['data']['queryResArrCache_key']['v'][0])}`)
+    //^// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
+
   }
 
   connection.query(query,
