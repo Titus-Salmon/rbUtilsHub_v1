@@ -129,8 +129,8 @@ th {
     <tbody id="rsltTblBdy">
       {#each Object.values($tableData) as row}
         <tr>
-          {#each Object.values(row) as cell}
-            {#each Object.keys(row) as colName}
+          {#each Object.keys(row) as colName}
+            {#each Object.values(row) as cell}
               {#if colName === "lastCost"}
                 {(lastCost_cell = row[colName])}
               {/if}
