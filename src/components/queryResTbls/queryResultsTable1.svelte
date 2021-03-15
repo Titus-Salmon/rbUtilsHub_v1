@@ -18,8 +18,8 @@ function tableHighlight() {
 
   for (let k = 0; k < tblCells.length; k++) {
     console.log(
-      "tblCells[i].parentNode.childNodes[0].innerHTML==>",
-      tblCells[i].parentNode.childNodes[0].innerHTML
+      "tblCells[k].parentNode.childNodes[0].innerHTML==>",
+      tblCells[k].parentNode.childNodes[0].innerHTML
     );
     for (let m = 0; m < tblCols.length; m++) {
       if (tblCols[m] === "lastCost") {
