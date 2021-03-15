@@ -141,7 +141,7 @@ th {
           {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
             <!-- {console.log(`row["ediCostMod"]==> ${row["ediCostMod"]}`)}
             {console.log(`row["lastCost"]==> ${row["lastCost"]}`)} -->
-            {#each row as cell}
+            {#each Object.values($tableData) as cell}
               {#if Object.keys(cell) === "ediCostMod" || Object.keys(cell) === "lastCost"}
                 <td style="background-color:#ffb3ca; color: black"
                   >{Object.values(cell)}</td>
