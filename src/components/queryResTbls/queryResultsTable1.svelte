@@ -128,6 +128,14 @@ th {
       </tr>
     </thead>
     <tbody id="rsltTblBdy">
+      <!-- {#each Object.values($tableData) as row}
+        <tr>
+          {#each Object.values(row) as cell}
+            <td>{cell}</td>
+          {/each}
+        </tr>
+      {/each} -->
+
       {#each Object.values($tableData) as row}
         <tr>
           {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
@@ -135,7 +143,9 @@ th {
             {console.log(`row["lastCost"]==> ${row["lastCost"]}`)}
             {#each Object.values(row) as cell}
               <td style="background-color:#ffb3ca">{cell}</td>
-            {:else}
+            {/each}
+          {:else}
+            {#each Object.values(row) as cell}
               <td>{cell}</td>
             {/each}
           {/if}
