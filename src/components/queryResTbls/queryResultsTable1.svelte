@@ -130,17 +130,19 @@ th {
       {#each Object.values($tableData) as row}
         <tr>
           {#each Object.values(row) as cell}
-            {#if Object.keys(row) === "lastCost"}
-              {(lastCost_cell = cell)}
-            {/if}
-            {#if Object.keys(row) === "ediCostMod"}
-              {(ediCostMod_cell = cell)}
-            {/if}
-            {#if Math.abs((ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) / ediCostMod_cell.innerHTML) > 0.35}
-              <td style="background-color: #ffdb4b">{cell}</td>
-            {/if}
-          {:else}
-            <td>{cell}</td>
+            {#each Object.keys(row) as colName}
+              {#if colName === "lastCost"}
+                {(lastCost_cell = cell)}
+              {/if}
+              {#if colName === "ediCostMod"}
+                {(ediCostMod_cell = cell)}
+              {/if}
+              {#if Math.abs((ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) / ediCostMod_cell.innerHTML) > 0.35}
+                <td style="background-color: #ffdb4b">{cell}</td>
+              {/if}
+            {:else}
+              <td>{cell}</td>
+            {/each}
           {/each}
         </tr>
       {/each}
