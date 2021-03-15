@@ -2,6 +2,11 @@
 import tableData from "../../stores/dynamicTables/tableData1";
 import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
 
+let lastCost_cell;
+let ediCostMod_cell;
+let basePrice_cell;
+let charm_cell;
+
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
   // if (rsltTblBdy === null) {
@@ -11,10 +16,10 @@ function tableHighlight() {
 
   let tblCols = Object.keys($tableData[0]);
 
-  let lastCost_cell;
-  let ediCostMod_cell;
-  let basePrice_cell;
-  let charm_cell;
+  // let lastCost_cell;
+  // let ediCostMod_cell;
+  // let basePrice_cell;
+  // let charm_cell;
 
   for (let k = 0; k < tblCells.length; k++) {
     console.log(
@@ -87,13 +92,13 @@ function tableHighlight() {
   }
 }
 
-afterUpdate(() => {
-  //if ($tableData[0] !== undefined && $tableData[0] !== null) {
-  //if (Object.keys($tableData[0]).length > 0) {
-  tableHighlight();
-  //}
-  //}
-});
+// afterUpdate(() => {
+//   //if ($tableData[0] !== undefined && $tableData[0] !== null) {
+//   //if (Object.keys($tableData[0]).length > 0) {
+//   tableHighlight();
+//   //}
+//   //}
+// });
 </script>
 
 <style>
@@ -125,6 +130,16 @@ th {
       {#each Object.values($tableData) as row}
         <tr>
           {#each Object.values(row) as cell}
+            {#if Object.keys(row) === "lastCost"}
+              {(lastCost_cell = cell)}
+            {/if}
+            {#if Object.keys(row) === "ediCostMod"}
+              {(ediCostMod_cell = cell)}
+            {/if}
+            {#if Math.abs((ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) / ediCostMod_cell.innerHTML) > 0.35}
+              <td style="background-color: #ffdb4b">{cell}</td>
+            {/if}
+          {:else}
             <td>{cell}</td>
           {/each}
         </tr>
