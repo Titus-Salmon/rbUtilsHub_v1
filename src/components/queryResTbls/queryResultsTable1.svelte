@@ -36,8 +36,9 @@ function tableHighlight() {
       //won't include such cells/columns), otherwise you'll throw an error
       if (
         Math.abs(
-          (ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) /
-            ediCostMod_cell.innerHTML
+          (parseFloat(ediCostMod_cell.innerHTML) -
+            parseFloat(lastCost_cell.innerHTML)) /
+            parseFloat(ediCostMod_cell.innerHTML)
         ) > 0.35
       ) {
         ediCostMod_cell.style.backgroundColor = "#ffb3ca";
@@ -45,8 +46,9 @@ function tableHighlight() {
       }
       if (
         Math.abs(
-          (ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) /
-            ediCostMod_cell.innerHTML
+          (parseFloat(ediCostMod_cell.innerHTML) -
+            parseFloat(lastCost_cell.innerHTML)) /
+            parseFloat(ediCostMod_cell.innerHTML)
         ) > 0.5
       ) {
         ediCostMod_cell.style.backgroundColor = "#ff8533";
@@ -59,8 +61,9 @@ function tableHighlight() {
       //won't include such cells/columns), otherwise you'll throw an error
       if (
         Math.abs(
-          (charm_cell.innerHTML - basePrice_cell.innerHTML) /
-            charm_cell.innerHTML
+          (parseFloat(charm_cell.innerHTML) -
+            parseFloat(basePrice_cell.innerHTML)) /
+            parseFloat(charm_cell.innerHTML)
         ) > 0.35
       ) {
         charm_cell.style.backgroundColor = "#ffdb4b";
@@ -68,8 +71,9 @@ function tableHighlight() {
       }
       if (
         Math.abs(
-          (charm_cell.innerHTML - basePrice_cell.innerHTML) /
-            charm_cell.innerHTML
+          (parseFloat(charm_cell.innerHTML) -
+            parseFloat(basePrice_cell.innerHTML)) /
+            parseFloat(charm_cell.innerHTML)
         ) > 0.5
       ) {
         charm_cell.style.backgroundColor = "#ff0000";
