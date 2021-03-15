@@ -16,8 +16,8 @@ function tableHighlight() {
   let basePrice_cell;
   let charm_cell;
 
-  for (let m = 0; m < tblCols.length; m++) {
-    for (let k = 0; k < tblCells.length; k++) {
+  for (let k = 0; k < tblCells.length; k++) {
+    for (let m = 0; m < tblCols.length; m++) {
       if (tblCols[m] === "lastCost") {
         lastCost_cell = tblCells[k].parentNode.childNodes[m];
       }
@@ -101,7 +101,7 @@ function tableHighlight() {
   }
 }
 
-afterUpdate(() => {
+beforeUpdate(() => {
   if ($tableData[0] !== undefined && $tableData[0] !== null) {
     if (Object.keys($tableData[0]).length > 0) {
       tableHighlight();
