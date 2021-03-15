@@ -139,12 +139,12 @@ th {
               {#if colName === "ediCostMod"}
                 {(ediCostMod_cell = Object.values(row))}
               {/if}
-              {#if Math.abs(ediCostMod_cell.innerHTML - lastCost_cell.innerHTML / ediCostMod_cell.innerHTML) > 0.35}
-                <td style="background-color: #ffdb4b; color: black">{cell}</td>
-              {/if}
-            {:else}
-              <td>{cell}</td>
             {/each}
+            {#if Math.abs(ediCostMod_cell.innerHTML - lastCost_cell.innerHTML / ediCostMod_cell.innerHTML) > 0.35}
+              <td style="background-color: #ffdb4b; color: black">{cell}</td>
+            {/if}
+          {:else}
+            <td>{cell}</td>
           {/each}
         </tr>
       {/each}
