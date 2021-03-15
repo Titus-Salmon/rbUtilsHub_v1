@@ -92,7 +92,7 @@ function generateUnitTypeIMW() {
   </div>
 </div>
 
-{#if Object.keys($tableData[0]).length > 0}
+{#if Object.keys($imwGenResTbl[0]).length > 0}
   <SaveToCSV />
   <ImwGenRsltsTbl />
 {/if}
