@@ -47,7 +47,7 @@ function tableHighlight() {
         Math.abs(
           (ediCostMod_cell.innerHTML - lastCost_cell.innerHTML) /
             ediCostMod_cell.innerHTML
-        ) > 0.05
+        ) > 0.5
       ) {
         ediCostMod_cell.style.backgroundColor = "#ff8533";
         ediCostMod_cell.style.color = "black";
@@ -70,7 +70,7 @@ function tableHighlight() {
         Math.abs(
           (charm_cell.innerHTML - basePrice_cell.innerHTML) /
             charm_cell.innerHTML
-        ) > 0.05
+        ) > 0.5
       ) {
         charm_cell.style.backgroundColor = "#ff0000";
         charm_cell.style.color = "black";
