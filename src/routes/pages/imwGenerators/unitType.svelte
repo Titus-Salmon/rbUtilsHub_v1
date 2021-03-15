@@ -95,7 +95,7 @@ function generateUnitTypeIMW() {
 
 <!-- {#if $utilResponses[0]["saveToCSVresponse"]} -->
 <div style="text-align:center">
-  <p>{$utilResponses[0]}</p>
+  <p>{JSON.stringify($utilResponses[0])}</p>
 </div>
 <!-- {/if} -->
 
