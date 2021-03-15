@@ -2,7 +2,7 @@
 import imwGenResTbl from "../../../stores/dynamicTables/st_imwGenResTbl";
 import ImwGenRsltsTbl from "../../../components/imwGenRsltsTables/imwGenRsltsTbl.svelte";
 import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
-import utilResponses from "../../stores/utilResponses/st_utilResponses";
+import utilResponses from "../../../stores/utilResponses/st_utilResponses";
 import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
 
 beforeUpdate(() => {
