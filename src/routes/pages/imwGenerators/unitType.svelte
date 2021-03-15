@@ -1,5 +1,6 @@
 <script>
 import imwGenResTbl from "../../../stores/dynamicTables/st_imwGenResTbl";
+import ImwGenRsltsTbl from "../../../components/imwGenRsltsTables/imwGenRsltsTbl.svelte";
 
 let nhcrtTableName;
 let ediTableName;
@@ -80,3 +81,5 @@ function generateUnitTypeIMW() {
     <button on:click="{generateUnitTypeIMW}">generateUnitTypeIMW</button>
   </div>
 </div>
+
+<ImwGenRsltsTbl />
