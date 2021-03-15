@@ -128,14 +128,16 @@ th {
     </thead>
     <tbody id="rsltTblBdy">
       {#each Object.values($tableData) as row}
-        {#each Object.keys(row) as colName}
-          {#if colName === "lastCost"}
-            {(lastCost_cell = row[colName])}
-          {/if}
-          {#if colName === "ediCostMod"}
-            {(ediCostMod_cell = row[colName])}
-          {/if}
-        {/each}
+        <tr>
+          {#each Object.keys(row) as colName}
+            {#if colName === "lastCost"}
+              {(lastCost_cell = row[colName])}
+            {/if}
+            {#if colName === "ediCostMod"}
+              {(ediCostMod_cell = row[colName])}
+            {/if}
+          {/each}
+        </tr>
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
       <!-- {#if Object.keys($tableData[0]).length > 0}
