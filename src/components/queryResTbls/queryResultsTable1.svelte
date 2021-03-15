@@ -17,6 +17,10 @@ function tableHighlight() {
   let charm_cell;
 
   for (let k = 0; k < tblCells.length; k++) {
+    console.log(
+      "tblCells[i].parentNode.childNodes[0].innerHTML==>",
+      tblCells[i].parentNode.childNodes[0].innerHTML
+    );
     for (let m = 0; m < tblCols.length; m++) {
       if (tblCols[m] === "lastCost") {
         lastCost_cell = tblCells[k].parentNode.childNodes[m];
@@ -30,73 +34,72 @@ function tableHighlight() {
       if (tblCols[m] === "charm") {
         charm_cell = tblCells[k].parentNode.childNodes[m];
       }
-
-      if (ediCostMod_cell && lastCost_cell) {
-        //only do calcs on these cells if they exist (because sometimes your table results
-        //won't include such cells/columns), otherwise you'll throw an error
-        if (
-          Math.abs(
+    }
+    if (ediCostMod_cell && lastCost_cell) {
+      //only do calcs on these cells if they exist (because sometimes your table results
+      //won't include such cells/columns), otherwise you'll throw an error
+      if (
+        Math.abs(
+          (parseFloat(ediCostMod_cell.innerHTML) -
+            parseFloat(lastCost_cell.innerHTML)) /
+            parseFloat(ediCostMod_cell.innerHTML)
+        ) > 0.35
+      ) {
+        ediCostMod_cell.style.backgroundColor = "#ffb3ca";
+        ediCostMod_cell.style.color = "black";
+        console.log(`ediCostMod==> ${parseFloat(ediCostMod_cell.innerHTML)}`);
+        console.log(`lastCost==> ${parseFloat(lastCost_cell.innerHTML)}`);
+        console.log(
+          `Math.abs(ediCostMod-lastCost/ediCostMod)==> ${Math.abs(
             (parseFloat(ediCostMod_cell.innerHTML) -
               parseFloat(lastCost_cell.innerHTML)) /
               parseFloat(ediCostMod_cell.innerHTML)
-          ) > 0.35
-        ) {
-          ediCostMod_cell.style.backgroundColor = "#ffb3ca";
-          ediCostMod_cell.style.color = "black";
-          console.log(`ediCostMod==> ${parseFloat(ediCostMod_cell.innerHTML)}`);
-          console.log(`lastCost==> ${parseFloat(lastCost_cell.innerHTML)}`);
-          console.log(
-            `Math.abs(ediCostMod-lastCost/ediCostMod)==> ${Math.abs(
-              (parseFloat(ediCostMod_cell.innerHTML) -
-                parseFloat(lastCost_cell.innerHTML)) /
-                parseFloat(ediCostMod_cell.innerHTML)
-            )}`
-          );
-        }
-        if (
-          Math.abs(
-            (parseFloat(ediCostMod_cell.innerHTML) -
-              parseFloat(lastCost_cell.innerHTML)) /
-              parseFloat(ediCostMod_cell.innerHTML)
-          ) > 0.5
-        ) {
-          ediCostMod_cell.style.backgroundColor = "#ff8533";
-          ediCostMod_cell.style.color = "black";
-          console.log(`ediCostMod==> ${parseFloat(ediCostMod_cell.innerHTML)}`);
-          console.log(`lastCost==> ${parseFloat(lastCost_cell.innerHTML)}`);
-          console.log(
-            `Math.abs(ediCostMod-lastCost/ediCostMod)==> ${Math.abs(
-              (parseFloat(ediCostMod_cell.innerHTML) -
-                parseFloat(lastCost_cell.innerHTML)) /
-                parseFloat(ediCostMod_cell.innerHTML)
-            )}`
-          );
-        }
+          )}`
+        );
       }
+      if (
+        Math.abs(
+          (parseFloat(ediCostMod_cell.innerHTML) -
+            parseFloat(lastCost_cell.innerHTML)) /
+            parseFloat(ediCostMod_cell.innerHTML)
+        ) > 0.5
+      ) {
+        ediCostMod_cell.style.backgroundColor = "#ff8533";
+        ediCostMod_cell.style.color = "black";
+        console.log(`ediCostMod==> ${parseFloat(ediCostMod_cell.innerHTML)}`);
+        console.log(`lastCost==> ${parseFloat(lastCost_cell.innerHTML)}`);
+        console.log(
+          `Math.abs(ediCostMod-lastCost/ediCostMod)==> ${Math.abs(
+            (parseFloat(ediCostMod_cell.innerHTML) -
+              parseFloat(lastCost_cell.innerHTML)) /
+              parseFloat(ediCostMod_cell.innerHTML)
+          )}`
+        );
+      }
+    }
 
-      if (charm_cell && basePrice_cell) {
-        //only do calcs on these cells if they exist (because sometimes your table results
-        //won't include such cells/columns), otherwise you'll throw an error
-        if (
-          Math.abs(
-            (parseFloat(charm_cell.innerHTML) -
-              parseFloat(basePrice_cell.innerHTML)) /
-              parseFloat(charm_cell.innerHTML)
-          ) > 0.35
-        ) {
-          charm_cell.style.backgroundColor = "#ffdb4b";
-          charm_cell.style.color = "black";
-        }
-        if (
-          Math.abs(
-            (parseFloat(charm_cell.innerHTML) -
-              parseFloat(basePrice_cell.innerHTML)) /
-              parseFloat(charm_cell.innerHTML)
-          ) > 0.5
-        ) {
-          charm_cell.style.backgroundColor = "#ff0000";
-          charm_cell.style.color = "black";
-        }
+    if (charm_cell && basePrice_cell) {
+      //only do calcs on these cells if they exist (because sometimes your table results
+      //won't include such cells/columns), otherwise you'll throw an error
+      if (
+        Math.abs(
+          (parseFloat(charm_cell.innerHTML) -
+            parseFloat(basePrice_cell.innerHTML)) /
+            parseFloat(charm_cell.innerHTML)
+        ) > 0.35
+      ) {
+        charm_cell.style.backgroundColor = "#ffdb4b";
+        charm_cell.style.color = "black";
+      }
+      if (
+        Math.abs(
+          (parseFloat(charm_cell.innerHTML) -
+            parseFloat(basePrice_cell.innerHTML)) /
+            parseFloat(charm_cell.innerHTML)
+        ) > 0.5
+      ) {
+        charm_cell.style.backgroundColor = "#ff0000";
+        charm_cell.style.color = "black";
       }
     }
   }
