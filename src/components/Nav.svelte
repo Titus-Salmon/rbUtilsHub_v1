@@ -70,6 +70,13 @@ a {
       <div>
         <li>
           <a
+            aria-current="{segment === 'unitTypeIMW' ? 'page' : undefined}"
+            href="/pages/imwGenerators/unitType">unitTypeIMW</a>
+        </li>
+      </div>
+      <div>
+        <li>
+          <a
             aria-current="{segment === 'toDo' ? 'page' : undefined}"
             href="/pages/pg_toDo/toDo">toDo</a>
         </li>

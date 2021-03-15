@@ -91,6 +91,25 @@ export async function post(req, res, next) {
   }
 
   connection.query(
+    //1st query gets data from nej table
+
+    //2nd query gets data from rb_edlp_data table **need to exclude Gaia entries as Gaia no longer has EDLPs
+    //SELECT * FROM rb_edlp_data;
+
+    //3rd query gets data from all the grocery price exceptions tables
+    // SELECT * FROM gpet_groc;
+    // SELECT * FROM gpet_ref;
+    // SELECT * FROM gpet_frz;
+    // SELECT * FROM gpet_gen_merch;
+    // SELECT * FROM gpet_infra;
+    // SELECT * FROM gpet_case_stack;
+    // SELECT * FROM gpet_nego_edlp;
+    // SELECT * FROM gpet_cadia;
+
+    //******************************************************************************************************** */
+    //may need to add in the 2nd and 3rd queries, depending on what Nathan comes back with regarding my questions
+    //******************************************************************************************************** */
+
     `SELECT * FROM ${stagedTableName} 
     WHERE dpt_name != 'RB_CLEANUP' 
     GROUP BY inv_ScanCode, inv_lastcost 
