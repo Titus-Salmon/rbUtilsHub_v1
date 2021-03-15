@@ -1,6 +1,7 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
 import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
+import PaginUI from "../../../components/UI/paginUI.svelte";
 
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
@@ -107,6 +108,7 @@ th {
 </style>
 
 <body>
+  <PaginUI />
   <table>
     <thead>
       <tr>
