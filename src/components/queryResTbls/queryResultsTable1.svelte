@@ -6,6 +6,7 @@ let lastCost_cell;
 let ediCostMod_cell;
 let basePrice_cell;
 let charm_cell;
+let cellProp;
 
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
@@ -128,23 +129,15 @@ th {
     </thead>
     <tbody id="rsltTblBdy">
       {#each Object.values($tableData) as row}
-        <tr>
-          {#each Object.keys(row) as colName}
-            {#if colName === "lastCost"}
-              {(lastCost_cell = colName["lastCost"])}
-            {/if}
-            {#if colName === "ediCostMod"}
-              {(ediCostMod_cell = colName["ediCostMod"])}
-            {/if}
-            {#each Object.values(row) as cell}
-              {#if Math.abs((ediCostMod_cell - lastCost_cell) / ediCostMod_cell) > 0.35}
-                <td style="background-color: #ffb3ca; color: black">{cell}</td>
-              {/if}
-            {:else}
-              <td>{cell}</td>
-            {/each}
+        {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
+          {console.log(`row["ediCostMod"]==> ${row["ediCostMod"]}`)}
+          {console.log(`row["lastCost"]==> ${row["lastCost"]}`)}
+          {#each Object.values(row) as cell}
+            <td style="background-color:#ffb3ca">{cell}</td>
+          {:else}
+            <td>{cell}</td>
           {/each}
-        </tr>
+        {/if}
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
       <!-- {#if Object.keys($tableData[0]).length > 0}
