@@ -8,6 +8,7 @@ import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
 let nhcrtTableName;
 let ediTableName;
 let venCatPrefix;
+let skuToggle;
 function generateUnitTypeIMW() {
   fetch("server_routes/rt_imwGenerators/generateUnitTypeIMW", {
     method: "POST",
@@ -86,6 +87,18 @@ function generateUnitTypeIMW() {
         required
         bind:this="{venCatPrefix}" />
     </div>
+  </div>
+
+  <!-- //////////////Use EDI or Catapult SKU for IMW//////////////////////////// -->
+  <div style="text-align:center">
+    <label for="ediOrCatapultSku">Use EDI or Catapult SKU for IMW</label>
+    <select
+      name="ediOrCatapultSku"
+      id="ediOrCatapultSku"
+      bind:value="{skuToggle}">
+      <option value="edi">EDI</option>
+      <option value="catapult">Catapult</option>
+    </select>
   </div>
 </div>
 <!-- //////////////button//////////////////////////// -->

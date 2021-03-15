@@ -15,6 +15,7 @@ export async function post(req, res, next) {
   let nhcrtTableName = req.body.nhcrtTableName
   let ediTableName = req.body.ediTableName
   let venCatPrefix = req.body.venCatPrefix
+  let skuToggle = req.body.skuToggle
 
   let srsObjArr = []
 
@@ -45,11 +46,6 @@ export async function post(req, res, next) {
       srsObj['item_id'] = `${rows[i]['inv_ScanCode']}`
       srsObj['dept_id'] = ''
       srsObj['dept_name'] = ''
-      // //v//replace any commas in receipt alias, so columns in IMW don't get shifted
-      // let nhcrtInvReceiptAlias = rows[i]['nhcrtInvReceiptAlias']
-      // let saniReceiptAlias = nhcrtInvReceiptAlias.replace(",", "")
-      // srsObj['recpt_alias'] = saniReceiptAlias
-      // //^//replace any commas in receipt alias, so columns in IMW don't get shifted
       srsObj['recpt_alias'] = `${rows[i]['inv_receiptalias']}` // here we use the receipt alias from Catapult, NOT the item name from EDI catalog
       srsObj['brand'] = ''
       srsObj['item_name'] = ''
@@ -70,7 +66,14 @@ export async function post(req, res, next) {
       srsObj['alternate_id'] = ''
       srsObj['alt_rcpt_alias'] = ''
       srsObj['pkg_qty'] = ''
-      srsObj['supp_unit_id'] = `${rows[i]['ord_supplierstocknumber']}` //here we use SKU from Catapult (ord_supplierstocknumber), NOT from EDI table (ediSKU)
+      if (skuToggle === "EDI") { //toggle for EDI versus Catapult SKU. This seems like the best place to catch any SKU mismatches,
+        //since we're dealing with a result set of all items in the new vendor catalog that exist in Catapult, so we catch everything
+        //at once here, not just items that need a wholesale or retail update. Plus, this should simplify the code for the
+        //wholesaleCalcs and retailCalcs portions of calcResults.
+        srsObj['supp_unit_id'] = `${rows[i][venCatPrefix+'_sku']}` // here we use the receipt alias from Catapult, NOT the item name from EDI catalog
+      } else {
+        srsObj['supp_unit_id'] = `${rows[i]['ord_supplierstocknumber']}` // here we use the receipt alias from Catapult, NOT the item name from EDI catalog
+      }
       srsObj['supplier_id'] = `${rows[i]['ven_companyname']}`
       srsObj['unit'] = `${rows[i][venCatPrefix+'_unit_type']}` // here we use ${venCatPrefix}_unit_type from EDI table, NOT from Catapult (nhcrt.oupName)
 
