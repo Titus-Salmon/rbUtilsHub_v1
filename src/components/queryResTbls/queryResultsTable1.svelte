@@ -132,10 +132,10 @@ th {
           {#each Object.values(row) as cell}
             {#each Object.keys(row) as colName}
               {#if colName === "lastCost"}
-                {(lastCost_cell = cell.parentNode.colName)}
+                {(lastCost_cell = cell)}
               {/if}
               {#if colName === "ediCostMod"}
-                {(ediCostMod_cell = cell.parentNode.colName)}
+                {(ediCostMod_cell = cell)}
               {/if}
             {/each}
             {#if lastCost_cell && ediCostMod_cell}
