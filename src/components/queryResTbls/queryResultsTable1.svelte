@@ -2,12 +2,12 @@
 import tableData from "../../stores/dynamicTables/tableData1";
 import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
 
-function tableHighlight(cell) {
+function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
   // if (rsltTblBdy === null) {
   //   return;
   // }
-  cell = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
+  tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
   let tblCols = Object.keys($tableData[0]);
 
@@ -16,23 +16,23 @@ function tableHighlight(cell) {
   let basePrice_cell;
   let charm_cell;
 
-  for (let k = 0; k < cell.length; k++) {
+  for (let k = 0; k < tblCells.length; k++) {
     console.log(
-      "cell[k].parentNode.childNodes[0].innerHTML==>",
-      cell[k].parentNode.childNodes[0].innerHTML
+      "tblCells[k].parentNode.childNodes[0].innerHTML==>",
+      tblCells[k].parentNode.childNodes[0].innerHTML
     );
     for (let m = 0; m < tblCols.length; m++) {
       if (tblCols[m] === "lastCost") {
-        lastCost_cell = cell[k].parentNode.childNodes[m];
+        lastCost_cell = tblCells[k].parentNode.childNodes[m];
       }
       if (tblCols[m] === "ediCostMod") {
-        ediCostMod_cell = cell[k].parentNode.childNodes[m];
+        ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
       }
       if (tblCols[m] === "sib_baseprice") {
-        basePrice_cell = cell[k].parentNode.childNodes[m];
+        basePrice_cell = tblCells[k].parentNode.childNodes[m];
       }
       if (tblCols[m] === "charm") {
-        charm_cell = cell[k].parentNode.childNodes[m];
+        charm_cell = tblCells[k].parentNode.childNodes[m];
       }
     }
     if (ediCostMod_cell && lastCost_cell) {
@@ -87,13 +87,13 @@ function tableHighlight(cell) {
   }
 }
 
-// afterUpdate(() => {
-//   if ($tableData[0] !== undefined && $tableData[0] !== null) {
-//     if (Object.keys($tableData[0]).length > 0) {
-//       tableHighlight();
-//     }
-//   }
-// });
+afterUpdate(() => {
+  //if ($tableData[0] !== undefined && $tableData[0] !== null) {
+  //if (Object.keys($tableData[0]).length > 0) {
+  tableHighlight();
+  //}
+  //}
+});
 </script>
 
 <style>
@@ -126,7 +126,6 @@ th {
         <tr>
           {#each Object.values(row) as cell}
             <td>{cell}</td>
-            {tableHighlight(cell)}
           {/each}
         </tr>
       {/each}
