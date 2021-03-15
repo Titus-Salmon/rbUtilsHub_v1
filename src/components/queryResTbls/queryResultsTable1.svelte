@@ -142,7 +142,7 @@ th {
             <!-- {console.log(`row["ediCostMod"]==> ${row["ediCostMod"]}`)}
             {console.log(`row["lastCost"]==> ${row["lastCost"]}`)} -->
             {#each Object.values(row) as cell}
-              {#if Object.keys(row) === "ediCostMod" || Object.keys(row) === "lastCost"}
+              {#if cell === row["ediCostMod"] || cell === row["lastCost"]}
                 <td style="background-color:#ffb3ca; color: black">{cell}</td>
               {/if}
             {/each}
