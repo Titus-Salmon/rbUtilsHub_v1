@@ -36,7 +36,7 @@ export async function post(req, res, next) {
 
       let srsObj = {}
 
-      let oupNameVar = rows[i]['edi_tableEDIprefixUnitType'] //define variable for oupName
+      let oupNameVar = rows[i][venCatPrefix + '_unit_type'] //define variable for oupName
       oupNameSplit = oupNameVar.split(/([0-9]+)/) //should split oupName into array with the digit as the 2nd array element
 
       srsObj['_#_'] = `${i + 1}`
@@ -70,7 +70,7 @@ export async function post(req, res, next) {
       srsObj['pkg_qty'] = ''
       srsObj['supp_unit_id'] = `${rows[i]['ord_supplierstocknumber']}` //here we use SKU from Catapult (ord_supplierstocknumber), NOT from EDI table (ediSKU)
       srsObj['supplier_id'] = `${rows[i]['ven_companyname']}`
-      srsObj['unit'] = `${rows[i][`${venCatPrefix}_unit_type`]}` // here we use ${venCatPrefix}_unit_type from EDI table, NOT from Catapult (nhcrt.oupName)
+      srsObj['unit'] = `${rows[i][venCatPrefix+'_unit_type']}` // here we use ${venCatPrefix}_unit_type from EDI table, NOT from Catapult (nhcrt.oupName)
 
       if (oupNameSplit[0].toLowerCase().includes('cs') || oupNameSplit[0].toLowerCase().includes('case')) {
         if (oupNameSplit[1]) {
