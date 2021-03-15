@@ -16,8 +16,8 @@ function tableHighlight() {
   let basePrice_cell;
   let charm_cell;
 
-  for (let k = 0; k < tblCells.length; k++) {
-    for (let m = 0; m < tblCols.length; m++) {
+  for (let m = 0; m < tblCols.length; m++) {
+    for (let k = 0; k < tblCells.length; k++) {
       if (tblCols[m] === "lastCost") {
         lastCost_cell = tblCells[k].parentNode.childNodes[m];
       }
