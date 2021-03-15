@@ -83,13 +83,13 @@ function tableHighlight() {
   }
 }
 
-afterUpdate(() => {
-  //if ($tableData[0] !== undefined && $tableData[0] !== null) {
-  //if (Object.keys($tableData[0]).length > 0) {
-  tableHighlight();
-  //}
-  //}
-});
+// afterUpdate(() => {
+//   //if ($tableData[0] !== undefined && $tableData[0] !== null) {
+//   //if (Object.keys($tableData[0]).length > 0) {
+//   tableHighlight();
+//   //}
+//   //}
+// });
 </script>
 
 <style>
@@ -129,6 +129,7 @@ th {
       <!-- {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
       {/if} -->
+      {tableHighlight()}
     </tbody>
   </table>
 </body>
