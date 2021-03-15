@@ -144,7 +144,7 @@ th {
         }
       }}  -->
 
-      {#each Object.values($tableData) as row}
+      {#each $tableData as row}
         <tr>
           {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
             {#if Object.keys(row) === "ediCostMod" || Object.keys(row) === "lastCost"}
