@@ -139,10 +139,10 @@ th {
       {#each Object.values($tableData) as row}
         <tr>
           {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
-            {console.log(`row["ediCostMod"]==> ${row["ediCostMod"]}`)}
-            {console.log(`row["lastCost"]==> ${row["lastCost"]}`)}
+            <!-- {console.log(`row["ediCostMod"]==> ${row["ediCostMod"]}`)}
+            {console.log(`row["lastCost"]==> ${row["lastCost"]}`)} -->
             {#each Object.values(row) as cell}
-              <td style="background-color:#ffb3ca">{cell}</td>
+              <td style="background-color:#ffb3ca; color: black">{cell}</td>
             {/each}
           {:else}
             {#each Object.values(row) as cell}
