@@ -145,11 +145,13 @@ th {
               {#if cell === row["ediCostMod"] || cell === row["lastCost"]}
                 <td style="background-color:#ffb3ca; color: black">{cell}</td>
               {/if}
-            {/each}
-          {:else}
-            {#each Object.values(row) as cell}
+            {:else}
               <td>{cell}</td>
             {/each}
+            <!-- {:else}
+            {#each Object.values(row) as cell}
+              <td>{cell}</td>
+            {/each} -->
           {/if}
         </tr>
       {/each}
