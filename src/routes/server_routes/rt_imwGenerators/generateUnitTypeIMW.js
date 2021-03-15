@@ -37,7 +37,7 @@ export async function post(req, res, next) {
       let srsObj = {}
 
       let oupNameVar = rows[i][venCatPrefix + '_unit_type'] //define variable for oupName
-      oupNameSplit = oupNameVar.split(/([0-9]+)/) //should split oupName into array with the digit as the 2nd array element
+      let oupNameSplit = oupNameVar.split(/([0-9]+)/) //should split oupName into array with the digit as the 2nd array element
 
       srsObj['_#_'] = `${i + 1}`
       srsObj['item_id'] = `${rows[i]['inv_ScanCode']}`
