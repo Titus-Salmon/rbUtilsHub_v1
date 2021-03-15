@@ -93,7 +93,7 @@ function generateUnitTypeIMW() {
   <button on:click="{generateUnitTypeIMW}">generateUnitTypeIMW</button>
 </div>
 
-{#if $utilResponses[0]["response from saveToCSV"]}
+{#if $utilResponses[0]}
   <div style="text-align:center; color: var(--element6)">
     <p>{JSON.stringify($utilResponses[0])}</p>
   </div>
