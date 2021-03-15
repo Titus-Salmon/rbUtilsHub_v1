@@ -20,18 +20,12 @@ export async function post(req, res, next) {
   //need to rename the column names to correspond to the new column names, and probably don't need to reassign
   //each column name as AS ..., since we're not removing commas now (because we're enclosing all results in quotes now)
   let query = `
-  inv_ScanCode, ord_supplierstocknumber, inv_name, inv_size, inv_receiptalias, inv_datecreated, inv_default, ord_quantityinorderunit, oup_name, 
-  sto_number, brd_name, dpt_name, dpt_number, wgt_name, sib_idealMargin, ven_companyname, ven_code, asc_scancode, asc_receiptalias, asc_quantity, 
-  convert(varchar(10), inv_lastreceived, 120), convert(varchar(10), inv_lastsold, 120), inv_lastcost, sib_baseprice, inv_onhand, inv_onorder, 
-  inv_intransit, inv_memo, pi1_Description, pi2_Description, pi3_Description, pi4_Description, inv_powerfield1, inv_powerfield2, inv_powerfield3, 
-  inv_powerfield4 
-
-    SELECT DISTINCT nhcrt.inv_ScanCode, nhcrt.ord_supplierstocknumber, nhcrt.inv_name, nhcrt.inv_receiptalias,
-    nhcrt.ven_companyname, nhcrt.pi1_Description, nhcrt.pi2_Description,
-    edi_table.${venCatPrefix}_upc, edi_table.${venCatPrefix}_unit_type FROM ${nhcrtTableName}
-    nhcrt JOIN ${ediTableName} edi_table ON nhcrt.inv_ScanCode
-    WHERE nhcrt.inv_ScanCode = edi_table.${venCatPrefix}_upc
-    ORDER BY nhcrt.pi1_Description, nhcrt.pi2_Description;`
+  SELECT DISTINCT nhcrt.inv_ScanCode, nhcrt.ord_supplierstocknumber, nhcrt.inv_name, nhcrt.inv_receiptalias,
+  nhcrt.ven_companyname, nhcrt.pi1_Description, nhcrt.pi2_Description,
+  edi_table.${venCatPrefix}_upc, edi_table.${venCatPrefix}_unit_type FROM ${nhcrtTableName}
+  nhcrt JOIN ${ediTableName} edi_table ON nhcrt.inv_ScanCode
+  WHERE nhcrt.inv_ScanCode = edi_table.${venCatPrefix}_upc
+  ORDER BY nhcrt.pi1_Description, nhcrt.pi2_Description;`
 
   function showSearchRes(rows) {
 
