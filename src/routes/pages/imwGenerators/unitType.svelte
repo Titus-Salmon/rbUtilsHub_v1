@@ -1,6 +1,7 @@
 <script>
 import imwGenResTbl from "../../../stores/dynamicTables/st_imwGenResTbl";
 import ImwGenRsltsTbl from "../../../components/imwGenRsltsTables/imwGenRsltsTbl.svelte";
+import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
 
 let nhcrtTableName;
 let ediTableName;
@@ -39,47 +40,59 @@ function generateUnitTypeIMW() {
 <style>
 </style>
 
-<div style="padding: 0 1rem">
+<div class="flexbox">
   <!-- //////////////nhcrtTableName//////////////////////////// -->
-  <div style="text-align:center;">
-    <label for="nhcrtTableName">NHCRT Table Name</label>
+  <div>
+    <div style="text-align:center;">
+      <label for="nhcrtTableName">NHCRT Table Name</label>
+    </div>
+    <div style="text-align:center">
+      <input
+        type="text"
+        id="nhcrtTableName"
+        name="nhcrtTableName"
+        required
+        bind:this="{nhcrtTableName}" />
+    </div>
   </div>
-  <div style="text-align:center">
-    <input
-      type="text"
-      id="nhcrtTableName"
-      name="nhcrtTableName"
-      required
-      bind:this="{nhcrtTableName}" />
-  </div>
+
   <!-- //////////////ediTableName//////////////////////////// -->
-  <div style="text-align:center;">
-    <label for="ediTableName">EDI Table Name</label>
+  <div>
+    <div style="text-align:center;">
+      <label for="ediTableName">EDI Table Name</label>
+    </div>
+    <div style="text-align:center">
+      <input
+        type="text"
+        id="ediTableName"
+        name="ediTableName"
+        required
+        bind:this="{ediTableName}" />
+    </div>
   </div>
-  <div style="text-align:center">
-    <input
-      type="text"
-      id="ediTableName"
-      name="ediTableName"
-      required
-      bind:this="{ediTableName}" />
-  </div>
+
   <!-- //////////////vendor catalog prefix//////////////////////////// -->
-  <div style="text-align:center;">
-    <label for="venPrefix">Vendor Catalog Prefix</label>
+  <div>
+    <div style="text-align:center;">
+      <label for="venPrefix">Vendor Catalog Prefix</label>
+    </div>
+    <div style="text-align:center">
+      <input
+        type="text"
+        id="venPrefix"
+        name="venPrefix"
+        required
+        bind:this="{venCatPrefix}" />
+    </div>
   </div>
-  <div style="text-align:center">
-    <input
-      type="text"
-      id="venPrefix"
-      name="venPrefix"
-      required
-      bind:this="{venCatPrefix}" />
-  </div>
+
   <!-- //////////////button//////////////////////////// -->
   <div style="text-align:center">
     <button on:click="{generateUnitTypeIMW}">generateUnitTypeIMW</button>
   </div>
 </div>
 
-<ImwGenRsltsTbl />
+{#if Object.keys($tableData[0]).length > 0}
+  <SaveToCSV />
+  <ImwGenRsltsTbl />
+{/if}
