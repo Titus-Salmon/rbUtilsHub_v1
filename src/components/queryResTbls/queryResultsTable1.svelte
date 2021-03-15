@@ -129,21 +129,13 @@ th {
     <tbody id="rsltTblBdy">
       {#each Object.values($tableData) as row}
         <tr>
-          {#each Object.keys(row) as colName}
+          {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
             {#each Object.values(row) as cell}
-              {#if colName === "lastCost"}
-                {(lastCost_cell = row[colName])}
-              {/if}
-              {#if colName === "ediCostMod"}
-                {(ediCostMod_cell = row[colName])}
-              {/if}
-              {#if Math.abs((ediCostMod_cell - lastCost_cell) / ediCostMod_cell) > 0.35}
-                <td style="background-color:#ffdb4b; color: black">{cell}</td>
-              {:else}
-                <td>{cell}</td>
-              {/if}
+              <td style="background-color: #ffb3ca; color: black">{cell}</td>
+            {:else}
+              <td>{cell}</td>
             {/each}
-          {/each}
+          {/if}
         </tr>
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
