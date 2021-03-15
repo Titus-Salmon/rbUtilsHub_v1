@@ -136,6 +136,9 @@ th {
             {#if colName === "ediCostMod"}
               {(ediCostMod_cell = row[colName])}
             {/if}
+            {#each Object.value(row) as cell}
+              <td>{cell}</td>
+            {/each}
           {/each}
         </tr>
       {/each}
