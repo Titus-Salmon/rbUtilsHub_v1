@@ -128,25 +128,12 @@ th {
     </thead>
     <tbody id="rsltTblBdy">
       {#each Object.values($tableData) as row}
-        <tr>
-          {#each Object.values(row) as cell}
-            {#each Object.keys(row) as colName}
-              {console.log(`colName==> ${colName}`)}
-              {#if colName === "lastCost"}
-                {(lastCost_cell = Object.values(row))}
-                {console.log(`lastCost_cell==> ${lastCost_cell}`)}
-              {/if}
-              {#if colName === "ediCostMod"}
-                {(ediCostMod_cell = Object.values(row))}
-              {/if}
-            {/each}
-            <!-- {#if Math.abs(ediCostMod_cell.innerHTML - lastCost_cell.innerHTML / ediCostMod_cell.innerHTML) > 0.35}
-              <td style="background-color: #ffdb4b; color: black">{cell}</td>
-            {/if}
-          {:else}
-            <td>{cell}</td> -->
-          {/each}
-        </tr>
+        {#each Object.keys(row) as colName}
+          {#if colName === "lastCost"}
+            {(lastCost_cell = Object.values(row))}
+            {console.log(`lastCost_cell==> ${lastCost_cell}`)}
+          {/if}
+        {/each}
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
       <!-- {#if Object.keys($tableData[0]).length > 0}
