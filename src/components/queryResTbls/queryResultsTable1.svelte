@@ -8,6 +8,8 @@ let basePrice_cell;
 let charm_cell;
 let cellProp;
 
+console.log(`JSON.stringify($tableData)==> ${JSON.stringify($tableData)}`);
+
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
   // if (rsltTblBdy === null) {
@@ -136,21 +138,24 @@ th {
         </tr>
       {/each} -->
 
+      <!-- {for (let i=0; i<($tableData.length); i++){
+        if (Math.abs(($tableData[i]["ediCostMod"]-$tableData[i]["lastCost"])/$tableData[i]["ediCostMod"])>.35) {
+
+        }
+      }}  -->
+
       {#each Object.values($tableData) as row}
         <tr>
           {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
-            {#each row as obj}
-              {#if Object.keys(obj) === "ediCostMod" || Object.keys(obj) === "lastCost"}
-                {#each Object.values(obj) as cell}
-                  <td style="background-color: #ffb3ca; color: black"
-                    >{cell}</td>
-                {/each}
-              {:else}
-                {#each Object.values(obj) as cell}
-                  <td>{cell}</td>
-                {/each}
-              {/if}
-            {/each}
+            {#if Object.keys(row) === "ediCostMod" || Object.keys(row) === "lastCost"}
+              {#each Object.values(row) as cell}
+                <td style="background-color: #ffb3ca; color: black">{cell}</td>
+              {/each}
+            {:else}
+              {#each Object.values(row) as cell}
+                <td>{cell}</td>
+              {/each}
+            {/if}
           {:else}
             {#each Object.values(row) as cell}
               <td>{cell}</td>
