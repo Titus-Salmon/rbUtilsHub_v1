@@ -43,6 +43,15 @@ function tableHighlight() {
       ) {
         ediCostMod_cell.style.backgroundColor = "#ffb3ca";
         ediCostMod_cell.style.color = "black";
+        console.log(`ediCostMod==> ${parseFloat(ediCostMod_cell.innerHTML)}`);
+        console.log(`lastCost==> ${parseFloat(lastCost_cell.innerHTML)}`);
+        console.log(
+          `Math.abs(ediCostMod-lastCost/ediCostMod)==> ${Math.abs(
+            (parseFloat(ediCostMod_cell.innerHTML) -
+              parseFloat(lastCost_cell.innerHTML)) /
+              parseFloat(ediCostMod_cell.innerHTML)
+          )}`
+        );
       }
       if (
         Math.abs(
@@ -53,6 +62,15 @@ function tableHighlight() {
       ) {
         ediCostMod_cell.style.backgroundColor = "#ff8533";
         ediCostMod_cell.style.color = "black";
+        console.log(`ediCostMod==> ${parseFloat(ediCostMod_cell.innerHTML)}`);
+        console.log(`lastCost==> ${parseFloat(lastCost_cell.innerHTML)}`);
+        console.log(
+          `Math.abs(ediCostMod-lastCost/ediCostMod)==> ${Math.abs(
+            (parseFloat(ediCostMod_cell.innerHTML) -
+              parseFloat(lastCost_cell.innerHTML)) /
+              parseFloat(ediCostMod_cell.innerHTML)
+          )}`
+        );
       }
     }
 
@@ -83,13 +101,13 @@ function tableHighlight() {
   }
 }
 
-// afterUpdate(() => {
-//   //if ($tableData[0] !== undefined && $tableData[0] !== null) {
-//   //if (Object.keys($tableData[0]).length > 0) {
-//   tableHighlight();
-//   //}
-//   //}
-// });
+afterUpdate(() => {
+  if ($tableData[0] !== undefined && $tableData[0] !== null) {
+    if (Object.keys($tableData[0]).length > 0) {
+      tableHighlight();
+    }
+  }
+});
 </script>
 
 <style>
@@ -126,9 +144,9 @@ th {
         </tr>
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
-      {#if Object.keys($tableData[0]).length > 0}
+      <!-- {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
-      {/if}
+      {/if} -->
     </tbody>
   </table>
 </body>
