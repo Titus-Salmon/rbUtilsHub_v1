@@ -1,6 +1,7 @@
 <script>
 import tableData from "../../stores/dynamicTables/tableData1";
 import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
+import WsLogic from "./highlightLogic/wsLogic.svelte";
 
 let lastCost_cell;
 let ediCostMod_cell;
@@ -130,21 +131,8 @@ th {
       </tr>
     </thead>
     <tbody id="rsltTblBdy">
-      <!-- {#each Object.values($tableData) as row}
-        <tr>
-          {#each Object.values(row) as cell}
-            <td>{cell}</td>
-          {/each}
-        </tr>
-      {/each} -->
-
-      <!-- {for (let i=0; i<($tableData.length); i++){
-        if (Math.abs(($tableData[i]["ediCostMod"]-$tableData[i]["lastCost"])/$tableData[i]["ediCostMod"])>.35) {
-
-        }
-      }}  -->
-
-      {#each $tableData as row}
+      <WsLogic />
+      <!-- {#each $tableData as row}
         <tr>
           {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.5}
             {#each Object.keys(row) as colName}
@@ -177,7 +165,7 @@ th {
             {/each}
           {/if}
         </tr>
-      {/each}
+      {/each} -->
     </tbody>
   </table>
 </body>
