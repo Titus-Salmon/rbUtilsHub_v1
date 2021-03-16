@@ -23,15 +23,6 @@ function save_imw_CSV() {
       save_imw_CSVresponse = save_imw_CSVresultJSON;
 
       calcResStore.set([{ calcResStoreData: save_imw_CSVresponse }]);
-
-      // utilResponses.update((currentData) => {
-      //   currentData = [
-      //     {
-      //       utilResponse: Object.values(save_imw_CSVresponse),
-      //     },
-      //   ];
-      //   return currentData;
-      // });
     });
 }
 </script>
