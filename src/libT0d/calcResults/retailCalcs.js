@@ -136,7 +136,7 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
             } else { //if req'd rtl is above upper charm cutoff
               //($12 for Grocery & $9999 for Wellness), use defaultCharm4 for charm. Really this only applies to Grocery,
               //since Wellness upper charm cutoff is set so high
-              charm = reqdRtl - reqdRtl % 1 + parseFloat(reqBody[`defaultCharm${dptAbbr}4`])
+              charm = reqdRtl - reqdRtl % 1 + parseFloat(reqBody[`defaultCharm${dptAbbr}`])
             }
           }
         }
