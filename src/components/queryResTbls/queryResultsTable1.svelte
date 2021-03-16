@@ -126,7 +126,7 @@ th {
       </tr>
     </thead>
     <tbody id="rsltTblBdy">
-      {#if $tableData[0]["charm"] && $tableData[0]["basePrice"]}
+      {#if $tableData[0]["charm"] && $tableData[0]["sib_baseprice"]}
         <RtlLogic />
       {:else if $tableData[0]["ediCostMod"] && $tableData[0]["lastCost"]}
         <WsLogic />
