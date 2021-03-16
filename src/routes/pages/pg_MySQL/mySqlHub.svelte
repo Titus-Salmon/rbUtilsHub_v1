@@ -1,6 +1,7 @@
 <script>
 import { onMount, onDestroy } from "svelte";
 import QueryResultsTable1 from "../../../components/queryResTbls/queryResultsTable1.svelte";
+import CalcResultsTable from "../../../components/queryResTbls/calcResTable.svelte";
 import PaginUI from "../../../components/UI/paginUI.svelte";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 import ShowHideStagedDataBtn from "../../../components/UI/showHideStagedDataBtn.svelte";
@@ -123,5 +124,11 @@ import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
 {#if $tableData[0] !== undefined && $tableData[0] !== null}
   {#if Object.keys($tableData[0]).length > 0}
     <QueryResultsTable1 />
+  {/if}
+{/if}
+
+{#if $tableData[0] !== undefined && $tableData[0] !== null}
+  {#if Object.keys($tableData[0]).length > 0}
+    <CalcResultsTable />
   {/if}
 {/if}

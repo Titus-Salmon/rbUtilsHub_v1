@@ -1,5 +1,9 @@
 <script>
-import calcResTableData from "../../stores/dynamicTables/tableData1";
+import tableData from "../../stores/dynamicTables/tableData1";
+import { onDestroy } from "svelte";
+onDestroy(() => {
+  tableData.set([{}]);
+});
 </script>
 
 <style>
@@ -16,14 +20,14 @@ th {
   <table>
     <thead>
       <tr>
-        <!--v-- NOTE: you must use the $ to access the calcResTableData store -->
-        {#each Object.keys($calcResTableData[0]) as columnHeading}
+        <!--v-- NOTE: you must use the $ to access the tableData store -->
+        {#each Object.keys($tableData[0]) as columnHeading}
           <th>{columnHeading}</th>
         {/each}
       </tr>
     </thead>
     <tbody>
-      {#each Object.values($calcResTableData) as row}
+      {#each Object.values($tableData) as row}
         <tr>
           {#each Object.values(row) as cell}
             <td>{cell}</td>
