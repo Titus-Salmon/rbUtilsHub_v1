@@ -1,5 +1,5 @@
 <script>
-import tableData from "../../stores/dynamicTables/tableData1";
+import tableData from "../../../stores/dynamicTables/tableData1";
 </script>
 
 {#each $tableData as row}
