@@ -7,6 +7,7 @@ import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
 import ShowHideStagedDataBtn from "../../../components/UI/showHideStagedDataBtn.svelte";
 
 import tableData from "../../../stores/dynamicTables/tableData1";
+import calcResTableData from "../../../stores/dynamicTables/st_calcResTable";
 import paginData from "../../../stores/pagination/st_pagination1";
 import utilResponses from "../../../stores/utilResponses/st_utilResponses";
 import stagingData from "../../../stores/stagingData/st_stagingData.js";
@@ -127,8 +128,8 @@ import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
   {/if}
 {/if}
 
-{#if $tableData[0] !== undefined && $tableData[0] !== null}
-  {#if Object.keys($tableData[0]).length > 0}
+{#if $calcResTableData[0] !== undefined && $calcResTableData[0] !== null}
+  {#if Object.keys($calcResTableData[0]).length > 0}
     <CalcResultsTable />
   {/if}
 {/if}
