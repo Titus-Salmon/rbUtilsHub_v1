@@ -3,7 +3,7 @@ import stagingData from "../../stores/stagingData/st_stagingData.js";
 import calcResStore from "../../stores/calcResults/st_calcResults";
 
 import paginData from "../../stores/pagination/st_pagination1";
-import calcResTableData from "../../stores/dynamicTables/calcResTableData";
+import calcResTableData from "../../stores/dynamicTables/st_calcResTable";
 
 let tableName = $stagingData[0].stagingDataResponse.stagedTableName;
 let venCatPrefix = $stagingData[0].stagingDataResponse.venCatPrefix;
