@@ -58,7 +58,7 @@ function wholesaleCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryRe
     vendorActlCost = Math.round(vendorActlCost * 100) / 100
     catapultCost = Math.round(catapultCost * 100) / 100
     console.log(`vendorActlCost==> ${vendorActlCost} | catapultCost==> ${catapultCost}`)
-    if (catapultCost !== vendorActlCost) { //only include results in need of retail update
+    if (parseFloat(catapultCost) !== parseFloat(vendorActlCost)) { //only include results in need of wholesale update
       eaCsNumDiv(i, reqBody, queryResArr, discoMulti_WS)
       numPkgsCalc(i, queryResArr) //sets WebOffice Quantity value (the ## in CS-##)
       csPkMltCalc(i, queryResArr) //sets WebOffice Case Pack Multiple value (the ## in EA-##)
