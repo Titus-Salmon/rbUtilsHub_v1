@@ -9,6 +9,8 @@ let nhcrtTableName;
 let ediTableName;
 let venCatPrefix;
 let skuToggle;
+let prchQtyOverride;
+
 function generateUnitTypeIMW() {
   fetch("server_routes/rt_imwGenerators/generateUnitTypeIMW", {
     method: "POST",
@@ -98,6 +100,18 @@ function generateUnitTypeIMW() {
       bind:value="{skuToggle}">
       <option value="edi">EDI</option>
       <option value="catapult">Catapult</option>
+    </select>
+  </div>
+
+  <!-- //////////////Allow purchase qty override?//////////////////////////// -->
+  <div style="text-align:center">
+    <label for="ediOrCatapultSku">Allow purchase qty override?</label>
+    <select
+      name="prchQtyOverride"
+      id="prchQtyOverride"
+      bind:value="{prchQtyOverride}">
+      <option value="yes">yes</option>
+      <option value="no">no</option>
     </select>
   </div>
 </div>

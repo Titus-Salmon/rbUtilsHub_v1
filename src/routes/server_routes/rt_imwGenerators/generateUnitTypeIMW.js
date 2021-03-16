@@ -16,6 +16,7 @@ export async function post(req, res, next) {
   let ediTableName = req.body.ediTableName
   let venCatPrefix = req.body.venCatPrefix
   let skuToggle = req.body.skuToggle
+  let prchQtyOverride = req.body.prchQtyOverride
 
   let srsObjArr = []
 
@@ -132,7 +133,11 @@ export async function post(req, res, next) {
         }
       }
 
-      srsObj['ovr'] = '1'
+      if (prchQtyOverride === "yes") {
+        srsObj['ovr'] = '1'
+      } else {
+        srsObj['ovr'] = '0'
+      }
 
       if (rows[i]['ord_supplierstocknumber'] !== '') { //don't include results with empty SKUs
         srsObjArr.push(srsObj)
