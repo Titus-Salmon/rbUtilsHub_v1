@@ -1,5 +1,5 @@
 <script>
-import calcResTableData from "../../stores/dynamicTables/st_calcResTable";
+import tableData from "../../stores/dynamicTables/tableData1";
 import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
 
 let lastCost_cell;
@@ -8,9 +8,7 @@ let basePrice_cell;
 let charm_cell;
 let cellProp;
 
-console.log(
-  `JSON.stringify($calcResTableData)==> ${JSON.stringify($calcResTableData)}`
-);
+console.log(`JSON.stringify($tableData)==> ${JSON.stringify($tableData)}`);
 
 function tableHighlight() {
   const rsltTblBdy = document.getElementById("rsltTblBdy");
@@ -19,7 +17,7 @@ function tableHighlight() {
   // }
   let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
-  let tblCols = Object.keys($calcResTableData[0]);
+  let tblCols = Object.keys($tableData[0]);
 
   // let lastCost_cell;
   // let ediCostMod_cell;
@@ -98,8 +96,8 @@ function tableHighlight() {
 }
 
 // afterUpdate(() => {
-//   //if ($calcResTableData[0] !== undefined && $calcResTableData[0] !== null) {
-//   //if (Object.keys($calcResTableData[0]).length > 0) {
+//   //if ($tableData[0] !== undefined && $tableData[0] !== null) {
+//   //if (Object.keys($tableData[0]).length > 0) {
 //   tableHighlight();
 //   //}
 //   //}
@@ -120,19 +118,19 @@ th {
   <table>
     <thead>
       <tr>
-        <!--v-- NOTE: you must use the $ to access the calcResTableData store -->
+        <!--v-- NOTE: you must use the $ to access the tableData store -->
         <!-- {console.log(
-          `JSON.stringify($calcResTableData[0])==> ${JSON.stringify($calcResTableData[0])}`
+          `JSON.stringify($tableData[0])==> ${JSON.stringify($tableData[0])}`
         )} -->
-        <!-- {#if $calcResTableData[0] !== undefined && $calcResTableData[0] !== null} -->
-        {#each Object.keys($calcResTableData[0]) as columnHeading}
+        <!-- {#if $tableData[0] !== undefined && $tableData[0] !== null} -->
+        {#each Object.keys($tableData[0]) as columnHeading}
           <th>{columnHeading}</th>
         {/each}
         <!-- {/if} -->
       </tr>
     </thead>
     <tbody id="rsltTblBdy">
-      <!-- {#each Object.values($calcResTableData) as row}
+      <!-- {#each Object.values($tableData) as row}
         <tr>
           {#each Object.values(row) as cell}
             <td>{cell}</td>
@@ -140,13 +138,13 @@ th {
         </tr>
       {/each} -->
 
-      <!-- {for (let i=0; i<($calcResTableData.length); i++){
-        if (Math.abs(($calcResTableData[i]["ediCostMod"]-$calcResTableData[i]["lastCost"])/$calcResTableData[i]["ediCostMod"])>.35) {
+      <!-- {for (let i=0; i<($tableData.length); i++){
+        if (Math.abs(($tableData[i]["ediCostMod"]-$tableData[i]["lastCost"])/$tableData[i]["ediCostMod"])>.35) {
 
         }
       }}  -->
 
-      {#each $calcResTableData as row}
+      {#each $tableData as row}
         <tr>
           {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
             {#each Object.keys(row) as colName}
@@ -168,7 +166,7 @@ th {
         </tr>
       {/each}
       <!-- if there is any data in the table store, call tableHighlight -->
-      <!-- {#if Object.keys($calcResTableData[0]).length > 0}
+      <!-- {#if Object.keys($tableData[0]).length > 0}
         {tableHighlight()}
       {/if} -->
     </tbody>

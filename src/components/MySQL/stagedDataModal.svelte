@@ -3,7 +3,7 @@ import stagingData from "../../stores/stagingData/st_stagingData.js";
 import calcResStore from "../../stores/calcResults/st_calcResults";
 
 import paginData from "../../stores/pagination/st_pagination1";
-import tableData from "../../stores/dynamicTables/tableData1";
+import calcResTableData from "../../stores/dynamicTables/calcResTableData";
 
 let tableName = $stagingData[0].stagingDataResponse.stagedTableName;
 let venCatPrefix = $stagingData[0].stagingDataResponse.venCatPrefix;
@@ -238,7 +238,7 @@ function calcResults() {
 
       // tableData.set(calcResultsResultJSON.queryResArr_1stPage);
       // tableData.set(calcResultsResultJSON.populated_imw_arr);
-      tableData.set(calcResultsResultJSON.modifiedQueryResArr);
+      calcResTableData.set(calcResultsResultJSON.modifiedQueryResArr);
 
       calcResultsResponse = calcResultsResultJSON;
 
