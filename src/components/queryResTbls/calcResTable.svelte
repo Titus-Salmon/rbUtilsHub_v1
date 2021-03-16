@@ -2,9 +2,9 @@
 import calcResTableData from "../../stores/dynamicTables/st_calcResTable";
 import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
 
-onDestroy(() => {
-  calcResTableData.set([{}]);
-});
+// onDestroy(() => {
+//   calcResTableData.set([{}]);
+// });
 
 let lastCost_cell;
 let ediCostMod_cell;
