@@ -6,7 +6,6 @@ function marginStager(defaultMargins, vendorMargins, stagedMargins) {
       departmentName = departmentName.split('_')[0]
       let departmentNumber = Object.keys(vendorMargins)[j]
       departmentNumber = departmentNumber.split('_')[1]
-      console.log(`[${j}] departmentNumber==> ${departmentNumber}`)
       //^//need to separate out dptName from dptNumber, since they're in the form of: vitSupp_157, for example
       if (defaultMargins[i]['dptName'] === departmentName) {
         console.log(`defaultMargins[i]['margin']==> ${defaultMargins[i]['margin']}`)
