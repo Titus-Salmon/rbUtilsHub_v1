@@ -147,7 +147,7 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     let catapultRtl = queryResArr[i]['sib_baseprice']
 
-    if (catapultRtl !== charm) { //only include results in need of retail update
+    if (parseFloat(catapultRtl) !== parseFloat(charm)) { //only include results in need of retail update
       let imwToPop = {}
       blank_imw_creator(imwToPop)
       imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
