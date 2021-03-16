@@ -2,6 +2,7 @@
 import tableData from "../../stores/dynamicTables/tableData1";
 import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
 import WsLogic from "./highlightLogic/wsLogic.svelte";
+import RtlLogic from "./highlightLogic/rtlLogic.svelte";
 
 let lastCost_cell;
 let ediCostMod_cell;
@@ -119,19 +120,26 @@ th {
   <table>
     <thead>
       <tr>
-        <!--v-- NOTE: you must use the $ to access the tableData store -->
-        <!-- {console.log(
-          `JSON.stringify($tableData[0])==> ${JSON.stringify($tableData[0])}`
-        )} -->
-        <!-- {#if $tableData[0] !== undefined && $tableData[0] !== null} -->
         {#each Object.keys($tableData[0]) as columnHeading}
           <th>{columnHeading}</th>
         {/each}
-        <!-- {/if} -->
       </tr>
     </thead>
     <tbody id="rsltTblBdy">
-      <WsLogic />
+      {#if $tableData[0]["charm"] && $tableData[0]["basePrice"]}
+        <RtlLogic />
+      {:else if $tableData[0]["ediCostMod"] && $tableData[0]["lastCost"]}
+        <WsLogic />
+      {:else}
+        {#each Object.values($tableData) as row}
+          <tr>
+            {#each Object.values(row) as cell}
+              <td>{cell}</td>
+            {/each}
+          </tr>
+        {/each}
+      {/if}
+
       <!-- {#each $tableData as row}
         <tr>
           {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.5}
