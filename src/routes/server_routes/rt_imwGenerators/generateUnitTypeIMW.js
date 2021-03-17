@@ -15,8 +15,8 @@ export async function post(req, res, next) {
   let nhcrtTableName = req.body.nhcrtTableName
   let ediTableName = req.body.ediTableName
   let venCatPrefix = req.body.venCatPrefix
-  let skuToggle = req.body['skuToggle_t0d']
-  let prchQtyOverride = req.body['prchQtyOverride_t0d']
+  let skuToggle = req.body.skuToggle
+  let prchQtyOverride = req.body.prchQtyOverride
 
   console.log(`JSON.stringify(req.body) from generateUnitTypeIMW.js==> ${JSON.stringify(req.body)}`)
 
