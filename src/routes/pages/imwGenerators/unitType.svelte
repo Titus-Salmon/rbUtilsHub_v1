@@ -93,8 +93,8 @@ function generateUnitTypeIMW() {
 
   <!-- //////////////Use EDI or Catapult SKU for IMW//////////////////////////// -->
   <div style="text-align:center">
-    <label for="skuToggle">Use EDI or Catapult SKU for IMW</label>
-    <select name="skuToggle" id="skuToggle" bind:value="{skuToggle}">
+    <label for="skuToggle_t0d">Use EDI or Catapult SKU for IMW</label>
+    <select name="skuToggle_t0d" id="skuToggle_t0d" bind:value="{skuToggle}">
       <option value="edi">EDI</option>
       <option value="catapult">Catapult</option>
     </select>
@@ -102,10 +102,10 @@ function generateUnitTypeIMW() {
 
   <!-- //////////////Allow purchase qty override?//////////////////////////// -->
   <div style="text-align:center">
-    <label for="prchQtyOverride">Allow purchase qty override?</label>
+    <label for="prchQtyOverride_t0d">Allow purchase qty override?</label>
     <select
-      name="prchQtyOverride"
-      id="prchQtyOverride"
+      name="prchQtyOverride_t0d"
+      id="prchQtyOverride_t0d"
       bind:value="{prchQtyOverride}">
       <option value="yes">yes</option>
       <option value="no">no</option>
