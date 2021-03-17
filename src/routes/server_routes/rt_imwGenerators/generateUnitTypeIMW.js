@@ -28,7 +28,7 @@ export async function post(req, res, next) {
   let query = `
   SELECT DISTINCT nhcrt.inv_ScanCode, nhcrt.ord_supplierstocknumber, nhcrt.inv_name, nhcrt.inv_receiptalias,
   nhcrt.ven_companyname, nhcrt.pi1_Description, nhcrt.pi2_Description,
-  edi_table.${venCatPrefix}_upc, edi_table.${venCatPrefix}_unit_type FROM ${nhcrtTableName}
+  edi_table.${venCatPrefix}_upc, edi_table.${venCatPrefix}_sku, edi_table.${venCatPrefix}_unit_type FROM ${nhcrtTableName}
   nhcrt JOIN ${ediTableName} edi_table ON nhcrt.inv_ScanCode
   WHERE nhcrt.inv_ScanCode = edi_table.${venCatPrefix}_upc
   ORDER BY nhcrt.pi1_Description, nhcrt.pi2_Description;`
@@ -73,7 +73,7 @@ export async function post(req, res, next) {
         //since we're dealing with a result set of all items in the new vendor catalog that exist in Catapult, so we catch everything
         //at once here, not just items that need a wholesale or retail update. Plus, this should simplify the code for the
         //wholesaleCalcs and retailCalcs portions of calcResults.
-        srsObj['supp_unit_id'] = rows[i][`${venCatPrefix}_sku`] // here we use the receipt alias from Catapult, NOT the item name from EDI catalog
+        srsObj['supp_unit_id'] = `${rows[i][`${venCatPrefix}_sku`]}` // here we use the receipt alias from Catapult, NOT the item name from EDI catalog
       } else {
         srsObj['supp_unit_id'] = `${rows[i]['ord_supplierstocknumber']}` // here we use the receipt alias from Catapult, NOT the item name from EDI catalog
       }
