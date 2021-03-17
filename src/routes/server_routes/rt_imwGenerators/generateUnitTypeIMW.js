@@ -73,7 +73,7 @@ export async function post(req, res, next) {
         //since we're dealing with a result set of all items in the new vendor catalog that exist in Catapult, so we catch everything
         //at once here, not just items that need a wholesale or retail update. Plus, this should simplify the code for the
         //wholesaleCalcs and retailCalcs portions of calcResults.
-        srsObj['supp_unit_id'] = `${rows[i][`${venCatPrefix}_sku`]}` // here we use the receipt alias from Catapult, NOT the item name from EDI catalog
+        srsObj['supp_unit_id'] = rows[i][`${venCatPrefix}_sku`] // here we use the receipt alias from Catapult, NOT the item name from EDI catalog
       } else {
         srsObj['supp_unit_id'] = `${rows[i]['ord_supplierstocknumber']}` // here we use the receipt alias from Catapult, NOT the item name from EDI catalog
       }
