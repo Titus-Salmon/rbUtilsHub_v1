@@ -87,7 +87,7 @@ export async function post(req, res, next) {
       } else {
         if (oupNameSplit[0].toLowerCase().includes('ea') ||
           oupNameSplit[0].toLowerCase().includes('each')) {
-          srsObj['num_pkgs'] = ''
+          srsObj['num_pkgs'] = '1'
         } else {
           srsObj['num_pkgs'] = 'badVal'
         }
@@ -112,7 +112,7 @@ export async function post(req, res, next) {
 
       if (oupNameSplit[0].toLowerCase().includes('cs') || oupNameSplit[0].toLowerCase().includes('case')) {
         if (oupNameSplit[1]) {
-          srsObj['case_pk_mult'] = ''
+          srsObj['case_pk_mult'] = '1'
         } else {
           srsObj['case_pk_mult'] = 'badValCS'
         }
@@ -126,7 +126,7 @@ export async function post(req, res, next) {
         } else {
           if (oupNameSplit[0].toLowerCase().includes('cs') ||
             oupNameSplit[0].toLowerCase().includes('case')) {
-            srsObj['case_pk_mult'] = ''
+            srsObj['case_pk_mult'] = '1'
           } else {
             srsObj['case_pk_mult'] = 'badVal'
           }
