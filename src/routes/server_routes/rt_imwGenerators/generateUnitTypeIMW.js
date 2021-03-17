@@ -67,7 +67,7 @@ export async function post(req, res, next) {
       srsObj['alternate_id'] = ''
       srsObj['alt_rcpt_alias'] = ''
       srsObj['pkg_qty'] = ''
-      if (skuToggle === "EDI") { //toggle for EDI versus Catapult SKU. This seems like the best place to catch any SKU mismatches,
+      if (skuToggle === "edi") { //toggle for EDI versus Catapult SKU. This seems like the best place to catch any SKU mismatches,
         //since we're dealing with a result set of all items in the new vendor catalog that exist in Catapult, so we catch everything
         //at once here, not just items that need a wholesale or retail update. Plus, this should simplify the code for the
         //wholesaleCalcs and retailCalcs portions of calcResults.
