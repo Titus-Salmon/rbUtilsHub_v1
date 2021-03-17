@@ -79,13 +79,13 @@ function generateUnitTypeIMW() {
   <!-- //////////////vendor catalog prefix//////////////////////////// -->
   <div>
     <div style="text-align:center;">
-      <label for="venPrefix">Vendor Catalog Prefix</label>
+      <label for="venCatPrefix">Vendor Catalog Prefix</label>
     </div>
     <div style="text-align:center">
       <input
         type="text"
-        id="venPrefix"
-        name="venPrefix"
+        id="venCatPrefix"
+        name="venCatPrefix"
         required
         bind:this="{venCatPrefix}" />
     </div>
@@ -93,11 +93,8 @@ function generateUnitTypeIMW() {
 
   <!-- //////////////Use EDI or Catapult SKU for IMW//////////////////////////// -->
   <div style="text-align:center">
-    <label for="ediOrCatapultSku">Use EDI or Catapult SKU for IMW</label>
-    <select
-      name="ediOrCatapultSku"
-      id="ediOrCatapultSku"
-      bind:value="{skuToggle}">
+    <label for="skuToggle">Use EDI or Catapult SKU for IMW</label>
+    <select name="skuToggle" id="skuToggle" bind:value="{skuToggle}">
       <option value="edi">EDI</option>
       <option value="catapult">Catapult</option>
     </select>
@@ -105,7 +102,7 @@ function generateUnitTypeIMW() {
 
   <!-- //////////////Allow purchase qty override?//////////////////////////// -->
   <div style="text-align:center">
-    <label for="ediOrCatapultSku">Allow purchase qty override?</label>
+    <label for="prchQtyOverride">Allow purchase qty override?</label>
     <select
       name="prchQtyOverride"
       id="prchQtyOverride"
