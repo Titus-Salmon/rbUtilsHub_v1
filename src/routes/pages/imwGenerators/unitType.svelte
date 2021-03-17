@@ -21,8 +21,8 @@ function generateUnitTypeIMW() {
       nhcrtTableName: nhcrtTableName.value,
       ediTableName: ediTableName.value,
       venCatPrefix: venCatPrefix.value,
-      skuToggle: skuToggle.value,
-      prchQtyOverride: prchQtyOverride.value,
+      skuToggle: "wtf1",
+      prchQtyOverride: "wtf2",
     }),
   })
     .then((queryRes) => queryRes.json())
