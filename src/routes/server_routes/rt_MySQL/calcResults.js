@@ -115,12 +115,73 @@ export async function post(req, res, next) {
     GROUP BY inv_ScanCode, inv_lastcost 
     ORDER BY
     dpt_name ASC, pi1_description ASC, pi1_description ASC;
+
+    SELECT * FROM rb_edlp_data;
+
+    SELECT * FROM gpet_groc;
+    SELECT * FROM gpet_ref;
+    SELECT * FROM gpet_frz;
+    SELECT * FROM gpet_gen_merch;
+    SELECT * FROM gpet_infra;
+    SELECT * FROM gpet_case_stack;
+    SELECT * FROM gpet_nego_edlp;
+    SELECT * FROM gpet_cadia;
     `,
     function (err, rows, fields) {
       if (err) throw err
       console.log(`rows.length==>${rows.length}`)
-      console.log('rows[0]==>', rows[0])
-      rbDBqueryResults(rows, queryResArr, srcRsXLS, queryResArr_1stPage) //queryResArr gets populated and cached with
+      let calcResRows = rows[0]
+      console.log('JSON.stringify(calcResRows[0])==>', JSON.stringify(calcResRows[0]))
+
+      let edlpRows = rows[1] //targets 2nd query on rb_edlp_data table
+      console.log(`JSON.stringify(edlpRows[0])==> ${JSON.stringify(edlpRows[0])}`)
+      let gpetGrocRows = rows[2]
+      let gpetRefRows = rows[3]
+      let gpetFrzRows = rows[4]
+      let gpetGenMerchRows = rows[5]
+      let gpetINFRArows = rows[6]
+      let gpetCaseStackRows = rows[7]
+      let gpetNegoEDLProws = rows[8]
+      let gpetCadiaRows = rows[9]
+
+      //v////////handle gpet tables ==> if UPC is in gpet table, ignore it in showSearchResults calcs
+      function gpetUPCremover(gpetTableRows) {
+        for (let x = 0; x < gpetTableRows.length; x++) {
+          for (let y = 0; y < calcResRows.length; y++) {
+            if (gpetTableRows[x]['upc'] == calcResRows[y]['inv_ScanCode']) { //only using == here, in case one source has
+              //integers for UPC, but the other has strings
+              calcResRows.splice(y, 1)
+            }
+          }
+        }
+      }
+      gpetUPCremover(gpetGrocRows)
+      gpetUPCremover(gpetRefRows)
+      gpetUPCremover(gpetFrzRows)
+      gpetUPCremover(gpetGenMerchRows)
+      gpetUPCremover(gpetINFRArows)
+      gpetUPCremover(gpetCaseStackRows)
+      gpetUPCremover(gpetNegoEDLProws)
+      gpetUPCremover(gpetCadiaRows)
+
+
+      function edlpRemover() {
+        //v//EDLP REMOVER///////////////////////////////////////////////////////////////////////////////////////
+        for (let j = 0; j < edlpRows.length; j++) {
+          for (let k = 0; k < calcResRows.length; k++) {
+            if (calcResRows[k]['invScanCode'] == edlpRows[j]['edlp_upc']) {
+              calcResRows.splice(k, 1)
+            }
+          }
+        }
+        //^//EDLP REMOVER///////////////////////////////////////////////////////////////////////////////////////
+      }
+      if (req.body.includeEDLP === "no") {
+        edlpRemover()
+      }
+
+
+      rbDBqueryResults(calcResRows, queryResArr, srcRsXLS, queryResArr_1stPage) //queryResArr gets populated and cached with
         //the query results from the above query
         .then(populateIMW())
         .then(paginCalcs(modifiedQueryResArr)) //however, we only want to show the results for items that need wholesale

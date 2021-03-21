@@ -11,7 +11,7 @@ let calcResultsResponse;
 let imwOptions;
 // let skuMismatchAllowance;
 // let dptFilter;
-let edlpSwitch;
+let includeEDLP;
 let skuToggle;
 // let skuMismatchOption;
 
@@ -187,11 +187,11 @@ function calcResults() {
   // postBodyObj[`${inputId}`] = inputValue;
   // //^//flagSkuMismatch/////////////////////////////////////////////////////////////////////////////////////
 
-  //v//includeEdlp/////////////////////////////////////////////////////////////////////////////////////
-  inputId = "includeEdlp";
+  //v//includeEDLP/////////////////////////////////////////////////////////////////////////////////////
+  inputId = "includeEDLP";
   inputValue = document.getElementById(`${inputId}`).value;
   postBodyObj[`${inputId}`] = inputValue;
-  //^//includeEdlp/////////////////////////////////////////////////////////////////////////////////////
+  //^//includeEDLP/////////////////////////////////////////////////////////////////////////////////////
 
   // //v//deptFilter/////////////////////////////////////////////////////////////////////////////////////
   // //we never used this option anyway, so no need to bother for now, besides, we can always select for
@@ -582,8 +582,11 @@ function calcResults() {
 
         <!-- include EDLP ----------------------------------------------------------------------------------------------->
         <div style="text-align:center">
-          <label for="includeEdlp">Include EDLP</label>
-          <select name="includeEdlp" id="includeEdlp" bind:value="{edlpSwitch}">
+          <label for="includeEDLP">Include EDLP</label>
+          <select
+            name="includeEDLP"
+            id="includeEDLP"
+            bind:value="{includeEDLP}">
             <option value="no">no</option>
             <option value="yes">yes</option>
           </select>
