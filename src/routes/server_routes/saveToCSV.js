@@ -50,6 +50,7 @@ export async function post(req, res, next) {
 
 
     function updateRbCat() {
+        console.log(`hello from within updateRbCat`)
         let fileName = req.body.data
         console.log(`fileName==> ${fileName}`)
         console.log(`typeof fileName==> ${typeof fileName}`)
