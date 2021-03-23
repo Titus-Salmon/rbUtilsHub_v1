@@ -36,11 +36,80 @@ export async function post(req, res, next) {
             if (err) throw err;
             console.log(`===>> ${process.cwd()}/static/csv/${req.body.data}.csv saved<<===`)
         })
-        res.json({
-            "response from saveToCSV": `~~~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved <<~~~~~`
-        })
+        // res.json({
+        //     "response from saveToCSV": `~~~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved <<~~~~~`
+        // })
+        updateRbCat()
     } catch (err) {
         console.error(err);
     }
     //end csv generator //////////////////////////////////////////////////////////////////////////
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //v//Automatically add note to rainbowcat table that Retail IMW has been generated//////////////////////////////////////
+    let fileName = req.body.data
+
+    var today = new Date()
+    var todayIso = today.toISOString()
+    var todayIsoSplitArr = todayIso.split('T')
+    var todayIsoSplit = todayIsoSplitArr[0]
+
+    function updateRbCat() {
+        var imwTypeColumn
+
+        //here we are doing some js magic to extract the "ediName" from the Rtl IMW name we're saving (nejTableNameRtlIMWYYYMMDD):
+        let vendorNameSplit1 = fileName.split('nej')
+        let vendorNameSplit2 = vendorNameSplit1[1]
+        if (fileName.toLowerCase().includes('rtlimw')) {
+            imwTypeColumn = 'rtlImw'
+            itemsUpdtdTypeColumn = 'items_updtd_rtl'
+            vendorNameSplit3 = vendorNameSplit2.toLowerCase().split('rtlimw')
+            updateTypeTotal = 'tot_updtd_rtl'
+            console.log(`imwTypeColumn==> ${imwTypeColumn}`)
+        }
+        if (fileName.toLowerCase().includes('wsimw')) {
+            imwTypeColumn = 'wsImw'
+            itemsUpdtdTypeColumn = 'items_updtd_ws'
+            vendorNameSplit3 = vendorNameSplit2.toLowerCase().split('wsimw')
+            updateTypeTotal = 'tot_updtd_ws'
+            console.log(`imwTypeColumn==> ${imwTypeColumn}`)
+        }
+        let vendorName = vendorNameSplit3[0]
+        let ediVendorName = `EDI-${vendorName.toUpperCase()}`
+        console.log(`ediVendorName==> ${ediVendorName}`)
+
+        if (imwTypeColumn) { //only attempt to update rainbowcat if you're saving an IMW csv (therefore imwTypeColumn
+            //will be truthy)
+            connection.query(`
+            UPDATE rainbowcat SET ${imwTypeColumn} = '${req.body.data}.csv (${srcRsCSV_nonPag.length} items)' 
+            WHERE ediName = '${ediVendorName}';
+    
+            INSERT INTO rainbowcat_update_tracker (date, edi_vendor_name, ${imwTypeColumn}, ${itemsUpdtdTypeColumn})
+            VALUES('${todayIsoSplit}', 'EDI-${vendorName.toUpperCase()}', '${req.body.data}.csv', '${srcRsCSV_nonPag.length}')
+            ON DUPLICATE KEY UPDATE ${imwTypeColumn} = ${imwTypeColumn};
+    
+            UPDATE rainbowcat rbc
+            INNER JOIN (
+              SELECT edi_vendor_name,
+              SUM(${itemsUpdtdTypeColumn}) as total_updated
+              FROM rainbowcat_update_tracker
+              GROUP BY edi_vendor_name
+            )
+            rbcut ON rbc.ediName = rbcut.edi_vendor_name
+            SET rbc.${updateTypeTotal} = rbcut.total_updated;`)
+
+            res.json({
+                "response from saveToCSV": `~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved AND rainbowcat/rainbowcat_update_tracker updated<<~~~`
+            })
+
+        } else {
+            res.json({
+                "response from saveToCSV": `~~~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved <<~~~~~`
+            })
+        }
+    }
+
+    // updateRbCat()
+    //v//Automatically add note to rainbowcat table that Retail IMW has been generated//////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
