@@ -68,16 +68,20 @@ export async function post(req, res, next) {
       eaNumDivide = rainbowCatRows[0]['EA_Num_divide']
       csNumDivide = rainbowCatRows[0]['CS_Num_divide']
       let vndrWllnssMrgns = rainbowCatRows[0]['wellnessMargins']
-      console.log(`vndrWllnssMrgns==> ${vndrWllnssMrgns}`)
-      let vndrWllnssMrgns_parsed = JSON.parse(`${vndrWllnssMrgns}`)
-      console.log(`Object.keys(vndrWllnssMrgns_parsed)==> ${Object.keys(vndrWllnssMrgns_parsed)}`)
-      console.log(`Object.values(vndrWllnssMrgns_parsed)==> ${Object.values(vndrWllnssMrgns_parsed)}`)
+      if (vndrWllnssMrgns !== null) { //don't run marginstager() if no wellness margins present, otherwise there'll be no JSON to
+        //parse, and you'll get an error
+        console.log(`vndrWllnssMrgns==> ${vndrWllnssMrgns}`)
+        let vndrWllnssMrgns_parsed = JSON.parse(`${vndrWllnssMrgns}`)
+        console.log(`Object.keys(vndrWllnssMrgns_parsed)==> ${Object.keys(vndrWllnssMrgns_parsed)}`)
+        console.log(`Object.values(vndrWllnssMrgns_parsed)==> ${Object.values(vndrWllnssMrgns_parsed)}`)
 
-      marginStager(defaultMargArr, vndrWllnssMrgns_parsed, stagedMargArr)
+        marginStager(defaultMargArr, vndrWllnssMrgns_parsed, stagedMargArr)
 
-      for (let k = 0; k < stagedMargArr.length; k++) {
-        console.log(`JSON.stringify(stagedMargArr[k])==> ${JSON.stringify(stagedMargArr[k])}`)
+        for (let k = 0; k < stagedMargArr.length; k++) {
+          console.log(`JSON.stringify(stagedMargArr[k])==> ${JSON.stringify(stagedMargArr[k])}`)
+        }
       }
+
     }
   }).on('end', function () {
     res.json({
