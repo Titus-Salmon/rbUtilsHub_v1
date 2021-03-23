@@ -26,7 +26,7 @@ let selected;
 {/if}
 
 {#if selected === "nej_w_alt_id"}
-  <NejQueryModal />
+  <Nej_w_alt_id />
 {/if}
 
 {#if selected === "showTables"}
