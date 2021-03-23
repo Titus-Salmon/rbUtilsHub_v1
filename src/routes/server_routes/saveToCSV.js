@@ -47,14 +47,15 @@ export async function post(req, res, next) {
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //v//Automatically add note to rainbowcat table that Retail IMW has been generated//////////////////////////////////////
-    let fileName = req.body.data
 
-    var today = new Date()
-    var todayIso = today.toISOString()
-    var todayIsoSplitArr = todayIso.split('T')
-    var todayIsoSplit = todayIsoSplitArr[0]
 
     function updateRbCat() {
+        let fileName = req.body.data
+
+        var today = new Date()
+        var todayIso = today.toISOString()
+        var todayIsoSplitArr = todayIso.split('T')
+        var todayIsoSplit = todayIsoSplitArr[0]
         var imwTypeColumn
 
         //here we are doing some js magic to extract the "ediName" from the Rtl IMW name we're saving (nejTableNameRtlIMWYYYMMDD):
