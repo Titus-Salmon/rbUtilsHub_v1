@@ -31,7 +31,7 @@ export async function post(req, res, next) {
   edi_table.${venCatPrefix}_upc, edi_table.${venCatPrefix}_sku, edi_table.${venCatPrefix}_unit_type FROM ${nhcrtTableName}
   nhcrt JOIN ${ediTableName} edi_table ON nhcrt.inv_ScanCode
   WHERE nhcrt.inv_ScanCode = edi_table.${venCatPrefix}_upc
-  OR nhcrt.nhcrt.asc_scancode = edi_table.${venCatPrefix}_upc
+  OR nhcrt.asc_scancode = edi_table.${venCatPrefix}_upc
   ORDER BY nhcrt.pi1_Description, nhcrt.pi2_Description;`
 
   function showSearchRes(rows) {
