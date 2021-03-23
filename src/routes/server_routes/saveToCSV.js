@@ -19,7 +19,7 @@ export async function post(req, res, next) {
 
     // queryResArrCacheValue = queryResArrCache.take('queryResArrCache_key') // this also deletes the key
     queryResArrCacheValue = queryResArrCache.get('queryResArrCache_key') // use 'get' to leave key in memory
-    console.log(`queryResArrCacheValue[0]==> ${queryResArrCacheValue[0]}`)
+    console.log(`JSON.stringify(queryResArrCacheValue[0])==> ${JSON.stringify(queryResArrCacheValue[0])}`)
     let firstRowOfTableObj = queryResArrCacheValue[0]
     if (firstRowOfTableObj['_#_']) { //delete the _#_ column if it exists, because we don't want that in any iut IMWs
         delete firstRowOfTableObj['_#_']
@@ -109,11 +109,11 @@ export async function post(req, res, next) {
             let ediVendorName = `EDI-${vendorName.toUpperCase()}`
             console.log(`ediVendorName==> ${ediVendorName}`)
             connection.query(`
-            UPDATE rainbowcat SET ${imwTypeColumn} = '${req.body.data}.csv (${srcRsCSV_nonPag.length} items)' 
+            UPDATE rainbowcat SET ${imwTypeColumn} = '${req.body.data}.csv (${queryResArrCacheValue.length} items)' 
             WHERE ediName = '${ediVendorName}';
     
             INSERT INTO rainbowcat_update_tracker (date, edi_vendor_name, ${imwTypeColumn}, ${itemsUpdtdTypeColumn})
-            VALUES('${todayIsoSplit}', 'EDI-${vendorName.toUpperCase()}', '${req.body.data}.csv', '${srcRsCSV_nonPag.length}')
+            VALUES('${todayIsoSplit}', 'EDI-${vendorName.toUpperCase()}', '${req.body.data}.csv', '${queryResArrCacheValue.length}')
             ON DUPLICATE KEY UPDATE ${imwTypeColumn} = ${imwTypeColumn};
     
             UPDATE rainbowcat rbc
