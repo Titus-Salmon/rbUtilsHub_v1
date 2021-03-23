@@ -75,12 +75,13 @@ export async function post(req, res, next) {
             updateTypeTotal = 'tot_updtd_ws'
             console.log(`imwTypeColumn==> ${imwTypeColumn}`)
         }
-        let vendorName = vendorNameSplit3[0]
-        let ediVendorName = `EDI-${vendorName.toUpperCase()}`
-        console.log(`ediVendorName==> ${ediVendorName}`)
+
 
         if (imwTypeColumn) { //only attempt to update rainbowcat if you're saving an IMW csv (therefore imwTypeColumn
             //will be truthy)
+            let vendorName = vendorNameSplit3[0]
+            let ediVendorName = `EDI-${vendorName.toUpperCase()}`
+            console.log(`ediVendorName==> ${ediVendorName}`)
             connection.query(`
             UPDATE rainbowcat SET ${imwTypeColumn} = '${req.body.data}.csv (${srcRsCSV_nonPag.length} items)' 
             WHERE ediName = '${ediVendorName}';
