@@ -1,14 +1,4 @@
 const fs = require('fs')
-
-const mysql = require('mysql')
-
-const connection = mysql.createConnection({
-    host: process.env.RB_HOST,
-    user: process.env.RB_USER,
-    password: process.env.RB_PW,
-    database: process.env.RB_DB,
-    multipleStatements: true //MUST HAVE to make more than 1 sql statement in a single query
-})
 console.log(`hello from top level of saveToCSV`)
 import queryResArrCache from "../../nodeCacheStuff/cache1"
 let queryResArrCacheValue
@@ -19,7 +9,7 @@ export async function post(req, res, next) {
 
     // queryResArrCacheValue = queryResArrCache.take('queryResArrCache_key') // this also deletes the key
     queryResArrCacheValue = queryResArrCache.get('queryResArrCache_key') // use 'get' to leave key in memory
-    console.log(`JSON.stringify(queryResArrCacheValue[0])==> ${JSON.stringify(queryResArrCacheValue[0])}`)
+    console.log(`queryResArrCacheValue[0]==> ${queryResArrCacheValue[0]}`)
     let firstRowOfTableObj = queryResArrCacheValue[0]
     if (firstRowOfTableObj['_#_']) { //delete the _#_ column if it exists, because we don't want that in any iut IMWs
         delete firstRowOfTableObj['_#_']
@@ -46,98 +36,11 @@ export async function post(req, res, next) {
             if (err) throw err;
             console.log(`===>> ${process.cwd()}/static/csv/${req.body.data}.csv saved<<===`)
         })
-        // res.json({
-        //     "response from saveToCSV": `~~~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved <<~~~~~`
-        // })
-        updateRbCat()
+        res.json({
+            "response from saveToCSV": `~~~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved <<~~~~~`
+        })
     } catch (err) {
         console.error(err);
     }
     //end csv generator //////////////////////////////////////////////////////////////////////////
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //v//Automatically add note to rainbowcat table that Retail IMW has been generated//////////////////////////////////////
-
-
-    function updateRbCat() {
-        console.log(`hello from within updateRbCat`)
-        let fileName = req.body.data
-        console.log(`fileName==> ${fileName}`)
-        console.log(`typeof fileName==> ${typeof fileName}`)
-
-        var today = new Date()
-        var todayIso = today.toISOString()
-        var todayIsoSplitArr = todayIso.split('T')
-        var todayIsoSplit = todayIsoSplitArr[0]
-        var imwTypeColumn
-        var itemsUpdtdTypeColumn
-        var vendorNameSplit3
-        var updateTypeTotal
-        var vendorName
-        var ediVendorName
-
-        //here we are doing some js magic to extract the "ediName" from the Rtl IMW name we're saving (nejTableNameRtlIMWYYYMMDD):
-        let vendorNameSplit1 = fileName.split('nej')
-        let vendorNameSplit2 = vendorNameSplit1[1]
-        if (fileName.toLowerCase().includes('rtlimw')) {
-            imwTypeColumn = 'rtlImw'
-            itemsUpdtdTypeColumn = 'items_updtd_rtl'
-            vendorNameSplit3 = vendorNameSplit2.toLowerCase().split('rtlimw')
-            updateTypeTotal = 'tot_updtd_rtl'
-            console.log(`imwTypeColumn==> ${imwTypeColumn}`)
-            vendorName = vendorNameSplit3[0]
-            ediVendorName = `EDI-${vendorName.toUpperCase()}`
-            console.log(`ediVendorName==> ${ediVendorName}`)
-        }
-        if (fileName.toLowerCase().includes('wsimw')) {
-            imwTypeColumn = 'wsImw'
-            itemsUpdtdTypeColumn = 'items_updtd_ws'
-            vendorNameSplit3 = vendorNameSplit2.toLowerCase().split('wsimw')
-            updateTypeTotal = 'tot_updtd_ws'
-            console.log(`imwTypeColumn==> ${imwTypeColumn}`)
-            vendorName = vendorNameSplit3[0]
-            ediVendorName = `EDI-${vendorName.toUpperCase()}`
-            console.log(`ediVendorName==> ${ediVendorName}`)
-        }
-
-
-
-
-        if (imwTypeColumn !== undefined) { //only attempt to update rainbowcat if you're saving an IMW csv (therefore imwTypeColumn
-            //will be truthy)
-            let vendorName = vendorNameSplit3[0]
-            let ediVendorName = `EDI-${vendorName.toUpperCase()}`
-            console.log(`ediVendorName==> ${ediVendorName}`)
-            connection.query(`
-            UPDATE rainbowcat SET ${imwTypeColumn} = '${req.body.data}.csv (${queryResArrCacheValue.length} items)' 
-            WHERE ediName = '${ediVendorName}';
-    
-            INSERT INTO rainbowcat_update_tracker (date, edi_vendor_name, ${imwTypeColumn}, ${itemsUpdtdTypeColumn})
-            VALUES('${todayIsoSplit}', 'EDI-${vendorName.toUpperCase()}', '${req.body.data}.csv', '${queryResArrCacheValue.length}')
-            ON DUPLICATE KEY UPDATE ${imwTypeColumn} = ${imwTypeColumn};
-    
-            UPDATE rainbowcat rbc
-            INNER JOIN (
-              SELECT edi_vendor_name,
-              SUM(${itemsUpdtdTypeColumn}) as total_updated
-              FROM rainbowcat_update_tracker
-              GROUP BY edi_vendor_name
-            )
-            rbcut ON rbc.ediName = rbcut.edi_vendor_name
-            SET rbc.${updateTypeTotal} = rbcut.total_updated;`)
-
-            res.json({
-                "response from saveToCSV": `~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved AND rainbowcat/rainbowcat_update_tracker updated<<~~~`
-            })
-
-        } else {
-            res.json({
-                "response from saveToCSV": `~~~~~>> ${process.cwd()}/static/csv/${req.body.data}.csv saved <<~~~~~`
-            })
-        }
-    }
-
-    // updateRbCat()
-    //v//Automatically add note to rainbowcat table that Retail IMW has been generated//////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
