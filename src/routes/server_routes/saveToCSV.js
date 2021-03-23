@@ -60,6 +60,7 @@ export async function post(req, res, next) {
         var todayIsoSplit = todayIsoSplitArr[0]
         var imwTypeColumn
         var itemsUpdtdTypeColumn
+        var vendorNameSplit3
         var updateTypeTotal
         var vendorName
         var ediVendorName
