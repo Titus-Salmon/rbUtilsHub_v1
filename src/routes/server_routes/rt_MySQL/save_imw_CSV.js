@@ -93,10 +93,10 @@ export async function post(req, res, next) {
 
     if (imwTypeColumn !== undefined) {
       connection.query(
-        `UPDATE rainbowcat SET ${imwTypeColumn} = '${req.body.data}.csv (${srcRsCSV_nonPag.length} items)' WHERE ediName = '${ediVendorName}';
+        `UPDATE rainbowcat SET ${imwTypeColumn} = '${req.body.data}.csv (${save_imw_CSV_cacheValue.length} items)' WHERE ediName = '${ediVendorName}';
   
           INSERT INTO rainbowcat_update_tracker (date, edi_vendor_name, ${imwTypeColumn}, ${itemsUpdtdTypeColumn})
-          VALUES('${todayIsoSplit}', 'EDI-${vendorName.toUpperCase()}', '${req.body.data}.csv', '${srcRsCSV_nonPag.length}')
+          VALUES('${todayIsoSplit}', 'EDI-${vendorName.toUpperCase()}', '${req.body.data}.csv', '${save_imw_CSV_cacheValue.length}')
           ON DUPLICATE KEY UPDATE ${imwTypeColumn} = ${imwTypeColumn};
   
           UPDATE rainbowcat rbc
