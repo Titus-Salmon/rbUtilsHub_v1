@@ -68,7 +68,7 @@ export async function post(req, res, next) {
       eaNumDivide = rainbowCatRows[0]['EA_Num_divide']
       csNumDivide = rainbowCatRows[0]['CS_Num_divide']
       let vndrWllnssMrgns = rainbowCatRows[0]['wellnessMargins']
-      if (vndrWllnssMrgns !== null || vndrWllnssMrgns !== "" || vndrWllnssMrgns !== undefined) { //don't run marginstager() if no 
+      if (vndrWllnssMrgns !== null && vndrWllnssMrgns !== "" && vndrWllnssMrgns !== undefined) { //don't run marginstager() if no 
         //wellness margins present, otherwise there'll be no JSON to parse, and you'll get an error
         console.log(`vndrWllnssMrgns==> ${vndrWllnssMrgns}`)
         let vndrWllnssMrgns_parsed = JSON.parse(`${vndrWllnssMrgns}`)
