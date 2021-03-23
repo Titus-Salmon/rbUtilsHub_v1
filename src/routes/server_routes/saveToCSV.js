@@ -57,6 +57,7 @@ export async function post(req, res, next) {
         var todayIsoSplitArr = todayIso.split('T')
         var todayIsoSplit = todayIsoSplitArr[0]
         var imwTypeColumn
+        var itemsUpdtdTypeColumn
 
         //here we are doing some js magic to extract the "ediName" from the Rtl IMW name we're saving (nejTableNameRtlIMWYYYMMDD):
         let vendorNameSplit1 = fileName.split('nej')
@@ -77,7 +78,7 @@ export async function post(req, res, next) {
         }
 
 
-        if (imwTypeColumn) { //only attempt to update rainbowcat if you're saving an IMW csv (therefore imwTypeColumn
+        if (imwTypeColumn !== undefined) { //only attempt to update rainbowcat if you're saving an IMW csv (therefore imwTypeColumn
             //will be truthy)
             let vendorName = vendorNameSplit3[0]
             let ediVendorName = `EDI-${vendorName.toUpperCase()}`
