@@ -5,7 +5,7 @@ function lbNumDiv(n, reqBody, queryResArr, discoMulti) {
   let inv_size_string = queryResArr[n]['inv_size']
   inv_size_string = inv_size_string.toLowerCase()
   let lb_string = "lb-"
-  if (inv_size_string.includes(lb_string)) {
+  if (inv_size_string.includes(lb_string) === true) {
     console.log(`inv_size_string from outside conditional==> ${inv_size_string}`)
   }
 
