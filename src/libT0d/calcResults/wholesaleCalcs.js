@@ -13,7 +13,6 @@ import {
 } from "../../libT0d/calcResults/eaCsNumDiv"
 
 import {
-  unitCost,
   lbNumDiv
 } from "../../libT0d/calcResults/lbNumDiv"
 
