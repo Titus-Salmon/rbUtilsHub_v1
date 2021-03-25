@@ -17,7 +17,34 @@ th {
 }
 </style>
 
-<body>
+{#if $tableData[0]["charm"] && $tableData[0]["sib_baseprice"]}
+  <RtlLogic />
+{:else if $tableData[0]["ediCostMod"] && $tableData[0]["lastCost"]}
+  <WsLogic />
+{:else}
+  <body>
+    <table>
+      <thead>
+        <tr>
+          {#each Object.keys($tableData[0]) as columnHeading}
+            <th>{columnHeading}</th>
+          {/each}
+        </tr>
+      </thead>
+      <tbody id="rsltTblBdy">
+        {#each $tableData as row}
+          <tr>
+            {#each Object.keys(row) as colName}
+              <td>{row[colName]}</td>
+            {/each}
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  </body>
+{/if}
+
+<!-- <body>
   <table>
     <thead>
       <tr>
@@ -42,4 +69,4 @@ th {
       {/if}
     </tbody>
   </table>
-</body>
+</body> -->
