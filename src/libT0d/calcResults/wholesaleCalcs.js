@@ -61,7 +61,7 @@ function wholesaleCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryRe
     //(because if one is, say, 21.990 and the other is 21.99, they weill be considered different)
     vendorActlCost = Math.round(vendorActlCost * 100) / 100
     catapultCost = Math.round(catapultCost * 100) / 100
-    console.log(`vendorActlCost==> ${vendorActlCost} | catapultCost==> ${catapultCost}`)
+    // console.log(`vendorActlCost==> ${vendorActlCost} | catapultCost==> ${catapultCost}`)
     if (parseFloat(catapultCost) !== parseFloat(vendorActlCost)) { //only include results in need of wholesale update
       eaCsNumDiv(i, reqBody, queryResArr, discoMulti_WS)
       lbNumDiv(i, reqBody, queryResArr, discoMulti_WS)
