@@ -19,10 +19,8 @@ import tableData from "../../../stores/dynamicTables/tableData1";
       {/each}
     {/if}
     {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) <= 0.35}
-      {#each Object.keys(row) as colName}
-        {#each Object.values(row) as cell}
-          <td>{cell}</td>
-        {/each}
+      {#each Object.values(row) as cell}
+        <td>{cell}</td>
       {/each}
     {/if}
   </tr>
