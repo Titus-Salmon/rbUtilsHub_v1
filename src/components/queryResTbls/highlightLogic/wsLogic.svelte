@@ -9,9 +9,7 @@ import tableData from "../../../stores/dynamicTables/tableData1";
         {#if colName === "ediCostMod" || colName === "lastCost"}
           <td style="background-color:#ffb3ca; color: black">{row[colName]}</td>
         {:else}
-          {#each Object.values(row) as cell}
-            <td>{cell}</td>
-          {/each}
+          <td>{row[colName]}</td>
         {/if}
       {/each}
     {/if}
@@ -20,9 +18,7 @@ import tableData from "../../../stores/dynamicTables/tableData1";
         {#if colName === "ediCostMod" || colName === "lastCost"}
           <td style="background-color:#ff8533; color: black">{row[colName]}</td>
         {:else}
-          {#each Object.values(row) as cell}
-            <td>{cell}</td>
-          {/each}
+          <td>{row[colName]}</td>
         {/if}
       {/each}
     {:else}
