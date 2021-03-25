@@ -10,6 +10,7 @@ let venCatPrefix = $stagingData[0].stagingDataResponse.venCatPrefix;
 let calcResultsResponse;
 let lbNumDivide;
 let ozNumDivide;
+let ctNumDivide;
 let imwOptions;
 // let skuMismatchAllowance;
 // let dptFilter;
@@ -169,8 +170,14 @@ function calcResults() {
   postBodyObj[`${inputId}`] = inputValue;
   //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
 
-  //v//divide cost by lb/////////////////////////////////////////////////////////////////////////////////////
+  //v//divide cost by oz/////////////////////////////////////////////////////////////////////////////////////
   inputId = "ozNumDivide";
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+  //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
+
+  //v//divide cost by ct/////////////////////////////////////////////////////////////////////////////////////
+  inputId = "ctNumDivide";
   inputValue = document.getElementById(`${inputId}`).value;
   postBodyObj[`${inputId}`] = inputValue;
   //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
@@ -566,6 +573,17 @@ function calcResults() {
             name="ozNumDivide"
             id="ozNumDivide"
             bind:value="{ozNumDivide}">
+            <option value="yes">yes</option>
+            <option value="no">no</option>
+          </select>
+        </div>
+        <!-- ctNumDivide -------------------------------------------------------------------------->
+        <div style="text-align:center">
+          <label for="ctNumDivide">inv_name CT-## divide</label>
+          <select
+            name="ctNumDivide"
+            id="ctNumDivide"
+            bind:value="{ctNumDivide}">
             <option value="yes">yes</option>
             <option value="no">no</option>
           </select>

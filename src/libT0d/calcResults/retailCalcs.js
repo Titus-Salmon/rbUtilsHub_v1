@@ -9,7 +9,8 @@ import {
   unitCost,
   eaCsNumDiv,
   lbNumDiv,
-  ozNumDiv
+  ozNumDiv,
+  ctNumDiv
 } from "../../libT0d/calcResults/eaCsNumDiv"
 import {
   nmPk,
@@ -66,6 +67,7 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
       eaCsNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
       lbNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
       ozNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
+      ctNumDiv(i, reqBody, queryResArr, discoMulti_Rtl)
       numPkgsCalc(i, queryResArr) //sets WebOffice Quantity value (the ## in CS-##)
       csPkMltCalc(i, queryResArr) //sets WebOffice Case Pack Multiple value (the ## in EA-##)
       if (queryResArr[i]['dpt_number'] === stagedDptMargData[j]['dptNumb']) {
