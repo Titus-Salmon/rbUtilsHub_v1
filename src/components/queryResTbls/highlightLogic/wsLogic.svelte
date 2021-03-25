@@ -4,7 +4,7 @@ import tableData from "../../../stores/dynamicTables/tableData1";
 
 {#each $tableData as row}
   <tr>
-    {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
+    {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35 && Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) <= 0.5}
       {#each Object.keys(row) as colName}
         {#if colName === "ediCostMod"}
           <td style="background-color:#ffb3ca; color: black">{row[colName]}</td>
