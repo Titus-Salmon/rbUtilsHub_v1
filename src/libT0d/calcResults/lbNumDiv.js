@@ -4,9 +4,10 @@ function lbNumDiv(n, reqBody, queryResArr, discoMulti) {
   let venCatPrefix = reqBody.venCatPrefix
   let inv_size_string = queryResArr[n]['inv_size']
   inv_size_string = inv_size_string.toLowerCase()
-  console.log(`inv_size_string from outside conditional==> ${inv_size_string}`)
+  let lb_string = "lb-"
+  // console.log(`inv_size_string from outside conditional==> ${inv_size_string}`)
 
-  if (inv_size_string.includes("lb-")) {
+  if (inv_size_string.includes(lb_string)) {
     console.log(`inv_size_string==> ${inv_size_string}`)
     let lbNum = queryResArr[n]['inv_size'].split('-')[1] //isolate the number portion of LB-##
     let venCost = queryResArr[n][`${venCatPrefix}_cost`] //get cost from vendor catalog
