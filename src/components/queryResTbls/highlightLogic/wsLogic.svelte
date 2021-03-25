@@ -6,22 +6,17 @@ import tableData from "../../../stores/dynamicTables/tableData1";
   <tr>
     {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.5}
       {#each Object.keys(row) as colName}
-        {#if colName === "ediCostMod" && colName === "lastCost"}
+        {#if colName === "ediCostMod" || colName === "lastCost"}
           <td style="background-color:#ff8533; color: black">{row[colName]}</td>
         {/if}
       {/each}
-    {:else}
-      {#each Object.values(row) as cell}
-        <td>{cell}</td>
-      {/each}
-    {/if}
-    {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
+    {:else if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
       {#each Object.keys(row) as colName}
-        {#if colName === "ediCostMod" && colName === "lastCost"}
+        {#if colName === "ediCostMod" || colName === "lastCost"}
           <td style="background-color:#ffb3ca; color: black">{row[colName]}</td>
         {/if}
       {/each}
-    {:else}
+    {:else if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) <= 0.35}
       {#each Object.values(row) as cell}
         <td>{cell}</td>
       {/each}
