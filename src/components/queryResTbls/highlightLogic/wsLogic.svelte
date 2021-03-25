@@ -18,12 +18,12 @@ import tableData from "../../../stores/dynamicTables/tableData1";
         {/if}
       {/each}
     {/if}
-    {#each Object.keys(row) as colName}
-      {#if colName !== "ediCostMod" && colName !== "lastCost" && colName === "ediCostMod" && colName === "lastCost"}
+    {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) <= 0.35}
+      {#each Object.keys(row) as colName}
         {#each Object.values(row) as cell}
           <td>{cell}</td>
         {/each}
-      {/if}
-    {/each}
+      {/each}
+    {/if}
   </tr>
 {/each}
