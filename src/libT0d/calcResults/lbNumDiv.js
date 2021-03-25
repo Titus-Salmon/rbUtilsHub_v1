@@ -12,6 +12,7 @@ function lbNumDiv(n, reqBody, queryResArr, discoMulti) {
     if (reqBody.lbNumDivide === 'yes') {
       //domathToGetToUnitCost
       unitCost = (venCost / lbNum) - (venCost / lbNum) * discoMulti
+      console.log(`unitCost from within lbNumDiv==> ${unitCost}`)
     } else {
       unitCost = venCost - venCost * discoMulti
     }
