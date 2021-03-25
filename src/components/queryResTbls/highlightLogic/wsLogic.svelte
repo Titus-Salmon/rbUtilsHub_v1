@@ -15,7 +15,7 @@ import tableData from "../../../stores/dynamicTables/tableData1";
         {/if}
       {/each}
     {/if}
-    {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.5}
+    {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) >= 0.5}
       {#each Object.keys(row) as colName}
         {#if colName === "ediCostMod" || colName === "lastCost"}
           <td style="background-color:#ff8533; color: black">{row[colName]}</td>
@@ -25,8 +25,7 @@ import tableData from "../../../stores/dynamicTables/tableData1";
           {/each}
         {/if}
       {/each}
-    {/if}
-    {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) < 0.35}
+    {:else}
       {#each Object.values(row) as cell}
         <td>{cell}</td>
       {/each}
