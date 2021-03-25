@@ -9,6 +9,7 @@ let tableName = $stagingData[0].stagingDataResponse.stagedTableName;
 let venCatPrefix = $stagingData[0].stagingDataResponse.venCatPrefix;
 let calcResultsResponse;
 let lbNumDivide;
+let ozNumDivide;
 let imwOptions;
 // let skuMismatchAllowance;
 // let dptFilter;
@@ -164,6 +165,12 @@ function calcResults() {
 
   //v//divide cost by lb/////////////////////////////////////////////////////////////////////////////////////
   inputId = "lbNumDivide";
+  inputValue = document.getElementById(`${inputId}`).value;
+  postBodyObj[`${inputId}`] = inputValue;
+  //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
+
+  //v//divide cost by lb/////////////////////////////////////////////////////////////////////////////////////
+  inputId = "ozNumDivide";
   inputValue = document.getElementById(`${inputId}`).value;
   postBodyObj[`${inputId}`] = inputValue;
   //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
@@ -543,11 +550,22 @@ function calcResults() {
         <!--dropdown options------------------------------------------------------------------------------------------>
         <!-- lbNumDivide -------------------------------------------------------------------------->
         <div style="text-align:center">
-          <label for="lbNumDivide">lbNumDivide</label>
+          <label for="lbNumDivide">inv_name LB-## divide</label>
           <select
             name="lbNumDivide"
             id="lbNumDivide"
             bind:value="{lbNumDivide}">
+            <option value="yes">yes</option>
+            <option value="no">no</option>
+          </select>
+        </div>
+        <!-- ozNumDivide -------------------------------------------------------------------------->
+        <div style="text-align:center">
+          <label for="ozNumDivide">inv_name OZ-## divide</label>
+          <select
+            name="ozNumDivide"
+            id="ozNumDivide"
+            bind:value="{ozNumDivide}">
             <option value="yes">yes</option>
             <option value="no">no</option>
           </select>

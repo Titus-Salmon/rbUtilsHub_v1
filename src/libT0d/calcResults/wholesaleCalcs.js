@@ -13,11 +13,6 @@ import {
   lbNumDiv
 } from "../../libT0d/calcResults/eaCsNumDiv"
 
-// import {
-//   unitCostLB,
-//   lbNumDiv
-// } from "../../libT0d/calcResults/lbNumDiv"
-
 import {
   nmPk,
   numPkgsCalc
