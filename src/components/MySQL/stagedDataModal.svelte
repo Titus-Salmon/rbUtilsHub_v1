@@ -8,6 +8,7 @@ import tableData from "../../stores/dynamicTables/tableData1";
 let tableName = $stagingData[0].stagingDataResponse.stagedTableName;
 let venCatPrefix = $stagingData[0].stagingDataResponse.venCatPrefix;
 let calcResultsResponse;
+let lbNumDivide;
 let imwOptions;
 // let skuMismatchAllowance;
 // let dptFilter;
@@ -534,6 +535,17 @@ function calcResults() {
         </div>
 
         <!--dropdown options------------------------------------------------------------------------------------------>
+        <!-- lbNumDivide -------------------------------------------------------------------------->
+        <div style="text-align:center">
+          <label for="lbNumDivide">lbNumDivide</label>
+          <select
+            name="lbNumDivide"
+            id="lbNumDivide"
+            bind:value="{lbNumDivide}">
+            <option value="yes">yes</option>
+            <option value="no">no</option>
+          </select>
+        </div>
         <!-- type of IMW -------------------------------------------------------------------------->
         <div style="text-align:center">
           <label for="typeOfIMW">Type of IMW</label>
