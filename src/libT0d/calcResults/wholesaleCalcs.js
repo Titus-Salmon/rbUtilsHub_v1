@@ -10,7 +10,8 @@ import {
 import {
   unitCost,
   eaCsNumDiv,
-  lbNumDiv
+  lbNumDiv,
+  ozNumDiv
 } from "../../libT0d/calcResults/eaCsNumDiv"
 
 import {
@@ -62,6 +63,7 @@ function wholesaleCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryRe
     if (parseFloat(catapultCost) !== parseFloat(vendorActlCost)) { //only include results in need of wholesale update
       eaCsNumDiv(i, reqBody, queryResArr, discoMulti_WS)
       lbNumDiv(i, reqBody, queryResArr, discoMulti_WS)
+      ozNumDiv(i, reqBody, queryResArr, discoMulti_WS)
       numPkgsCalc(i, queryResArr) //sets WebOffice Quantity value (the ## in CS-##)
       csPkMltCalc(i, queryResArr) //sets WebOffice Case Pack Multiple value (the ## in EA-##)
       let imwToPop = {}
