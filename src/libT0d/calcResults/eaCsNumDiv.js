@@ -40,7 +40,7 @@ function ozNumDiv(n, reqBody, queryResArr, discoMulti) {
 
   if (inv_size_string.includes("oz-")) {
     console.log(`inv_size_string==> ${inv_size_string}`)
-    let lbNum = queryResArr[n]['inv_size'].split('-')[1] //isolate the number portion of LB-##
+    let ozNum = queryResArr[n]['inv_size'].split('-')[1] //isolate the number portion of LB-##
     let venCost = queryResArr[n][`${venCatPrefix}_cost`] //get cost from vendor catalog
     if (reqBody.ozNumDivide === 'yes') {
       //domathToGetToUnitCost
