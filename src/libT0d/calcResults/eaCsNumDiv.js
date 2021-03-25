@@ -58,7 +58,7 @@ function ctNumDiv(n, reqBody, queryResArr, discoMulti) {
   let inv_size_string = queryResArr[n]['inv_size']
   inv_size_string = inv_size_string.toLowerCase()
 
-  if (inv_size_string.includes("oz-")) {
+  if (inv_size_string.includes("ct-")) {
     console.log(`inv_size_string==> ${inv_size_string}`)
     let ctNum = queryResArr[n]['inv_size'].split('-')[1] //isolate the number portion of LB-##
     let venCost = queryResArr[n][`${venCatPrefix}_cost`] //get cost from vendor catalog
