@@ -120,6 +120,10 @@ function retailCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryResAr
             if (reqdRtl % 1 < .10) { //change charm price to (#-1).99 if req'd rtl is #.00 -> #.10
               charm = reqdRtl - reqdRtl % 1 - .01
             }
+            if (reqdRtl < .10) { //don't charm anything with req'd rtl less than 10 cents (doing this because of the veggie caps
+              //Item ID = 686; alt ID = 089836060075)
+              charm = reqdRtl
+            }
           } else {
             if (reqdRtl < reqBody[`upperCutoffRqdRtl${dptAbbr}`]) { //if req'd rtl is below upper charm cutoff
               //($12 for Grocery & $9999 for Wellness)
