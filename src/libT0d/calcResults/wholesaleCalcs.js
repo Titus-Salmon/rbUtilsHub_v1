@@ -62,14 +62,14 @@ function wholesaleCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryRe
     catapultCost = Math.round(catapultCost * 100) / 100
     // console.log(`vendorActlCost==> ${vendorActlCost} | catapultCost==> ${catapultCost}`)
     // if (parseFloat(catapultCost) !== parseFloat(vendorActlCost)) { //only include results in need of wholesale update
+    eaCsNumDiv(i, reqBody, queryResArr, discoMulti_WS)
+    lbNumDiv(i, reqBody, queryResArr, discoMulti_WS)
+    ozNumDiv(i, reqBody, queryResArr, discoMulti_WS)
+    ctNumDiv(i, reqBody, queryResArr, discoMulti_WS)
+    numPkgsCalc(i, queryResArr) //sets WebOffice Quantity value (the ## in CS-##)
+    csPkMltCalc(i, queryResArr) //sets WebOffice Case Pack Multiple value (the ## in EA-##)
     if (parseFloat(catapultCost) !== parseFloat(unitCost)) {
-      console.log(`${queryResArr[i]['inv_ScanCode']} parseFloat(catapultCost): ${parseFloat(catapultCost)} | parseFloat(unitCost): ${parseFloat(unitCost)}`) //only include results in need of wholesale update; unitCost = ediCostMod
-      eaCsNumDiv(i, reqBody, queryResArr, discoMulti_WS)
-      lbNumDiv(i, reqBody, queryResArr, discoMulti_WS)
-      ozNumDiv(i, reqBody, queryResArr, discoMulti_WS)
-      ctNumDiv(i, reqBody, queryResArr, discoMulti_WS)
-      numPkgsCalc(i, queryResArr) //sets WebOffice Quantity value (the ## in CS-##)
-      csPkMltCalc(i, queryResArr) //sets WebOffice Case Pack Multiple value (the ## in EA-##)
+      console.log(`${queryResArr[i]['inv_ScanCode']} parseFloat(catapultCost): ${parseFloat(catapultCost)} | parseFloat(unitCost): ${parseFloat(unitCost)}`) //only include results in need of wholesale update; unitCost = ediCostMod  
       let imwToPop = {}
       blank_imw_creator(imwToPop)
       imwToPop['upc'] = `${queryResArr[i]['inv_ScanCode']}`
