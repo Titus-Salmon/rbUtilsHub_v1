@@ -174,9 +174,6 @@ function wholesaleCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryRe
       //just overwrite your cache with the review results, and everything should fall in place
       //V// CACHE QUERY RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
       queryResArrCache.set('queryResArrCache_key', modifiedQueryResArr)
-      // console.log(`queryResArrCache['data']['queryResArrCache_key']['v'].length==> ${queryResArrCache['data']['queryResArrCache_key']['v'].length}`)
-      // console.log(`queryResArrCache['data']['queryResArrCache_key']['v'][0]==> ${queryResArrCache['data']['queryResArrCache_key']['v'][0]}`)
-      // console.log(`JSON.stringify(queryResArrCache['data']['queryResArrCache_key']['v'][0])==> ${JSON.stringify(queryResArrCache['data']['queryResArrCache_key']['v'][0])}`)
       //^// CACHE QUERY RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
 
       // //^//ADD numPkgs, csPkgMltpl, ovr, appliedWSdisco, etc.
