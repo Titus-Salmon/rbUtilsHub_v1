@@ -62,7 +62,8 @@ function wholesaleCalcs(reqBody, queryResArr, populated_imw_arr, modifiedQueryRe
     catapultCost = Math.round(catapultCost * 100) / 100
     // console.log(`vendorActlCost==> ${vendorActlCost} | catapultCost==> ${catapultCost}`)
     // if (parseFloat(catapultCost) !== parseFloat(vendorActlCost)) { //only include results in need of wholesale update
-    if (parseFloat(catapultCost) !== parseFloat(unitCost)) { //only include results in need of wholesale update; unitCost = ediCostMod
+    if (parseFloat(catapultCost) !== parseFloat(unitCost)) {
+      console.log(`${queryResArr[i]['inv_ScanCode']} parseFloat(catapultCost): ${parseFloat(catapultCost)} | parseFloat(unitCost): ${parseFloat(unitCost)}`) //only include results in need of wholesale update; unitCost = ediCostMod
       eaCsNumDiv(i, reqBody, queryResArr, discoMulti_WS)
       lbNumDiv(i, reqBody, queryResArr, discoMulti_WS)
       ozNumDiv(i, reqBody, queryResArr, discoMulti_WS)
