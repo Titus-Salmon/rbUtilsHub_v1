@@ -11,8 +11,8 @@ let venCatPrefix;
 let skuToggle;
 let prchQtyOverride;
 
-function generateUnitTypeIMW() {
-  fetch("server_routes/rt_imwGenerators/generateUnitTypeIMW", {
+function itemNamerIMW() {
+  fetch("server_routes/rt_imwGenerators/itemNamerIMW", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -116,7 +116,7 @@ function generateUnitTypeIMW() {
 </div>
 <!-- //////////////button//////////////////////////// -->
 <div style="text-align:center">
-  <button on:click="{generateUnitTypeIMW}">generateUnitTypeIMW</button>
+  <button on:click="{itemNamerIMW}">itemNamerIMW</button>
 </div>
 
 {#if $utilResponses[0]["utilResponse"] !== null}
