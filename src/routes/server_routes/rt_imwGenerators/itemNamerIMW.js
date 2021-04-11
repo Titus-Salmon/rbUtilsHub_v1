@@ -41,6 +41,8 @@ export async function post(req, res, next) {
 
     for (let i = 0; i < rows.length; i++) {
 
+      console.log(`hello`)
+
       let srsObj = {}
 
       let oupNameVar = rows[i][venCatPrefix + '_unit_type'] //define variable for oupName
