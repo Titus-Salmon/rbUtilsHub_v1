@@ -40,6 +40,7 @@ export async function post(req, res, next) {
 
 
     console.log(`rows[0]==> ${rows[0]}`)
+
     console.log(`Object.keys(rows[0])==> ${Object.keys(rows[0])}`)
 
     for (let i = 0; i < rows.length; i++) {
