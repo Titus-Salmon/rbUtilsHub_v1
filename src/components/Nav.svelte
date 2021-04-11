@@ -77,6 +77,13 @@ a {
       <div>
         <li>
           <a
+            aria-current="{segment === 'itemNamerIMW' ? 'page' : undefined}"
+            href="/pages/imwGenerators/itemNamer">itemNamerIMW</a>
+        </li>
+      </div>
+      <div>
+        <li>
+          <a
             aria-current="{segment === 'toDo' ? 'page' : undefined}"
             href="/pages/pg_toDo/toDo">toDo</a>
         </li>
