@@ -36,12 +36,15 @@ export async function post(req, res, next) {
 
   function showSearchRes(rows) {
 
+    console.log(`hello from within showSearchRes, OUTSIDE of rows.length loop`)
+
+
     console.log(`rows[0]==> ${rows[0]}`)
     console.log(`Object.keys(rows[0])==> ${Object.keys(rows[0])}`)
 
     for (let i = 0; i < rows.length; i++) {
 
-      console.log(`hello`)
+      console.log(`hello from within showSearchRes, INSIDE of rows.length loop`)
 
       let srsObj = {}
 
