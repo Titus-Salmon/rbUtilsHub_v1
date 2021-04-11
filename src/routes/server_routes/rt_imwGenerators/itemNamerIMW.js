@@ -18,7 +18,7 @@ export async function post(req, res, next) {
   let skuToggle = req.body.skuToggle
   let prchQtyOverride = req.body.prchQtyOverride
 
-  console.log(`JSON.stringify(req.body) from generateUnitTypeIMW.js==> ${JSON.stringify(req.body)}`)
+  console.log(`JSON.stringify(req.body) from itemNamerIMW.js==> ${JSON.stringify(req.body)}`)
 
   let srsObjArr = []
 
