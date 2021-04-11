@@ -52,6 +52,10 @@ export async function post(req, res, next) {
       srsObj['dept_name'] = ''
       srsObj['recpt_alias'] = `${rows[i]['inv_receiptalias']}` // here we use the receipt alias from Catapult, NOT the item name from EDI catalog
       srsObj['brand'] = ''
+      let vendItemNameVar = rows[i][`${venCatPrefix}_name`]
+      let vendItemNameSplit = vendItemNameVar.split(',')
+      console.log(`vendItemNameSplit.length==> ${vendItemNameSplit.length}`)
+      console.log(`vendItemNameSplit==> ${vendItemNameSplit}`)
       srsObj['item_name'] = ''
       srsObj['size'] = ''
       srsObj['sugg_retail'] = ''

@@ -1,6 +1,6 @@
 <script>
-import imwGenResTbl from "../../../stores/dynamicTables/st_imwGenResTbl";
-import ImwGenRsltsTbl from "../../../components/imwGenRsltsTables/imwGenRsltsTbl.svelte";
+import itemNamerResTbl from "../../../stores/dynamicTables/st_itemNamerResTbl";
+import ItemNamerRsltsTbl from "../../../components/imwGenRsltsTables/itemNamerRsltsTbl.svelte";
 import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
 import utilResponses from "../../../stores/utilResponses/st_utilResponses";
 import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
@@ -31,7 +31,7 @@ function generateUnitTypeIMW() {
     //[2] this result must then be converted to JSON via the json() method on the frontend, even though it was already sent
     //from the backend as JSON
     .then((queryResJSON) => {
-      imwGenResTbl.set(queryResJSON.srsObjArr);
+      itemNamerResTbl.set(queryResJSON.srsObjArr);
       console.log(
         `JSON.stringify(queryResJSON.srsObjArr)==> ${JSON.stringify(
           queryResJSON.srsObjArr
@@ -131,7 +131,7 @@ function generateUnitTypeIMW() {
   {/if}
 {/if}
 
-{#if Object.keys($imwGenResTbl[0]).length > 0}
+{#if Object.keys($itemNamerResTbl[0]).length > 0}
   <SaveToCSV />
-  <ImwGenRsltsTbl />
+  <ItemNamerRsltsTbl />
 {/if}
