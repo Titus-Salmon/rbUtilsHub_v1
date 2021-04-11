@@ -28,7 +28,9 @@ export async function post(req, res, next) {
   let query = `
   SELECT DISTINCT nhcrt.inv_ScanCode, nhcrt.ord_supplierstocknumber, nhcrt.inv_name, nhcrt.inv_receiptalias,
   nhcrt.ven_companyname, nhcrt.asc_scancode, nhcrt.pi1_Description, nhcrt.pi2_Description,
-  edi_table.${venCatPrefix}_upc, edi_table.${venCatPrefix}_sku, edi_table.${venCatPrefix}_unit_type FROM ${nhcrtTableName}
+  edi_table.${venCatPrefix}_upc, edi_table.${venCatPrefix}_sku, edi_table.${venCatPrefix}_unit_type 
+  edi_table.${venCatPrefix}_name
+  FROM ${nhcrtTableName}
   nhcrt JOIN ${ediTableName} edi_table ON nhcrt.inv_ScanCode
   WHERE nhcrt.inv_ScanCode = edi_table.${venCatPrefix}_upc
   OR nhcrt.asc_scancode = edi_table.${venCatPrefix}_upc
