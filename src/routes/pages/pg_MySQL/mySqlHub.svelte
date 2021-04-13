@@ -73,7 +73,7 @@ import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
 
 <!--v-- only show inputs & buttons here if tableData store has been populated with query results -->
 <!--v-- NOTE: you must use the $ to access the tableData store -->
-{#if Object.keys($tableData).length > 1}
+{#if Object.keys($tableData).length > 0}
   <div class="flexbox">
     <SaveToCSV />
     <SaveToCSVcreatePop />
