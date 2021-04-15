@@ -15,8 +15,8 @@ WHERE trim(ven_companyname) IN ('EDI-ALOE')
 AND trim(dpt_number) != '999999' ORDER BY dpt_name, pi1_Description, pi2_Description
 `;
 
-let actlMargRangeLessVal = null;
-let actlMargRangeGreaterVal = null;
+let actlMargRangeLessVal;
+let actlMargRangeGreaterVal;
 
 function vInvMasterQuery() {
   fetch("server_routes/rt_T-SQL/v_InventoryMasterQuery", {
@@ -97,6 +97,7 @@ function vInvMasterQuery() {
     type="text"
     id="actlMargRangeLess"
     name="actlMargRangeLess"
+    value="enter value"
     bind:this="{actlMargRangeLessVal}" />
 </div>
 
@@ -108,6 +109,7 @@ function vInvMasterQuery() {
     type="text"
     id="actlMargRangeGreater"
     name="actlMargRangeGreater"
+    value="enter value"
     bind:this="{actlMargRangeGreaterVal}" />
 </div>
 

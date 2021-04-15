@@ -48,14 +48,14 @@ export async function post(req, res, next) {
           catapultResObj['actlMarg'] = Math.round(((rowData['sib_baseprice'] - rowData['inv_lastcost']) / (rowData['sib_baseprice'])) * 100)
         }
       }
-      if (actlMargRangeLessVal !== null) { //if you've provided some logic via the actualMargLessRange input (i.e. '<0')
+      if (actlMargRangeLessVal !== "enter value") { //if you've provided some logic via the actualMargLessRange input (i.e. '<0')
         //use that logic to filter the result set for only items that meet the actual margin criteria
         if (catapultResObj['actlMarg'] < actlMargRangeLessVal) {
           queryResArr.push(catapultResObj)
           srcRsXLS_tsql.push(catapultResObj)
         }
       } else {
-        if (actlMargRangeGreaterVal !== null) { //if you've provided some logic via the actualMargGreaterRange input (i.e. '>0')
+        if (actlMargRangeGreaterVal !== "enter value") { //if you've provided some logic via the actualMargGreaterRange input (i.e. '>0')
           //use that logic to filter the result set for only items that meet the actual margin criteria
           if (catapultResObj['actlMarg'] > actlMargRangeGreaterVal) {
             queryResArr.push(catapultResObj)
