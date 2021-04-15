@@ -15,6 +15,8 @@ WHERE trim(ven_companyname) IN ('EDI-ALOE')
 AND trim(dpt_number) != '999999' ORDER BY dpt_name, pi1_Description, pi2_Description
 `;
 
+let actlMargRangeVal;
+
 function vInvMasterQuery() {
   fetch("server_routes/rt_T-SQL/v_InventoryMasterQuery", {
     method: "POST",
@@ -23,6 +25,7 @@ function vInvMasterQuery() {
     },
     body: JSON.stringify({
       data: tsqlQueryText.value,
+      actlMargRangeVal: actlMargRangeVal.value,
     }),
   })
     .then((queryRes) => queryRes.json())
@@ -82,6 +85,17 @@ function vInvMasterQuery() {
     bind:this="{tsqlQueryText}">
     {queryText}
   </textarea>
+</div>
+
+<div style="text-align:center">
+  <label for="actlMargRange">Enter Range for Actual Margin</label>
+</div>
+<div style="text-align:center">
+  <input
+    type="text"
+    id="actlMargRange"
+    name="actlMargRange"
+    bind:this="{actlMargRangeVal}" />
 </div>
 
 <button style="display:block; margin: 0 auto 1rem" on:click="{vInvMasterQuery}"

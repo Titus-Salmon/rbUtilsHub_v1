@@ -8,6 +8,7 @@ export async function post(req, res, next) {
   res.setHeader('Content-Type', 'application/json')
   console.log(`req.body.data==> ${req.body.data}`)
   let catapultDbQuery = req.body.data
+  let actlMargRangeVal = req.body.actlMargRangeVal
 
   let queryResArr = [] //array that holds all query results Objs
   let queryResArr_1stPage = [] //array that holds 1st page of query results Objs
@@ -42,8 +43,17 @@ export async function post(req, res, next) {
           catapultResObj['actlMarg'] = Math.round(((rowData['sib_baseprice'] - rowData['inv_lastcost']) / (rowData['sib_baseprice'])) * 100)
         }
       }
-      queryResArr.push(catapultResObj)
-      srcRsXLS_tsql.push(catapultResObj)
+      if (actlMargRangeVal !== undefined) { //if you've provided some logic via the actualMargRange input (i.e. '<0')
+        //use that logic to filter the result set for only items that meet the actual margin criteria
+        if (catapultResObj['actlMarg']
+          `${actlMargRangeVal}`) {
+          queryResArr.push(catapultResObj)
+          srcRsXLS_tsql.push(catapultResObj)
+        }
+      } else { //otherwise, display entire result set, regardless of actual margin values
+        queryResArr.push(catapultResObj)
+        srcRsXLS_tsql.push(catapultResObj)
+      }
     }
 
     if (queryResArr.length > 100) { //if there are more than 100 query results, only push the 1st 100 into the 1st page
