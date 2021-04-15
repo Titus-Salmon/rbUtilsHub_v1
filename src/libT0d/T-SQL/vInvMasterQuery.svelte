@@ -15,7 +15,8 @@ WHERE trim(ven_companyname) IN ('EDI-ALOE')
 AND trim(dpt_number) != '999999' ORDER BY dpt_name, pi1_Description, pi2_Description
 `;
 
-let actlMargRangeVal;
+let actlMargRangeLessVal;
+let actlMargRangeGreaterVal;
 
 function vInvMasterQuery() {
   fetch("server_routes/rt_T-SQL/v_InventoryMasterQuery", {
@@ -25,7 +26,8 @@ function vInvMasterQuery() {
     },
     body: JSON.stringify({
       data: tsqlQueryText.value,
-      actlMargRangeVal: actlMargRangeVal.value,
+      actlMargRangeLessVal: actlMargRangeLessVal.value,
+      actlMargRangeGreaterVal: actlMargRangeGreaterVal.value,
     }),
   })
     .then((queryRes) => queryRes.json())
@@ -88,14 +90,25 @@ function vInvMasterQuery() {
 </div>
 
 <div style="text-align:center">
-  <label for="actlMargRange">Enter Range for Actual Margin</label>
+  <label for="actlMargRangeLess">Actual Margin Less Than</label>
 </div>
 <div style="text-align:center">
   <input
     type="text"
-    id="actlMargRange"
-    name="actlMargRange"
-    bind:this="{actlMargRangeVal}" />
+    id="actlMargRangeLess"
+    name="actlMargRangeLess"
+    bind:this="{actlMargRangeLessVal}" />
+</div>
+
+<div style="text-align:center">
+  <label for="actlMargRangeGreater">Actual Margin Greater Than</label>
+</div>
+<div style="text-align:center">
+  <input
+    type="text"
+    id="actlMargRangeGreater"
+    name="actlMargRangeGreater"
+    bind:this="{actlMargRangeLessVal}" />
 </div>
 
 <button style="display:block; margin: 0 auto 1rem" on:click="{vInvMasterQuery}"

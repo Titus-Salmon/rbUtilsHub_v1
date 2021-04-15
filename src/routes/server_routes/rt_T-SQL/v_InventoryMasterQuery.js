@@ -8,7 +8,7 @@ export async function post(req, res, next) {
   res.setHeader('Content-Type', 'application/json')
   console.log(`req.body.data==> ${req.body.data}`)
   let catapultDbQuery = req.body.data
-  let actlMargRangeVal = req.body.actlMargRangeVal
+  let actlMargRangeLessVal = req.body.actlMargRangeLessVal
 
   let queryResArr = [] //array that holds all query results Objs
   let queryResArr_1stPage = [] //array that holds 1st page of query results Objs
@@ -43,16 +43,23 @@ export async function post(req, res, next) {
           catapultResObj['actlMarg'] = Math.round(((rowData['sib_baseprice'] - rowData['inv_lastcost']) / (rowData['sib_baseprice'])) * 100)
         }
       }
-      if (actlMargRangeVal !== undefined) { //if you've provided some logic via the actualMargRange input (i.e. '<0')
+      if (actlMargRangeLessVal !== undefined) { //if you've provided some logic via the actualMargLessRange input (i.e. '<0')
         //use that logic to filter the result set for only items that meet the actual margin criteria
-        if (catapultResObj['actlMarg']
-          `${actlMargRangeVal}`) {
+        if (catapultResObj['actlMarg'] < actlMargRangeLessVal) {
           queryResArr.push(catapultResObj)
           srcRsXLS_tsql.push(catapultResObj)
         }
-      } else { //otherwise, display entire result set, regardless of actual margin values
-        queryResArr.push(catapultResObj)
-        srcRsXLS_tsql.push(catapultResObj)
+      } else {
+        if (actlMargRangeGreaterVal !== undefined) { //if you've provided some logic via the actualMargGreaterRange input (i.e. '>0')
+          //use that logic to filter the result set for only items that meet the actual margin criteria
+          if (catapultResObj['actlMarg'] > actlMargRangeGreaterVal) {
+            queryResArr.push(catapultResObj)
+            srcRsXLS_tsql.push(catapultResObj)
+          }
+        } else { //otherwise, display entire result set, regardless of actual margin values
+          queryResArr.push(catapultResObj)
+          srcRsXLS_tsql.push(catapultResObj)
+        }
       }
     }
 
