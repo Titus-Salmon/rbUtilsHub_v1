@@ -9,6 +9,11 @@ export async function post(req, res, next) {
   console.log(`req.body.data==> ${req.body.data}`)
   let catapultDbQuery = req.body.data
   let actlMargRangeLessVal = req.body.actlMargRangeLessVal
+  let actlMargRangeGreaterVal = req.body.actlMargRangeGreaterVal
+
+  console.log(`actlMargRangeLessVal==> ${actlMargRangeLessVal}`)
+  console.log(`actlMargRangeGreaterVal==> ${actlMargRangeGreaterVal}`)
+
 
   let queryResArr = [] //array that holds all query results Objs
   let queryResArr_1stPage = [] //array that holds 1st page of query results Objs
