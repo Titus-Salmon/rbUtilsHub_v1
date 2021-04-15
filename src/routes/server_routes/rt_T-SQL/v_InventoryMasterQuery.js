@@ -48,22 +48,33 @@ export async function post(req, res, next) {
           catapultResObj['actlMarg'] = Math.round(((rowData['sib_baseprice'] - rowData['inv_lastcost']) / (rowData['sib_baseprice'])) * 100)
         }
       }
-      if (actlMargRangeLessVal !== "enter value") { //if you've provided some logic via the actualMargLessRange input (i.e. '<0')
+
+      if (actlMargRangeLessVal !== "enter value" && actlMargRangeGreaterVal !== "enter value") { //if you've provided some 
+        //logic via the actualMargLessRange input (i.e. '<100' anf '>10')
         //use that logic to filter the result set for only items that meet the actual margin criteria
-        if (catapultResObj['actlMarg'] < parseFloat(actlMargRangeLessVal)) {
+        if (catapultResObj['actlMarg'] < parseFloat(actlMargRangeLessVal) &&
+          catapultResObj['actlMarg'] > parseFloat(actlMargRangeGreaterVal)) {
           queryResArr.push(catapultResObj)
           srcRsXLS_tsql.push(catapultResObj)
         }
       } else {
-        if (actlMargRangeGreaterVal !== "enter value") { //if you've provided some logic via the actualMargGreaterRange input (i.e. '>0')
+        if (actlMargRangeLessVal !== "enter value") { //if you've provided some logic via the actualMargLessRange input (i.e. '<0')
           //use that logic to filter the result set for only items that meet the actual margin criteria
-          if (catapultResObj['actlMarg'] > parseFloat(actlMargRangeGreaterVal)) {
+          if (catapultResObj['actlMarg'] < parseFloat(actlMargRangeLessVal)) {
             queryResArr.push(catapultResObj)
             srcRsXLS_tsql.push(catapultResObj)
           }
-        } else { //otherwise, display entire result set, regardless of actual margin values
-          queryResArr.push(catapultResObj)
-          srcRsXLS_tsql.push(catapultResObj)
+        } else {
+          if (actlMargRangeGreaterVal !== "enter value") { //if you've provided some logic via the actualMargGreaterRange input (i.e. '>0')
+            //use that logic to filter the result set for only items that meet the actual margin criteria
+            if (catapultResObj['actlMarg'] > parseFloat(actlMargRangeGreaterVal)) {
+              queryResArr.push(catapultResObj)
+              srcRsXLS_tsql.push(catapultResObj)
+            }
+          } else { //otherwise, display entire result set, regardless of actual margin values
+            queryResArr.push(catapultResObj)
+            srcRsXLS_tsql.push(catapultResObj)
+          }
         }
       }
     }
