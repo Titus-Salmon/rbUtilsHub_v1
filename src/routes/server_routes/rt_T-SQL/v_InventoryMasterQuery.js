@@ -44,9 +44,12 @@ export async function post(req, res, next) {
         } else {
           catapultResObj[`${colName}`] = rowData[`${colName}`]
         }
-        if (colName.toLowerCase() === 'sib_idealmargin') { //calculates actual margin, and adds that row to result set
-          catapultResObj['actlMarg'] = Math.round(((rowData['sib_baseprice'] - rowData['inv_lastcost']) / (rowData['sib_baseprice'])) * 100)
-        }
+        // if (colName.toLowerCase() === 'sib_idealmargin') { //calculates actual margin, and adds that row to result set
+        //   catapultResObj['actlMarg'] = Math.round(((rowData['sib_baseprice'] - rowData['inv_lastcost']) / (rowData['sib_baseprice'])) * 100)
+        // }
+        //v//calculates actual margin, and adds that row to result set
+        catapultResObj['actlMarg'] = Math.round(((rowData['sib_baseprice'] - rowData['inv_lastcost']) / (rowData['sib_baseprice'])) * 100)
+        //^//calculates actual margin, and adds that row to result set
       }
 
       if (actlMargRangeLessVal !== "enter value" && actlMargRangeGreaterVal !== "enter value") { //if you've provided some 
