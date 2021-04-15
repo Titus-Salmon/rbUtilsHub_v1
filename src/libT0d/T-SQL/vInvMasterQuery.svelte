@@ -15,8 +15,8 @@ WHERE trim(ven_companyname) IN ('EDI-ALOE')
 AND trim(dpt_number) != '999999' ORDER BY dpt_name, pi1_Description, pi2_Description
 `;
 
-let actlMargRangeLessVal;
-let actlMargRangeGreaterVal;
+let actlMargRangeLessVal = null;
+let actlMargRangeGreaterVal = null;
 
 function vInvMasterQuery() {
   fetch("server_routes/rt_T-SQL/v_InventoryMasterQuery", {
