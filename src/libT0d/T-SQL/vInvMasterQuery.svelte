@@ -108,7 +108,7 @@ function vInvMasterQuery() {
     type="text"
     id="actlMargRangeGreater"
     name="actlMargRangeGreater"
-    bind:this="{actlMargRangeLessVal}" />
+    bind:this="{actlMargRangeGreaterVal}" />
 </div>
 
 <button style="display:block; margin: 0 auto 1rem" on:click="{vInvMasterQuery}"
