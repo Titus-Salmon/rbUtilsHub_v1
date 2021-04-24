@@ -296,6 +296,7 @@ function retailCalcs(
       reviewObj["pkgQnt"] = `${queryResArr[i]["asc_quantity"]}`; //***this is pkg qty for ALD ID***
       reviewObj["splrID"] = `${queryResArr[i]["ven_companyname"]}`;
       reviewObj["unit"] = `${queryResArr[i]["oup_name"]}`;
+      reviewObj["store"] = `${queryResArr[i]["sto_number"]}`;
       reviewObj["numPkgs"] = `${nmPk}`;
       reviewObj["csPkgMltpl"] = `${csPk}`;
       reviewObj["ovr"] = `${ovr}`;
