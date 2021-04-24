@@ -12,7 +12,7 @@ inv_powerfield3, inv_powerfield4
 FROM
 catapult.ecrs.v_InventoryMaster 
 WHERE trim(ven_companyname) IN ('EDI-ALOE')
-AND trim(dpt_number) != '999999' ORDER BY dpt_name, pi1_Description, pi2_Description, inv_ScanCode
+AND trim(dpt_number) != '999999' ORDER BY dpt_name, pi1_Description, pi2_Description, inv_ScanCode, inv_discontinued
 `;
 
 let actlMargRangeLessVal;
