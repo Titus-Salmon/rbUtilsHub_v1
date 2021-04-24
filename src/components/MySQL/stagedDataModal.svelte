@@ -557,35 +557,35 @@ function calcResults() {
         <!--dropdown options------------------------------------------------------------------------------------------>
         <!-- lbNumDivide -------------------------------------------------------------------------->
         <div style="text-align:center">
-          <label for="lbNumDivide">inv_name LB-## divide</label>
+          <label for="lbNumDivide">LB-## divide</label>
           <select
             name="lbNumDivide"
             id="lbNumDivide"
             bind:value="{lbNumDivide}">
-            <option value="yes">yes</option>
             <option value="no">no</option>
+            <option value="yes">yes</option>
           </select>
         </div>
         <!-- ozNumDivide -------------------------------------------------------------------------->
         <div style="text-align:center">
-          <label for="ozNumDivide">inv_name OZ-## divide</label>
+          <label for="ozNumDivide">OZ-## divide</label>
           <select
             name="ozNumDivide"
             id="ozNumDivide"
             bind:value="{ozNumDivide}">
-            <option value="yes">yes</option>
             <option value="no">no</option>
+            <option value="yes">yes</option>
           </select>
         </div>
         <!-- ctNumDivide -------------------------------------------------------------------------->
         <div style="text-align:center">
-          <label for="ctNumDivide">inv_name CT-## divide</label>
+          <label for="ctNumDivide">CT-## divide</label>
           <select
             name="ctNumDivide"
             id="ctNumDivide"
             bind:value="{ctNumDivide}">
-            <option value="yes">yes</option>
             <option value="no">no</option>
+            <option value="yes">yes</option>
           </select>
         </div>
         <!-- type of IMW -------------------------------------------------------------------------->

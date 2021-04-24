@@ -1,82 +1,76 @@
 let unitCost;
 
 function eaCsNumDiv(n, reqBody, queryResArr, discoMulti) {
-  let venCatPrefix = reqBody.venCatPrefix
-  let eaCsNum = queryResArr[n]['oup_name'].split('-')[1] //isolate the number portion of EA/CS-##
-  let venCost = queryResArr[n][`${venCatPrefix}_cost`] //get cost from vendor catalog
-  if (reqBody.eaNumDivide === 'yes' || reqBody.csNumDivide === 'yes') {
+  let venCatPrefix = reqBody.venCatPrefix;
+  let eaCsNum = queryResArr[n]["oup_name"].split("-")[1]; //isolate the number portion of EA/CS-##
+  let venCost = queryResArr[n][`${venCatPrefix}_cost`]; //get cost from vendor catalog
+  if (reqBody.eaNumDivide === "yes" || reqBody.csNumDivide === "yes") {
     //domathToGetToUnitCost
-    unitCost = (venCost / eaCsNum) - (venCost / eaCsNum) * discoMulti
+    unitCost = venCost / eaCsNum - (venCost / eaCsNum) * discoMulti;
   } else {
-    unitCost = venCost - venCost * discoMulti
+    unitCost = venCost - venCost * discoMulti;
   }
-  unitCost = Math.round(unitCost * 100) / 100 //rounding unit cost off to 2 decimal places
+  unitCost = Math.round(unitCost * 100) / 100; //rounding unit cost off to 2 decimal places
 }
 
 function lbNumDiv(n, reqBody, queryResArr, discoMulti) {
-  let venCatPrefix = reqBody.venCatPrefix
-  let inv_size_string = queryResArr[n]['inv_size']
-  inv_size_string = inv_size_string.toLowerCase()
+  let venCatPrefix = reqBody.venCatPrefix;
+  let oup_name_string = queryResArr[n]["oup_name"];
+  oup_name_string = oup_name_string.toLowerCase();
 
-  if (inv_size_string.includes("lb-")) {
-    console.log(`inv_size_string==> ${inv_size_string}`)
-    let lbNum = queryResArr[n]['inv_size'].split('-')[1] //isolate the number portion of LB-##
-    let venCost = queryResArr[n][`${venCatPrefix}_cost`] //get cost from vendor catalog
-    if (reqBody.lbNumDivide === 'yes') {
+  if (oup_name_string.includes("lb-")) {
+    console.log(`oup_name_string==> ${oup_name_string}`);
+    let lbNum = queryResArr[n]["oup_name"].split("-")[1]; //isolate the number portion of LB-##
+    let venCost = queryResArr[n][`${venCatPrefix}_cost`]; //get cost from vendor catalog
+    if (reqBody.lbNumDivide === "yes") {
       //domathToGetToUnitCost
-      unitCost = (venCost / lbNum) - (venCost / lbNum) * discoMulti
-      console.log(`unitCost from within lbNumDiv==> ${unitCost}`)
+      unitCost = venCost / lbNum - (venCost / lbNum) * discoMulti;
+      console.log(`unitCost from within lbNumDiv==> ${unitCost}`);
     } else {
-      unitCost = venCost - venCost * discoMulti
+      unitCost = venCost - venCost * discoMulti;
     }
-    unitCost = Math.round(unitCost * 100) / 100 //rounding unit cost off to 2 decimal places
+    unitCost = Math.round(unitCost * 100) / 100; //rounding unit cost off to 2 decimal places
   }
 }
 
 function ozNumDiv(n, reqBody, queryResArr, discoMulti) {
-  let venCatPrefix = reqBody.venCatPrefix
-  let inv_size_string = queryResArr[n]['inv_size']
-  inv_size_string = inv_size_string.toLowerCase()
+  let venCatPrefix = reqBody.venCatPrefix;
+  let oup_name_string = queryResArr[n]["oup_name"];
+  oup_name_string = oup_name_string.toLowerCase();
 
-  if (inv_size_string.includes("oz-")) {
-    console.log(`inv_size_string==> ${inv_size_string}`)
-    let ozNum = queryResArr[n]['inv_size'].split('-')[1] //isolate the number portion of LB-##
-    let venCost = queryResArr[n][`${venCatPrefix}_cost`] //get cost from vendor catalog
-    if (reqBody.ozNumDivide === 'yes') {
+  if (oup_name_string.includes("oz-")) {
+    console.log(`oup_name_string==> ${oup_name_string}`);
+    let ozNum = queryResArr[n]["oup_name"].split("-")[1]; //isolate the number portion of LB-##
+    let venCost = queryResArr[n][`${venCatPrefix}_cost`]; //get cost from vendor catalog
+    if (reqBody.ozNumDivide === "yes") {
       //domathToGetToUnitCost
-      unitCost = (venCost / ozNum) - (venCost / ozNum) * discoMulti
-      console.log(`unitCost from within ozNumDiv==> ${unitCost}`)
+      unitCost = venCost / ozNum - (venCost / ozNum) * discoMulti;
+      console.log(`unitCost from within ozNumDiv==> ${unitCost}`);
     } else {
-      unitCost = venCost - venCost * discoMulti
+      unitCost = venCost - venCost * discoMulti;
     }
-    unitCost = Math.round(unitCost * 100) / 100 //rounding unit cost off to 2 decimal places
+    unitCost = Math.round(unitCost * 100) / 100; //rounding unit cost off to 2 decimal places
   }
 }
 
 function ctNumDiv(n, reqBody, queryResArr, discoMulti) {
-  let venCatPrefix = reqBody.venCatPrefix
-  let inv_size_string = queryResArr[n]['inv_size']
-  inv_size_string = inv_size_string.toLowerCase()
+  let venCatPrefix = reqBody.venCatPrefix;
+  let oup_name_string = queryResArr[n]["oup_name"];
+  oup_name_string = oup_name_string.toLowerCase();
 
-  if (inv_size_string.includes("ct-")) {
-    console.log(`inv_size_string==> ${inv_size_string}`)
-    let ctNum = queryResArr[n]['inv_size'].split('-')[1] //isolate the number portion of LB-##
-    let venCost = queryResArr[n][`${venCatPrefix}_cost`] //get cost from vendor catalog
-    if (reqBody.ctNumDivide === 'yes') {
+  if (oup_name_string.includes("ct-")) {
+    console.log(`oup_name_string==> ${oup_name_string}`);
+    let ctNum = queryResArr[n]["oup_name"].split("-")[1]; //isolate the number portion of LB-##
+    let venCost = queryResArr[n][`${venCatPrefix}_cost`]; //get cost from vendor catalog
+    if (reqBody.ctNumDivide === "yes") {
       //domathToGetToUnitCost
-      unitCost = (venCost / ctNum) - (venCost / ctNum) * discoMulti
-      console.log(`unitCost from within ctNumDiv==> ${unitCost}`)
+      unitCost = venCost / ctNum - (venCost / ctNum) * discoMulti;
+      console.log(`unitCost from within ctNumDiv==> ${unitCost}`);
     } else {
-      unitCost = venCost - venCost * discoMulti
+      unitCost = venCost - venCost * discoMulti;
     }
-    unitCost = Math.round(unitCost * 100) / 100 //rounding unit cost off to 2 decimal places
+    unitCost = Math.round(unitCost * 100) / 100; //rounding unit cost off to 2 decimal places
   }
 }
 
-export {
-  unitCost,
-  eaCsNumDiv,
-  lbNumDiv,
-  ozNumDiv,
-  ctNumDiv
-}
+export { unitCost, eaCsNumDiv, lbNumDiv, ozNumDiv, ctNumDiv };
