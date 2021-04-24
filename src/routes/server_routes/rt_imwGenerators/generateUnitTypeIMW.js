@@ -83,6 +83,7 @@ export async function post(req, res, next) {
       srsObj["supplier_id"] = `${rows[i]["ven_companyname"]}`;
       srsObj["unit"] = `${rows[i][`${venCatPrefix}_unit_type`]}`; // here we use ${venCatPrefix}_unit_type from EDI table, NOT from Catapult (nhcrt.oupName)
 
+      //v//num_pkgs handling////////////////////////////////////////////////////
       if (
         oupNameSplit[0].toLowerCase().includes("cs") ||
         oupNameSplit[0].toLowerCase().includes("case")
@@ -104,6 +105,7 @@ export async function post(req, res, next) {
           srsObj["num_pkgs"] = "badVal";
         }
       }
+      //^//num_pkgs handling////////////////////////////////////////////////////
 
       srsObj["category"] = "";
       srsObj["sub_category"] = "";
@@ -122,36 +124,31 @@ export async function post(req, res, next) {
       srsObj["dsd"] = "";
       srsObj["disc_mult"] = "";
 
+      //v//case_pk_mult handling////////////////////////////////////////////////////
       if (
         oupNameSplit[0].toLowerCase().includes("cs") ||
-        oupNameSplit[0].toLowerCase().includes("case")
+        oupNameSplit[0].toLowerCase().includes("case") ||
+        oupNameSplit[0].toLowerCase().includes("lb") ||
+        oupNameSplit[0].toLowerCase().includes("ct")
       ) {
         if (oupNameSplit[1]) {
           srsObj["case_pk_mult"] = "1";
         } else {
-          srsObj["case_pk_mult"] = "badValCS";
-        }
-      } else {
-        if (
-          oupNameSplit[0].toLowerCase().includes("ea") ||
-          oupNameSplit[0].toLowerCase().includes("each")
-        ) {
-          if (oupNameSplit[1]) {
-            srsObj["case_pk_mult"] = `${oupNameSplit[1]}`;
-          } else {
-            srsObj["case_pk_mult"] = "badValEA";
-          }
-        } else {
-          if (
-            oupNameSplit[0].toLowerCase().includes("cs") ||
-            oupNameSplit[0].toLowerCase().includes("case")
-          ) {
-            srsObj["case_pk_mult"] = "1";
-          } else {
-            srsObj["case_pk_mult"] = "badVal";
-          }
+          srsObj["case_pk_mult"] = "badVal";
         }
       }
+
+      if (
+        oupNameSplit[0].toLowerCase().includes("ea") ||
+        oupNameSplit[0].toLowerCase().includes("each")
+      ) {
+        if (oupNameSplit[1]) {
+          srsObj["case_pk_mult"] = `${oupNameSplit[1]}`;
+        } else {
+          srsObj["case_pk_mult"] = "badVal";
+        }
+      }
+      //^//case_pk_mult handling////////////////////////////////////////////////////
 
       if (prchQtyOverride === "yes") {
         srsObj["ovr"] = "1";
