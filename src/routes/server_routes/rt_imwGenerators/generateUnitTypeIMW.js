@@ -93,18 +93,30 @@ export async function post(req, res, next) {
         } else {
           srsObj["num_pkgs"] = "badValCS";
         }
-      } else {
-        if (
-          oupNameSplit[0].toLowerCase().includes("ea") ||
-          oupNameSplit[0].toLowerCase().includes("each") ||
-          oupNameSplit[0].toLowerCase().includes("lb") ||
-          oupNameSplit[0].toLowerCase().includes("ct")
-        ) {
-          srsObj["num_pkgs"] = "1";
+      }
+
+      if (oupNameSplit[0].toLowerCase().includes("lb")) {
+        if (oupNameSplit[0].toLowerCase().includes("_lb")) {
+          //v//should split oupName into array with the prefix digit (#_) as the 1st array element
+          //for the end result, we want 2_LB-5 to get a num_pkgs variable set to 2
+          let oupNameSplitCSprefix = oupNameVar.split("_");
+          srsObj["num_pkgs"] = `${oupNameSplitCSprefix[0]}`;
         } else {
-          srsObj["num_pkgs"] = "badVal";
+          srsObj["num_pkgs"] = "1";
         }
       }
+
+      if (
+        oupNameSplit[0].toLowerCase().includes("ea") ||
+        oupNameSplit[0].toLowerCase().includes("each") ||
+        // oupNameSplit[0].toLowerCase().includes("lb") ||
+        oupNameSplit[0].toLowerCase().includes("ct")
+      ) {
+        srsObj["num_pkgs"] = "1";
+      } else {
+        srsObj["num_pkgs"] = "badVal";
+      }
+
       //^//num_pkgs handling////////////////////////////////////////////////////
 
       srsObj["category"] = "";
