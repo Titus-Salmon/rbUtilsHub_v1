@@ -113,9 +113,10 @@ export async function post(req, res, next) {
         oupNameSplit[0].toLowerCase().includes("ct")
       ) {
         srsObj["num_pkgs"] = "1";
-      } else {
-        srsObj["num_pkgs"] = "badVal";
       }
+      // else {
+      //   srsObj["num_pkgs"] = "badVal";
+      // }
 
       //^//num_pkgs handling////////////////////////////////////////////////////
 
