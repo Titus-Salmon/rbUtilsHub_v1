@@ -2,15 +2,38 @@ let unitCost;
 
 function eaCsNumDiv(n, reqBody, queryResArr, discoMulti) {
   let venCatPrefix = reqBody.venCatPrefix;
+  let oup_name_string = queryResArr[n]["oup_name"];
+  oup_name_string = oup_name_string.toLowerCase();
   let eaCsNum = queryResArr[n]["oup_name"].split("-")[1]; //isolate the number portion of EA/CS-##
   let venCost = queryResArr[n][`${venCatPrefix}_cost`]; //get cost from vendor catalog
-  if (reqBody.eaNumDivide === "yes" || reqBody.csNumDivide === "yes") {
-    //domathToGetToUnitCost
-    unitCost = venCost / eaCsNum - (venCost / eaCsNum) * discoMulti;
-  } else {
-    unitCost = venCost - venCost * discoMulti;
+
+  if (oup_name_string.includes("ea-")) {
+    if (reqBody.eaNumDivide === "yes") {
+      //domathToGetToUnitCost
+      unitCost = venCost / eaCsNum - (venCost / eaCsNum) * discoMulti;
+    } else {
+      unitCost = venCost - venCost * discoMulti;
+    }
+    unitCost = Math.round(unitCost * 100) / 100; //rounding unit cost off to 2 decimal places
   }
-  unitCost = Math.round(unitCost * 100) / 100; //rounding unit cost off to 2 decimal places
+
+  if (oup_name_string.includes("cs-")) {
+    if (reqBody.csNumDivide === "yes") {
+      //domathToGetToUnitCost
+      unitCost = venCost / eaCsNum - (venCost / eaCsNum) * discoMulti;
+    } else {
+      unitCost = venCost - venCost * discoMulti;
+    }
+    unitCost = Math.round(unitCost * 100) / 100; //rounding unit cost off to 2 decimal places
+  }
+
+  // if (reqBody.eaNumDivide === "yes" || reqBody.csNumDivide === "yes") {
+  //   //domathToGetToUnitCost
+  //   unitCost = venCost / eaCsNum - (venCost / eaCsNum) * discoMulti;
+  // } else {
+  //   unitCost = venCost - venCost * discoMulti;
+  // }
+  // unitCost = Math.round(unitCost * 100) / 100; //rounding unit cost off to 2 decimal places
 }
 
 function lbNumDiv(n, reqBody, queryResArr, discoMulti) {
