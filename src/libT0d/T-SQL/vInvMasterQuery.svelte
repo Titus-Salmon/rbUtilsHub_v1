@@ -78,8 +78,8 @@ function vInvMasterQuery() {
       isLoading = false;
     })
     .catch((err) => {
+      alert(`err from vInvMasterQuery.svelte==> ${err}`);
       isLoading = false;
-      console.log(`err from vInvMasterQuery.svelte==> ${err}`);
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
@@ -101,7 +101,9 @@ function vInvMasterQuery() {
 </div>
 
 {#if isLoading}
-  <p>loading spinner goes here</p>
+  <div style="text-align:center">
+    <p>loading spinner goes here</p>
+  </div>
 {/if}
 
 <div style="text-align:center">
