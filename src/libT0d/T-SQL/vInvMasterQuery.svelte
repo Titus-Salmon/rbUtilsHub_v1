@@ -1,4 +1,5 @@
 <script>
+import { onMount } from "svelte";
 import paginData from "../../stores/pagination/st_pagination1";
 import tableData from "../../stores/dynamicTables/tableData1";
 let tsqlQueryText;
@@ -18,7 +19,11 @@ AND trim(dpt_number) != '999999' ORDER BY dpt_name, pi1_Description, pi2_Descrip
 let actlMargRangeLessVal;
 let actlMargRangeGreaterVal;
 
+let isLoading = false;
+
 function vInvMasterQuery() {
+  isLoading = true;
+
   fetch("server_routes/rt_T-SQL/v_InventoryMasterQuery", {
     method: "POST",
     headers: {
@@ -69,6 +74,12 @@ function vInvMasterQuery() {
           $paginData
         )}`
       );
+
+      isLoading = false;
+    })
+    .catch((err) => {
+      isLoading = false;
+      console.log(`err from vInvMasterQuery.svelte==> ${err}`);
     });
   //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
   //and at that point we can use this JSON object to do whatever with, such as stringify it, or
@@ -88,6 +99,10 @@ function vInvMasterQuery() {
     {queryText}
   </textarea>
 </div>
+
+{#if isLoading}
+  <p>loading spinner goes here</p>
+{/if}
 
 <div style="text-align:center">
   <label for="actlMargRangeLess">Actual Margin Less Than</label>
