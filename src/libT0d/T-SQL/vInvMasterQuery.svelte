@@ -106,7 +106,7 @@ function vInvMasterQuery() {
 </div>
 
 {#if isLoading}
-  <div style="text-align:center">
+  <div class="flexbox">
     <!-- <p>loading spinner goes here</p> -->
     <RingLoader size="60" color="#FF3E00" unit="px" duration="1s" />
   </div>
