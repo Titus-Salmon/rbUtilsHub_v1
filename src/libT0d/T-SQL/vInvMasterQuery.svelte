@@ -2,7 +2,7 @@
 import { onMount } from "svelte";
 import paginData from "../../stores/pagination/st_pagination1";
 import tableData from "../../stores/dynamicTables/tableData1";
-import { RingLoader } from "svelte-loading-spinners";
+import { DoubleBounce } from "svelte-loading-spinners";
 let tsqlQueryText;
 let queryText = `
 SELECT 
@@ -106,9 +106,9 @@ function vInvMasterQuery() {
 </div>
 
 {#if isLoading}
-  <div class="flexbox">
+  <div class="flexbox" margin="1rem">
     <!-- <p>loading spinner goes here</p> -->
-    <RingLoader size="60" color="#FF3E00" unit="px" duration="1s" />
+    <DoubleBounce size="60" color="#FF3E00" unit="px" duration="1s" />
   </div>
 {/if}
 
