@@ -75,6 +75,10 @@ function vInvMasterQuery() {
         )}`
       );
 
+      if (queryResJSON.error) {
+        alert(`err from vInvMasterQuery.svelte==> ${queryResJSON.error}`);
+      }
+
       isLoading = false;
     })
     .catch((err) => {
