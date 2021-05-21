@@ -93,6 +93,45 @@ a {
   justify-content: center;
 }
 
+.noBullet {
+  list-style-type: none;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  /* background-color: #2196f3; */
+  padding: 10px;
+}
+.grid-item {
+  background-color: var(--surface2);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 0 0.5rem;
+  /* font-size: 9px; */
+  text-align: center;
+}
+
+.grid-item2 {
+  background-color: var(--surface2);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 0.5rem;
+  /* font-size: 9px; */
+  text-align: center;
+}
+
+.rainbow-gradient {
+  background-image: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+}
+
 nav {
   border-bottom: 1px solid var(--element6);
   font-weight: 300;
