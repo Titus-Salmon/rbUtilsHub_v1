@@ -10,6 +10,7 @@
     {#each homeLinks as homeLink}
       <div class="grid-item">
         <HomeLink
+          segment="{homeLink.segment}"
           id="{homeLink.id}"
           linkName="{homeLink.linkName}"
           imgURL="{homeLink.imgURL}"
