@@ -1,5 +1,5 @@
 <script>
-import { onMount } from "svelte";
+import { onMount, onDestroy } from "svelte";
 import paginData from "../../stores/pagination/st_pagination1";
 import tableData from "../../stores/dynamicTables/tableData1";
 import { Jumper } from "svelte-loading-spinners";

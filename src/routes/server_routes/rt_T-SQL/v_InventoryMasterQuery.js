@@ -55,7 +55,7 @@ export async function post(req, res, next) {
         catapultResObj["actlMarg"] = Math.round(
           ((rowData["sib_baseprice"] - rowData["inv_lastcost"]) /
             rowData["sib_baseprice"]) *
-            100
+          100
         );
         //^//calculates actual margin, and adds that row to result set
       }

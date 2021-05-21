@@ -1,5 +1,5 @@
 <script>
-import { onMount } from "svelte";
+import { onMount, onDestroy } from "svelte";
 import QueryResultsTable1 from "../../../components/queryResTbls/queryResultsTable1.svelte";
 import PaginUI from "../../../components/UI/paginUI.svelte";
 import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
@@ -12,6 +12,17 @@ import VInvMasterQuery from "../../../libT0d/T-SQL/vInvMasterQuery.svelte";
 import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
 import SaveToCSVcreatePop from "../../../libT0d/saveToCSVcreatePop.svelte";
 import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
+
+onDestroy(() => {
+  paginData.set([
+    {
+      totalPages: null,
+      currentPage: null,
+    },
+  ]);
+
+  tableData.set([{}]);
+});
 </script>
 
 <style>
