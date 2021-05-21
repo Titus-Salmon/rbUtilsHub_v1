@@ -14,6 +14,7 @@ import SaveToCSVcreatePop from "../../../libT0d/saveToCSVcreatePop.svelte";
 import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
 
 onDestroy(() => {
+  //empty pagin and table stores when navigating away from mySqlHub, so pagin and tables don't linger
   paginData.set([
     {
       totalPages: null,

@@ -55,6 +55,18 @@ import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
 //even when navigating to another page.
 //***********************************************IMPORTANT************************************************************************/
 // });
+
+onDestroy(() => {
+  //empty pagin and table stores when navigating away from mySqlHub, so pagin and tables don't linger
+  paginData.set([
+    {
+      totalPages: null,
+      currentPage: null,
+    },
+  ]);
+
+  tableData.set([{}]);
+});
 </script>
 
 <style>
