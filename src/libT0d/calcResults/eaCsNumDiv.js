@@ -88,4 +88,20 @@ function ctNumDiv(n, reqBody, queryResArr, discoMulti) {
   }
 }
 
-export { unitCost, eaCsNumDiv, lbNumDiv, ozNumDiv, ctNumDiv };
+function altIDqtyDiv(n, reqBody, queryResArr, discoMulti) {
+  if (reqBody.altIDqtyDiv === "yes") {
+    let altIDqty = queryResArr[n]["pkgQnt"]; //the # in pkgQnt column (alt ID qty #)
+    if (altIDqty > 1) {
+      //only do calcs if there is some #>1 in pkgQty field
+      let venCost = queryResArr[n][`${venCatPrefix}_cost`]; //get cost from vendor catalog
+      //domathToGetToUnitCost
+      unitCost = venCost / altIDqty - (venCost / altIDqty) * discoMulti;
+      console.log(`unitCost from within altIDqtyDiv==> ${unitCost}`);
+    } else {
+      unitCost = venCost - venCost * discoMulti;
+    }
+    unitCost = Math.round(unitCost * 100) / 100; //rounding unit cost off to 2 decimal places
+  }
+}
+
+export { unitCost, eaCsNumDiv, lbNumDiv, ozNumDiv, ctNumDiv, altIDqtyDiv };

@@ -1,10 +1,10 @@
 <script>
-import { onMount, onDestroy } from "svelte";
-import paginData from "../../stores/pagination/st_pagination1";
-import tableData from "../../stores/dynamicTables/tableData1";
-import { Jumper } from "svelte-loading-spinners";
-let tsqlQueryText;
-let queryText = `
+  import { onMount, onDestroy } from "svelte";
+  import paginData from "../../stores/pagination/st_pagination1";
+  import tableData from "../../stores/dynamicTables/tableData1";
+  import { Jumper } from "svelte-loading-spinners";
+  let tsqlQueryText;
+  let queryText = `
 SELECT 
 inv_ScanCode, ord_supplierstocknumber, inv_name, inv_size, inv_receiptalias, inv_datecreated, inv_default, ord_quantityinorderunit, oup_name, 
 sto_number, brd_name, dpt_name, dpt_number, wgt_name, sib_idealMargin, ven_companyname, ven_code, asc_scancode, asc_receiptalias, asc_quantity, 
@@ -17,79 +17,79 @@ WHERE trim(ven_companyname) IN ('EDI-ALOE')
 AND trim(dpt_number) != '999999' ORDER BY dpt_name, pi1_Description, pi2_Description, inv_ScanCode, inv_discontinued
 `;
 
-let actlMargRangeLessVal;
-let actlMargRangeGreaterVal;
+  let actlMargRangeLessVal;
+  let actlMargRangeGreaterVal;
 
-let isLoading = false;
+  let isLoading = false;
 
-function vInvMasterQuery() {
-  isLoading = true;
+  function vInvMasterQuery() {
+    isLoading = true;
 
-  fetch("server_routes/rt_T-SQL/v_InventoryMasterQuery", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      data: tsqlQueryText.value,
-      actlMargRangeLessVal: actlMargRangeLessVal.value,
-      actlMargRangeGreaterVal: actlMargRangeGreaterVal.value,
-    }),
-  })
-    .then((queryRes) => queryRes.json())
-    //^//not certain how this works, but the best I can describe for now is as follows:
-    //[1] the "queryRes" argument represents the result of the previous fetch()
-    //[2] this result must then be converted to JSON via the json() method on the frontend, even though it was already sent
-    //from the backend as JSON
-    .then((queryResJSON) => {
-      tableData.set(queryResJSON.queryResArr_1stPage);
-      console.log(
-        `queryResJSON.queryResArr_1stPage==> ${queryResJSON.queryResArr_1stPage}`
-      ); //passing backend response to frontend "Store" & we are overwriting the "Store" with set()
-      console.log(
-        `JSON.stringify($paginData) before update from vInvMasterQuery()==> ${JSON.stringify(
-          $paginData
-        )}`
-      );
-      paginData.update((currentData) => {
-        currentData = [
-          {
-            totalPages: queryResJSON.totalPages,
-            currentPage: queryResJSON.currentPage,
-            nextPage: queryResJSON.nextPage,
-            prevPage: queryResJSON.prevPage,
-          },
-        ];
-        return currentData;
-      });
-      // paginData.set([
-      //   {
-      //     totalPages: queryResJSON.totalPages,
-      //     currentPage: queryResJSON.currentPage,
-      //     nextPage: queryResJSON.nextPage,
-      //     prevPage: queryResJSON.prevPage,
-      //   },
-      // ]);
-      console.log(
-        `JSON.stringify($paginData) after update from vInvMasterQuery()==> ${JSON.stringify(
-          $paginData
-        )}`
-      );
-
-      if (queryResJSON.error) {
-        alert(`err from vInvMasterQuery.svelte==> ${queryResJSON.error}`);
-      }
-
-      isLoading = false;
+    fetch("server_routes/rt_T-SQL/v_InventoryMasterQuery", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: tsqlQueryText.value,
+        actlMargRangeLessVal: actlMargRangeLessVal.value,
+        actlMargRangeGreaterVal: actlMargRangeGreaterVal.value,
+      }),
     })
-    .catch((err) => {
-      alert(`err from vInvMasterQuery.svelte==> ${err}`);
-      isLoading = false;
-    });
-  //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
-  //and at that point we can use this JSON object to do whatever with, such as stringify it, or
-  //display it in a table on the frontend
-}
+      .then((queryRes) => queryRes.json())
+      //^//not certain how this works, but the best I can describe for now is as follows:
+      //[1] the "queryRes" argument represents the result of the previous fetch()
+      //[2] this result must then be converted to JSON via the json() method on the frontend, even though it was already sent
+      //from the backend as JSON
+      .then((queryResJSON) => {
+        tableData.set(queryResJSON.queryResArr_1stPage);
+        console.log(
+          `queryResJSON.queryResArr_1stPage==> ${queryResJSON.queryResArr_1stPage}`
+        ); //passing backend response to frontend "Store" & we are overwriting the "Store" with set()
+        console.log(
+          `JSON.stringify($paginData) before update from vInvMasterQuery()==> ${JSON.stringify(
+            $paginData
+          )}`
+        );
+        paginData.update((currentData) => {
+          currentData = [
+            {
+              totalPages: queryResJSON.totalPages,
+              currentPage: queryResJSON.currentPage,
+              nextPage: queryResJSON.nextPage,
+              prevPage: queryResJSON.prevPage,
+            },
+          ];
+          return currentData;
+        });
+        // paginData.set([
+        //   {
+        //     totalPages: queryResJSON.totalPages,
+        //     currentPage: queryResJSON.currentPage,
+        //     nextPage: queryResJSON.nextPage,
+        //     prevPage: queryResJSON.prevPage,
+        //   },
+        // ]);
+        console.log(
+          `JSON.stringify($paginData) after update from vInvMasterQuery()==> ${JSON.stringify(
+            $paginData
+          )}`
+        );
+
+        if (queryResJSON.error) {
+          alert(`err from vInvMasterQuery.svelte==> ${queryResJSON.error}`);
+        }
+
+        isLoading = false;
+      })
+      .catch((err) => {
+        alert(`err from vInvMasterQuery.svelte==> ${err}`);
+        isLoading = false;
+      });
+    //^//[3] then, the results from the 1st then() are passed as "queryResJSON",
+    //and at that point we can use this JSON object to do whatever with, such as stringify it, or
+    //display it in a table on the frontend
+  }
 </script>
 
 <div style="text-align:center">
@@ -107,7 +107,6 @@ function vInvMasterQuery() {
 
 {#if isLoading}
   <div class="flexbox" margin="1rem">
-    <!-- <p>loading spinner goes here</p> -->
     <Jumper size="60" color="#FF3E00" unit="px" duration="1s" />
   </div>
 {/if}

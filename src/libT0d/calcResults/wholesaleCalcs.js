@@ -11,6 +11,7 @@ import {
   lbNumDiv,
   ozNumDiv,
   ctNumDiv,
+  altIDqtyDiv,
 } from "../../libT0d/calcResults/eaCsNumDiv";
 
 import { nmPk, numPkgsCalc } from "../../libT0d/calcResults/numPkgsCalc";
@@ -62,6 +63,7 @@ function wholesaleCalcs(
     lbNumDiv(i, reqBody, queryResArr, discoMulti_WS);
     ozNumDiv(i, reqBody, queryResArr, discoMulti_WS);
     ctNumDiv(i, reqBody, queryResArr, discoMulti_WS);
+    altIDqtyDiv(i, reqBody, queryResArr, discoMulti_WS);
     numPkgsCalc(i, queryResArr); //sets WebOffice Quantity value (the ## in CS-##)
     csPkMltCalc(i, queryResArr); //sets WebOffice Case Pack Multiple value (the ## in EA-##)
     if (parseFloat(catapultCost) !== parseFloat(unitCost)) {
