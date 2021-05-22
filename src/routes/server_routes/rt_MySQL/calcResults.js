@@ -116,7 +116,13 @@ export async function post(req, res, next) {
     SELECT * FROM gpet_cadia;
     `,
     function (err, rows, fields) {
-      if (err) throw err;
+      // if (err) throw err;
+      if (err) {
+        console.err(err);
+        res.json({
+          error: `err from calcResults.js==> ${err}`,
+        });
+      }
       console.log(`rows.length==>${rows.length}`);
       let calcResRows = rows[0];
       console.log(

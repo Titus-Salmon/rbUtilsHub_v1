@@ -5,6 +5,8 @@
   import paginData from "../../stores/pagination/st_pagination1";
   import tableData from "../../stores/dynamicTables/tableData1";
 
+  import { Jumper } from "svelte-loading-spinners";
+
   let tableName = $stagingData[0].stagingDataResponse.stagedTableName;
   let venCatPrefix = $stagingData[0].stagingDataResponse.venCatPrefix;
   let calcResultsResponse;
@@ -21,6 +23,8 @@
 
   let inputId;
   let inputValue;
+
+  let isLoading = false;
 
   function calcResults() {
     let stagedDataModal = document.getElementById("stagedDataModal");
@@ -185,6 +189,12 @@
     postBodyObj[`${inputId}`] = inputValue;
     //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
 
+    //v//divide cost by ct/////////////////////////////////////////////////////////////////////////////////////
+    inputId = "altIDqtyDiv";
+    inputValue = document.getElementById(`${inputId}`).value;
+    postBodyObj[`${inputId}`] = inputValue;
+    //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
+
     //v//typeOfIMW/////////////////////////////////////////////////////////////////////////////////////
     inputId = "typeOfIMW";
     inputValue = document.getElementById(`${inputId}`).value;
@@ -230,6 +240,8 @@
     console.log(
       `JSON.stringify(postBodyObj)==> ${JSON.stringify(postBodyObj)}`
     );
+
+    isLoading = true;
 
     fetch("server_routes/rt_MySQL/calcResults", {
       method: "POST",
@@ -290,6 +302,15 @@
         //   ];
         //   return currentData;
         // });
+
+        if (queryResJSON.error) {
+          alert(`err from stagedDataModal.svelte==> ${queryResJSON.error}`);
+        }
+        isLoading = false;
+      })
+      .catch((err) => {
+        alert(`err from stagedDataModal.svelte==> ${err}`);
+        isLoading = false;
       });
   }
 </script>
@@ -693,6 +714,12 @@
       {/if}
     </div>
   </div>
+
+  {#if isLoading}
+    <div class="flexbox" margin="1rem">
+      <Jumper size="60" color="#FF3E00" unit="px" duration="1s" />
+    </div>
+  {/if}
 
   <div style="text-align:center">
     <button on:click="{calcResults}">calcResults</button>

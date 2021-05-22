@@ -61,7 +61,7 @@
           )}`
         );
         if (queryResJSON.error) {
-          alert(`err from vInvMasterQuery.svelte==> ${queryResJSON.error}`);
+          alert(`err from rbDbQuery.svelte==> ${queryResJSON.error}`);
         }
 
         isLoading = false;

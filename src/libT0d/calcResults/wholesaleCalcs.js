@@ -67,13 +67,7 @@ function wholesaleCalcs(
     numPkgsCalc(i, queryResArr); //sets WebOffice Quantity value (the ## in CS-##)
     csPkMltCalc(i, queryResArr); //sets WebOffice Case Pack Multiple value (the ## in EA-##)
     if (parseFloat(catapultCost) !== parseFloat(unitCost)) {
-      console.log(
-        `${
-          queryResArr[i]["inv_ScanCode"]
-        } parseFloat(catapultCost): ${parseFloat(
-          catapultCost
-        )} | parseFloat(unitCost): ${parseFloat(unitCost)}`
-      ); //only include results in need of wholesale update; unitCost = ediCostMod
+      //only include results in need of wholesale update; unitCost = ediCostMod
       let imwToPop = {};
       blank_imw_creator(imwToPop);
       imwToPop["upc"] = `${queryResArr[i]["inv_ScanCode"]}`;
