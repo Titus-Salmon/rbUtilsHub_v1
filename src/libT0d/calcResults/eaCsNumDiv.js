@@ -96,11 +96,9 @@ function altIDqtyDiv(n, reqBody, queryResArr, discoMulti) {
       let venCost = queryResArr[n][`${venCatPrefix}_cost`]; //get cost from vendor catalog
       //domathToGetToUnitCost
       unitCost = venCost / altIDqty - (venCost / altIDqty) * discoMulti;
+      unitCost = Math.round(unitCost * 100) / 100; //rounding unit cost off to 2 decimal places
       console.log(`unitCost from within altIDqtyDiv==> ${unitCost}`);
-    } else {
-      unitCost = venCost - venCost * discoMulti;
     }
-    unitCost = Math.round(unitCost * 100) / 100; //rounding unit cost off to 2 decimal places
   }
 }
 
