@@ -90,7 +90,7 @@ function ctNumDiv(n, reqBody, queryResArr, discoMulti) {
 
 function altIDqtyDiv(n, reqBody, queryResArr, discoMulti) {
   if (reqBody.altIDqtyDiv === "yes") {
-    let altIDqty = queryResArr[n]["pkgQnt"]; //the # in pkgQnt column (alt ID qty #)
+    let altIDqty = queryResArr[n]["asc_quantity"]; //the # in pkgQnt column (alt ID qty #)
     if (altIDqty > 1) {
       //only do calcs if there is some #>1 in pkgQty field
       let venCost = queryResArr[n][`${venCatPrefix}_cost`]; //get cost from vendor catalog

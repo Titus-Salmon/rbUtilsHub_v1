@@ -717,13 +717,13 @@
     </div>
   </div>
 
-  {#if isLoading}
-    <div class="flexbox" margin="1rem">
-      <Jumper size="60" color="#FF3E00" unit="px" duration="1s" />
-    </div>
-  {/if}
-
   <div style="text-align:center">
     <button on:click="{calcResults}">calcResults</button>
+  </div>
+{/if}
+
+{#if isLoading}
+  <div class="flexbox" margin="1rem">
+    <Jumper size="60" color="#FF3E00" unit="px" duration="1s" />
   </div>
 {/if}
