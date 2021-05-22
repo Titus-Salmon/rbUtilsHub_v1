@@ -89,6 +89,7 @@ function ctNumDiv(n, reqBody, queryResArr, discoMulti) {
 }
 
 function altIDqtyDiv(n, reqBody, queryResArr, discoMulti) {
+  let venCatPrefix = reqBody.venCatPrefix;
   if (reqBody.altIDqtyDiv === "yes") {
     let altIDqty = queryResArr[n]["asc_quantity"]; //the # in pkgQnt column (alt ID qty #)
     if (altIDqty > 1) {
