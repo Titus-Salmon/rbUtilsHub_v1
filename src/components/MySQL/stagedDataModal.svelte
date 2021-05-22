@@ -303,8 +303,10 @@
         //   return currentData;
         // });
 
-        if (queryResJSON.error) {
-          alert(`err from stagedDataModal.svelte==> ${queryResJSON.error}`);
+        if (calcResultsResultJSON.error) {
+          alert(
+            `err from stagedDataModal.svelte==> ${calcResultsResultJSON.error}`
+          );
         }
         isLoading = false;
       })
