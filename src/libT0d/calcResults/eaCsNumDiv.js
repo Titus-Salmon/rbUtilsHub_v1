@@ -26,14 +26,6 @@ function eaCsNumDiv(n, reqBody, queryResArr, discoMulti) {
     }
     unitCost = Math.round(unitCost * 100) / 100; //rounding unit cost off to 2 decimal places
   }
-
-  // if (reqBody.eaNumDivide === "yes" || reqBody.csNumDivide === "yes") {
-  //   //domathToGetToUnitCost
-  //   unitCost = venCost / eaCsNum - (venCost / eaCsNum) * discoMulti;
-  // } else {
-  //   unitCost = venCost - venCost * discoMulti;
-  // }
-  // unitCost = Math.round(unitCost * 100) / 100; //rounding unit cost off to 2 decimal places
 }
 
 function lbNumDiv(n, reqBody, queryResArr, discoMulti) {
