@@ -19,6 +19,7 @@
   // let dptFilter;
   let includeEDLP;
   let skuToggle;
+  let purchQtyOverride;
   // let skuMismatchOption;
 
   let inputId;
@@ -226,6 +227,12 @@
     inputValue = document.getElementById(`${inputId}`).value;
     postBodyObj[`${inputId}`] = inputValue;
     //^//includeEDLP/////////////////////////////////////////////////////////////////////////////////////
+
+    //v//purchQtyOverride/////////////////////////////////////////////////////////////////////////////////////
+    inputId = "purchQtyOverride";
+    inputValue = document.getElementById(`${inputId}`).value;
+    postBodyObj[`${inputId}`] = inputValue;
+    //^//purchQtyOverride/////////////////////////////////////////////////////////////////////////////////////
 
     // //v//deptFilter/////////////////////////////////////////////////////////////////////////////////////
     // //we never used this option anyway, so no need to bother for now, besides, we can always select for
@@ -682,6 +689,19 @@
             bind:value="{includeEDLP}">
             <option value="no">no</option>
             <option value="yes">yes</option>
+          </select>
+        </div>
+
+        <!-- Purchase Quantity Override ----------------------------------------------------------------------------------------------->
+        <div style="text-align:center">
+          <label for="purchQtyOverride">Purchase Quantity Override</label>
+          <select
+            name="purchQtyOverride"
+            id="purchQtyOverride"
+            bind:value="{purchQtyOverride}">
+            <option value="yes">yes</option>
+            <option value="no">no</option>
+            <option value="doNothing">doNothing</option>
           </select>
         </div>
 

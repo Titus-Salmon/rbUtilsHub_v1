@@ -82,7 +82,7 @@ export async function post(req, res, next) {
   connection.query(RBDbQuery, function (err, rows, fields) {
     // if (err) throw err
     if (err) {
-      console.err(err);
+      console.error(err);
       res.json({
         error: `err from RBDBQuery.js==> ${err}`,
       });
