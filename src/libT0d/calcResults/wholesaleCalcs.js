@@ -65,7 +65,7 @@ function wholesaleCalcs(
     ctNumDiv(i, reqBody, queryResArr, discoMulti_WS);
     altIDqtyDiv(i, reqBody, queryResArr, discoMulti_WS);
     numPkgsCalc(i, queryResArr); //sets WebOffice Quantity value (the ## in CS-##)
-    csPkMltCalc(i, queryResArr); //sets WebOffice Case Pack Multiple value (the ## in EA-##)
+    csPkMltCalc(i, queryResArr, reqBody); //sets WebOffice Case Pack Multiple value (the ## in EA-##)
     if (parseFloat(catapultCost) !== parseFloat(unitCost)) {
       //only include results in need of wholesale update; unitCost = ediCostMod
       let imwToPop = {};

@@ -62,7 +62,7 @@ function retailCalcs(
       ozNumDiv(i, reqBody, queryResArr, discoMulti_Rtl);
       ctNumDiv(i, reqBody, queryResArr, discoMulti_Rtl);
       numPkgsCalc(i, queryResArr); //sets WebOffice Quantity value (the ## in CS-##)
-      csPkMltCalc(i, queryResArr); //sets WebOffice Case Pack Multiple value (the ## in EA-##)
+      csPkMltCalc(i, queryResArr, reqBody); //sets WebOffice Case Pack Multiple value (the ## in EA-##)
       if (queryResArr[i]["dpt_number"] === stagedDptMargData[j]["dptNumb"]) {
         marginToApply = stagedDptMargData[j]["margin"] / 100;
         reqdRtl = unitCost / (1 - marginToApply);
