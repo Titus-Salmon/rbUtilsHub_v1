@@ -9,6 +9,7 @@ import {
   lbNumDiv,
   ozNumDiv,
   ctNumDiv,
+  altIDqtyDiv,
 } from "../../libT0d/calcResults/eaCsNumDiv";
 import { nmPk, numPkgsCalc } from "../../libT0d/calcResults/numPkgsCalc";
 import { csPk, ovr, csPkMltCalc } from "../../libT0d/calcResults/csPkMltCalc";
@@ -61,6 +62,7 @@ function retailCalcs(
       lbNumDiv(i, reqBody, queryResArr, discoMulti_Rtl);
       ozNumDiv(i, reqBody, queryResArr, discoMulti_Rtl);
       ctNumDiv(i, reqBody, queryResArr, discoMulti_Rtl);
+      altIDqtyDiv(i, reqBody, queryResArr, discoMulti_Rtl);
       numPkgsCalc(i, queryResArr); //sets WebOffice Quantity value (the ## in CS-##)
       csPkMltCalc(i, queryResArr, reqBody); //sets WebOffice Case Pack Multiple value (the ## in EA-##)
       if (queryResArr[i]["dpt_number"] === stagedDptMargData[j]["dptNumb"]) {
