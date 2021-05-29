@@ -86,47 +86,47 @@ export async function post(req, res, next) {
         let storeAbbrev = storeAbbrevArr[j];
 
         function calcResStockFilterUPC(storeNumber, storeAbbrev) {
-          if (nhcrtRows[i]["stoNumber"] == storeNumber) {
+          if (nhcrtRows[i]["sto_number"] == storeNumber) {
             let rsltsObj = {};
             rsltsObj["ri_t0d"] = i;
-            rsltsObj[`${storeAbbrev}_UPCs`] = nhcrtRows[i]["invScanCode"];
+            rsltsObj[`${storeAbbrev}_UPCs`] = nhcrtRows[i]["inv_ScanCode"];
             if (
               nhcrtRows[i]["invLastreceived"] > oneYearAgo ||
               nhcrtRows[i]["invLastsold"] > oneYearAgo ||
               nhcrtRows[i]["invOnhand"] > 0
             ) {
-              rsltsObj[`${storeAbbrev}stocked`] = nhcrtRows[i]["invScanCode"];
-              if (nhcrtRows[i]["stoNumber"] == "IN") {
+              rsltsObj[`${storeAbbrev}stocked`] = nhcrtRows[i]["inv_ScanCode"];
+              if (nhcrtRows[i]["sto_number"] == "IN") {
                 sfRsINDstocked.push(rsltsObj);
               }
-              if (nhcrtRows[i]["stoNumber"] == "SM") {
+              if (nhcrtRows[i]["sto_number"] == "SM") {
                 sfRsSMstocked.push(rsltsObj);
               }
-              if (nhcrtRows[i]["stoNumber"] == "MT") {
+              if (nhcrtRows[i]["sto_number"] == "MT") {
                 sfRsMTstocked.push(rsltsObj);
               }
-              if (nhcrtRows[i]["stoNumber"] == "SPR") {
+              if (nhcrtRows[i]["sto_number"] == "SPR") {
                 sfRsSHstocked.push(rsltsObj);
               }
-              if (nhcrtRows[i]["stoNumber"] == "GL") {
+              if (nhcrtRows[i]["sto_number"] == "GL") {
                 sfRsGLstocked.push(rsltsObj);
               }
             } else {
               rsltsObj[`${storeAbbrev}_NOTstocked`] =
-                nhcrtRows[i]["invScanCode"];
-              if (nhcrtRows[i]["stoNumber"] == "IN") {
+                nhcrtRows[i]["inv_ScanCode"];
+              if (nhcrtRows[i]["sto_number"] == "IN") {
                 sfRsIND_NOTstocked.push(rsltsObj);
               }
-              if (nhcrtRows[i]["stoNumber"] == "SM") {
+              if (nhcrtRows[i]["sto_number"] == "SM") {
                 sfRsSM_NOTstocked.push(rsltsObj);
               }
-              if (nhcrtRows[i]["stoNumber"] == "MT") {
+              if (nhcrtRows[i]["sto_number"] == "MT") {
                 sfRsMT_NOTstocked.push(rsltsObj);
               }
-              if (nhcrtRows[i]["stoNumber"] == "SPR") {
+              if (nhcrtRows[i]["sto_number"] == "SPR") {
                 sfRsSH_NOTstocked.push(rsltsObj);
               }
-              if (nhcrtRows[i]["stoNumber"] == "GL") {
+              if (nhcrtRows[i]["sto_number"] == "GL") {
                 sfRsGL_NOTstocked.push(rsltsObj);
               }
             }
