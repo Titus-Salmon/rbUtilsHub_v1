@@ -151,28 +151,43 @@ export async function post(req, res, next) {
       `typeof JSONstringifysfRsINDstocked==> ${typeof JSONstringifysfRsINDstocked}`
     );
 
-    sfRsINDstockedSani = JSON.stringify(sfRsINDstocked).replace(saniRegex1, "");
-    sfRsIND_NOTstockedSani = JSON.stringify(sfRsIND_NOTstocked).replace(
+    let sfRsINDstockedSani = JSON.stringify(sfRsINDstocked).replace(
       saniRegex1,
       ""
     );
-    sfRsSMstockedSani = JSON.stringify(sfRsSMstocked).replace(saniRegex1, "");
-    sfRsSM_NOTstockedSani = JSON.stringify(sfRsSM_NOTstocked).replace(
+    let sfRsIND_NOTstockedSani = JSON.stringify(sfRsIND_NOTstocked).replace(
       saniRegex1,
       ""
     );
-    sfRsMTstockedSani = JSON.stringify(sfRsMTstocked).replace(saniRegex1, "");
-    sfRsMT_NOTstockedSani = JSON.stringify(sfRsMT_NOTstocked).replace(
+    let sfRsSMstockedSani = JSON.stringify(sfRsSMstocked).replace(
       saniRegex1,
       ""
     );
-    sfRsSHstockedSani = JSON.stringify(sfRsSHstocked).replace(saniRegex1, "");
-    sfRsSH_NOTstockedSani = JSON.stringify(sfRsSH_NOTstocked).replace(
+    let sfRsSM_NOTstockedSani = JSON.stringify(sfRsSM_NOTstocked).replace(
       saniRegex1,
       ""
     );
-    sfRsGLstockedSani = JSON.stringify(sfRsGLstocked).replace(saniRegex1, "");
-    sfRsGL_NOTstockedSani = JSON.stringify(sfRsGL_NOTstocked).replace(
+    let sfRsMTstockedSani = JSON.stringify(sfRsMTstocked).replace(
+      saniRegex1,
+      ""
+    );
+    let sfRsMT_NOTstockedSani = JSON.stringify(sfRsMT_NOTstocked).replace(
+      saniRegex1,
+      ""
+    );
+    let sfRsSHstockedSani = JSON.stringify(sfRsSHstocked).replace(
+      saniRegex1,
+      ""
+    );
+    let sfRsSH_NOTstockedSani = JSON.stringify(sfRsSH_NOTstocked).replace(
+      saniRegex1,
+      ""
+    );
+    let sfRsGLstockedSani = JSON.stringify(sfRsGLstocked).replace(
+      saniRegex1,
+      ""
+    );
+    let sfRsGL_NOTstockedSani = JSON.stringify(sfRsGL_NOTstocked).replace(
       saniRegex1,
       ""
     );
