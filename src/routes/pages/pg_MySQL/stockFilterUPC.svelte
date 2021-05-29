@@ -1,9 +1,9 @@
 <script>
   import { onMount, onDestroy } from "svelte";
   import QueryResultsTable1 from "../../../components/queryResTbls/queryResultsTable1.svelte";
-  import PaginUI from "../../../components/UI/paginUI.svelte";
+  // import PaginUI from "../../../components/UI/paginUI.svelte";
   // import paginData from "../../stores/pagination/st_pagination1";
-  import tableData from "../../../../stores/dynamicTables/tableData1";
+  import tableData from "../../../stores/dynamicTables/tableData1";
   import utilResponses from "../../../stores/utilResponses/st_utilResponses";
 
   import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
