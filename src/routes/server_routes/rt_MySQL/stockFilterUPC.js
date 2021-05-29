@@ -82,8 +82,8 @@ export async function post(req, res, next) {
 
     for (let i = 0; i < nhcrtRows.length; i++) {
       for (let j = 0; j < storeNumberArr.length; j++) {
-        storeNumber = storeNumberArr[j];
-        storeAbbrev = storeAbbrevArr[j];
+        let storeNumber = storeNumberArr[j];
+        let storeAbbrev = storeAbbrevArr[j];
 
         function calcResStockFilterUPC(storeNumber, storeAbbrev) {
           if (nhcrtRows[i]["stoNumber"] == storeNumber) {
