@@ -36,6 +36,8 @@ export async function post(req, res, next) {
   let stockFilterResults = []; //clear stockFilterResults from previous search
   // console.log('calcResStockFilterUPC says: stockFilterResults from router.post level===>', stockFilterResults)
 
+  let stockFilterResultsSplit;
+
   let stockFilterResultsSplitParsedArr = [];
 
   let stockFilterResultsForCSV = [];
@@ -214,7 +216,7 @@ export async function post(req, res, next) {
     // {},,{}, so we need to convert that to {},{}
 
     // console.log(`stockFilterResultsToString==> ${stockFilterResultsToString}`);
-    let stockFilterResultsSplit = stockFilterResultsToString.split(splitRegex1);
+    stockFilterResultsSplit = stockFilterResultsToString.split(splitRegex1);
     console.log(
       `stockFilterResultsSplit.length==> ${stockFilterResultsSplit.length}`
     );
