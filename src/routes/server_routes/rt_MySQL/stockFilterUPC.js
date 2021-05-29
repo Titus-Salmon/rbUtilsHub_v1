@@ -213,13 +213,13 @@ export async function post(req, res, next) {
     //for some reason, we sometimes get the following format for stockFilterResultsToStringPreSani:
     // {},,{}, so we need to convert that to {},{}
 
-    console.log(`stockFilterResultsToString==> ${stockFilterResultsToString}`);
+    // console.log(`stockFilterResultsToString==> ${stockFilterResultsToString}`);
     let stockFilterResultsSplit = stockFilterResultsToString.split(splitRegex1);
     console.log(
       `stockFilterResultsSplit.length==> ${stockFilterResultsSplit.length}`
     );
-    // console.log(`stockFilterResultsSplit[0]==> ${stockFilterResultsSplit[0]}`)
-    console.log(`stockFilterResultsSplit==> ${stockFilterResultsSplit}`);
+    console.log(`stockFilterResultsSplit[0]==> ${stockFilterResultsSplit[0]}`);
+    // console.log(`stockFilterResultsSplit==> ${stockFilterResultsSplit}`);
     console.log(
       `typeof stockFilterResultsSplit[0]==> ${typeof stockFilterResultsSplit[0]}`
     );
