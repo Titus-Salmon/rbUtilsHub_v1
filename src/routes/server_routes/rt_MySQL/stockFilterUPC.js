@@ -91,9 +91,9 @@ export async function post(req, res, next) {
             rsltsObj["ri_t0d"] = i;
             rsltsObj[`${storeAbbrev}_UPCs`] = nhcrtRows[i]["inv_ScanCode"];
             if (
-              nhcrtRows[i]["invLastreceived"] > oneYearAgo ||
-              nhcrtRows[i]["invLastsold"] > oneYearAgo ||
-              nhcrtRows[i]["invOnhand"] > 0
+              nhcrtRows[i]["inv_lastreceived"] > oneYearAgo ||
+              nhcrtRows[i]["inv_lastsold"] > oneYearAgo ||
+              nhcrtRows[i]["inv_onhand"] > 0
             ) {
               rsltsObj[`${storeAbbrev}stocked`] = nhcrtRows[i]["inv_ScanCode"];
               if (nhcrtRows[i]["sto_number"] == "IN") {
