@@ -1,5 +1,5 @@
 const mysql = require("mysql");
-const cacheMainStockFilter = require("../../../nodeCacheStuff/cache1");
+import cacheMainStockFilter from "../../../nodeCacheStuff/cache1";
 
 const connection = mysql.createConnection({
   host: process.env.RB_HOST,
