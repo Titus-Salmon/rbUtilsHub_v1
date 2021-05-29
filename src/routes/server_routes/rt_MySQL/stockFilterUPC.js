@@ -36,8 +36,6 @@ export async function post(req, res, next) {
   let stockFilterResults = []; //clear stockFilterResults from previous search
   // console.log('calcResStockFilterUPC says: stockFilterResults from router.post level===>', stockFilterResults)
 
-  let stockFilterResultsSplit;
-
   let stockFilterResultsSplitParsedArr = [];
 
   let stockFilterResultsForCSV = [];
@@ -216,7 +214,7 @@ export async function post(req, res, next) {
     // {},,{}, so we need to convert that to {},{}
 
     // console.log(`stockFilterResultsToString==> ${stockFilterResultsToString}`);
-    stockFilterResultsSplit = stockFilterResultsToString.split(splitRegex1);
+    let stockFilterResultsSplit = stockFilterResultsToString.split(splitRegex1);
     console.log(
       `stockFilterResultsSplit.length==> ${stockFilterResultsSplit.length}`
     );
@@ -250,18 +248,18 @@ export async function post(req, res, next) {
         showStockFilterResults(rows);
 
         res.json({
-          sfResRows: stockFilterResultsSplit,
-          loadedSqlTbl: loadedSqlTbl,
-          sfRsINDstocked: sfRsINDstocked,
-          sfRsIND_NOTstocked: sfRsIND_NOTstocked,
-          sfRsSMstocked: sfRsSMstocked,
-          sfRsSM_NOTstocked: sfRsSM_NOTstocked,
-          sfRsMTstocked: sfRsMTstocked,
-          sfRsMT_NOTstocked: sfRsMT_NOTstocked,
-          sfRsSHstocked: sfRsSHstocked,
-          sfRsSH_NOTstocked: sfRsSH_NOTstocked,
-          sfRsGLstocked: sfRsGLstocked,
-          sfRsGL_NOTstocked: sfRsGL_NOTstocked,
+          // sfResRows: stockFilterResultsSplit,
+          // loadedSqlTbl: loadedSqlTbl,
+          // sfRsINDstocked: sfRsINDstocked,
+          // sfRsIND_NOTstocked: sfRsIND_NOTstocked,
+          // sfRsSMstocked: sfRsSMstocked,
+          // sfRsSM_NOTstocked: sfRsSM_NOTstocked,
+          // sfRsMTstocked: sfRsMTstocked,
+          // sfRsMT_NOTstocked: sfRsMT_NOTstocked,
+          // sfRsSHstocked: sfRsSHstocked,
+          // sfRsSH_NOTstocked: sfRsSH_NOTstocked,
+          // sfRsGLstocked: sfRsGLstocked,
+          // sfRsGL_NOTstocked: sfRsGL_NOTstocked,
           stockFilterResultsSplitParsedArr: stockFilterResultsSplitParsedArr,
         });
       }
