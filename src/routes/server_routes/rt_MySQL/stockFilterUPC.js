@@ -44,17 +44,6 @@ export async function post(req, res, next) {
   let csvContainer = [];
   // console.log('calcResStockFilterUPC says: csvContainer from router.post level===>', csvContainer)
 
-  const postBody = req.body;
-  console.log("calcResStockFilterUPC says: postBody==>", postBody);
-  console.log(
-    "calcResStockFilterUPC says: postBody['fldArrToPostPost']==>",
-    postBody["fldArrToPostPost"]
-  );
-  console.log(
-    "calcResStockFilterUPC says: postBody['fldArrToPostPost'][0]==>",
-    postBody["fldArrToPostPost"][0]
-  );
-
   let todaysDateRaw = new Date();
   let todaysDateRaw_iso = todaysDateRaw.toISOString();
   let todaysDateRaw_split = todaysDateRaw_iso.split("T");
