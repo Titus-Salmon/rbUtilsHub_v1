@@ -40,6 +40,28 @@ export async function post(req, res, next) {
 
   let storeNumberArr = ["IN", "SM", "MT", "SPR", "GL"];
 
+  function stockFilter(rows) {
+    for (let i = 0; i < rows.length; i++) {
+      let rsltsObj = {};
+      rsltsObj["ri_t0d"] = i;
+      rsltsObj["inv_ScanCode"] = rows[i]["inv_ScanCode"];
+      for (let j = 0; j < storeNumberArr.length; j++) {
+        if (storeNumberArr == rows[i]["sto_number"]) {
+          if (
+            rows[i]["inv_lastreceived"] > oneYearAgo ||
+            rows[i]["inv_lastsold"] > oneYearAgo ||
+            rows[i]["inv_onhand"] > 0
+          ) {
+            rsltsObj[`${rows[i]["sto_number"]}_stocked`] = "1";
+          } else {
+            rsltsObj[`${rows[i]["sto_number"]}_stocked`] = "0";
+          }
+          allStoresResults.push(rsltsObj);
+        }
+      }
+    }
+  }
+
   function showStockFilterResults(rows) {
     let nhcrtRows = rows;
 
@@ -47,7 +69,7 @@ export async function post(req, res, next) {
       for (let j = 0; j < storeNumberArr.length; j++) {
         let storeNumber = storeNumberArr[j];
 
-        function stockFilter(storeNumber) {
+        function stockFilterOld(storeNumber) {
           let rsltsObj = {};
           rsltsObj["ri_t0d"] = i;
           //if (nhcrtRows[i]["sto_number"] == storeNumber) {
@@ -73,7 +95,7 @@ export async function post(req, res, next) {
           }
           //}
         }
-        stockFilter(storeNumber);
+        stockFilterOld(storeNumber);
       }
     }
   }
@@ -83,7 +105,8 @@ export async function post(req, res, next) {
       `SELECT * FROM ${tableName}`,
       function (err, rows, fields) {
         if (err) throw err;
-        showStockFilterResults(rows);
+        //showStockFilterResults(rows);
+        stockFilter(rows);
 
         res.json({
           // sfResRows: stockFilterResultsSplit,
