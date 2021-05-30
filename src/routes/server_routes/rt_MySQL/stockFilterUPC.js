@@ -57,9 +57,9 @@ export async function post(req, res, next) {
             rows[i]["inv_lastsold"] > oneYearAgo ||
             rows[i]["inv_onhand"] > 0
           ) {
-            rsltsObj[`${rows[i]["sto_number"]}_stocked`] = "1";
+            rsltsObj[`${rows[i]["sto_number"]}`] = "1";
           } else {
-            rsltsObj[`${rows[i]["sto_number"]}_stocked`] = "0";
+            rsltsObj[`${rows[i]["sto_number"]}`] = "0";
           }
           allStoresResults.push(rsltsObj);
         }
