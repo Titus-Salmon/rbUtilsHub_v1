@@ -58,7 +58,7 @@ export async function post(req, res, next) {
             rows[i]["inv_intransit"] > 0
           ) {
             rsltsObj["inv_ScanCode"] = rows[i]["inv_ScanCode"];
-            rsltsObj[`${rows[i]["stocked"]}`] = "1";
+            rsltsObj["stocked"] = "1";
             if (rows[i]["sto_number"] == "GL") {
               GL_results.push(rsltsObj);
             }
@@ -76,7 +76,7 @@ export async function post(req, res, next) {
             }
           } else {
             rsltsObj["inv_ScanCode"] = rows[i]["inv_ScanCode"];
-            rsltsObj[`${rows[i]["stocked"]}`] = "0";
+            rsltsObj["stocked"] = "0";
             if (rows[i]["sto_number"] == "GL") {
               GL_results.push(rsltsObj);
             }
