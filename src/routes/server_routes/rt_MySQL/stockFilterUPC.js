@@ -22,6 +22,10 @@ export async function post(req, res, next) {
     cacheMainStockFilter.del("stockFilterResultsCache_key");
   }
 
+  let allStoresResults = [];
+  let allStoresStocked = [];
+  let allStores_NOTstocked = [];
+
   let sfRsINDstocked = [];
   let sfRsIND_NOTstocked = [];
   let sfRsSMstocked = [];
@@ -96,6 +100,10 @@ export async function post(req, res, next) {
               nhcrtRows[i]["inv_onhand"] > 0
             ) {
               rsltsObj[`${storeAbbrev}stocked`] = nhcrtRows[i]["inv_ScanCode"];
+              //v//try to push all results into single array for single column heading
+              allStoresResults.push(rsltObj);
+              //^//try to push all results into single array for single column heading
+
               if (nhcrtRows[i]["sto_number"] == "IN") {
                 sfRsINDstocked.push(rsltsObj);
               }
@@ -114,6 +122,9 @@ export async function post(req, res, next) {
             } else {
               rsltsObj[`${storeAbbrev}_NOTstocked`] =
                 nhcrtRows[i]["inv_ScanCode"];
+              //v//try to push all results into single array for single column heading
+              allStoresResults.push(rsltObj);
+              //^//try to push all results into single array for single column heading
               if (nhcrtRows[i]["sto_number"] == "IN") {
                 sfRsIND_NOTstocked.push(rsltsObj);
               }
@@ -260,7 +271,8 @@ export async function post(req, res, next) {
           // sfRsSH_NOTstocked: sfRsSH_NOTstocked,
           // sfRsGLstocked: sfRsGLstocked,
           // sfRsGL_NOTstocked: sfRsGL_NOTstocked,
-          stockFilterResultsSplitParsedArr: stockFilterResultsSplitParsedArr,
+          //stockFilterResultsSplitParsedArr: stockFilterResultsSplitParsedArr,
+          allStoresResults: allStoresResults,
         });
       }
     );

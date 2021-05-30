@@ -26,10 +26,10 @@
     })
       .then((queryRes) => queryRes.json())
       .then((queryResJSON) => {
-        tableData.set(queryResJSON.stockFilterResultsSplitParsedArr);
+        tableData.set(queryResJSON.allStoresResults);
         console.log(
-          `JSON.stringify(queryResJSON.stockFilterResultsSplitParsedArr)==> ${JSON.stringify(
-            queryResJSON.stockFilterResultsSplitParsedArr
+          `JSON.stringify(queryResJSON.allStoresResults[0])==> ${JSON.stringify(
+            queryResJSON.allStoresResults[0]
           )}`
         ); //passing backend response to frontend "Store" & we are overwriting the "Store" with set()
         // console.log(
