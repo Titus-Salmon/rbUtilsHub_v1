@@ -89,6 +89,29 @@ export async function post(req, res, next) {
         let storeNumber = storeNumberArr[j];
         let storeAbbrev = storeAbbrevArr[j];
 
+        function stockFilter(storeNumber) {
+          let rsltsObj = {};
+          rsltsObj["ri_t0d"] = i;
+          rsltsObj[`${storeNumber}_UPCs`] = nhcrtRows[i]["inv_ScanCode"];
+
+          if (
+            nhcrtRows[i]["inv_lastreceived"] > oneYearAgo ||
+            nhcrtRows[i]["inv_lastsold"] > oneYearAgo ||
+            nhcrtRows[i]["inv_onhand"] > 0
+          ) {
+            rsltsObj[`${storeNumber}_stocked`] = nhcrtRows[i]["inv_ScanCode"];
+            //v//try to push all results into single array for single column heading
+            allStoresResults.push(rsltObj);
+            //^//try to push all results into single array for single column heading
+          } else {
+            rsltsObj[`${storeNumber}_NOTstocked`] =
+              nhcrtRows[i]["inv_ScanCode"];
+            //v//try to push all results into single array for single column heading
+            allStoresResults.push(rsltObj);
+            //^//try to push all results into single array for single column heading
+          }
+        }
+
         function calcResStockFilterUPC(storeNumber, storeAbbrev) {
           if (nhcrtRows[i]["sto_number"] == storeNumber) {
             let rsltsObj = {};
@@ -144,7 +167,8 @@ export async function post(req, res, next) {
             // stockFilterResults.push(rsltsObj)
           }
         }
-        calcResStockFilterUPC(storeNumber, storeAbbrev);
+        //calcResStockFilterUPC(storeNumber, storeAbbrev);
+        stockFilter(storeNumber);
       }
     }
 
