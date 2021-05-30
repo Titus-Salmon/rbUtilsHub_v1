@@ -46,7 +46,7 @@ export async function post(req, res, next) {
       rsltsObj["ri_t0d"] = i;
       rsltsObj["inv_ScanCode"] = rows[i]["inv_ScanCode"];
       for (let j = 0; j < storeNumberArr.length; j++) {
-        if (storeNumberArr == rows[i]["sto_number"]) {
+        if (storeNumberArr[j] == rows[i]["sto_number"]) {
           if (
             rows[i]["inv_lastreceived"] > oneYearAgo ||
             rows[i]["inv_lastsold"] > oneYearAgo ||
