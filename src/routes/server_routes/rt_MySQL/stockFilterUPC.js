@@ -22,6 +22,11 @@ export async function post(req, res, next) {
     cacheMainStockFilter.del("stockFilterResultsCache_key");
   }
 
+  let GL_results = [];
+  let IN_results = [];
+  let MT_results = [];
+  let SPR_results = [];
+  let SM_results = [];
   let allStoresResults = [];
 
   let todaysDateRaw = new Date();
@@ -38,70 +43,73 @@ export async function post(req, res, next) {
   let oneYearAgo = oneYearAgoRaw_split[0];
   console.log(`oneYearAgo==> ${oneYearAgo}`);
 
-  let storeNumberArr = ["IN", "SM", "MT", "SPR", "GL"];
+  let storeNumberArr = ["GL", "IN", "MT", "SPR", "SM"];
 
   function stockFilter(rows) {
     for (let i = 0; i < rows.length; i++) {
       let rsltsObj = {};
-      rsltsObj["ri_t0d"] = i;
-      rsltsObj["inv_ScanCode"] = rows[i]["inv_ScanCode"];
-      rsltsObj["GL"] = null;
-      rsltsObj["IN"] = null;
-      rsltsObj["MT"] = null;
-      rsltsObj["SM"] = null;
-      rsltsObj["SPR"] = null;
       for (let j = 0; j < storeNumberArr.length; j++) {
         if (storeNumberArr[j] == rows[i]["sto_number"]) {
           if (
             rows[i]["inv_lastreceived"] > oneYearAgo ||
             rows[i]["inv_lastsold"] > oneYearAgo ||
-            rows[i]["inv_onhand"] > 0
+            rows[i]["inv_onhand"] > 0 ||
+            rows[i]["inv_onorder"] > 0 ||
+            rows[i]["inv_intransit"] > 0
           ) {
+            rsltsObj["inv_ScanCode"] = rows[i]["inv_ScanCode"];
             rsltsObj[`${rows[i]["sto_number"]}`] = "1";
+            if (rows[i]["sto_number"] == "GL") {
+              GL_results.push(rsltsObj);
+            }
+            if (rows[i]["sto_number"] == "IN") {
+              IN_results.push(rsltsObj);
+            }
+            if (rows[i]["sto_number"] == "MT") {
+              MT_results.push(rsltsObj);
+            }
+            if (rows[i]["sto_number"] == "SM") {
+              SM_results.push(rsltsObj);
+            }
+            if (rows[i]["sto_number"] == "SPR") {
+              SPR_results.push(rsltsObj);
+            }
           } else {
+            rsltsObj["inv_ScanCode"] = rows[i]["inv_ScanCode"];
             rsltsObj[`${rows[i]["sto_number"]}`] = "0";
+            if (rows[i]["sto_number"] == "GL") {
+              GL_results.push(rsltsObj);
+            }
+            if (rows[i]["sto_number"] == "IN") {
+              IN_results.push(rsltsObj);
+            }
+            if (rows[i]["sto_number"] == "MT") {
+              MT_results.push(rsltsObj);
+            }
+            if (rows[i]["sto_number"] == "SM") {
+              SM_results.push(rsltsObj);
+            }
+            if (rows[i]["sto_number"] == "SPR") {
+              SPR_results.push(rsltsObj);
+            }
           }
-          allStoresResults.push(rsltsObj);
         }
       }
     }
-  }
 
-  function showStockFilterResults(rows) {
-    let nhcrtRows = rows;
+    for (let k = 0; k < GL_results.length; k++) {
+      //all store results arrays should be the same length, so it doesn't matter which one we use here
+      //ALSO, they should all have the same order of UPCs, so we don't need to worry about that, since
+      //we want the UPCs to remain in their original order, as they have been ordered by SPINS
+      let allStoresRsObj = {};
+      allStoresRsObj["#"] = k;
+      allStoresRsObj["GL"] = GL_results[k];
+      allStoresRsObj["IN"] = IN_results[k];
+      allStoresRsObj["MT"] = MT_results[k];
+      allStoresRsObj["SPR"] = SPR_results[k];
+      allStoresRsObj["SM"] = SM_results[k];
 
-    for (let i = 0; i < nhcrtRows.length; i++) {
-      for (let j = 0; j < storeNumberArr.length; j++) {
-        let storeNumber = storeNumberArr[j];
-
-        function stockFilterOld(storeNumber) {
-          let rsltsObj = {};
-          rsltsObj["ri_t0d"] = i;
-          //if (nhcrtRows[i]["sto_number"] == storeNumber) {
-          // let rsltsObj = {};
-          // rsltsObj["ri_t0d"] = i;
-          //rsltsObj[`${storeNumber}_UPCs`] = nhcrtRows[i]["inv_ScanCode"];
-
-          if (
-            nhcrtRows[i]["inv_lastreceived"] > oneYearAgo ||
-            nhcrtRows[i]["inv_lastsold"] > oneYearAgo ||
-            nhcrtRows[i]["inv_onhand"] > 0
-          ) {
-            rsltsObj[`${storeNumber}_stocked`] = nhcrtRows[i]["inv_ScanCode"];
-            //v//try to push all results into single array for single column heading
-            allStoresResults.push(rsltsObj);
-            //^//try to push all results into single array for single column heading
-          } else {
-            rsltsObj[`${storeNumber}_NOTstocked`] =
-              nhcrtRows[i]["inv_ScanCode"];
-            //v//try to push all results into single array for single column heading
-            allStoresResults.push(rsltsObj);
-            //^//try to push all results into single array for single column heading
-          }
-          //}
-        }
-        stockFilterOld(storeNumber);
-      }
+      allStoresResults.push(allStoresRsObj);
     }
   }
 
