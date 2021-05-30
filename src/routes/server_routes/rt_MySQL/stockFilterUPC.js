@@ -45,6 +45,11 @@ export async function post(req, res, next) {
       let rsltsObj = {};
       rsltsObj["ri_t0d"] = i;
       rsltsObj["inv_ScanCode"] = rows[i]["inv_ScanCode"];
+      rsltsObj["GL"] = null;
+      rsltsObj["IN"] = null;
+      rsltsObj["MT"] = null;
+      rsltsObj["SM"] = null;
+      rsltsObj["SPR"] = null;
       for (let j = 0; j < storeNumberArr.length; j++) {
         if (storeNumberArr[j] == rows[i]["sto_number"]) {
           if (
