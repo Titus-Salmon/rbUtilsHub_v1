@@ -101,13 +101,13 @@ export async function post(req, res, next) {
           ) {
             rsltsObj[`${storeNumber}_stocked`] = nhcrtRows[i]["inv_ScanCode"];
             //v//try to push all results into single array for single column heading
-            allStoresResults.push(rsltObj);
+            allStoresResults.push(rsltsObj);
             //^//try to push all results into single array for single column heading
           } else {
             rsltsObj[`${storeNumber}_NOTstocked`] =
               nhcrtRows[i]["inv_ScanCode"];
             //v//try to push all results into single array for single column heading
-            allStoresResults.push(rsltObj);
+            allStoresResults.push(rsltsObj);
             //^//try to push all results into single array for single column heading
           }
         }
@@ -124,7 +124,7 @@ export async function post(req, res, next) {
             ) {
               rsltsObj[`${storeAbbrev}stocked`] = nhcrtRows[i]["inv_ScanCode"];
               //v//try to push all results into single array for single column heading
-              allStoresResults.push(rsltObj);
+              allStoresResults.push(rsltsObj);
               //^//try to push all results into single array for single column heading
 
               if (nhcrtRows[i]["sto_number"] == "IN") {
@@ -146,7 +146,7 @@ export async function post(req, res, next) {
               rsltsObj[`${storeAbbrev}_NOTstocked`] =
                 nhcrtRows[i]["inv_ScanCode"];
               //v//try to push all results into single array for single column heading
-              allStoresResults.push(rsltObj);
+              allStoresResults.push(rsltsObj);
               //^//try to push all results into single array for single column heading
               if (nhcrtRows[i]["sto_number"] == "IN") {
                 sfRsIND_NOTstocked.push(rsltsObj);
