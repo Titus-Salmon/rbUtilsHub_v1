@@ -58,7 +58,7 @@ export async function post(req, res, next) {
             rows[i]["inv_intransit"] > 0
           ) {
             rsltsObj["inv_ScanCode"] = rows[i]["inv_ScanCode"];
-            rsltsObj[`${rows[i]["sto_number"]}`] = "1";
+            rsltsObj[`${rows[i]["stocked"]}`] = "1";
             if (rows[i]["sto_number"] == "GL") {
               GL_results.push(rsltsObj);
             }
@@ -76,7 +76,7 @@ export async function post(req, res, next) {
             }
           } else {
             rsltsObj["inv_ScanCode"] = rows[i]["inv_ScanCode"];
-            rsltsObj[`${rows[i]["sto_number"]}`] = "0";
+            rsltsObj[`${rows[i]["stocked"]}`] = "0";
             if (rows[i]["sto_number"] == "GL") {
               GL_results.push(rsltsObj);
             }
@@ -103,11 +103,16 @@ export async function post(req, res, next) {
       //we want the UPCs to remain in their original order, as they have been ordered by SPINS
       let allStoresRsObj = {};
       allStoresRsObj["#"] = k;
-      allStoresRsObj["GL"] = GL_results[k];
-      allStoresRsObj["IN"] = IN_results[k];
-      allStoresRsObj["MT"] = MT_results[k];
-      allStoresRsObj["SPR"] = SPR_results[k];
-      allStoresRsObj["SM"] = SM_results[k];
+      allStoresRsObj["GL_inv_ScanCode"] = GL_results[k]["inv_ScanCode"];
+      allStoresRsObj["GL_stocked"] = GL_results[k]["stocked"];
+      allStoresRsObj["IN_inv_ScanCode"] = IN_results[k]["inv_ScanCode"];
+      allStoresRsObj["IN_stocked"] = IN_results[k]["stocked"];
+      allStoresRsObj["MT_inv_ScanCode"] = MT_results[k]["inv_ScanCode"];
+      allStoresRsObj["MT_stocked"] = MT_results[k]["stocked"];
+      allStoresRsObj["SM_inv_ScanCode"] = SM_results[k]["inv_ScanCode"];
+      allStoresRsObj["SM_stocked"] = SM_results[k]["stocked"];
+      allStoresRsObj["SPR_inv_ScanCode"] = SPR_results[k]["inv_ScanCode"];
+      allStoresRsObj["SPR_stocked"] = SPR_results[k]["stocked"];
 
       allStoresResults.push(allStoresRsObj);
     }
