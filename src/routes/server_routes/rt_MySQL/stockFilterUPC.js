@@ -48,9 +48,11 @@ export async function post(req, res, next) {
         let storeNumber = storeNumberArr[j];
 
         function stockFilter(storeNumber) {
+          let rsltsObj = {};
+          rsltsObj["ri_t0d"] = i;
           if (nhcrtRows[i]["sto_number"] == storeNumber) {
-            let rsltsObj = {};
-            rsltsObj["ri_t0d"] = i;
+            // let rsltsObj = {};
+            // rsltsObj["ri_t0d"] = i;
             rsltsObj[`${storeNumber}_UPCs`] = nhcrtRows[i]["inv_ScanCode"];
 
             if (
