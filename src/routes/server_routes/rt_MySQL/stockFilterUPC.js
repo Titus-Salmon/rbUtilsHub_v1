@@ -67,7 +67,7 @@ export async function post(req, res, next) {
             }
           } else {
             // rsltsObj["inv_ScanCode"] = rows[i]["inv_ScanCode"];
-            rsltsObj["stocked"] = "0";
+            rsltsObj["stocked"] = "";
             if (rows[i]["sto_number"] == "GL") {
               GL_results.push(rsltsObj);
             }
