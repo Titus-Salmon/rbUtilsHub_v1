@@ -1,5 +1,6 @@
 const mysql = require("mysql");
-import cacheMainStockFilter from "../../../nodeCacheStuff/cache1";
+// import cacheMainStockFilter from "../../../nodeCacheStuff/cache1";
+import queryResArrCache from "../../../nodeCacheStuff/cache1";
 
 const connection = mysql.createConnection({
   host: process.env.RB_HOST,
@@ -14,13 +15,13 @@ export async function post(req, res, next) {
 
   let tableName = req.body.tableName;
 
-  let stockFilterResultsCacheChecker = cacheMainStockFilter.get(
-    "stockFilterResultsCache_key"
-  );
-  if (stockFilterResultsCacheChecker !== undefined) {
-    //clear stockFilterResultsCache_key if it exists
-    cacheMainStockFilter.del("stockFilterResultsCache_key");
-  }
+  // let stockFilterResultsCacheChecker = cacheMainStockFilter.get(
+  //   "stockFilterResultsCache_key"
+  // );
+  // if (stockFilterResultsCacheChecker !== undefined) {
+  //   //clear stockFilterResultsCache_key if it exists
+  //   cacheMainStockFilter.del("stockFilterResultsCache_key");
+  // }
 
   let GL_results = [];
   let IN_results = [];
@@ -125,6 +126,7 @@ export async function post(req, res, next) {
         if (err) throw err;
         //showStockFilterResults(rows);
         stockFilter(rows);
+        queryResArrCache.set("queryResArrCache_key", allStoresResults);
 
         res.json({
           // sfResRows: stockFilterResultsSplit,
