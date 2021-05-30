@@ -50,28 +50,28 @@ export async function post(req, res, next) {
         function stockFilter(storeNumber) {
           let rsltsObj = {};
           rsltsObj["ri_t0d"] = i;
-          if (nhcrtRows[i]["sto_number"] == storeNumber) {
-            // let rsltsObj = {};
-            // rsltsObj["ri_t0d"] = i;
-            rsltsObj[`${storeNumber}_UPCs`] = nhcrtRows[i]["inv_ScanCode"];
+          //if (nhcrtRows[i]["sto_number"] == storeNumber) {
+          // let rsltsObj = {};
+          // rsltsObj["ri_t0d"] = i;
+          //rsltsObj[`${storeNumber}_UPCs`] = nhcrtRows[i]["inv_ScanCode"];
 
-            if (
-              nhcrtRows[i]["inv_lastreceived"] > oneYearAgo ||
-              nhcrtRows[i]["inv_lastsold"] > oneYearAgo ||
-              nhcrtRows[i]["inv_onhand"] > 0
-            ) {
-              rsltsObj[`${storeNumber}_stocked`] = nhcrtRows[i]["inv_ScanCode"];
-              //v//try to push all results into single array for single column heading
-              allStoresResults.push(rsltsObj);
-              //^//try to push all results into single array for single column heading
-            } else {
-              rsltsObj[`${storeNumber}_NOTstocked`] =
-                nhcrtRows[i]["inv_ScanCode"];
-              //v//try to push all results into single array for single column heading
-              allStoresResults.push(rsltsObj);
-              //^//try to push all results into single array for single column heading
-            }
+          if (
+            nhcrtRows[i]["inv_lastreceived"] > oneYearAgo ||
+            nhcrtRows[i]["inv_lastsold"] > oneYearAgo ||
+            nhcrtRows[i]["inv_onhand"] > 0
+          ) {
+            rsltsObj[`${storeNumber}_stocked`] = nhcrtRows[i]["inv_ScanCode"];
+            //v//try to push all results into single array for single column heading
+            allStoresResults.push(rsltsObj);
+            //^//try to push all results into single array for single column heading
+          } else {
+            rsltsObj[`${storeNumber}_NOTstocked`] =
+              nhcrtRows[i]["inv_ScanCode"];
+            //v//try to push all results into single array for single column heading
+            allStoresResults.push(rsltsObj);
+            //^//try to push all results into single array for single column heading
           }
+          //}
         }
         stockFilter(storeNumber);
       }
