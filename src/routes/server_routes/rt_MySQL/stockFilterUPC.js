@@ -1,5 +1,4 @@
 const mysql = require("mysql");
-// import cacheMainStockFilter from "../../../nodeCacheStuff/cache1";
 import queryResArrCache from "../../../nodeCacheStuff/cache1";
 
 const connection = mysql.createConnection({
@@ -14,15 +13,6 @@ export async function post(req, res, next) {
   res.setHeader("Content-Type", "application/json");
 
   let tableName = req.body.tableName;
-
-  // let stockFilterResultsCacheChecker = cacheMainStockFilter.get(
-  //   "stockFilterResultsCache_key"
-  // );
-  // if (stockFilterResultsCacheChecker !== undefined) {
-  //   //clear stockFilterResultsCache_key if it exists
-  //   cacheMainStockFilter.del("stockFilterResultsCache_key");
-  // }
-
   let GL_results = [];
   let IN_results = [];
   let MT_results = [];
@@ -124,24 +114,9 @@ export async function post(req, res, next) {
       `SELECT * FROM ${tableName}`,
       function (err, rows, fields) {
         if (err) throw err;
-        //showStockFilterResults(rows);
         stockFilter(rows);
         queryResArrCache.set("queryResArrCache_key", allStoresResults);
-
         res.json({
-          // sfResRows: stockFilterResultsSplit,
-          // loadedSqlTbl: loadedSqlTbl,
-          // sfRsINDstocked: sfRsINDstocked,
-          // sfRsIND_NOTstocked: sfRsIND_NOTstocked,
-          // sfRsSMstocked: sfRsSMstocked,
-          // sfRsSM_NOTstocked: sfRsSM_NOTstocked,
-          // sfRsMTstocked: sfRsMTstocked,
-          // sfRsMT_NOTstocked: sfRsMT_NOTstocked,
-          // sfRsSHstocked: sfRsSHstocked,
-          // sfRsSH_NOTstocked: sfRsSH_NOTstocked,
-          // sfRsGLstocked: sfRsGLstocked,
-          // sfRsGL_NOTstocked: sfRsGL_NOTstocked,
-          //stockFilterResultsSplitParsedArr: stockFilterResultsSplitParsedArr,
           allStoresResults: allStoresResults,
         });
       }

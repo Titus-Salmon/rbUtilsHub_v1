@@ -64,6 +64,11 @@
         isLoading = false;
       });
   }
+
+  onDestroy(() => {
+    //empty table stores when navigating away, so tables don't linger
+    tableData.set([{}]);
+  });
 </script>
 
 <style></style>
