@@ -93,16 +93,11 @@ export async function post(req, res, next) {
       //ALSO, they should all have the same order of UPCs, so we don't need to worry about that, since
       //we want the UPCs to remain in their original order, as they have been ordered by SPINS
       let allStoresRsObj = {};
-      allStoresRsObj["#"] = k;
-      // allStoresRsObj["GL_inv_ScanCode"] = GL_results[k]["inv_ScanCode"];
+      //allStoresRsObj["#"] = k+1;
       allStoresRsObj["GL_stocked"] = GL_results[k]["stocked"];
-      // allStoresRsObj["IN_inv_ScanCode"] = IN_results[k]["inv_ScanCode"];
       allStoresRsObj["IN_stocked"] = IN_results[k]["stocked"];
-      // allStoresRsObj["MT_inv_ScanCode"] = MT_results[k]["inv_ScanCode"];
       allStoresRsObj["MT_stocked"] = MT_results[k]["stocked"];
-      // allStoresRsObj["SM_inv_ScanCode"] = SM_results[k]["inv_ScanCode"];
       allStoresRsObj["SM_stocked"] = SM_results[k]["stocked"];
-      // allStoresRsObj["SPR_inv_ScanCode"] = SPR_results[k]["inv_ScanCode"];
       allStoresRsObj["SPR_stocked"] = SPR_results[k]["stocked"];
 
       allStoresResults.push(allStoresRsObj);
