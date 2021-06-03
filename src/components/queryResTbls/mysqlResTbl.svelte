@@ -1,5 +1,6 @@
 <script>
   import tableData from "../../stores/dynamicTables/tableData1";
+  import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
 
   let lastCost_cell;
   let ediCostMod_cell;
