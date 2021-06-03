@@ -1,95 +1,95 @@
 <script>
   import tableData from "../../stores/dynamicTables/tableData1";
   import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
+  import calcResTblHilite from "../../libT0d/calcResults/tableHighlight/calcResTblHilite";
 
-  let lastCost_cell;
-  let ediCostMod_cell;
-  let basePrice_cell;
-  let charm_cell;
+  // let lastCost_cell;
+  // let ediCostMod_cell;
+  // let basePrice_cell;
+  // let charm_cell;
 
-  function tableHighlight() {
-    const rsltTblBdy = document.getElementById("rsltTblBdy");
-    let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
+  // function tableHighlight() {
+  //   const rsltTblBdy = document.getElementById("rsltTblBdy");
+  //   let tblCells = rsltTblBdy.getElementsByTagName("td"); //targets all cells in table
 
-    let tblCols = Object.keys($tableData[0]);
+  //   let tblCols = Object.keys($tableData[0]);
 
-    for (let k = 0; k < tblCells.length; k++) {
-      console.log(
-        "tblCells[k].parentNode.childNodes[0].innerHTML==>",
-        tblCells[k].parentNode.childNodes[0].innerHTML
-      );
-      for (let m = 0; m < tblCols.length; m++) {
-        if (tblCols[m] === "lastCost") {
-          lastCost_cell = tblCells[k].parentNode.childNodes[m];
-        }
-        if (tblCols[m] === "ediCostMod") {
-          ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
-        }
-        if (tblCols[m] === "sib_baseprice") {
-          basePrice_cell = tblCells[k].parentNode.childNodes[m];
-        }
-        if (tblCols[m] === "charm") {
-          charm_cell = tblCells[k].parentNode.childNodes[m];
-        }
-      }
-      if (ediCostMod_cell && lastCost_cell) {
-        //only do calcs on these cells if they exist (because sometimes your table results
-        //won't include such cells/columns), otherwise you'll throw an error
-        if (
-          Math.abs(
-            (parseFloat(ediCostMod_cell.innerHTML) -
-              parseFloat(lastCost_cell.innerHTML)) /
-              parseFloat(ediCostMod_cell.innerHTML)
-          ) > 0.35
-        ) {
-          ediCostMod_cell.style.backgroundColor = "#ffb3ca";
-          ediCostMod_cell.style.color = "black";
-        }
-        if (
-          Math.abs(
-            (parseFloat(ediCostMod_cell.innerHTML) -
-              parseFloat(lastCost_cell.innerHTML)) /
-              parseFloat(ediCostMod_cell.innerHTML)
-          ) > 0.5
-        ) {
-          ediCostMod_cell.style.backgroundColor = "#ff8533";
-          ediCostMod_cell.style.color = "black";
-        }
-      }
+  //   for (let k = 0; k < tblCells.length; k++) {
+  //     console.log(
+  //       "tblCells[k].parentNode.childNodes[0].innerHTML==>",
+  //       tblCells[k].parentNode.childNodes[0].innerHTML
+  //     );
+  //     for (let m = 0; m < tblCols.length; m++) {
+  //       if (tblCols[m] === "lastCost") {
+  //         lastCost_cell = tblCells[k].parentNode.childNodes[m];
+  //       }
+  //       if (tblCols[m] === "ediCostMod") {
+  //         ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
+  //       }
+  //       if (tblCols[m] === "sib_baseprice") {
+  //         basePrice_cell = tblCells[k].parentNode.childNodes[m];
+  //       }
+  //       if (tblCols[m] === "charm") {
+  //         charm_cell = tblCells[k].parentNode.childNodes[m];
+  //       }
+  //     }
+  //     if (ediCostMod_cell && lastCost_cell) {
+  //       //only do calcs on these cells if they exist (because sometimes your table results
+  //       //won't include such cells/columns), otherwise you'll throw an error
+  //       if (
+  //         Math.abs(
+  //           (parseFloat(ediCostMod_cell.innerHTML) -
+  //             parseFloat(lastCost_cell.innerHTML)) /
+  //             parseFloat(ediCostMod_cell.innerHTML)
+  //         ) > 0.35
+  //       ) {
+  //         ediCostMod_cell.style.backgroundColor = "#ffb3ca";
+  //         ediCostMod_cell.style.color = "black";
+  //       }
+  //       if (
+  //         Math.abs(
+  //           (parseFloat(ediCostMod_cell.innerHTML) -
+  //             parseFloat(lastCost_cell.innerHTML)) /
+  //             parseFloat(ediCostMod_cell.innerHTML)
+  //         ) > 0.5
+  //       ) {
+  //         ediCostMod_cell.style.backgroundColor = "#ff8533";
+  //         ediCostMod_cell.style.color = "black";
+  //       }
+  //     }
 
-      if (charm_cell && basePrice_cell) {
-        //only do calcs on these cells if they exist (because sometimes your table results
-        //won't include such cells/columns), otherwise you'll throw an error
-        if (
-          Math.abs(
-            (parseFloat(charm_cell.innerHTML) -
-              parseFloat(basePrice_cell.innerHTML)) /
-              parseFloat(charm_cell.innerHTML)
-          ) > 0.35
-        ) {
-          charm_cell.style.backgroundColor = "#ffdb4b";
-          charm_cell.style.color = "black";
-        }
-        if (
-          Math.abs(
-            (parseFloat(charm_cell.innerHTML) -
-              parseFloat(basePrice_cell.innerHTML)) /
-              parseFloat(charm_cell.innerHTML)
-          ) > 0.5
-        ) {
-          charm_cell.style.backgroundColor = "#ff0000";
-          charm_cell.style.color = "black";
-        }
-      }
-    }
-  }
+  //     if (charm_cell && basePrice_cell) {
+  //       //only do calcs on these cells if they exist (because sometimes your table results
+  //       //won't include such cells/columns), otherwise you'll throw an error
+  //       if (
+  //         Math.abs(
+  //           (parseFloat(charm_cell.innerHTML) -
+  //             parseFloat(basePrice_cell.innerHTML)) /
+  //             parseFloat(charm_cell.innerHTML)
+  //         ) > 0.35
+  //       ) {
+  //         charm_cell.style.backgroundColor = "#ffdb4b";
+  //         charm_cell.style.color = "black";
+  //       }
+  //       if (
+  //         Math.abs(
+  //           (parseFloat(charm_cell.innerHTML) -
+  //             parseFloat(basePrice_cell.innerHTML)) /
+  //             parseFloat(charm_cell.innerHTML)
+  //         ) > 0.5
+  //       ) {
+  //         charm_cell.style.backgroundColor = "#ff0000";
+  //         charm_cell.style.color = "black";
+  //       }
+  //     }
+  //   }
+  // }
 
+  //The beforeUpdate function schedules work to happen immediately before the DOM is updated.
+  //afterUpdate is its counterpart, used for running code once the DOM is in sync with your data.
   afterUpdate(() => {
-    //if ($tableData[0] !== undefined && $tableData[0] !== null) {
-    //if (Object.keys($tableData[0]).length > 0) {
-    tableHighlight();
-    //}
-    //}
+    //only call tableHighlight after DOM in in sync with table data
+    calcResTblHilite($tableData);
   });
 </script>
 
