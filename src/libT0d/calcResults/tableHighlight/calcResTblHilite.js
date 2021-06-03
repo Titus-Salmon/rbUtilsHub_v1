@@ -9,11 +9,12 @@ function calcResTblHilite(tblData) {
   let basePrice_cell;
   let charm_cell;
 
+  console.log(
+    "tblCells[0].parentNode.childNodes[0].innerHTML==>",
+    tblCells[0].parentNode.childNodes[0].innerHTML
+  );
+
   for (let k = 0; k < tblCells.length; k++) {
-    console.log(
-      "tblCells[0].parentNode.childNodes[0].innerHTML==>",
-      tblCells[0].parentNode.childNodes[0].innerHTML
-    );
     for (let m = 0; m < tblCols.length; m++) {
       if (tblCols[m] === "lastCost") {
         lastCost_cell = tblCells[k].parentNode.childNodes[m];
