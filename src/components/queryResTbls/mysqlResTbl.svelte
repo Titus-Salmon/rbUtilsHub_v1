@@ -113,7 +113,7 @@
         {/each}
       </tr>
     </thead>
-    <tbody>
+    <tbody id="rsltTblBdy">
       {#each Object.values($tableData) as row}
         <tr>
           {#each Object.values(row) as cell}
