@@ -29,6 +29,7 @@
 
   function calcResults() {
     let stagedDataModal = document.getElementById("stagedDataModal");
+    isLoading = true;
     if (!isLoading) {
       stagedDataModal.style.display = "none"; //hide staged data after clicking calcResults button, to reduce clutter
       //but only after data fro calcResults is no longer loading, so we can see the Jumper in the meantime
@@ -251,7 +252,7 @@
       `JSON.stringify(postBodyObj)==> ${JSON.stringify(postBodyObj)}`
     );
 
-    isLoading = true;
+    // isLoading = true;
 
     fetch("server_routes/rt_MySQL/calcResults", {
       method: "POST",
