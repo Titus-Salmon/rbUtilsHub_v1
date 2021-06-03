@@ -15,7 +15,7 @@ import queryResArrCache from "../../../nodeCacheStuff/cache1";
 
 //had to revert back to leaving the code for rbDBqueryResults within this file, because for some reason, when importing it from
 //an external js file, some tables wouldn't display at all, due to getting a $tableData[0] being undefined error. It only happened
-//for some of the gpet tables, and I have no idea why, so chalking it up to some finicky Svelte DOM-building shenanigans. It was definitely
+//for some of the gpet tables, and I have no idea why... It was definitely
 //only something horking on the frontend, all the backend functionality was working just fine.
 //SO FOR NOW, DON'T ATTEMPT FARMING THE rbDBqueryResults() LOGIC OUT TO AN EXTERNAL FUNCTION -- NOT WORTH THE HASSLE
 import { rbDBqueryResults } from "../../../libT0d/MySQL/rbDBqueryResults";

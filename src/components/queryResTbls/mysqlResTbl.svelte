@@ -1,16 +1,10 @@
 <script>
   import tableData from "../../stores/dynamicTables/tableData1";
-  import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
-  import WsLogic from "./highlightLogic/wsLogic.svelte";
-  import RtlLogic from "./highlightLogic/rtlLogic.svelte";
 
   let lastCost_cell;
   let ediCostMod_cell;
   let basePrice_cell;
   let charm_cell;
-  let cellProp;
-
-  console.log(`JSON.stringify($tableData)==> ${JSON.stringify($tableData)}`);
 
   function tableHighlight() {
     const rsltTblBdy = document.getElementById("rsltTblBdy");
@@ -89,13 +83,13 @@
     }
   }
 
-  // afterUpdate(() => {
-  //   //if ($tableData[0] !== undefined && $tableData[0] !== null) {
-  //   //if (Object.keys($tableData[0]).length > 0) {
-  //   tableHighlight();
-  //   //}
-  //   //}
-  // });
+  afterUpdate(() => {
+    //if ($tableData[0] !== undefined && $tableData[0] !== null) {
+    //if (Object.keys($tableData[0]).length > 0) {
+    tableHighlight();
+    //}
+    //}
+  });
 </script>
 
 <style>
@@ -112,60 +106,20 @@
   <table>
     <thead>
       <tr>
+        <!--v-- NOTE: you must use the $ to access the tableData store -->
         {#each Object.keys($tableData[0]) as columnHeading}
           <th>{columnHeading}</th>
         {/each}
       </tr>
     </thead>
-    <tbody id="rsltTblBdy">
-      {#if $tableData[0]["charm"] && $tableData[0]["sib_baseprice"]}
-        <RtlLogic />
-      {:else if $tableData[0]["ediCostMod"] && $tableData[0]["lastCost"]}
-        <WsLogic />
-      {:else}
-        {#each Object.values($tableData) as row}
-          <tr>
-            {#each Object.values(row) as cell}
-              <td>{cell}</td>
-            {/each}
-          </tr>
-        {/each}
-      {/if}
-
-      <!-- {#each $tableData as row}
+    <tbody>
+      {#each Object.values($tableData) as row}
         <tr>
-          {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.5}
-            {#each Object.keys(row) as colName}
-              {#if colName === "ediCostMod"}
-                <td style="background-color:#ff8533; color: black"
-                  >{row[colName]}</td>
-              {:else if colName === "lastCost"}
-                <td style="background-color:#ff8533; color: black"
-                  >{row[colName]}</td>
-              {:else}
-                <td>{row[colName]}</td>
-              {/if}
-            {/each}
-          {/if}
-          {#if Math.abs((row["ediCostMod"] - row["lastCost"]) / row["ediCostMod"]) > 0.35}
-            {#each Object.keys(row) as colName}
-              {#if colName === "ediCostMod"}
-                <td style="background-color:#ffb3ca; color: black"
-                  >{row[colName]}</td>
-              {:else if colName === "lastCost"}
-                <td style="background-color:#ffb3ca; color: black"
-                  >{row[colName]}</td>
-              {:else}
-                <td>{row[colName]}</td>
-              {/if}
-            {/each}
-          {:else}
-            {#each Object.values(row) as cell}
-              <td>{cell}</td>
-            {/each}
-          {/if}
+          {#each Object.values(row) as cell}
+            <td>{cell}</td>
+          {/each}
         </tr>
-      {/each} -->
+      {/each}
     </tbody>
   </table>
 </body>

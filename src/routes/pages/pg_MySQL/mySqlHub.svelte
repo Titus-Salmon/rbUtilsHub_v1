@@ -1,72 +1,73 @@
 <script>
-import { onMount, onDestroy } from "svelte";
-import QueryResultsTable1 from "../../../components/queryResTbls/queryResultsTable1.svelte";
-import PaginUI from "../../../components/UI/paginUI.svelte";
-import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
-import ShowHideStagedDataBtn from "../../../components/UI/showHideStagedDataBtn.svelte";
+  import { onMount, onDestroy } from "svelte";
+  import QueryResultsTable1 from "../../../components/queryResTbls/queryResultsTable1.svelte";
+  import MysqlRsTbl from "../../../components/queryResTbls/mysqlResTbl.svelte";
+  import PaginUI from "../../../components/UI/paginUI.svelte";
+  import DkMdBtn from "../../../components/UI/DkMdBtn.svelte";
+  import ShowHideStagedDataBtn from "../../../components/UI/showHideStagedDataBtn.svelte";
 
-import tableData from "../../../stores/dynamicTables/tableData1";
-import paginData from "../../../stores/pagination/st_pagination1";
-import utilResponses from "../../../stores/utilResponses/st_utilResponses";
-import stagingData from "../../../stores/stagingData/st_stagingData.js";
-import calcResStore from "../../../stores/calcResults/st_calcResults";
+  import tableData from "../../../stores/dynamicTables/tableData1";
+  import paginData from "../../../stores/pagination/st_pagination1";
+  import utilResponses from "../../../stores/utilResponses/st_utilResponses";
+  import stagingData from "../../../stores/stagingData/st_stagingData.js";
+  import calcResStore from "../../../stores/calcResults/st_calcResults";
 
-import RbDbQuery from "../../../libT0d/MySQL/rbDbQuery.svelte";
-import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
-import SaveToCSVcreatePop from "../../../libT0d/saveToCSVcreatePop.svelte";
-import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
+  import RbDbQuery from "../../../libT0d/MySQL/rbDbQuery.svelte";
+  import SaveToCSV from "../../../libT0d/saveToCSV.svelte";
+  import SaveToCSVcreatePop from "../../../libT0d/saveToCSVcreatePop.svelte";
+  import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
 
-import Save_imw_CSV from "../../../libT0d/save_imw_CSV.svelte";
+  import Save_imw_CSV from "../../../libT0d/save_imw_CSV.svelte";
 
-import CreateTableModal from "../../../components/MySQL/createTableModal.svelte";
-import PopRbTableModal from "../../../components/MySQL/popRbTableModal.svelte";
-import DeleteRbTableModal from "../../../components/MySQL/deleteRbTableModal.svelte";
-import LoadstagingDataModal from "../../../components/MySQL/loadstagingDataModal.svelte";
-import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
+  import CreateTableModal from "../../../components/MySQL/createTableModal.svelte";
+  import PopRbTableModal from "../../../components/MySQL/popRbTableModal.svelte";
+  import DeleteRbTableModal from "../../../components/MySQL/deleteRbTableModal.svelte";
+  import LoadstagingDataModal from "../../../components/MySQL/loadstagingDataModal.svelte";
+  import StagedDataModal from "../../../components/MySQL/stagedDataModal.svelte";
 
-// onDestroy(() => {
-//   return location.reload();
-//   //why does this work exactly?
-//   //the problem was that before, when switching from mySqlHub to tsqlHub, we'd get an error along the lines of
-//   //"can't read property getElementsByTagName of undefined" from queryResultsTable1.svelte. The relevant code from queryResultsTable1.svelte
-//   //was const tblCells = rsltTblBdy.getElementsByTagName("td"). So when switching from mysqlHub to tsqlHub page, rsltTblBody
-//   //somehow became undefined. That in itself doesn't make sense, because rsltTblBdy is defined as
-//   //const rsltTblBdy = document.getElementById("rsltTblBdy") (that's the ID of the table body) in queryResultsTable1.svelte, and the
-//   //function that sets that definition is only called if there is some data in the table store...
-//   //At any rate, one of the effects of loction.reload() is to clear the cache, so presumably clearing the cache when exiting this
-//   //mySqlHub.svelte component (upon clicking the link to tsqlHub) clears something that was throwing this error.
-//   //Presumably the thing that was throwing the error was the tableHighlight() function called in queryResultsTable1.svelte
-//   //so clearing the cache clears the function call, and since the function is no longer being called before tsqlHub has a chance to
-//   //load it's queryResultsTable, no error is thrown.
+  // onDestroy(() => {
+  //   return location.reload();
+  //   //why does this work exactly?
+  //   //the problem was that before, when switching from mySqlHub to tsqlHub, we'd get an error along the lines of
+  //   //"can't read property getElementsByTagName of undefined" from queryResultsTable1.svelte. The relevant code from queryResultsTable1.svelte
+  //   //was const tblCells = rsltTblBdy.getElementsByTagName("td"). So when switching from mysqlHub to tsqlHub page, rsltTblBody
+  //   //somehow became undefined. That in itself doesn't make sense, because rsltTblBdy is defined as
+  //   //const rsltTblBdy = document.getElementById("rsltTblBdy") (that's the ID of the table body) in queryResultsTable1.svelte, and the
+  //   //function that sets that definition is only called if there is some data in the table store...
+  //   //At any rate, one of the effects of loction.reload() is to clear the cache, so presumably clearing the cache when exiting this
+  //   //mySqlHub.svelte component (upon clicking the link to tsqlHub) clears something that was throwing this error.
+  //   //Presumably the thing that was throwing the error was the tableHighlight() function called in queryResultsTable1.svelte
+  //   //so clearing the cache clears the function call, and since the function is no longer being called before tsqlHub has a chance to
+  //   //load it's queryResultsTable, no error is thrown.
 
-//   //In fact, remember that in a different branch (dev29?) we had set up different queryResultsTables; one for mysql and one for tsql,
-//   //but we still had this error. Therefore, the error is being thrown exclusively by mysqlHub.svelte/queryResultsTable1 at the end
-//   //of that component's lifecycle. So really the only thing that makes sense at this point is that the error is being thrown
-//   //because at the end of queryResultsTable1 lifecycle, tableHighlight() is still cached, but as we are beginning to build the DOM
-//   //for tsqlHub when switching over to that page, there is a moment when there is actually no queryResultsTable1 any more, yet
-//   //tableHighlight() is still being called from the cache
-//   //^//I'm not sure if this is really the case or not, but it seems like there must be some better way to deal with this issue
-//   //maybe we could try calling tableHighlight within onMount, instead.
-//***********************************************IMPORTANT************************************************************************/
-///^//////////I think this reasoning is on the right track, and the solution appears to be calling tableHighlight within
-// *******afterUpdate()*************.
-//Thus, once the queryResultsTable1 component has been updated; i.e. data has been added from our query into
-//the table store, and the table is subsequently populated with cells and rows, tableHighlight is called, and no errors occur,
-//even when navigating to another page.
-//***********************************************IMPORTANT************************************************************************/
-// });
+  //   //In fact, remember that in a different branch (dev29?) we had set up different queryResultsTables; one for mysql and one for tsql,
+  //   //but we still had this error. Therefore, the error is being thrown exclusively by mysqlHub.svelte/queryResultsTable1 at the end
+  //   //of that component's lifecycle. So really the only thing that makes sense at this point is that the error is being thrown
+  //   //because at the end of queryResultsTable1 lifecycle, tableHighlight() is still cached, but as we are beginning to build the DOM
+  //   //for tsqlHub when switching over to that page, there is a moment when there is actually no queryResultsTable1 any more, yet
+  //   //tableHighlight() is still being called from the cache
+  //   //^//I'm not sure if this is really the case or not, but it seems like there must be some better way to deal with this issue
+  //   //maybe we could try calling tableHighlight within onMount, instead.
+  //***********************************************IMPORTANT************************************************************************/
+  ///^//////////I think this reasoning is on the right track, and the solution appears to be calling tableHighlight within
+  // *******afterUpdate()*************.
+  //Thus, once the queryResultsTable1 component has been updated; i.e. data has been added from our query into
+  //the table store, and the table is subsequently populated with cells and rows, tableHighlight is called, and no errors occur,
+  //even when navigating to another page.
+  //***********************************************IMPORTANT************************************************************************/
+  // });
 
-onDestroy(() => {
-  //empty pagin and table stores when navigating away from mySqlHub, so pagin and tables don't linger
-  paginData.set([
-    {
-      totalPages: null,
-      currentPage: null,
-    },
-  ]);
+  onDestroy(() => {
+    //empty pagin and table stores when navigating away from mySqlHub, so pagin and tables don't linger
+    paginData.set([
+      {
+        totalPages: null,
+        currentPage: null,
+      },
+    ]);
 
-  tableData.set([{}]);
-});
+    tableData.set([{}]);
+  });
 </script>
 
 <style>
@@ -134,6 +135,7 @@ onDestroy(() => {
 
 {#if $tableData[0] !== undefined && $tableData[0] !== null}
   {#if Object.keys($tableData[0]).length > 0}
-    <QueryResultsTable1 />
+    <!-- <QueryResultsTable1 /> -->
+    <MysqlRsTbl />
   {/if}
 {/if}
