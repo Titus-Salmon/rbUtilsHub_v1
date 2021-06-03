@@ -1,7 +1,7 @@
 <script>
   import tableData from "../../stores/dynamicTables/tableData1";
   import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
-  import calcResTblHilite from "../../libT0d/calcResults/tableHighlight/calcResTblHilite";
+  import { calcResTblHilite } from "../../libT0d/calcResults/tableHighlight/calcResTblHilite";
 
   // let lastCost_cell;
   // let ediCostMod_cell;
