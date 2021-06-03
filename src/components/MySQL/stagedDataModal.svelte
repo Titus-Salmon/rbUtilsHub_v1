@@ -29,7 +29,10 @@
 
   function calcResults() {
     let stagedDataModal = document.getElementById("stagedDataModal");
-    stagedDataModal.style.display = "none"; //hide staged data after clicking calcResults button, to reduce clutter
+    if (!isLoading) {
+      stagedDataModal.style.display = "none"; //hide staged data after clicking calcResults button, to reduce clutter
+      //but only after data fro calcResults is no longer loading, so we can see the Jumper in the meantime
+    }
     // localStorage.setItem("showHidestagedData", "hide"); //set localstorage to appropriate val, so as to not hork the clickcounter
     //v//**********************************************************************************************************************/
     //can we just send stagingData.stagingDataResponse.stagedMargins to backend, because it contains all the following:
