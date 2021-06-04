@@ -285,7 +285,8 @@
           )}`
         );
 
-        tableData.set(calcResultsResultJSON.modifiedQueryResArr);
+        // tableData.set(calcResultsResultJSON.modifiedQueryResArr);
+        tableData.set(calcResultsResultJSON.queryResArr_1stPage);
 
         calcResultsResponse = calcResultsResultJSON;
 
