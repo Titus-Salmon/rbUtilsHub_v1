@@ -285,9 +285,7 @@
           )}`
         );
 
-        // tableData.set(calcResultsResultJSON.modifiedQueryResArr);
-        tableData.set(calcResultsResultJSON.modifiedQueryResArr_1stPage); //only set results for initial render to 1st 100 results
-        //the rest should be handled by the pagin function
+        tableData.set(calcResultsResultJSON.modifiedQueryResArr);
 
         calcResultsResponse = calcResultsResultJSON;
 

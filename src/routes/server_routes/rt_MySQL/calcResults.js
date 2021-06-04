@@ -30,7 +30,6 @@ export async function post(req, res, next) {
 
   let queryResArr = [];
   let modifiedQueryResArr = [];
-  let modifiedQueryResArr_1stPage = [];
   let srcRsXLS = [];
   let queryResArr_1stPage = [];
   let populated_imw_arr = [];
@@ -46,7 +45,6 @@ export async function post(req, res, next) {
         queryResArr,
         populated_imw_arr,
         modifiedQueryResArr,
-        modifiedQueryResArr_1stPage,
         calcResStatus
       );
     } else {
@@ -55,7 +53,6 @@ export async function post(req, res, next) {
         queryResArr,
         populated_imw_arr,
         modifiedQueryResArr,
-        modifiedQueryResArr_1stPage,
         calcResStatus
       );
     }
@@ -182,10 +179,10 @@ export async function post(req, res, next) {
         edlpRemover();
       }
 
-      rbDBqueryResults(calcResRows, queryResArr, srcRsXLS, queryResArr_1stPage) //queryResArr gets populated and cached with
+      rbDBqueryResults(calcResRows, queryResArr, srcRsXLS, modifiedQueryResArr) //queryResArr gets populated and cached with
         //the query results from the above query
         .then(populateIMW())
-        .then(paginCalcs(modifiedQueryResArr_1stPage)) //however, we only want to show the results for items that need wholesale
+        .then(paginCalcs(modifiedQueryResArr)) //however, we only want to show the results for items that need wholesale
         //or retail updates, therefore, we only do our pagination (and subsequent display) for items that meet these
         //criteria. These items are kept in the modifiedQueryResArr
         .then(() => {
@@ -200,7 +197,6 @@ export async function post(req, res, next) {
             calcResStatus: calcResStatus, //right now we're not using this in the front end, but we probably should in order to help
             //out with notification of when we return an empty result because no items are in need of updating
             modifiedQueryResArr: modifiedQueryResArr,
-            modifiedQueryResArr_1stPage: modifiedQueryResArr_1stPage,
           });
         });
     }
