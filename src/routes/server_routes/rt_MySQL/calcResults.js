@@ -179,7 +179,7 @@ export async function post(req, res, next) {
         edlpRemover();
       }
 
-      rbDBqueryResults(calcResRows, queryResArr, srcRsXLS, modifiedQueryResArr) //queryResArr gets populated and cached with
+      rbDBqueryResults(calcResRows, queryResArr, srcRsXLS, queryResArr_1stPage) //queryResArr gets populated and cached with
         //the query results from the above query
         .then(populateIMW())
         .then(paginCalcs(modifiedQueryResArr)) //however, we only want to show the results for items that need wholesale

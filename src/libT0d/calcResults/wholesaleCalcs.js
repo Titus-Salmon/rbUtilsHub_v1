@@ -179,7 +179,7 @@ function wholesaleCalcs(
       // reviewObj['pf8'] = ""
 
       modifiedQueryResArr.push(reviewObj); //this holds data for displaying REVIEW results
-      //AND we are adding come calcResults as well (see above), for review purposes
+      //AND we are adding some calcResults as well (see above), for review purposes
       //we need some way of reordering our columns for the review array (modifiedQueryResArr), so why not
       //just overwrite your cache with the review results, and everything should fall in place
       //V// CACHE QUERY RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
