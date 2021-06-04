@@ -185,7 +185,7 @@ export async function post(req, res, next) {
       rbDBqueryResults(calcResRows, queryResArr, srcRsXLS, queryResArr_1stPage) //queryResArr gets populated and cached with
         //the query results from the above query
         .then(populateIMW())
-        .then(paginCalcs(modifiedQueryResArr)) //however, we only want to show the results for items that need wholesale
+        .then(paginCalcs(modifiedQueryResArr_1stPage)) //however, we only want to show the results for items that need wholesale
         //or retail updates, therefore, we only do our pagination (and subsequent display) for items that meet these
         //criteria. These items are kept in the modifiedQueryResArr
         .then(() => {
