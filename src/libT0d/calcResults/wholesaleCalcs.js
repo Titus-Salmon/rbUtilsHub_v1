@@ -26,6 +26,7 @@ function wholesaleCalcs(
   queryResArr,
   populated_imw_arr,
   modifiedQueryResArr,
+  modifiedQueryResArr_1stPage,
   calcResStatus
 ) {
   //populate imw with wholesales from vendor-supplied catalog
@@ -185,6 +186,17 @@ function wholesaleCalcs(
       //V// CACHE QUERY RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
       queryResArrCache.set("queryResArrCache_key", modifiedQueryResArr);
       //^// CACHE QUERY RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
+
+      if (modifiedQueryResArr.length > 100) {
+        //if there are more than 100 query results, only push the 1st 100 into the 1st page
+        //result set (modifiedQueryResArr_1stPage)
+        for (let i = 0; i < 100; i++) {
+          modifiedQueryResArr_1stPage.push(modifiedQueryResArr[i]);
+        }
+      } else {
+        modifiedQueryResArr_1stPage = modifiedQueryResArr; //if there are 100 or less total query results, the 1st page results are set equal
+        //to the whole query result dataset (modifiedQueryResArr)
+      }
 
       // //^//ADD numPkgs, csPkgMltpl, ovr, appliedWSdisco, etc.
       // //^//to modifiedQueryResArr, in order to show for review purposes on frontend

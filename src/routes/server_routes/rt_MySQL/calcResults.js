@@ -15,8 +15,8 @@ import {
 } from "../../../libT0d/commonMethods/paginCalcs";
 
 import { rbDBqueryResults } from "../../../libT0d/MySQL/rbDBqueryResults";
-import { wholesaleCalcs } from "../../../libT0d/calcResults/wholesaleCalcs";
 
+import { wholesaleCalcs } from "../../../libT0d/calcResults/wholesaleCalcs";
 import { retailCalcs } from "../../../libT0d/calcResults/retailCalcs";
 
 export async function post(req, res, next) {
@@ -30,6 +30,7 @@ export async function post(req, res, next) {
 
   let queryResArr = [];
   let modifiedQueryResArr = [];
+  let modifiedQueryResArr_1stPage = [];
   let srcRsXLS = [];
   let queryResArr_1stPage = [];
   let populated_imw_arr = [];
@@ -45,6 +46,7 @@ export async function post(req, res, next) {
         queryResArr,
         populated_imw_arr,
         modifiedQueryResArr,
+        modifiedQueryResArr_1stPage,
         calcResStatus
       );
     } else {
@@ -53,6 +55,7 @@ export async function post(req, res, next) {
         queryResArr,
         populated_imw_arr,
         modifiedQueryResArr,
+        modifiedQueryResArr_1stPage,
         calcResStatus
       );
     }
@@ -197,6 +200,7 @@ export async function post(req, res, next) {
             calcResStatus: calcResStatus, //right now we're not using this in the front end, but we probably should in order to help
             //out with notification of when we return an empty result because no items are in need of updating
             modifiedQueryResArr: modifiedQueryResArr,
+            modifiedQueryResArr_1stPage: modifiedQueryResArr_1stPage,
           });
         });
     }
