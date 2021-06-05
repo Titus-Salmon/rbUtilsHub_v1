@@ -5,7 +5,7 @@
 
   //The beforeUpdate function schedules work to happen immediately before the DOM is updated.
   //afterUpdate is its counterpart, used for running code once the DOM is in sync with your data.
-  onMount(() => {
+  afterUpdate(() => {
     //only call tableHighlight after DOM in in sync with table data
     calcResTblHilite($tableData);
   });
