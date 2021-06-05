@@ -36,10 +36,10 @@
         <tr>
           {#each Object.values(row) as cell}
             <td>{cell}</td>
-            {calcResTblHilite($tableData)}
           {/each}
         </tr>
       {/each}
     </tbody>
   </table>
+  {calcResTblHilite($tableData)}
 </body>
