@@ -9,7 +9,7 @@ function resetCells(tblData) {
   let basePrice_cell;
   let charm_cell;
 
-  let ediCosMod_cell_array = [];
+  let ediCostMod_cell_array = [];
   let charm_cell_array = [];
 
   console.log(
@@ -24,15 +24,15 @@ function resetCells(tblData) {
       }
       if (tblCols[m] === "ediCostMod") {
         ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
-        ediCosMod_cell_array.push(k);
+        ediCostMod_cell_array.push(k);
 
-        for (let i = 0; i < ediCosMod_cell_array.length; i++) {
+        for (let i = 0; i < ediCostMod_cell_array.length; i++) {
           if (i % 2 == 0) {
-            ediCosMod_cell.style.backgroundColor = "black";
-            ediCosMod_cell.style.color = "lime";
+            ediCostMod_cell.style.backgroundColor = "black";
+            ediCostMod_cell.style.color = "lime";
           } else {
-            ediCosMod_cell.style.backgroundColor = "var(--surface2)";
-            ediCosMod_cell.style.color = "lime";
+            ediCostMod_cell.style.backgroundColor = "var(--surface2)";
+            ediCostMod_cell.style.color = "lime";
           }
         }
 
