@@ -33,9 +33,6 @@ function calcResTblHilite(tblData) {
       //only do calcs on these cells if they exist (because sometimes your table results
       //won't include such cells/columns), otherwise you'll throw an error
 
-      //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
-      ediCostMod_cell.style.backgroundColor = "black";
-      ediCostMod_cell.style.color = "lime";
       if (
         Math.abs(
           (parseFloat(ediCostMod_cell.innerHTML) -
@@ -63,9 +60,6 @@ function calcResTblHilite(tblData) {
       //only do calcs on these cells if they exist (because sometimes your table results
       //won't include such cells/columns), otherwise you'll throw an error
 
-      //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
-      ediCostMod_cell.style.backgroundColor = "black";
-      ediCostMod_cell.style.color = "lime";
       if (
         Math.abs(
           (parseFloat(charm_cell.innerHTML) -

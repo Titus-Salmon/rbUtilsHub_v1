@@ -5,10 +5,10 @@
 
   //The beforeUpdate function schedules work to happen immediately before the DOM is updated.
   //afterUpdate is its counterpart, used for running code once the DOM is in sync with your data.
-  afterUpdate(() => {
-    //only call tableHighlight after DOM in in sync with table data
-    calcResTblHilite($tableData);
-  });
+  // afterUpdate(() => {
+  //   //only call tableHighlight after DOM in in sync with table data
+  //   calcResTblHilite($tableData);
+  // });
 </script>
 
 <style>
@@ -36,6 +36,7 @@
         <tr>
           {#each Object.values(row) as cell}
             <td>{cell}</td>
+            {calcResTblHilite($tableData)}
           {/each}
         </tr>
       {/each}
