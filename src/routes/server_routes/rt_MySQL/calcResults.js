@@ -180,17 +180,6 @@ export async function post(req, res, next) {
         edlpRemover();
       }
 
-      if (modifiedQueryResArr.length > 100) {
-        //if there are more than 100 query results, only push the 1st 100 into the 1st page
-        //result set (queryResArr_1stPage)
-        for (let i = 0; i < 100; i++) {
-          modifiedQRA_1stPage.push(modifiedQueryResArr[i]);
-        }
-      } else {
-        modifiedQRA_1stPage = modifiedQueryResArr; //if there are 100 or less total query results, the 1st page results are set equal
-        //to the whole query result dataset (queryResArr)
-      }
-
       rbDBqueryResults(calcResRows, queryResArr, srcRsXLS, queryResArr_1stPage) //queryResArr gets populated and cached with
         //the query results from the above query
         .then(populateIMW())
@@ -198,6 +187,16 @@ export async function post(req, res, next) {
         //or retail updates, therefore, we only do our pagination (and subsequent display) for items that meet these
         //criteria. These items are kept in the modifiedQueryResArr
         .then(() => {
+          if (modifiedQueryResArr.length > 100) {
+            //if there are more than 100 query results, only push the 1st 100 into the 1st page
+            //result set (queryResArr_1stPage)
+            for (let i = 0; i < 100; i++) {
+              modifiedQRA_1stPage.push(modifiedQueryResArr[i]);
+            }
+          } else {
+            modifiedQRA_1stPage = modifiedQueryResArr; //if there are 100 or less total query results, the 1st page results are set equal
+            //to the whole query result dataset (queryResArr)
+          }
           res.json({
             // queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
             queryResArr_1stPage: queryResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
