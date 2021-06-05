@@ -44,7 +44,7 @@
     </tbody>
     {afterUpdate(() => {
       resetCells($tableData);
-      resetRows();
+      // resetRows();
       calcResTblHilite($tableData);
     })}
   </table>

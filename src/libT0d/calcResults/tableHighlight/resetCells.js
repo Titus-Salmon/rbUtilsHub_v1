@@ -21,31 +21,66 @@ function resetCells(tblData) {
       }
       if (tblCols[m] === "ediCostMod") {
         ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
+        if (m % 2 == 0) {
+          if (k % 2 == 0) {
+            ediCostMod_cell.style.backgroundColor = "black";
+            ediCostMod_cell.style.color = "lime";
+          } else {
+            ediCostMod_cell.style.backgroundColor = "var(--surface2)";
+            ediCostMod_cell.style.color = "lime";
+          }
+        }
+        if (m % 2 !== 0) {
+          if (k % 2 == 0) {
+            ediCostMod_cell.style.backgroundColor = "var(--surface2)";
+            ediCostMod_cell.style.color = "lime";
+          } else {
+            ediCostMod_cell.style.backgroundColor = "black";
+            ediCostMod_cell.style.color = "lime";
+          }
+        }
       }
       if (tblCols[m] === "sib_baseprice") {
         basePrice_cell = tblCells[k].parentNode.childNodes[m];
       }
       if (tblCols[m] === "charm") {
         charm_cell = tblCells[k].parentNode.childNodes[m];
+        if (m % 2 == 0) {
+          if (k % 2 == 0) {
+            charm_cell.style.backgroundColor = "black";
+            charm_cell.style.color = "lime";
+          } else {
+            charm_cell.style.backgroundColor = "var(--surface2)";
+            charm_cell.style.color = "lime";
+          }
+        }
+        if (m % 2 !== 0) {
+          if (k % 2 == 0) {
+            charm_cell.style.backgroundColor = "var(--surface2)";
+            charm_cell.style.color = "lime";
+          } else {
+            charm_cell.style.backgroundColor = "black";
+            charm_cell.style.color = "lime";
+          }
+        }
       }
     }
-    if (ediCostMod_cell && lastCost_cell) {
-      //only do calcs on these cells if they exist (because sometimes your table results
-      //won't include such cells/columns), otherwise you'll throw an error
+    // if (ediCostMod_cell && lastCost_cell) {
+    //   //only do calcs on these cells if they exist (because sometimes your table results
+    //   //won't include such cells/columns), otherwise you'll throw an error
+    //   //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
+    //   // ediCostMod_cell.style.backgroundColor = "black";
+    //   // ediCostMod_cell.style.color = "lime";
+    // }
 
-      //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
-      ediCostMod_cell.style.backgroundColor = "black";
-      ediCostMod_cell.style.color = "lime";
-    }
+    // if (charm_cell && basePrice_cell) {
+    //   //only do calcs on these cells if they exist (because sometimes your table results
+    //   //won't include such cells/columns), otherwise you'll throw an error
 
-    if (charm_cell && basePrice_cell) {
-      //only do calcs on these cells if they exist (because sometimes your table results
-      //won't include such cells/columns), otherwise you'll throw an error
-
-      //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
-      charm_cell.style.backgroundColor = "black";
-      charm_cell.style.color = "lime";
-    }
+    //   //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
+    //   // charm_cell.style.backgroundColor = "black";
+    //   // charm_cell.style.color = "lime";
+    // }
   }
 }
 
