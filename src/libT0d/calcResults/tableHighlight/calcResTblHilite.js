@@ -37,20 +37,21 @@ function calcResTblHilite(tblData) {
           (parseFloat(ediCostMod_cell.innerHTML) -
             parseFloat(lastCost_cell.innerHTML)) /
             parseFloat(ediCostMod_cell.innerHTML)
-        ) > 0.35
-      ) {
-        ediCostMod_cell.style.backgroundColor = "#ffb3ca";
-        ediCostMod_cell.style.color = "black";
-      }
-      if (
-        Math.abs(
-          (parseFloat(ediCostMod_cell.innerHTML) -
-            parseFloat(lastCost_cell.innerHTML)) /
-            parseFloat(ediCostMod_cell.innerHTML)
         ) > 0.5
       ) {
         ediCostMod_cell.style.backgroundColor = "#ff8533";
         ediCostMod_cell.style.color = "black";
+      } else {
+        if (
+          Math.abs(
+            (parseFloat(ediCostMod_cell.innerHTML) -
+              parseFloat(lastCost_cell.innerHTML)) /
+              parseFloat(ediCostMod_cell.innerHTML)
+          ) > 0.35
+        ) {
+          ediCostMod_cell.style.backgroundColor = "#ffb3ca";
+          ediCostMod_cell.style.color = "black";
+        }
       }
     }
 
@@ -62,20 +63,21 @@ function calcResTblHilite(tblData) {
           (parseFloat(charm_cell.innerHTML) -
             parseFloat(basePrice_cell.innerHTML)) /
             parseFloat(charm_cell.innerHTML)
-        ) > 0.35
-      ) {
-        charm_cell.style.backgroundColor = "#ffdb4b";
-        charm_cell.style.color = "black";
-      }
-      if (
-        Math.abs(
-          (parseFloat(charm_cell.innerHTML) -
-            parseFloat(basePrice_cell.innerHTML)) /
-            parseFloat(charm_cell.innerHTML)
         ) > 0.5
       ) {
         charm_cell.style.backgroundColor = "#ff0000";
         charm_cell.style.color = "black";
+      } else {
+        if (
+          Math.abs(
+            (parseFloat(charm_cell.innerHTML) -
+              parseFloat(basePrice_cell.innerHTML)) /
+              parseFloat(charm_cell.innerHTML)
+          ) > 0.35
+        ) {
+          charm_cell.style.backgroundColor = "#ffdb4b";
+          charm_cell.style.color = "black";
+        }
       }
     }
   }
