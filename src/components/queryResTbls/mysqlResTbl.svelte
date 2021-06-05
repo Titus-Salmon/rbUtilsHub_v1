@@ -1,6 +1,8 @@
 <script>
   import tableData from "../../stores/dynamicTables/tableData1";
   import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
+  import { resetCells } from "../../libT0d/calcResults/tableHighlight/resetCells";
+  import { resetRows } from "../../libT0d/calcResults/tableHighlight/resetRows";
   import { calcResTblHilite } from "../../libT0d/calcResults/tableHighlight/calcResTblHilite";
 
   //The beforeUpdate function schedules work to happen immediately before the DOM is updated.
@@ -41,6 +43,8 @@
       {/each}
     </tbody>
     {afterUpdate(() => {
+      resetCells($tableData);
+      resetRows();
       calcResTblHilite($tableData);
     })}
   </table>

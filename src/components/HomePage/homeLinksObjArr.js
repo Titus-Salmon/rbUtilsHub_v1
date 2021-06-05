@@ -28,6 +28,13 @@ const homeLinksObjArr = [
     linkURL: "/pages/pg_MySQL/itemNamerIMW",
   },
   {
+    id: "imwClicker",
+    linkName: "imwClicker",
+    imgURL: "/img/homePage/imw_inv.jpg",
+    altImg: "imw_inv.jpg",
+    linkURL: "/pages/pg_MySQL/imwClicker",
+  },
+  {
     id: "stockFilterUPC",
     linkName: "stockFilterUPC",
     imgURL: "/img/homePage/filter1_inv.jpg",
