@@ -127,6 +127,11 @@ function resetCells(tblData) {
       }
     }
   }
+
+  console.log(
+    `ediCostMod_cell_array.length==> ${ediCostMod_cell_array.length}`
+  );
+  console.log(`charm_cell_array.length==> ${charm_cell_array.length}`);
 }
 
 export { resetCells };
