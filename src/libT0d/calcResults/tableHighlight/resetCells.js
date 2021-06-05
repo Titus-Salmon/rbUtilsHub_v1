@@ -26,15 +26,15 @@ function resetCells(tblData) {
         ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
         ediCostMod_cell_array.push(k);
 
-        for (let i = 0; i < ediCostMod_cell_array.length; i++) {
-          if (i % 2 == 0) {
-            ediCostMod_cell.style.backgroundColor = "black";
-            ediCostMod_cell.style.color = "lime";
-          } else {
-            ediCostMod_cell.style.backgroundColor = "var(--surface2)";
-            ediCostMod_cell.style.color = "lime";
-          }
-        }
+        // for (let i = 0; i < ediCostMod_cell_array.length; i++) {
+        //   if (i % 2 == 0) {
+        //     ediCostMod_cell.style.backgroundColor = "black";
+        //     ediCostMod_cell.style.color = "lime";
+        //   } else {
+        //     ediCostMod_cell.style.backgroundColor = "var(--surface2)";
+        //     ediCostMod_cell.style.color = "lime";
+        //   }
+        // }
 
         // if (m % 2 == 0) {
         //   if (k % 2 == 0) {
@@ -62,15 +62,15 @@ function resetCells(tblData) {
         charm_cell = tblCells[k].parentNode.childNodes[m];
         charm_cell_array.push(k);
 
-        for (let i = 0; i < charm_cell_array.length; i++) {
-          if (i % 2 == 0) {
-            charm_cell.style.backgroundColor = "black";
-            charm_cell.style.color = "lime";
-          } else {
-            charm_cell.style.backgroundColor = "var(--surface2)";
-            charm_cell.style.color = "lime";
-          }
-        }
+        // for (let i = 0; i < charm_cell_array.length; i++) {
+        //   if (i % 2 == 0) {
+        //     charm_cell.style.backgroundColor = "black";
+        //     charm_cell.style.color = "lime";
+        //   } else {
+        //     charm_cell.style.backgroundColor = "var(--surface2)";
+        //     charm_cell.style.color = "lime";
+        //   }
+        // }
 
         // if (m % 2 == 0) {
         //   if (k % 2 == 0) {
@@ -92,22 +92,40 @@ function resetCells(tblData) {
         // }
       }
     }
-    // if (ediCostMod_cell && lastCost_cell) {
-    //   //only do calcs on these cells if they exist (because sometimes your table results
-    //   //won't include such cells/columns), otherwise you'll throw an error
-    //   //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
-    //   // ediCostMod_cell.style.backgroundColor = "black";
-    //   // ediCostMod_cell.style.color = "lime";
-    // }
+    if (ediCostMod_cell && lastCost_cell) {
+      //only do calcs on these cells if they exist (because sometimes your table results
+      //won't include such cells/columns), otherwise you'll throw an error
+      //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
+      // ediCostMod_cell.style.backgroundColor = "black";
+      // ediCostMod_cell.style.color = "lime";
+      for (let i = 0; i < ediCostMod_cell_array.length; i++) {
+        if (i % 2 == 0) {
+          ediCostMod_cell.style.backgroundColor = "black";
+          ediCostMod_cell.style.color = "lime";
+        } else {
+          ediCostMod_cell.style.backgroundColor = "var(--surface2)";
+          ediCostMod_cell.style.color = "lime";
+        }
+      }
+    }
 
-    // if (charm_cell && basePrice_cell) {
-    //   //only do calcs on these cells if they exist (because sometimes your table results
-    //   //won't include such cells/columns), otherwise you'll throw an error
+    if (charm_cell && basePrice_cell) {
+      //only do calcs on these cells if they exist (because sometimes your table results
+      //won't include such cells/columns), otherwise you'll throw an error
 
-    //   //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
-    //   // charm_cell.style.backgroundColor = "black";
-    //   // charm_cell.style.color = "lime";
-    // }
+      //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
+      // charm_cell.style.backgroundColor = "black";
+      // charm_cell.style.color = "lime";
+      for (let i = 0; i < charm_cell_array.length; i++) {
+        if (i % 2 == 0) {
+          charm_cell.style.backgroundColor = "black";
+          charm_cell.style.color = "lime";
+        } else {
+          charm_cell.style.backgroundColor = "var(--surface2)";
+          charm_cell.style.color = "lime";
+        }
+      }
+    }
   }
 }
 
