@@ -189,7 +189,7 @@ export async function post(req, res, next) {
         .then(() => {
           if (modifiedQueryResArr.length > 100) {
             //if there are more than 100 query results, only push the 1st 100 into the 1st page
-            //result set (queryResArr_1stPage)
+            //result set (modifiedQRA_1stPage)
             for (let i = 0; i < 100; i++) {
               modifiedQRA_1stPage.push(modifiedQueryResArr[i]);
             }
