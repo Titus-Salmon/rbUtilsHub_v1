@@ -54,7 +54,6 @@ export async function post(req, res, next) {
         queryResArr,
         populated_imw_arr,
         modifiedQueryResArr,
-        modifiedQRA_1stPage,
         calcResStatus
       );
     }
@@ -181,12 +180,17 @@ export async function post(req, res, next) {
         edlpRemover();
       }
 
-      // rbDBqueryResults(
-      //   calcResRows,
-      //   modifiedQueryResArr,
-      //   srcRsXLS,
-      //   modifiedQRA_1stPage
-      // ); //queryResArr gets populated and cached with
+      if (modifiedQueryResArr.length > 100) {
+        //if there are more than 100 query results, only push the 1st 100 into the 1st page
+        //result set (queryResArr_1stPage)
+        for (let i = 0; i < 100; i++) {
+          modifiedQRA_1stPage.push(modifiedQueryResArr[i]);
+        }
+      } else {
+        modifiedQRA_1stPage = modifiedQueryResArr; //if there are 100 or less total query results, the 1st page results are set equal
+        //to the whole query result dataset (queryResArr)
+      }
+
       rbDBqueryResults(calcResRows, queryResArr, srcRsXLS, queryResArr_1stPage) //queryResArr gets populated and cached with
         //the query results from the above query
         .then(populateIMW())

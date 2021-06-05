@@ -23,7 +23,6 @@ function retailCalcs(
   queryResArr,
   populated_imw_arr,
   modifiedQueryResArr,
-  modifiedQRA_1stPage,
   calcResStatus
 ) {
   let charm;
@@ -331,17 +330,6 @@ function retailCalcs(
         )}`
       );
       //^// CACHE QUERY RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
-
-      if (modifiedQueryResArr.length > 100) {
-        //if there are more than 100 query results, only push the 1st 100 into the 1st page
-        //result set (queryResArr_1stPage)
-        for (let i = 0; i < 100; i++) {
-          modifiedQRA_1stPage.push(modifiedQueryResArr[i]);
-        }
-      } else {
-        modifiedQRA_1stPage = modifiedQueryResArr; //if there are 100 or less total query results, the 1st page results are set equal
-        //to the whole query result dataset (queryResArr)
-      }
 
       // //^//ADD numPkgs, csPkgMltpl, ovr, reqdRtl, charm, rbDefaultMarg(for dept), appliedMargin, appliedWSdisco, appliedRtlDisco
       // //^//to modifiedQueryResArr, in order to show for review purposes on frontend
