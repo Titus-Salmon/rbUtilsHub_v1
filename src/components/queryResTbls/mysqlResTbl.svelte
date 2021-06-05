@@ -40,8 +40,8 @@
         </tr>
       {/each}
     </tbody>
+    {afterUpdate(() => {
+      calcResTblHilite($tableData);
+    })}
   </table>
-  {afterUpdate(() => {
-    calcResTblHilite($tableData);
-  })}
 </body>
