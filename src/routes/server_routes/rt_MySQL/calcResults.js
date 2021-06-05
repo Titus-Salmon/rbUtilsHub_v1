@@ -30,6 +30,7 @@ export async function post(req, res, next) {
 
   let queryResArr = [];
   let modifiedQueryResArr = [];
+  let modifiedQRA_1stPage = [];
   let srcRsXLS = [];
   let queryResArr_1stPage = [];
   let populated_imw_arr = [];
@@ -180,7 +181,12 @@ export async function post(req, res, next) {
       }
 
       // rbDBqueryResults(calcResRows, queryResArr, srcRsXLS, queryResArr_1stPage) //queryResArr gets populated and cached with
-      rbDBqueryResults(calcResRows, null, srcRsXLS, null) //queryResArr gets populated and cached with
+      rbDBqueryResults(
+        calcResRows,
+        modifiedQueryResArr,
+        srcRsXLS,
+        modifiedQRA_1stPage
+      ) //queryResArr gets populated and cached with
         //the query results from the above query
         .then(populateIMW())
         .then(paginCalcs(modifiedQueryResArr)) //however, we only want to show the results for items that need wholesale
@@ -198,6 +204,7 @@ export async function post(req, res, next) {
             calcResStatus: calcResStatus, //right now we're not using this in the front end, but we probably should in order to help
             //out with notification of when we return an empty result because no items are in need of updating
             modifiedQueryResArr: modifiedQueryResArr,
+            modifiedQRA_1stPage: modifiedQRA_1stPage,
           });
         });
     }
