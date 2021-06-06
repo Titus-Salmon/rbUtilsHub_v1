@@ -13,13 +13,6 @@ function resetCells(tblData) {
   let charmColNum;
   let charmColOffset;
 
-  console.log(
-    "tblCells[0].parentNode.childNodes[0].innerHTML==>",
-    tblCells[0].parentNode.childNodes[0].innerHTML
-  );
-
-  console.log(`tblCols.length==> ${tblCols.length}`);
-
   for (let m = 0; m < tblCols.length; m++) {
     if (tblCols[m] === "ediCostMod") {
       ediCostModColNum = m + 1;
@@ -30,18 +23,6 @@ function resetCells(tblData) {
       charmColOffset = tblCols.length - charmColNum;
     }
   }
-
-  console.log(`ediCostModColNum==> ${ediCostModColNum}`);
-  console.log(`typeof ediCostModColNum==> ${typeof ediCostModColNum}`);
-
-  console.log(`ediCostModColOffset==> ${ediCostModColOffset}`);
-  console.log(`typeof ediCostModColOffset==> ${typeof ediCostModColOffset}`);
-
-  console.log(`charmColNum==> ${charmColNum}`);
-  console.log(`typeof charmColNum==> ${typeof charmColNum}`);
-
-  console.log(`charmColOffset==> ${charmColOffset}`);
-  console.log(`typeof charmColOffset==> ${typeof charmColOffset}`);
 
   for (let k = 0; k < tblCells.length; k++) {
     for (let m = 0; m < tblCols.length; m++) {
