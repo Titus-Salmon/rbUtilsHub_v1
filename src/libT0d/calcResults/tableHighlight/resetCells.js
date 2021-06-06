@@ -29,7 +29,9 @@ function resetCells(tblData) {
     }
   }
 
+  console.log(`ediCostModColNum==> ${ediCostModColNum}`);
   console.log(`ediCostModColOffset==> ${ediCostModColOffset}`);
+  console.log(`charmColNum==> ${charmColNum}`);
   console.log(`charmColOffset==> ${charmColOffset}`);
 
   for (let k = 0; k < tblCells.length; k++) {
