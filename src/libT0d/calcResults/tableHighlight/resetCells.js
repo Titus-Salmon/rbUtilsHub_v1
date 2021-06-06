@@ -50,23 +50,17 @@ function resetCells(tblData) {
       }
       if (tblCols[m] === "ediCostMod") {
         ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
-        if (
-          ediCostModColNum / (k + 1) === 1 ||
-          Number.isInteger((k + 1 - ediCostModColOffset) / ediCostModColNum)
-        ) {
-          console.log(
-            `(k + 1 - ediCostModColOffset) / ediCostModColNum==> ${
-              (k + 1 - ediCostModColOffset) / ediCostModColNum
-            }`
-          );
-          let rowNum =
+        let testNumber = (k + 1 - ediCostModColOffset) / ediCostModColNum;
+        if (ediCostModColNum / (k + 1) === 1 || Number.isInteger(testNumber)) {
+          console.log(`testNumber==> ${testNumber}`);
+          let rowNumCostMod =
             (k +
               1 -
               ediCostModColOffset *
                 ((k + 1 - ediCostModColNum) / tblCols.length)) /
             ediCostModColNum;
-          console.log(`row # from ediCostMod calcs==>  ${rowNum}`);
-          if (rowNum === 1 || rowNum % 2 === 0) {
+          console.log(`row # from ediCostMod calcs==>  ${rowNumCostMod}`);
+          if (rowNumCostMod === 1 || rowNumCostMod % 2 === 0) {
             //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
             ediCostMod_cell.style.backgroundColor = "black";
             ediCostMod_cell.style.color = "lime";
@@ -82,22 +76,16 @@ function resetCells(tblData) {
       }
       if (tblCols[m] === "charm") {
         charm_cell = tblCells[k].parentNode.childNodes[m];
-        if (
-          charmColNum / (k + 1) === 1 ||
-          Number.isInteger((k + 1 - charmColOffset) / charmColNum)
-        ) {
-          console.log(
-            `(k + 1 - charmColOffset) / charmColNum==> ${
-              (k + 1 - charmColOffset) / charmColNum
-            }`
-          );
-          let rowNum =
+        let testNumberCharm = (k + 1 - charmColOffset) / charmColNum;
+        if (charmColNum / (k + 1) === 1 || Number.isInteger(testNumberCharm)) {
+          console.log(`testNumberCharm==> ${testNumberCharm}`);
+          let rowNumCharm =
             (k +
               1 -
               charmColOffset * ((k + 1 - charmColNum) / tblCols.length)) /
             charmColNum;
-          console.log(`row # from charm calcs==>  ${rowNum}`);
-          if (rowNum === 1 || rowNum % 2 === 0) {
+          console.log(`row # from charm calcs==>  ${rowNumCharm}`);
+          if (rowNumCharm === 1 || rowNumCharm % 2 === 0) {
             //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
             charm_cell.style.backgroundColor = "black";
             charm_cell.style.color = "lime";
