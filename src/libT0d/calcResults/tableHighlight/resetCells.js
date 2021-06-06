@@ -50,9 +50,13 @@ function resetCells(tblData) {
       }
       if (tblCols[m] === "ediCostMod") {
         ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
-        let testNumber = (k + 1 - ediCostModColOffset) / ediCostModColNum;
-        if (ediCostModColNum / (k + 1) === 1 || Number.isInteger(testNumber)) {
-          console.log(`testNumber==> ${testNumber}`);
+        let testNumberCostMod =
+          (k + 1 - ediCostModColOffset) / ediCostModColNum;
+        if (
+          ediCostModColNum / (k + 1) === 1 ||
+          Number.isInteger(testNumberCostMod)
+        ) {
+          console.log(`testNumberCostMod==> ${testNumberCostMod}`);
           let rowNumCostMod =
             (k +
               1 -
