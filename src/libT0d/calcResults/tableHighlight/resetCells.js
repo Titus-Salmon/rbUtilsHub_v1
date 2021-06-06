@@ -42,7 +42,7 @@ function resetCells(tblData) {
       if (tblCols[m] === "ediCostMod") {
         ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
         if (
-          ediCostModColNum / (k + 1) == 1 ||
+          ediCostModColNum / (k + 1) == "1" ||
           Number.isInteger(ediCostModColNum / (k + 1 - ediCostModColOffset))
         ) {
           let rowNum =
@@ -69,7 +69,7 @@ function resetCells(tblData) {
       if (tblCols[m] === "charm") {
         charm_cell = tblCells[k].parentNode.childNodes[m];
         if (
-          charmColNum / (k + 1) == 1 ||
+          charmColNum / (k + 1) == "1" ||
           Number.isInteger(charmColNum / (k + 1))
         ) {
           let rowNum =
