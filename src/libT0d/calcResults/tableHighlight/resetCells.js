@@ -41,21 +41,23 @@ function resetCells(tblData) {
       }
       if (tblCols[m] === "ediCostMod") {
         ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
-        let rowNum =
-          (k +
-            1 -
-            ediCostModColOffset *
-              ((k + 1 - ediCostModColNum) / tblCols.length)) /
-          ediCostModColNum;
-        console.log(`row # from ediCostMod calcs==>  ${rowNum}`);
-        if (rowNum % 2 == 0) {
-          //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
-          ediCostMod_cell.style.backgroundColor = "black";
-          ediCostMod_cell.style.color = "lime";
-        } else {
-          //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
-          ediCostMod_cell.style.backgroundColor = "var(--surface2)";
-          ediCostMod_cell.style.color = "lime";
+        if (ediCostModColNum % (k + 1) == 0) {
+          let rowNum =
+            (k +
+              1 -
+              ediCostModColOffset *
+                ((k + 1 - ediCostModColNum) / tblCols.length)) /
+            ediCostModColNum;
+          console.log(`row # from ediCostMod calcs==>  ${rowNum}`);
+          if (rowNum % 2 == 0) {
+            //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
+            ediCostMod_cell.style.backgroundColor = "black";
+            ediCostMod_cell.style.color = "lime";
+          } else {
+            //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
+            ediCostMod_cell.style.backgroundColor = "var(--surface2)";
+            ediCostMod_cell.style.color = "lime";
+          }
         }
       }
       if (tblCols[m] === "sib_baseprice") {
@@ -63,18 +65,22 @@ function resetCells(tblData) {
       }
       if (tblCols[m] === "charm") {
         charm_cell = tblCells[k].parentNode.childNodes[m];
-        let rowNum =
-          (k + 1 - charmColOffset * ((k + 1 - charmColNum) / tblCols.length)) /
-          charmColNum;
-        console.log(`row # from charm calcs==>  ${rowNum}`);
-        if (rowNum % 2 == 0) {
-          //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
-          charm_cell.style.backgroundColor = "black";
-          charm_cell.style.color = "lime";
-        } else {
-          //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
-          charm_cell.style.backgroundColor = "var(--surface2)";
-          charm_cell.style.color = "lime";
+        if (charmColNum % (K + 1) == 0) {
+          let rowNum =
+            (k +
+              1 -
+              charmColOffset * ((k + 1 - charmColNum) / tblCols.length)) /
+            charmColNum;
+          console.log(`row # from charm calcs==>  ${rowNum}`);
+          if (rowNum % 2 == 0) {
+            //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
+            charm_cell.style.backgroundColor = "black";
+            charm_cell.style.color = "lime";
+          } else {
+            //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
+            charm_cell.style.backgroundColor = "var(--surface2)";
+            charm_cell.style.color = "lime";
+          }
         }
       }
     }
