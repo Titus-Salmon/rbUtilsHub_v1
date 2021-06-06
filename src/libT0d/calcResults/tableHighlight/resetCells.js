@@ -18,6 +18,8 @@ function resetCells(tblData) {
     tblCells[0].parentNode.childNodes[0].innerHTML
   );
 
+  console.log(`tblCols.length==> ${tblCols.length}`);
+
   for (let m = 0; m < tblCols.length; m++) {
     if (tblCols[m] === "ediCostMod") {
       ediCostModColNum = m + 1;
@@ -49,6 +51,7 @@ function resetCells(tblData) {
       if (tblCols[m] === "ediCostMod") {
         ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
         if (
+          ediCostModColNum / (k + 1) === 1 ||
           Number.isInteger(ediCostModColNum / (k + 1 - ediCostModColOffset))
         ) {
           let rowNum =
@@ -58,7 +61,7 @@ function resetCells(tblData) {
                 ((k + 1 - ediCostModColNum) / tblCols.length)) /
             ediCostModColNum;
           console.log(`row # from ediCostMod calcs==>  ${rowNum}`);
-          if (rowNum == "1" || rowNum % 2 == "0") {
+          if (rowNum === 1 || rowNum % 2 === 0) {
             //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
             ediCostMod_cell.style.backgroundColor = "black";
             ediCostMod_cell.style.color = "lime";
@@ -74,14 +77,17 @@ function resetCells(tblData) {
       }
       if (tblCols[m] === "charm") {
         charm_cell = tblCells[k].parentNode.childNodes[m];
-        if (Number.isInteger(charmColNum / (k + 1))) {
+        if (
+          charmColNum / (k + 1) === 1 ||
+          Number.isInteger(charmColNum / (k + 1))
+        ) {
           let rowNum =
             (k +
               1 -
               charmColOffset * ((k + 1 - charmColNum) / tblCols.length)) /
             charmColNum;
           console.log(`row # from charm calcs==>  ${rowNum}`);
-          if (rowNum == "1" || rowNum % 2 == "0") {
+          if (rowNum === 1 || rowNum % 2 === 0) {
             //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
             charm_cell.style.backgroundColor = "black";
             charm_cell.style.color = "lime";
