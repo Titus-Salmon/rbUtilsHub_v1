@@ -54,14 +54,15 @@ function resetCells(tblData) {
           (k + 1 - ediCostModColOffset) / ediCostModColNum;
         if (Number.isInteger(testNumberCostMod)) {
           console.log(`testNumberCostMod==> ${testNumberCostMod}`);
-          let rowNumCostMod =
-            (k +
-              1 -
-              ediCostModColOffset *
-                ((k + 1 - ediCostModColNum) / tblCols.length)) /
-            ediCostModColNum;
-          console.log(`row # from ediCostMod calcs==>  ${rowNumCostMod}`);
-          if (ediCostModColNum / (k + 1) === 1 || rowNumCostMod % 2 === 0) {
+          // let rowNumCostMod =
+          //   (k +
+          //     1 -
+          //     ediCostModColOffset *
+          //       ((k + 1 - ediCostModColNum) / tblCols.length)) /
+          //   ediCostModColNum;
+          // console.log(`row # from ediCostMod calcs==>  ${rowNumCostMod}`);
+          // if (ediCostModColNum / (k + 1) === 1 || rowNumCostMod % 2 === 0) {
+          if (rowNumberCostMod % 2 === 0) {
             //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
             ediCostMod_cell.style.backgroundColor = "black";
             ediCostMod_cell.style.color = "lime";
@@ -80,13 +81,14 @@ function resetCells(tblData) {
         let testNumberCharm = (k + 1 - charmColOffset) / charmColNum;
         if (Number.isInteger(testNumberCharm)) {
           console.log(`testNumberCharm==> ${testNumberCharm}`);
-          let rowNumCharm =
-            (k +
-              1 -
-              charmColOffset * ((k + 1 - charmColNum) / tblCols.length)) /
-            charmColNum;
-          console.log(`row # from charm calcs==>  ${rowNumCharm}`);
-          if (charmColNum / (k + 1) === 1 || rowNumCharm % 2 === 0) {
+          // let rowNumCharm =
+          //   (k +
+          //     1 -
+          //     charmColOffset * ((k + 1 - charmColNum) / tblCols.length)) /
+          //   charmColNum;
+          // console.log(`row # from charm calcs==>  ${rowNumCharm}`);
+          // if (charmColNum / (k + 1) === 1 || rowNumCharm % 2 === 0) {
+          if (testNumberCharm % 2 === 0) {
             //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
             charm_cell.style.backgroundColor = "black";
             charm_cell.style.color = "lime";
