@@ -41,6 +41,9 @@ function calcResTblHilite(tblData) {
       ) {
         ediCostMod_cell.style.backgroundColor = "#ff8533";
         ediCostMod_cell.style.color = "black";
+
+        lastCost_cell.style.backgroundColor = "#66ff99";
+        lastCost_cell.style.color = "black";
       } else {
         if (
           Math.abs(
@@ -51,6 +54,9 @@ function calcResTblHilite(tblData) {
         ) {
           ediCostMod_cell.style.backgroundColor = "#ffb3ca";
           ediCostMod_cell.style.color = "black";
+
+          lastCost_cell.style.backgroundColor = "#66ff99";
+          lastCost_cell.style.color = "black";
         }
       }
     }
@@ -67,6 +73,9 @@ function calcResTblHilite(tblData) {
       ) {
         charm_cell.style.backgroundColor = "#ff0000";
         charm_cell.style.color = "black";
+
+        basePrice_cell.style.backgroundColor = "#66ff99";
+        basePrice_cell.style.color = "black";
       } else {
         if (
           Math.abs(
@@ -77,6 +86,9 @@ function calcResTblHilite(tblData) {
         ) {
           charm_cell.style.backgroundColor = "#ffdb4b";
           charm_cell.style.color = "black";
+
+          basePrice_cell.style.backgroundColor = "#66ff99";
+          basePrice_cell.style.color = "black";
         }
       }
     }
