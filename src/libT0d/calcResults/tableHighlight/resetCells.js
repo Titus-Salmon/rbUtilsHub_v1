@@ -8,7 +8,9 @@ function resetCells(tblData) {
   let ediCostMod_cell;
   let basePrice_cell;
   let charm_cell;
+  let ediCostModColNum;
   let ediCostModColOffset;
+  let charmColNum;
   let charmColOffset;
 
   console.log(
@@ -18,11 +20,11 @@ function resetCells(tblData) {
 
   for (let m = 0; m < tblCols.length; m++) {
     if (tblCols[m] === "ediCostMod") {
-      let ediCostModColNum = m + 1;
+      ediCostModColNum = m + 1;
       ediCostModColOffset = tblCols.length - ediCostModColNum;
     }
     if (tblCols[m] === "ediCostMod") {
-      let charmColNum = m + 1;
+      charmColNum = m + 1;
       charmColOffset = tblCols.length - charmColNum;
     }
   }
