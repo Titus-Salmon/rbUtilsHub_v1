@@ -47,6 +47,7 @@ function resetCells(tblData) {
             ediCostModColOffset *
               ((k + 1 - ediCostModColNum) / tblCols.length)) /
           ediCostModColNum;
+        console.log(`row # from ediCostMod calcs==>  ${rowNum}`);
         if (rowNum % 2 == 0) {
           //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
           ediCostMod_cell.style.backgroundColor = "black";
@@ -65,6 +66,7 @@ function resetCells(tblData) {
         let rowNum =
           (k + 1 - charmColOffset * ((k + 1 - charmColNum) / tblCols.length)) /
           charmColNum;
+        console.log(`row # from charm calcs==>  ${rowNum}`);
         if (rowNum % 2 == 0) {
           //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
           charm_cell.style.backgroundColor = "black";
