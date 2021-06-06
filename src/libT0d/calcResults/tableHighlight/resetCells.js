@@ -52,10 +52,7 @@ function resetCells(tblData) {
         ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
         let testNumberCostMod =
           (k + 1 - ediCostModColOffset) / ediCostModColNum;
-        if (
-          ediCostModColNum / (k + 1) === 1 ||
-          Number.isInteger(testNumberCostMod)
-        ) {
+        if (Number.isInteger(testNumberCostMod)) {
           console.log(`testNumberCostMod==> ${testNumberCostMod}`);
           let rowNumCostMod =
             (k +
@@ -64,7 +61,7 @@ function resetCells(tblData) {
                 ((k + 1 - ediCostModColNum) / tblCols.length)) /
             ediCostModColNum;
           console.log(`row # from ediCostMod calcs==>  ${rowNumCostMod}`);
-          if (rowNumCostMod === 1 || rowNumCostMod % 2 === 0) {
+          if (ediCostModColNum / (k + 1) === 1 || rowNumCostMod % 2 === 0) {
             //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
             ediCostMod_cell.style.backgroundColor = "black";
             ediCostMod_cell.style.color = "lime";
@@ -81,7 +78,7 @@ function resetCells(tblData) {
       if (tblCols[m] === "charm") {
         charm_cell = tblCells[k].parentNode.childNodes[m];
         let testNumberCharm = (k + 1 - charmColOffset) / charmColNum;
-        if (charmColNum / (k + 1) === 1 || Number.isInteger(testNumberCharm)) {
+        if (Number.isInteger(testNumberCharm)) {
           console.log(`testNumberCharm==> ${testNumberCharm}`);
           let rowNumCharm =
             (k +
@@ -89,7 +86,7 @@ function resetCells(tblData) {
               charmColOffset * ((k + 1 - charmColNum) / tblCols.length)) /
             charmColNum;
           console.log(`row # from charm calcs==>  ${rowNumCharm}`);
-          if (rowNumCharm === 1 || rowNumCharm % 2 === 0) {
+          if (charmColNum / (k + 1) === 1 || rowNumCharm % 2 === 0) {
             //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
             charm_cell.style.backgroundColor = "black";
             charm_cell.style.color = "lime";
