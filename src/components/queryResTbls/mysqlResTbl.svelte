@@ -43,8 +43,11 @@
       {/each}
     </tbody>
     {afterUpdate(() => {
-      resetCells($tableData);
-      // resetRows();
+      resetCells($tableData, "lastCost");
+      resetCells($tableData, "ediCostMod");
+      resetCells($tableData, "sib_baseprice");
+      resetCells($tableData, "charm");
+
       calcResTblHilite($tableData);
     })}
   </table>
