@@ -62,7 +62,7 @@ function resetCells(tblData) {
           //   ediCostModColNum;
           // console.log(`row # from ediCostMod calcs==>  ${rowNumCostMod}`);
           // if (ediCostModColNum / (k + 1) === 1 || rowNumCostMod % 2 === 0) {
-          if (rowNumberCostMod % 2 === 0) {
+          if (testNumberCostMod % 2 === 0) {
             //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
             ediCostMod_cell.style.backgroundColor = "black";
             ediCostMod_cell.style.color = "lime";
