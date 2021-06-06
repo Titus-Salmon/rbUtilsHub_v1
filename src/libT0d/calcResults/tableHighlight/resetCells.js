@@ -13,14 +13,6 @@ function resetCells(tblData) {
   let charmColNum;
   let charmColOffset;
 
-  // let totalCells = tblCells.length;
-  // let cellsInRow = tblCols.length;
-  // let totalRows = totalCells / cellsInRow;
-
-  // for (let x = 0; x < totalRows; x++) {
-  //   for (let y = 0; y < totalCells; y++) {}
-  // }
-
   console.log(
     "tblCells[0].parentNode.childNodes[0].innerHTML==>",
     tblCells[0].parentNode.childNodes[0].innerHTML
@@ -58,10 +50,6 @@ function resetCells(tblData) {
       }
       if (tblCols[m] === "ediCostMod") {
         ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
-        // let testNumberCostMod =
-        //   (k + 1 - ediCostModColOffset) / ediCostModColNum;
-        // if (Number.isInteger(testNumberCostMod)) {
-        // console.log(`testNumberCostMod==> ${testNumberCostMod}`);
         let a = k + 1;
         let b = ediCostModColOffset;
         let c = ediCostModColNum;
@@ -84,16 +72,12 @@ function resetCells(tblData) {
             ediCostMod_cell.style.color = "lime";
           }
         }
-        //}
       }
       if (tblCols[m] === "sib_baseprice") {
         basePrice_cell = tblCells[k].parentNode.childNodes[m];
       }
       if (tblCols[m] === "charm") {
         charm_cell = tblCells[k].parentNode.childNodes[m];
-        // let testNumberCharm = (k + 1 - charmColOffset) / charmColNum;
-        // if (Number.isInteger(testNumberCharm)) {
-        //   console.log(`testNumberCharm==> ${testNumberCharm}`);
         let a = k + 1;
         let b = charmColOffset;
         let c = charmColNum;
@@ -106,7 +90,7 @@ function resetCells(tblData) {
             charm_cell.style.backgroundColor = "black";
             charm_cell.style.color = "lime";
           }
-          if (charmColNum / (k + 1) === 1 || rowNumCharm % 2 === 0) {
+          if (rowNumCharm % 2 === 0) {
             //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
             charm_cell.style.backgroundColor = "var(--surface2)";
             charm_cell.style.color = "lime";
@@ -116,18 +100,8 @@ function resetCells(tblData) {
             charm_cell.style.color = "lime";
           }
         }
-        //}
       }
     }
-    // if (ediCostMod_cell && lastCost_cell) {
-    //   //only do calcs on these cells if they exist (because sometimes your table results
-    //   //won't include such cells/columns), otherwise you'll throw an error
-    // }
-
-    // if (charm_cell && basePrice_cell) {
-    //   //only do calcs on these cells if they exist (because sometimes your table results
-    //   //won't include such cells/columns), otherwise you'll throw an error
-    // }
   }
 }
 
