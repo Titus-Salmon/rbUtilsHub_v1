@@ -59,15 +59,17 @@ function resetCells(tblData) {
           let c = ediCostModColNum;
           let d = tblCols.length;
           let rowNumCostMod = (a - b * ((a - c) / d)) / c;
-          console.log(`row # from ediCostMod calcs==>  ${rowNumCostMod}`);
-          if (ediCostModColNum / (k + 1) === 1 || rowNumCostMod % 2 === 0) {
-            //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
-            ediCostMod_cell.style.backgroundColor = "black";
-            ediCostMod_cell.style.color = "lime";
-          } else {
-            //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
-            ediCostMod_cell.style.backgroundColor = "var(--surface2)";
-            ediCostMod_cell.style.color = "lime";
+          if (Number.isInteger(rowNumCostMod)) {
+            console.log(`row # from ediCostMod calcs==>  ${rowNumCostMod}`);
+            if (ediCostModColNum / (k + 1) === 1 || rowNumCostMod % 2 === 0) {
+              //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
+              ediCostMod_cell.style.backgroundColor = "black";
+              ediCostMod_cell.style.color = "lime";
+            } else {
+              //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
+              ediCostMod_cell.style.backgroundColor = "var(--surface2)";
+              ediCostMod_cell.style.color = "lime";
+            }
           }
         }
       }
@@ -84,15 +86,17 @@ function resetCells(tblData) {
           let c = charmColNum;
           let d = tblCols.length;
           let rowNumCharm = (a - b * ((a - c) / d)) / c;
-          console.log(`row # from charm calcs==>  ${rowNumCharm}`);
-          if (charmColNum / (k + 1) === 1 || rowNumCharm % 2 === 0) {
-            //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
-            charm_cell.style.backgroundColor = "black";
-            charm_cell.style.color = "lime";
-          } else {
-            //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
-            charm_cell.style.backgroundColor = "var(--surface2)";
-            charm_cell.style.color = "lime";
+          if (Number.isInteger(rowNumCharm)) {
+            console.log(`row # from charm calcs==>  ${rowNumCharm}`);
+            if (charmColNum / (k + 1) === 1 || rowNumCharm % 2 === 0) {
+              //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
+              charm_cell.style.backgroundColor = "black";
+              charm_cell.style.color = "lime";
+            } else {
+              //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
+              charm_cell.style.backgroundColor = "var(--surface2)";
+              charm_cell.style.color = "lime";
+            }
           }
         }
       }
