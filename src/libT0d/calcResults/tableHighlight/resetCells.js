@@ -23,7 +23,7 @@ function resetCells(tblData) {
       ediCostModColNum = m + 1;
       ediCostModColOffset = tblCols.length - ediCostModColNum;
     }
-    if (tblCols[m] === "ediCostMod") {
+    if (tblCols[m] === "charm") {
       charmColNum = m + 1;
       charmColOffset = tblCols.length - charmColNum;
     }
