@@ -13,13 +13,13 @@ function resetCells(tblData) {
   let charmColNum;
   let charmColOffset;
 
-  let totalCells = tblCells.length;
-  let cellsInRow = tblCols.length;
-  let totalRows = totalCells / cellsInRow;
+  // let totalCells = tblCells.length;
+  // let cellsInRow = tblCols.length;
+  // let totalRows = totalCells / cellsInRow;
 
-  for (let x = 0; x < totalRows; x++) {
-    for (let y = 0; y < totalCells; y++) {}
-  }
+  // for (let x = 0; x < totalRows; x++) {
+  //   for (let y = 0; y < totalCells; y++) {}
+  // }
 
   console.log(
     "tblCells[0].parentNode.childNodes[0].innerHTML==>",
