@@ -41,7 +41,12 @@ function resetCells(tblData) {
       }
       if (tblCols[m] === "ediCostMod") {
         ediCostMod_cell = tblCells[k].parentNode.childNodes[m];
-        let rowNum = (tblCols.length - ediCostModColOffset) / ediCostModColNum;
+        let rowNum =
+          (k +
+            1 -
+            ediCostModColOffset *
+              ((k + 1 - ediCostModColNum) / tblCols.length)) /
+          ediCostModColNum;
         if (rowNum % 2 == 0) {
           //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
           ediCostMod_cell.style.backgroundColor = "black";
@@ -57,7 +62,9 @@ function resetCells(tblData) {
       }
       if (tblCols[m] === "charm") {
         charm_cell = tblCells[k].parentNode.childNodes[m];
-        let rowNum = (tblCols.length - charmColOffset) / charmColNum;
+        let rowNum =
+          (k + 1 - charmColOffset * ((k + 1 - charmColNum) / tblCols.length)) /
+          charmColNum;
         if (rowNum % 2 == 0) {
           //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
           charm_cell.style.backgroundColor = "black";
