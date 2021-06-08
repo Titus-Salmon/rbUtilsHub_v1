@@ -14,7 +14,8 @@ function resetCells(tblData, columnName) {
         let b = colOffset;
         let c = colNum;
         let d = tblCols.length;
-        let rowNum = (a - b * ((a - c) / d)) / c;
+        let rowNum = (a - b * ((a - c) / d)) / c; //this is the equation that figures out row number based on what number of cell we're
+        //iterating across. I figured this out just by examining an example table and abstracting the logic
         if (Number.isInteger(rowNum)) {
           if (colNum / (k + 1) === 1) {
             //clear all highlighting as first step, in order that subsequent paginations don't retain highlighting from previous page
