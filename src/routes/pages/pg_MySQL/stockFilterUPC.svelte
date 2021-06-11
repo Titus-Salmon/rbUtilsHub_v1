@@ -53,7 +53,7 @@
         //     $paginData
         //   )}`
         // );
-        if (queryResJSON.error) {
+        if (queryResJSON.error !== null) {
           alert(`err from stockFilterUPC.svelte==> ${queryResJSON.error}`);
         }
 

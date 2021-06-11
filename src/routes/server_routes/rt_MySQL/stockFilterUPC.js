@@ -36,6 +36,8 @@ export async function post(req, res, next) {
 
   let storeNumberArr = ["GL", "IN", "MT", "SPR", "SM"];
 
+  let error = null;
+
   function stockFilter(rows) {
     for (let i = 0; i < rows.length; i++) {
       let rsltsObj = {};
@@ -102,6 +104,16 @@ export async function post(req, res, next) {
 
       allStoresResults.push(allStoresRsObj);
     }
+
+    if (
+      !(
+        ((GL_results.length === IN_results.length) === MT_results.length) ===
+        SM_results.length
+      ) === SPR_results.length
+    ) {
+      //chek to make sure all stores results arrays are equal, otherwise return error message
+      error = `all stores results arrays are NOT equal`;
+    }
   }
 
   function queryNhcrtTable() {
@@ -111,20 +123,10 @@ export async function post(req, res, next) {
         if (err) throw err;
         stockFilter(rows);
         queryResArrCache.set("queryResArrCache_key", allStoresResults);
-        if (
-          (((GL_results.length === IN_results.length) === MT_results.length) ===
-            SM_results.length) ===
-          SPR_results.length
-        ) {
-          //chek to make sure all stores results arrays are equal, otherwise return error message
-          res.json({
-            allStoresResults: allStoresResults,
-          });
-        } else {
-          res.json({
-            error: `all stores results arrays are NOT equal`,
-          });
-        }
+        res.json({
+          allStoresResults: allStoresResults,
+          error: error,
+        });
       }
     );
   }
