@@ -111,9 +111,20 @@ export async function post(req, res, next) {
         if (err) throw err;
         stockFilter(rows);
         queryResArrCache.set("queryResArrCache_key", allStoresResults);
-        res.json({
-          allStoresResults: allStoresResults,
-        });
+        if (
+          (((GL_results.length === IN_results.length) === MT_results.length) ===
+            SM_results.length) ===
+          SPR_results.length
+        ) {
+          //chek to make sure all stores results arrays are equal, otherwise return error message
+          res.json({
+            allStoresResults: allStoresResults,
+          });
+        } else {
+          res.json({
+            error: `all stores results arrays are NOT equal`,
+          });
+        }
       }
     );
   }
