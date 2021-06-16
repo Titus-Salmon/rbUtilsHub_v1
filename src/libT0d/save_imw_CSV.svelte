@@ -12,7 +12,7 @@
       },
       body: JSON.stringify({
         data: save_imw_CSVfileName.value,
-        tableType: tableType.value,
+        tableType: tableType,
       }),
     })
       .then((save_imw_CSVresult) => save_imw_CSVresult.json())
