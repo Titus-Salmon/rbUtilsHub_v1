@@ -14,7 +14,7 @@
       body: JSON.stringify({
         tableName: tableName.value,
         venCatPrefix: venCatPrefix.value,
-        tableType: tableType.value,
+        tableType: tableType,
       }),
     })
       .then((loadStagingDataResult) => loadStagingDataResult.json())

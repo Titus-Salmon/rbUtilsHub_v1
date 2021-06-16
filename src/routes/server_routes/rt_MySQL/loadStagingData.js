@@ -38,6 +38,7 @@ export async function post(req, res, next) {
 
   let venCatPrefix = req.body.venCatPrefix;
   let tableType = req.body.tableType;
+  console.log(`tableType==> ${tableType}`);
 
   //v//here we are doing some regex & js "split" magic to extract the "catalog" name from the nej table name we're loading (nejTableNameYYYMMDD):
   let regex1 = /(\d+)/g;
