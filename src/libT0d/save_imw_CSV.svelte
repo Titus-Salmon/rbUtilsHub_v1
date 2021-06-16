@@ -1,33 +1,35 @@
 <script>
-import utilResponses from "../stores/utilResponses/st_utilResponses";
-import calcResStore from "../stores/calcResults/st_calcResults";
-let save_imw_CSVfileName;
-let save_imw_CSVresponse;
-function save_imw_CSV() {
-  fetch("server_routes/rt_MySQL/save_imw_CSV", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      data: save_imw_CSVfileName.value,
-    }),
-  })
-    .then((save_imw_CSVresult) => save_imw_CSVresult.json())
-    .then((save_imw_CSVresultJSON) => {
-      console.log(
-        `JSON.stringify(save_imw_CSVresultJSON)==> ${JSON.stringify(
-          save_imw_CSVresultJSON
-        )}`
-      );
-      save_imw_CSVresponse = save_imw_CSVresultJSON;
+  import utilResponses from "../stores/utilResponses/st_utilResponses";
+  import calcResStore from "../stores/calcResults/st_calcResults";
+  let save_imw_CSVfileName;
+  let save_imw_CSVresponse;
+  let tableType;
+  function save_imw_CSV() {
+    fetch("server_routes/rt_MySQL/save_imw_CSV", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: save_imw_CSVfileName.value,
+        tableType: tableType.value,
+      }),
+    })
+      .then((save_imw_CSVresult) => save_imw_CSVresult.json())
+      .then((save_imw_CSVresultJSON) => {
+        console.log(
+          `JSON.stringify(save_imw_CSVresultJSON)==> ${JSON.stringify(
+            save_imw_CSVresultJSON
+          )}`
+        );
+        save_imw_CSVresponse = save_imw_CSVresultJSON;
 
-      calcResStore.set([{ calcResStoreData: save_imw_CSVresponse }]);
-    });
-}
+        calcResStore.set([{ calcResStoreData: save_imw_CSVresponse }]);
+      });
+  }
 </script>
 
-<div>
+<div class="flexbox">
   <div style="text-align:center">
     <label for="save_imw_CSV">File Name</label>
   </div>
@@ -39,6 +41,14 @@ function save_imw_CSV() {
       bind:this="{save_imw_CSVfileName}" />
   </div>
   <div style="text-align:center">
-    <button on:click="{save_imw_CSV}">save_imw_CSV</button>
+    <label for="tableType">LB-## divide</label>
+    <select name="tableType" id="tableType" bind:value="{tableType}">
+      <option value="edi">EDI</option>
+      <option value="other">Other</option>
+    </select>
   </div>
+</div>
+
+<div style="text-align:center">
+  <button on:click="{save_imw_CSV}">save_imw_CSV</button>
 </div>
