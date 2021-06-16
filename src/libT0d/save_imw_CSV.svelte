@@ -41,7 +41,7 @@
       bind:this="{save_imw_CSVfileName}" />
   </div>
   <div style="text-align:center">
-    <label for="tableType">LB-## divide</label>
+    <label for="tableType">Table type</label>
     <select name="tableType" id="tableType" bind:value="{tableType}">
       <option value="edi">EDI</option>
       <option value="other">Other</option>
