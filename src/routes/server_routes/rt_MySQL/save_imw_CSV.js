@@ -114,7 +114,7 @@ export async function post(req, res, next) {
         } items)' WHERE shortName = '${vendorName}';
   
           INSERT INTO rainbowcat_update_tracker (date, vendor_name, ${imwTypeColumn}, ${itemsUpdtdTypeColumn})
-          VALUES('${todayIsoSplit}', 'EDI-${vendorName.toUpperCase()}', '${
+          VALUES('${todayIsoSplit}', '${vendorName.toUpperCase()}', '${
           req.body.data
         }.csv', '${save_imw_CSV_cacheValue.length}')
           ON DUPLICATE KEY UPDATE ${imwTypeColumn} = ${imwTypeColumn};
