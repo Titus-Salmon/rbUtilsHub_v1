@@ -103,7 +103,7 @@ export async function post(req, res, next) {
     let vendorName = vendorNameSplit3[0];
 
     if (tableType.toLowerCase() === "edi") {
-      let vendorName = `EDI-${vendorName.toUpperCase()}`;
+      vendorName = `EDI-${vendorName.toUpperCase()}`;
       console.log(`vendorName==> ${vendorName}`);
     }
 
