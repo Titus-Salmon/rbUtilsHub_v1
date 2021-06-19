@@ -54,6 +54,14 @@ export async function post(req, res, next) {
         portalCatUPCarr.push(`${portalCatUPC}`);
       }
     });
+    console.log(
+      `portalCatUPCarr.length from aggregatePortalCatUPCs==> ${portalCatUPCarr.length}`
+    );
+    console.log(
+      `JSON.stringify(portalCatUPCarr[0]) from aggregatePortalCatUPCs==> ${JSON.stringify(
+        portalCatUPCarr[0]
+      )}`
+    );
   }
 
   async function aggregateCatapultUPCs() {
@@ -71,6 +79,14 @@ export async function post(req, res, next) {
         }
       });
     });
+    console.log(
+      `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
+    );
+    console.log(
+      `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
+        portCatUPCsInCatapultArr[0]
+      )}`
+    );
   }
 
   async function spliceOutPortalCatUPCsInCatapult() {
@@ -82,6 +98,14 @@ export async function post(req, res, next) {
         }
       }
     }
+    console.log(
+      `portalCatUPCarr.length from spliceOutPortalCatUPCsInCatapult==> ${portalCatUPCarr.length}`
+    );
+    console.log(
+      `JSON.stringify(portalCatUPCarr[0]) from spliceOutPortalCatUPCsInCatapult==> ${JSON.stringify(
+        portalCatUPCarr[0]
+      )}`
+    );
   }
 
   async function showPortalCatUPCsNotINCatapult() {
@@ -101,6 +125,14 @@ export async function post(req, res, next) {
         resObjArr.push(resObj);
       }
     });
+    console.log(
+      `resObjArr.length from showPortalCatUPCsNotINCatapult==> ${resObjArr.length}`
+    );
+    console.log(
+      `JSON.stringify(resObjArr[0]) from showPortalCatUPCsNotINCatapult==> ${JSON.stringify(
+        resObjArr[0]
+      )}`
+    );
   }
 
   aggregatePortalCatUPCs()
