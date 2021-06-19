@@ -51,6 +51,9 @@ export async function post(req, res, next) {
       if (err) throw err;
       for (let i = 0; i < rows.length; i++) {
         let portalCatUPC = rows[i][`${venCatPrefix}_upc`];
+        console.log(
+          `portalCatUPC from aggregatePortalCatUPCs==> ${portalCatUPC}`
+        );
         portalCatUPCarr.push(`${portalCatUPC}`);
       }
     });
