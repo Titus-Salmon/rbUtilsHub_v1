@@ -47,24 +47,27 @@ export async function post(req, res, next) {
   `;
 
   async function aggregatePortalCatUPCs() {
-    connection.query(portalQuery1, function (err, rows, fields) {
-      if (err) throw err;
-      for (let i = 0; i < rows.length; i++) {
-        let portalCatUPC = rows[i][`${venCatPrefix}_upc`];
+    connection
+      .query(portalQuery1, function (err, rows, fields) {
+        if (err) throw err;
+        for (let i = 0; i < rows.length; i++) {
+          let portalCatUPC = rows[i][`${venCatPrefix}_upc`];
+          console.log(
+            `portalCatUPC from aggregatePortalCatUPCs==> ${portalCatUPC}`
+          );
+          portalCatUPCarr.push(`${portalCatUPC}`);
+        }
+      })
+      .on("end", function () {
         console.log(
-          `portalCatUPC from aggregatePortalCatUPCs==> ${portalCatUPC}`
+          `portalCatUPCarr.length from aggregatePortalCatUPCs==> ${portalCatUPCarr.length}`
         );
-        portalCatUPCarr.push(portalCatUPC);
-      }
-    });
-    console.log(
-      `portalCatUPCarr.length from aggregatePortalCatUPCs==> ${portalCatUPCarr.length}`
-    );
-    console.log(
-      `JSON.stringify(portalCatUPCarr[0]) from aggregatePortalCatUPCs==> ${JSON.stringify(
-        portalCatUPCarr[0]
-      )}`
-    );
+        console.log(
+          `JSON.stringify(portalCatUPCarr[0]) from aggregatePortalCatUPCs==> ${JSON.stringify(
+            portalCatUPCarr[0]
+          )}`
+        );
+      });
   }
 
   async function aggregateCatapultUPCs() {
