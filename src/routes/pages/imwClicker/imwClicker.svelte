@@ -7,7 +7,7 @@
   let venCatPrefix;
 
   function upcsNotInCatapult() {
-    fetch("server_routes/rt_imwGenerators/upcsNotInCatapult", {
+    fetch("server_routes/rt_imwClicker/imwClicker", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
