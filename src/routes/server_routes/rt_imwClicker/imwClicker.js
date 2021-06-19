@@ -52,9 +52,6 @@ export async function post(req, res, next) {
         if (err) throw err;
         for (let i = 0; i < rows.length; i++) {
           let portalCatUPC = rows[i][`${venCatPrefix}_upc`];
-          // console.log(
-          //   `portalCatUPC from aggregatePortalCatUPCs==> ${portalCatUPC}`
-          // );
           portalCatUPCarr.push(`${portalCatUPC}`);
         }
       })
@@ -71,28 +68,31 @@ export async function post(req, res, next) {
   }
 
   async function aggregateCatapultUPCs() {
-    odbc.connect(DSN, (error, connection) => {
-      connection.query(`${catapultQuery}`, (error, result) => {
-        if (error) {
-          console.error(error);
-          res.json({
-            error: `error from imwClicker.js==> ${error}`,
-          });
-        }
-        for (let i = 0; i < result.length; i++) {
-          let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
-          portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
-        }
+    odbc
+      .connect(DSN, (error, connection) => {
+        connection.query(`${catapultQuery}`, (error, result) => {
+          if (error) {
+            console.error(error);
+            res.json({
+              error: `error from imwClicker.js==> ${error}`,
+            });
+          }
+          for (let i = 0; i < result.length; i++) {
+            let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
+            portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
+          }
+        });
+      })
+      .on("end", function () {
+        console.log(
+          `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
+        );
+        console.log(
+          `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
+            portCatUPCsInCatapultArr[0]
+          )}`
+        );
       });
-    });
-    console.log(
-      `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
-    );
-    console.log(
-      `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
-        portCatUPCsInCatapultArr[0]
-      )}`
-    );
   }
 
   async function spliceOutPortalCatUPCsInCatapult() {
@@ -115,30 +115,33 @@ export async function post(req, res, next) {
   }
 
   async function showPortalCatUPCsNotINCatapult() {
-    connection.query(portalQuery2, function (err, rows, fields) {
-      if (err) throw err;
+    connection
+      .query(portalQuery2, function (err, rows, fields) {
+        if (err) throw err;
 
-      let queriedColumns = Object.keys(rows[0]);
-      console.log(`queriedColumns==> ${queriedColumns}`);
-      for (let i = 0; i < rows.length; i++) {
-        let rowData = rows[i]; //data from row #i
-        let resObj = {};
-        resObj["ri_t0d"] = i + 1;
-        for (let j = 0; j < queriedColumns.length; j++) {
-          let colName = queriedColumns[j];
-          resObj[`${colName}`] = rowData[`${colName}`];
+        let queriedColumns = Object.keys(rows[0]);
+        console.log(`queriedColumns==> ${queriedColumns}`);
+        for (let i = 0; i < rows.length; i++) {
+          let rowData = rows[i]; //data from row #i
+          let resObj = {};
+          resObj["ri_t0d"] = i + 1;
+          for (let j = 0; j < queriedColumns.length; j++) {
+            let colName = queriedColumns[j];
+            resObj[`${colName}`] = rowData[`${colName}`];
+          }
+          resObjArr.push(resObj);
         }
-        resObjArr.push(resObj);
-      }
-    });
-    console.log(
-      `resObjArr.length from showPortalCatUPCsNotINCatapult==> ${resObjArr.length}`
-    );
-    console.log(
-      `JSON.stringify(resObjArr[0]) from showPortalCatUPCsNotINCatapult==> ${JSON.stringify(
-        resObjArr[0]
-      )}`
-    );
+      })
+      .on("end", function () {
+        console.log(
+          `resObjArr.length from showPortalCatUPCsNotINCatapult==> ${resObjArr.length}`
+        );
+        console.log(
+          `JSON.stringify(resObjArr[0]) from showPortalCatUPCsNotINCatapult==> ${JSON.stringify(
+            resObjArr[0]
+          )}`
+        );
+      });
   }
 
   aggregatePortalCatUPCs()
