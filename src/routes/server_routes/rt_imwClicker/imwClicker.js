@@ -43,7 +43,7 @@ export async function post(req, res, next) {
   FROM 
   catapult.ecrs.v_InventoryMaster 
   WHERE trim(inv_ScanCode) IN (${portalCatUPCarr}) 
-  AND trim(dpt_number) != '999999' ORDER BY dpt_name, pi1_Description, pi2_Description, inv_ScanCode, inv_discontinued
+  ORDER BY dpt_name, pi1_Description, pi2_Description, inv_ScanCode, inv_discontinued
   `;
 
   async function aggregatePortalCatUPCs() {
@@ -107,9 +107,9 @@ export async function post(req, res, next) {
     .then(aggregateCatapultUPCs())
     .then(spliceOutPortalCatUPCsInCatapult())
     .then(showPortalCatUPCsNotINCatapult())
-    .on("end", function () {
+    .then(
       res.json({
         resObjArr: resObjArr,
-      });
-    });
+      })
+    );
 }
