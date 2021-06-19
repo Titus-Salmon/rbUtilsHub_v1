@@ -54,7 +54,7 @@ export async function post(req, res, next) {
         console.log(
           `portalCatUPC from aggregatePortalCatUPCs==> ${portalCatUPC}`
         );
-        portalCatUPCarr.push(`${portalCatUPC}`);
+        portalCatUPCarr.push(portalCatUPC);
       }
     });
     console.log(
