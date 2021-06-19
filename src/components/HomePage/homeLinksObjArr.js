@@ -32,7 +32,7 @@ const homeLinksObjArr = [
     linkName: "imwClicker",
     imgURL: "/img/homePage/imw_inv.jpg",
     altImg: "imw_inv.jpg",
-    linkURL: "/pages/pg_MySQL/imwClicker",
+    linkURL: "/pages/imwClicker/imwClicker",
   },
   {
     id: "stockFilterUPC",
