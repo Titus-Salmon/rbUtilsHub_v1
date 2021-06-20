@@ -36,7 +36,7 @@ export async function post(req, res, next) {
 
   let portalQuery2 = `
   SELECT * FROM ${ediTableName} 
-  WHERE ${venCatPrefix}_upc IN ('${portalCatUPCarrToString2}')
+  WHERE ${venCatPrefix}_upc IN (${portalCatUPCarrToString2})
   `;
 
   let catapultQuery = `
@@ -97,18 +97,30 @@ export async function post(req, res, next) {
           let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
           portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
         }
+
+        connection.close(function () {
+          console.log(
+            `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
+          );
+          console.log(
+            `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
+              portCatUPCsInCatapultArr[0]
+            )}`
+          );
+          spliceOutPortalCatUPCsInCatapult();
+        });
       });
-      connection.close(function () {
-        console.log(
-          `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
-        );
-        console.log(
-          `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
-            portCatUPCsInCatapultArr[0]
-          )}`
-        );
-        spliceOutPortalCatUPCsInCatapult();
-      });
+      // connection.close(function () {
+      //   console.log(
+      //     `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
+      //   );
+      //   console.log(
+      //     `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
+      //       portCatUPCsInCatapultArr[0]
+      //     )}`
+      //   );
+      //   spliceOutPortalCatUPCsInCatapult();
+      // });
     });
   }
 
