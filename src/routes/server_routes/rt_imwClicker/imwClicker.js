@@ -51,7 +51,7 @@ export async function post(req, res, next) {
   // WHERE trim(inv_ScanCode) IN ('810003420220')
   // `;
 
-  async function aggregatePortalCatUPCs() {
+  function aggregatePortalCatUPCs() {
     connection
       .query(portalQuery1, function (err, rows, fields) {
         if (err) throw err;
@@ -84,7 +84,7 @@ export async function post(req, res, next) {
       });
   }
 
-  async function aggregateCatapultUPCs() {
+  function aggregateCatapultUPCs() {
     odbc.connect(DSN, (error, connection) => {
       connection.query(`${catapultQuery}`, (error, result) => {
         if (error) {
@@ -112,7 +112,7 @@ export async function post(req, res, next) {
     });
   }
 
-  async function spliceOutPortalCatUPCsInCatapult() {
+  function spliceOutPortalCatUPCsInCatapult() {
     for (let i = 0; i < portCatUPCsInCatapultArr.length; i++) {
       for (let j = 0; j < portalCatUPCarr.length; j++) {
         if (portCatUPCsInCatapultArr[i] === portalCatUPCarr[j]) {
@@ -138,7 +138,7 @@ export async function post(req, res, next) {
     showPortalCatUPCsNotINCatapult();
   }
 
-  async function showPortalCatUPCsNotINCatapult() {
+  function showPortalCatUPCsNotINCatapult() {
     connection
       .query(portalQuery2, function (err, rows, fields) {
         if (err) throw err;
