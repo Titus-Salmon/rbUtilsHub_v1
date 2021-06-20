@@ -69,6 +69,7 @@ export async function post(req, res, next) {
             portalCatUPCarr[0]
           )}`
         );
+        console.log(`portalCatUPCarrToString1==> ${portalCatUPCarrToString1}`);
         aggregateCatapultUPCs();
       });
   }
@@ -122,6 +123,7 @@ export async function post(req, res, next) {
     portalCatUPCarrToString2 = portalCatUPCarr
       .map((arrayItem) => `'${arrayItem}'`)
       .join(",");
+    console.log(`portalCatUPCarrToString2==> ${portalCatUPCarrToString2}`);
     showPortalCatUPCsNotINCatapult();
   }
 
