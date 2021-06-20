@@ -64,6 +64,7 @@ export async function post(req, res, next) {
             portalCatUPCarr[0]
           )}`
         );
+        aggregateCatapultUPCs();
       });
   }
 
@@ -90,6 +91,7 @@ export async function post(req, res, next) {
               portCatUPCsInCatapultArr[0]
             )}`
           );
+          spliceOutPortalCatUPCsInCatapult();
         });
       });
     });
@@ -112,6 +114,7 @@ export async function post(req, res, next) {
         portalCatUPCarr[0]
       )}`
     );
+    showPortalCatUPCsNotINCatapult();
   }
 
   async function showPortalCatUPCsNotINCatapult() {
@@ -141,16 +144,19 @@ export async function post(req, res, next) {
             resObjArr[0]
           )}`
         );
+        res.json({
+          resObjArr: resObjArr,
+        });
       });
   }
 
-  aggregatePortalCatUPCs()
-    .then(aggregateCatapultUPCs())
-    .then(spliceOutPortalCatUPCsInCatapult())
-    .then(showPortalCatUPCsNotINCatapult())
-    .then(
-      res.json({
-        resObjArr: resObjArr,
-      })
-    );
+  aggregatePortalCatUPCs();
+  // .then(aggregateCatapultUPCs())
+  // .then(spliceOutPortalCatUPCsInCatapult())
+  // .then(showPortalCatUPCsNotINCatapult())
+  // .then(
+  //   res.json({
+  //     resObjArr: resObjArr,
+  //   })
+  // );
 }
