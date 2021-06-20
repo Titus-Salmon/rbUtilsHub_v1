@@ -85,9 +85,9 @@ export async function post(req, res, next) {
   }
 
   function aggregateCatapultUPCs() {
-    odbc
-      .connect(DSN, (error, connection) => {
-        connection.query(`${catapultQuery}`, (error, result) => {
+    odbc.connect(DSN, (error, connection) => {
+      connection
+        .query(`${catapultQuery}`, (error, result) => {
           if (error) {
             console.error(error);
             res.json({
@@ -98,19 +98,19 @@ export async function post(req, res, next) {
             let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
             portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
           }
+        })
+        .then(function () {
+          console.log(
+            `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
+          );
+          console.log(
+            `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
+              portCatUPCsInCatapultArr[0]
+            )}`
+          );
+          spliceOutPortalCatUPCsInCatapult();
         });
-      })
-      .then(function () {
-        console.log(
-          `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
-        );
-        console.log(
-          `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
-            portCatUPCsInCatapultArr[0]
-          )}`
-        );
-        spliceOutPortalCatUPCsInCatapult();
-      });
+    });
   }
 
   async function spliceOutPortalCatUPCsInCatapult() {
