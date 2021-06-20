@@ -85,46 +85,35 @@ export async function post(req, res, next) {
   }
 
   function aggregateCatapultUPCs() {
-    odbc.connect(DSN, (error, connection) => {
-      connection.query(`${catapultQuery}`, (error, result) => {
-        if (error) {
-          console.error(error);
-          res.json({
-            error: `error from imwClicker.js==> ${error}`,
-          });
-        }
-        for (let i = 0; i < result.length; i++) {
-          let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
-          portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
-        }
-
-        connection.close(function () {
-          console.log(
-            `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
-          );
-          console.log(
-            `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
-              portCatUPCsInCatapultArr[0]
-            )}`
-          );
-          spliceOutPortalCatUPCsInCatapult();
+    odbc
+      .connect(DSN, (error, connection) => {
+        connection.query(`${catapultQuery}`, (error, result) => {
+          if (error) {
+            console.error(error);
+            res.json({
+              error: `error from imwClicker.js==> ${error}`,
+            });
+          }
+          for (let i = 0; i < result.length; i++) {
+            let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
+            portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
+          }
         });
+      })
+      .then(function () {
+        console.log(
+          `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
+        );
+        console.log(
+          `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
+            portCatUPCsInCatapultArr[0]
+          )}`
+        );
+        spliceOutPortalCatUPCsInCatapult();
       });
-      // connection.close(function () {
-      //   console.log(
-      //     `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
-      //   );
-      //   console.log(
-      //     `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
-      //       portCatUPCsInCatapultArr[0]
-      //     )}`
-      //   );
-      //   spliceOutPortalCatUPCsInCatapult();
-      // });
-    });
   }
 
-  function spliceOutPortalCatUPCsInCatapult() {
+  async function spliceOutPortalCatUPCsInCatapult() {
     for (let i = 0; i < portCatUPCsInCatapultArr.length; i++) {
       for (let j = 0; j < portalCatUPCarr.length; j++) {
         if (portCatUPCsInCatapultArr[i] === portalCatUPCarr[j]) {
