@@ -40,9 +40,7 @@ export async function post(req, res, next) {
   `;
 
   let catapultQuery = `
-  SELECT DISTINCT 
-  inv_ScanCode 
-  FROM 
+  SELECT inv_ScanCode FROM 
   catapult.ecrs.v_InventoryMaster 
   WHERE trim(inv_ScanCode) IN (${portalCatUPCarrToString1})
   `;
