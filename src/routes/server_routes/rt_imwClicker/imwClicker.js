@@ -42,7 +42,7 @@ export async function post(req, res, next) {
   let catapultQuery = `
   SELECT inv_ScanCode FROM
   catapult.ecrs.v_InventoryMaster
-  WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1}')
+  WHERE trim(inv_ScanCode) IN (${portalCatUPCarrToString1})
   `;
 
   // let catapultQuery = `
@@ -75,6 +75,8 @@ export async function post(req, res, next) {
         console.log(
           `typeof portalCatUPCarrToString1==> ${typeof portalCatUPCarrToString1}`
         );
+        let stringTest = portalCatUPCarrToString1.substring(0, 41);
+        console.log(`stringTest==> ${stringTest}`);
         aggregateCatapultUPCs();
       });
   }
