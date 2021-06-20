@@ -36,7 +36,7 @@ export async function post(req, res, next) {
 
   let portalQuery2 = `
   SELECT * FROM ${ediTableName} 
-  WHERE ${venCatPrefix}_upc IN (${portalCatUPCarrToString})
+  WHERE ${venCatPrefix}_upc IN (${portalCatUPCarrToString2})
   `;
 
   let catapultQuery = `
