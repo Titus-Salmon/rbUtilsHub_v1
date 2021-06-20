@@ -72,7 +72,9 @@ export async function post(req, res, next) {
             portalCatUPCarr[0]
           )}`
         );
-        console.log(`portalCatUPCarrToString1==> ${portalCatUPCarrToString1}`);
+        console.log(
+          `typeof portalCatUPCarrToString1==> ${typeof portalCatUPCarrToString1}`
+        );
         aggregateCatapultUPCs();
       });
   }
