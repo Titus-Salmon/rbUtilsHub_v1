@@ -24,6 +24,8 @@ export async function post(req, res, next) {
   );
 
   let portalCatUPCarr = [];
+  let portalCatUPCarrToString1;
+  let portalCatUPCarrToString2;
   let portCatUPCsInCatapultArr = [];
   let resObjArr = [];
 
@@ -34,7 +36,7 @@ export async function post(req, res, next) {
 
   let portalQuery2 = `
   SELECT * FROM ${ediTableName} 
-  WHERE ${venCatPrefix}_upc IN (${portalCatUPCarr})
+  WHERE ${venCatPrefix}_upc IN (${portalCatUPCarrToString})
   `;
 
   let catapultQuery = `
@@ -42,7 +44,7 @@ export async function post(req, res, next) {
   inv_ScanCode 
   FROM 
   catapult.ecrs.v_InventoryMaster 
-  WHERE trim(inv_ScanCode) IN (${portalCatUPCarr}) 
+  WHERE trim(inv_ScanCode) IN (${portalCatUPCarrToString1}) 
   ORDER BY dpt_name, pi1_Description, pi2_Description, inv_ScanCode, inv_discontinued
   `;
 
@@ -54,6 +56,9 @@ export async function post(req, res, next) {
           let portalCatUPC = rows[i][`${venCatPrefix}_upc`];
           portalCatUPCarr.push(`${portalCatUPC}`);
         }
+        portalCatUPCarrToString1 = portalCatUPCarr
+          .map((arrayItem) => `'${arrayItem}'`)
+          .join(",");
       })
       .on("end", function () {
         console.log(
@@ -114,6 +119,9 @@ export async function post(req, res, next) {
         portalCatUPCarr[0]
       )}`
     );
+    portalCatUPCarrToString2 = portalCatUPCarr
+      .map((arrayItem) => `'${arrayItem}'`)
+      .join(",");
     showPortalCatUPCsNotINCatapult();
   }
 
