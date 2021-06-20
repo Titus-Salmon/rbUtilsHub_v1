@@ -81,7 +81,7 @@ export async function post(req, res, next) {
           portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
         }
 
-        db.close(function () {
+        odbc.close(function () {
           console.log(
             `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
           );
