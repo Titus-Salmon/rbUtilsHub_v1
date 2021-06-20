@@ -39,10 +39,16 @@ export async function post(req, res, next) {
   WHERE ${venCatPrefix}_upc IN (${portalCatUPCarrToString2})
   `;
 
+  // let catapultQuery = `
+  // SELECT inv_ScanCode FROM
+  // catapult.ecrs.v_InventoryMaster
+  // WHERE trim(inv_ScanCode) IN (${portalCatUPCarrToString1})
+  // `;
+
   let catapultQuery = `
   SELECT inv_ScanCode FROM 
   catapult.ecrs.v_InventoryMaster 
-  WHERE trim(inv_ScanCode) IN (${portalCatUPCarrToString1})
+  WHERE trim(inv_ScanCode) IN ('810003420220')
   `;
 
   async function aggregatePortalCatUPCs() {
