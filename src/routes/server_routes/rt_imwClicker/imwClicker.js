@@ -149,7 +149,7 @@ export async function post(req, res, next) {
       for (let j = 0; j < portalCatUPCarr.length; j++) {
         if (portCatUPCsInCatapultArr[i].trim() == portalCatUPCarr[j].trim()) {
           //splice out UPCs from portalCatUPCarr that are contained in portCatUPCsInCatapultArr
-          portalCatUPCarr.splice(j);
+          portalCatUPCarr.splice(j, 1, null);
         }
       }
     }
