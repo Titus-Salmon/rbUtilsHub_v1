@@ -84,32 +84,31 @@ export async function post(req, res, next) {
       });
   }
 
-  function aggregateCatapultUPCs() {
+  async function aggregateCatapultUPCs() {
     odbc.connect(DSN, (error, connection) => {
-      connection
-        .query(`${catapultQuery}`, (error, result) => {
-          if (error) {
-            console.error(error);
-            res.json({
-              error: `error from imwClicker.js==> ${error}`,
-            });
-          }
-          for (let i = 0; i < result.length; i++) {
-            let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
-            portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
-          }
-        })
-        .then(function () {
-          console.log(
-            `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
-          );
-          console.log(
-            `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
-              portCatUPCsInCatapultArr[0]
-            )}`
-          );
-          spliceOutPortalCatUPCsInCatapult();
-        });
+      connection.query(`${catapultQuery}`, (error, result) => {
+        if (error) {
+          console.error(error);
+          res.json({
+            error: `error from imwClicker.js==> ${error}`,
+          });
+        }
+        for (let i = 0; i < result.length; i++) {
+          let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
+          portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
+        }
+      });
+      await function () {
+        console.log(
+          `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
+        );
+        console.log(
+          `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
+            portCatUPCsInCatapultArr[0]
+          )}`
+        );
+        spliceOutPortalCatUPCsInCatapult();
+      };
     });
   }
 
@@ -134,9 +133,11 @@ export async function post(req, res, next) {
       .map((arrayItem) => `'${arrayItem}'`)
       .join(",");
     // console.log(`portalCatUPCarrToString2==> ${portalCatUPCarrToString2}`);
-    let stringTest2 = portalCatUPCarrToString1.substring(0, 41);
-    console.log(`stringTest2==> ${stringTest2}`);
-    showPortalCatUPCsNotINCatapult();
+    await function () {
+      let stringTest2 = portalCatUPCarrToString1.substring(0, 41);
+      console.log(`stringTest2==> ${stringTest2}`);
+      showPortalCatUPCsNotINCatapult();
+    };
   }
 
   function showPortalCatUPCsNotINCatapult() {
