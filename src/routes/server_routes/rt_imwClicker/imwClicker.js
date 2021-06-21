@@ -141,8 +141,10 @@ export async function post(req, res, next) {
   }
 
   async function spliceOutPortalCatUPCsInCatapult() {
-    console.log(`portCatUPCsInCatapultArr==> ${portCatUPCsInCatapultArr}`);
-    console.log(`portalCatUPCarr==> ${portalCatUPCarr}`);
+    console.log(
+      `portCatUPCsInCatapultArr.length==> ${portCatUPCsInCatapultArr.length}`
+    );
+    console.log(`portalCatUPCarr.length==> ${portalCatUPCarr.length}`);
     for (let i = 0; i < portCatUPCsInCatapultArr.length; i++) {
       for (let j = 0; j < portalCatUPCarr.length; j++) {
         if (portCatUPCsInCatapultArr[i].trim() == portalCatUPCarr[j].trim()) {
