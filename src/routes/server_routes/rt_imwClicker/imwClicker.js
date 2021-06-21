@@ -97,7 +97,7 @@ export async function post(req, res, next) {
   WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1.trim()}')
   `;
         console.log(`catapultQuery==> ${catapultQuery}`);
-        odbcPart();
+        odbcPart(catapultQuery);
         // .then(spliceOutPortalCatUPCsInCatapult())
         // .then(showPortalCatUPCsNotINCatapult());
       });
@@ -119,9 +119,9 @@ export async function post(req, res, next) {
     await spliceOutPortalCatUPCsInCatapult();
   }
 
-  async function odbcPart() {
+  async function odbcPart(catapultQuery) {
     odbc.connect(DSN, (error, connection) => {
-      connection.query(`${catapultQuery}`, (error, result) => {
+      connection.query(catapultQuery, (error, result) => {
         if (error) {
           console.error(error);
           res.json({
