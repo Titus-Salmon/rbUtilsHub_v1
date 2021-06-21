@@ -44,7 +44,7 @@ export async function post(req, res, next) {
   // WHERE ${venCatPrefix}_upc IN ('852244003114')
   // `;
 
-  let catapultQuery;
+  // let catapultQuery;
 
   let catapultQuery = `
   SELECT inv_ScanCode FROM
