@@ -112,9 +112,9 @@ export async function post(req, res, next) {
           });
         }
       });
-      // aggregateCatapultUPCs(result);
+      aggregateCatapultUPCs(result);
     });
-    await aggregateCatapultUPCs(result);
+    // await aggregateCatapultUPCs(result);
   }
 
   async function spliceOutPortalCatUPCsInCatapult() {
