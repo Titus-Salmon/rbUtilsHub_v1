@@ -25,7 +25,7 @@ export async function post(req, res, next) {
 
   let portalCatUPCarr = [];
   // let portalCatUPCarrToString1 = "";
-  // let portalCatUPCarrToString2 = "";
+  let portalCatUPCarrToString2;
   let portCatUPCsInCatapultArr = [];
   let resObjArr = [];
 
