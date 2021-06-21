@@ -110,13 +110,13 @@ export async function post(req, res, next) {
             error: `error from imwClicker.js==> ${error}`,
           });
         }
-        aggregateCatapultUPCs(result).then(
-          await spliceOutPortalCatUPCsInCatapult().then(
-            await showPortalCatUPCsNotINCatapult()
-          )
-        );
       });
     });
+    await aggregateCatapultUPCs(result).then(
+      await spliceOutPortalCatUPCsInCatapult().then(
+        await showPortalCatUPCsNotINCatapult()
+      )
+    );
   }
 
   async function spliceOutPortalCatUPCsInCatapult() {
