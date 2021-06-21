@@ -73,7 +73,7 @@ export async function post(req, res, next) {
           .map((arrayItem) => `'${arrayItem}'`)
           .join(",");
         let startingindex = 1;
-        let endingindex = portalCatUPCarrToString1.length;
+        let endingindex = portalCatUPCarrToString1.length + 1;
         portalCatUPCarrToString1 = portalCatUPCarrToString1.slice(
           startingindex,
           endingindex
