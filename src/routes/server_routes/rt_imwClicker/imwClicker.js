@@ -92,29 +92,27 @@ export async function post(req, res, next) {
             error: `error from imwClicker.js==> ${error}`,
           });
         }
-        for (let i = 0; i < result.length; i++) {
-          let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
-          portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
+        async function loopThruCatapult() {
+          for (let i = 0; i < result.length; i++) {
+            let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
+            portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
+          }
+          console.log(
+            `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
+          );
+          console.log(
+            `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
+              portCatUPCsInCatapultArr[0]
+            )}`
+          );
         }
       });
-      connection.close((error) => {
-        if (error) {
-          return;
-        } // handle
-        // connection is now closed
-        console.log(
-          `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
-        );
-        console.log(
-          `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
-            portCatUPCsInCatapultArr[0]
-          )}`
-        );
-        spliceOutPortalCatUPCsInCatapult().then(
-          showPortalCatUPCsNotINCatapult()
-        );
-      });
     });
+    loopThruCatapult().then(
+      await spliceOutPortalCatUPCsInCatapult().then(
+        showPortalCatUPCsNotINCatapult()
+      )
+    );
   }
 
   async function spliceOutPortalCatUPCsInCatapult() {
