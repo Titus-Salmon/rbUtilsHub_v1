@@ -67,6 +67,8 @@ export async function post(req, res, next) {
           let portalCatUPC = rows[i][`${venCatPrefix}_upc`];
           portalCatUPCarr.push(`${portalCatUPC}`);
         }
+      })
+      .on("end", async function () {
         portalCatUPCarrToString1 = portalCatUPCarr
           .map((arrayItem) => `'${arrayItem}'`)
           .join(",");
@@ -95,9 +97,7 @@ export async function post(req, res, next) {
   WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1}')
   `;
         console.log(`catapultQuery==> ${catapultQuery}`);
-      })
-      .on("end", function () {
-        odbcPart();
+        await odbcPart(catapultQuery);
         // .then(spliceOutPortalCatUPCsInCatapult())
         // .then(showPortalCatUPCsNotINCatapult());
       });
@@ -119,7 +119,7 @@ export async function post(req, res, next) {
     await spliceOutPortalCatUPCsInCatapult();
   }
 
-  async function odbcPart() {
+  async function odbcPart(catapultQuery) {
     odbc.connect(DSN, (error, connection) => {
       connection.query(`${catapultQuery}`, (error, result) => {
         if (error) {
