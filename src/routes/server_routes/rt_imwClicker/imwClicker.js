@@ -111,8 +111,9 @@ export async function post(req, res, next) {
             error: `error from imwClicker.js==> ${error}`,
           });
         }
+        aggregateCatapultUPCs(result);
       });
-      aggregateCatapultUPCs(result);
+      // aggregateCatapultUPCs(result);
     });
     // await aggregateCatapultUPCs(result);
   }
