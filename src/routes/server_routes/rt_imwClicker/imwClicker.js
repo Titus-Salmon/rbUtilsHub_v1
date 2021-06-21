@@ -66,7 +66,10 @@ export async function post(req, res, next) {
           .join(",");
         let startingindex = 0;
         let endingindex = portalCatUPCarrToString1.length - 1;
-        portalCatUPCarrToString1.slice(startingindex, endingindex);
+        portalCatUPCarrToString1 = portalCatUPCarrToString1.slice(
+          startingindex,
+          endingindex
+        );
         console.log(
           `portalCatUPCarr.length from aggregatePortalCatUPCs==> ${portalCatUPCarr.length}`
         );
@@ -132,7 +135,10 @@ export async function post(req, res, next) {
       .join(",");
     let startingindex = 0;
     let endingindex = portalCatUPCarrToString2.length - 1;
-    portalCatUPCarrToString2.slice(startingindex, endingindex);
+    portalCatUPCarrToString2 = portalCatUPCarrToString2.slice(
+      startingindex,
+      endingindex
+    );
     let stringTest2 = portalCatUPCarrToString2.substring(0, 41);
     console.log(`stringTest2==> ${stringTest2}`);
     await showPortalCatUPCsNotINCatapult();
