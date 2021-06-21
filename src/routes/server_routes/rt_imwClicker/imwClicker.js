@@ -34,27 +34,27 @@ export async function post(req, res, next) {
   SELECT * FROM ${ediTableName}
   `;
 
-  // let portalQuery2 = `
-  // SELECT * FROM ${ediTableName}
-  // WHERE ${venCatPrefix}_upc IN ('${portalCatUPCarrToString2}')
-  // `;
-
   let portalQuery2 = `
-  SELECT * FROM ${ediTableName} 
-  WHERE ${venCatPrefix}_upc IN ('852244003114')
+  SELECT * FROM ${ediTableName}
+  WHERE ${venCatPrefix}_upc IN ('${portalCatUPCarrToString2.trim()}')
   `;
 
-  // let catapultQuery = `
-  // SELECT inv_ScanCode FROM
-  // catapult.ecrs.v_InventoryMaster
-  // WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1}')
+  // let portalQuery2 = `
+  // SELECT * FROM ${ediTableName}
+  // WHERE ${venCatPrefix}_upc IN ('852244003114')
   // `;
 
   let catapultQuery = `
   SELECT inv_ScanCode FROM
   catapult.ecrs.v_InventoryMaster
-  WHERE trim(inv_ScanCode) IN ('852244003114')
+  WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1.trim()}')
   `;
+
+  // let catapultQuery = `
+  // SELECT inv_ScanCode FROM
+  // catapult.ecrs.v_InventoryMaster
+  // WHERE trim(inv_ScanCode) IN ('852244003114')
+  // `;
 
   async function aggregatePortalCatUPCs() {
     connection
