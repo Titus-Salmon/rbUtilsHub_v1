@@ -2,6 +2,7 @@
   import imwClickerResTbl from "../../../stores/dynamicTables/st_imwClickerResTbl";
   import ImwClickerRsltsTbl from "../../../components/imwClickerRsltsTables/imwClickerRsltsTbl.svelte";
   import utilResponses from "../../../stores/utilResponses/st_utilResponses";
+  import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
 
   let ediTableName;
   let venCatPrefix;
@@ -84,5 +85,6 @@
 {/if}
 
 {#if Object.keys($imwClickerResTbl[0]).length > 0}
+  <SaveToXLSX />
   <ImwClickerRsltsTbl />
 {/if}
