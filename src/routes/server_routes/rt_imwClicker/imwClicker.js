@@ -45,7 +45,7 @@ export async function post(req, res, next) {
   WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1}')
   `;
 
-  async function aggregatePortalCatUPCs() {
+  function aggregatePortalCatUPCs() {
     connection
       .query(portalQuery1, function (err, rows, fields) {
         if (err) throw err;
@@ -95,20 +95,20 @@ export async function post(req, res, next) {
           let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
           portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
         }
+        console.log(
+          `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
+        );
+        console.log(
+          `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
+            portCatUPCsInCatapultArr[0]
+          )}`
+        );
+        spliceOutPortalCatUPCsInCatapult();
       });
-      console.log(
-        `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
-      );
-      console.log(
-        `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
-          portCatUPCsInCatapultArr[0]
-        )}`
-      );
-      spliceOutPortalCatUPCsInCatapult();
     });
   }
 
-  async function spliceOutPortalCatUPCsInCatapult() {
+  function spliceOutPortalCatUPCsInCatapult() {
     for (let i = 0; i < portCatUPCsInCatapultArr.length; i++) {
       for (let j = 0; j < portalCatUPCarr.length; j++) {
         if (portCatUPCsInCatapultArr[i] === portalCatUPCarr[j]) {
@@ -136,10 +136,10 @@ export async function post(req, res, next) {
     );
     let stringTest2 = portalCatUPCarrToString2.substring(0, 41);
     console.log(`stringTest2==> ${stringTest2}`);
-    await showPortalCatUPCsNotINCatapult();
+    showPortalCatUPCsNotINCatapult();
   }
 
-  async function showPortalCatUPCsNotINCatapult() {
+  function showPortalCatUPCsNotINCatapult() {
     connection
       .query(portalQuery2, function (err, rows, fields) {
         if (err) throw err;
