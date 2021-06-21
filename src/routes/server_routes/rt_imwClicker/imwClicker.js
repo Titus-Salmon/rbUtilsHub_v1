@@ -96,6 +96,12 @@ export async function post(req, res, next) {
           let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
           portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
         }
+      });
+      connection.close((error) => {
+        if (error) {
+          return;
+        } // handle
+        // connection is now closed
         console.log(
           `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
         );
@@ -104,11 +110,11 @@ export async function post(req, res, next) {
             portCatUPCsInCatapultArr[0]
           )}`
         );
+        spliceOutPortalCatUPCsInCatapult().then(
+          showPortalCatUPCsNotINCatapult()
+        );
       });
     });
-    await spliceOutPortalCatUPCsInCatapult().then(
-      showPortalCatUPCsNotINCatapult()
-    );
   }
 
   async function spliceOutPortalCatUPCsInCatapult() {
