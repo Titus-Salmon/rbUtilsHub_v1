@@ -106,13 +106,13 @@ export async function post(req, res, next) {
             )}`
           );
         }
+        loopThruCatapult().then(
+          await spliceOutPortalCatUPCsInCatapult().then(
+            showPortalCatUPCsNotINCatapult()
+          )
+        );
       });
     });
-    loopThruCatapult().then(
-      await spliceOutPortalCatUPCsInCatapult().then(
-        showPortalCatUPCsNotINCatapult()
-      )
-    );
   }
 
   async function spliceOutPortalCatUPCsInCatapult() {
