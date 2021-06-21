@@ -98,17 +98,16 @@ export async function post(req, res, next) {
           portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
         }
       });
-      await function () {
-        console.log(
-          `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
-        );
-        console.log(
-          `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
-            portCatUPCsInCatapultArr[0]
-          )}`
-        );
-        spliceOutPortalCatUPCsInCatapult();
-      };
+
+      console.log(
+        `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
+      );
+      console.log(
+        `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
+          portCatUPCsInCatapultArr[0]
+        )}`
+      );
+      await spliceOutPortalCatUPCsInCatapult();
     });
   }
 
@@ -133,14 +132,13 @@ export async function post(req, res, next) {
       .map((arrayItem) => `'${arrayItem}'`)
       .join(",");
     // console.log(`portalCatUPCarrToString2==> ${portalCatUPCarrToString2}`);
-    await function () {
-      let stringTest2 = portalCatUPCarrToString1.substring(0, 41);
-      console.log(`stringTest2==> ${stringTest2}`);
-      showPortalCatUPCsNotINCatapult();
-    };
+
+    let stringTest2 = portalCatUPCarrToString1.substring(0, 41);
+    console.log(`stringTest2==> ${stringTest2}`);
+    await showPortalCatUPCsNotINCatapult();
   }
 
-  function showPortalCatUPCsNotINCatapult() {
+  async function showPortalCatUPCsNotINCatapult() {
     connection
       .query(portalQuery2, function (err, rows, fields) {
         if (err) throw err;
