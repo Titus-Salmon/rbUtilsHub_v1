@@ -82,7 +82,7 @@ export async function post(req, res, next) {
       });
   }
 
-  function aggregateCatapultUPCs() {
+  async function aggregateCatapultUPCs() {
     odbc.connect(DSN, (error, connection) => {
       connection.query(`${catapultQuery}`, (error, result) => {
         if (error) {
@@ -104,11 +104,11 @@ export async function post(req, res, next) {
           portCatUPCsInCatapultArr[0]
         )}`
       );
-      spliceOutPortalCatUPCsInCatapult();
     });
+    await spliceOutPortalCatUPCsInCatapult();
   }
 
-  function spliceOutPortalCatUPCsInCatapult() {
+  async function spliceOutPortalCatUPCsInCatapult() {
     for (let i = 0; i < portCatUPCsInCatapultArr.length; i++) {
       for (let j = 0; j < portalCatUPCarr.length; j++) {
         if (portCatUPCsInCatapultArr[i] === portalCatUPCarr[j]) {
