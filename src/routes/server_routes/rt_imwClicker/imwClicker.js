@@ -79,7 +79,8 @@ export async function post(req, res, next) {
         console.log(`stringTest1==> ${stringTest1}`);
 
         // aggregateCatapultUPCs();
-      });
+      })
+      .then(aggregateCatapultUPCs());
   }
 
   async function aggregateCatapultUPCs() {
@@ -173,7 +174,7 @@ export async function post(req, res, next) {
   }
 
   aggregatePortalCatUPCs()
-    .then(aggregateCatapultUPCs())
+    // .then(aggregateCatapultUPCs())
     .then(spliceOutPortalCatUPCsInCatapult())
     .then(showPortalCatUPCsNotINCatapult());
 
