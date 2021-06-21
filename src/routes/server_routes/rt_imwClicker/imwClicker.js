@@ -115,7 +115,7 @@ export async function post(req, res, next) {
     });
   }
 
-  function spliceOutPortalCatUPCsInCatapult() {
+  async function spliceOutPortalCatUPCsInCatapult() {
     for (let i = 0; i < portCatUPCsInCatapultArr.length; i++) {
       for (let j = 0; j < portalCatUPCarr.length; j++) {
         if (portCatUPCsInCatapultArr[i] === portalCatUPCarr[j]) {
@@ -146,7 +146,7 @@ export async function post(req, res, next) {
     // showPortalCatUPCsNotINCatapult();
   }
 
-  function showPortalCatUPCsNotINCatapult() {
+  async function showPortalCatUPCsNotINCatapult() {
     connection
       .query(portalQuery2, function (err, rows, fields) {
         if (err) throw err;
@@ -179,9 +179,9 @@ export async function post(req, res, next) {
       });
   }
 
-  aggregatePortalCatUPCs();
-  spliceOutPortalCatUPCsInCatapult();
-  showPortalCatUPCsNotINCatapult();
+  aggregatePortalCatUPCs()
+    .then(spliceOutPortalCatUPCsInCatapult())
+    .then(showPortalCatUPCsNotINCatapult());
 
   // aggregatePortalCatUPCs()
   //   .then(aggregateCatapultUPCs())
