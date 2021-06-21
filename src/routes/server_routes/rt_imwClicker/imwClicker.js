@@ -173,6 +173,8 @@ export async function post(req, res, next) {
       });
   }
 
+  aggregatePortalCatUPCs();
+
   // aggregatePortalCatUPCs()
   //   .then(aggregateCatapultUPCs())
   //   .then(spliceOutPortalCatUPCsInCatapult())
