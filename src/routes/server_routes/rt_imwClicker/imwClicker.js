@@ -34,10 +34,10 @@ export async function post(req, res, next) {
   SELECT * FROM ${ediTableName}
   `;
 
-  let portalQuery2 = `
-  SELECT * FROM ${ediTableName}
-  WHERE ${venCatPrefix}_upc IN ('${portalCatUPCarrToString2.trim()}')
-  `;
+  // let portalQuery2 = `
+  // SELECT * FROM ${ediTableName}
+  // WHERE ${venCatPrefix}_upc IN ('${portalCatUPCarrToString2.trim()}')
+  // `;
 
   // let portalQuery2 = `
   // SELECT * FROM ${ediTableName}
@@ -169,6 +169,10 @@ export async function post(req, res, next) {
     let stringTest2 = portalCatUPCarrToString2.substring(0, 41);
     console.log(`stringTest2==> ${stringTest2}`);
     // showPortalCatUPCsNotINCatapult();
+    let portalQuery2 = `
+  SELECT * FROM ${ediTableName}
+  WHERE ${venCatPrefix}_upc IN ('${portalCatUPCarrToString2.trim()})
+  `;
     await showPortalCatUPCsNotINCatapult();
   }
 
