@@ -77,13 +77,28 @@ export async function post(req, res, next) {
         );
         let stringTest1 = portalCatUPCarrToString1.substring(0, 41);
         console.log(`stringTest1==> ${stringTest1}`);
-        aggregateCatapultUPCs();
+        odbcPart();
         // .then(spliceOutPortalCatUPCsInCatapult())
         // .then(showPortalCatUPCsNotINCatapult());
       });
   }
 
-  async function aggregateCatapultUPCs() {
+  async function aggregateCatapultUPCs(result) {
+    for (let i = 0; i < result.length; i++) {
+      let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
+      portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
+    }
+    console.log(
+      `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
+    );
+    console.log(
+      `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
+        portCatUPCsInCatapultArr[0]
+      )}`
+    );
+  }
+
+  async function odbcPart() {
     odbc.connect(DSN, (error, connection) => {
       connection.query(`${catapultQuery}`, (error, result) => {
         if (error) {
@@ -92,22 +107,8 @@ export async function post(req, res, next) {
             error: `error from imwClicker.js==> ${error}`,
           });
         }
-        async function loopThruCatapult() {
-          for (let i = 0; i < result.length; i++) {
-            let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
-            portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
-          }
-          console.log(
-            `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
-          );
-          console.log(
-            `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
-              portCatUPCsInCatapultArr[0]
-            )}`
-          );
-        }
-        loopThruCatapult().then(
-          await spliceOutPortalCatUPCsInCatapult().then(
+        aggregateCatapultUPCs(result).then(
+          spliceOutPortalCatUPCsInCatapult().then(
             showPortalCatUPCsNotINCatapult()
           )
         );
