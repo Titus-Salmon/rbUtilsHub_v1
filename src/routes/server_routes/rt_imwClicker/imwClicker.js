@@ -160,8 +160,8 @@ export async function post(req, res, next) {
     portalCatUPCarrToString2 = portalCatUPCarr
       .map((arrayItem) => `'${arrayItem}'`)
       .join(",");
-    let startingindex = 1;
-    let endingindex = portalCatUPCarrToString2.length;
+    let startingindex = 0;
+    let endingindex = portalCatUPCarrToString2.length - 1;
     portalCatUPCarrToString2 = portalCatUPCarrToString2.slice(
       startingindex,
       endingindex
@@ -171,7 +171,7 @@ export async function post(req, res, next) {
     // showPortalCatUPCsNotINCatapult();
     let portalQuery2 = `
   SELECT * FROM ${ediTableName}
-  WHERE ${venCatPrefix}_upc IN ('${portalCatUPCarrToString2.trim()})
+  WHERE ${venCatPrefix}_upc IN (${portalCatUPCarrToString2.trim()})
   `;
     let portalQuery2Test1 = portalQuery2.substring(
       portalQuery2.length - 1 - 41,
