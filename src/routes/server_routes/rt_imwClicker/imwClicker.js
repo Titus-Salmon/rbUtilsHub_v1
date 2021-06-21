@@ -36,13 +36,13 @@ export async function post(req, res, next) {
 
   let portalQuery2 = `
   SELECT * FROM ${ediTableName} 
-  WHERE ${venCatPrefix}_upc IN (${portalCatUPCarrToString2})
+  WHERE ${venCatPrefix}_upc IN ('${portalCatUPCarrToString2}')
   `;
 
   let catapultQuery = `
   SELECT inv_ScanCode FROM
   catapult.ecrs.v_InventoryMaster
-  WHERE trim(inv_ScanCode) IN (${portalCatUPCarrToString1})
+  WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1}')
   `;
 
   // let catapultQuery = `
@@ -59,14 +59,14 @@ export async function post(req, res, next) {
           let portalCatUPC = rows[i][`${venCatPrefix}_upc`];
           portalCatUPCarr.push(`${portalCatUPC}`);
         }
-        // portalCatUPCarrToString1 = portalCatUPCarr
-        //   .map((arrayItem) => `'${arrayItem}'`)
-        //   .join(",");
       })
       .on("end", function () {
         portalCatUPCarrToString1 = portalCatUPCarr
           .map((arrayItem) => `'${arrayItem}'`)
           .join(",");
+        let startingindex = 0;
+        let endingindex = portalCatUPCarrToString1.length - 1;
+        portalCatUPCarrToString1.slice(startingindex, endingindex);
         console.log(
           `portalCatUPCarr.length from aggregatePortalCatUPCs==> ${portalCatUPCarr.length}`
         );
@@ -130,9 +130,10 @@ export async function post(req, res, next) {
     portalCatUPCarrToString2 = portalCatUPCarr
       .map((arrayItem) => `'${arrayItem}'`)
       .join(",");
-    // console.log(`portalCatUPCarrToString2==> ${portalCatUPCarrToString2}`);
-
-    let stringTest2 = portalCatUPCarrToString1.substring(0, 41);
+    let startingindex = 0;
+    let endingindex = portalCatUPCarrToString2.length - 1;
+    portalCatUPCarrToString2.slice(startingindex, endingindex);
+    let stringTest2 = portalCatUPCarrToString2.substring(0, 41);
     console.log(`stringTest2==> ${stringTest2}`);
     await showPortalCatUPCsNotINCatapult();
   }
