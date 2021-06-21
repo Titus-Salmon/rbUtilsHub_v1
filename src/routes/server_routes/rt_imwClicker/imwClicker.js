@@ -51,7 +51,7 @@ export async function post(req, res, next) {
   // WHERE trim(inv_ScanCode) IN ('810003420220')
   // `;
 
-  function aggregatePortalCatUPCs() {
+  async function aggregatePortalCatUPCs() {
     connection
       .query(portalQuery1, function (err, rows, fields) {
         if (err) throw err;
@@ -83,8 +83,8 @@ export async function post(req, res, next) {
         );
         let stringTest1 = portalCatUPCarrToString1.substring(0, 41);
         console.log(`stringTest1==> ${stringTest1}`);
-        aggregateCatapultUPCs();
       });
+    await aggregateCatapultUPCs();
   }
 
   async function aggregateCatapultUPCs() {
