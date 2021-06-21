@@ -95,16 +95,16 @@ export async function post(req, res, next) {
           let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
           portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
         }
-        console.log(
-          `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
-        );
-        console.log(
-          `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
-            portCatUPCsInCatapultArr[0]
-          )}`
-        );
-        spliceOutPortalCatUPCsInCatapult();
       });
+      console.log(
+        `portCatUPCsInCatapultArr.length from aggregateCatapultUPCs==> ${portCatUPCsInCatapultArr.length}`
+      );
+      console.log(
+        `JSON.stringify(portCatUPCsInCatapultArr[0]) from aggregateCatapultUPCs==> ${JSON.stringify(
+          portCatUPCsInCatapultArr[0]
+        )}`
+      );
+      spliceOutPortalCatUPCsInCatapult();
     });
   }
 
