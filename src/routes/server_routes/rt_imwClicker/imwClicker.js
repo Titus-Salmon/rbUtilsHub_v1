@@ -173,6 +173,11 @@ export async function post(req, res, next) {
   SELECT * FROM ${ediTableName}
   WHERE ${venCatPrefix}_upc IN ('${portalCatUPCarrToString2.trim()})
   `;
+    let portalQuery2Test1 = portalQuery2.substring(
+      portalQuery2.length - 1 - 41,
+      portalQuery2.length - 1
+    );
+    console.log(`portalQuery2Test1==> ${portalQuery2Test1}`);
     await showPortalCatUPCsNotINCatapult(portalQuery2);
   }
 
