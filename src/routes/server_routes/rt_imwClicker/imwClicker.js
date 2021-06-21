@@ -24,8 +24,8 @@ export async function post(req, res, next) {
   );
 
   let portalCatUPCarr = [];
-  let portalCatUPCarrToString1 = "";
-  let portalCatUPCarrToString2 = "";
+  // let portalCatUPCarrToString1 = "";
+  // let portalCatUPCarrToString2 = "";
   let portCatUPCsInCatapultArr = [];
   let resObjArr = [];
 
@@ -44,11 +44,13 @@ export async function post(req, res, next) {
   // WHERE ${venCatPrefix}_upc IN ('852244003114')
   // `;
 
-  let catapultQuery = `
-  SELECT inv_ScanCode FROM
-  catapult.ecrs.v_InventoryMaster
-  WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1.trim()}')
-  `;
+  let catapultQuery;
+
+  // let catapultQuery = `
+  // SELECT inv_ScanCode FROM
+  // catapult.ecrs.v_InventoryMaster
+  // WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1.trim()}')
+  // `;
 
   // let catapultQuery = `
   // SELECT inv_ScanCode FROM
@@ -89,6 +91,11 @@ export async function post(req, res, next) {
         );
         let stringTest1 = portalCatUPCarrToString1.substring(0, 41);
         console.log(`stringTest1==> ${stringTest1}`);
+        catapultQuery = `
+  SELECT inv_ScanCode FROM
+  catapult.ecrs.v_InventoryMaster
+  WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1.trim()}')
+  `;
         await odbcPart();
         // .then(spliceOutPortalCatUPCsInCatapult())
         // .then(showPortalCatUPCsNotINCatapult());
