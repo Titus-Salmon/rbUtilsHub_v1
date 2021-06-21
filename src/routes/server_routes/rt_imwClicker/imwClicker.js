@@ -111,8 +111,8 @@ export async function post(req, res, next) {
           });
         }
         aggregateCatapultUPCs(result).then(
-          spliceOutPortalCatUPCsInCatapult().then(
-            showPortalCatUPCsNotINCatapult()
+          await spliceOutPortalCatUPCsInCatapult().then(
+            await showPortalCatUPCsNotINCatapult()
           )
         );
       });
