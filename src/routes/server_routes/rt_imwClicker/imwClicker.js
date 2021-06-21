@@ -86,6 +86,9 @@ export async function post(req, res, next) {
   async function aggregateCatapultUPCs(result) {
     for (let i = 0; i < result.length; i++) {
       let portCatUPCsInCatapult = result[i]["inv_ScanCode"];
+      console.log(
+        `portCatUPCsInCatapult from aggregateCatapultUPCs==> ${portCatUPCsInCatapult}`
+      );
       portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
     }
     console.log(
