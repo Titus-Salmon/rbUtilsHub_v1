@@ -92,9 +92,6 @@ export async function post(req, res, next) {
   async function aggregateCatapultUPCs(result) {
     for (let i = 0; i < result.length; i++) {
       let portCatUPCsInCatapult = result[i]["inv_ScanCode"].trim();
-      console.log(
-        `portCatUPCsInCatapult from aggregateCatapultUPCs==> ${portCatUPCsInCatapult}`
-      );
       portCatUPCsInCatapultArr.push(`${portCatUPCsInCatapult}`);
     }
     console.log(
@@ -158,7 +155,7 @@ export async function post(req, res, next) {
 
   async function showPortalCatUPCsNotINCatapult() {
     connection
-      .query(portalQuery2, function (err, rows, fields) {
+      .query(`${portalQuery2}`, function (err, rows, fields) {
         if (err) throw err;
 
         let queriedColumns = Object.keys(rows[0]);
