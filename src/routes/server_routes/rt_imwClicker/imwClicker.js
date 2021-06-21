@@ -78,7 +78,7 @@ export async function post(req, res, next) {
         let stringTest1 = portalCatUPCarrToString1.substring(0, 41);
         console.log(`stringTest1==> ${stringTest1}`);
       });
-    await aggregateCatapultUPCs()
+    aggregateCatapultUPCs()
       .then(spliceOutPortalCatUPCsInCatapult())
       .then(showPortalCatUPCsNotINCatapult());
   }
