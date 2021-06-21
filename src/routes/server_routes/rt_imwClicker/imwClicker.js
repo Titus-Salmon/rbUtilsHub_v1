@@ -79,8 +79,8 @@ export async function post(req, res, next) {
         console.log(`stringTest1==> ${stringTest1}`);
       });
     await aggregateCatapultUPCs()
-      .then(await spliceOutPortalCatUPCsInCatapult())
-      .then(await showPortalCatUPCsNotINCatapult());
+      .then(spliceOutPortalCatUPCsInCatapult())
+      .then(showPortalCatUPCsNotINCatapult());
   }
 
   async function aggregateCatapultUPCs() {
