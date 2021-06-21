@@ -45,7 +45,7 @@ export async function post(req, res, next) {
   WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1}')
   `;
 
-  function aggregatePortalCatUPCs() {
+  async function aggregatePortalCatUPCs() {
     connection
       .query(portalQuery1, function (err, rows, fields) {
         if (err) throw err;
@@ -78,7 +78,7 @@ export async function post(req, res, next) {
         let stringTest1 = portalCatUPCarrToString1.substring(0, 41);
         console.log(`stringTest1==> ${stringTest1}`);
 
-        aggregateCatapultUPCs();
+        // aggregateCatapultUPCs();
       });
   }
 
@@ -105,7 +105,7 @@ export async function post(req, res, next) {
         )}`
       );
     });
-    await spliceOutPortalCatUPCsInCatapult();
+    // await spliceOutPortalCatUPCsInCatapult();
   }
 
   async function spliceOutPortalCatUPCsInCatapult() {
@@ -136,10 +136,10 @@ export async function post(req, res, next) {
     );
     let stringTest2 = portalCatUPCarrToString2.substring(0, 41);
     console.log(`stringTest2==> ${stringTest2}`);
-    showPortalCatUPCsNotINCatapult();
+    // showPortalCatUPCsNotINCatapult();
   }
 
-  function showPortalCatUPCsNotINCatapult() {
+  async function showPortalCatUPCsNotINCatapult() {
     connection
       .query(portalQuery2, function (err, rows, fields) {
         if (err) throw err;
@@ -172,13 +172,18 @@ export async function post(req, res, next) {
       });
   }
 
-  aggregatePortalCatUPCs();
-  // .then(aggregateCatapultUPCs())
-  // .then(spliceOutPortalCatUPCsInCatapult())
-  // .then(showPortalCatUPCsNotINCatapult())
-  // .then(
-  //   res.json({
-  //     resObjArr: resObjArr,
-  //   })
-  // );
+  aggregatePortalCatUPCs()
+    .then(aggregateCatapultUPCs())
+    .then(spliceOutPortalCatUPCsInCatapult())
+    .then(showPortalCatUPCsNotINCatapult());
+
+  // aggregatePortalCatUPCs();
+  // // .then(aggregateCatapultUPCs())
+  // // .then(spliceOutPortalCatUPCsInCatapult())
+  // // .then(showPortalCatUPCsNotINCatapult())
+  // // .then(
+  // //   res.json({
+  // //     resObjArr: resObjArr,
+  // //   })
+  // // );
 }
