@@ -77,9 +77,9 @@ export async function post(req, res, next) {
         );
         let stringTest1 = portalCatUPCarrToString1.substring(0, 41);
         console.log(`stringTest1==> ${stringTest1}`);
-        await aggregateCatapultUPCs()
-          .then(spliceOutPortalCatUPCsInCatapult())
-          .then(showPortalCatUPCsNotINCatapult());
+        aggregateCatapultUPCs();
+        // .then(spliceOutPortalCatUPCsInCatapult())
+        // .then(showPortalCatUPCsNotINCatapult());
       });
   }
 
@@ -106,7 +106,9 @@ export async function post(req, res, next) {
         )}`
       );
     });
-    // await spliceOutPortalCatUPCsInCatapult();
+    await spliceOutPortalCatUPCsInCatapult().then(
+      showPortalCatUPCsNotINCatapult()
+    );
   }
 
   async function spliceOutPortalCatUPCsInCatapult() {
