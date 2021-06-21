@@ -111,11 +111,10 @@ export async function post(req, res, next) {
           });
         }
       });
+      aggregateCatapultUPCs(result);
     });
-    await aggregateCatapultUPCs(result).then(
-      await spliceOutPortalCatUPCsInCatapult().then(
-        await showPortalCatUPCsNotINCatapult()
-      )
+    await spliceOutPortalCatUPCsInCatapult().then(
+      await showPortalCatUPCsNotINCatapult()
     );
   }
 
