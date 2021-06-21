@@ -34,9 +34,14 @@ export async function post(req, res, next) {
   SELECT * FROM ${ediTableName}
   `;
 
+  // let portalQuery2 = `
+  // SELECT * FROM ${ediTableName}
+  // WHERE ${venCatPrefix}_upc IN ('${portalCatUPCarrToString2}')
+  // `;
+
   let portalQuery2 = `
   SELECT * FROM ${ediTableName} 
-  WHERE ${venCatPrefix}_upc IN ('${portalCatUPCarrToString2}')
+  WHERE ${venCatPrefix}_upc IN ('852244003114')
   `;
 
   // let catapultQuery = `
@@ -155,7 +160,7 @@ export async function post(req, res, next) {
 
   async function showPortalCatUPCsNotINCatapult() {
     connection
-      .query(`${portalQuery2}`, function (err, rows, fields) {
+      .query(portalQuery2, function (err, rows, fields) {
         if (err) throw err;
 
         let queriedColumns = Object.keys(rows[0]);
