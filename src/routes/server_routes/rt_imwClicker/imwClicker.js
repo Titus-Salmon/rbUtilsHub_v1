@@ -99,6 +99,7 @@ export async function post(req, res, next) {
         portCatUPCsInCatapultArr[0]
       )}`
     );
+    await spliceOutPortalCatUPCsInCatapult();
   }
 
   async function odbcPart() {
@@ -111,8 +112,9 @@ export async function post(req, res, next) {
           });
         }
       });
-      aggregateCatapultUPCs(result);
+      // aggregateCatapultUPCs(result);
     });
+    await aggregateCatapultUPCs(result);
   }
 
   async function spliceOutPortalCatUPCsInCatapult() {
@@ -144,6 +146,7 @@ export async function post(req, res, next) {
     let stringTest2 = portalCatUPCarrToString2.substring(0, 41);
     console.log(`stringTest2==> ${stringTest2}`);
     // showPortalCatUPCsNotINCatapult();
+    await showPortalCatUPCsNotINCatapult();
   }
 
   async function showPortalCatUPCsNotINCatapult() {
@@ -179,10 +182,12 @@ export async function post(req, res, next) {
       });
   }
 
-  aggregatePortalCatUPCs()
-    // .then(odbcPart())
-    .then(spliceOutPortalCatUPCsInCatapult())
-    .then(showPortalCatUPCsNotINCatapult());
+  aggregatePortalCatUPCs();
+
+  // aggregatePortalCatUPCs()
+  //   // .then(odbcPart())
+  //   .then(spliceOutPortalCatUPCsInCatapult())
+  //   .then(showPortalCatUPCsNotINCatapult());
 
   // aggregatePortalCatUPCs()
   //   .then(aggregateCatapultUPCs())
