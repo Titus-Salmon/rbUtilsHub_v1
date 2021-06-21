@@ -45,12 +45,6 @@ export async function post(req, res, next) {
   WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1}')
   `;
 
-  // let catapultQuery = `
-  // SELECT inv_ScanCode FROM
-  // catapult.ecrs.v_InventoryMaster
-  // WHERE trim(inv_ScanCode) IN ('810003420220')
-  // `;
-
   async function aggregatePortalCatUPCs() {
     connection
       .query(portalQuery1, function (err, rows, fields) {
@@ -64,7 +58,7 @@ export async function post(req, res, next) {
         portalCatUPCarrToString1 = portalCatUPCarr
           .map((arrayItem) => `'${arrayItem}'`)
           .join(",");
-        let startingindex = 0;
+        let startingindex = 1;
         let endingindex = portalCatUPCarrToString1.length - 1;
         portalCatUPCarrToString1 = portalCatUPCarrToString1.slice(
           startingindex,
