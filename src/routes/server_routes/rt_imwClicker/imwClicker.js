@@ -94,7 +94,7 @@ export async function post(req, res, next) {
         catapultQuery = `
   SELECT inv_ScanCode FROM
   catapult.ecrs.v_InventoryMaster
-  WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1.trim()}')
+  WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1}')
   `;
         console.log(`catapultQuery==> ${catapultQuery}`);
         await odbcPart();
