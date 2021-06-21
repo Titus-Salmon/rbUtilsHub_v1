@@ -89,8 +89,13 @@ export async function post(req, res, next) {
         console.log(
           `typeof portalCatUPCarrToString1==> ${typeof portalCatUPCarrToString1}`
         );
-        let stringTest1 = portalCatUPCarrToString1.substring(0, 41);
-        console.log(`stringTest1==> ${stringTest1}`);
+        let stringTest1a = portalCatUPCarrToString1.substring(0, 41);
+        let stringTest1b = portalCatUPCarrToString1.substring(
+          portalCatUPCarrToString1.length - 41,
+          portalCatUPCarrToString1.length
+        );
+        console.log(`stringTest1a==> ${stringTest1a}`);
+        console.log(`stringTest1b==> ${stringTest1b}`);
         let catapultQuery = `
   SELECT inv_ScanCode FROM
   catapult.ecrs.v_InventoryMaster
