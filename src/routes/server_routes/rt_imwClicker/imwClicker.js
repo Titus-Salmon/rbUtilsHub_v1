@@ -57,6 +57,7 @@ export async function post(req, res, next) {
   // `;
 
   async function aggregatePortalCatUPCs() {
+    console.log(`catapultQuery==> ${catapultQuery}`);
     connection
       .query(portalQuery1, function (err, rows, fields) {
         if (err) throw err;
