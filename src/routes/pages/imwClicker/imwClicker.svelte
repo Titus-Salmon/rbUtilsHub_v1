@@ -1,6 +1,6 @@
 <script>
   import { onMount, onDestroy } from "svelte";
-  import imwClickerResTbl from "../../../stores/dynamicTables/st_imwClickerResTbl";
+  import imwClickerResTblData from "../../../stores/dynamicTables/st_imwClickerResTblData";
   import ImwClickerRsltsTbl from "../../../components/imwClickerRsltsTables/imwClickerRsltsTbl.svelte";
   import PaginUI from "../../../components/UI/paginUI.svelte";
   import paginData from "../../../stores/pagination/st_pagination1";
@@ -54,7 +54,7 @@
       },
     ]);
 
-    tableData.set([{}]);
+    imwClickerResTblData.set([{}]);
   });
 </script>
 
@@ -109,7 +109,7 @@
   {/if}
 {/if}
 
-{#if Object.keys($imwClickerResTbl[0]).length > 0}
+{#if Object.keys($imwClickerResTblData[0]).length > 0}
   <SaveToXLSX />
   {#if $paginData[0].totalPages !== null}
     <p style="text-align:center; margin: 0">
