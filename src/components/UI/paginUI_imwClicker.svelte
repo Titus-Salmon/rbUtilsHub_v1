@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import paginData from "../../stores/pagination/st_pagination1.js";
-  import imwClickerResTblData from "../../../stores/dynamicTables/st_imwClickerResTbl";
+  import imwClickerResTblData from "../../stores/dynamicTables/st_imwClickerResTbl";
 
   let page;
   let pageToDisplay;
