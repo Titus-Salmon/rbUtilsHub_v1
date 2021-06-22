@@ -1,6 +1,6 @@
 <script>
   import { onMount, onDestroy } from "svelte";
-  import imwClickerResTblData from "../../../stores/dynamicTables/st_imwClickerResTblData";
+  import imwClickerResTblData from "../../../stores/dynamicTables/st_imwClickerResTbl";
   import ImwClickerRsltsTbl from "../../../components/imwClickerRsltsTables/imwClickerRsltsTbl.svelte";
   import PaginUI from "../../../components/UI/paginUI.svelte";
   import paginData from "../../../stores/pagination/st_pagination1";
