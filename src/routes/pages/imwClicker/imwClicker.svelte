@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from "svelte";
   import imwClickerResTblData from "../../../stores/dynamicTables/st_imwClickerResTbl";
   import ImwClickerRsltsTbl from "../../../components/imwClickerRsltsTables/imwClickerRsltsTbl.svelte";
-  import PaginUI from "../../../components/UI/paginUI.svelte";
+  import PaginUI_imwClicker from "../../../components/UI/paginUI_imwClicker.svelte";
   import paginData from "../../../stores/pagination/st_pagination1";
   import utilResponses from "../../../stores/utilResponses/st_utilResponses";
   import SaveToXLSX from "../../../libT0d/saveToXLSX.svelte";
@@ -115,7 +115,7 @@
     <p style="text-align:center; margin: 0">
       Page {$paginData[0].currentPage} of {$paginData[0].totalPages}
     </p>
-    <PaginUI />
+    <PaginUI_imwClicker />
   {/if}
   <ImwClickerRsltsTbl />
 {/if}
