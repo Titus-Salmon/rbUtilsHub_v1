@@ -23,7 +23,7 @@
     })
       .then((queryRes) => queryRes.json())
       .then((queryResJSON) => {
-        imwClickerResTbl.set(queryResJSON.queryResArr);
+        imwClickerResTblData.set(queryResJSON.queryResArr);
         console.log(
           `JSON.stringify(queryResJSON.queryResArr)==> ${JSON.stringify(
             queryResJSON.queryResArr
