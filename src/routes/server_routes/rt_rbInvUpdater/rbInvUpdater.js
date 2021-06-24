@@ -63,34 +63,59 @@ export async function post(req, res, next) {
   IN (${rb_invUPCsToString.trim()})
   `;
 
-    function catapultResults(result) {
-      for (let i = 0; i < result.length; i++) {
-        let catapultResObj = {};
-        catapultResObj["ri_t0d"] = i + 1; //create sequential record id (ri_t0d) column for saving as csv; you will NOT
-        //want to include INV_PK or INV_CPK in your save-to-csv results - ONLY ri_t0d... adding 1 to 'i', so we don't
-        //start our ri_t0d with 0, as that seems to confuse MySQL...
-        if (typeof result[i]["INV_ScanCode"] == "string") {
-          catapultResObj["INV_ScanCode"] = result[i]["INV_ScanCode"].trim();
-        } else {
-          catapultResObj["INV_ScanCode"] = result[i]["INV_ScanCode"];
-        }
-        if (typeof result[i]["sto_number"] == "string") {
-          catapultResObj["sto_number"] = result[i]["sto_number"].trim();
-        } else {
-          catapultResObj["sto_number"] = result[i]["sto_number"];
-        }
-        catapultResObj["inv_lastreceived"] = result[i]["inv_lastreceived"];
-        catapultResObj["inv_lastsold"] = result[i]["inv_lastsold"];
-        catapultResObj["inv_onhand"] = result[i]["inv_onhand"];
-        catapultResObj["inv_onorder"] = result[i]["inv_onorder"];
-        catapultResObj["inv_intransit"] = result[i]["inv_intransit"];
+    // function catapultResults(result) {
+    //   for (let i = 0; i < result.length; i++) {
+    //     let catapultResObj = {};
+    //     catapultResObj["ri_t0d"] = i + 1; //create sequential record id (ri_t0d) column for saving as csv; you will NOT
+    //     //want to include INV_PK or INV_CPK in your save-to-csv results - ONLY ri_t0d... adding 1 to 'i', so we don't
+    //     //start our ri_t0d with 0, as that seems to confuse MySQL...
+    //     if (typeof result[i]["INV_ScanCode"] == "string") {
+    //       catapultResObj["INV_ScanCode"] = result[i]["INV_ScanCode"].trim();
+    //     } else {
+    //       catapultResObj["INV_ScanCode"] = result[i]["INV_ScanCode"];
+    //     }
+    //     if (typeof result[i]["sto_number"] == "string") {
+    //       catapultResObj["sto_number"] = result[i]["sto_number"].trim();
+    //     } else {
+    //       catapultResObj["sto_number"] = result[i]["sto_number"];
+    //     }
+    //     catapultResObj["inv_lastreceived"] = result[i]["inv_lastreceived"];
+    //     catapultResObj["inv_lastsold"] = result[i]["inv_lastsold"];
+    //     catapultResObj["inv_onhand"] = result[i]["inv_onhand"];
+    //     catapultResObj["inv_onorder"] = result[i]["inv_onorder"];
+    //     catapultResObj["inv_intransit"] = result[i]["inv_intransit"];
 
-        catapultResArr.push(catapultResObj);
-      }
-    }
+    //     catapultResArr.push(catapultResObj);
+    //   }
+    // }
 
     odbc.connect(DSN, (error, connection) => {
       connection.query(`${catapultDbQuery}`, (error, result) => {
+        function catapultResults(result) {
+          for (let i = 0; i < result.length; i++) {
+            let catapultResObj = {};
+            catapultResObj["ri_t0d"] = i + 1; //create sequential record id (ri_t0d) column for saving as csv; you will NOT
+            //want to include INV_PK or INV_CPK in your save-to-csv results - ONLY ri_t0d... adding 1 to 'i', so we don't
+            //start our ri_t0d with 0, as that seems to confuse MySQL...
+            if (typeof result[i]["INV_ScanCode"] == "string") {
+              catapultResObj["INV_ScanCode"] = result[i]["INV_ScanCode"].trim();
+            } else {
+              catapultResObj["INV_ScanCode"] = result[i]["INV_ScanCode"];
+            }
+            if (typeof result[i]["sto_number"] == "string") {
+              catapultResObj["sto_number"] = result[i]["sto_number"].trim();
+            } else {
+              catapultResObj["sto_number"] = result[i]["sto_number"];
+            }
+            catapultResObj["inv_lastreceived"] = result[i]["inv_lastreceived"];
+            catapultResObj["inv_lastsold"] = result[i]["inv_lastsold"];
+            catapultResObj["inv_onhand"] = result[i]["inv_onhand"];
+            catapultResObj["inv_onorder"] = result[i]["inv_onorder"];
+            catapultResObj["inv_intransit"] = result[i]["inv_intransit"];
+
+            catapultResArr.push(catapultResObj);
+          }
+        }
         if (error) {
           console.error(error);
         }
