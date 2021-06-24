@@ -55,7 +55,7 @@ export async function post(req, res, next) {
   INV_ScanCode, sto_number, convert(varchar(10), inv_lastreceived, 120), convert(varchar(10), inv_lastsold, 120),
   inv_onhand, inv_onorder, inv_intransit 
   FROM catapult.ecrs.v_InventoryMaster WHERE trim(INV_ScanCode) 
-  IN (${rb_invUPCsani})
+  IN (${rb_invUPCsToString})
   `;
 
     function catapultResults(result) {
