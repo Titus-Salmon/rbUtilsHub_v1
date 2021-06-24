@@ -63,7 +63,7 @@
     rows="3"
     wrap="soft"
     bind:this="{initialQuery}">
-    {initialQuery}
+    {initialQuery.textarea.value}
   </textarea>
 </div>
 
