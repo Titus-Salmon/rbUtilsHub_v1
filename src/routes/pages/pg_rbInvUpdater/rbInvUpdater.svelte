@@ -1,4 +1,6 @@
 <script>
+  import { onMount, onDestroy } from "svelte";
+
   import rbInvUpdaterAuditResTblData from "../../../stores/dynamicTables/st_rbInvUpdaterAuditResTbl";
   import RbInvUpdaterAuditResTbl from "../../../components/rbInvUpdaterAuditResTables/rbInvUpdaterAuditResTbl.svelte";
 
