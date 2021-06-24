@@ -12,6 +12,7 @@ const odbc = require("odbc");
 const DSN = process.env.ODBC_CONN_STRING;
 
 export async function post(req, res, next) {
+  console.log(`req.body==> ${req.body}`);
   let rb_inventoryQuery = req.body.initialQuery;
   let rb_invUPCs = [];
 
