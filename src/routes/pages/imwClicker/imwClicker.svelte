@@ -25,8 +25,8 @@
       .then((queryResJSON) => {
         imwClickerResTblData.set(queryResJSON.queryResArr);
         console.log(
-          `JSON.stringify(queryResJSON.queryResArr)==> ${JSON.stringify(
-            queryResJSON.queryResArr
+          `JSON.stringify(queryResJSON.queryResArr[0])==> ${JSON.stringify(
+            queryResJSON.queryResArr[0]
           )}`
         ); //passing backend response to frontend "Store" & we are overwriting the "Store" with set()
         paginData.update((currentData) => {

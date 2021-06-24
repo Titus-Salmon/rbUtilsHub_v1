@@ -34,7 +34,6 @@ export async function post(req, res, next) {
   );
 
   let portalCatUPCarr = [];
-  // let portalCatUPCarrToString1 = "";
   let portalCatUPCarrToString2 = "";
   let portCatUPCsInCatapultArr = [];
 
@@ -43,32 +42,7 @@ export async function post(req, res, next) {
   SELECT * FROM ${ediTableName}
   `;
 
-  // let portalQuery2 = `
-  // SELECT * FROM ${ediTableName}
-  // WHERE ${venCatPrefix}_upc IN ('${portalCatUPCarrToString2.trim()}')
-  // `;
-
-  // let portalQuery2 = `
-  // SELECT * FROM ${ediTableName}
-  // WHERE ${venCatPrefix}_upc IN ('852244003114')
-  // `;
-
-  // let catapultQuery;
-
-  // let catapultQuery = `
-  // SELECT inv_ScanCode FROM
-  // catapult.ecrs.v_InventoryMaster
-  // WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1.trim()}')
-  // `;
-
-  // let catapultQuery = `
-  // SELECT inv_ScanCode FROM
-  // catapult.ecrs.v_InventoryMaster
-  // WHERE trim(inv_ScanCode) IN ('852244003114')
-  // `;
-
   async function aggregatePortalCatUPCs() {
-    // console.log(`catapultQuery==> ${catapultQuery}`);
     connection
       .query(portalQuery1, function (err, rows, fields) {
         if (err) throw err;
@@ -110,10 +84,7 @@ export async function post(req, res, next) {
   catapult.ecrs.v_InventoryMaster
   WHERE trim(inv_ScanCode) IN ('${portalCatUPCarrToString1.trim()})
   `;
-        // console.log(`catapultQuery==> ${catapultQuery}`);
         odbcPart(catapultQuery);
-        // .then(spliceOutPortalCatUPCsInCatapult())
-        // .then(showPortalCatUPCsNotINCatapult());
       });
   }
 
@@ -144,9 +115,7 @@ export async function post(req, res, next) {
         }
         aggregateCatapultUPCs(result);
       });
-      // aggregateCatapultUPCs(result);
     });
-    // await aggregateCatapultUPCs(result);
   }
 
   async function spliceOutPortalCatUPCsInCatapult() {
@@ -181,7 +150,6 @@ export async function post(req, res, next) {
     );
     let stringTest2 = portalCatUPCarrToString2.substring(0, 41);
     console.log(`stringTest2==> ${stringTest2}`);
-    // showPortalCatUPCsNotINCatapult();
     let portalQuery2 = `
   SELECT * FROM ${ediTableName}
   WHERE ${venCatPrefix}_upc IN (${portalCatUPCarrToString2.trim()})
@@ -254,39 +222,10 @@ export async function post(req, res, next) {
             // "queryResArr_pagin": queryResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
             totalPages: totalPages,
             currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
-            // nextPage: 1,
-            // prevPage: null
           });
         });
-        // res.json({
-        //   queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
-        //   queryResArr_1stPage: queryResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
-        //   // "queryResArr_pagin": queryResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
-        //   totalPages: totalPages,
-        //   currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
-        // });
       });
   }
 
   aggregatePortalCatUPCs();
-
-  // aggregatePortalCatUPCs()
-  //   // .then(odbcPart())
-  //   .then(spliceOutPortalCatUPCsInCatapult())
-  //   .then(showPortalCatUPCsNotINCatapult());
-
-  // aggregatePortalCatUPCs()
-  //   .then(aggregateCatapultUPCs())
-  //   .then(spliceOutPortalCatUPCsInCatapult())
-  //   .then(showPortalCatUPCsNotINCatapult());
-
-  // aggregatePortalCatUPCs();
-  // // .then(aggregateCatapultUPCs())
-  // // .then(spliceOutPortalCatUPCsInCatapult())
-  // // .then(showPortalCatUPCsNotINCatapult())
-  // // .then(
-  // //   res.json({
-  // //     queryResArr: queryResArr,
-  // //   })
-  // // );
 }
