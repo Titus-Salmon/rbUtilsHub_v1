@@ -4,6 +4,8 @@
   import rbInvUpdaterAuditResTblData from "../../../stores/dynamicTables/st_rbInvUpdaterAuditResTbl";
   import RbInvUpdaterAuditResTbl from "../../../components/rbInvUpdaterAuditResTables/rbInvUpdaterAuditResTbl.svelte";
 
+  let initialQueryText;
+
   let initialQuery = `
   SELECT inv_upc FROM rb_inventory_test;
   `;
@@ -62,8 +64,8 @@
     cols="33"
     rows="3"
     wrap="soft"
-    bind:this="{initialQuery}">
-    {this.value}
+    bind:this="{initialQueryText}">
+    {initialQuery}
   </textarea>
 </div>
 
