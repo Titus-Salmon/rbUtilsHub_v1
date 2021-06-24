@@ -49,13 +49,18 @@ export async function post(req, res, next) {
     let startingindex = 1;
     let endingindex = rb_invUPCsToString.length + 1;
     rb_invUPCsToString = rb_invUPCsToString.slice(startingindex, endingindex);
+    let rb_invUPCsToStringTest = rb_invUPCsToString.substring(
+      rb_invUPCsToString.length - 1 - 41,
+      rb_invUPCsToString.length - 1
+    );
+    console.log(`rb_invUPCsToStringTest==> ${rb_invUPCsToStringTest}`);
 
     let catapultDbQuery = `
   SELECT 
   INV_ScanCode, sto_number, convert(varchar(10), inv_lastreceived, 120), convert(varchar(10), inv_lastsold, 120),
   inv_onhand, inv_onorder, inv_intransit 
   FROM catapult.ecrs.v_InventoryMaster WHERE trim(INV_ScanCode) 
-  IN (${rb_invUPCsToString})
+  IN (${rb_invUPCsToString.trim()})
   `;
 
     function catapultResults(result) {
