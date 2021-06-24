@@ -47,7 +47,7 @@ export async function post(req, res, next) {
         }
       })
       .on("end", function () {
-        await queryCatapultWithRbInvUPCs();
+        queryCatapultWithRbInvUPCs();
       });
   }
 
