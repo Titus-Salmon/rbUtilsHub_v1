@@ -26,7 +26,7 @@ export async function post(req, res, next) {
   `;
 
   let populateNhcrtRbInvTableQuery = `
-  LOAD DATA LOCAL INFILE '../../../../static/csv/rb_inv_nhcrt.csv' INTO TABLE nhcrtRbInv FIELDS TERMINATED BY ',' 
+  LOAD DATA LOCAL INFILE '/static/csv/rb_inv_nhcrt.csv' INTO TABLE nhcrtRbInv FIELDS TERMINATED BY ',' 
   ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;`; //"IGNORE 1 LINES" skips the 1st row of the csv (which is the column name line)
 
   async function rb_inventory_query() {
