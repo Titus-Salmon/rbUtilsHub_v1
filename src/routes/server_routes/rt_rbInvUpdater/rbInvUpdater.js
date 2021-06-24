@@ -89,8 +89,8 @@ export async function post(req, res, next) {
         if (error) {
           console.error(error);
         }
-        console.log(`result.length~~~> ${result.length}`);
         catapultResults(result);
+        console.log(`result.length~~~> ${result.length}`);
 
         //begin csv generator //////////////////////////////////////////////////////////////////////////
         const { Parser } = require("json2csv");
