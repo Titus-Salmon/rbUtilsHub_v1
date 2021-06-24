@@ -16,7 +16,7 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        initialQuery: initialQuery.value,
+        initialQueryText: initialQueryText.value,
       }),
     })
       .then((auditRes) => auditRes.json())
