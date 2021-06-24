@@ -843,4 +843,5 @@ export async function post(req, res, next) {
       }
     );
   }
+  rb_inventory_query();
 }
