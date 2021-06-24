@@ -1,5 +1,3 @@
-const express = require("express"); //may need to check
-
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
@@ -12,14 +10,6 @@ const connection = mysql.createConnection({
 
 const odbc = require("odbc");
 const DSN = process.env.ODBC_CONN_STRING;
-
-const fileUpload = require("express-fileupload");
-express.use(
-  //may need to check
-  fileUpload({
-    debug: true,
-  })
-);
 
 export async function post(req, res, next) {
   let rb_inventoryQuery = req.body.initialQuery;
