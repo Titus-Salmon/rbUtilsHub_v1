@@ -498,7 +498,7 @@ export async function post(req, res, next) {
         .replace(saniRegex3, "");
     }
 
-    function queryNhcrtTable() {
+    async function queryNhcrtTable() {
       connection
         .query(
           `
@@ -626,10 +626,10 @@ export async function post(req, res, next) {
           }
         )
         .on("end", function () {
-          rbInvAudit();
+          queryNhcrtTable().then(rbInvAudit());
         });
     }
-    queryNhcrtTable();
+    // queryNhcrtTable();
   }
 
   async function rbInvAudit() {
