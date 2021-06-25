@@ -160,6 +160,7 @@ export async function post(req, res, next) {
   }
 
   async function createNhcrtRbInvTable() {
+    console.log(`hello from within createNhcrtRbInvTable()`);
     connection
       .query(createNhcrtRbInvTableQuery, function (error, response) {
         console.log(error || response);
