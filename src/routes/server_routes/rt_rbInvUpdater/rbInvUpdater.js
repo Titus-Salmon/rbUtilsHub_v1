@@ -145,9 +145,10 @@ export async function post(req, res, next) {
             console.error(error);
           }
           catapultResults(result);
+          await csvGenerator();
         });
       });
-      await csvGenerator();
+      // await csvGenerator();
     }
 
     await odbcPart(catapultDbQuery);
