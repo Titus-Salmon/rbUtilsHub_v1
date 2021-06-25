@@ -627,10 +627,10 @@ export async function post(req, res, next) {
           }
         )
         .on("end", function () {
-          queryNhcrtTable().then(rbInvAudit());
+          rbInvAudit();
         });
     }
-    // queryNhcrtTable();
+    queryNhcrtTable();
   }
 
   async function rbInvAudit() {
