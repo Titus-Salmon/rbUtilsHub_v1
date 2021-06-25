@@ -66,7 +66,7 @@ export async function post(req, res, next) {
   `;
 
     async function odbcPart(catapultDbQuery) {
-      let catapultDbQueryTest = catapultDbQuery.substring(0, 48);
+      let catapultDbQueryTest = catapultDbQuery.substring(0, 488);
       console.log(
         `catapultDbQueryTest from odbcPart==> ${catapultDbQueryTest}`
       );
