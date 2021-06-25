@@ -144,9 +144,10 @@ export async function post(req, res, next) {
           if (error) {
             console.error(error);
           }
-          catapultResults(result)
-            .then(csvGenerator())
-            .then(createNhcrtRbInvTable());
+          catapultResults(result).then(
+            csvGenerator().then(createNhcrtRbInvTable())
+          );
+          // .then(createNhcrtRbInvTable());
           // await csvGenerator();
         });
       });
