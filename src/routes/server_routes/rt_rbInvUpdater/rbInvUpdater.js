@@ -105,7 +105,7 @@ export async function post(req, res, next) {
   IN (${rb_invUPCsToString.trim()})
   `;
 
-    async function odbcPart(catapultDbQuery) {
+    function odbcPart(catapultDbQuery) {
       odbc.connect(DSN, (error, connection) => {
         connection.query(`${catapultDbQuery}`, (error, result) => {
           let catapultDbQueryTest = catapultDbQuery.substring(0, 488);
@@ -149,10 +149,9 @@ export async function post(req, res, next) {
       });
     }
 
-    odbcPart(catapultDbQuery)
-      .then(csvGenerator())
-      .then(createNhcrtRbInvTable());
-    // await csvGenerator().then(createNhcrtRbInvTable());
+    odbcPart(catapultDbQuery);
+    // .then(csvGenerator())
+    // .then(createNhcrtRbInvTable());
   }
 
   async function createNhcrtRbInvTable() {
@@ -863,5 +862,5 @@ export async function post(req, res, next) {
       }
     );
   }
-  rb_inventory_query();
+  rb_inventory_query().then(csvGenerator()).then(createNhcrtRbInvTable());
 }
