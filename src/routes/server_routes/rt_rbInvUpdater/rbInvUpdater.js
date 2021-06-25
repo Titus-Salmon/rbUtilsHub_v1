@@ -31,6 +31,17 @@ export async function post(req, res, next) {
   LOAD DATA LOCAL INFILE './static/csv/rb_inv_nhcrt.csv' INTO TABLE nhcrtRbInv FIELDS TERMINATED BY ',' 
   ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;`; //"IGNORE 1 LINES" skips the 1st row of the csv (which is the column name line)
 
+  let srcRsINDstockedSani;
+  let srcRsIND_NOTstockedSani;
+  let srcRsSMstockedSani;
+  let srcRsSM_NOTstockedSani;
+  let srcRsMTstockedSani;
+  let srcRsMT_NOTstockedSani;
+  let srcRsSHstockedSani;
+  let srcRsSH_NOTstockedSani;
+  let srcRsGLstockedSani;
+  let srcRsGL_NOTstockedSani;
+
   async function rb_inventory_query() {
     connection
       .query(rb_inventoryQuery, function (err, rows, fields) {
