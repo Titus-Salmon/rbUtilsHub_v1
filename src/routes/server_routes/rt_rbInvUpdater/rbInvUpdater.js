@@ -42,6 +42,12 @@ export async function post(req, res, next) {
   let srcRsGLstockedSani;
   let srcRsGL_NOTstockedSani;
 
+  let rbInvJoinArr_indSani;
+  let rbInvJoinArr_smSani;
+  let rbInvJoinArr_mtSani;
+  let rbInvJoinArr_shSani;
+  let rbInvJoinArr_glSani;
+
   async function rb_inventory_query() {
     connection
       .query(rb_inventoryQuery, function (err, rows, fields) {
