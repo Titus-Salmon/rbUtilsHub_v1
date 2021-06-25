@@ -144,8 +144,8 @@ export async function post(req, res, next) {
           if (error) {
             console.error(error);
           }
-          catapultResults(result);
-          await csvGenerator();
+          catapultResults(result).then(csvGenerator());
+          // await csvGenerator();
         });
       });
       // await csvGenerator();
