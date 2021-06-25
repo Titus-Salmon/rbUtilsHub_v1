@@ -67,7 +67,7 @@ export async function post(req, res, next) {
   IN (${rb_invUPCsToString.trim()})
   `;
 
-    async function odbcPart(catapultDbQuery) {
+    function odbcPart(catapultDbQuery) {
       odbc.connect(DSN, (error, connection) => {
         connection.query(`${catapultDbQuery}`, (error, result) => {
           let catapultDbQueryTest = catapultDbQuery.substring(0, 488);
