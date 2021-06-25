@@ -68,12 +68,12 @@ export async function post(req, res, next) {
   `;
 
     async function odbcPart(catapultDbQuery) {
-      let catapultDbQueryTest = catapultDbQuery.substring(0, 488);
-      console.log(
-        `catapultDbQueryTest from odbcPart==> ${catapultDbQueryTest}`
-      );
       odbc.connect(DSN, (error, connection) => {
         connection.query(`${catapultDbQuery}`, (error, result) => {
+          let catapultDbQueryTest = catapultDbQuery.substring(0, 488);
+          console.log(
+            `catapultDbQueryTest from odbcPart==> ${catapultDbQueryTest}`
+          );
           function catapultResults(result) {
             for (let i = 0; i < result.length; i++) {
               let catapultResObj = {};
