@@ -26,7 +26,7 @@ export async function post(req, res, next) {
   `;
 
   let populateNhcrtRbInvTableQuery = `
-  LOAD DATA LOCAL INFILE '/static/csv/rb_inv_nhcrt.csv' INTO TABLE nhcrtRbInv FIELDS TERMINATED BY ',' 
+  LOAD DATA LOCAL INFILE './static/csv/rb_inv_nhcrt.csv' INTO TABLE nhcrtRbInv FIELDS TERMINATED BY ',' 
   ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;`; //"IGNORE 1 LINES" skips the 1st row of the csv (which is the column name line)
 
   async function rb_inventory_query() {
@@ -94,9 +94,7 @@ export async function post(req, res, next) {
         function catapultResults(result) {
           for (let i = 0; i < result.length; i++) {
             let catapultResObj = {};
-            catapultResObj["ri_t0d"] = i + 1; //create sequential record id (ri_t0d) column for saving as csv; you will NOT
-            //want to include INV_PK or INV_CPK in your save-to-csv results - ONLY ri_t0d... adding 1 to 'i', so we don't
-            //start our ri_t0d with 0, as that seems to confuse MySQL...
+            catapultResObj["ri_t0d"] = i + 1;
             if (typeof result[i]["INV_ScanCode"] == "string") {
               catapultResObj["INV_ScanCode"] = result[i]["INV_ScanCode"].trim();
             } else {
@@ -120,7 +118,9 @@ export async function post(req, res, next) {
           console.error(error);
         }
         catapultResults(result);
-        console.log(`result.length~~~> ${result.length}`);
+        console.log(
+          `result.length from catapultResults(result)~~~> ${result.length}`
+        );
 
         //begin csv generator //////////////////////////////////////////////////////////////////////////
         const { Parser } = require("json2csv");
