@@ -63,106 +63,84 @@ export async function post(req, res, next) {
   IN (${rb_invUPCsToString.trim()})
   `;
 
-    // function catapultResults(result) {
-    //   for (let i = 0; i < result.length; i++) {
-    //     let catapultResObj = {};
-    //     catapultResObj["ri_t0d"] = i + 1; //create sequential record id (ri_t0d) column for saving as csv; you will NOT
-    //     //want to include INV_PK or INV_CPK in your save-to-csv results - ONLY ri_t0d... adding 1 to 'i', so we don't
-    //     //start our ri_t0d with 0, as that seems to confuse MySQL...
-    //     if (typeof result[i]["INV_ScanCode"] == "string") {
-    //       catapultResObj["INV_ScanCode"] = result[i]["INV_ScanCode"].trim();
-    //     } else {
-    //       catapultResObj["INV_ScanCode"] = result[i]["INV_ScanCode"];
-    //     }
-    //     if (typeof result[i]["sto_number"] == "string") {
-    //       catapultResObj["sto_number"] = result[i]["sto_number"].trim();
-    //     } else {
-    //       catapultResObj["sto_number"] = result[i]["sto_number"];
-    //     }
-    //     catapultResObj["inv_lastreceived"] = result[i]["inv_lastreceived"];
-    //     catapultResObj["inv_lastsold"] = result[i]["inv_lastsold"];
-    //     catapultResObj["inv_onhand"] = result[i]["inv_onhand"];
-    //     catapultResObj["inv_onorder"] = result[i]["inv_onorder"];
-    //     catapultResObj["inv_intransit"] = result[i]["inv_intransit"];
+    async function odbcPart(catapultDbQuery) {
+      odbc.connect(DSN, (error, connection) => {
+        connection.query(`${catapultDbQuery}`, (error, result) => {
+          function catapultResults(result) {
+            for (let i = 0; i < result.length; i++) {
+              let catapultResObj = {};
+              catapultResObj["ri_t0d"] = i + 1;
+              if (typeof result[i]["INV_ScanCode"] == "string") {
+                catapultResObj["INV_ScanCode"] =
+                  result[i]["INV_ScanCode"].trim();
+              } else {
+                catapultResObj["INV_ScanCode"] = result[i]["INV_ScanCode"];
+              }
+              if (typeof result[i]["sto_number"] == "string") {
+                catapultResObj["sto_number"] = result[i]["sto_number"].trim();
+              } else {
+                catapultResObj["sto_number"] = result[i]["sto_number"];
+              }
+              catapultResObj["inv_lastreceived"] =
+                result[i]["inv_lastreceived"];
+              catapultResObj["inv_lastsold"] = result[i]["inv_lastsold"];
+              catapultResObj["inv_onhand"] = result[i]["inv_onhand"];
+              catapultResObj["inv_onorder"] = result[i]["inv_onorder"];
+              catapultResObj["inv_intransit"] = result[i]["inv_intransit"];
 
-    //     catapultResArr.push(catapultResObj);
-    //   }
-    // }
-
-    odbc.connect(DSN, (error, connection) => {
-      connection.query(`${catapultDbQuery}`, (error, result) => {
-        function catapultResults(result) {
-          for (let i = 0; i < result.length; i++) {
-            let catapultResObj = {};
-            catapultResObj["ri_t0d"] = i + 1;
-            if (typeof result[i]["INV_ScanCode"] == "string") {
-              catapultResObj["INV_ScanCode"] = result[i]["INV_ScanCode"].trim();
-            } else {
-              catapultResObj["INV_ScanCode"] = result[i]["INV_ScanCode"];
+              catapultResArr.push(catapultResObj);
             }
-            if (typeof result[i]["sto_number"] == "string") {
-              catapultResObj["sto_number"] = result[i]["sto_number"].trim();
-            } else {
-              catapultResObj["sto_number"] = result[i]["sto_number"];
-            }
-            catapultResObj["inv_lastreceived"] = result[i]["inv_lastreceived"];
-            catapultResObj["inv_lastsold"] = result[i]["inv_lastsold"];
-            catapultResObj["inv_onhand"] = result[i]["inv_onhand"];
-            catapultResObj["inv_onorder"] = result[i]["inv_onorder"];
-            catapultResObj["inv_intransit"] = result[i]["inv_intransit"];
-
-            catapultResArr.push(catapultResObj);
           }
-        }
-        if (error) {
-          console.error(error);
-        }
-        catapultResults(result);
-        console.log(
-          `result.length from catapultResults(result)~~~> ${result.length}`
-        );
-
-        //begin csv generator //////////////////////////////////////////////////////////////////////////
-        const { Parser } = require("json2csv");
-
-        const fields = [
-          "ri_t0d",
-          "INV_ScanCode",
-          "sto_number",
-          "inv_lastreceived",
-          "inv_lastsold",
-          "inv_onhand",
-          "inv_onorder",
-          "inv_intransit",
-        ];
-
-        const opts = {
-          fields,
-        };
-
-        try {
+          if (error) {
+            console.error(error);
+          }
+          catapultResults(result);
           console.log(
-            "catapultResArr[0] from json2csv======>>",
-            catapultResArr[0]
+            `result.length from catapultResults(result)~~~> ${result.length}`
           );
-          const parser = new Parser(opts);
-          const csv = parser.parse(catapultResArr);
-          console.log("csv.length=====>>", csv.length);
-          fs.writeFile(
-            `${process.cwd()}/static/csv/rb_inv_nhcrt.csv`,
-            csv,
-            function (err) {
-              if (err) throw err;
-              console.log("~~~~~>>rb_inv_nhcrt.csvsaved<<~~~~~");
-            }
-          );
-        } catch (err) {
-          console.error(err);
-        }
-        //end csv generator //////////////////////////////////////////////////////////////////////////
-      });
-    });
 
+          //begin csv generator //////////////////////////////////////////////////////////////////////////
+          const { Parser } = require("json2csv");
+
+          const fields = [
+            "ri_t0d",
+            "INV_ScanCode",
+            "sto_number",
+            "inv_lastreceived",
+            "inv_lastsold",
+            "inv_onhand",
+            "inv_onorder",
+            "inv_intransit",
+          ];
+
+          const opts = {
+            fields,
+          };
+
+          try {
+            console.log(
+              "catapultResArr[0] from json2csv======>>",
+              catapultResArr[0]
+            );
+            const parser = new Parser(opts);
+            const csv = parser.parse(catapultResArr);
+            console.log("csv.length=====>>", csv.length);
+            fs.writeFile(
+              `${process.cwd()}/static/csv/rb_inv_nhcrt.csv`,
+              csv,
+              function (err) {
+                if (err) throw err;
+                console.log("~~~~~>>rb_inv_nhcrt.csvsaved<<~~~~~");
+              }
+            );
+          } catch (err) {
+            console.error(err);
+          }
+          //end csv generator //////////////////////////////////////////////////////////////////////////
+        });
+      });
+    }
+    await odbcPart(catapultDbQuery);
     await createNhcrtRbInvTable();
   }
 
