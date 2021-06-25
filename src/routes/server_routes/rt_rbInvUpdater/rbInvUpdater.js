@@ -150,6 +150,7 @@ export async function post(req, res, next) {
     }
 
     await odbcPart(catapultDbQuery);
+    await csvGenerator();
     // .then(csvGenerator())
     // .then(createNhcrtRbInvTable());
   }
