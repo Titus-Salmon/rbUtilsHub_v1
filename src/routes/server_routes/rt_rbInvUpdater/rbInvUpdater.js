@@ -112,7 +112,7 @@ export async function post(req, res, next) {
           console.log(
             `catapultDbQueryTest from odbcPart==> ${catapultDbQueryTest}`
           );
-          async function catapultResults(result) {
+          function catapultResults(result) {
             console.log(
               `result.length from catapultResults(result)~~~> ${result.length}`
             );
@@ -862,5 +862,5 @@ export async function post(req, res, next) {
       }
     );
   }
-  rb_inventory_query().then(createNhcrtRbInvTable());
+  rb_inventory_query();
 }
