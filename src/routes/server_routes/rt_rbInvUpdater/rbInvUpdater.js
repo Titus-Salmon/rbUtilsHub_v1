@@ -149,7 +149,7 @@ export async function post(req, res, next) {
       });
     }
 
-    odbcPart(catapultDbQuery);
+    await odbcPart(catapultDbQuery);
     // .then(csvGenerator())
     // .then(createNhcrtRbInvTable());
   }
