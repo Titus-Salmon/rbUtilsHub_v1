@@ -113,6 +113,9 @@ export async function post(req, res, next) {
             `catapultDbQueryTest from odbcPart==> ${catapultDbQueryTest}`
           );
           async function catapultResults(result) {
+            console.log(
+              `result.length from catapultResults(result)~~~> ${result.length}`
+            );
             for (let i = 0; i < result.length; i++) {
               let catapultResObj = {};
               catapultResObj["ri_t0d"] = i + 1;
@@ -141,11 +144,7 @@ export async function post(req, res, next) {
           if (error) {
             console.error(error);
           }
-
           catapultResults(result);
-          console.log(
-            `result.length from catapultResults(result)~~~> ${result.length}`
-          );
         });
       });
     }
