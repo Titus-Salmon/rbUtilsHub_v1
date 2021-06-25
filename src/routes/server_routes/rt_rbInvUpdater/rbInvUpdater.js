@@ -112,7 +112,7 @@ export async function post(req, res, next) {
           console.log(
             `catapultDbQueryTest from odbcPart==> ${catapultDbQueryTest}`
           );
-          function catapultResults(result) {
+          async function catapultResults(result) {
             console.log(
               `result.length from catapultResults(result)~~~> ${result.length}`
             );
@@ -139,7 +139,7 @@ export async function post(req, res, next) {
 
               catapultResArr.push(catapultResObj);
             }
-            await csvGenerator();
+            // await csvGenerator();
           }
           if (error) {
             console.error(error);
