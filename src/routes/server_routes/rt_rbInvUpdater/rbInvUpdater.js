@@ -808,7 +808,7 @@ export async function post(req, res, next) {
       );
 
       let searchResultsToString = searchResults.toString();
-      searchResultsSplit = searchResultsToString.split(splitRegex1);
+      let searchResultsSplit = searchResultsToString.split(splitRegex1);
       console.log(`searchResultsSplit.length==> ${searchResultsSplit.length}`);
       console.log(`searchResultsSplit[0]==> ${searchResultsSplit[0]}`);
       console.log(
