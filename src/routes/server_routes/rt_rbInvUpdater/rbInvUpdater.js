@@ -136,6 +136,7 @@ export async function post(req, res, next) {
 
               catapultResArr.push(catapultResObj);
             }
+            await csvGenerator();
           }
           if (error) {
             console.error(error);
@@ -145,7 +146,6 @@ export async function post(req, res, next) {
           console.log(
             `result.length from catapultResults(result)~~~> ${result.length}`
           );
-          await csvGenerator();
         });
       });
     }
