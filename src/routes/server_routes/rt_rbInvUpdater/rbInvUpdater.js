@@ -505,7 +505,7 @@ export async function post(req, res, next) {
           `
       DROP TABLE IF EXISTS rb_inventory_test_old;
       CREATE TABLE rb_inventory_test_old AS SELECT * FROM rb_inventory_test;
-      SELECT * FROM nhcrtRbInvTable;
+      SELECT * FROM nhcrtRbInv;
       SELECT * FROM rb_wishlist;`,
           function (err, rows, fields) {
             if (err) throw err;
