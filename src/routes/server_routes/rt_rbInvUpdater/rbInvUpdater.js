@@ -51,11 +51,13 @@ export async function post(req, res, next) {
     let startingindex = 1;
     let endingindex = rb_invUPCsToString.length + 1;
     rb_invUPCsToString = rb_invUPCsToString.slice(startingindex, endingindex);
-    let rb_invUPCsToStringTest = rb_invUPCsToString.substring(
-      rb_invUPCsToString.length - 1 - 41,
-      rb_invUPCsToString.length - 1
+    let rb_invUPCsToStringTest1 = rb_invUPCsToString.substring(0, 48);
+    let rb_invUPCsToStringTest2 = rb_invUPCsToString.substring(
+      rb_invUPCsToString.length - 48,
+      rb_invUPCsToString.length
     );
-    console.log(`rb_invUPCsToStringTest==> ${rb_invUPCsToStringTest}`);
+    console.log(`rb_invUPCsToStringTest1==> ${rb_invUPCsToStringTest1}`);
+    console.log(`rb_invUPCsToStringTest2==> ${rb_invUPCsToStringTest2}`);
 
     let catapultDbQuery = `
   SELECT 
