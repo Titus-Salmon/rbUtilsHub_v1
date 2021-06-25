@@ -48,6 +48,8 @@ export async function post(req, res, next) {
   let rbInvJoinArr_shSani;
   let rbInvJoinArr_glSani;
 
+  let searchResultsSplit;
+
   async function rb_inventory_query() {
     connection
       .query(rb_inventoryQuery, function (err, rows, fields) {
@@ -808,7 +810,7 @@ export async function post(req, res, next) {
       );
 
       let searchResultsToString = searchResults.toString();
-      let searchResultsSplit = searchResultsToString.split(splitRegex1);
+      searchResultsSplit = searchResultsToString.split(splitRegex1);
       console.log(`searchResultsSplit.length==> ${searchResultsSplit.length}`);
       console.log(`searchResultsSplit[0]==> ${searchResultsSplit[0]}`);
       console.log(
