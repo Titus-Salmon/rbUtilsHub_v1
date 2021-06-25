@@ -144,7 +144,9 @@ export async function post(req, res, next) {
           if (error) {
             console.error(error);
           }
-          catapultResults(result).then(csvGenerator());
+          catapultResults(result)
+            .then(csvGenerator())
+            .then(createNhcrtRbInvTable());
           // await csvGenerator();
         });
       });
@@ -236,8 +238,8 @@ export async function post(req, res, next) {
     function showSearchResults(rows) {
       console.log(`rows.length from showSearchResults==> ${rows.length}`);
 
-      let nhcrtRows = rows[0];
-      let wishlistRows = rows[1];
+      let nhcrtRows = rows[1];
+      let wishlistRows = rows[2];
 
       console.log(`nhcrtRows[0]==> ${nhcrtRows[0]}`);
       console.log(
@@ -499,6 +501,7 @@ export async function post(req, res, next) {
       connection
         .query(
           `
+      DROP TABLE IF EXISTS rb_inventory_test_old;
       CREATE TABLE rb_inventory_test_old AS SELECT * FROM rb_inventory_test;
       SELECT * FROM nhcrtRbInvTable;
       SELECT * FROM rb_wishlist;`,
