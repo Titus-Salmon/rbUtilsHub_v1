@@ -651,9 +651,9 @@ export async function post(req, res, next) {
     let rbInvJoinArr_sh = [];
     let rbInvJoinArr_gl = [];
 
-    searchResults = []; //clear searchResults from previous search
+    let searchResults = []; //clear searchResults from previous search
 
-    searchResultsSplitParsedArr = [];
+    let searchResultsSplitParsedArr = [];
 
     let saniRegex1 = /(\[)|(\])/g;
     let saniRegex2 = /""/g;
