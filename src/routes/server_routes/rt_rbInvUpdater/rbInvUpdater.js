@@ -240,8 +240,8 @@ export async function post(req, res, next) {
     function showSearchResults(rows) {
       console.log(`rows.length from showSearchResults==> ${rows.length}`);
 
-      let nhcrtRows = rows[1];
-      let wishlistRows = rows[2];
+      let nhcrtRows = rows[2];
+      let wishlistRows = rows[3];
 
       console.log(`nhcrtRows[0]==> ${nhcrtRows[0]}`);
       console.log(
