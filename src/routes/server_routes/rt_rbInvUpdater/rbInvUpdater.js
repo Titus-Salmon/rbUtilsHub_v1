@@ -48,8 +48,8 @@ export async function post(req, res, next) {
     let rb_invUPCsToString = rb_invUPCs
       .map((arrayItem) => `'${arrayItem}'`)
       .join(",");
-    let startingindex = 1;
-    let endingindex = rb_invUPCsToString.length + 1;
+    let startingindex = 0;
+    let endingindex = rb_invUPCsToString.length;
     rb_invUPCsToString = rb_invUPCsToString.slice(startingindex, endingindex);
     let rb_invUPCsToStringTest1 = rb_invUPCsToString.substring(0, 48);
     let rb_invUPCsToStringTest2 = rb_invUPCsToString.substring(
