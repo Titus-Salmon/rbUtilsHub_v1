@@ -66,7 +66,7 @@ export async function post(req, res, next) {
     async function odbcPart(catapultDbQuery) {
       odbc.connect(DSN, (error, connection) => {
         connection.query(`${catapultDbQuery}`, (error, result) => {
-          function catapultResults(result) {
+          async function catapultResults(result) {
             for (let i = 0; i < result.length; i++) {
               let catapultResObj = {};
               catapultResObj["ri_t0d"] = i + 1;
@@ -94,49 +94,51 @@ export async function post(req, res, next) {
           if (error) {
             console.error(error);
           }
-          catapultResults(result);
+
+          async function csvGenerator() {
+            //begin csv generator //////////////////////////////////////////////////////////////////////////
+            const { Parser } = require("json2csv");
+
+            const fields = [
+              "ri_t0d",
+              "INV_ScanCode",
+              "sto_number",
+              "inv_lastreceived",
+              "inv_lastsold",
+              "inv_onhand",
+              "inv_onorder",
+              "inv_intransit",
+            ];
+
+            const opts = {
+              fields,
+            };
+
+            try {
+              console.log(
+                "catapultResArr[0] from json2csv======>>",
+                catapultResArr[0]
+              );
+              const parser = new Parser(opts);
+              const csv = parser.parse(catapultResArr);
+              console.log("csv.length=====>>", csv.length);
+              fs.writeFile(
+                `${process.cwd()}/static/csv/rb_inv_nhcrt.csv`,
+                csv,
+                function (err) {
+                  if (err) throw err;
+                  console.log("~~~~~>>rb_inv_nhcrt.csvsaved<<~~~~~");
+                }
+              );
+            } catch (err) {
+              console.error(err);
+            }
+            //end csv generator //////////////////////////////////////////////////////////////////////////
+          }
+          catapultResults(result).then(await csvGenerator());
           console.log(
             `result.length from catapultResults(result)~~~> ${result.length}`
           );
-
-          //begin csv generator //////////////////////////////////////////////////////////////////////////
-          const { Parser } = require("json2csv");
-
-          const fields = [
-            "ri_t0d",
-            "INV_ScanCode",
-            "sto_number",
-            "inv_lastreceived",
-            "inv_lastsold",
-            "inv_onhand",
-            "inv_onorder",
-            "inv_intransit",
-          ];
-
-          const opts = {
-            fields,
-          };
-
-          try {
-            console.log(
-              "catapultResArr[0] from json2csv======>>",
-              catapultResArr[0]
-            );
-            const parser = new Parser(opts);
-            const csv = parser.parse(catapultResArr);
-            console.log("csv.length=====>>", csv.length);
-            fs.writeFile(
-              `${process.cwd()}/static/csv/rb_inv_nhcrt.csv`,
-              csv,
-              function (err) {
-                if (err) throw err;
-                console.log("~~~~~>>rb_inv_nhcrt.csvsaved<<~~~~~");
-              }
-            );
-          } catch (err) {
-            console.error(err);
-          }
-          //end csv generator //////////////////////////////////////////////////////////////////////////
         });
       });
     }
