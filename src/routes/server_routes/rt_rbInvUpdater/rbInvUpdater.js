@@ -140,8 +140,7 @@ export async function post(req, res, next) {
         });
       });
     }
-    await odbcPart(catapultDbQuery);
-    await createNhcrtRbInvTable();
+    await odbcPart(catapultDbQuery).then(createNhcrtRbInvTable());
   }
 
   async function createNhcrtRbInvTable() {
