@@ -68,7 +68,7 @@ export async function post(req, res, next) {
     async function odbcPart(catapultDbQuery) {
       odbc.connect(DSN, (error, connection) => {
         connection.query(`${catapultDbQuery}`, (error, result) => {
-          async function catapultResults(result) {
+          function catapultResults(result) {
             for (let i = 0; i < result.length; i++) {
               let catapultResObj = {};
               catapultResObj["ri_t0d"] = i + 1;
