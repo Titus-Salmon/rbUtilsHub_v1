@@ -147,10 +147,10 @@ export async function post(req, res, next) {
           catapultResults(result);
         });
       });
+      await csvGenerator();
     }
 
     await odbcPart(catapultDbQuery);
-    await csvGenerator();
     // .then(csvGenerator())
     // .then(createNhcrtRbInvTable());
   }
