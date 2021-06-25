@@ -135,7 +135,7 @@ export async function post(req, res, next) {
             }
             //end csv generator //////////////////////////////////////////////////////////////////////////
           }
-          catapultResults(result).then(await csvGenerator());
+          catapultResults(result).then(csvGenerator());
           console.log(
             `result.length from catapultResults(result)~~~> ${result.length}`
           );
