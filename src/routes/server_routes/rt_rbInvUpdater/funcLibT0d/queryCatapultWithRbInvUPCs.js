@@ -1,4 +1,4 @@
-import { csvGenerator } from "./funcLibT0d/csvGenerator";
+import { csvGenerator } from "../funcLibT0d/csvGenerator";
 import { createNhcrtRbInvTable } from "../funcLibT0d/createNhcrtRbInvTable";
 
 // const mysql = require("mysql");
