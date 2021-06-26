@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   multipleStatements: true, //MUST HAVE to make more than 1 sql statement in a single query
 });
 
-async function rb_inventory_query() {
+async function rb_inventory_query(rb_inventoryQuery) {
   connection
     .query(rb_inventoryQuery, function (err, rows, fields) {
       if (err) throw err;

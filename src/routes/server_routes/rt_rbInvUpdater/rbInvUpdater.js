@@ -841,5 +841,5 @@ export async function post(req, res, next) {
       }
     );
   }
-  rb_inventory_query();
+  rb_inventory_query(rb_inventoryQuery);
 }
