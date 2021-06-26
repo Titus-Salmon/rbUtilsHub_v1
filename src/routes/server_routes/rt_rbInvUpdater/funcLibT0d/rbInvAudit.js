@@ -33,7 +33,7 @@ async function rbInvAudit() {
   let rbInvJoinArr_shSani;
   let rbInvJoinArr_glSani;
 
-  let searchResultsSplit;
+  // let searchResultsSplit;
 
   function displayRbInvJoin(rows) {
     let indRows = rows[0];
@@ -117,7 +117,7 @@ async function rbInvAudit() {
     );
     console.log(`searchResults[0]==> ${searchResults[0]}`);
     let searchResultsToString = searchResults.toString();
-    searchResultsSplit = searchResultsToString.split(splitRegex1);
+    let searchResultsSplit = searchResultsToString.split(splitRegex1);
     console.log(`searchResultsSplit.length==> ${searchResultsSplit.length}`);
     console.log(`searchResultsSplit[0]==> ${searchResultsSplit[0]}`);
     console.log(
