@@ -1,4 +1,4 @@
-import { queryCatapultWithRbInvUPCs } from "./funcLibT0d/queryCatapultWithRbInvUPCs";
+import { queryCatapultWithRbInvUPCs } from "../funcLibT0d/queryCatapultWithRbInvUPCs";
 
 const mysql = require("mysql");
 
