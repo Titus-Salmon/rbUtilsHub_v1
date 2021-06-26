@@ -310,7 +310,9 @@ export async function post(req, res, next) {
               if (
                 nhcrtRows[i]["inv_lastreceived"] > oneYearAgo ||
                 nhcrtRows[i]["inv_lastsold"] > oneYearAgo ||
-                nhcrtRows[i]["inv_onhand"] > 0
+                nhcrtRows[i]["inv_onhand"] !== 0 || //include positive AND negative inv values as stocked, since
+                //when inventory is negative, it is usually currently stocked, but just not received correctly.
+                nhcrtRows[i]["inv_intransit"] > 0
               ) {
                 if (nhcrtRows[i]["sto_number"] == "IN") {
                   srcRsINDstocked.push(`${nhcrtRows[i]["INV_ScanCode"]}`);
