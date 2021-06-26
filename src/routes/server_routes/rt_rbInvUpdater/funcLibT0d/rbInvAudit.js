@@ -33,6 +33,8 @@ async function rbInvAudit() {
   let rbInvJoinArr_shSani;
   let rbInvJoinArr_glSani;
 
+  let searchResultsSplit;
+
   function displayRbInvJoin(rows) {
     let indRows = rows[0];
     let smRows = rows[1];
