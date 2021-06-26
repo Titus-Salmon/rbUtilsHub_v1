@@ -27,6 +27,12 @@ async function rbInvAudit() {
    * ==t0d==>you can combine the 2==> (?<=A)X(?=B) to yield: "X if after A and followed by B" <==t0d==*/
   let splitRegex1 = /(?<=}),(?={)/g;
 
+  let rbInvJoinArr_indSani;
+  let rbInvJoinArr_smSani;
+  let rbInvJoinArr_mtSani;
+  let rbInvJoinArr_shSani;
+  let rbInvJoinArr_glSani;
+
   function displayRbInvJoin(rows) {
     let indRows = rows[0];
     let smRows = rows[1];

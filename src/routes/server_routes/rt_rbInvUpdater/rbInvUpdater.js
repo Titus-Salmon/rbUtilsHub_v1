@@ -44,11 +44,11 @@ export async function post(req, res, next) {
   // let srcRsGLstockedSani;
   // let srcRsGL_NOTstockedSani;
 
-  let rbInvJoinArr_indSani;
-  let rbInvJoinArr_smSani;
-  let rbInvJoinArr_mtSani;
-  let rbInvJoinArr_shSani;
-  let rbInvJoinArr_glSani;
+  // let rbInvJoinArr_indSani;
+  // let rbInvJoinArr_smSani;
+  // let rbInvJoinArr_mtSani;
+  // let rbInvJoinArr_shSani;
+  // let rbInvJoinArr_glSani;
 
   let searchResultsSplit;
 
