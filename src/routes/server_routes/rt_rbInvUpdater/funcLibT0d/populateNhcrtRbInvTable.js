@@ -1,4 +1,4 @@
-import calcResRbInvUpdater from "../funcLibT0d/calcResRbInvUpdater";
+import { calcResRbInvUpdater } from "../funcLibT0d/calcResRbInvUpdater";
 
 async function populateNhcrtRbInvTable(populateNhcrtRbInvTableQuery) {
   connection
