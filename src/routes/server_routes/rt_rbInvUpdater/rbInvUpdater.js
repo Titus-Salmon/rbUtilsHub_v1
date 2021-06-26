@@ -182,7 +182,9 @@ export async function post(req, res, next) {
     console.log(`hello from within createNhcrtRbInvTable()`);
     connection
       .query(createNhcrtRbInvTableQuery, function (error, response) {
-        console.log(error || response);
+        if (error) {
+          console.log(`error from createNhcrtRbInvTable==> ${error}`);
+        }
       })
       .on("end", function () {
         populateNhcrtRbInvTable();
@@ -192,7 +194,9 @@ export async function post(req, res, next) {
   async function populateNhcrtRbInvTable() {
     connection
       .query(populateNhcrtRbInvTableQuery, function (error, response) {
-        console.log(error || response);
+        if (error) {
+          console.log(`error from populateNhcrtRbInvTable==> ${error}`);
+        }
       })
       .on("end", function () {
         calcResRbInvUpdater();
@@ -310,7 +314,7 @@ export async function post(req, res, next) {
               if (
                 nhcrtRows[i]["inv_lastreceived"] > oneYearAgo ||
                 nhcrtRows[i]["inv_lastsold"] > oneYearAgo ||
-                nhcrtRows[i]["inv_onhand"] !== 0 || //include positive AND negative inv values as stocked, since
+                nhcrtRows[i]["inv_onhand"] != 0 || //include positive AND negative inv values as stocked, since
                 //when inventory is negative, it is usually currently stocked, but just not received correctly.
                 nhcrtRows[i]["inv_intransit"] > 0
               ) {
@@ -755,7 +759,7 @@ export async function post(req, res, next) {
         rbInvJoinArr_shSani,
         rbInvJoinArr_glSani
       );
-      console.log(`searchResults==> ${searchResults}`);
+      console.log(`searchResults[0]==> ${searchResults[0]}`);
       let searchResultsToString = searchResults.toString();
       searchResultsSplit = searchResultsToString.split(splitRegex1);
       console.log(`searchResultsSplit.length==> ${searchResultsSplit.length}`);
