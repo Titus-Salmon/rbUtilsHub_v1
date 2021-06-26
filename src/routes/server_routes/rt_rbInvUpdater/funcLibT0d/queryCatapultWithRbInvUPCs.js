@@ -44,8 +44,8 @@ IN (${rb_invUPCsToString.trim()})
         console.log(
           `catapultDbQueryTest from odbcPart==> ${catapultDbQueryTest}`
         );
+        let catapultResArr = [];
         async function catapultResults(result, catapultResArr) {
-          catapultResArr = [];
           console.log(
             `result.length from catapultResults(result)~~~> ${result.length}`
           );
