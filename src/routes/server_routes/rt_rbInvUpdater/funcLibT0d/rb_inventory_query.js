@@ -19,7 +19,7 @@ async function rb_inventory_query(rb_inventoryQuery, rb_invUPCs) {
       }
     })
     .on("end", function () {
-      queryCatapultWithRbInvUPCs();
+      queryCatapultWithRbInvUPCs(rb_invUPCs);
     });
 }
 
