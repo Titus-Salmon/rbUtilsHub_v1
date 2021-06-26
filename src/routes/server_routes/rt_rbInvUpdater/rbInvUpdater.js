@@ -1,3 +1,5 @@
+import { rb_inventory_query } from "./funcLibT0d/rb_inventory_query";
+
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
@@ -50,18 +52,18 @@ export async function post(req, res, next) {
 
   let searchResultsSplit;
 
-  async function rb_inventory_query() {
-    connection
-      .query(rb_inventoryQuery, function (err, rows, fields) {
-        if (err) throw err;
-        for (let i = 0; i < rows.length; i++) {
-          rb_invUPCs.push(`${rows[i]["inv_upc"]}`);
-        }
-      })
-      .on("end", function () {
-        queryCatapultWithRbInvUPCs();
-      });
-  }
+  // async function rb_inventory_query() {
+  //   connection
+  //     .query(rb_inventoryQuery, function (err, rows, fields) {
+  //       if (err) throw err;
+  //       for (let i = 0; i < rows.length; i++) {
+  //         rb_invUPCs.push(`${rows[i]["inv_upc"]}`);
+  //       }
+  //     })
+  //     .on("end", function () {
+  //       queryCatapultWithRbInvUPCs();
+  //     });
+  // }
 
   async function csvGenerator() {
     //begin csv generator //////////////////////////////////////////////////////////////////////////
