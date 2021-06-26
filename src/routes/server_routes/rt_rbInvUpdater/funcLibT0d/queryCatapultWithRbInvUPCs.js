@@ -44,7 +44,8 @@ IN (${rb_invUPCsToString.trim()})
         console.log(
           `catapultDbQueryTest from odbcPart==> ${catapultDbQueryTest}`
         );
-        async function catapultResults(result, catapultResArr) {
+        async function catapultResults(result) {
+          let catapultResArr = [];
           console.log(
             `result.length from catapultResults(result)~~~> ${result.length}`
           );
@@ -73,7 +74,7 @@ IN (${rb_invUPCsToString.trim()})
         if (error) {
           console.error(error);
         }
-        catapultResults(result, catapultResArr).then(
+        catapultResults(result).then(
           csvGenerator(catapultResArr).then(
             createNhcrtRbInvTable(createNhcrtRbInvTableQuery)
           )

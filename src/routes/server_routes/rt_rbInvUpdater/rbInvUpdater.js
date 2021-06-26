@@ -20,7 +20,7 @@ export async function post(req, res, next) {
   let rb_inventoryQuery = req.body.initialQueryText;
   let rb_invUPCs = [];
 
-  let catapultResArr = [];
+  // let catapultResArr = [];
 
   let createNhcrtRbInvTableQuery = `
   DROP TABLE IF EXISTS nhcrtRbInv;
