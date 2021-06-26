@@ -76,8 +76,8 @@
 
 <!-- /////////// -->
 
-{#if $rbInvUpdaterAuditResTblData[0] !== null && $rbInvUpdaterAuditResTblData[0] !== undefined}
-  {#if Object.keys($rbInvUpdaterAuditResTblData[0]).length > 0}
-    <RbInvUpdaterAuditResTbl />
-  {/if}
+<!-- {#if $rbInvUpdaterAuditResTblData[0] !== null && $rbInvUpdaterAuditResTblData[0] !== undefined} -->
+{#if Object.keys($rbInvUpdaterAuditResTblData.rbInvJoinArr_ind[0]).length > 0}
+  <RbInvUpdaterAuditResTbl />
 {/if}
+<!-- {/if} -->
