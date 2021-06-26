@@ -25,6 +25,17 @@ async function calcResRbInvUpdater() {
   let srcRsGLstocked = [];
   let srcRsGL_NOTstocked = [];
 
+  let srcRsINDstockedSani;
+  let srcRsIND_NOTstockedSani;
+  let srcRsSMstockedSani;
+  let srcRsSM_NOTstockedSani;
+  let srcRsMTstockedSani;
+  let srcRsMT_NOTstockedSani;
+  let srcRsSHstockedSani;
+  let srcRsSH_NOTstockedSani;
+  let srcRsGLstockedSani;
+  let srcRsGL_NOTstockedSani;
+
   // let searchResults = []; //clear searchResults from previous search
   // let searchResultsSplitParsedArr = [];
   // let searchResultsForCSV = [];
