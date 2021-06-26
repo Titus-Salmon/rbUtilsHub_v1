@@ -14,7 +14,7 @@ import { createNhcrtRbInvTable } from "../funcLibT0d/createNhcrtRbInvTable";
 const odbc = require("odbc");
 const DSN = process.env.ODBC_CONN_STRING;
 
-async function queryCatapultWithRbInvUPCs() {
+async function queryCatapultWithRbInvUPCs(rb_invUPCs) {
   let rb_invUPCsToString = rb_invUPCs
     .map((arrayItem) => `'${arrayItem}'`)
     .join(",");
