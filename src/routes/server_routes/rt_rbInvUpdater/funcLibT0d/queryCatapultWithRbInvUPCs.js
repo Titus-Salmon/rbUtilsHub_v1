@@ -75,9 +75,7 @@ IN (${rb_invUPCsToString.trim()})
           console.error(error);
         }
         catapultResults(result, catapultResArr).then(
-          csvGenerator(catapultResArr).then(
-            createNhcrtRbInvTable(createNhcrtRbInvTableQuery)
-          )
+          csvGenerator(catapultResArr).then(createNhcrtRbInvTable())
         );
       });
     });
