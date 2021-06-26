@@ -17,6 +17,9 @@ async function createNhcrtRbInvTable() {
   inv_lastreceived VARCHAR(255), inv_lastsold VARCHAR(255), inv_onhand VARCHAR(255), inv_onorder VARCHAR(255), 
   inv_intransit VARCHAR(255), PRIMARY KEY (ri_t0d));
   `;
+  let populateNhcrtRbInvTableQuery = `
+  LOAD DATA LOCAL INFILE './static/csv/rb_inv_nhcrt.csv' INTO TABLE nhcrtRbInv FIELDS TERMINATED BY ',' 
+  ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;`; //"IGNORE 1 LINES" skips the 1st row of the csv (which is the column name line)
   console.log(`hello from within createNhcrtRbInvTable()`);
   connection
     .query(createNhcrtRbInvTableQuery, function (error, response) {
