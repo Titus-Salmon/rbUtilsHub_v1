@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 async function csvGenerator(catapultResArr) {
   //begin csv generator //////////////////////////////////////////////////////////////////////////
   const { Parser } = require("json2csv");
