@@ -104,6 +104,10 @@ function rbInvAudit() {
       rbInvJoinArr_gl.push(rbInvJoinObj_gl);
     }
 
+    console.log(
+      `rbInvJoinArr_ind from displayRbInvJoin()==> ${rbInvJoinArr_ind}`
+    );
+
     rbInvJoinArr_indSani = JSON.stringify(rbInvJoinArr_ind)
       .replace(saniRegex2, `"EMPTY"`)
       .replace(saniRegex1, "");
@@ -150,9 +154,8 @@ function rbInvAudit() {
     );
   }
 
-  connection
-    .query(
-      `
+  connection.query(
+    `
   SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_in_stock AS new_inv_in_stock,
   orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_in_stock AS old_inv_in_stock
   FROM rb_inventory_test updated
@@ -192,34 +195,14 @@ function rbInvAudit() {
   WHERE updated.inv_upc = orig.inv_upc
   AND updated.inv_gl_stock != orig.inv_gl_stock
   ORDER BY updated.inv_gl_stock, orig.inv_gl_stock;`,
-      function (err, rows, fields) {
-        if (err) throw err;
-        // console.log(
-        //   `JSON.stringify(rows) from connection.query from within rbInvAudit==> ${JSON.stringify(
-        //     rows
-        //   )}`
-        // );
-        // displayRbInvJoin(rows);
-
-        // res.json({
-        //   auditResObj: {
-        //     rbInvJoinArr_ind: rbInvJoinArr_ind,
-        //     rbInvJoinArr_sm: rbInvJoinArr_sm,
-        //     rbInvJoinArr_mt: rbInvJoinArr_mt,
-        //     rbInvJoinArr_sh: rbInvJoinArr_sh,
-        //     rbInvJoinArr_gl: rbInvJoinArr_gl,
-        //   },
-        // });
-      }
-    )
-    .on("end", function (err, rows, fields) {
-      displayRbInvJoin(rows);
-
+    function (err, rows, fields) {
+      if (err) throw err;
       console.log(
         `JSON.stringify(rows) from connection.query from within rbInvAudit==> ${JSON.stringify(
           rows
         )}`
       );
+      displayRbInvJoin(rows);
 
       res.json({
         auditResObj: {
@@ -230,7 +213,8 @@ function rbInvAudit() {
           rbInvJoinArr_gl: rbInvJoinArr_gl,
         },
       });
-    });
+    }
+  );
 }
 
 export { rbInvAudit };
