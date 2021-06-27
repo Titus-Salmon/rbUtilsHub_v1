@@ -35,7 +35,7 @@ async function rbInvAudit() {
 
   // let searchResultsSplit;
 
-  function displayRbInvJoin(rows) {
+  function displayRbInvJoin(rows, searchResults) {
     console.log(
       `JSON.stringify(rows[0][0]) from displayRbInvJoin()==> ${JSON.stringify(
         rows[0][0]
@@ -194,7 +194,7 @@ async function rbInvAudit() {
   ORDER BY updated.inv_gl_stock, orig.inv_gl_stock;`,
     function (err, rows, fields) {
       if (err) throw err;
-      displayRbInvJoin(rows);
+      displayRbInvJoin(rows, searchResults);
 
       res.json({
         auditResObj: {
