@@ -15,26 +15,44 @@ function rbInvAudit() {
   let rbInvJoinArr_sh = [];
   let rbInvJoinArr_gl = [];
 
-  let searchResults = []; //clear searchResults from previous search
-  let searchResultsSplitParsedArr = [];
+  // let searchResults = []; //clear searchResults from previous search
+  // let searchResultsSplitParsedArr = [];
 
-  let saniRegex1 = /(\[)|(\])/g;
-  let saniRegex2 = /""/g;
+  // let saniRegex1 = /(\[)|(\])/g;
+  // let saniRegex2 = /""/g;
 
-  /* X(?=Y) 	Positive lookahead 	X if followed by Y
-   * (?<=Y)X 	Positive lookbehind 	X if after Y
-   * ==t0d==>you can combine the 2==> (?<=A)X(?=B) to yield: "X if after A and followed by B" <==t0d==*/
-  let splitRegex1 = /(?<=}),(?={)/g;
+  // /* X(?=Y) 	Positive lookahead 	X if followed by Y
+  //  * (?<=Y)X 	Positive lookbehind 	X if after Y
+  //  * ==t0d==>you can combine the 2==> (?<=A)X(?=B) to yield: "X if after A and followed by B" <==t0d==*/
+  // let splitRegex1 = /(?<=}),(?={)/g;
 
-  let rbInvJoinArr_indSani;
-  let rbInvJoinArr_smSani;
-  let rbInvJoinArr_mtSani;
-  let rbInvJoinArr_shSani;
-  let rbInvJoinArr_glSani;
+  // let rbInvJoinArr_indSani;
+  // let rbInvJoinArr_smSani;
+  // let rbInvJoinArr_mtSani;
+  // let rbInvJoinArr_shSani;
+  // let rbInvJoinArr_glSani;
 
-  let searchResultsSplit;
+  // let searchResultsSplit;
 
   function displayRbInvJoin(rows) {
+    let searchResults = []; //clear searchResults from previous search
+    let searchResultsSplitParsedArr = [];
+
+    let saniRegex1 = /(\[)|(\])/g;
+    let saniRegex2 = /""/g;
+
+    /* X(?=Y) 	Positive lookahead 	X if followed by Y
+     * (?<=Y)X 	Positive lookbehind 	X if after Y
+     * ==t0d==>you can combine the 2==> (?<=A)X(?=B) to yield: "X if after A and followed by B" <==t0d==*/
+    let splitRegex1 = /(?<=}),(?={)/g;
+
+    let rbInvJoinArr_indSani;
+    let rbInvJoinArr_smSani;
+    let rbInvJoinArr_mtSani;
+    let rbInvJoinArr_shSani;
+    let rbInvJoinArr_glSani;
+
+    let searchResultsSplit;
     console.log(
       `JSON.stringify(rows[0][0]) from displayRbInvJoin()==> ${JSON.stringify(
         rows[0][0]
