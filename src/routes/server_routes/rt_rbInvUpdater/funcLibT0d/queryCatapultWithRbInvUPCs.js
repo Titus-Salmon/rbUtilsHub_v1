@@ -1,16 +1,6 @@
 import { csvGenerator } from "../funcLibT0d/csvGenerator";
 import { createNhcrtRbInvTable } from "../funcLibT0d/createNhcrtRbInvTable";
 
-// const mysql = require("mysql");
-
-// const connection = mysql.createConnection({
-//   host: process.env.RB_HOST,
-//   user: process.env.RB_USER,
-//   password: process.env.RB_PW,
-//   database: process.env.RB_DB,
-//   multipleStatements: true, //MUST HAVE to make more than 1 sql statement in a single query
-// });
-
 const odbc = require("odbc");
 const DSN = process.env.ODBC_CONN_STRING;
 
