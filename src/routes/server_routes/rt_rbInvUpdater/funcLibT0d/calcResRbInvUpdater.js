@@ -340,7 +340,7 @@ async function calcResRbInvUpdater() {
       .replace(saniRegex3, "");
   }
 
-  function queryNhcrtTable() {
+  async function queryNhcrtTable() {
     connection
       .query(
         `

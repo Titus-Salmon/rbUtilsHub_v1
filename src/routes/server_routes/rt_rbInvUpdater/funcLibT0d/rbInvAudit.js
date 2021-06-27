@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   multipleStatements: true, //MUST HAVE to make more than 1 sql statement in a single query
 });
 
-function rbInvAudit() {
+async function rbInvAudit() {
   let rbInvJoinArr_ind = [];
   let rbInvJoinArr_sm = [];
   let rbInvJoinArr_mt = [];
