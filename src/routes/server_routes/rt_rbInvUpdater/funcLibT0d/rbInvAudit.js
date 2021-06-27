@@ -9,14 +9,14 @@ const connection = mysql.createConnection({
 });
 
 async function rbInvAudit() {
-  rbInvJoinArr_ind = [];
-  rbInvJoinArr_sm = [];
-  rbInvJoinArr_mt = [];
-  rbInvJoinArr_sh = [];
-  rbInvJoinArr_gl = [];
+  var rbInvJoinArr_ind = [];
+  var rbInvJoinArr_sm = [];
+  var rbInvJoinArr_mt = [];
+  var rbInvJoinArr_sh = [];
+  var rbInvJoinArr_gl = [];
 
-  searchResults = []; //clear searchResults from previous search
-  searchResultsSplitParsedArr = [];
+  var searchResults = []; //clear searchResults from previous search
+  var searchResultsSplitParsedArr = [];
 
   let saniRegex1 = /(\[)|(\])/g;
   let saniRegex2 = /""/g;
