@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
 
 let auditResObj;
 
-async function rbInvAudit() {
+async function rbInvAudit(auditResObj) {
   let rbInvJoinArr_ind = [];
   let rbInvJoinArr_sm = [];
   let rbInvJoinArr_mt = [];
@@ -173,11 +173,11 @@ async function rbInvAudit() {
       `searchResultsSplitParsedArr[0]['ri_t0dIND']==> ${searchResultsSplitParsedArr[0]["ri_t0dIND"]}`
     );
     auditResObj = {};
-    auditResObj.rbInvJoinArr_ind = rbInvJoinArr_ind;
-    auditResObj.rbInvJoinArr_sm = rbInvJoinArr_sm;
-    auditResObj.rbInvJoinArr_mt = rbInvJoinArr_mt;
-    auditResObj.rbInvJoinArr_sh = rbInvJoinArr_sh;
-    auditResObj.rbInvJoinArr_gl = rbInvJoinArr_gl;
+    auditResObj["rbInvJoinArr_ind"] = rbInvJoinArr_ind;
+    auditResObj["rbInvJoinArr_sm"] = rbInvJoinArr_sm;
+    auditResObj["rbInvJoinArr_mt"] = rbInvJoinArr_mt;
+    auditResObj["rbInvJoinArr_sh"] = rbInvJoinArr_sh;
+    auditResObj["rbInvJoinArr_gl"] = rbInvJoinArr_gl;
   }
 
   connection.query(

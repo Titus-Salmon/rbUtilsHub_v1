@@ -1,4 +1,4 @@
-import { rbInvAudit } from "../funcLibT0d/rbInvAudit";
+import { rbInvAudit, auditResObj } from "../funcLibT0d/rbInvAudit";
 
 const mysql = require("mysql");
 
@@ -469,7 +469,7 @@ async function calcResRbInvUpdater() {
             }
           )
           .on("end", function () {
-            rbInvAudit();
+            rbInvAudit(auditResObj);
           });
       });
   }
