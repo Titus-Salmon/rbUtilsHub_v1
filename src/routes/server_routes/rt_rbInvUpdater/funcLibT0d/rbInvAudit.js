@@ -8,24 +8,15 @@ const connection = mysql.createConnection({
   multipleStatements: true, //MUST HAVE to make more than 1 sql statement in a single query
 });
 
-var rbInvJoinArr_ind = [];
-var rbInvJoinArr_sm = [];
-var rbInvJoinArr_mt = [];
-var rbInvJoinArr_sh = [];
-var rbInvJoinArr_gl = [];
-
-var searchResults = []; //clear searchResults from previous search
-var searchResultsSplitParsedArr = [];
-
 async function rbInvAudit() {
-  // var rbInvJoinArr_ind = [];
-  // var rbInvJoinArr_sm = [];
-  // var rbInvJoinArr_mt = [];
-  // var rbInvJoinArr_sh = [];
-  // var rbInvJoinArr_gl = [];
+  let rbInvJoinArr_ind = [];
+  let rbInvJoinArr_sm = [];
+  let rbInvJoinArr_mt = [];
+  let rbInvJoinArr_sh = [];
+  let rbInvJoinArr_gl = [];
 
-  // var searchResults = []; //clear searchResults from previous search
-  // var searchResultsSplitParsedArr = [];
+  let searchResults = []; //clear searchResults from previous search
+  let searchResultsSplitParsedArr = [];
 
   let saniRegex1 = /(\[)|(\])/g;
   let saniRegex2 = /""/g;
@@ -43,7 +34,7 @@ async function rbInvAudit() {
 
   let searchResultsSplit;
 
-  function displayRbInvJoin(rows) {
+  async function displayRbInvJoin(rows) {
     console.log(
       `JSON.stringify(rows[0][0]) from displayRbInvJoin()==> ${JSON.stringify(
         rows[0][0]
@@ -200,9 +191,9 @@ async function rbInvAudit() {
   WHERE updated.inv_upc = orig.inv_upc
   AND updated.inv_gl_stock != orig.inv_gl_stock
   ORDER BY updated.inv_gl_stock, orig.inv_gl_stock;`,
-    function (err, rows, fields) {
+    async function (err, rows, fields) {
       if (err) throw err;
-      displayRbInvJoin(rows);
+      await displayRbInvJoin(rows);
 
       res.json({
         auditResObj: {
