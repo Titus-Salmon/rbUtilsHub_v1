@@ -470,8 +470,8 @@ async function calcResRbInvUpdater() {
     //   rbInvAudit();
     // });
   }
-  queryNhcrtTable();
-  await rbInvAudit();
+  queryNhcrtTable().then(rbInvAudit());
+  // await rbInvAudit();
 }
 
 export { calcResRbInvUpdater };
