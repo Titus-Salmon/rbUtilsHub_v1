@@ -8,15 +8,24 @@ const connection = mysql.createConnection({
   multipleStatements: true, //MUST HAVE to make more than 1 sql statement in a single query
 });
 
-async function rbInvAudit() {
-  var rbInvJoinArr_ind = [];
-  var rbInvJoinArr_sm = [];
-  var rbInvJoinArr_mt = [];
-  var rbInvJoinArr_sh = [];
-  var rbInvJoinArr_gl = [];
+var rbInvJoinArr_ind = [];
+var rbInvJoinArr_sm = [];
+var rbInvJoinArr_mt = [];
+var rbInvJoinArr_sh = [];
+var rbInvJoinArr_gl = [];
 
-  var searchResults = []; //clear searchResults from previous search
-  var searchResultsSplitParsedArr = [];
+var searchResults = []; //clear searchResults from previous search
+var searchResultsSplitParsedArr = [];
+
+async function rbInvAudit() {
+  // var rbInvJoinArr_ind = [];
+  // var rbInvJoinArr_sm = [];
+  // var rbInvJoinArr_mt = [];
+  // var rbInvJoinArr_sh = [];
+  // var rbInvJoinArr_gl = [];
+
+  // var searchResults = []; //clear searchResults from previous search
+  // var searchResultsSplitParsedArr = [];
 
   let saniRegex1 = /(\[)|(\])/g;
   let saniRegex2 = /""/g;
