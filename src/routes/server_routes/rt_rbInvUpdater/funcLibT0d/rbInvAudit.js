@@ -170,6 +170,12 @@ async function rbInvAudit() {
     console.log(
       `searchResultsSplitParsedArr[0]['ri_t0dIND']==> ${searchResultsSplitParsedArr[0]["ri_t0dIND"]}`
     );
+    let auditResObj = {};
+    auditResObj.rbInvJoinArr_ind = rbInvJoinArr_ind;
+    auditResObj.rbInvJoinArr_sm = rbInvJoinArr_sm;
+    auditResObj.rbInvJoinArr_mt = rbInvJoinArr_mt;
+    auditResObj.rbInvJoinArr_sh = rbInvJoinArr_sh;
+    auditResObj.rbInvJoinArr_gl = rbInvJoinArr_gl;
   }
 
   connection.query(
@@ -222,17 +228,24 @@ async function rbInvAudit() {
       );
       displayRbInvJoin(rows);
 
-      res.json({
-        auditResObj: {
-          rbInvJoinArr_ind: rbInvJoinArr_ind,
-          rbInvJoinArr_sm: rbInvJoinArr_sm,
-          rbInvJoinArr_mt: rbInvJoinArr_mt,
-          rbInvJoinArr_sh: rbInvJoinArr_sh,
-          rbInvJoinArr_gl: rbInvJoinArr_gl,
-        },
-      });
+      // res.json({
+      //   auditResObj: {
+      //     rbInvJoinArr_ind: rbInvJoinArr_ind,
+      //     rbInvJoinArr_sm: rbInvJoinArr_sm,
+      //     rbInvJoinArr_mt: rbInvJoinArr_mt,
+      //     rbInvJoinArr_sh: rbInvJoinArr_sh,
+      //     rbInvJoinArr_gl: rbInvJoinArr_gl,
+      //   },
+      // });
+      // auditResObj = {
+      //   rbInvJoinArr_ind: rbInvJoinArr_ind,
+      //   rbInvJoinArr_sm: rbInvJoinArr_sm,
+      //   rbInvJoinArr_mt: rbInvJoinArr_mt,
+      //   rbInvJoinArr_sh: rbInvJoinArr_sh,
+      //   rbInvJoinArr_gl: rbInvJoinArr_gl,
+      // };
     }
   );
 }
 
-export { rbInvAudit };
+export { rbInvAudit, auditResObj };
