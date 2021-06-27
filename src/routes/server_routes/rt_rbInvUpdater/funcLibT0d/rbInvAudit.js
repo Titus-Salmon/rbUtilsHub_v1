@@ -9,15 +9,14 @@ const connection = mysql.createConnection({
 });
 
 async function rbInvAudit() {
-  let rbInvJoinArr_ind = [];
-  let rbInvJoinArr_sm = [];
-  let rbInvJoinArr_mt = [];
-  let rbInvJoinArr_sh = [];
-  let rbInvJoinArr_gl = [];
+  rbInvJoinArr_ind = [];
+  rbInvJoinArr_sm = [];
+  rbInvJoinArr_mt = [];
+  rbInvJoinArr_sh = [];
+  rbInvJoinArr_gl = [];
 
-  let searchResults = []; //clear searchResults from previous search
-
-  let searchResultsSplitParsedArr = [];
+  searchResults = []; //clear searchResults from previous search
+  searchResultsSplitParsedArr = [];
 
   let saniRegex1 = /(\[)|(\])/g;
   let saniRegex2 = /""/g;
@@ -33,7 +32,7 @@ async function rbInvAudit() {
   let rbInvJoinArr_shSani;
   let rbInvJoinArr_glSani;
 
-  // let searchResultsSplit;
+  let searchResultsSplit;
 
   function displayRbInvJoin(rows) {
     console.log(
@@ -130,7 +129,7 @@ async function rbInvAudit() {
     );
     console.log(`searchResults[0]==> ${searchResults[0]}`);
     let searchResultsToString = searchResults.toString();
-    let searchResultsSplit = searchResultsToString.split(splitRegex1);
+    searchResultsSplit = searchResultsToString.split(splitRegex1);
     console.log(`searchResultsSplit.length==> ${searchResultsSplit.length}`);
     console.log(`searchResultsSplit[0]==> ${searchResultsSplit[0]}`);
     console.log(
