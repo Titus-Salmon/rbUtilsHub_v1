@@ -15,7 +15,7 @@ async function rbInvAudit() {
   let rbInvJoinArr_sh = [];
   let rbInvJoinArr_gl = [];
 
-  let searchResults = []; //clear searchResults from previous search
+  // let searchResults = []; //clear searchResults from previous search
 
   let searchResultsSplitParsedArr = [];
 
@@ -36,6 +36,7 @@ async function rbInvAudit() {
   // let searchResultsSplit;
 
   function displayRbInvJoin(rows) {
+    let searchResults = [];
     console.log(
       `JSON.stringify(rows[0][0]) from displayRbInvJoin()==> ${JSON.stringify(
         rows[0][0]
