@@ -76,8 +76,7 @@
 
 <!-- /////////// -->
 
-{#if $rbInvUpdaterAuditResTblData.rbInvJoinArr_ind}
-  <!-- {#if Object.keys($rbInvUpdaterAuditResTblData.rbInvJoinArr_ind[0]).length > 0} -->
+<!-- {#if $rbInvUpdaterAuditResTblData.rbInvJoinArr_ind} -->
+{#if $rbInvUpdaterAuditResTblData}
   <RbInvUpdaterAuditResTbl />
-  <!-- {/if} -->
 {/if}
