@@ -41,6 +41,14 @@ async function rbInvAudit() {
         rows[0][0]
       )}`
     );
+    console.log(
+      `JSON.stringify(rows[0]) from displayRbInvJoin()==> ${JSON.stringify(
+        rows[0]
+      )}`
+    );
+    console.log(
+      `JSON.stringify(rows) from displayRbInvJoin()==> ${JSON.stringify(rows)}`
+    );
     let indRows = rows[0];
     let smRows = rows[1];
     let mtRows = rows[2];
