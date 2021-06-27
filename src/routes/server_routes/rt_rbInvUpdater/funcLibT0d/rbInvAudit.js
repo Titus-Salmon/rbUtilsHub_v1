@@ -8,14 +8,14 @@ const connection = mysql.createConnection({
   multipleStatements: true, //MUST HAVE to make more than 1 sql statement in a single query
 });
 
-async function rbInvAudit(searchResults) {
+async function rbInvAudit() {
   let rbInvJoinArr_ind = [];
   let rbInvJoinArr_sm = [];
   let rbInvJoinArr_mt = [];
   let rbInvJoinArr_sh = [];
   let rbInvJoinArr_gl = [];
 
-  // let searchResults = []; //clear searchResults from previous search
+  let searchResults = []; //clear searchResults from previous search
 
   let searchResultsSplitParsedArr = [];
 
@@ -36,6 +36,11 @@ async function rbInvAudit(searchResults) {
   // let searchResultsSplit;
 
   function displayRbInvJoin(rows) {
+    console.log(
+      `JSON.stringify(rows[0][0]) from displayRbInvJoin()==> ${JSON.stringify(
+        rows[0][0]
+      )}`
+    );
     let indRows = rows[0];
     let smRows = rows[1];
     let mtRows = rows[2];

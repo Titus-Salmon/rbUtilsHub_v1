@@ -36,7 +36,7 @@ async function calcResRbInvUpdater() {
   let srcRsGLstockedSani;
   let srcRsGL_NOTstockedSani;
 
-  let searchResults = []; //clear searchResults from previous search
+  // let searchResults = []; //clear searchResults from previous search
   // let searchResultsSplitParsedArr = [];
   // let searchResultsForCSV = [];
   // let searchResultsForCSVreview = []; //this is for holding data to generate your review excel sheet for Andrea & Brad
@@ -468,7 +468,7 @@ async function calcResRbInvUpdater() {
         }
       )
       .on("end", function () {
-        rbInvAudit(searchResults);
+        rbInvAudit();
       });
   }
   queryNhcrtTable();
