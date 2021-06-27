@@ -8,5 +8,5 @@ export async function post(req, res, next) {
 
   rb_inventory_query(rb_inventoryQuery, rb_invUPCs);
 
-  res.json(auditResObj);
+  res.json({ auditResObj });
 }
