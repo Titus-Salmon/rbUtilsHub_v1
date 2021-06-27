@@ -15,6 +15,8 @@ async function rbInvAudit() {
   let rbInvJoinArr_sh = [];
   let rbInvJoinArr_gl = [];
 
+  let auditResObj;
+
   // let searchResults = []; //clear searchResults from previous search
   // let searchResultsSplitParsedArr = [];
 
@@ -170,7 +172,7 @@ async function rbInvAudit() {
     console.log(
       `searchResultsSplitParsedArr[0]['ri_t0dIND']==> ${searchResultsSplitParsedArr[0]["ri_t0dIND"]}`
     );
-    let auditResObj = {};
+    auditResObj = {};
     auditResObj.rbInvJoinArr_ind = rbInvJoinArr_ind;
     auditResObj.rbInvJoinArr_sm = rbInvJoinArr_sm;
     auditResObj.rbInvJoinArr_mt = rbInvJoinArr_mt;
