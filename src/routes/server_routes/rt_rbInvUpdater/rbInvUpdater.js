@@ -1,4 +1,5 @@
 import { rb_inventory_query } from "./funcLibT0d/rb_inventory_query";
+import { auditResObj } from "./funcLibT0d/rbInvAudit";
 
 export async function post(req, res, next) {
   console.log(`JSON.stringify(req.body)==> ${JSON.stringify(req.body)}`);
@@ -8,6 +9,11 @@ export async function post(req, res, next) {
   rb_inventory_query(rb_inventoryQuery, rb_invUPCs);
 
   async function returnAuditResObj(res) {
+    console.log(
+      `JSON.stringify(auditResObj) from returnAuditResObj==> ${JSON.stringify(
+        auditResObj
+      )}`
+    );
     res.json(auditResObj);
   }
 
