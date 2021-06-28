@@ -6,4 +6,4 @@ const auditResObjStore = writable([
   },
 ]);
 
-export default auditResObjStore;
+export { auditResObjStore };
