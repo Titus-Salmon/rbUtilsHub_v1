@@ -23,4 +23,10 @@ async function rb_inventory_query(rb_inventoryQuery, rb_invUPCs) {
     });
 }
 
+// async function rb_inventory_query(rows, rb_invUPCs) {
+//   for (let i = 0; i < rows.length; i++) {
+//     rb_invUPCs.push(`${rows[i]["inv_upc"]}`);
+//   }
+// }
+
 export { rb_inventory_query };

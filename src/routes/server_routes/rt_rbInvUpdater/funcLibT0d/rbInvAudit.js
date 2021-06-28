@@ -8,33 +8,12 @@ const connection = mysql.createConnection({
   multipleStatements: true, //MUST HAVE to make more than 1 sql statement in a single query
 });
 
-let auditResObj;
-
-async function rbInvAudit(auditResObj) {
+async function rbInvAudit() {
   let rbInvJoinArr_ind = [];
   let rbInvJoinArr_sm = [];
   let rbInvJoinArr_mt = [];
   let rbInvJoinArr_sh = [];
   let rbInvJoinArr_gl = [];
-
-  // let searchResults = []; //clear searchResults from previous search
-  // let searchResultsSplitParsedArr = [];
-
-  // let saniRegex1 = /(\[)|(\])/g;
-  // let saniRegex2 = /""/g;
-
-  // /* X(?=Y) 	Positive lookahead 	X if followed by Y
-  //  * (?<=Y)X 	Positive lookbehind 	X if after Y
-  //  * ==t0d==>you can combine the 2==> (?<=A)X(?=B) to yield: "X if after A and followed by B" <==t0d==*/
-  // let splitRegex1 = /(?<=}),(?={)/g;
-
-  // let rbInvJoinArr_indSani;
-  // let rbInvJoinArr_smSani;
-  // let rbInvJoinArr_mtSani;
-  // let rbInvJoinArr_shSani;
-  // let rbInvJoinArr_glSani;
-
-  // let searchResultsSplit;
 
   function displayRbInvJoin(rows) {
     let searchResults = []; //clear searchResults from previous search
@@ -172,12 +151,6 @@ async function rbInvAudit(auditResObj) {
     console.log(
       `searchResultsSplitParsedArr[0]['ri_t0dIND']==> ${searchResultsSplitParsedArr[0]["ri_t0dIND"]}`
     );
-    auditResObj = {};
-    auditResObj["rbInvJoinArr_ind"] = rbInvJoinArr_ind;
-    auditResObj["rbInvJoinArr_sm"] = rbInvJoinArr_sm;
-    auditResObj["rbInvJoinArr_mt"] = rbInvJoinArr_mt;
-    auditResObj["rbInvJoinArr_sh"] = rbInvJoinArr_sh;
-    auditResObj["rbInvJoinArr_gl"] = rbInvJoinArr_gl;
   }
 
   connection.query(
@@ -230,24 +203,17 @@ async function rbInvAudit(auditResObj) {
       );
       displayRbInvJoin(rows);
 
-      // res.json({
-      //   auditResObj: {
-      //     rbInvJoinArr_ind: rbInvJoinArr_ind,
-      //     rbInvJoinArr_sm: rbInvJoinArr_sm,
-      //     rbInvJoinArr_mt: rbInvJoinArr_mt,
-      //     rbInvJoinArr_sh: rbInvJoinArr_sh,
-      //     rbInvJoinArr_gl: rbInvJoinArr_gl,
-      //   },
-      // });
-      // auditResObj = {
-      //   rbInvJoinArr_ind: rbInvJoinArr_ind,
-      //   rbInvJoinArr_sm: rbInvJoinArr_sm,
-      //   rbInvJoinArr_mt: rbInvJoinArr_mt,
-      //   rbInvJoinArr_sh: rbInvJoinArr_sh,
-      //   rbInvJoinArr_gl: rbInvJoinArr_gl,
-      // };
+      res.json({
+        auditResObj: {
+          rbInvJoinArr_ind: rbInvJoinArr_ind,
+          rbInvJoinArr_sm: rbInvJoinArr_sm,
+          rbInvJoinArr_mt: rbInvJoinArr_mt,
+          rbInvJoinArr_sh: rbInvJoinArr_sh,
+          rbInvJoinArr_gl: rbInvJoinArr_gl,
+        },
+      });
     }
   );
 }
 
-export { rbInvAudit, auditResObj };
+export { rbInvAudit };
