@@ -76,8 +76,8 @@
 
 <!-- /////////// -->
 
-<!-- {#if $rbInvUpdaterAuditResTblData.rbInvJoinArr_ind} -->
-{#if $rbInvUpdaterAuditResTblData}
+{#if $rbInvUpdaterAuditResTblData.rbInvJoinArr_ind}
+  <!-- {#if $rbInvUpdaterAuditResTblData} -->
   {console.log(
     `JSON.stringify(rbInvUpdaterAuditResTblData)==> ${JSON.stringify(
       rbInvUpdaterAuditResTblData
