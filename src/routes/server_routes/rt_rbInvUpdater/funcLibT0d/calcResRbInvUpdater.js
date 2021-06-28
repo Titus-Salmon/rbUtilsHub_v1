@@ -1,4 +1,4 @@
-import { rbInvAudit } from "../rbInvUpdater";
+import { rbInvAudit } from "./rbInvAudit";
 
 const mysql = require("mysql");
 
