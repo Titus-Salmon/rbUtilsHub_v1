@@ -7,7 +7,7 @@ export async function post(req, res, next) {
   let rb_invUPCs = [];
 
   rb_inventory_query(rb_inventoryQuery, rb_invUPCs);
-  if ($auditResObjStore[0].auditResObjData !== null) {
+  if (auditResObjStore[0].auditResObjData !== null) {
     console.log(
       `JSON.stringify(auditResObjStore[0].auditResObjData)==> ${JSON.stringify(
         auditResObjStore[0].auditResObjData
