@@ -1,3 +1,5 @@
+import { auditResObjStore } from "../../../../stores/rbInvUpdater/st_auditResObjStore";
+
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
@@ -203,15 +205,24 @@ async function rbInvAudit() {
       );
       displayRbInvJoin(rows);
 
-      res.json({
-        auditResObj: {
-          rbInvJoinArr_ind: rbInvJoinArr_ind,
-          rbInvJoinArr_sm: rbInvJoinArr_sm,
-          rbInvJoinArr_mt: rbInvJoinArr_mt,
-          rbInvJoinArr_sh: rbInvJoinArr_sh,
-          rbInvJoinArr_gl: rbInvJoinArr_gl,
-        },
-      });
+      let auditResObj = {};
+      auditResObj.rbInvJoinArr_ind = rbInvJoinArr_ind;
+      auditResObj.rbInvJoinArr_sm = rbInvJoinArr_ind;
+      auditResObj.rbInvJoinArr_mt = rbInvJoinArr_ind;
+      auditResObj.rbInvJoinArr_sh = rbInvJoinArr_ind;
+      auditResObj.rbInvJoinArr_gl = rbInvJoinArr_ind;
+
+      auditResObjStore.set(auditResObj);
+
+      // res.json({
+      //   auditResObj: {
+      //     rbInvJoinArr_ind: rbInvJoinArr_ind,
+      //     rbInvJoinArr_sm: rbInvJoinArr_sm,
+      //     rbInvJoinArr_mt: rbInvJoinArr_mt,
+      //     rbInvJoinArr_sh: rbInvJoinArr_sh,
+      //     rbInvJoinArr_gl: rbInvJoinArr_gl,
+      //   },
+      // });
     }
   );
 }
