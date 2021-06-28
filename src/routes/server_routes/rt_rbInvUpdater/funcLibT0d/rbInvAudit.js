@@ -1,5 +1,3 @@
-import { auditResObjStore } from "../../../../stores/rbInvUpdater/st_auditResObjStore";
-
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
@@ -9,6 +7,8 @@ const connection = mysql.createConnection({
   database: process.env.RB_DB,
   multipleStatements: true, //MUST HAVE to make more than 1 sql statement in a single query
 });
+
+let auditResObj;
 
 async function rbInvAudit() {
   let rbInvJoinArr_ind = [];
@@ -205,14 +205,12 @@ async function rbInvAudit() {
       );
       displayRbInvJoin(rows);
 
-      let auditResObj = {};
+      auditResObj = {};
       auditResObj.rbInvJoinArr_ind = rbInvJoinArr_ind;
       auditResObj.rbInvJoinArr_sm = rbInvJoinArr_ind;
       auditResObj.rbInvJoinArr_mt = rbInvJoinArr_ind;
       auditResObj.rbInvJoinArr_sh = rbInvJoinArr_ind;
       auditResObj.rbInvJoinArr_gl = rbInvJoinArr_ind;
-
-      auditResObjStore.set(auditResObj);
 
       // res.json({
       //   auditResObj: {
@@ -227,4 +225,4 @@ async function rbInvAudit() {
   );
 }
 
-export { rbInvAudit };
+export { rbInvAudit, auditResObj };
