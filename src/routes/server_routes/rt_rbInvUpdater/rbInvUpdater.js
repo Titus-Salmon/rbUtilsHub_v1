@@ -63,14 +63,12 @@ export async function post(req, res, next) {
                 );
               })
               .on("end", function () {
-                calcResRbInvUpdater().then(setTimeout(rbInvAudit, 25000));
-                // .then(setTimeout(rbInvAudit, 100000));
-                // setTimeout(rbInvAudit, 100000);
+                calcResRbInvUpdater().then(setTimeout(rbInvAudit, 25000)); //the weak link: why can't we get rbInvAudit
+                //to run after calcResInvUpdater (and all of it's internal nested queries) is fully complete, without
+                //resorting to setTimeout???
               });
-            // .then(rbInvAudit());
           })
       );
-      // await rbInvAudit();
     });
   async function rbInvAudit() {
     let rbInvJoinArr_ind = [];
