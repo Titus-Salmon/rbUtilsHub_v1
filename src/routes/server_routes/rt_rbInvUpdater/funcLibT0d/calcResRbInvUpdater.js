@@ -465,7 +465,7 @@ async function calcResRbInvUpdater() {
               );
             }
           );
-        }, 100000);
+        }, 10000);
       });
   }
   await queryNhcrtTable();
