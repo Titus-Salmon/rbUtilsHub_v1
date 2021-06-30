@@ -352,7 +352,7 @@ async function calcResRbInvUpdater() {
           );
         }
       )
-      .on("result", function () {
+      .on("end", function () {
         connection.query(
           `
     UPDATE rb_inventory_test
