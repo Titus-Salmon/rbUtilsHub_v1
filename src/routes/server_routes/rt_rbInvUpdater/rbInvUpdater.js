@@ -1,6 +1,7 @@
 import { rb_inventory_query } from "./funcLibT0d/rb_inventory_query";
 // import { createNhcrtRbInvTable } from "./funcLibT0d/createNhcrtRbInvTable";
 import { queryCatapultWithRbInvUPCs } from "./funcLibT0d/queryCatapultWithRbInvUPCs";
+import { calcResRbInvUpdater } from "./funcLibT0d/calcResRbInvUpdater";
 
 const mysql = require("mysql");
 
