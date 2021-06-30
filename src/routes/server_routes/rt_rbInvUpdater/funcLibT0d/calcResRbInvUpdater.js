@@ -346,7 +346,7 @@ async function calcResRbInvUpdater() {
           console.log(
             `hello right before showSearchResults(rows) from within queryNhcrtTable`
           );
-          // showSearchResults(rows);
+          showSearchResults(rows);
 
           console.log(
             `srcRsINDstocked[0] called from queryNhcrtTable==> ${srcRsINDstocked[0]}`
@@ -355,9 +355,9 @@ async function calcResRbInvUpdater() {
       )
       .on("result", function () {
         console.log(`hello from nested query from within queryNhcrtTable`);
-        connection.pause();
-        showSearchResults(rows);
-        connection.resume();
+        // connection.pause();
+        // showSearchResults(rows);
+        // connection.resume();
         connection.query(
           `
     UPDATE rb_inventory_test
