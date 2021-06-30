@@ -64,8 +64,10 @@ IN (${rb_invUPCsToString.trim()})
         if (error) {
           console.error(error);
         }
+        // catapultResults(result, catapultResArr).then(
+        //   csvGenerator(catapultResArr).then(createNhcrtRbInvTable())
         catapultResults(result, catapultResArr).then(
-          csvGenerator(catapultResArr).then(createNhcrtRbInvTable())
+          csvGenerator(catapultResArr)
         );
       });
     });
