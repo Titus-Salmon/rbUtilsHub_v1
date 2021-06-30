@@ -354,10 +354,9 @@ async function calcResRbInvUpdater() {
         }
       )
       .on("end", function () {
-        setTimeout(function () {
-          console.log(`hello from nested query from within queryNhcrtTable`);
-          connection.query(
-            `
+        console.log(`hello from nested query from within queryNhcrtTable`);
+        connection.query(
+          `
     UPDATE rb_inventory_test
     SET inv_in_stock = '1'
     WHERE trim(inv_upc)
@@ -407,65 +406,64 @@ async function calcResRbInvUpdater() {
     SET inv_gl_stock = '0'
     WHERE trim(inv_upc)
     IN (${srcRsGL_NOTstockedSani});`,
-            function (err, rows, fields) {
-              if (err) throw err;
+          function (err, rows, fields) {
+            if (err) throw err;
 
-              console.log(
-                `rows.length from nested connection.query==> ${rows.length}`
-              );
-              console.log(
-                `JSON.stringify(rows[0]) from nested connection.query==> ${JSON.stringify(
-                  rows[0]
-                )}`
-              );
-              console.log(
-                `JSON.stringify(rows[1]) from nested connection.query==> ${JSON.stringify(
-                  rows[1]
-                )}`
-              );
-              console.log(
-                `JSON.stringify(rows[2]) from nested connection.query==> ${JSON.stringify(
-                  rows[2]
-                )}`
-              );
-              console.log(
-                `JSON.stringify(rows[3]) from nested connection.query==> ${JSON.stringify(
-                  rows[3]
-                )}`
-              );
-              console.log(
-                `JSON.stringify(rows[4]) from nested connection.query==> ${JSON.stringify(
-                  rows[4]
-                )}`
-              );
-              console.log(
-                `JSON.stringify(rows[5]) from nested connection.query==> ${JSON.stringify(
-                  rows[5]
-                )}`
-              );
-              console.log(
-                `JSON.stringify(rows[6]) from nested connection.query==> ${JSON.stringify(
-                  rows[6]
-                )}`
-              );
-              console.log(
-                `JSON.stringify(rows[7]) from nested connection.query==> ${JSON.stringify(
-                  rows[7]
-                )}`
-              );
-              console.log(
-                `JSON.stringify(rows[8]) from nested connection.query==> ${JSON.stringify(
-                  rows[8]
-                )}`
-              );
-              console.log(
-                `JSON.stringify(rows[9]) from nested connection.query==> ${JSON.stringify(
-                  rows[9]
-                )}`
-              );
-            }
-          );
-        }, 1);
+            console.log(
+              `rows.length from nested connection.query==> ${rows.length}`
+            );
+            console.log(
+              `JSON.stringify(rows[0]) from nested connection.query==> ${JSON.stringify(
+                rows[0]
+              )}`
+            );
+            console.log(
+              `JSON.stringify(rows[1]) from nested connection.query==> ${JSON.stringify(
+                rows[1]
+              )}`
+            );
+            console.log(
+              `JSON.stringify(rows[2]) from nested connection.query==> ${JSON.stringify(
+                rows[2]
+              )}`
+            );
+            console.log(
+              `JSON.stringify(rows[3]) from nested connection.query==> ${JSON.stringify(
+                rows[3]
+              )}`
+            );
+            console.log(
+              `JSON.stringify(rows[4]) from nested connection.query==> ${JSON.stringify(
+                rows[4]
+              )}`
+            );
+            console.log(
+              `JSON.stringify(rows[5]) from nested connection.query==> ${JSON.stringify(
+                rows[5]
+              )}`
+            );
+            console.log(
+              `JSON.stringify(rows[6]) from nested connection.query==> ${JSON.stringify(
+                rows[6]
+              )}`
+            );
+            console.log(
+              `JSON.stringify(rows[7]) from nested connection.query==> ${JSON.stringify(
+                rows[7]
+              )}`
+            );
+            console.log(
+              `JSON.stringify(rows[8]) from nested connection.query==> ${JSON.stringify(
+                rows[8]
+              )}`
+            );
+            console.log(
+              `JSON.stringify(rows[9]) from nested connection.query==> ${JSON.stringify(
+                rows[9]
+              )}`
+            );
+          }
+        );
       });
   }
   await queryNhcrtTable();
