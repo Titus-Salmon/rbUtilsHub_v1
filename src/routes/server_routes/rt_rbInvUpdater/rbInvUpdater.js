@@ -269,7 +269,8 @@ export async function post(req, res, next) {
             rows
           )}`
         );
-        displayRbInvJoin(rows);
+        // displayRbInvJoin(rows);
+        setTimeout(displayRbInvJoin, 10000, rows);
 
         res.json({
           auditResObj: {
@@ -283,5 +284,5 @@ export async function post(req, res, next) {
       }
     );
   }
-  setTimeout(rbInvAudit, 10000);
+  setTimeout(rbInvAudit, 20000);
 }
