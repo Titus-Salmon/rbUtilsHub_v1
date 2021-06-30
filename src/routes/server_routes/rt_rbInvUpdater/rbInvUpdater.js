@@ -63,8 +63,8 @@ export async function post(req, res, next) {
                 );
               })
               .on("end", function () {
-                calcResRbInvUpdater();
-                setTimeout(rbInvAudit, 100000);
+                calcResRbInvUpdater().then(setTimeout(rbInvAudit, 100000));
+                // setTimeout(rbInvAudit, 100000);
               });
             // .then(rbInvAudit());
           })
