@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   multipleStatements: true, //MUST HAVE to make more than 1 sql statement in a single query
 });
 
-let auditResObj;
+// let auditResObj;
 
 async function rbInvAudit() {
   let rbInvJoinArr_ind = [];
@@ -205,12 +205,12 @@ async function rbInvAudit() {
       );
       displayRbInvJoin(rows);
 
-      auditResObj = {};
-      auditResObj.rbInvJoinArr_ind = rbInvJoinArr_ind;
-      auditResObj.rbInvJoinArr_sm = rbInvJoinArr_ind;
-      auditResObj.rbInvJoinArr_mt = rbInvJoinArr_ind;
-      auditResObj.rbInvJoinArr_sh = rbInvJoinArr_ind;
-      auditResObj.rbInvJoinArr_gl = rbInvJoinArr_ind;
+      // auditResObj = {};
+      // auditResObj.rbInvJoinArr_ind = rbInvJoinArr_ind;
+      // auditResObj.rbInvJoinArr_sm = rbInvJoinArr_ind;
+      // auditResObj.rbInvJoinArr_mt = rbInvJoinArr_ind;
+      // auditResObj.rbInvJoinArr_sh = rbInvJoinArr_ind;
+      // auditResObj.rbInvJoinArr_gl = rbInvJoinArr_ind;
 
       // res.json({
       //   auditResObj: {
@@ -225,4 +225,4 @@ async function rbInvAudit() {
   );
 }
 
-export { rbInvAudit, auditResObj };
+export { rbInvAudit };

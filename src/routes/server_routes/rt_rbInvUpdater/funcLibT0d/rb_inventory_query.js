@@ -10,23 +10,23 @@ const connection = mysql.createConnection({
   multipleStatements: true, //MUST HAVE to make more than 1 sql statement in a single query
 });
 
-async function rb_inventory_query(rb_inventoryQuery, rb_invUPCs) {
-  connection
-    .query(rb_inventoryQuery, function (err, rows, fields) {
-      if (err) throw err;
-      for (let i = 0; i < rows.length; i++) {
-        rb_invUPCs.push(`${rows[i]["inv_upc"]}`);
-      }
-    })
-    .on("end", function () {
-      queryCatapultWithRbInvUPCs(rb_invUPCs);
-    });
-}
-
-// async function rb_inventory_query(rows, rb_invUPCs) {
-//   for (let i = 0; i < rows.length; i++) {
-//     rb_invUPCs.push(`${rows[i]["inv_upc"]}`);
-//   }
+// async function rb_inventory_query(rb_inventoryQuery, rb_invUPCs) {
+//   connection
+//     .query(rb_inventoryQuery, function (err, rows, fields) {
+//       if (err) throw err;
+//       for (let i = 0; i < rows.length; i++) {
+//         rb_invUPCs.push(`${rows[i]["inv_upc"]}`);
+//       }
+//     })
+//     .on("end", function () {
+//       queryCatapultWithRbInvUPCs(rb_invUPCs);
+//     });
 // }
+
+async function rb_inventory_query(rows, rb_invUPCs) {
+  for (let i = 0; i < rows.length; i++) {
+    rb_invUPCs.push(`${rows[i]["inv_upc"]}`);
+  }
+}
 
 export { rb_inventory_query };
