@@ -342,6 +342,9 @@ async function calcResRbInvUpdater() {
     SELECT * FROM rb_wishlist;`,
         function (err, rows, fields) {
           if (err) throw err;
+          console.log(
+            `hello right before showSearchResults(rows) from within queryNhcrtTable`
+          );
           showSearchResults(rows);
 
           console.log(
