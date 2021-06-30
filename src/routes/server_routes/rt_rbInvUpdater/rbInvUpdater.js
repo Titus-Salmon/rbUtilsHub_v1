@@ -63,7 +63,7 @@ export async function post(req, res, next) {
                 );
               })
               .on("end", function () {
-                calcResRbInvUpdater();
+                calcResRbInvUpdater().then(rbInvAudit());
                 // .then(setTimeout(rbInvAudit, 100000));
                 // setTimeout(rbInvAudit, 100000);
               });
@@ -269,8 +269,8 @@ export async function post(req, res, next) {
             rows
           )}`
         );
-        // displayRbInvJoin(rows);
-        setTimeout(displayRbInvJoin, 10000, rows);
+        displayRbInvJoin(rows);
+        // setTimeout(displayRbInvJoin, 10000, rows);
 
         res.json({
           auditResObj: {
@@ -284,5 +284,5 @@ export async function post(req, res, next) {
       }
     );
   }
-  setTimeout(rbInvAudit, 20000);
+  // setTimeout(rbInvAudit, 20000);
 }
