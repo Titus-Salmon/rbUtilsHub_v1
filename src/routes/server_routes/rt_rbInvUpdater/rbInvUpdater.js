@@ -60,11 +60,11 @@ export async function post(req, res, next) {
                 );
               })
               .on("end", function () {
-                calcResRbInvUpdater();
+                calcResRbInvUpdater().then(rbInvAudit());
               });
           })
       );
-      await rbInvAudit();
+      // await rbInvAudit();
     });
   async function rbInvAudit() {
     let rbInvJoinArr_ind = [];
