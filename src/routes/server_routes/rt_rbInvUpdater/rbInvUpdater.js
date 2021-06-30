@@ -61,8 +61,9 @@ export async function post(req, res, next) {
               })
               .on("end", async function () {
                 calcResRbInvUpdater();
-                await rbInvAudit();
-              });
+                // await rbInvAudit();
+              })
+              .then(rbInvAudit());
           })
       );
       // await rbInvAudit();
