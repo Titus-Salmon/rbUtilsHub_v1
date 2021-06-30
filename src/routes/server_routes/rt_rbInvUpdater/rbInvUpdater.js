@@ -64,7 +64,7 @@ export async function post(req, res, next) {
               })
               .on("end", function () {
                 calcResRbInvUpdater();
-                setTimeout(rbInvAudit(), 10000);
+                setTimeout(rbInvAudit, 10000);
               });
             // .then(rbInvAudit());
           })
