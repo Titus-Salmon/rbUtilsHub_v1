@@ -63,7 +63,7 @@ export async function post(req, res, next) {
                 );
               })
               .on("end", function () {
-                calcResRbInvUpdater().then(setTimeout(rbInvAudit, 20000));
+                calcResRbInvUpdater().then(setTimeout(rbInvAudit, 25000));
                 // .then(setTimeout(rbInvAudit, 100000));
                 // setTimeout(rbInvAudit, 100000);
               });
@@ -265,8 +265,8 @@ export async function post(req, res, next) {
       function (err, rows, fields) {
         if (err) throw err;
         console.log(
-          `JSON.stringify(rows) from connection.query from within rbInvAudit==> ${JSON.stringify(
-            rows
+          `JSON.stringify(rows[0]) from connection.query from within rbInvAudit==> ${JSON.stringify(
+            rows[0]
           )}`
         );
         displayRbInvJoin(rows);
