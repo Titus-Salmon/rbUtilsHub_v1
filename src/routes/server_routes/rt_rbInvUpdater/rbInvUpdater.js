@@ -65,7 +65,8 @@ export async function post(req, res, next) {
               .on("end", function () {
                 calcResRbInvUpdater().then(setTimeout(rbInvAudit, 30000)); //the weak link: why can't we get rbInvAudit
                 //to run after calcResInvUpdater (and all of it's internal nested queries) is fully complete, without
-                //resorting to setTimeout???
+                //resorting to setTimeout??? ALSO note that sometimes the setTimeout needs to be increased. Presumably,
+                //this is because it takes variable amounts of time to complete the nested queries from within calcResInvUpdater()
               });
           })
       );
