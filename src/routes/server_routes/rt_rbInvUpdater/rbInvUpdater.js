@@ -64,12 +64,13 @@ export async function post(req, res, next) {
               })
               .on("end", function () {
                 calcResRbInvUpdater().then(async function () {
-                  if (srcRsINDstocked.length > 0) {
-                    console.log(
-                      `srcRsINDstocked.length from rbInvUpdater==> ${srcRsINDstocked.length}`
-                    );
-                    await rbInvAudit();
-                  }
+                  // if (srcRsINDstocked.length > 0) {
+                  //   console.log(
+                  //     `srcRsINDstocked.length from rbInvUpdater==> ${srcRsINDstocked.length}`
+                  //   );
+                  //   await rbInvAudit();
+                  // }
+                  await rbInvAudit();
                 });
               });
             // .then(rbInvAudit());
