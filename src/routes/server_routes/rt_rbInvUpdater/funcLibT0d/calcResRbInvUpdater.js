@@ -10,56 +10,31 @@ const connection = mysql.createConnection({
   multipleStatements: true, //MUST HAVE to make more than 1 sql statement in a single query
 });
 
-let wishlistIgnore = [];
-let wishlistUpdate = [];
-
-let srcRsINDstocked = [];
-let srcRsIND_NOTstocked = [];
-let srcRsSMstocked = [];
-let srcRsSM_NOTstocked = [];
-let srcRsMTstocked = [];
-let srcRsMT_NOTstocked = [];
-let srcRsSHstocked = [];
-let srcRsSH_NOTstocked = [];
-let srcRsGLstocked = [];
-let srcRsGL_NOTstocked = [];
-
-let srcRsINDstockedSani;
-let srcRsIND_NOTstockedSani;
-let srcRsSMstockedSani;
-let srcRsSM_NOTstockedSani;
-let srcRsMTstockedSani;
-let srcRsMT_NOTstockedSani;
-let srcRsSHstockedSani;
-let srcRsSH_NOTstockedSani;
-let srcRsGLstockedSani;
-let srcRsGL_NOTstockedSani;
-
 async function calcResRbInvUpdater() {
-  // let wishlistIgnore = [];
-  // let wishlistUpdate = [];
+  let wishlistIgnore = [];
+  let wishlistUpdate = [];
 
-  // let srcRsINDstocked = [];
-  // let srcRsIND_NOTstocked = [];
-  // let srcRsSMstocked = [];
-  // let srcRsSM_NOTstocked = [];
-  // let srcRsMTstocked = [];
-  // let srcRsMT_NOTstocked = [];
-  // let srcRsSHstocked = [];
-  // let srcRsSH_NOTstocked = [];
-  // let srcRsGLstocked = [];
-  // let srcRsGL_NOTstocked = [];
+  let srcRsINDstocked = [];
+  let srcRsIND_NOTstocked = [];
+  let srcRsSMstocked = [];
+  let srcRsSM_NOTstocked = [];
+  let srcRsMTstocked = [];
+  let srcRsMT_NOTstocked = [];
+  let srcRsSHstocked = [];
+  let srcRsSH_NOTstocked = [];
+  let srcRsGLstocked = [];
+  let srcRsGL_NOTstocked = [];
 
-  // let srcRsINDstockedSani;
-  // let srcRsIND_NOTstockedSani;
-  // let srcRsSMstockedSani;
-  // let srcRsSM_NOTstockedSani;
-  // let srcRsMTstockedSani;
-  // let srcRsMT_NOTstockedSani;
-  // let srcRsSHstockedSani;
-  // let srcRsSH_NOTstockedSani;
-  // let srcRsGLstockedSani;
-  // let srcRsGL_NOTstockedSani;
+  let srcRsINDstockedSani;
+  let srcRsIND_NOTstockedSani;
+  let srcRsSMstockedSani;
+  let srcRsSM_NOTstockedSani;
+  let srcRsMTstockedSani;
+  let srcRsMT_NOTstockedSani;
+  let srcRsSHstockedSani;
+  let srcRsSH_NOTstockedSani;
+  let srcRsGLstockedSani;
+  let srcRsGL_NOTstockedSani;
 
   let todaysDateRaw1 = new Date();
   let todaysDateRaw1_iso = todaysDateRaw1.toISOString();
@@ -489,4 +464,4 @@ async function calcResRbInvUpdater() {
   queryNhcrtTable();
 }
 
-export { calcResRbInvUpdater, srcRsINDstocked };
+export { calcResRbInvUpdater };

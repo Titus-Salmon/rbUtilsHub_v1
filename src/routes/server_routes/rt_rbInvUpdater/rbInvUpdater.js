@@ -283,5 +283,5 @@ export async function post(req, res, next) {
       }
     );
   }
-  setTimeout(rbInvAudit, 100000);
+  setTimeout(rbInvAudit, 10000);
 }
