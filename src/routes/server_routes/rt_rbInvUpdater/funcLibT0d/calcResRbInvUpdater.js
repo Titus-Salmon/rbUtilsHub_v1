@@ -353,6 +353,7 @@ async function calcResRbInvUpdater() {
         }
       )
       .on("end", function () {
+        console.log(`hello from nested query from within queryNhcrtTable`);
         connection.query(
           `
     UPDATE rb_inventory_test
