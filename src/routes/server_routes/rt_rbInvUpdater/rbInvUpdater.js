@@ -58,9 +58,10 @@ export async function post(req, res, next) {
                 console.log(
                   `populateNhcrtRbInvTableQuery==> ${populateNhcrtRbInvTableQuery}`
                 );
+                calcResRbInvUpdater();
               })
               .on("end", function () {
-                calcResRbInvUpdater();
+                // calcResRbInvUpdater();
                 // await rbInvAudit();
                 connection
                   .query(
