@@ -33,7 +33,10 @@ export async function post(req, res, next) {
 
   connection
     .query(rb_inventoryQuery, function (err, rows, fields) {
-      rb_inventory_query(rb_inventoryQuery, rb_invUPCs);
+      if (err) {
+        console.log(`err==> ${err}`);
+      }
+      rb_inventory_query(rows, rb_invUPCs);
     })
     .on("end", async function () {
       queryCatapultWithRbInvUPCs(rb_invUPCs).then(
