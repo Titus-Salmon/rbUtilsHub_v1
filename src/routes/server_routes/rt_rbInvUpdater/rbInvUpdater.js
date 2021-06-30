@@ -63,9 +63,12 @@ export async function post(req, res, next) {
                 );
               })
               .on("end", function () {
-                calcResRbInvUpdater().then(function () {
+                calcResRbInvUpdater().then(async function () {
                   if (srcRsINDstocked.length > 0) {
-                    rbInvAudit();
+                    console.log(
+                      `srcRsINDstocked.length from rbInvUpdater==> ${srcRsINDstocked.length}`
+                    );
+                    await rbInvAudit();
                   }
                 });
               });
