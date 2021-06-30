@@ -63,7 +63,7 @@ export async function post(req, res, next) {
                 );
               })
               .on("end", function () {
-                calcResRbInvUpdater().then(setTimeout(rbInvAudit, 25000)); //the weak link: why can't we get rbInvAudit
+                calcResRbInvUpdater().then(setTimeout(rbInvAudit, 30000)); //the weak link: why can't we get rbInvAudit
                 //to run after calcResInvUpdater (and all of it's internal nested queries) is fully complete, without
                 //resorting to setTimeout???
               });
