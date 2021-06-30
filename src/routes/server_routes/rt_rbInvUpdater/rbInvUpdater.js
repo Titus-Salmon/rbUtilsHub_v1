@@ -1,5 +1,5 @@
 import { rb_inventory_query } from "./funcLibT0d/rb_inventory_query";
-import { createNhcrtRbInvTable } from "./funcLibT0d/createNhcrtRbInvTable";
+// import { createNhcrtRbInvTable } from "./funcLibT0d/createNhcrtRbInvTable";
 
 const mysql = require("mysql");
 
