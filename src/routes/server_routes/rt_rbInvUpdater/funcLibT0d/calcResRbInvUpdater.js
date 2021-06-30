@@ -352,8 +352,7 @@ async function calcResRbInvUpdater() {
           );
         }
       )
-      .on(
-        "end",
+      .on("end", function () {
         setTimeout(function () {
           console.log(`hello from nested query from within queryNhcrtTable`);
           connection.query(
@@ -465,8 +464,8 @@ async function calcResRbInvUpdater() {
               );
             }
           );
-        }, 1000)
-      );
+        }, 10000);
+      });
   }
   await queryNhcrtTable();
 }
