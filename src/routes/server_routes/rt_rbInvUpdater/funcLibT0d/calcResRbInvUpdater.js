@@ -353,7 +353,7 @@ async function calcResRbInvUpdater() {
           );
         }
       )
-      .on("result", function () {
+      .on("end", function () {
         console.log(`hello from nested query from within queryNhcrtTable`);
         // connection.pause();
         // showSearchResults(rows);
