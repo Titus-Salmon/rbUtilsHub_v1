@@ -35,7 +35,7 @@ export async function post(req, res, next) {
     .query(rb_inventoryQuery, function (err, rows, fields) {
       rb_inventory_query(rb_inventoryQuery, rb_invUPCs);
     })
-    .on("end", function () {
+    .on("end", async function () {
       queryCatapultWithRbInvUPCs(rb_invUPCs).then(
         connection
           .query(createNhcrtRbInvTableQuery, function (error, response) {
@@ -46,7 +46,7 @@ export async function post(req, res, next) {
               `createNhcrtRbInvTableQuery==> ${createNhcrtRbInvTableQuery}`
             );
           })
-          .on("end", async function () {
+          .on("end", function () {
             connection
               .query(populateNhcrtRbInvTableQuery, function (error, response) {
                 if (error) {
@@ -56,11 +56,12 @@ export async function post(req, res, next) {
                   `populateNhcrtRbInvTableQuery==> ${populateNhcrtRbInvTableQuery}`
                 );
               })
-              .on("end", async function () {
-                calcResRbInvUpdater().then(await rbInvAudit());
+              .on("end", function () {
+                calcResRbInvUpdater();
               });
           })
       );
+      await rbInvAudit();
     });
   async function rbInvAudit() {
     let rbInvJoinArr_ind = [];
