@@ -59,8 +59,9 @@ export async function post(req, res, next) {
                   `populateNhcrtRbInvTableQuery==> ${populateNhcrtRbInvTableQuery}`
                 );
               })
-              .on("end", function () {
-                calcResRbInvUpdater().then(rbInvAudit());
+              .on("end", async function () {
+                calcResRbInvUpdater();
+                await rbInvAudit();
               });
           })
       );
