@@ -59,11 +59,76 @@ export async function post(req, res, next) {
                   `populateNhcrtRbInvTableQuery==> ${populateNhcrtRbInvTableQuery}`
                 );
               })
-              .on("end", async function () {
+              .on("end", function () {
                 calcResRbInvUpdater();
                 // await rbInvAudit();
-              })
-              .then(rbInvAudit());
+                connection
+                  .query(
+                    `
+                    SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_in_stock AS new_inv_in_stock,
+                    orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_in_stock AS old_inv_in_stock
+                    FROM rb_inventory_test updated
+                    JOIN rb_inventory_test_old orig ON updated.inv_upc
+                    WHERE updated.inv_upc = orig.inv_upc
+                    AND updated.inv_in_stock != orig.inv_in_stock
+                    ORDER BY updated.inv_in_stock, orig.inv_in_stock;
+                    
+                    SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_sm_stock AS new_inv_sm_stock,
+                    orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_sm_stock AS old_inv_sm_stock
+                    FROM rb_inventory_test updated
+                    JOIN rb_inventory_test_old orig ON updated.inv_upc
+                    WHERE updated.inv_upc = orig.inv_upc
+                    AND updated.inv_sm_stock != orig.inv_sm_stock
+                    ORDER BY updated.inv_sm_stock, orig.inv_sm_stock;
+                    
+                    SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_mt_stock AS new_inv_mt_stock,
+                    orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_mt_stock AS old_inv_mt_stock
+                    FROM rb_inventory_test updated
+                    JOIN rb_inventory_test_old orig ON updated.inv_upc
+                    WHERE updated.inv_upc = orig.inv_upc
+                    AND updated.inv_mt_stock != orig.inv_mt_stock
+                    ORDER BY updated.inv_mt_stock, orig.inv_mt_stock;
+                    
+                    SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_sh_stock AS new_inv_sh_stock,
+                    orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_sh_stock AS old_inv_sh_stock
+                    FROM rb_inventory_test updated
+                    JOIN rb_inventory_test_old orig ON updated.inv_upc
+                    WHERE updated.inv_upc = orig.inv_upc
+                    AND updated.inv_sh_stock != orig.inv_sh_stock
+                    ORDER BY updated.inv_sh_stock, orig.inv_sh_stock;
+                    
+                    SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_gl_stock AS new_inv_gl_stock,
+                    orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_gl_stock AS old_inv_gl_stock
+                    FROM rb_inventory_test updated
+                    JOIN rb_inventory_test_old orig ON updated.inv_upc
+                    WHERE updated.inv_upc = orig.inv_upc
+                    AND updated.inv_gl_stock != orig.inv_gl_stock
+                    ORDER BY updated.inv_gl_stock, orig.inv_gl_stock;`,
+                    function (err, rows, fields) {
+                      if (err) throw err;
+                      console.log(
+                        `JSON.stringify(rows) from connection.query from within rbInvAudit==> ${JSON.stringify(
+                          rows
+                        )}`
+                      );
+                      displayRbInvJoin(rows);
+
+                      res.json({
+                        auditResObj: {
+                          rbInvJoinArr_ind: rbInvJoinArr_ind,
+                          rbInvJoinArr_sm: rbInvJoinArr_sm,
+                          rbInvJoinArr_mt: rbInvJoinArr_mt,
+                          rbInvJoinArr_sh: rbInvJoinArr_sh,
+                          rbInvJoinArr_gl: rbInvJoinArr_gl,
+                        },
+                      });
+                    }
+                  )
+                  .on("end", function () {
+                    rbInvAudit();
+                  });
+              });
+            // .then(rbInvAudit());
           })
       );
       // await rbInvAudit();
@@ -217,74 +282,66 @@ export async function post(req, res, next) {
       );
     }
 
-    connection.query(
-      `
-        SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_in_stock AS new_inv_in_stock,
-        orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_in_stock AS old_inv_in_stock
-        FROM rb_inventory_test updated
-        JOIN rb_inventory_test_old orig ON updated.inv_upc
-        WHERE updated.inv_upc = orig.inv_upc
-        AND updated.inv_in_stock != orig.inv_in_stock
-        ORDER BY updated.inv_in_stock, orig.inv_in_stock;
-        
-        SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_sm_stock AS new_inv_sm_stock,
-        orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_sm_stock AS old_inv_sm_stock
-        FROM rb_inventory_test updated
-        JOIN rb_inventory_test_old orig ON updated.inv_upc
-        WHERE updated.inv_upc = orig.inv_upc
-        AND updated.inv_sm_stock != orig.inv_sm_stock
-        ORDER BY updated.inv_sm_stock, orig.inv_sm_stock;
-        
-        SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_mt_stock AS new_inv_mt_stock,
-        orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_mt_stock AS old_inv_mt_stock
-        FROM rb_inventory_test updated
-        JOIN rb_inventory_test_old orig ON updated.inv_upc
-        WHERE updated.inv_upc = orig.inv_upc
-        AND updated.inv_mt_stock != orig.inv_mt_stock
-        ORDER BY updated.inv_mt_stock, orig.inv_mt_stock;
-        
-        SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_sh_stock AS new_inv_sh_stock,
-        orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_sh_stock AS old_inv_sh_stock
-        FROM rb_inventory_test updated
-        JOIN rb_inventory_test_old orig ON updated.inv_upc
-        WHERE updated.inv_upc = orig.inv_upc
-        AND updated.inv_sh_stock != orig.inv_sh_stock
-        ORDER BY updated.inv_sh_stock, orig.inv_sh_stock;
-        
-        SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_gl_stock AS new_inv_gl_stock,
-        orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_gl_stock AS old_inv_gl_stock
-        FROM rb_inventory_test updated
-        JOIN rb_inventory_test_old orig ON updated.inv_upc
-        WHERE updated.inv_upc = orig.inv_upc
-        AND updated.inv_gl_stock != orig.inv_gl_stock
-        ORDER BY updated.inv_gl_stock, orig.inv_gl_stock;`,
-      function (err, rows, fields) {
-        if (err) throw err;
-        console.log(
-          `JSON.stringify(rows) from connection.query from within rbInvAudit==> ${JSON.stringify(
-            rows
-          )}`
-        );
-        displayRbInvJoin(rows);
+    // connection.query(
+    //   `
+    //     SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_in_stock AS new_inv_in_stock,
+    //     orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_in_stock AS old_inv_in_stock
+    //     FROM rb_inventory_test updated
+    //     JOIN rb_inventory_test_old orig ON updated.inv_upc
+    //     WHERE updated.inv_upc = orig.inv_upc
+    //     AND updated.inv_in_stock != orig.inv_in_stock
+    //     ORDER BY updated.inv_in_stock, orig.inv_in_stock;
 
-        // auditResObj = {};
-        // auditResObj.rbInvJoinArr_ind = rbInvJoinArr_ind;
-        // auditResObj.rbInvJoinArr_sm = rbInvJoinArr_ind;
-        // auditResObj.rbInvJoinArr_mt = rbInvJoinArr_ind;
-        // auditResObj.rbInvJoinArr_sh = rbInvJoinArr_ind;
-        // auditResObj.rbInvJoinArr_gl = rbInvJoinArr_ind;
+    //     SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_sm_stock AS new_inv_sm_stock,
+    //     orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_sm_stock AS old_inv_sm_stock
+    //     FROM rb_inventory_test updated
+    //     JOIN rb_inventory_test_old orig ON updated.inv_upc
+    //     WHERE updated.inv_upc = orig.inv_upc
+    //     AND updated.inv_sm_stock != orig.inv_sm_stock
+    //     ORDER BY updated.inv_sm_stock, orig.inv_sm_stock;
 
-        res.json({
-          auditResObj: {
-            rbInvJoinArr_ind: rbInvJoinArr_ind,
-            rbInvJoinArr_sm: rbInvJoinArr_sm,
-            rbInvJoinArr_mt: rbInvJoinArr_mt,
-            rbInvJoinArr_sh: rbInvJoinArr_sh,
-            rbInvJoinArr_gl: rbInvJoinArr_gl,
-          },
-        });
-      }
-    );
+    //     SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_mt_stock AS new_inv_mt_stock,
+    //     orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_mt_stock AS old_inv_mt_stock
+    //     FROM rb_inventory_test updated
+    //     JOIN rb_inventory_test_old orig ON updated.inv_upc
+    //     WHERE updated.inv_upc = orig.inv_upc
+    //     AND updated.inv_mt_stock != orig.inv_mt_stock
+    //     ORDER BY updated.inv_mt_stock, orig.inv_mt_stock;
+
+    //     SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_sh_stock AS new_inv_sh_stock,
+    //     orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_sh_stock AS old_inv_sh_stock
+    //     FROM rb_inventory_test updated
+    //     JOIN rb_inventory_test_old orig ON updated.inv_upc
+    //     WHERE updated.inv_upc = orig.inv_upc
+    //     AND updated.inv_sh_stock != orig.inv_sh_stock
+    //     ORDER BY updated.inv_sh_stock, orig.inv_sh_stock;
+
+    //     SELECT updated.inv_upc AS new_inv_upc, updated.inv_name AS new_inv_name, updated.inv_gl_stock AS new_inv_gl_stock,
+    //     orig.inv_upc AS old_inv_upc, orig.inv_name AS old_inv_name, orig.inv_gl_stock AS old_inv_gl_stock
+    //     FROM rb_inventory_test updated
+    //     JOIN rb_inventory_test_old orig ON updated.inv_upc
+    //     WHERE updated.inv_upc = orig.inv_upc
+    //     AND updated.inv_gl_stock != orig.inv_gl_stock
+    //     ORDER BY updated.inv_gl_stock, orig.inv_gl_stock;`,
+    //   function (err, rows, fields) {
+    //     if (err) throw err;
+    //     console.log(
+    //       `JSON.stringify(rows) from connection.query from within rbInvAudit==> ${JSON.stringify(
+    //         rows
+    //       )}`
+    //     );
+    //     displayRbInvJoin(rows);
+
+    //     res.json({
+    //       auditResObj: {
+    //         rbInvJoinArr_ind: rbInvJoinArr_ind,
+    //         rbInvJoinArr_sm: rbInvJoinArr_sm,
+    //         rbInvJoinArr_mt: rbInvJoinArr_mt,
+    //         rbInvJoinArr_sh: rbInvJoinArr_sh,
+    //         rbInvJoinArr_gl: rbInvJoinArr_gl,
+    //       },
+    //     });
+    //   }
+    // );
   }
-  // await rbInvAudit();
 }

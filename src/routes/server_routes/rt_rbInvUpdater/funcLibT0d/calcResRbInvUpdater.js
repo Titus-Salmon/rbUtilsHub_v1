@@ -1,4 +1,4 @@
-import { rbInvAudit } from "./rbInvAudit";
+// import { rbInvAudit } from "./rbInvAudit";
 
 const mysql = require("mysql");
 
@@ -35,12 +35,6 @@ async function calcResRbInvUpdater() {
   let srcRsSH_NOTstockedSani;
   let srcRsGLstockedSani;
   let srcRsGL_NOTstockedSani;
-
-  // let searchResults = []; //clear searchResults from previous search
-  // let searchResultsSplitParsedArr = [];
-  // let searchResultsForCSV = [];
-  // let searchResultsForCSVreview = []; //this is for holding data to generate your review excel sheet for Andrea & Brad
-  // let csvContainer = [];
 
   let todaysDateRaw1 = new Date();
   let todaysDateRaw1_iso = todaysDateRaw1.toISOString();
@@ -92,8 +86,6 @@ async function calcResRbInvUpdater() {
     console.log(
       `JSON.stringify(wishlistRows[0])==> ${JSON.stringify(wishlistRows[0])}`
     );
-
-    // let wishlistCheckerObj = {}
 
     for (let k = 0; k < wishlistRows.length; k++) {
       let wishlistCheckerObj = {};
@@ -467,14 +459,9 @@ async function calcResRbInvUpdater() {
             );
           }
         );
-        // .on("end", function () {
-        //   rbInvAudit();
-        // });
       });
   }
   queryNhcrtTable();
-  // .then(rbInvAudit());
-  // await rbInvAudit();
 }
 
 export { calcResRbInvUpdater };
