@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   password: process.env.RB_PW,
   database: process.env.RB_DB,
   multipleStatements: true, //MUST HAVE to make more than 1 sql statement in a single query
-  debug: true,
+  // debug: true,
 });
 
 async function calcResRbInvUpdater() {
