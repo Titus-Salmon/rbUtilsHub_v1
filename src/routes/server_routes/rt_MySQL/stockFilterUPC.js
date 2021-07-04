@@ -46,7 +46,7 @@ export async function post(req, res, next) {
           if (
             rows[i]["inv_lastreceived"] > oneYearAgo ||
             rows[i]["inv_lastsold"] > oneYearAgo ||
-            rows[i]["inv_onhand"] > 0 ||
+            rows[i]["inv_onhand"] != 0 ||//include items with negative onhand values as well, since they'll be stocked too
             rows[i]["inv_onorder"] > 0 ||
             rows[i]["inv_intransit"] > 0
           ) {
