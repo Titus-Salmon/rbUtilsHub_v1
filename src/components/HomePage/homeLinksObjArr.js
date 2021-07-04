@@ -46,7 +46,7 @@ const homeLinksObjArr = [
     linkName: "rbInvUpdater",
     imgURL: "/img/homePage/filter1_inv.jpg",
     altImg: "filter1_inv.jpg",
-    linkURL: "/pages/pg_rbInvUpdater/rbInvUpdater",
+    linkURL: "/pages/pg_rbInvUpdater/rbInvUpdater_single_file",
   },
   {
     id: "compareUnequalLists",
