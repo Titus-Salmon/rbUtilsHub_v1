@@ -175,6 +175,11 @@ h1 {
   color: inherit;
 } */
 
+.row-hilite-toggle {
+  background-color: #99ccff !important;
+  color: black;
+}
+
 code {
   font-family: menlo, inconsolata, monospace;
   font-size: calc(1em - 2px);
