@@ -17,10 +17,10 @@ function highlight_row() {
 
     for (let i = 0; i < cells.length; i++) { //loop through all table cells
         // Take each cells
-        console.log('cells[' + i + ']', cells[i])
-        console.log('cells[' + i + '][' + i + ']', cells[i][i])
-        console.log('cells[i].parentNode==>', cells[i].parentNode)
-        console.log('cells[i].parentNode.childNodes==>', cells[i].parentNode.childNodes)
+        // console.log('cells[' + i + ']', cells[i])
+        // console.log('cells[' + i + '][' + i + ']', cells[i][i])
+        // console.log('cells[i].parentNode==>', cells[i].parentNode)
+        // console.log('cells[i].parentNode.childNodes==>', cells[i].parentNode.childNodes)
         console.log('cells[i].parentNode.childNodes[0].innerHTML==>', cells[i].parentNode.childNodes[0].innerHTML)
 
         let clickCounter = 0; //set click counter for how many times a row has been clicked on to 0
@@ -32,9 +32,9 @@ function highlight_row() {
             let cellStorage = [];
 
             // Get the row id where the cells exists
-            console.log('cells[i].parentNode==>', cells[i].parentNode)
+            // console.log('cells[i].parentNode==>', cells[i].parentNode)
             let rowId = cells[i].parentNode.rowIndex - 1;
-            console.log('rowId==>', rowId)
+            // console.log('rowId==>', rowId)
 
             let rowsNotSelected = rsltTblBdy.getElementsByTagName('tr');
             for (let row = 0; row < rowsNotSelected.length; row++) {
