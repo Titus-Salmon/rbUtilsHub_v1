@@ -7,8 +7,10 @@
 function highlight_row() {
   localStorage.removeItem('clickedRowData');
   const ResTblBdy = document.getElementById("resTblBdy");
-let currentDate = new Date();
-console.log('currentDate==>', currentDate)
+  let currentDate = new Date();
+  console.log('currentDate==>', currentDate)
+  console.log(`typeof ResTblBdy==> ${typeof ResTblBdy}`)
+  console.log(`ResTblBdy==> ${ResTblBdy}`)
 
     let cells = ResTblBdy.getElementsByTagName('td'); //targets all cells in table
     let rows = ResTblBdy.getElementsByTagName('tr'); //targets all rows in table
