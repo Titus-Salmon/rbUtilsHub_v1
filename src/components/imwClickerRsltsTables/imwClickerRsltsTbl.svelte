@@ -32,6 +32,8 @@
         </tr>
       {/each}
     </tbody>
-    {highlight_row()}
+    {afterUpdate(() => {
+      highlight_row();
+    })}
   </table>
 </body>
