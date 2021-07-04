@@ -21,7 +21,7 @@ function highlight_row() {
         // console.log('cells[' + i + '][' + i + ']', cells[i][i])
         // console.log('cells[i].parentNode==>', cells[i].parentNode)
         // console.log('cells[i].parentNode.childNodes==>', cells[i].parentNode.childNodes)
-        console.log('cells[i].parentNode.childNodes[0].innerHTML==>', cells[i].parentNode.childNodes[0].innerHTML)
+        // console.log('cells[i].parentNode.childNodes[0].innerHTML==>', cells[i].parentNode.childNodes[0].innerHTML)
 
         let clickCounter = 0; //set click counter for how many times a row has been clicked on to 0
 
