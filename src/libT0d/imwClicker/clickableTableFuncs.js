@@ -1,11 +1,14 @@
 // localStorage.removeItem('clickedRowData');
 //begin table highlighter////////////////////////////////////////////////////////////////////
-const ResTblBdy = document.getElementById("resTblBdy");
-let currentDate = new Date();
-console.log('currentDate==>', currentDate)
+// const ResTblBdy = document.getElementById("resTblBdy");
+// let currentDate = new Date();
+// console.log('currentDate==>', currentDate)
 
 function highlight_row() {
   localStorage.removeItem('clickedRowData');
+  const ResTblBdy = document.getElementById("resTblBdy");
+let currentDate = new Date();
+console.log('currentDate==>', currentDate)
 
     let cells = ResTblBdy.getElementsByTagName('td'); //targets all cells in table
     let rows = ResTblBdy.getElementsByTagName('tr'); //targets all rows in table
