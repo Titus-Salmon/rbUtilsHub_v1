@@ -179,7 +179,7 @@ console.log('currentDate==>', currentDate)
     }
 
 } //end of function
-window.onload = highlight_row;
+// window.onload = highlight_row;
 //end table highlighter////////////////////////////////////////////////////////////////////
 
 export {highlight_row}
