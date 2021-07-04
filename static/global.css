@@ -56,7 +56,8 @@ tr {
 }
 tr:nth-child(even) {
   /* not quite black to alternate with pure black */
-  background-color: var(--surface2) !important;
+  /* background-color: var(--surface2) !important; */
+  background-color: var(--surface2);
   /* not quite black to alternate with pure black */
 }
 textarea {
