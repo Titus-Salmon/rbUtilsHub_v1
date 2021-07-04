@@ -33,7 +33,7 @@
         </tr>
       {/each}
     </tbody>
-    {onMount(() => {
+    {afterUpdate(() => {
       highlight_row();
     })}
   </table>
