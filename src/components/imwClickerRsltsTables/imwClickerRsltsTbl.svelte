@@ -2,7 +2,7 @@
   import imwClickerResTbl from "../../stores/dynamicTables/st_imwClickerResTbl";
   import { onMount, onDestroy, beforeUpdate, afterUpdate } from "svelte";
   import { highlight_row } from "../../libT0d/imwClicker/clickableTableFuncs";
-  import { clickableTableFuncs } from "../../libT0d/imwClicker/clickableTableFuncs";
+  // import { clickableTableFuncs } from "../../libT0d/imwClicker/clickableTableFuncs";
 </script>
 
 <style>
