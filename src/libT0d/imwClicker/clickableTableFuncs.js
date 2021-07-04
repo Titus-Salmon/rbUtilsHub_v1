@@ -1,19 +1,17 @@
 // localStorage.removeItem('clickedRowData');
 //begin table highlighter////////////////////////////////////////////////////////////////////
-// const ResTblBdy = document.getElementById("resTblBdy");
+// const rsltTblBdy = document.getElementById("rsltTblBdy");
 // let currentDate = new Date();
 // console.log('currentDate==>', currentDate)
 
 function highlight_row() {
   localStorage.removeItem('clickedRowData');
-  const ResTblBdy = document.getElementById("resTblBdy");
+  const rsltTblBdy = document.getElementById("rsltTblBdy");
   let currentDate = new Date();
   console.log('currentDate==>', currentDate)
-  console.log(`typeof ResTblBdy==> ${typeof ResTblBdy}`)
-  console.log(`ResTblBdy==> ${ResTblBdy}`)
 
-    let cells = ResTblBdy.getElementsByTagName('td'); //targets all cells in table
-    let rows = ResTblBdy.getElementsByTagName('tr'); //targets all rows in table
+    let cells = rsltTblBdy.getElementsByTagName('td'); //targets all cells in table
+    let rows = rsltTblBdy.getElementsByTagName('tr'); //targets all rows in table
     console.log('cells.length==>', cells.length)
     console.log('rows.length==>', rows.length)
 
@@ -134,7 +132,7 @@ function highlight_row() {
             let rowId = cells[i].parentNode.rowIndex - 1;
             console.log('rowId==>', rowId)
 
-            let rowsNotSelected = ResTblBdy.getElementsByTagName('tr');
+            let rowsNotSelected = rsltTblBdy.getElementsByTagName('tr');
             for (let row = 0; row < rowsNotSelected.length; row++) {
                 rowsNotSelected[row].classList.value = ""
             }
@@ -148,7 +146,7 @@ function highlight_row() {
             console.log('6%2==>', 6 % 2)
 
 
-            let rowSelected = ResTblBdy.getElementsByTagName('tr')[rowId];
+            let rowSelected = rsltTblBdy.getElementsByTagName('tr')[rowId];
             console.log('rowSelected==>', rowSelected)
             console.log('rowSelected.classList.value==>', rowSelected.classList.value)
 
