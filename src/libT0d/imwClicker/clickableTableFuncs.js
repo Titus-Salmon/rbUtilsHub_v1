@@ -57,7 +57,7 @@ function highlight_row() {
                 }
             }
 
-            for (j = 0; j < rowSelected.childNodes.length; j++) {
+            for (let j = 0; j < rowSelected.childNodes.length; j++) {
                 console.log('rowSelected.childNodes[' + j + '].innerHTML==>', rowSelected.childNodes[j].innerHTML);
                 cellStorage.push(rowSelected.childNodes[j].innerHTML);
                 console.log('cellStorage', cellStorage);
