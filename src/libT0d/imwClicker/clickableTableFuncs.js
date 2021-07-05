@@ -58,11 +58,8 @@ function highlight_row() {
             }
 
             for (let j = 0; j < rowSelected.childNodes.length; j++) {
-                // console.log('rowSelected.childNodes[' + j + '].innerHTML==>', rowSelected.childNodes[j].innerHTML);
                 cellStorage.push(rowSelected.childNodes[j].innerHTML);
-                // console.log('cellStorage', cellStorage);
             }
-            console.log(`cellStorage[cellStorage.length-1]==> ${cellStorage[cellStorage.length-1]}`);
 
             localStorage.setItem("clickedRowData", JSON.stringify(cellStorage))
             console.log('localStorage==>', localStorage)
