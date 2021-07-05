@@ -58,11 +58,11 @@ function highlight_row() {
             }
 
             for (let j = 0; j < rowSelected.childNodes.length; j++) {
-                console.log('rowSelected.childNodes[' + j + '].innerHTML==>', rowSelected.childNodes[j].innerHTML);
+                // console.log('rowSelected.childNodes[' + j + '].innerHTML==>', rowSelected.childNodes[j].innerHTML);
                 cellStorage.push(rowSelected.childNodes[j].innerHTML);
                 // console.log('cellStorage', cellStorage);
             }
-            console.log('cellStorage[rowSelected.childNodes.length]', cellStorage[rowSelected.childNodes.length]);
+            console.log('cellStorage[rowSelected.childNodes.length-1]', cellStorage[rowSelected.childNodes.length-1]);
 
             localStorage.setItem("clickedRowData", JSON.stringify(cellStorage))
             console.log('localStorage==>', localStorage)
