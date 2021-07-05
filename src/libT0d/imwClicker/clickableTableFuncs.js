@@ -50,9 +50,10 @@ function highlight_row() {
                 console.log('rowSelected==>', rowSelected)
                 console.log('rowSelected was clicked ' + (clickCounter++) + ' times')
                 console.log('clickCounter==>', clickCounter)
-                if ((clickCounter+1) % 2 == 0) { //if row is clicked an even number of times
+                if ((clickCounter+2) % 2 == 0) { //if row is clicked an even number of times
                   //do we need to add +1 to clickCounter, in order to make this condition work?
                   //try (clickCounter +1) % 2 to test...
+                  //no; try +2...
                     rowSelected.classList.value = ""; //unhighlight it
                 } else {
                     rowSelected.classList.value = "row-hilite-toggle"; //otherwise, highlight it
