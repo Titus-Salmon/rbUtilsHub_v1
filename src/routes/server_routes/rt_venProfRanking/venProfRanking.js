@@ -21,6 +21,7 @@ export async function post(req, res, next) {
     let vendorMarginTotArr = []
 
     function displayNhcrtOptItemSales(rows) {
+      console.log(`hello from top level of displayNhcrtOptItemSales(rows)`)
       let queriedColumns = Object.keys(rows[0]);
       console.log(`queriedColumns==> ${queriedColumns}`);
       for (let i = 0; i < rows.length; i++) {
