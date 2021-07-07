@@ -125,6 +125,7 @@ export async function post(req, res, next) {
     let mySqlQuery = `${queryText}`
 
     connection.query(mySqlQuery, function (err, rows, fields) {
+      console.log(`hello from top level of connection.query() from within venProfRanking.js`)
       if (err) throw err
       console.log(`rows.length==>${rows.length}`)
       console.log('rows[0]==>', rows[0])
