@@ -77,6 +77,13 @@ const homeLinksObjArr = [
     linkURL: "/pages/pg_MySQL/keheSelectWSdiff",
   },
   {
+    id: "venProfRanking",
+    linkName: "venProfRanking",
+    imgURL: "/img/homePage/profits1_inv.jpg",
+    altImg: "profits1_inv.jpg",
+    linkURL: "/pages/pg_venProfRanking/venProfRanking",
+  },
+  {
     id: "venProf",
     linkName: "venProf",
     imgURL: "/img/homePage/profits1_inv.jpg",
