@@ -29,10 +29,8 @@ export async function post(req, res, next) {
         //front-end results for any columns that are queried, not just a fixed set of columns
         let rowData = rows[i]; //data from row #i
         let resObj = {};
-        // resObj['ri_70d'] = i + 1
         for (let j = 0; j < queriedColumns.length; j++) {
           let colName = queriedColumns[j];
-  
           resObj[`${colName}`] = rowData[`${colName}`];
         }
         nhcrtOptItemSalesArr.push(resObj);
@@ -41,46 +39,6 @@ export async function post(req, res, next) {
         // srcRsXLS.push(resObj);
       }
 
-      // for (let i = 0; i < rows.length; i++) {
-      //   let nhcrtOptItemSalesObj = {}
-      //   nhcrtOptItemSalesObj['ri_t0d'] = i + 1
-      //   nhcrtOptItemSalesObj['invScanCode'] = rows[i]['invScanCode']
-      //   nhcrtOptItemSalesObj['ordSupplierStockNumber'] = rows[i]['ordSupplierStockNumber']
-      //   nhcrtOptItemSalesObj['invSize'] = rows[i]['invSize']
-      //   nhcrtOptItemSalesObj['invReceiptAlias'] = rows[i]['invReceiptAlias']
-      //   nhcrtOptItemSalesObj['invDateCreated'] = rows[i]['invDateCreated']
-      //   nhcrtOptItemSalesObj['ordQuantityInOrderUnit'] = rows[i]['ordQuantityInOrderUnit']
-      //   nhcrtOptItemSalesObj['oupName'] = rows[i]['oupName']
-      //   nhcrtOptItemSalesObj['stoNumber'] = rows[i]['stoNumber']
-      //   nhcrtOptItemSalesObj['brdName'] = rows[i]['brdName']
-      //   nhcrtOptItemSalesObj['dptName'] = rows[i]['dptName']
-      //   nhcrtOptItemSalesObj['dptNumber'] = rows[i]['dptNumber']
-      //   nhcrtOptItemSalesObj['sibIdealMargin'] = rows[i]['sibIdealMargin']
-      //   nhcrtOptItemSalesObj['actualMargT0d'] = rows[i]['actualMargT0d']
-      //   nhcrtOptItemSalesObj['venCompanyname'] = rows[i]['venCompanyname']
-      //   nhcrtOptItemSalesObj['invLastreceived'] = rows[i]['invLastreceived']
-      //   nhcrtOptItemSalesObj['invLastsold'] = rows[i]['invLastsold']
-      //   nhcrtOptItemSalesObj['invLastcost'] = rows[i]['invLastcost']
-
-      //   nhcrtOptItemSalesObj['sibBasePrice'] = rows[i]['sibBasePrice']
-
-      //   nhcrtOptItemSalesObj['invOnhand'] = rows[i]['invOnhand']
-      //   nhcrtOptItemSalesObj['invOnorder'] = rows[i]['invOnorder']
-      //   nhcrtOptItemSalesObj['invIntransit'] = rows[i]['invIntransit']
-      //   nhcrtOptItemSalesObj['pi1Description'] = rows[i]['pi1Description']
-      //   nhcrtOptItemSalesObj['pi2Description'] = rows[i]['pi2Description']
-
-      //   nhcrtOptItemSalesObj['Quantity'] = rows[i]['Quantity']
-      //   nhcrtOptItemSalesObj['ExtCost'] = rows[i]['ExtCost']
-      //   nhcrtOptItemSalesObj['Sales'] = rows[i]['Sales']
-
-      //   nhcrtOptItemSalesObj['Margin'] = rows[i]['Margin']
-      //   nhcrtOptItemSalesObj['percMargin'] = rows[i]['percMargin']
-
-      //   nhcrtOptItemSalesArr.push(nhcrtOptItemSalesObj)
-      //   venCompanynameArr.push(rows[i]['venCompanyname']) //push all non-distinct vendor names to array 
-      //   //(each item's vendor for all nhcrt items)
-      // }
       nhcrtOptItemSalesArrCache.set('nhcrtOptItemSalesArrCache_key', nhcrtOptItemSalesArr)
       console.log('rows.length~~~>', rows.length)
       console.log(`Object.keys(rows[0])==>${Object.keys(rows[0])}`)
@@ -122,7 +80,6 @@ export async function post(req, res, next) {
       // })
       console.log(`JSON.stringify(vendorTotalsObjArr) AFTER sort==> ${JSON.stringify(vendorTotalsObjArr)}`)
     }
-
 
     let mySqlQuery = `${queryText}`
 
