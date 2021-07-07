@@ -21,7 +21,7 @@ export async function post(req, res, next) {
     let vendorMarginTotArr = []
 
     function displayNhcrtOptItemSales(rows) {
-
+      console.log(`hello from top level of displayNhcrtOptItemSales(rows)`)
       for (let i = 0; i < rows.length; i++) {
         //we are abstracting query result handling here, in order to be able to provide
         //front-end results for any columns that are queried, not just a fixed set of columns
