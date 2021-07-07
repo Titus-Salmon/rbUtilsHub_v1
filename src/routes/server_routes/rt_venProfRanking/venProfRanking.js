@@ -36,6 +36,8 @@ export async function post(req, res, next) {
           resObj[`${colName}`] = rowData[`${colName}`];
         }
         nhcrtOptItemSalesArr.push(resObj);
+        venCompanynameArr.push(rows[i]['venCompanyname']) //push all non-distinct vendor names to array 
+        //(each item's vendor for all nhcrt items)
         // srcRsXLS.push(resObj);
       }
 
