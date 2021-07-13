@@ -54,6 +54,25 @@ export async function post(req, res, next) {
     vendorName = `EDI-${vendorName.toUpperCase()}`;
     console.log(`vendorName==> ${vendorName}`);
   }
+
+  if (tableType.toLowerCase() === "pprv_edi") {
+    let regex1 = /(\d+)/g;
+    let vendorNameSplit1 = tableNameToLoad.split("pprv_edi_");
+    let vendorNameSplit2 = vendorNameSplit1[1];
+    let vendorNameSplit3 = vendorNameSplit2.split(regex1);
+    let vendorName = vendorNameSplit3[0];
+    vendorName = `EDI-${vendorName.toUpperCase()}`;
+    console.log(`vendorName==> ${vendorName}`);
+  }
+
+  if (tableType.toLowerCase() === "pprv") {
+    let regex1 = /(\d+)/g;
+    let vendorNameSplit1 = tableNameToLoad.split("pprv_");
+    let vendorNameSplit2 = vendorNameSplit1[1];
+    let vendorNameSplit3 = vendorNameSplit2.split(regex1);
+    let vendorName = vendorNameSplit3[0];
+    console.log(`vendorName==> ${vendorName}`);
+  }
   //^//here we are doing some regex & js "split" magic to extract the "catalog" name from the nej table name we're loading (nejTableNameYYYMMDD):
 
   connection
