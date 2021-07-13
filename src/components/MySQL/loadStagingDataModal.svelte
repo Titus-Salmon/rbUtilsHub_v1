@@ -59,8 +59,8 @@
       <label for="tableType">Table type</label>
       <select name="tableType" id="tableType" bind:value="{tableType}">
         <option value="edi">EDI</option>
-        <option value="other">pprv_edi</option>
-        <option value="other">pprv</option>
+        <option value="pprv_edi">pprv_edi</option>
+        <option value="pprv">pprv</option>
         <option value="other">Other</option>
       </select>
     </div>
