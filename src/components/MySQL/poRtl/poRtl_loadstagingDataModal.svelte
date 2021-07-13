@@ -1,5 +1,5 @@
 <script>
-  import stagingData from "../../stores/stagingData/st_stagingData.js";
+  import stagingData from "../../../stores/stagingData/st_stagingData";
   let tableName;
   // let venCatPrefix; //the prefix for portal vendor catalog (i.e. gol for garden of life: gol_upc, etc...)
   let tableType;
