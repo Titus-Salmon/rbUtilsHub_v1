@@ -52,7 +52,7 @@ export async function post(req, res, next) {
     let vendorNameSplit3 = vendorNameSplit2.split(regex1);
     let vendorName = vendorNameSplit3[0];
     vendorName = `EDI-${vendorName.toUpperCase()}`;
-    console.log(`vendorName==> ${vendorName}`);
+    console.log(`vendorName from edi table==> ${vendorName}`);
   }
 
   if (tableType.toLowerCase() === "pprv_edi") {
@@ -62,7 +62,7 @@ export async function post(req, res, next) {
     let vendorNameSplit3 = vendorNameSplit2.split(regex1);
     let vendorName = vendorNameSplit3[0];
     vendorName = `EDI-${vendorName.toUpperCase()}`;
-    console.log(`vendorName==> ${vendorName}`);
+    console.log(`vendorName from pprv_edi table==> ${vendorName}`);
   }
 
   if (tableType.toLowerCase() === "pprv") {
@@ -71,13 +71,14 @@ export async function post(req, res, next) {
     let vendorNameSplit2 = vendorNameSplit1[1];
     let vendorNameSplit3 = vendorNameSplit2.split(regex1);
     let vendorName = vendorNameSplit3[0];
-    console.log(`vendorName==> ${vendorName}`);
+    console.log(`vendorName from 'pprv' table==> ${vendorName}`);
   }
 
   if (tableType.toLowerCase() === "other") {
     let regex1 = /(\d+)/g;
     let vendorNameSplit1 = tableNameToLoad.split(regex1);
     let vendorName = vendorNameSplit1[0];
+    console.log(`vendorName from 'other'table==> ${vendorName}`);
   }
   //^//here we are doing some regex & js "split" magic to extract the "catalog" name from the nej table name we're loading (nejTableNameYYYMMDD):
 
