@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   // debug: true
 });
 
-import defaultMargArr from "../../../libT0d/defaultMargs/defaultMargs";
+import defaultMargArr from "../../../../libT0d/defaultMargs/defaultMargs";
 console.log(`defaultMargArr[0]==> ${defaultMargArr[0]}`);
 console.log(
   `JSON.stringify(defaultMargArr[0])==> ${JSON.stringify(defaultMargArr[0])}`
@@ -17,9 +17,9 @@ console.log(`defaultMargArr[0]['dptName']==> ${defaultMargArr[0]["dptName"]}`);
 console.log(`defaultMargArr[0]['dptNumb']==> ${defaultMargArr[0]["dptNumb"]}`);
 console.log(`defaultMargArr[0]['margin']==> ${defaultMargArr[0]["margin"]}`);
 
-import marginStager from "../../../libT0d/stagingMethods/marginStager";
+import marginStager from "../../../../libT0d/stagingMethods/marginStager";
 
-import charmProfiles from "../../../libT0d/charmProfiles/charmProfiles";
+import charmProfiles from "../../../../libT0d/charmProfiles/charmProfiles";
 
 // let ongDisco_WS;
 // let ongDisco_Rtl;
