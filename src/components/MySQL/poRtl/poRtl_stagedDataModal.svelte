@@ -1,9 +1,9 @@
 <script>
-  import stagingData from "../../stores/stagingData/st_stagingData.js";
-  import calcResStore from "../../stores/calcResults/st_calcResults";
+  import stagingData from "../../../stores/stagingData/st_stagingData.js";
+  import calcResStore from "../../../stores/calcResults/st_calcResults";
 
-  import paginData from "../../stores/pagination/st_pagination1";
-  import tableData from "../../stores/dynamicTables/tableData1";
+  import paginData from "../../../stores/pagination/st_pagination1";
+  import tableData from "../../../stores/dynamicTables/tableData1";
 
   import { Jumper } from "svelte-loading-spinners";
 
