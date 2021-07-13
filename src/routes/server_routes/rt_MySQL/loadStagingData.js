@@ -21,11 +21,11 @@ import marginStager from "../../../libT0d/stagingMethods/marginStager";
 
 import charmProfiles from "../../../libT0d/charmProfiles/charmProfiles";
 
-// let ongDisco_WS;
-// let ongDisco_Rtl;
+let ongDisco_WS;
+let ongDisco_Rtl;
 // let marginProfile;
-// let eaNumDivide;
-// let csNumDivide;
+let eaNumDivide;
+let csNumDivide;
 // let stagedMargArr;
 
 export async function post(req, res, next) {
@@ -36,34 +36,20 @@ export async function post(req, res, next) {
   let tableNameToLoad = req.body.tableName;
   console.log(`req.body.tableName==> ${req.body.tableName}`);
 
-  // let venCatPrefix = req.body.venCatPrefix;
+  let venCatPrefix = req.body.venCatPrefix;
   let tableType = req.body.tableType;
   console.log(`tableType==> ${tableType}`);
 
   //v//here we are doing some regex & js "split" magic to extract the "catalog" name from the nej table name we're loading (nejTableNameYYYMMDD):
-  // let regex1 = /(\d+)/g;
-  // let vendorNameSplit1 = tableNameToLoad.split(regex1);
-  // let vendorName = vendorNameSplit1[0];
+  let regex1 = /(\d+)/g;
+  let vendorNameSplit1 = tableNameToLoad.split("nej");
+  let vendorNameSplit2 = vendorNameSplit1[1];
+  let vendorNameSplit3 = vendorNameSplit2.split(regex1);
+  let vendorName = vendorNameSplit3[0];
 
-  let vendorName;
-
-  if (tableType.toLowerCase() === "pprv_edi") {
-    let regex1 = /(\d+)/g;
-    let vendorNameSplit1 = tableNameToLoad.split("pprv_edi_");
-    let vendorNameSplit2 = vendorNameSplit1[1];
-    let vendorNameSplit3 = vendorNameSplit2.split(regex1);
-    vendorName = vendorNameSplit3[0];
+  if (tableType.toLowerCase() === "edi") {
     vendorName = `EDI-${vendorName.toUpperCase()}`;
-    console.log(`vendorName from pprv_edi table==> ${vendorName}`);
-  }
-
-  if (tableType.toLowerCase() === "pprv") {
-    let regex1 = /(\d+)/g;
-    let vendorNameSplit1 = tableNameToLoad.split("pprv_");
-    let vendorNameSplit2 = vendorNameSplit1[1];
-    let vendorNameSplit3 = vendorNameSplit2.split(regex1);
-    vendorName = vendorNameSplit3[0];
-    console.log(`vendorName from 'pprv' table==> ${vendorName}`);
+    console.log(`vendorName==> ${vendorName}`);
   }
   //^//here we are doing some regex & js "split" magic to extract the "catalog" name from the nej table name we're loading (nejTableNameYYYMMDD):
 
@@ -94,10 +80,10 @@ export async function post(req, res, next) {
               rainbowCatRows[0]
             )}`
           );
-          // ongDisco_WS = rainbowCatRows[0]["ongDscWS"];
-          // ongDisco_Rtl = rainbowCatRows[0]["ongDscRtl"];
-          // eaNumDivide = rainbowCatRows[0]["EA_Num_divide"];
-          // csNumDivide = rainbowCatRows[0]["CS_Num_divide"];
+          ongDisco_WS = rainbowCatRows[0]["ongDscWS"];
+          ongDisco_Rtl = rainbowCatRows[0]["ongDscRtl"];
+          eaNumDivide = rainbowCatRows[0]["EA_Num_divide"];
+          csNumDivide = rainbowCatRows[0]["CS_Num_divide"];
           let vndrWllnssMrgns = rainbowCatRows[0]["wellnessMargins"];
           if (
             vndrWllnssMrgns !== null &&
@@ -136,12 +122,12 @@ export async function post(req, res, next) {
       res.json({
         stagedMargins: stagedMargArr,
         charmProfiles: charmProfiles,
-        // ongDisco_WS: ongDisco_WS,
-        // ongDisco_Rtl: ongDisco_Rtl,
-        // eaNumDivide: eaNumDivide,
-        // csNumDivide: csNumDivide,
+        ongDisco_WS: ongDisco_WS,
+        ongDisco_Rtl: ongDisco_Rtl,
+        eaNumDivide: eaNumDivide,
+        csNumDivide: csNumDivide,
         stagedTableName: tableNameToLoad,
-        // venCatPrefix: venCatPrefix,
+        venCatPrefix: venCatPrefix,
       });
     });
 }
