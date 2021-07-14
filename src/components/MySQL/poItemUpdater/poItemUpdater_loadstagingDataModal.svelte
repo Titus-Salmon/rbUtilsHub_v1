@@ -6,17 +6,20 @@
   let loadStagingDataResponse;
 
   function loadStagingData() {
-    fetch("server_routes/rt_MySQL/poRtlUpdater/poRtl_loadStagingData", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        tableName: tableName.value,
-        // venCatPrefix: venCatPrefix.value,
-        tableType: tableType,
-      }),
-    })
+    fetch(
+      "server_routes/rt_MySQL/poItemUpdater/poItemUpdater_loadStagingData",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          tableName: tableName.value,
+          // venCatPrefix: venCatPrefix.value,
+          tableType: tableType,
+        }),
+      }
+    )
       .then((loadStagingDataResult) => loadStagingDataResult.json())
       .then((loadStagingDataResultJSON) => {
         console.log(
