@@ -70,7 +70,7 @@
       {JSON.stringify($stagingData[0].stagingDataResponse)}
     </p> -->
     <ShowHideStagedDataBtn>show/hide</ShowHideStagedDataBtn>
-    <div id="PoRtl_StagedDataModal">
+    <div id="stagedDataModal">
       <PoRtl_StagedDataModal />
     </div>
   {/if}
