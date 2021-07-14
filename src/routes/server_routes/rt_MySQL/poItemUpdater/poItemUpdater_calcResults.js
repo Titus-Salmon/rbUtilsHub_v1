@@ -12,7 +12,7 @@ import save_imw_CSV_cache from "../../../../nodeCacheStuff/cache1";
 import {
   totalPages,
   paginCalcs,
-} from "../../../libT0d/commonMethods/paginCalcs";
+} from "../../../../libT0d/commonMethods/paginCalcs";
 
 import { rbDBqueryResults } from "../../../../libT0d/MySQL/rbDBqueryResults";
 
