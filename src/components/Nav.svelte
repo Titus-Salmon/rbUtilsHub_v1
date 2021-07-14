@@ -84,8 +84,8 @@
       <div>
         <li>
           <a
-            aria-current="{segment === 'poRtlUpdater' ? 'page' : undefined}"
-            href="/pages/pg_MySQL/poRtlUpdater">poRtlUpdater</a>
+            aria-current="{segment === 'poItemUpdater' ? 'page' : undefined}"
+            href="/pages/pg_MySQL/poItemUpdater">poItemUpdater</a>
         </li>
       </div>
       <div>

@@ -44,7 +44,7 @@
     //////////////////////////////////////////////////////////////////////////////
     let postBodyObj = {
       tableName: tableName,
-      venCatPrefix: venCatPrefix,
+      // venCatPrefix: venCatPrefix,
       stagedDptMargData: stagedDptMargData,
     }; //start with this, and populate it further below with all the looped
 
@@ -254,7 +254,7 @@
 
     // isLoading = true;
 
-    fetch("server_routes/rt_MySQL/calcResults", {
+    fetch("server_routes/rt_MySQL/poItemUpdater/poItemUpdater_calcResults", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

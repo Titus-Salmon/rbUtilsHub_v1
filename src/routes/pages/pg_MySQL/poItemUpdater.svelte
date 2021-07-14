@@ -17,8 +17,8 @@
 
   import Save_imw_CSV from "../../../libT0d/save_imw_CSV.svelte";
 
-  import PoRtl_LoadstagingDataModal from "../../../components/MySQL/poRtl/poRtl_loadstagingDataModal.svelte";
-  import PoRtl_StagedDataModal from "../../../components/MySQL/poRtl/poRtl_stagedDataModal.svelte";
+  import PoItemUpdater_LoadstagingDataModal from "../../../components/MySQL/poItemUpdater/poItemUpdater_loadstagingDataModal.svelte";
+  import PoItemUpdater_StagedDataModal from "../../../components/MySQL/poItemUpdater/poItemUpdater_stagedDataModal.svelte";
 
   onDestroy(() => {
     //empty pagin and table stores when navigating away from mySqlHub, so pagin and tables don't linger
@@ -39,7 +39,7 @@
 <DkMdBtn>MODE</DkMdBtn>
 
 <div class="flexbox">
-  <PoRtl_LoadstagingDataModal />
+  <PoItemUpdater_LoadstagingDataModal />
 </div>
 
 <!--v-- only show inputs & buttons here if tableData store has been populated with query results -->
@@ -71,7 +71,7 @@
     </p> -->
     <ShowHideStagedDataBtn>show/hide</ShowHideStagedDataBtn>
     <div id="stagedDataModal">
-      <PoRtl_StagedDataModal />
+      <PoItemUpdater_StagedDataModal />
     </div>
   {/if}
 </div>
