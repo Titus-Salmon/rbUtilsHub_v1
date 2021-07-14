@@ -16,8 +16,8 @@ import {
 
 import { rbDBqueryResults } from "../../../../libT0d/MySQL/rbDBqueryResults";
 
-import { wholesaleCalcs } from "../../../../libT0d/poItemUpdater_calcResults/wholesaleCalcs";
-import { retailCalcs } from "../../../../libT0d/poItemUpdater_calcResults/retailCalcs";
+import { poIU_wholesaleCalcs } from "../../../../libT0d/poItemUpdater_calcResults/poIU_wholesaleCalcs";
+import { poIU_retailCalcs } from "../../../../libT0d/poItemUpdater_calcResults/poIU_retailCalcs";
 
 export async function post(req, res, next) {
   console.log(`h4ll0 from within the async function of calcResults.js`);
@@ -41,7 +41,7 @@ export async function post(req, res, next) {
 
   async function populateIMW() {
     if (req.body.typeOfIMW === "wholesale") {
-      wholesaleCalcs(
+      poIU_wholesaleCalcs(
         req.body,
         queryResArr,
         populated_imw_arr,
@@ -49,7 +49,7 @@ export async function post(req, res, next) {
         calcResStatus
       );
     } else {
-      retailCalcs(
+      poIU_retailCalcs(
         req.body,
         queryResArr,
         populated_imw_arr,

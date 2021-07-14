@@ -1,8 +1,8 @@
-import { blank_imw_creator } from "../../libT0d/imw/blank_imw_creator";
+import { blank_imw_creator } from "../imw/blank_imw_creator";
 import {
   discoMulti_Rtl,
   ongDiscoMulti_Rtl,
-} from "../../libT0d/calcResults/ongDiscoMulti_Rtl";
+} from "../calcResults/ongDiscoMulti_Rtl";
 import {
   unitCost,
   eaCsNumDiv,
@@ -10,15 +10,15 @@ import {
   ozNumDiv,
   ctNumDiv,
   altIDqtyDiv,
-} from "../../libT0d/calcResults/eaCsNumDiv";
-import { nmPk, numPkgsCalc } from "../../libT0d/calcResults/numPkgsCalc";
-import { csPk, ovr, csPkMltCalc } from "../../libT0d/calcResults/csPkMltCalc";
-import dptNameNumbMargMaster from "../../libT0d/defaultMargs/dptNameNumbMargMaster";
+} from "../calcResults/eaCsNumDiv";
+import { nmPk, numPkgsCalc } from "../calcResults/numPkgsCalc";
+import { csPk, ovr, csPkMltCalc } from "../calcResults/csPkMltCalc";
+import dptNameNumbMargMaster from "../defaultMargs/dptNameNumbMargMaster";
 
 import queryResArrCache from "../../nodeCacheStuff/cache1"; //we will use this to overwrite the queryResArrCache initially set from
 //within rbDBqueryResults, so that we display only what we want to display for review purposes.
 
-function retailCalcs(
+function poIU_retailCalcs(
   reqBody,
   queryResArr,
   populated_imw_arr,
@@ -337,4 +337,4 @@ function retailCalcs(
     ////////////////////////////////////////////////////////////////////////////////////////////////////
   }
 }
-export { retailCalcs };
+export { poIU_retailCalcs };
