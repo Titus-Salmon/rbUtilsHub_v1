@@ -40,7 +40,6 @@ function poIU_wholesaleCalcs(
     // //convert both lastCost and commitUnitCost to rounded ##.## format
     // //(because if one is, say, 21.990 and the other is 21.99, they weill be considered different)
     // commitUnitCost = Math.round(commitUnitCost * 100) / 100;
-    unitCost = Math.round(unitCost * 100) / 100;
     lastCost = Math.round(lastCost * 100) / 100;
 
     poIU_eaCsNumDiv(i, reqBody, queryResArr);
