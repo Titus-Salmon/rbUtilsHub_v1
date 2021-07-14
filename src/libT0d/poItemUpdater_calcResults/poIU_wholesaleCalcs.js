@@ -36,7 +36,7 @@ function poIU_wholesaleCalcs(
   for (let i = 0; i < queryResArr.length; i++) {
     // let commitUnitCost =
     //   queryResArr[i]["POD_CommitCost"] / queryResArr[i]["POD_ORDQuantity"];
-    // let lastCost = queryResArr[i]["inv_lastcost"];
+    let lastCost = queryResArr[i]["inv_lastcost"];
     // //convert both lastCost and commitUnitCost to rounded ##.## format
     // //(because if one is, say, 21.990 and the other is 21.99, they weill be considered different)
     // commitUnitCost = Math.round(commitUnitCost * 100) / 100;
