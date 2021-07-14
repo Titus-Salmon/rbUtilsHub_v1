@@ -152,53 +152,53 @@
     }
     //^//wellness department charm profiles///////////////////////////////////////////////////////////////////
 
-    //v//ongoing discos///////////////////////////////////////////////////////////////////////////////////////
-    //ongDisco_WS
-    inputId = "ongDisco_WS";
-    inputValue = document.getElementById(`${inputId}`).value;
-    postBodyObj[`${inputId}`] = inputValue;
+    // //v//ongoing discos///////////////////////////////////////////////////////////////////////////////////////
+    // //ongDisco_WS
+    // inputId = "ongDisco_WS";
+    // inputValue = document.getElementById(`${inputId}`).value;
+    // postBodyObj[`${inputId}`] = inputValue;
 
-    //ongDisco_Rtl
-    inputId = "ongDisco_Rtl";
-    inputValue = document.getElementById(`${inputId}`).value;
-    postBodyObj[`${inputId}`] = inputValue;
-    //^//ongoing discos///////////////////////////////////////////////////////////////////////////////////////
+    // //ongDisco_Rtl
+    // inputId = "ongDisco_Rtl";
+    // inputValue = document.getElementById(`${inputId}`).value;
+    // postBodyObj[`${inputId}`] = inputValue;
+    // //^//ongoing discos///////////////////////////////////////////////////////////////////////////////////////
 
-    //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
-    inputId = "eaNumDivide";
-    inputValue = document.getElementById(`${inputId}`).value;
-    postBodyObj[`${inputId}`] = inputValue;
-    //^//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+    // //v//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
+    // inputId = "eaNumDivide";
+    // inputValue = document.getElementById(`${inputId}`).value;
+    // postBodyObj[`${inputId}`] = inputValue;
+    // //^//divide cost by ea/////////////////////////////////////////////////////////////////////////////////////
 
-    //v//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
-    inputId = "csNumDivide";
-    inputValue = document.getElementById(`${inputId}`).value;
-    postBodyObj[`${inputId}`] = inputValue;
-    //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
+    // //v//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
+    // inputId = "csNumDivide";
+    // inputValue = document.getElementById(`${inputId}`).value;
+    // postBodyObj[`${inputId}`] = inputValue;
+    // //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
 
-    //v//divide cost by lb/////////////////////////////////////////////////////////////////////////////////////
-    inputId = "lbNumDivide";
-    inputValue = document.getElementById(`${inputId}`).value;
-    postBodyObj[`${inputId}`] = inputValue;
-    //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
+    // //v//divide cost by lb/////////////////////////////////////////////////////////////////////////////////////
+    // inputId = "lbNumDivide";
+    // inputValue = document.getElementById(`${inputId}`).value;
+    // postBodyObj[`${inputId}`] = inputValue;
+    // //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
 
-    //v//divide cost by oz/////////////////////////////////////////////////////////////////////////////////////
-    inputId = "ozNumDivide";
-    inputValue = document.getElementById(`${inputId}`).value;
-    postBodyObj[`${inputId}`] = inputValue;
-    //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
+    // //v//divide cost by oz/////////////////////////////////////////////////////////////////////////////////////
+    // inputId = "ozNumDivide";
+    // inputValue = document.getElementById(`${inputId}`).value;
+    // postBodyObj[`${inputId}`] = inputValue;
+    // //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
 
-    //v//divide cost by ct/////////////////////////////////////////////////////////////////////////////////////
-    inputId = "ctNumDivide";
-    inputValue = document.getElementById(`${inputId}`).value;
-    postBodyObj[`${inputId}`] = inputValue;
-    //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
+    // //v//divide cost by ct/////////////////////////////////////////////////////////////////////////////////////
+    // inputId = "ctNumDivide";
+    // inputValue = document.getElementById(`${inputId}`).value;
+    // postBodyObj[`${inputId}`] = inputValue;
+    // //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
 
-    //v//divide cost by ct/////////////////////////////////////////////////////////////////////////////////////
-    inputId = "altIDqtyDiv";
-    inputValue = document.getElementById(`${inputId}`).value;
-    postBodyObj[`${inputId}`] = inputValue;
-    //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
+    // //v//divide cost by ct/////////////////////////////////////////////////////////////////////////////////////
+    // inputId = "altIDqtyDiv";
+    // inputValue = document.getElementById(`${inputId}`).value;
+    // postBodyObj[`${inputId}`] = inputValue;
+    // //^//divide cost by cs/////////////////////////////////////////////////////////////////////////////////////
 
     //v//typeOfIMW/////////////////////////////////////////////////////////////////////////////////////
     inputId = "typeOfIMW";
@@ -361,28 +361,6 @@
                 bind:value="{stagedMargin.margin}" />
             </div>
           {/if}
-          <!-- department number ------------------------------------------------------------------------>
-          <!-- <div style="text-align:center;">
-            <label for="{stagedMargin.dptNumb}">{stagedMargin.dptNumb}</label>
-          </div>
-          {#if stagedMargin.nonDefaultMargin}
-            <div style="text-align:center">
-              <input
-                style="background-color: #ff6666; color: black"
-                type="text"
-                id="{stagedMargin.dptNumb}"
-                name="{stagedMargin.dptNumb}"
-                bind:value="{stagedMargin.dptNumb}" />
-            </div>
-          {:else}
-            <div style="text-align:center">
-              <input
-                type="text"
-                id="{stagedMargin.dptNumb}"
-                name="{stagedMargin.dptNumb}"
-                bind:value="{stagedMargin.dptNumb}" />
-            </div>
-          {/if} -->
         {/each}
       {/if}
       <!--^-- staged margins ------------------------------------------------------------------------------------->
@@ -543,103 +521,7 @@
     </div>
     <!------------------------------------------------------------------------------------------------------------------------>
     <div style="padding: 0 1rem">
-      <!-- ongoing WS discos ------------------------------------------------------------------>
       {#if $stagingData[0].stagingDataResponse}
-        <div style="text-align:center">
-          <p>Ongoing Discos</p>
-        </div>
-        <div style="text-align:center;">
-          <label for="ongDisco_WS">ongDisco_WS</label>
-        </div>
-        <div style="text-align:center">
-          <input
-            type="text"
-            id="ongDisco_WS"
-            name="ongDisco_WS"
-            bind:value="{$stagingData[0].stagingDataResponse.ongDisco_WS}" />
-        </div>
-        <!-- ongoing Rtl discos ------------------------------------------------------------------>
-        <div style="text-align:center;">
-          <label for="ongDisco_Rtl">ongDisco_Rtl</label>
-        </div>
-        <div style="text-align:center">
-          <input
-            type="text"
-            id="ongDisco_Rtl"
-            name="ongDisco_Rtl"
-            bind:value="{$stagingData[0].stagingDataResponse.ongDisco_Rtl}" />
-        </div>
-        <div style="text-align:center">
-          <p>Divide Cost By EA/CS</p>
-        </div>
-        <!-- divide cost by EA-## ------------------------------------------------------------------>
-        <div style="text-align:center;">
-          <label for="eaNumDivide">eaNumDivide</label>
-        </div>
-        <div style="text-align:center">
-          <input
-            type="text"
-            id="eaNumDivide"
-            name="eaNumDivide"
-            bind:value="{$stagingData[0].stagingDataResponse.eaNumDivide}" />
-        </div>
-        <!-- divide cost by CS-## ------------------------------------------------------------------>
-        <div style="text-align:center;">
-          <label for="csNumDivide">csNumDivide</label>
-        </div>
-        <div style="text-align:center">
-          <input
-            type="text"
-            id="csNumDivide"
-            name="csNumDivide"
-            bind:value="{$stagingData[0].stagingDataResponse.csNumDivide}" />
-        </div>
-
-        <!--dropdown options------------------------------------------------------------------------------------------>
-        <!-- lbNumDivide -------------------------------------------------------------------------->
-        <div style="text-align:center">
-          <label for="lbNumDivide">LB-## divide</label>
-          <select
-            name="lbNumDivide"
-            id="lbNumDivide"
-            bind:value="{lbNumDivide}">
-            <option value="no">no</option>
-            <option value="yes">yes</option>
-          </select>
-        </div>
-        <!-- ozNumDivide -------------------------------------------------------------------------->
-        <div style="text-align:center">
-          <label for="ozNumDivide">OZ-## divide</label>
-          <select
-            name="ozNumDivide"
-            id="ozNumDivide"
-            bind:value="{ozNumDivide}">
-            <option value="no">no</option>
-            <option value="yes">yes</option>
-          </select>
-        </div>
-        <!-- ctNumDivide -------------------------------------------------------------------------->
-        <div style="text-align:center">
-          <label for="ctNumDivide">CT-## divide</label>
-          <select
-            name="ctNumDivide"
-            id="ctNumDivide"
-            bind:value="{ctNumDivide}">
-            <option value="no">no</option>
-            <option value="yes">yes</option>
-          </select>
-        </div>
-        <!-- altIDqtyDiv -------------------------------------------------------------------------->
-        <div style="text-align:center">
-          <label for="altIDqtyDiv">altID pkgQty divide</label>
-          <select
-            name="altIDqtyDiv"
-            id="altIDqtyDiv"
-            bind:value="{altIDqtyDiv}">
-            <option value="yes">yes</option>
-            <option value="no">no</option>
-          </select>
-        </div>
         <!-- type of IMW -------------------------------------------------------------------------->
         <div style="text-align:center">
           <label for="typeOfIMW">Type of IMW</label>
@@ -649,96 +531,6 @@
             <option value="new">New Item IMW</option>
           </select>
         </div>
-
-        <!-- SKU Mismatch Allowance -------------------------------------------------------------------------->
-        <!-- <div style="text-align:center">
-          <label for="skuMismatchAllowance">SKU Mismatch Options</label>
-          <select
-            name="skuMismatchAllowance"
-            id="skuMismatchAllowance"
-            bind:value="{skuMismatchAllowance}">
-            <option value="allowMismatch">Allow SKU Mismatches</option>
-            <option value="matchOnly">Require SKU Match</option>
-          </select>
-        </div> -->
-
-        <!-- use EDI or Catapult SKU for IMW ----------------------------------------------------------------------------------------------->
-        <div style="text-align:center">
-          <label for="ediOrCatapultSku">Use EDI or Catapult SKU for IMW</label>
-          <select
-            name="ediOrCatapultSku"
-            id="ediOrCatapultSku"
-            bind:value="{skuToggle}">
-            <option value="catapult">Catapult</option>
-            <option value="edi">EDI</option>
-          </select>
-        </div>
-
-        <!-- Flag SKU mismatch for IMW? ----------------------------------------------------------------------------------------------->
-        <!-- <div style="text-align:center">
-          <label for="flagSkuMismatch">Flag SKU mismatch for IMW?</label>
-          <select
-            name="flagSkuMismatch"
-            id="flagSkuMismatch"
-            bind:value="{skuMismatchOption}">
-            <option value="yes">yes</option>
-            <option value="no">no</option>
-          </select>
-        </div> -->
-
-        <!-- include EDLP ----------------------------------------------------------------------------------------------->
-        <div style="text-align:center">
-          <label for="includeEDLP">Include EDLP</label>
-          <select
-            name="includeEDLP"
-            id="includeEDLP"
-            bind:value="{includeEDLP}">
-            <option value="no">no</option>
-            <option value="yes">yes</option>
-          </select>
-        </div>
-
-        <!-- Purchase Quantity Override ----------------------------------------------------------------------------------------------->
-        <div style="text-align:center">
-          <label for="purchQtyOverride">Purchase Quantity Override</label>
-          <select
-            name="purchQtyOverride"
-            id="purchQtyOverride"
-            bind:value="{purchQtyOverride}">
-            <option value="yes">yes</option>
-            <option value="no">no</option>
-            <option value="doNothing">doNothing</option>
-          </select>
-        </div>
-
-        <!-- Dept Filter -------------------------------------------------------------------------->
-        <!-- <div style="text-align:center">
-          <label for="deptFilter">Dept Filter</label>
-          <select name="deptFilter" id="deptFilter" bind:value="{dptFilter}">
-            <option value="none">none</option>
-            <option value="54">Beer & Alcohol</option>
-            <option value="152">Body Care</option>
-            <option value="9">Books</option>
-            <option value="19">Bulk</option>
-            <option value="30">Bulk & Herb Prepack</option>
-            <option value="175">CBD - Grocery</option>
-            <option value="176">CBD - Supplements</option>
-            <option value="177">CBD - Topicals</option>
-            <option value="148">Consignments</option>
-            <option value="150">General Merchandise</option>
-            <option value="13">Gift Items</option>
-            <option value="62">Grab & Go</option>
-            <option value="25">Grocery</option>
-            <option value="179">Grocery - Local</option>
-            <option value="38">Grocery - Local Meat</option>
-            <option value="12">HBA</option>
-            <option value="158">Herbs & Homeopathic</option>
-            <option value="80">LifeBar</option>
-            <option value="151">Other</option>
-            <option value="155">Refrigerated</option>
-            <option value="157">Vitamins & Supplements</option>
-          </select>
-        </div> -->
       {/if}
     </div>
   </div>
