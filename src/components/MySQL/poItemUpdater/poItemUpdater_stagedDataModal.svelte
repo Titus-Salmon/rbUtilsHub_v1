@@ -522,6 +522,77 @@
     <!------------------------------------------------------------------------------------------------------------------------>
     <div style="padding: 0 1rem">
       {#if $stagingData[0].stagingDataResponse}
+        <div style="text-align:center">
+          <p>Divide Cost By EA/CS</p>
+        </div>
+        <!-- divide cost by EA-## ------------------------------------------------------------------>
+        <div style="text-align:center;">
+          <label for="eaNumDivide">eaNumDivide</label>
+        </div>
+        <div style="text-align:center">
+          <input
+            type="text"
+            id="eaNumDivide"
+            name="eaNumDivide"
+            bind:value="{$stagingData[0].stagingDataResponse.eaNumDivide}" />
+        </div>
+        <!-- divide cost by CS-## ------------------------------------------------------------------>
+        <div style="text-align:center;">
+          <label for="csNumDivide">csNumDivide</label>
+        </div>
+        <div style="text-align:center">
+          <input
+            type="text"
+            id="csNumDivide"
+            name="csNumDivide"
+            bind:value="{$stagingData[0].stagingDataResponse.csNumDivide}" />
+        </div>
+
+        <!--dropdown options------------------------------------------------------------------------------------------>
+        <!-- lbNumDivide -------------------------------------------------------------------------->
+        <div style="text-align:center">
+          <label for="lbNumDivide">LB-## divide</label>
+          <select
+            name="lbNumDivide"
+            id="lbNumDivide"
+            bind:value="{lbNumDivide}">
+            <option value="no">no</option>
+            <option value="yes">yes</option>
+          </select>
+        </div>
+        <!-- ozNumDivide -------------------------------------------------------------------------->
+        <div style="text-align:center">
+          <label for="ozNumDivide">OZ-## divide</label>
+          <select
+            name="ozNumDivide"
+            id="ozNumDivide"
+            bind:value="{ozNumDivide}">
+            <option value="no">no</option>
+            <option value="yes">yes</option>
+          </select>
+        </div>
+        <!-- ctNumDivide -------------------------------------------------------------------------->
+        <div style="text-align:center">
+          <label for="ctNumDivide">CT-## divide</label>
+          <select
+            name="ctNumDivide"
+            id="ctNumDivide"
+            bind:value="{ctNumDivide}">
+            <option value="no">no</option>
+            <option value="yes">yes</option>
+          </select>
+        </div>
+        <!-- altIDqtyDiv -------------------------------------------------------------------------->
+        <div style="text-align:center">
+          <label for="altIDqtyDiv">altID pkgQty divide</label>
+          <select
+            name="altIDqtyDiv"
+            id="altIDqtyDiv"
+            bind:value="{altIDqtyDiv}">
+            <option value="yes">yes</option>
+            <option value="no">no</option>
+          </select>
+        </div>
         <!-- type of IMW -------------------------------------------------------------------------->
         <div style="text-align:center">
           <label for="typeOfIMW">Type of IMW</label>
