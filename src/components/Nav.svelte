@@ -84,6 +84,20 @@
       <div>
         <li>
           <a
+            aria-current="{segment === 'poRtlUpdater' ? 'page' : undefined}"
+            href="/pages/pg_MySQL/poRtlUpdater">poRtlUpdater</a>
+        </li>
+      </div>
+      <div>
+        <li>
+          <a
+            aria-current="{segment === 'imwClicker' ? 'page' : undefined}"
+            href="/pages/imwClicker/imwClicker">imwClicker</a>
+        </li>
+      </div>
+      <div>
+        <li>
+          <a
             aria-current="{segment === 'stockFilterUPC' ? 'page' : undefined}"
             href="/pages/pg_MySQL/stockFilterUPC">stockFilterUPC</a>
         </li>
