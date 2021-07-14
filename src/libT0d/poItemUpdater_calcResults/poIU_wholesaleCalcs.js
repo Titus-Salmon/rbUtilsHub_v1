@@ -52,7 +52,7 @@ function poIU_wholesaleCalcs(
       //only include results in need of wholesale update; lastCost < commitUnitCost & item actually received
       let imwToPop = {};
       blank_imw_creator(imwToPop);
-      imwToPop["upc"] = `${queryResArr[i]["inv_ScanCode"]}`;
+      imwToPop["upc"] = `${queryResArr[i]["inv_scancode"]}`;
       imwToPop["sugstdRtl"] = "";
       imwToPop["lastCost"] = `${unitCost}`;
       imwToPop["charm"] = "";
@@ -103,7 +103,7 @@ function poIU_wholesaleCalcs(
       // //v//ADD numPkgs, csPkgMltpl, ovr, appliedWSdisco, etc.
       // //v//to modifiedQueryResArr, in order to show for review purposes on frontend
       let reviewObj = {};
-      reviewObj["upc"] = `${queryResArr[i]["inv_ScanCode"]}`;
+      reviewObj["upc"] = `${queryResArr[i]["inv_scancode"]}`;
       reviewObj["cpltSKU"] = `${queryResArr[i]["ord_supplierstocknumber"]}`;
       reviewObj["deptName"] = `${queryResArr[i]["dpt_name"]}`;
       reviewObj["rcptAlias"] = `${queryResArr[i]["inv_receiptalias"]}`;
