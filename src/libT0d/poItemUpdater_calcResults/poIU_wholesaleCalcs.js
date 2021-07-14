@@ -1,5 +1,18 @@
 import { blank_imw_creator } from "../imw/blank_imw_creator";
 
+import {
+  unitCost,
+  poIU_eaCsNumDiv,
+  poIU_lbNumDiv,
+  poIU_ozNumDiv,
+  poIU_ctNumDiv,
+  poIU_altIDqtyDiv,
+} from "../../libT0d/poItemUpdater_calcResults/poIU_eaCsNumDiv";
+
+import { nmPk, numPkgsCalc } from "../../libT0d/calcResults/numPkgsCalc";
+
+import { csPk, ovr, csPkMltCalc } from "../../libT0d/calcResults/csPkMltCalc";
+
 import queryResArrCache from "../../nodeCacheStuff/cache1"; //we will use this to overwrite the queryResArrCache initially set from
 //within rbDBqueryResults, so that we display only what we want to display for review purposes.
 
@@ -21,21 +34,28 @@ function poIU_wholesaleCalcs(
 
   console.log(`queryResArr.length from populateIMW()==> ${queryResArr.length}`);
   for (let i = 0; i < queryResArr.length; i++) {
-    let commitUnitCost =
-      queryResArr[i]["POD_CommitCost"] / queryResArr[i]["POD_ORDQuantity"];
-    let lastCost = queryResArr[i]["inv_lastcost"];
-    //convert both lastCost and commitUnitCost to rounded ##.## format
-    //(because if one is, say, 21.990 and the other is 21.99, they weill be considered different)
-    commitUnitCost = Math.round(commitUnitCost * 100) / 100;
+    // let commitUnitCost =
+    //   queryResArr[i]["POD_CommitCost"] / queryResArr[i]["POD_ORDQuantity"];
+    // let lastCost = queryResArr[i]["inv_lastcost"];
+    // //convert both lastCost and commitUnitCost to rounded ##.## format
+    // //(because if one is, say, 21.990 and the other is 21.99, they weill be considered different)
+    // commitUnitCost = Math.round(commitUnitCost * 100) / 100;
+    unitCost = Math.round(unitCost * 100) / 100;
     lastCost = Math.round(lastCost * 100) / 100;
 
-    if (parseFloat(lastCost) < parseFloat(commitUnitCost)) {
+    poIU_eaCsNumDiv(i, reqBody, queryResArr);
+    poIU_lbNumDiv(i, reqBody, queryResArr);
+    poIU_ozNumDiv(i, reqBody, queryResArr);
+    poIU_ctNumDiv(i, reqBody, queryResArr);
+    poIU_altIDqtyDiv(i, reqBody, queryResArr);
+
+    if (parseFloat(lastCost) < parseFloat(unitCost)) {
       //only include results in need of wholesale update; lastCost < commitUnitCost & item actually received
       let imwToPop = {};
       blank_imw_creator(imwToPop);
       imwToPop["upc"] = `${queryResArr[i]["inv_ScanCode"]}`;
       imwToPop["sugstdRtl"] = "";
-      imwToPop["lastCost"] = `${commitUnitCost}`;
+      imwToPop["lastCost"] = `${unitCost}`;
       imwToPop["charm"] = "";
       imwToPop["autoDiscount"] = "";
       imwToPop["idealMarg"] = ``;
@@ -91,7 +111,7 @@ function poIU_wholesaleCalcs(
       reviewObj["brand"] = `${queryResArr[i]["brd_name"]}`;
       reviewObj["size"] = `${queryResArr[i]["inv_size"]}`;
       reviewObj["lastCost"] = `${queryResArr[i]["inv_lastcost"]}`;
-      reviewObj["commitUnitCost"] = `${commitUnitCost}`;
+      reviewObj["unitCost"] = `${unitCost}`;
       reviewObj["sib_baseprice"] = `${queryResArr[i]["sib_baseprice"]}`;
       reviewObj["actlMarg"] = `${queryResArr[i]["actlMarg"]}`;
       reviewObj["altID"] = `${queryResArr[i]["asc_scancode"]}`;
