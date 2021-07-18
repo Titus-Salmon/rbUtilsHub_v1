@@ -13,19 +13,12 @@ import {
 
 import queryResArrCache from "../../../nodeCacheStuff/cache1";
 
-//had to revert back to leaving the code for rbDBqueryResults within this file, because for some reason, when importing it from
-//an external js file, some tables wouldn't display at all, due to getting a $tableData[0] being undefined error. It only happened
-//for some of the gpet tables, and I have no idea why... It was definitely
-//only something horking on the frontend, all the backend functionality was working just fine.
-//SO FOR NOW, DON'T ATTEMPT FARMING THE rbDBqueryResults() LOGIC OUT TO AN EXTERNAL FUNCTION -- NOT WORTH THE HASSLE
-import { rbDBqueryResults } from "../../../libT0d/MySQL/rbDBqueryResults";
-
 export async function post(req, res, next) {
-  console.log(`hello from within the async function of RBDBQuery.js`);
+  console.log(`hello from within the async function of catapultQuery.js`);
 
   res.setHeader("Content-Type", "application/json");
   console.log(`req.body.data==> ${req.body.data}`);
-  let RBDbQuery = req.body.data;
+  let catapultQuery = req.body.data;
 
   let queryResArr = []; //array that holds all query results Objs
   let queryResArr_1stPage = []; //array that holds 1st page of query results Objs
@@ -33,7 +26,7 @@ export async function post(req, res, next) {
   //maybe not, but keeping it this way, in case we need it to be separate from queryResArr in the future. Just cleaner to handle
   //it this way.
 
-  async function rbDBqueryResults(result) {
+  async function catapultQueryResults(result) {
     let queriedColumns = Object.keys(result[0]);
     console.log(`queriedColumns==> ${queriedColumns}`);
 
@@ -41,15 +34,15 @@ export async function post(req, res, next) {
       //we are abstracting query result handling here, in order to be able to provide
       //front-end results for any columns that are queried, not just a fixed set of columns
       let rowData = result[i]; //data from row #i
-      let rbDBresObj = {};
-      // rbDBresObj['ri_70d'] = i + 1
+      let cpltResObj = {};
+      // cpltResObj['ri_70d'] = i + 1
       for (let j = 0; j < queriedColumns.length; j++) {
         let colName = queriedColumns[j];
 
-        rbDBresObj[`${colName}`] = rowData[`${colName}`];
+        cpltResObj[`${colName}`] = rowData[`${colName}`];
       }
-      queryResArr.push(rbDBresObj);
-      srcRsXLS.push(rbDBresObj);
+      queryResArr.push(cpltResObj);
+      srcRsXLS.push(cpltResObj);
     }
 
     if (queryResArr.length > 100) {
@@ -63,7 +56,7 @@ export async function post(req, res, next) {
       //to the whole query result dataset (queryResArr)
     }
 
-    //V// CACHE RBDB QUERY RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
+    //V// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND (for saveToCSV, and possibly other things)//////////////////////////////////////////////////////////////////////////////
     queryResArrCache.set("queryResArrCache_key", queryResArr);
     console.log(
       `queryResArrCache['data']['queryResArrCache_key']['v'].length==> ${queryResArrCache["data"]["queryResArrCache_key"]["v"].length}`
@@ -79,17 +72,17 @@ export async function post(req, res, next) {
     //^// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
   }
 
-  connection.query(RBDbQuery, function (err, rows, fields) {
+  connection.query(catapultQuery, function (err, rows, fields) {
     // if (err) throw err
     if (err) {
       console.error(err);
       res.json({
-        error: `err from RBDBQuery.js==> ${err}`,
+        error: `err from catapultQuery.js==> ${err}`,
       });
     }
     console.log(`rows.length==>${rows.length}`);
     console.log("rows[0]==>", rows[0]);
-    rbDBqueryResults(rows)
+    catapultQueryResults(rows)
       .then(paginCalcs(queryResArr))
       .then(() => {
         res.json({
