@@ -76,7 +76,7 @@ export async function post(req, res, next) {
         });
       }
       catapultQueryResults(result)
-        .then(paginCalcs())
+        .then(paginCalcs(queryResArr))
         .then(() => {
           res.json({
             queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
