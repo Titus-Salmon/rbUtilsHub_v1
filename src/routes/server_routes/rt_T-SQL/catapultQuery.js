@@ -68,7 +68,7 @@ export async function post(req, res, next) {
   }
 
   odbc.connect(DSN, (error, connection) => {
-    connection.query(`${catapultDbQuery}`, (error, result) => {
+    connection.query(`${catapultQuery}`, (error, result) => {
       if (error) {
         console.error(error);
         res.json({
