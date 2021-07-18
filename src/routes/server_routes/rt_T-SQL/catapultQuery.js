@@ -1,10 +1,5 @@
-const mysql = require("mysql");
-const connection = mysql.createConnection({
-  host: process.env.RB_HOST,
-  user: process.env.RB_USER,
-  password: process.env.RB_PW,
-  database: process.env.RB_DB,
-});
+const odbc = require("odbc");
+const DSN = process.env.ODBC_CONN_STRING;
 
 import {
   totalPages,
@@ -72,28 +67,27 @@ export async function post(req, res, next) {
     //^// CACHE V_INVENTORYMASTER QUERY RESULTS IN BACKEND //////////////////////////////////////////////////////////////////////////////
   }
 
-  connection.query(catapultQuery, function (err, rows, fields) {
-    // if (err) throw err
-    if (err) {
-      console.error(err);
-      res.json({
-        error: `err from catapultQuery.js==> ${err}`,
-      });
-    }
-    console.log(`rows.length==>${rows.length}`);
-    console.log("rows[0]==>", rows[0]);
-    catapultQueryResults(rows)
-      .then(paginCalcs(queryResArr))
-      .then(() => {
+  odbc.connect(DSN, (error, connection) => {
+    connection.query(`${catapultDbQuery}`, (error, result) => {
+      if (error) {
+        console.error(error);
         res.json({
-          queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
-          queryResArr_1stPage: queryResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
-          // "queryResArr_pagin": queryResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
-          totalPages: totalPages,
-          currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
-          // nextPage: 1,
-          // prevPage: null
+          error: `error from v_InventoryMasterQuery.js==> ${error}`,
         });
-      });
+      }
+      catapultQueryResults(result)
+        .then(paginCalcs())
+        .then(() => {
+          res.json({
+            queryResArr: queryResArr, //this is the entire result set (which we actually may not need to be passing to the front)
+            queryResArr_1stPage: queryResArr_1stPage, //this is the 1st page of results, showing the 1st 100 rows
+            // "queryResArr_pagin": queryResArr_pagin, //this is whatever page of results we're cal;ing, based on pagination
+            totalPages: totalPages,
+            currentPage: 1, //set  currentPage to 1 for initial query response, since we'll be on the 1st page
+            // nextPage: 1,
+            // prevPage: null
+          });
+        });
+    });
   });
 }
