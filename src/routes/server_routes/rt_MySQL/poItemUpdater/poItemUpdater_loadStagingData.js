@@ -23,10 +23,10 @@ import charmProfiles from "../../../../libT0d/charmProfiles/charmProfiles";
 
 // let ongDisco_WS;
 // let ongDisco_Rtl;
-// let marginProfile;
-// let eaNumDivide;
-// let csNumDivide;
-// let stagedMargArr;
+let marginProfile;
+let eaNumDivide;
+let csNumDivide;
+let stagedMargArr;
 
 export async function post(req, res, next) {
   let loadErrors = [];
@@ -96,8 +96,8 @@ export async function post(req, res, next) {
           );
           // ongDisco_WS = rainbowCatRows[0]["ongDscWS"];
           // ongDisco_Rtl = rainbowCatRows[0]["ongDscRtl"];
-          // eaNumDivide = rainbowCatRows[0]["EA_Num_divide"];
-          // csNumDivide = rainbowCatRows[0]["CS_Num_divide"];
+          eaNumDivide = rainbowCatRows[0]["EA_Num_divide"];
+          csNumDivide = rainbowCatRows[0]["CS_Num_divide"];
           let vndrWllnssMrgns = rainbowCatRows[0]["wellnessMargins"];
           if (
             vndrWllnssMrgns !== null &&
@@ -138,8 +138,8 @@ export async function post(req, res, next) {
         charmProfiles: charmProfiles,
         // ongDisco_WS: ongDisco_WS,
         // ongDisco_Rtl: ongDisco_Rtl,
-        // eaNumDivide: eaNumDivide,
-        // csNumDivide: csNumDivide,
+        eaNumDivide: eaNumDivide,
+        csNumDivide: csNumDivide,
         stagedTableName: tableNameToLoad,
         // venCatPrefix: venCatPrefix,
       });
