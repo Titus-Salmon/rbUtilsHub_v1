@@ -2,7 +2,7 @@
   let catapultQueryText;
   let queryText = `
 select
-vim.inv_scancode as vim_inv_scancode, vim.ord_supplierstocknumber, vim.inv_receiptalias, vim.asc_scancode, vim.asc_receiptalias, 
+vim.inv_scancode, vim.ord_supplierstocknumber, vim.inv_receiptalias, vim.asc_scancode, vim.asc_receiptalias, 
 vim.asc_quantity, vim.inv_lastcost, vim.sib_baseprice, vim.ven_companyname, vim.dpt_name, vim.dpt_number, vim.oup_name, 
 vim.brd_name, vim.inv_size, vim.sto_number, vim.inv_discontinued, vim.pi1_description, vim.pi2_description, 
 si.inv_pk, si.inv_cpk, si.inv_scancode as si_inv_scancode,
