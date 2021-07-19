@@ -2,7 +2,10 @@
   let catapultQueryText;
   let queryText = `
 select
-si.inv_pk, si.inv_cpk, si.inv_scancode,
+vim.inv_scancode as vim_inv_scancode, vim.ord_supplierstocknumber, vim.inv_receiptalias, vim.asc_scancode, vim.asc_receiptalias, 
+vim.asc_quantity, vim.inv_lastcost, vim.sib_baseprice, vim.ven_companyname, vim.dpt_name, vim.dpt_number, vim.oup_name, 
+vim.brd_name, vim.inv_size, vim.sto_number, vim.inv_discontinued, vim.pi1_description, vim.pi2_description, 
+si.inv_pk, si.inv_cpk, si.inv_scancode as si_inv_scancode,
 pow.POW_PK, pow.POW_ReceiveDate, pow.POW_InvoiceNumber, pow.POW_STO_FK_Receive,
 sto.sto_pk, sto.sto_number as stores_sto_number,
 pod.POD_POW_FK, pod.POD_INV_FK, pod.POD_INV_CFK, pod.POD_OrderQuantity, pod.POD_ReceiveQuantity, pod.POD_ReceiveCost, pod.POD_ORDQuantity, 
@@ -10,10 +13,7 @@ pod.POD_ASCQuantity, pod.POD_Received, pod.POD_BackOrder, pod.POD_CommitCost, po
 pod.POD_OriginalReceiveCost, pod.POD_TotalCommittedCost, pod.POD_OriginalTotalCommittedCost, pod.POD_PreFreightTotalCommittedCost, 
 pod.POD_PreDiscountTotalCommittedCost, pod.POD_ApplyDiscount, pod.POD_TotalCost, pod.POD_CostUpdateSource, pod.POD_ShipQuantity, 
 pod.POD_Verified, pod.POD_PkgCharges, pod.POD_UnitCharges, pod.POD_TotalCharges, pod.POD_PkgOrderCost, pod.POD_UnitOrderCost, 
-pod.POD_TotalOrderCost, pod.POD_CommitOnHand, pod.POD_CommitDivider, 
-vim.inv_scancode, vim.ord_supplierstocknumber, vim.inv_receiptalias, vim.asc_scancode, vim.asc_receiptalias, vim.asc_quantity, vim.inv_lastcost, 
-vim.sib_baseprice, vim.ven_companyname, vim.dpt_name, vim.dpt_number, vim.oup_name, vim.brd_name, vim.inv_size, vim.sto_number, 
-vim.inv_discontinued, vim.pi1_description, vim.pi2_description
+pod.POD_TotalOrderCost, pod.POD_CommitOnHand, pod.POD_CommitDivider 
 from catapult.ecrs.PurchaseOrderWorksheetData pod
 left join catapult.ecrs.PurchaseOrderWorksheet pow on trim(pow.pow_pk) = trim(pod.pod_pow_fk)
 left join catapult.ecrs.Stores sto on trim(sto.sto_pk) = trim(pow.pow_sto_fk_receive)
